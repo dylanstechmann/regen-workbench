@@ -461,7 +461,8 @@ def _read_resource(uri: str) -> dict[str, Any]:
         tools_yaml = CONFIG_DIR / "tools.yaml"
         if not tools_yaml.is_file():
             return {"contents": [{"uri": uri, "text": "# tools.yaml not found", "mimeType": "text/yaml"}]}
-        text = tools_yaml.read_text(encoding="utf-8", errors="replace")
+        with tools_yaml.open(encoding="utf-8", errors="replace") as handle:
+            text = handle.read(MAX_OUTPUT_CHARS + 1)
         if len(text) > MAX_OUTPUT_CHARS:
             text = text[:MAX_OUTPUT_CHARS] + "\n# [truncated]"
         return {"contents": [{"uri": uri, "text": text, "mimeType": "text/yaml"}]}
@@ -486,7 +487,8 @@ def _read_resource(uri: str) -> dict[str, Any]:
             return {"contents": [{"uri": uri, "text": "path outside provenance directory", "mimeType": "text/plain"}]}
         if not receipt_path.is_file():
             return {"contents": [{"uri": uri, "text": "receipt not found", "mimeType": "text/plain"}]}
-        text = receipt_path.read_text(encoding="utf-8", errors="replace")
+        with receipt_path.open(encoding="utf-8", errors="replace") as handle:
+            text = handle.read(MAX_OUTPUT_CHARS + 1)
         if len(text) > MAX_OUTPUT_CHARS:
             text = text[:MAX_OUTPUT_CHARS] + "\n[truncated]"
         return {"contents": [{"uri": uri, "text": text, "mimeType": "application/json"}]}
@@ -559,8 +561,18 @@ def handle_message(message: Any, state: dict[str, bool]) -> dict[str, Any] | Non
     if method == "resources/list":
         return {"jsonrpc": "2.0", "id": request_id, "result": {"resources": _list_resources()}}
     if method == "resources/read":
-        uri = params.get("uri", "")
-        return {"jsonrpc": "2.0", "id": request_id, "result": _read_resource(uri)}
+        uri = params.get("uri")
+        if not isinstance(uri, str) or not uri.strip() or any(ord(char) < 32 for char in uri):
+            return _error(request_id, -32602, "uri must be a non-empty string without control characters")
+        try:
+            result = _read_resource(uri)
+        except (OSError, RuntimeError) as exc:
+            # Files can disappear, become unreadable, or contain a symlink loop
+            # between validation and reading. Keep the client session alive.
+            detail = _redact(str(exc))
+            print(f"MCP resource read failed: {type(exc).__name__}: {detail}", file=sys.stderr)
+            return _error(request_id, -32603, "Resource could not be read")
+        return {"jsonrpc": "2.0", "id": request_id, "result": result}
     if method == "tools/call":
         name = params.get("name")
         if not isinstance(name, str) or name not in TOOL_BY_NAME:
@@ -580,14 +592,21 @@ def handle_message(message: Any, state: dict[str, bool]) -> dict[str, Any] | Non
 
 def serve() -> None:
     state = {"initialized": False}
-    for raw_line in sys.stdin:
+    while raw_line := sys.stdin.readline(MAX_INPUT_CHARS + 1):
         if len(raw_line) > MAX_INPUT_CHARS:
+            # Drain only this oversized message in bounded chunks so the next
+            # newline-delimited request can still be processed.
+            while not raw_line.endswith("\n"):
+                raw_line = sys.stdin.readline(MAX_INPUT_CHARS + 1)
+                if not raw_line:
+                    break
             response = _error(None, -32600, "MCP message exceeds the maximum size")
         else:
             try:
                 message = json.loads(raw_line)
-            except json.JSONDecodeError as exc:
-                response = _error(None, -32700, f"Parse error: {exc.msg}")
+            except (ValueError, RecursionError) as exc:
+                detail = exc.msg if isinstance(exc, json.JSONDecodeError) else "Invalid or excessively nested JSON"
+                response = _error(None, -32700, f"Parse error: {detail}")
             else:
                 response = handle_message(message, state)
         if response is not None:
