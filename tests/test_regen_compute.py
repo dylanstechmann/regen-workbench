@@ -192,7 +192,7 @@ class ComputeTests(unittest.TestCase):
         with patch.object(regen_mcp, "WORKBENCH_ROOT", self.root), patch.object(regen_mcp, "run_regen", return_value="ok") as run:
             regen_mcp.call_tool("regen_compound_screen", valid)
             argv = run.call_args.args[1]
-            self.assertEqual(argv[:3], ["compound-screen", "--input", str(source)])
+            self.assertEqual(argv[:3], ["compound-screen", "--input", str(source.resolve())])
             self.assertIn("--out", argv)
             for patch_args in [{"seed": True}, {"conformers": 21}, {"max_iters": 0},
                                {"output": str(self.root / "outside")}, {"input": str(self.matrix)}]:
