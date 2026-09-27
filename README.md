@@ -118,6 +118,24 @@ regen-workbench/
   cache/                  # model weights, ColabFold cache
 ```
 
+## Development checks
+
+The CLI and MCP regression tests use the Python standard library, mock remote
+APIs, and do not require database credentials, a GPU, or the full scientific
+image. From this repository in the shared workspace, run:
+
+```powershell
+docker compose -f ../compose.yaml run --rm --no-deps dev python3 -B -m unittest discover -s regen-workbench/tests -v
+```
+
+For a standalone checkout with Python 3.11 available, run
+`python -B -m unittest discover -s tests -v` from the repository root.
+
+The MCP server returns protocol errors for malformed resource requests and
+unreadable resource files, keeping the session available for later requests.
+Oversized input lines are discarded in bounded chunks. Individual resource
+files are read only up to the output limit before a truncation marker is added.
+
 ## License
 
 Scripts in this folder are CC0. Third-party tools keep their own licenses
