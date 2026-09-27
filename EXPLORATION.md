@@ -116,6 +116,13 @@ and outputs must be new directories under `/lab/data`. Copy the example CSVs
 there when exercising MCP; CLI examples above can read the repository mount.
 Both MCP operations have a ten-minute subprocess timeout.
 
+## Frozen cohort
+
+The registered end-to-end check lives in [studies/frozen_cohort/PROTOCOL.md](studies/frozen_cohort/PROTOCOL.md).
+It calls `expression-contrast`, then a separate Welch/BH summary, and records
+hashes for a later atlas citation. Read the protocol before the report.
+Swapped labels and `FLIP_A` are the negative control and the declared failure case.
+
 ## Development validation
 
 The standard-library suite covers expression math, strict input contracts,
