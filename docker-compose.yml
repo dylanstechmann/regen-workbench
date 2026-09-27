@@ -1,0 +1,121 @@
+# Regen Workbench — local-first regenerative-medicine agent lab
+#
+# Usage:
+#   ./scripts/host-setup.sh          # check Docker + NVIDIA toolkit
+#   ./scripts/bootstrap.sh           # build + start workbench
+#   ./scripts/bootstrap.sh --gpu     # enable GPU workbench and pull ColabFold
+#
+# The workbench shares project/data/cache folders. It deliberately does not
+# mount the host Docker socket or host Git/SSH credentials into agent-facing
+# containers. Manage Docker and GitHub authentication from the host instead.
+
+name: regen
+
+services:
+  workbench:
+    build:
+      context: .
+      dockerfile: docker/workbench.Dockerfile
+    image: regen-workbench:local
+    container_name: regen-workbench
+    hostname: regen-workbench
+    working_dir: /lab
+    stdin_open: true
+    tty: true
+    shm_size: "16gb"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - HOME=/home/regen
+      - MPLBACKEND=Agg
+      - REGEN_ROOT=/lab
+      - REGEN_DATA=/lab/data
+      - REGEN_CACHE=/lab/cache
+      - REGEN_PROJECTS=/lab/projects
+      - BOLTZ_CACHE=/lab/cache/boltz
+      - HF_HOME=/lab/cache/huggingface
+      - TRANSFORMERS_CACHE=/lab/cache/huggingface
+      - TORCH_HOME=/lab/cache/torch
+      - XDG_CACHE_HOME=/lab/cache
+      - NCBI_API_KEY=${NCBI_API_KEY:-}
+      - EMAIL=${EMAIL:-}
+      - OPENALEX_MAILTO=${EMAIL:-}
+      - REGEN_CLI=/lab/workbench/tools/regen.py
+      - JUPYTER_RUNTIME_DIR=/tmp/jupyter_runtime
+      - PATH=/lab/workbench/tools:/opt/regen/tools:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    ports:
+      - "127.0.0.1:8888:8888"   # JupyterLab; host-loopback only
+    volumes:
+      - ./tools:/lab/workbench/tools:ro
+      - ./config:/lab/workbench/config:ro
+      - ./projects:/lab/projects:rw
+      - ./data:/lab/data:rw
+      - ./cache:/lab/cache:rw
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    security_opt:
+      - no-new-privileges:true
+    command: >
+      bash -lc "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser
+      --ServerApp.root_dir=/lab"
+
+  # Long-lived stdio target for desktop MCP clients. Agents invoke the
+  # allowlisted MCP server with `docker compose exec -i -T mcp python ...`.
+  # This service has no host ports, host credentials, or Docker socket.
+  mcp:
+    build:
+      context: .
+      dockerfile: docker/workbench.Dockerfile
+    image: regen-workbench:local
+    container_name: regen-workbench-mcp
+    hostname: regen-workbench-mcp
+    working_dir: /lab
+    user: "1000:1000"
+    stdin_open: true
+    read_only: true
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - HOME=/home/regen
+      - MPLBACKEND=Agg
+      - REGEN_ROOT=/lab
+      - REGEN_DATA=/lab/data
+      - REGEN_CACHE=/lab/cache
+      - REGEN_PROJECTS=/lab/projects
+      - BOLTZ_CACHE=/lab/cache/boltz
+      - HF_HOME=/lab/cache/huggingface
+      - TRANSFORMERS_CACHE=/lab/cache/huggingface
+      - TORCH_HOME=/lab/cache/torch
+      - XDG_CACHE_HOME=/lab/cache
+      - NCBI_API_KEY=${NCBI_API_KEY:-}
+      - EMAIL=${EMAIL:-}
+      - OPENALEX_MAILTO=${EMAIL:-}
+      - REGEN_CLI=/lab/workbench/tools/regen.py
+      - PATH=/lab/workbench/tools:/opt/regen/tools:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    volumes:
+      - ./tools:/lab/workbench/tools:ro
+      - ./config:/lab/workbench/config:ro
+      - ./projects:/lab/projects:ro
+      - ./data:/lab/data:rw
+      - ./cache:/lab/cache:rw
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    command: ["sleep", "infinity"]
+
+  # Official ColabFold image — used as a sibling, not baked into workbench.
+  # Started on demand: docker compose --profile gpu run --rm colabfold ...
+  colabfold:
+    image: ghcr.io/sokrypton/colabfold:1.6.3-cuda12
+    profiles: ["gpu"]
+    gpus: all
+    shm_size: "16gb"
+    volumes:
+      - ./cache/colabfold:/cache:rw
+      - ./data:/data:rw
+      - ./projects:/work:rw
+    working_dir: /work
+    entrypoint: ["colabfold_batch"]

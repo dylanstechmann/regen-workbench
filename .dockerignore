@@ -1,0 +1,22 @@
+# Do not send credentials, downloaded structures, datasets, caches, or project
+# checkouts to the Docker daemon as part of an image build context.
+.env
+.env.*
+!.env.example
+data/
+cache/
+projects/
+tests/
+.git/
+__pycache__/
+*.py[cod]
+*.cif
+*.pdb
+*.fastq
+*.fastq.gz
+*.npz
+*.h5ad
+*.pt
+*.pth
+*.ckpt
+*.safetensors

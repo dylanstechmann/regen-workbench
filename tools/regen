@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+HERE="$(cd -- "$(dirname -- "$0")" && pwd)"
+if [[ -f "$HERE/regen.py" ]]; then
+  exec python3 "$HERE/regen.py" "$@"
+fi
+exec python3 /opt/regen/tools/regen.py "$@"

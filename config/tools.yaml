@@ -1,0 +1,85 @@
+# Capability map: plugin-like features vs how this workbench implements them.
+# Agents should read this file before inventing a new pipeline.
+
+hardware:
+  assumed_ram_gb: 64
+  assumed_vram_gb: 16
+  notes: >
+    Comfortable: monomers / small complexes, ESM embeddings, NGS QC +
+    modest single-cell, RDKit screens of 10k-100k compounds, Vina on
+    one pocket. Tight: Boltz-2 large multimers, full AF2 DBs, RFdiffusion
+    campaigns, DFT.
+
+capabilities:
+  literature:
+    local: [regen pubmed, regen openalex, regen europepmc]
+    accounts_optional: [NCBI_API_KEY for higher rate limits]
+  protein_metadata:
+    local: [regen uniprot, regen interpro]
+  structures:
+    fetch: [regen afdb, regen pdb]
+    predict_local: [esmfold via fair-esm, boltz if installed, colabfold sibling image]
+    predict_overflow: [Tamarind, Colab paid GPU, Vertex]
+    visualize: [pymol -cq, py3Dmol in Jupyter]
+  sequences:
+    align_local: [mafft, muscle, clustalo]
+    search_local: [blast, mmseqs2, hmmer]
+    search_remote: [NCBI BLAST URL API — not wired into regen; run BLAST locally instead]
+  interactions_pathways:
+    remote: [regen string; Reactome REST from notebooks when needed]
+  chemistry:
+    local: [rdkit, openbabel, vina]
+    remote: [regen chembl, regen pubchem]
+  ngs:
+    local: [fastqc, multiqc, samtools, minimap2, seqkit, scanpy]
+    pipelines: [nextflow locally; start Docker-based nf-core containers from the host]
+  genomics_annotation:
+    remote: [regen ensembl; ClinVar, gnomAD via their REST APIs from notebooks]
+
+fold_routing:
+  designed_or_orphan_monomer: esmfold
+  natural_protein_with_homologs: colabfold_msa_server
+  complex_or_ligand_or_affinity: boltz2_if_fits_16gb_else_tamarind
+  experimental_structure_exists: fetch_pdb_first
+  already_in_afdb: fetch_afdb_first
+
+mcp:
+  server: tools/regen_mcp.py
+  transport: stdio
+  exposed_tools:
+    - regen_pubmed
+    - regen_openalex
+    - regen_europepmc
+    - regen_uniprot
+    - regen_interpro
+    - regen_ensembl
+    - regen_afdb
+    - regen_pdb
+    - regen_string
+    - regen_chembl
+    - regen_pubchem
+    - regen_msa
+    - regen_rdkit
+    - regen_pymol_png
+    - regen_fold_route
+    - regen_doctor
+  resources:
+    - uri: regen://config/tools.yaml
+      description: This capability map (read-only)
+    - uri: regen://data/provenance
+      description: Listing of provenance receipt files; append filename to read individual receipts
+  security:
+    arbitrary_shell: false
+    docker_socket_mount: false
+    host_credential_mounts: false
+    output_limit_chars: 60000
+
+http_resilience:
+  retry_count: 3
+  backoff: exponential
+  backoff_base_seconds: 1
+  retryable_codes: [429, 500, 502, 503, 504]
+  notes: >
+    All regen CLI HTTP calls retry on transient server errors and
+    connection failures with exponential backoff (1s, 2s, 4s).
+    Client errors (404, 400) are raised immediately.
