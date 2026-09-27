@@ -189,6 +189,11 @@ MCP port as a shortcut.
 
 ## Data, credentials, and safety
 
+The local `regen_expression_contrast` and `regen_compound_screen` tools are
+documented with input contracts and examples in [EXPLORATION.md](EXPLORATION.md).
+They accept existing files under `/lab/data` or `/lab/projects` and save new
+report directories under `/lab/data`; they do not make network requests.
+
 - Revoke the GitHub token that was pasted into the earlier conversation. Do
   not put a replacement in `.env`, MCP config, the container, or chat. Use the
   host's GitHub CLI/device login or host SSH agent for Git push/pull.

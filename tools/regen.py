@@ -623,7 +623,25 @@ def cmd_help(_: list[str]) -> None:
         print(f"  regen {name}")
 
 
+def cmd_expression_contrast(argv: list[str]) -> None:
+    from regen_compute import expression_contrast
+    try:
+        expression_contrast(argv, record)
+    except (ValueError, OSError) as exc:
+        die(str(exc))
+
+
+def cmd_compound_screen(argv: list[str]) -> None:
+    from regen_compute import compound_screen
+    try:
+        compound_screen(argv, record)
+    except (ValueError, OSError) as exc:
+        die(str(exc))
+
+
 COMMANDS = {
+    "expression-contrast": cmd_expression_contrast,
+    "compound-screen": cmd_compound_screen,
     "pubmed": cmd_pubmed,
     "openalex": cmd_openalex,
     "europepmc": cmd_europepmc,

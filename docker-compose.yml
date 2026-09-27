@@ -48,6 +48,7 @@ services:
     volumes:
       - ./tools:/lab/workbench/tools:ro
       - ./config:/lab/workbench/config:ro
+      - ./examples:/lab/workbench/examples:ro
       - ./projects:/lab/projects:rw
       - ./data:/lab/data:rw
       - ./cache:/lab/cache:rw

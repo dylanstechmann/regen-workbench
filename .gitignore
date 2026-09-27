@@ -4,6 +4,8 @@ data/structures/
 data/sequences/
 data/literature/
 data/provenance/
+data/expression-*/
+data/compound-*/
 projects/*
 !projects/.gitkeep
 !data/.gitkeep

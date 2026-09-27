@@ -63,6 +63,29 @@ def _schema(
 
 TOOLS: list[dict[str, Any]] = [
     {
+        "name": "regen_expression_contrast",
+        "description": "Compare two groups in a local normalized, linear-scale expression CSV; report effects and leave-one-out sensitivity, without significance or rejuvenation claims. Saves a new report directory under /lab/data.",
+        "inputSchema": _schema({
+            "matrix": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "samples": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "reference": {"type": "string", "minLength": 1, "maxLength": 128},
+            "comparison": {"type": "string", "minLength": 1, "maxLength": 128},
+            "pseudocount": {"type": "number", "exclusiveMinimum": 0, "maximum": 1e12},
+            "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+        }, ["matrix", "samples", "reference", "comparison", "output"]),
+    },
+    {
+        "name": "regen_compound_screen",
+        "description": "Characterize 1-50 local SMILES records with RDKit descriptors, seeded ETKDGv3 conformers and MMFF94s minimization. Saves statuses, SDF and provenance; energies are not affinity or efficacy scores.",
+        "inputSchema": _schema({
+            "input": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "conformers": {"type": "integer", "minimum": 1, "maximum": 20},
+            "seed": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+            "max_iters": {"type": "integer", "minimum": 1, "maximum": 2000},
+        }, ["input", "output"]),
+    },
+    {
         "name": "regen_pubmed",
         "description": "Search PubMed and save a dated JSON result and provenance receipt.",
         "inputSchema": _schema(
@@ -268,6 +291,38 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
     if extra:
         raise ToolInputError(f"unknown argument(s): {', '.join(sorted(extra))}")
 
+    if name in {"regen_expression_contrast", "regen_compound_screen"}:
+        import math
+        result = {}
+        for field in (["matrix", "samples"] if name == "regen_expression_contrast" else ["input"]):
+            source = _contained_path(_require_string(args, field, max_length=1000), must_exist=True)
+            if not source.is_file() or source.stat().st_size > 25 * 1024 * 1024:
+                raise ToolInputError(f"{field} must be a regular file no larger than 25 MiB")
+            result[f"--{field}"] = str(source)
+        output = _contained_path(_require_string(args, "output", max_length=1000),
+                                 must_exist=False, writable=True)
+        if output.exists() or not output.parent.is_dir():
+            raise ToolInputError("output must be a new directory with an existing parent")
+        result["--out"] = str(output)
+        if name == "regen_expression_contrast":
+            for field in ["reference", "comparison"]:
+                value = _require_string(args, field, max_length=128)
+                if not re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_.:-]{0,127}", value):
+                    raise ToolInputError(f"{field} must be an identifier")
+                result[f"--{field}"] = value
+            if result["--reference"] == result["--comparison"]:
+                raise ToolInputError("reference and comparison must differ")
+            pseudocount = args.get("pseudocount", 1.0)
+            if (isinstance(pseudocount, bool) or not isinstance(pseudocount, (int, float))
+                    or not 0 < pseudocount <= 1e12 or not math.isfinite(pseudocount)):
+                raise ToolInputError("pseudocount must be a finite number > 0 and <= 1e12")
+            result["--pseudocount"] = str(pseudocount)
+        else:
+            result["--conformers"] = str(_bounded_int(args, "conformers", 10, 1, 20))
+            result["--seed"] = str(_bounded_int(args, "seed", 42, 0, 2147483647))
+            result["--max-iters"] = str(_bounded_int(args, "max_iters", 500, 1, 2000))
+        return result
+
     if name == "regen_pubmed":
         result = {"query": _require_string(args, "query", max_length=500)}
         result["--retmax"] = str(_bounded_int(args, "retmax", 10, 1, 50))
@@ -383,7 +438,7 @@ def _redact(text: str) -> str:
 
 
 def run_regen(name: str, args: list[str]) -> str:
-    timeout = 600 if name in {"regen_msa", "regen_pymol_png"} else 180
+    timeout = 600 if name in {"regen_msa", "regen_pymol_png", "regen_compound_screen", "regen_expression_contrast"} else 180
     completed = subprocess.run(
         [sys.executable, str(REGEN_CLI), *args],
         cwd=str(WORKBENCH_ROOT),

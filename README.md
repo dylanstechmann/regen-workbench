@@ -7,6 +7,16 @@ the loop for every lookup.
 It is meant to be the computer that Codex / Grok Build / Antigravity
 drive, instead of their small cloud sandboxes.
 
+Research direction: prioritize exploratory molecular modeling, simulation,
+and direct gene-expression and compound-data analysis for aging and
+regeneration. See [Research philosophy and priorities](RESEARCH_PHILOSOPHY.md)
+for the owner's ambitions and approach to scrutinizing evidence and bias.
+
+New local activities: [compare expression datasets and explore compound
+conformers](EXPLORATION.md), with runnable examples, sensitivity diagnostics,
+3D SDF outputs, and reproducible input/parameter records. Use
+`regen expression-contrast --help` and `regen compound-screen --help`.
+
 ## What you get after bootstrap
 
 | Layer | Contents |
@@ -74,7 +84,8 @@ CLI. See [`MCP_SETUP.md`](MCP_SETUP.md) for client-specific setup.
 
 Tools cover PubMed, EuropePMC, OpenAlex, UniProt, InterPro, Ensembl,
 AFDB/PDB fetches, STRING, ChEMBL, PubChem, local sequence alignment, RDKit
-descriptors, PyMOL rendering, fold routing, and diagnostics. The server also
+descriptors, batch compound conformers, expression contrasts, PyMOL rendering,
+fold routing, and diagnostics. The server also
 exposes read-only MCP **resources**: the `tools.yaml` capability map and the
 provenance receipt log, so agents can inspect what the workbench supports and
 what data has already been fetched. The server has no arbitrary shell tool and

@@ -2,6 +2,12 @@
 
 You are working on a laptop lab, not a tiny cloud sandbox.
 
+Read [RESEARCH_PHILOSOPHY.md](../RESEARCH_PHILOSOPHY.md) before choosing new
+features. Prioritize exploratory molecular modeling and direct expression
+and compound-data analysis. Scrutinize published claims and our own
+hypotheses consistently; preserve reproducibility and distinguish predictions
+from demonstrated biological or human outcomes.
+
 Hardware: ~64 GB RAM, 16 GB VRAM, i9, lots of disk. Docker image
 `regen-workbench:local` is already running. Heavy tools that do not fit
 16 GB must be routed to Tamarind / Colab, not hammered until OOM.
