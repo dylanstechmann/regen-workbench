@@ -308,7 +308,7 @@ class McpProtocolTests(unittest.TestCase):
         self.assertEqual(proc.stderr, "")
         responses = [json.loads(line) for line in proc.stdout.splitlines()]
         self.assertEqual([item["id"] for item in responses], [1, 2])
-        self.assertEqual(responses[1]["result"]["tools"][0]["name"], "regen_pubmed")
+        self.assertIn("regen_pubmed", {tool["name"] for tool in responses[1]["result"]["tools"]})
 
 
 class McpResourceTests(unittest.TestCase):

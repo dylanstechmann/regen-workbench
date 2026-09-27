@@ -95,6 +95,20 @@ class McpResilienceTests(unittest.TestCase):
         nested = "[" * 2000 + "0" + "]" * 2000
         ping = json.dumps({"jsonrpc": "2.0", "id": 3, "method": "ping"})
         responses = self._serve(io.StringIO(nested + "\n" + ping + "\n"), limit=10000)
+        # Python versions differ in their JSON decoder recursion limit. The
+        # array may fail parsing or parse and be rejected as a non-object RPC.
+        self.assertIn(responses[0]["error"]["code"], {-32700, -32600})
+        self.assertEqual(responses[1]["result"], {})
+
+    def test_decoder_recursion_error_is_recoverable(self) -> None:
+        ping = {"jsonrpc": "2.0", "id": 3, "method": "ping"}
+        real_loads = json.loads
+        def limited_loads(value):
+            if value.strip() == "nested":
+                raise RecursionError("decoder depth exceeded")
+            return real_loads(value)
+        with patch.object(regen_mcp.json, "loads", side_effect=limited_loads):
+            responses = self._serve(io.StringIO("nested\n" + json.dumps(ping) + "\n"))
         self.assertEqual(responses[0]["error"]["code"], -32700)
         self.assertEqual(responses[1]["result"], {})
 

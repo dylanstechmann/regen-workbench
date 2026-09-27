@@ -1,0 +1,6 @@
+gene,young_1,young_2,young_3,older_1,older_2,older_3
+DEMO_UP,10,12,11,22,24,20
+DEMO_DOWN,30,32,28,12,14,13
+DEMO_STABLE,15,15,15,15,15,15
+DEMO_OUTLIER,2,2,2,2,2,100
+DEMO_ZERO,0,0,0,0,0,0

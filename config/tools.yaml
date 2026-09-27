@@ -28,8 +28,11 @@ capabilities:
   interactions_pathways:
     remote: [regen string; Reactome REST from notebooks when needed]
   chemistry:
-    local: [rdkit, openbabel, vina]
+    local: [rdkit, regen compound-screen, openbabel, vina]
     remote: [regen chembl, regen pubchem]
+  expression_exploration:
+    local: [regen expression-contrast]
+    notes: Linear normalized input only; effect sizes and leave-one-out sensitivity, no significance testing.
   ngs:
     local: [fastqc, multiqc, samtools, minimap2, seqkit, scanpy]
     pipelines: [nextflow locally; start Docker-based nf-core containers from the host]
@@ -60,6 +63,8 @@ mcp:
     - regen_pubchem
     - regen_msa
     - regen_rdkit
+    - regen_compound_screen
+    - regen_expression_contrast
     - regen_pymol_png
     - regen_fold_route
     - regen_doctor
