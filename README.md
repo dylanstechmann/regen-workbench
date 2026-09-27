@@ -147,6 +147,21 @@ unreadable resource files, keeping the session available for later requests.
 Oversized input lines are discarded in bounded chunks. Individual resource
 files are read only up to the output limit before a truncation marker is added.
 
+## Frozen cohort check
+
+`studies/frozen_cohort/PROTOCOL.md` is the estimand. The runner wires
+`regen expression-contrast`, an explicit Welch/BH view, a GiWi window fixture,
+and a group-aware morphology holdout. Age is aliased with donor on purpose.
+A shared batch id is refused instead of scored. `atlas_link.json` carries the
+phenotype manifest hash for a later compound-atlas citation. The hash is not
+an activity label.
+
+```bash
+PYTHONPATH=tools python3 studies/frozen_cohort/run_study.py --out artifacts/frozen-cohort
+```
+
+The output directory must be new. The cohort is synthetic.
+
 ## License
 
 Scripts in this folder are CC0. Third-party tools keep their own licenses
