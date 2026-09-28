@@ -2,6 +2,63 @@
 
 Recorded from the project owner's direction on 2026-09-27.
 
+## Expanded direction: 2026-09-28
+
+### Anti-aging focus update
+
+Prioritize age-acquired damage and durable functional repair. The first three
+research areas are somatic mutations and genome repair, engineered tissues,
+and nanomedicine/tissue delivery. Organ replacement, senescent-cell clearance,
+and structural restoration follow closely. Muscle, metabolic and cognitive
+outcomes remain important endpoints, but no longer drive the default research
+queue. NSI-189 remains a lower-priority archived lead, not a centerpiece.
+
+Treat epigenetic reprogramming as one possible lever, not a substitute for
+DNA-sequence correction, extracellular-matrix repair, cellular replacement or
+restoration of organ architecture. A known disease-causing base corrected in
+a monogenic model is a different problem from identifying and correcting the
+distributed, heterogeneous somatic variants of ordinary aging. For each
+proposed repair, ask which cells are affected, whether the change is causal,
+what fraction can be reached, whether tissue function improves, and what
+new risks arise from the intervention.
+
+For engineered tissue, track donor-site cost, perfusion, integration,
+mechanical or physiological function, adverse healing and durability. For
+nanomedicine, separate organ accumulation, intended-cell uptake, actual cargo
+activity and functional benefit. Record human trials, human cell constructs,
+aged-animal experiments and computational hypotheses as different evidence
+stages; none should silently inherit the claims of another.
+
+The project now supports hypothetical research blueprints for age-related
+damage reversal, body composition and muscle function, cognitive enhancement,
+cosmetic and structural restoration, and organ replacement. A blueprint
+records who, what, where, when, why and how, competing endpoints, desired
+changes, missing evidence, and an observation that would disprove the idea.
+CRISPR, stem cells, partial reprogramming, senolytic cell therapies and
+bioprinting belong in this research space alongside existing small molecules.
+Regulatory approval is a recorded attribute, not an admission requirement for
+computational exploration.
+
+Accept forum anecdotes, personal observations, gray-market reports and vendor
+claims as research inputs. Keep their source type, provenance, uncertainty,
+cointerventions and commercial interest visible. They can motivate tests;
+they do not become independent efficacy confirmations through repetition.
+Apply the same scrutiny to papers, our simulations and favored hypotheses.
+Preserve negative and conflicting observations and differences in population.
+
+Support property-directed exploration of existing structural neighbors and
+unmeasured molecular variants. Name the actual operation: descriptor
+calculation, graph enumeration, conformer sampling, docking or a particular
+validated prediction model. Do not imply that a structure is novel because
+our generator emitted it, or that a property improvement proves biological
+improvement. Keep failed filters and unsupported molecule classes visible.
+
+Success includes actual database/API runs and inspectable artifacts. The
+[research desk](RESEARCH_DESK.md) is the local orchestration interface; methods
+packages remain separate. Exportable research dossiers support eventual
+human-reviewed public discussion without automatically publishing personal
+observations or presenting a hypothetical blueprint as a treatment regimen.
+
 ## Ambition
 
 This workbench supports exploratory research into aging, regeneration, and

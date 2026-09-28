@@ -1,0 +1,28 @@
+name: regen-research
+services:
+  research:
+    build:
+      context: .
+      dockerfile: docker/research.Dockerfile
+    image: regen-research:local
+    environment:
+      REGEN_CACHE: /tmp/regen-cache
+      EMAIL: ${EMAIL:-}
+      NCBI_API_KEY: ${NCBI_API_KEY:-}
+      OPENALEX_API_KEY: ${OPENALEX_API_KEY:-}
+      SEMANTIC_SCHOLAR_API_KEY: ${SEMANTIC_SCHOLAR_API_KEY:-}
+      CORE_API_KEY: ${CORE_API_KEY:-}
+      EXA_API_KEY: ${EXA_API_KEY:-}
+      BRAVE_SEARCH_API_KEY: ${BRAVE_SEARCH_API_KEY:-}
+    ports:
+      - "127.0.0.1:${RESEARCH_PORT:-8092}:8092"
+    volumes:
+      - ./tools:/lab/workbench/tools:ro
+      - ./config:/lab/workbench/config:ro
+      - ./data:/lab/data:rw
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m
+    restart: unless-stopped

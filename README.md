@@ -12,6 +12,31 @@ and direct gene-expression and compound-data analysis for aging and
 regeneration. See [Research philosophy and priorities](RESEARCH_PHILOSOPHY.md)
 for the owner's ambitions and approach to scrutinizing evidence and bias.
 
+## Interactive research desk
+
+The [research desk](RESEARCH_DESK.md) adds editable hypothesis blueprints,
+literature/registry/web searches, explicitly tagged anecdote and vendor-claim
+intake, PubChem structural neighbors, small-molecule analog enumeration,
+property comparisons, and reproducible RDKit conformer runs. Existing API
+keys stay in the gitignored `.env`; the browser receives configuration flags
+and research results, never credentials.
+
+```powershell
+docker compose -f compose.research.yaml up -d --build
+```
+
+Open [http://127.0.0.1:8092](http://127.0.0.1:8092). This lightweight service
+does not require the full scientific/folding image. Runs and saved
+observations stay under `data/research-desk/`; fetch receipts remain under
+`data/provenance/`. The default priorities are somatic mutation repair,
+engineered tissues and nanomedicine, followed by organs, senescence and
+structural restoration.
+
+Read the [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md):
+57 runs, 173 provider records before deduplication, 236 verified artifact
+hashes, four compared dipeptides, six structural hypotheses and 30 converged
+conformers. Run counts are not independent studies or efficacy evidence.
+
 New local activities: [compare expression datasets and explore compound
 conformers](EXPLORATION.md), with runnable examples, sensitivity diagnostics,
 3D SDF outputs, and reproducible input/parameter records. Use
