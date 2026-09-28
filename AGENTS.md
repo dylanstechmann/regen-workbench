@@ -2,7 +2,7 @@
 
 Work only in this repository unless the user pointed at a sibling. This repo is the Docker/MCP sidecar, not the science.
 
-Also read [agent/AGENT_BRIEFING.md](agent/AGENT_BRIEFING.md), [agent/PROJECT_SEEDS.md](agent/PROJECT_SEEDS.md), and [RESEARCH_PHILOSOPHY.md](RESEARCH_PHILOSOPHY.md). The parent-folder script to copy onto the laptop is [agent/PARENT_AGENTS.md](agent/PARENT_AGENTS.md).
+Also read [agent/AGENT_BRIEFING.md](agent/AGENT_BRIEFING.md), [agent/PROJECT_SEEDS.md](agent/PROJECT_SEEDS.md), [agent/LAPTOP_SESSION.md](agent/LAPTOP_SESSION.md), and [RESEARCH_PHILOSOPHY.md](RESEARCH_PHILOSOPHY.md). The parent-folder script to copy onto the laptop is [agent/PARENT_AGENTS.md](agent/PARENT_AGENTS.md). For a new Cline or Grok CLI session, `agent/LAPTOP_SESSION.md` is the brief.
 
 ## Do not
 
