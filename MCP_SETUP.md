@@ -21,7 +21,15 @@ laptop's actual GPU/RAM budget need an explicitly chosen overflow provider.
 
 ## Start the services
 
-From `regen-workbench` on the laptop:
+From `regen-workbench` on the laptop, use the script for your shell. On Windows PowerShell:
+
+```powershell
+.\scripts\Host-Setup.ps1
+.\scripts\Bootstrap.ps1
+docker compose exec workbench regen doctor
+```
+
+On Git Bash, Linux, or macOS:
 
 ```bash
 ./scripts/host-setup.sh
@@ -154,11 +162,11 @@ bridge would require its own authenticated, narrowly scoped setup.
 
 ## Test MCP without an agent
 
-From the workspace root, run the tests in the existing `dev` container (the
-current minimal workspace shell does not include Python's full stdlib):
+From `regen-workbench` in the shared workspace, run the tests in the parent
+workspace's `dev` container:
 
 ```bash
-docker compose run --rm dev bash -lc 'cd /workspace/regen-workbench && python3 -m unittest discover -s tests -v'
+docker compose -f ../compose.yaml run --rm --no-deps dev python3 -B -m unittest discover -s regen-workbench/tests -v
 ```
 
 The MCP server itself has no third-party Python dependency.
