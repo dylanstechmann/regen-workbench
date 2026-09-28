@@ -75,6 +75,19 @@ TOOLS: list[dict[str, Any]] = [
         }, ["matrix", "samples", "reference", "comparison", "output"]),
     },
     {
+        "name": "regen_pipeline",
+        "description": "Chain expression-contrast -> senescence-scoring -> benchmark-evaluation in a single local pipeline with cryptographic SHA-256 provenance hashes connecting all stages. Saves staged reports and top-level manifest under /lab/data.",
+        "inputSchema": _schema({
+            "matrix": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "samples": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "reference": {"type": "string", "minLength": 1, "maxLength": 128},
+            "comparison": {"type": "string", "minLength": 1, "maxLength": 128},
+            "pseudocount": {"type": "number", "exclusiveMinimum": 0, "maximum": 1e12},
+            "gene_set": {"type": "string", "enum": ["senmayo", "fridman", "sasp"]},
+            "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+        }, ["matrix", "samples", "reference", "comparison", "output"]),
+    },
+    {
         "name": "regen_compound_screen",
         "description": "Characterize 1-50 local SMILES records with RDKit descriptors, seeded ETKDGv3 conformers and MMFF94s minimization. Saves statuses, SDF and provenance; energies are not affinity or efficacy scores.",
         "inputSchema": _schema({
@@ -291,10 +304,10 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
     if extra:
         raise ToolInputError(f"unknown argument(s): {', '.join(sorted(extra))}")
 
-    if name in {"regen_expression_contrast", "regen_compound_screen"}:
+    if name in {"regen_expression_contrast", "regen_compound_screen", "regen_pipeline"}:
         import math
         result = {}
-        for field in (["matrix", "samples"] if name == "regen_expression_contrast" else ["input"]):
+        for field in (["matrix", "samples"] if name in {"regen_expression_contrast", "regen_pipeline"} else ["input"]):
             source = _contained_path(_require_string(args, field, max_length=1000), must_exist=True)
             if not source.is_file() or source.stat().st_size > 25 * 1024 * 1024:
                 raise ToolInputError(f"{field} must be a regular file no larger than 25 MiB")
@@ -304,7 +317,7 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
         if output.exists() or not output.parent.is_dir():
             raise ToolInputError("output must be a new directory with an existing parent")
         result["--out"] = str(output)
-        if name == "regen_expression_contrast":
+        if name in {"regen_expression_contrast", "regen_pipeline"}:
             for field in ["reference", "comparison"]:
                 value = _require_string(args, field, max_length=128)
                 if not re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_.:-]{0,127}", value):
@@ -317,6 +330,11 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
                     or not 0 < pseudocount <= 1e12 or not math.isfinite(pseudocount)):
                 raise ToolInputError("pseudocount must be a finite number > 0 and <= 1e12")
             result["--pseudocount"] = str(pseudocount)
+            if name == "regen_pipeline":
+                gene_set = args.get("gene_set", "senmayo")
+                if gene_set not in {"senmayo", "fridman", "sasp"}:
+                    raise ToolInputError("gene_set must be senmayo, fridman, or sasp")
+                result["--gene-set"] = str(gene_set)
         else:
             result["--conformers"] = str(_bounded_int(args, "conformers", 10, 1, 20))
             result["--seed"] = str(_bounded_int(args, "seed", 42, 0, 2147483647))

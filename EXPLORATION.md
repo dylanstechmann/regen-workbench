@@ -123,6 +123,24 @@ It calls `expression-contrast`, then a separate Welch/BH summary, and records
 hashes for a later atlas citation. Read the protocol before the report.
 Swapped labels and `FLIP_A` are the negative control and the declared failure case.
 
+## Chained pipeline (contrast → senescence scoring → benchmark evaluation)
+
+The `pipeline` subcommand runs a unified, multi-stage workflow in one call:
+1. **Stage 1 (Expression Contrast)**: Calculates linear differential fold-changes, non-zero counts, and leave-one-out sensitivity diagnostics.
+2. **Stage 2 (Senescence Module Scoring)**: Quantifies control-subtracted senescence module scores per sample using published gene sets (`senmayo`, `fridman`, `sasp`).
+3. **Stage 3 (Benchmark Evaluation)**: Evaluates whether senescence scores and differential markers predict phenotype in out-of-fold cross-validation (balanced accuracy vs majority baseline, AUROC, Brier score).
+4. **Stage 4 (Provenance Audit)**: Generates a unified `pipeline_manifest.json` and `REPORT.md` cryptographically linking every stage manifest to its upstream inputs and predecessor stage manifests via SHA-256 hashes.
+
+```bash
+regen pipeline \
+  --matrix data/expression.csv \
+  --samples data/samples.csv \
+  --reference young \
+  --comparison older \
+  --gene-set senmayo \
+  --out data/pipeline_report
+```
+
 ## Development validation
 
 The standard-library suite covers expression math, strict input contracts,

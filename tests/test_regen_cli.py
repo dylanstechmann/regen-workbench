@@ -96,6 +96,18 @@ class RegenCliTests(unittest.TestCase):
         self.assertNotIn("example-test-key", fetch.call_args.args[0])
         self.assertEqual(fetch.call_args.kwargs["headers"], {"Authorization": "Bearer example-test-key"})
 
+    def test_cmd_pipeline_dispatches_properly(self) -> None:
+        with patch("regen_compute.pipeline") as mock_pipeline:
+            regen.cmd_pipeline(["--matrix", "matrix.csv", "--samples", "samples.csv"])
+            mock_pipeline.assert_called_once()
+            self.assertEqual(mock_pipeline.call_args.args[0], ["--matrix", "matrix.csv", "--samples", "samples.csv"])
+
+    def test_cmd_pipeline_handles_error(self) -> None:
+        with patch("regen_compute.pipeline", side_effect=ValueError("bad group")), \
+             contextlib.redirect_stderr(io.StringIO()), \
+             self.assertRaises(SystemExit):
+            regen.cmd_pipeline(["--bad"])
+
 
 class RetryTests(unittest.TestCase):
     """Tests for _http_with_retry exponential backoff."""

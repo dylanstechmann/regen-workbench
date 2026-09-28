@@ -644,7 +644,16 @@ def cmd_compound_screen(argv: list[str]) -> None:
         die(str(exc))
 
 
+def cmd_pipeline(argv: list[str]) -> None:
+    from regen_compute import pipeline
+    try:
+        pipeline(argv, record)
+    except (ValueError, OSError) as exc:
+        die(str(exc))
+
+
 COMMANDS = {
+    "pipeline": cmd_pipeline,
     "expression-contrast": cmd_expression_contrast,
     "compound-screen": cmd_compound_screen,
     "pubmed": cmd_pubmed,

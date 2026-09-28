@@ -15,7 +15,8 @@ for the owner's ambitions and approach to scrutinizing evidence and bias.
 New local activities: [compare expression datasets and explore compound
 conformers](EXPLORATION.md), with runnable examples, sensitivity diagnostics,
 3D SDF outputs, and reproducible input/parameter records. Use
-`regen expression-contrast --help` and `regen compound-screen --help`.
+`regen expression-contrast --help`, `regen compound-screen --help`, and
+`regen pipeline --help` (chained contrast -> senescence scoring -> benchmark evaluation with cryptographic provenance wiring).
 
 ## What you get after bootstrap
 

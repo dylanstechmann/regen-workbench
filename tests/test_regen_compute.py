@@ -206,6 +206,95 @@ class ComputeTests(unittest.TestCase):
             regen_mcp.call_tool("regen_expression_contrast", expression)
             self.assertIn("--reference", run.call_args.args[1])
 
+            # Test regen_pipeline via MCP
+            pipeline_args = {"matrix": str(source), "samples": str(source), "reference": "young",
+                             "comparison": "old", "output": str(data / "pipe_run")}
+            regen_mcp.call_tool("regen_pipeline", pipeline_args)
+            self.assertEqual(run.call_args.args[1][0], "pipeline")
+            self.assertIn("--gene-set", run.call_args.args[1])
+
+    def test_pipeline_end_to_end_and_provenance_chain(self):
+        compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
+                          "--reference", "young", "--comparison", "old", "--out", str(self.out)], self.record)
+
+        # 1. Check directory structure
+        self.assertTrue((self.out / "stage1_contrast").is_dir())
+        self.assertTrue((self.out / "stage2_senescence").is_dir())
+        self.assertTrue((self.out / "stage3_benchmark").is_dir())
+        self.assertTrue((self.out / "pipeline_manifest.json").is_file())
+        self.assertTrue((self.out / "REPORT.md").is_file())
+
+        # 2. Stage 1 checks
+        s1_contrast = json.loads((self.out / "stage1_contrast" / "contrast.json").read_text())
+        self.assertIn("genes", s1_contrast)
+        self.assertEqual(len(s1_contrast["genes"]), 3)
+        s1_manifest = json.loads((self.out / "stage1_contrast" / "manifest.json").read_text())
+        self.assertEqual(s1_manifest["action"], "expression-contrast")
+        self.assertIn("matrix.input.csv", s1_manifest["inputs"])
+
+        # 3. Stage 2 checks
+        s2_scores = json.loads((self.out / "stage2_senescence" / "senescence_scores.json").read_text())
+        self.assertIn("scores", s2_scores)
+        self.assertEqual(len(s2_scores["scores"]), 4)
+        s2_manifest = json.loads((self.out / "stage2_senescence" / "manifest.json").read_text())
+        self.assertEqual(s2_manifest["action"], "senescence-scoring")
+        # Stage 2 inputs must link to Stage 1 manifest and contrast.csv
+        self.assertIn("stage1_manifest.json", s2_manifest["inputs"])
+        self.assertIn("contrast.csv", s2_manifest["inputs"])
+
+        # 4. Stage 3 checks
+        s3_results = json.loads((self.out / "stage3_benchmark" / "benchmark_results.json").read_text())
+        self.assertIn("logistic_balanced_accuracy", s3_results["parameters"])
+        self.assertIn("auroc", s3_results["parameters"])
+        self.assertIn("brier_score", s3_results["parameters"])
+        s3_manifest = json.loads((self.out / "stage3_benchmark" / "manifest.json").read_text())
+        self.assertEqual(s3_manifest["action"], "benchmark-evaluation")
+        # Stage 3 inputs must link to Stage 2 manifest and senescence_scores.csv
+        self.assertIn("stage2_manifest.json", s3_manifest["inputs"])
+        self.assertIn("senescence_scores.csv", s3_manifest["inputs"])
+
+        # 5. Top-level pipeline manifest and provenance audit
+        pipe_manifest = json.loads((self.out / "pipeline_manifest.json").read_text())
+        self.assertTrue(pipe_manifest["provenance_chain_intact"])
+        self.assertEqual(len(pipe_manifest["stage_provenance"]), 3)
+
+        # Verify hash continuity
+        s1_hash = hashlib.sha256((self.out / "stage1_contrast" / "manifest.json").read_bytes()).hexdigest()
+        s2_hash = hashlib.sha256((self.out / "stage2_senescence" / "manifest.json").read_bytes()).hexdigest()
+        s3_hash = hashlib.sha256((self.out / "stage3_benchmark" / "manifest.json").read_bytes()).hexdigest()
+
+        self.assertEqual(pipe_manifest["stage_provenance"][0]["manifest_sha256"], s1_hash)
+        self.assertEqual(pipe_manifest["stage_provenance"][1]["manifest_sha256"], s2_hash)
+        self.assertEqual(pipe_manifest["stage_provenance"][2]["manifest_sha256"], s3_hash)
+
+        # Check Report content
+        report_text = (self.out / "REPORT.md").read_text()
+        self.assertIn("Stage 1: Differential Expression Contrast", report_text)
+        self.assertIn("Stage 2: Senescence Module Scoring", report_text)
+        self.assertIn("Stage 3: Out-of-Fold Benchmark Evaluation", report_text)
+        self.assertIn(s1_hash, report_text)
+        self.assertIn(s2_hash, report_text)
+        self.assertIn(s3_hash, report_text)
+
+        self.record.assert_called_once()
+
+    def test_pipeline_gene_sets_and_parameter_validation(self):
+        # Test alternative gene sets
+        for gset in ["fridman", "sasp"]:
+            out_dir = self.root / f"out_{gset}"
+            compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
+                              "--reference", "young", "--comparison", "old", "--gene-set", gset,
+                              "--out", str(out_dir)], self.record)
+            self.assertTrue((out_dir / "pipeline_manifest.json").is_file())
+
+        # Test validation failures
+        bad_out = self.root / "bad_out"
+        with self.assertRaises(ValueError):
+            # Same group
+            compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
+                              "--reference", "young", "--comparison", "young", "--out", str(bad_out)], self.record)
+        self.assertFalse(bad_out.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
