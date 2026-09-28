@@ -38,6 +38,7 @@ services:
       - TORCH_HOME=/lab/cache/torch
       - XDG_CACHE_HOME=/lab/cache
       - NCBI_API_KEY=${NCBI_API_KEY:-}
+      - OPENALEX_API_KEY=${OPENALEX_API_KEY:-}
       - EMAIL=${EMAIL:-}
       - OPENALEX_MAILTO=${EMAIL:-}
       - REGEN_CLI=/lab/workbench/tools/regen.py
@@ -89,6 +90,7 @@ services:
       - TORCH_HOME=/lab/cache/torch
       - XDG_CACHE_HOME=/lab/cache
       - NCBI_API_KEY=${NCBI_API_KEY:-}
+      - OPENALEX_API_KEY=${OPENALEX_API_KEY:-}
       - EMAIL=${EMAIL:-}
       - OPENALEX_MAILTO=${EMAIL:-}
       - REGEN_CLI=/lab/workbench/tools/regen.py

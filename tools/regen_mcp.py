@@ -431,9 +431,10 @@ def _cli_args(name: str, values: dict[str, Any]) -> list[str]:
 
 
 def _redact(text: str) -> str:
-    api_key = os.environ.get("NCBI_API_KEY", "")
-    if api_key:
-        text = text.replace(api_key, "[REDACTED_NCBI_API_KEY]")
+    for name in ("NCBI_API_KEY", "OPENALEX_API_KEY"):
+        api_key = os.environ.get(name, "")
+        if api_key:
+            text = text.replace(api_key, f"[REDACTED_{name}]")
     return text
 
 

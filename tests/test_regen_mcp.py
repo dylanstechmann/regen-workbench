@@ -273,6 +273,18 @@ class McpProtocolTests(unittest.TestCase):
         self.assertNotIn(secret, output)
         self.assertIn("[REDACTED_NCBI_API_KEY]", output)
 
+    def test_runner_redacts_openalex_key_from_output(self) -> None:
+        secret = "example-openalex-test-key"
+        completed = subprocess.CompletedProcess(
+            args=[], returncode=0, stdout=f"returned {secret}", stderr=""
+        )
+        with patch.dict(os.environ, {"OPENALEX_API_KEY": secret}), patch.object(
+            regen_mcp.subprocess, "run", return_value=completed
+        ):
+            output = regen_mcp.run_regen("regen_openalex", ["openalex", "test"])
+        self.assertNotIn(secret, output)
+        self.assertIn("[REDACTED_OPENALEX_API_KEY]", output)
+
     def test_malformed_json_is_reported_as_parse_error(self) -> None:
         proc = subprocess.run(
             [sys.executable, str(TOOLS_DIR / "regen_mcp.py")],

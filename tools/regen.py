@@ -40,6 +40,7 @@ CACHE = Path(os.environ.get("REGEN_CACHE", ROOT / "cache"))
 PROV = DATA / "provenance"
 EMAIL = os.environ.get("EMAIL") or os.environ.get("OPENALEX_MAILTO") or "regen-workbench@local"
 NCBI_KEY = os.environ.get("NCBI_API_KEY", "")
+OPENALEX_KEY = os.environ.get("OPENALEX_API_KEY", "")
 
 UA = f"regen-workbench/0.1 (mailto:{EMAIL})"
 
@@ -123,8 +124,11 @@ def _http_with_retry(req: Request, timeout: int) -> Any:
     raise last_exc  # type: ignore[misc]
 
 
-def http_json(url: str, timeout: int = 60) -> Any:
-    req = Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
+def http_json(url: str, timeout: int = 60, headers: dict[str, str] | None = None) -> Any:
+    request_headers = {"User-Agent": UA, "Accept": "application/json"}
+    if headers:
+        request_headers.update(headers)
+    req = Request(url, headers=request_headers)
     with _http_with_retry(req, timeout) as r:
         return json.loads(r.read().decode())
 
@@ -429,7 +433,8 @@ def cmd_openalex(args: list[str]) -> None:
     p.add_argument("--limit", type=int, default=10)
     ns = p.parse_args(args)
     params = {"search": ns.query, "per-page": str(ns.limit), "mailto": EMAIL}
-    data = http_json("https://api.openalex.org/works?" + urlencode(params))
+    headers = {"Authorization": f"Bearer {OPENALEX_KEY}"} if OPENALEX_KEY else None
+    data = http_json("https://api.openalex.org/works?" + urlencode(params), headers=headers)
     results = data.get("results", [])[: ns.limit]
     out = DATA / "literature" / f"openalex_{time.time_ns()}.json"
     out.parent.mkdir(parents=True, exist_ok=True)

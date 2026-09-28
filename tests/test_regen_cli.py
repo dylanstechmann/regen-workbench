@@ -87,6 +87,15 @@ class RegenCliTests(unittest.TestCase):
         self.assertIn("jupyter", status["missing_binaries"])
         self.assertFalse(status["gpu_visible"])
 
+    def test_openalex_sends_key_as_bearer_header(self) -> None:
+        with patch.object(regen, "OPENALEX_KEY", "example-test-key"), \
+             patch.object(regen, "http_json", return_value={"results": []}) as fetch, \
+             contextlib.redirect_stdout(io.StringIO()):
+            regen.cmd_openalex(["cell biology", "--limit", "1"])
+
+        self.assertNotIn("example-test-key", fetch.call_args.args[0])
+        self.assertEqual(fetch.call_args.kwargs["headers"], {"Authorization": "Bearer example-test-key"})
+
 
 class RetryTests(unittest.TestCase):
     """Tests for _http_with_retry exponential backoff."""
