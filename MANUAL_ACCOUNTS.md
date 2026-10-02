@@ -1,8 +1,9 @@
 # Things you must do yourself
 
 The workbench automates lookups and local compute. It cannot create vendor
-accounts, accept licenses, or magically fit AlphaFold-3-scale jobs on 16 GB
-VRAM. Do these once, then point agents at the resulting keys via `.env`.
+accounts, accept licenses, or guarantee that large structure-prediction jobs
+fit on 16 GB VRAM. Do these once, then point agents at the resulting keys via
+`.env`.
 
 ## Do now (free, high leverage)
 
@@ -22,6 +23,7 @@ VRAM. Do these once, then point agents at the resulting keys via `.env`.
 | Colab (Google account you already have) | Occasional A100-class fold | AI Pro already paid; Colab compute is separate and metered | One showcase complex |
 | RCSB / AFDB / UniProt / STRING / ChEMBL / PubChem / EuropePMC | Plugin databases | Free | Already wired in `regen` |
 | ColabFold public MSA server | Local MMseqs2 1 TB+ DBs | Free, rate-limited | Default for ColabFold sibling jobs |
+| OpenFold3 preview | Complex-structure prediction based on AlphaFold 3 | Open source; optional Docker image and model-parameter download | Use `docker compose --profile openfold3 run --rm openfold3 predict ...`; see [DOCKING.md](DOCKING.md) for caveats and data flow |
 | OpenTargets / ClinVar / gnomAD web or REST | Genomic intelligence plugins | Free | Query, do not mirror the full DBs |
 | Foldseek web / local binary | Structural search | Local binary is in the image; web for huge DBs | Local first |
 
@@ -29,11 +31,13 @@ VRAM. Do these once, then point agents at the resulting keys via `.env`.
 
 | Service | Why it is not in the image | Expected spend if you insist |
 |---|---|---|
-| AlphaFold 3 official weights | Google terms + 40–80 GB class GPUs | Request weights; run on cloud GPU, not this laptop |
+| AlphaFold 3 official weights | Separate model-parameter terms and substantial compute | Not configured in this checkout; use the OpenFold3 preview profile for local exploratory complex predictions |
 | NVIDIA NIM Boltz-2 | Needs NGC account + large pull + often more VRAM than you have | NGC key in `.env`; prefer `pip install boltz` locally |
 | PyMOL Incentive | Open-source PyMOL is already in the image | Skip unless you need incentive-only features |
 | ChimeraX daily build | Better GUI, not required for headless figures | Free for non-commercial; install on the **host desktop**, not Docker |
-| Schrödinger / MOE / GOLD | Closed docking suites | Not worth it vs GNINA/Vina for student repos |
+| GOLD / Schrödinger Glide / MOE / Discovery Studio-FlexX | External commercial docking suites | Not bundled; use only with the appropriate current license |
+| GNINA | Optional CNN-scoring dock engine | Install the checksum-pinned v1.3.3 binary into shared cache with `regen install-gnina`; runner is CPU-only |
+| DiffDock | Separate deep-learning docking environment and model weights | Not installed; evaluate as an independent local backend before adding it |
 | Rowan / DFT vendors | Quantum chemistry credits | One calculation for a paper figure, not a subscription |
 | Adaptyv Bio | Wet-lab protein orders | Hundreds of $ per protein; only after computational triage |
 | Inductive / commercial ADMET | Sales-gated | Use RDKit + public Chemprop weights first |

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "snapshots": [
+    {
+      "file": "body_map_somatic_mutations_supplementary_table3.xlsx",
+      "sha256": "6276DEB0F16AD45871347CA3E705907384A4D66D0EB40833BE18B0A853D837A2",
+      "bytes": 6580184,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM5_ESM.xlsx",
+      "table": "Body-map Supplementary Table 3; coding mutation calls"
+    },
+    {
+      "file": "body_map_somatic_mutations_supplementary_table10.xlsx",
+      "sha256": "25882DE72D6BDBE3BBC901FB88AADC781E105D19BEDF2FA8D5030CF2870EDA23",
+      "bytes": 12413,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM12_ESM.xlsx",
+      "table": "Body-map Supplementary Table 10; driver enrichment p-values"
+    },
+    {
+      "file": "skin_supplementary_datasets_s1_s2.xlsx",
+      "sha256": "17F6A04FB38486D62E66A1D5EC0112E5B72C8046302697E8CF73ED95F87D0F14",
+      "bytes": 488802,
+      "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0923753420431990-mmc2.xlsx",
+      "table": "Skin study Supplementary Datasets S1-S2"
+    },
+    {
+      "file": "nanoseq_oral_mutations_supplementary_table8.xlsx",
+      "sha256": "8B79B04D2951F45F70A90A6AD040EB433502A92DB201E161DE6EEE8ACBE15389",
+      "bytes": 46876574,
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12611758/supplementaryFiles",
+      "table": "NanoSeq Supplementary Table 8; oral mutation rows, no participant IDs"
+    },
+    {
+      "file": "nanoseq_blood_mutations_supplementary_table9.xlsx",
+      "sha256": "F9705B1E49538257C23EDBD13819C7BB90C82A39F46E0EA242C230FEF435AA55",
+      "bytes": 12921435,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM11_ESM.xlsx",
+      "table": "NanoSeq Supplementary Table 9; blood mutation rows, no participant IDs"
+    },
+    {
+      "file": "nanoseq_site_selected_replacements_supplementary_table4.xlsx",
+      "sha256": "C37134557DE188F8BFB2CAC998D4DB4B2D73AB1685266AFF4CEB867B5F48B1B6",
+      "bytes": 220995,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM6_ESM.xlsx",
+      "table": "NanoSeq Supplementary Table 4; site-level selected replacements"
+    }
+  ]
+}

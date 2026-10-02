@@ -3,13 +3,16 @@ from __future__ import annotations
 import hashlib
 import http.client
 import importlib.util
+import io
 import json
 import os
 import sys
 import tempfile
 import threading
 import unittest
+import zipfile
 from http.server import ThreadingHTTPServer
+from html.parser import HTMLParser
 from pathlib import Path
 from unittest.mock import patch
 
@@ -54,13 +57,74 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(run["status"], "failed")
         self.assertEqual(run["result"]["hits"], [])
 
-    def test_anecdote_retains_source_classification_after_reload_and_export(self):
+    def test_anecdote_is_excluded_from_export_until_explicitly_included(self):
         self.desk.note({"blueprint_id": "glycation", "kind": "vendor claim", "direction": "supports", "claim": "Unverified claim", "url": "https://example.org/source"})
         reloaded = desk.Desk(self.desk.root)
         self.addCleanup(lambda: reloaded.executor.shutdown(wait=True))
-        note = reloaded.export("glycation")["notes"][0]
+        default_export = reloaded.export("glycation")
+        self.assertEqual(default_export["notes"], [])
+        self.assertTrue(default_export["notes_excluded"])
+        note = reloaded.export("glycation", include_notes=True)["notes"][0]
         self.assertEqual(note["kind"], "vendor claim")
         self.assertEqual(note["review_status"], "unreviewed")
+
+    def test_campaign_evidence_is_typed_and_submission_context_is_frozen(self):
+        data = {
+            "blueprint_id": "reprogramming", "title": "LMNA positive control", "target": "LMNA",
+            "hypothesis": "A known pathogenic variant affects vascular function.",
+            "evidence": [{"axis_id": "tissue_function", "status": "source reports positive signal",
+                          "value": "vasodilation restored", "unit": "qualitative", "comparator": "source control",
+                          "timepoint": "in vitro", "source_url": "https://example.org/paper", "notes": "verify methods"}],
+        }
+        campaign = self.desk.campaign(data)
+        self.assertEqual(campaign["evidence"][5]["status"], "source reports positive signal")
+        with self.assertRaises(ValueError):
+            self.desk.campaign({**data, "evidence": [{"axis_id": "tissue_function", "status": "proven efficacy"}]})
+        with patch.object(self.desk.executor, "submit"):
+            run = self.desk.submit({"blueprint_id": "reprogramming", "kind": "search", "query": "test", "providers": ["pubmed"], "campaign_id": campaign["id"]})
+        saved_path = self.desk.runs / run["id"] / "submission.json"
+        frozen = json.loads(saved_path.read_text())
+        self.desk.campaign({**data, "id": campaign["id"], "title": "Edited campaign", "evidence": campaign["evidence"]})
+        self.assertEqual(frozen["campaign"]["title"], "LMNA positive control")
+        self.assertEqual(hashlib.sha256(saved_path.read_bytes()).hexdigest(), run["submission_sha256"])
+
+    def test_campaign_starters_cover_repair_tissue_and_delivery(self):
+        state = self.desk.state()
+        for blueprint_id in ("reprogramming", "tissues", "nanomedicine"):
+            self.assertTrue(state["campaign_starters"][blueprint_id])
+            self.assertTrue(state["campaign_frameworks"][blueprint_id])
+            self.assertTrue(state["campaign_starters"][blueprint_id][0]["reference_url"].startswith("https://"))
+
+    def test_campaign_form_contains_every_renderer_field(self):
+        class Forms(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.current = None
+                self.fields = {}
+
+            def handle_starttag(self, tag, attrs):
+                attributes = dict(attrs)
+                if tag == "form":
+                    self.current = attributes.get("id")
+                    if self.current:
+                        self.fields[self.current] = set()
+                elif self.current and tag in {"input", "select", "textarea"}:
+                    name = attributes.get("name")
+                    if name:
+                        self.fields[self.current].add(name)
+
+            def handle_endtag(self, tag):
+                if tag == "form":
+                    self.current = None
+
+        parser = Forms()
+        parser.feed((Path(__file__).resolve().parents[1] / "tools" / "desk" / "index.html").read_text())
+        self.assertTrue({
+            "title", "target", "species", "tissue", "hypothesis", "endpoint", "falsifier",
+            "evidence_stage", "study_design", "reference_url", "receptor", "structure_notes",
+            "starter_id", "center_x", "center_y", "center_z", "size_x", "size_y", "size_z",
+        } <= parser.fields["campaign-form"])
+        self.assertIn("engine", parser.fields["docking-form"])
 
     def test_seed_migration_adds_and_prioritizes_areas_without_erasing_edits(self):
         self.desk.store["blueprints"] = [
@@ -135,6 +199,13 @@ class DeskTests(unittest.TestCase):
         self.addCleanup(lambda: reloaded.executor.shutdown(wait=True))
         self.assertEqual(reloaded.run("a" * 32)["status"], "interrupted")
 
+    def test_legacy_run_exposes_only_artifacts_that_exist(self):
+        run_id = "a" * 32
+        path = self.desk.runs / run_id
+        path.mkdir()
+        self.desk.save_run(path, {"id": run_id, "kind": "search", "status": "failed", "blueprint_id": "glycation", "created_utc": "2026-01-01T00:00:00Z"})
+        self.assertEqual(self.desk.run(run_id)["artifacts"], {"submission.json": False, "manifest.json": False, "result.json": False})
+
     def test_read_only_desk_does_not_interrupt_another_worker(self):
         path = self.desk.runs / ("a" * 32)
         path.mkdir()
@@ -151,6 +222,31 @@ class DeskTests(unittest.TestCase):
             self.desk.save_run(path, {"id": run_id, "kind": "search", "status": "complete", "blueprint_id": "glycation", "created_utc": str(i).zfill(4)})
         self.assertEqual(len(self.desk.state()["runs"]), 100)
         self.assertEqual(len(self.desk.export("glycation")["runs"]), 102)
+
+    def test_run_page_is_filterable_and_paginated(self):
+        for i in range(65):
+            run_id = format(i, "032x")
+            path = self.desk.runs / run_id
+            path.mkdir()
+            self.desk.save_run(path, {"id": run_id, "kind": "search", "status": "complete", "blueprint_id": "glycation", "created_utc": str(i).zfill(4)})
+        page = self.desk.run_page("glycation", offset=50, limit=10)
+        self.assertEqual(page["total"], 65)
+        self.assertEqual(page["offset"], 50)
+        self.assertEqual(len(page["runs"]), 10)
+        self.assertEqual(self.desk.run_page("tissues")["total"], 0)
+
+    def test_archive_contains_snapshots_and_public_draft_but_excludes_notes_by_default(self):
+        self.desk.note({"blueprint_id": "glycation", "kind": "personal observation", "direction": "unclear", "claim": "private detail"})
+        response = {"results": [{"title": "Study", "url": "https://example.org/study"}]}
+        with patch.object(desk, "search_provider", return_value=(response, [desk.hit("pubmed", "Study", "https://example.org/study")])):
+            run = self.finish({"kind": "search", "query": "test", "providers": ["pubmed"]})
+        archive = zipfile.ZipFile(io.BytesIO(self.desk.export_archive("glycation")))
+        self.assertIn(f"runs/{run['id']}/pubmed.json", archive.namelist())
+        self.assertIn(f"runs/{run['id']}/manifest.json", archive.namelist())
+        self.assertIn("public_draft.md", archive.namelist())
+        self.assertIn("archive-index.json", archive.namelist())
+        self.assertNotIn("private detail", archive.read("dossier.json").decode())
+        self.assertNotIn("private detail", archive.read("public_draft.md").decode())
 
     def test_pubchem_uses_stereo_smiles_and_records_rdkit_version(self):
         if not importlib.util.find_spec("rdkit"):
@@ -177,6 +273,15 @@ class DeskTests(unittest.TestCase):
         response = connection.getresponse()
         self.assertEqual(response.status, 200)
         self.assertEqual(json.loads(response.read()), {"ok": True})
+        connection.request("GET", "/api/runs?blueprint_id=glycation&offset=0&limit=5")
+        response = connection.getresponse()
+        self.assertEqual(response.status, 200)
+        self.assertEqual(json.loads(response.read())["total"], 0)
+        connection.request("GET", "/api/export/glycation.zip")
+        response = connection.getresponse()
+        self.assertEqual(response.status, 200)
+        self.assertEqual(response.getheader("Content-Type"), "application/zip")
+        self.assertTrue(response.read().startswith(b"PK"))
         for method, path, headers in [("POST", "/api/blueprints", {"Content-Type": "application/json", "Origin": "https://malicious.example"}), ("GET", "/api/state", {"Host": "malicious.example"}), ("GET", "/api/artifact/../../workspace.json", {})]:
             connection.request(method, path, body='{}' if method == 'POST' else None, headers=headers)
             response = connection.getresponse()

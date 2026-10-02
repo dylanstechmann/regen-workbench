@@ -50,6 +50,7 @@ services:
       - ./tools:/lab/workbench/tools:ro
       - ./config:/lab/workbench/config:ro
       - ./examples:/lab/workbench/examples:ro
+      - ./studies:/lab/workbench/studies:rw
       - ./projects:/lab/projects:rw
       - ./data:/lab/data:rw
       - ./cache:/lab/cache:rw
@@ -59,7 +60,7 @@ services:
       - no-new-privileges:true
     command: >
       bash -lc "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser
-      --ServerApp.root_dir=/lab"
+      --ServerApp.allow_root=True --ServerApp.root_dir=/lab"
 
   # Long-lived stdio target for desktop MCP clients. Agents invoke the
   # allowlisted MCP server with `docker compose exec -i -T mcp python ...`.
@@ -72,7 +73,9 @@ services:
     container_name: regen-workbench-mcp
     hostname: regen-workbench-mcp
     working_dir: /lab
-    user: "1000:1000"
+    # Windows bind mounts need container-root for persistent /lab/data writes;
+    # read_only, cap_drop, and the narrow volume mounts still constrain it.
+    user: "0:0"
     stdin_open: true
     read_only: true
     environment:
@@ -122,3 +125,25 @@ services:
       - ./projects:/work:rw
     working_dir: /work
     entrypoint: ["colabfold_batch"]
+
+  # OpenFold3 is isolated from the workbench image and only starts on demand.
+  # The default is pinned; override OPENFOLD3_IMAGE only when changing versions.
+  openfold3:
+    image: ${OPENFOLD3_IMAGE:-openfoldconsortium/openfold3@sha256:85be176dbb1955000423f5f72ce030afd2d68c3248e87418c6bff6084e8f038a}
+    profiles: ["openfold3"]
+    gpus: all
+    shm_size: "16gb"
+    init: true
+    working_dir: /data
+    entrypoint: ["run_openfold"]
+    command: ["--help"]
+    environment:
+      OPENFOLD_CACHE: /cache/openfold3
+      HF_HOME: /cache/huggingface
+      TMPDIR: /tmp
+    volumes:
+      - ./data:/data:rw
+      - ./cache/openfold3:/cache/openfold3:rw
+      - ./cache/huggingface:/cache/huggingface:rw
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=2g

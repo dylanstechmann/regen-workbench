@@ -6,18 +6,32 @@ operations backed by the existing `regen` CLI. It does **not** expose an
 arbitrary shell, arbitrary Python, GitHub API, host filesystem browsing, or a
 Docker socket.
 
+On Windows Docker Desktop, the MCP process runs as container-root so its
+allowlisted writers can persist results to the host `data/` bind mount. Its
+container root filesystem is read-only, Linux capabilities are dropped,
+`projects/` is read-only, and no host credentials or Docker socket are mounted.
+
 ## Exposed capabilities
 
 - PubMed, EuropePMC, and OpenAlex literature search; UniProt, InterPro, and
   Ensembl metadata; AlphaFold DB structure and RCSB PDB fetches
 - STRING interaction lookup; ChEMBL and PubChem public data lookup
-- Local MSA; RDKit SMILES validation/descriptors; headless PyMOL PNG rendering
+- Local MSA; RDKit SMILES validation/descriptors; prepared-file Vina and
+  optional GNINA CNN-rescored docking; labelled-control score validation and
+  optional symmetry-aware redocking RMSD; headless PyMOL PNG rendering
 - Fold routing guidance and workbench diagnostics
 
 Network tools access the respective public databases and write downloaded
-artifacts plus provenance under `/lab/data`. They do not run de novo folding.
-For folding, fetch experimental/AFDB entries first; jobs that exceed the
-laptop's actual GPU/RAM budget need an explicitly chosen overflow provider.
+artifacts plus provenance under `/lab/data`. MCP runs Vina locally and runs
+GNINA locally after its explicit pinned install into the shared cache; GNINA
+docking is CPU-only and CNN scores remain computational hypotheses. MCP does
+not launch structure-model inference. The docking benchmark requires an input
+CSV under `/lab/data` or `/lab/projects`, and writes a new hashed report under
+`/lab/data`; it excludes decoys from measured active/inactive-control metrics.
+OpenFold3 is an optional host-side
+Compose profile; see [DOCKING.md](DOCKING.md). For structures, fetch
+experimental/AFDB entries first; jobs that exceed the laptop's actual GPU/RAM
+budget need an explicitly chosen overflow provider.
 
 ## Start the services
 

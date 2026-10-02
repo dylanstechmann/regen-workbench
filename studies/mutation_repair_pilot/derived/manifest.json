@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "script_sha256": "C912199F0334D37EAC43C856CC8E1994B02ECF8B45DE7E3928F8A85BD3338E06",
+  "source_manifest_sha256": "E33423458E22C090B03CB375880ECD96AF39F6CCACE25DF1981A669FDE29DA6F",
+  "inputs": {
+    "body_map_somatic_mutations_supplementary_table3.xlsx": {
+      "sha256": "6276DEB0F16AD45871347CA3E705907384A4D66D0EB40833BE18B0A853D837A2",
+      "bytes": 6580184,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM5_ESM.xlsx"
+    },
+    "body_map_somatic_mutations_supplementary_table10.xlsx": {
+      "sha256": "25882DE72D6BDBE3BBC901FB88AADC781E105D19BEDF2FA8D5030CF2870EDA23",
+      "bytes": 12413,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM12_ESM.xlsx"
+    },
+    "skin_supplementary_datasets_s1_s2.xlsx": {
+      "sha256": "17F6A04FB38486D62E66A1D5EC0112E5B72C8046302697E8CF73ED95F87D0F14",
+      "bytes": 488802,
+      "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0923753420431990-mmc2.xlsx"
+    },
+    "nanoseq_oral_mutations_supplementary_table8.xlsx": {
+      "sha256": "8B79B04D2951F45F70A90A6AD040EB433502A92DB201E161DE6EEE8ACBE15389",
+      "bytes": 46876574,
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12611758/supplementaryFiles"
+    },
+    "nanoseq_blood_mutations_supplementary_table9.xlsx": {
+      "sha256": "F9705B1E49538257C23EDBD13819C7BB90C82A39F46E0EA242C230FEF435AA55",
+      "bytes": 12921435,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM11_ESM.xlsx"
+    },
+    "nanoseq_site_selected_replacements_supplementary_table4.xlsx": {
+      "sha256": "C37134557DE188F8BFB2CAC998D4DB4B2D73AB1685266AFF4CEB867B5F48B1B6",
+      "bytes": 220995,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM6_ESM.xlsx"
+    }
+  },
+  "outputs": {
+    "SUMMARY.md": {
+      "sha256": "A7D769EB206175A18135BE5D87B87C405F3921CF7C17094BDD625639D3ADB3ED",
+      "bytes": 1107
+    },
+    "bodymap_liver_impact.csv": {
+      "sha256": "DD7278DD169195B301936681704089DA17E0074A86CAFF95DDD4382A5750E823",
+      "bytes": 108
+    },
+    "liver_driver_enrichment.csv": {
+      "sha256": "2D6261904093B3AFA085859EBB108F1B8521FCEFC825E2AAB57DFCE2E743F732",
+      "bytes": 1067
+    },
+    "nanoseq_variant_types.csv": {
+      "sha256": "94565322EEA5082051AA14BF71DAB19A69EA40453110CEEC4455CEE645E40783",
+      "bytes": 181
+    },
+    "skin_phototype_summary.csv": {
+      "sha256": "A4444A6D157AE60F3C6DD5808CF4B95163F5E9EE99B4AAA81011FFB6C8FFD57A",
+      "bytes": 684
+    },
+    "summary.json": {
+      "sha256": "81BC8BFB7E5A39ECAC1E8D7A4EE4A5D4763A0F9B1D7E368D205756C47F876531",
+      "bytes": 12013
+    }
+  }
+}

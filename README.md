@@ -32,7 +32,8 @@ observations stay under `data/research-desk/`; fetch receipts remain under
 engineered tissues and nanomedicine, followed by organs, senescence and
 structural restoration.
 
-Read the [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md):
+The dated [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md) is a
+historical snapshot:
 57 runs, 173 provider records before deduplication, 236 verified artifact
 hashes, four compared dipeptides, six structural hypotheses and 30 converged
 conformers. Run counts are not independent studies or efficacy evidence.
@@ -43,18 +44,37 @@ conformers](EXPLORATION.md), with runnable examples, sensitivity diagnostics,
 `regen expression-contrast --help`, `regen compound-screen --help`, and
 `regen pipeline --help` (chained contrast -> senescence scoring -> benchmark evaluation with cryptographic provenance wiring).
 
+Structure-based exploration includes local, provenance-recorded Vina and
+optional GNINA CNN-rescoring CLI/MCP runners plus an on-demand OpenFold3 preview
+container profile. GNINA is installed explicitly into the shared cache with a
+version-pinned, checksum-verified asset. See [DOCKING.md](DOCKING.md) for input
+preparation boundaries, commands, and the status of the other small-molecule
+and protein/peptide docking engines. The control-aware docking benchmark
+reports active/inactive-control ROC AUC, enrichment, and optional
+symmetry-aware pose RMSD; it does not claim biological activity. OpenFold3
+predicts complex structures; it does not replace docking.
+
+The mutation-repair pilot includes a deterministic regeneration script for
+selected body-map, skin, and NanoSeq supplementary-table summaries. It verifies
+all six workbook snapshots against pinned sizes and SHA-256 values before
+writing aggregate tables; it does not model or demonstrate mutation repair.
+See [`MUTATION_REPAIR_PILOT.md`](MUTATION_REPAIR_PILOT.md).
+
 ## What you get after bootstrap
 
 | Layer | Contents |
 |---|---|
 | Workbench image | Python 3.11, JupyterLab, RDKit, Open Babel, Open-source PyMOL, Biopython, Scanpy, Nextflow, MAFFT/MUSCLE/ClustalO, BLAST, MMseqs2, Foldseek, HMMER, FastQC, MultiQC, seqkit, samtools, minimap2, AutoDock Vina, fair-esm, `regen` CLI |
-| Sibling image (optional) | Official ColabFold CUDA image, pulled on `--gpu` |
-| Volumes | `projects/` (git repos), `data/` (fetched files), `cache/` (weights) |
+| Sibling images (optional) | Official ColabFold CUDA image; OpenFold3 preview image on the `openfold3` profile |
+| Volumes | `projects/` (git repos), `data/` (fetched files), `studies/` (reproducible analyses), `cache/` (weights) |
 | GPU | `--gpus all` + 16 GB `/dev/shm` |
 | MCP server | Allowlisted research tools exposed to MCP-capable coding agents |
 
-What is **not** baked in: AlphaFold 3, full AF2 genetic databases, RFdiffusion
-weights, Schrödinger, wet-lab robots. See `MANUAL_ACCOUNTS.md`.
+What is **not** baked into the workbench image: OpenFold3 weights (cached on
+first use by its optional profile), the optional GNINA binary (explicitly
+downloaded into shared cache), DiffDock, RosettaDock, licensed commercial
+suites, full AF2 genetic databases, RFdiffusion weights, or wet-lab robots.
+See `MANUAL_ACCOUNTS.md` and `DOCKING.md`.
 
 ## Laptop prerequisites
 
@@ -110,13 +130,25 @@ CLI. See [`MCP_SETUP.md`](MCP_SETUP.md) for client-specific setup.
 
 Tools cover PubMed, EuropePMC, OpenAlex, UniProt, InterPro, Ensembl,
 AFDB/PDB fetches, STRING, ChEMBL, PubChem, local sequence alignment, RDKit
-descriptors, batch compound conformers, expression contrasts, PyMOL rendering,
-fold routing, and diagnostics. The server also
+descriptors, batch compound conformers, Vina docking and optional GNINA CNN
+rescoring on prepared PDBQT files, docking validation, expression contrasts,
+PyMOL rendering, fold routing, and diagnostics. The server also
 exposes read-only MCP **resources**: the `tools.yaml` capability map and the
 provenance receipt log, so agents can inspect what the workbench supports and
 what data has already been fetched. The server has no arbitrary shell tool and
 does not run folding models. Fetch/render calls write provenance under
 `data/provenance/`.
+
+Saved desk-run integrity can be checked without changing data or making
+network calls:
+
+```bash
+python tools/research_audit.py --root data/research-desk
+```
+
+This fails on missing or malformed manifests, hash mismatches, unlisted files,
+or orphan runs. Older saved runs from before manifest finalization was added
+are reported rather than silently marked verified.
 
 ## How to use this with paid agents
 

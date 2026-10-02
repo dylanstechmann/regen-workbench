@@ -244,6 +244,60 @@ TOOLS: list[dict[str, Any]] = [
         ),
     },
     {
+        "name": "regen_dock_vina",
+        "description": "Run local AutoDock Vina on prepared receptor and ligand PDBQT files with an explicit binding box. Inputs may be under /lab/data or /lab/projects; output must be a new PDBQT under /lab/data. Scores/poses are hypotheses, not measured affinity or biological efficacy.",
+        "inputSchema": _schema(
+            {
+                "receptor": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "ligand": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "center_x": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "center_y": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "center_z": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "size_x": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "size_y": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "size_z": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "exhaustiveness": {"type": "integer", "minimum": 1, "maximum": 64},
+                "num_modes": {"type": "integer", "minimum": 1, "maximum": 20},
+                "cpu": {"type": "integer", "minimum": 1, "maximum": 16},
+                "seed": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+            },
+            ["receptor", "ligand", "output", "center_x", "center_y", "center_z", "size_x", "size_y", "size_z"],
+        ),
+    },
+    {
+        "name": "regen_dock_gnina",
+        "description": "Run pinned local GNINA CNN-rescored docking on prepared receptor and ligand PDBQT files. CPU-only with explicit search box and bounded settings; writes a new SDF under /lab/data. CNN outputs and poses are hypotheses, not measured affinity or biological efficacy. Install explicitly with regen install-gnina.",
+        "inputSchema": _schema(
+            {
+                "receptor": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "ligand": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+                "center_x": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "center_y": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "center_z": {"type": "number", "minimum": -10000, "maximum": 10000},
+                "size_x": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "size_y": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "size_z": {"type": "number", "minimum": 0.1, "maximum": 80},
+                "exhaustiveness": {"type": "integer", "minimum": 1, "maximum": 64},
+                "num_modes": {"type": "integer", "minimum": 1, "maximum": 20},
+                "cpu": {"type": "integer", "minimum": 1, "maximum": 16},
+                "seed": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+                "cnn_scoring": {"type": "string", "enum": ["none", "rescore"]},
+            },
+            ["receptor", "ligand", "output", "center_x", "center_y", "center_z", "size_x", "size_y", "size_z"],
+        ),
+    },
+    {
+        "name": "regen_docking_benchmark",
+        "description": "Evaluate docking-score ranking on supplied active/inactive controls and optionally compare SDF redocking poses to a native reference using symmetry-aware, no-alignment RMSD. Requires a local CSV under /lab/data or /lab/projects; writes a new, input-snapshotted report directory under /lab/data. Controls must be independently labelled; decoys are excluded from primary metrics. Results are not biological claims.",
+        "inputSchema": _schema({
+            "input": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "output": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "direction": {"type": "string", "enum": ["lower", "higher"]},
+        }, ["input", "output"]),
+    },
+    {
         "name": "regen_doctor",
         "description": "Report installed workbench tools, Python imports, and visible GPU; writes a provenance receipt.",
         "inputSchema": _schema({}),
@@ -275,6 +329,20 @@ def _bounded_int(
     if value < minimum or value > maximum:
         raise ToolInputError(f"'{key}' must be between {minimum} and {maximum}")
     return value
+
+
+def _bounded_float(
+    args: dict[str, Any], key: str, minimum: float, maximum: float
+) -> float:
+    import math
+
+    value = args.get(key)
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ToolInputError(f"'{key}' must be a number")
+    result = float(value)
+    if not math.isfinite(result) or result < minimum or result > maximum:
+        raise ToolInputError(f"'{key}' must be finite and between {minimum} and {maximum}")
+    return result
 
 
 def _contained_path(
@@ -426,6 +494,57 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
         return {"structure": str(structure), "-o": str(output)}
     if name == "regen_fold_route":
         return {"query": _require_string(args, "query", max_length=500)}
+    if name in {"regen_dock_vina", "regen_dock_gnina"}:
+        result: dict[str, Any] = {}
+        for field in ("receptor", "ligand"):
+            source = _contained_path(_require_string(args, field, max_length=1000), must_exist=True)
+            if not source.is_file() or source.suffix.lower() != ".pdbqt":
+                raise ToolInputError(f"{field} must point to an existing .pdbqt file")
+            if source.stat().st_size == 0 or source.stat().st_size > 25 * 1024 * 1024:
+                raise ToolInputError(f"{field} must be non-empty and no larger than 25 MiB")
+            result[field] = str(source)
+        output = _contained_path(
+            _require_string(args, "output", max_length=1000),
+            must_exist=False,
+            writable=True,
+        )
+        output_suffix = ".sdf" if name == "regen_dock_gnina" else ".pdbqt"
+        if output.suffix.lower() != output_suffix:
+            raise ToolInputError(f"output must have a {output_suffix} extension")
+        if output.exists() or not output.parent.is_dir():
+            raise ToolInputError(f"output must be a new {output_suffix} file in an existing data directory")
+        if output in {Path(result["receptor"]), Path(result["ligand"])}:
+            raise ToolInputError("output must not overwrite an input")
+        result["-o"] = str(output)
+        for axis in "xyz":
+            value = _bounded_float(args, f"center_{axis}", -10000, 10000)
+            result[f"--center_{axis}"] = str(value)
+        for axis in "xyz":
+            value = _bounded_float(args, f"size_{axis}", 0.1, 80)
+            result[f"--size_{axis}"] = str(value)
+        result["--exhaustiveness"] = str(_bounded_int(args, "exhaustiveness", 8, 1, 64))
+        result["--num_modes"] = str(_bounded_int(args, "num_modes", 9, 1, 20))
+        result["--cpu"] = str(_bounded_int(args, "cpu", 4, 1, 16))
+        result["--seed"] = str(_bounded_int(args, "seed", 42, 1, 2147483647))
+        if name == "regen_dock_gnina":
+            cnn_scoring = args.get("cnn_scoring", "rescore")
+            if cnn_scoring not in {"none", "rescore"}:
+                raise ToolInputError("cnn_scoring must be none or rescore")
+            result["--cnn_scoring"] = cnn_scoring
+        return result
+    if name == "regen_docking_benchmark":
+        source = _contained_path(_require_string(args, "input", max_length=1000), must_exist=True)
+        if not source.is_file() or source.suffix.lower() != ".csv":
+            raise ToolInputError("input must point to an existing CSV file")
+        if source.stat().st_size == 0 or source.stat().st_size > 10 * 1024 * 1024:
+            raise ToolInputError("input CSV must be non-empty and no larger than 10 MiB")
+        output = _contained_path(_require_string(args, "output", max_length=1000), must_exist=False, writable=True)
+        if output.exists() or not output.parent.is_dir() or output == (WORKBENCH_ROOT / "data").resolve():
+            raise ToolInputError("output must be a new report directory with an existing parent under /lab/data")
+        direction = args.get("direction", "lower")
+        if direction not in {"lower", "higher"}:
+            raise ToolInputError("direction must be lower or higher")
+        return {"input": str(source), "--direction": direction, "--out": str(output)}
     if name == "regen_doctor":
         return {}
     raise ToolInputError(f"no argument validator for tool '{name}'")
@@ -457,7 +576,10 @@ def _redact(text: str) -> str:
 
 
 def run_regen(name: str, args: list[str]) -> str:
-    timeout = 600 if name in {"regen_msa", "regen_pymol_png", "regen_compound_screen", "regen_expression_contrast"} else 180
+    timeout = 960 if name in {"regen_dock_vina", "regen_dock_gnina"} else (
+        600 if name in {"regen_msa", "regen_pymol_png", "regen_compound_screen", "regen_expression_contrast", "regen_docking_benchmark"}
+        else 180
+    )
     completed = subprocess.run(
         [sys.executable, str(REGEN_CLI), *args],
         cwd=str(WORKBENCH_ROOT),

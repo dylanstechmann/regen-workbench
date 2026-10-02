@@ -57,6 +57,9 @@ class McpProtocolTests(unittest.TestCase):
         names = {tool["name"] for tool in listed["result"]["tools"]}
         self.assertIn("regen_pubmed", names)
         self.assertIn("regen_rdkit", names)
+        self.assertIn("regen_dock_vina", names)
+        self.assertIn("regen_dock_gnina", names)
+        self.assertIn("regen_docking_benchmark", names)
         self.assertNotIn("run_shell", names)
         self.assertGreaterEqual(len(names), 10)
 
@@ -185,6 +188,140 @@ class McpProtocolTests(unittest.TestCase):
             run.call_args_list[1].args,
             ("regen_rdkit", ["rdkit", "CCO", "--descriptors"]),
         )
+
+    def test_docking_benchmark_maps_only_confined_paths(self) -> None:
+        source = regen_mcp.WORKBENCH_ROOT / "data" / "controls.csv"
+        source.write_text("compound_id,role,score\na,active_control,-8\ni,inactive_control,-2\n", encoding="utf-8")
+        args = {"input": str(source), "output": "data/benchmark-report", "direction": "higher"}
+        with patch.object(regen_mcp, "run_regen", return_value="ok") as run:
+            self.assertEqual(regen_mcp.call_tool("regen_docking_benchmark", args), "ok")
+        self.assertEqual(run.call_args.args, (
+            "regen_docking_benchmark",
+            ["docking-benchmark", str(source.resolve()), "--direction", "higher",
+             "--out", str((regen_mcp.WORKBENCH_ROOT / "data" / "benchmark-report").resolve())],
+        ))
+        with self.assertRaises(regen_mcp.ToolInputError):
+            regen_mcp._validate_arguments("regen_docking_benchmark", {**args, "output": "/etc/report"})
+
+    def test_vina_arguments_map_to_bounded_fixed_cli(self) -> None:
+        receptor = regen_mcp.WORKBENCH_ROOT / "data" / "receptor.pdbqt"
+        ligand = regen_mcp.WORKBENCH_ROOT / "data" / "ligand.pdbqt"
+        receptor.write_text("ATOM      1  C   GLY A   1      0.000   0.000   0.000  0.00  0.00    +0.000 C\n")
+        ligand.write_text("HETATM    1  C1  UNL     1      0.000   0.000   0.000  0.00  0.00    +0.000 C\n")
+        args = {
+            "receptor": str(receptor),
+            "ligand": str(ligand),
+            "output": "data/docked.pdbqt",
+            "center_x": 1,
+            "center_y": 2.5,
+            "center_z": -3,
+            "size_x": 20,
+            "size_y": 21,
+            "size_z": 22,
+            "seed": 7,
+        }
+        with patch.object(regen_mcp, "run_regen", return_value="ok") as run:
+            self.assertEqual(regen_mcp.call_tool("regen_dock_vina", args), "ok")
+        self.assertEqual(
+            run.call_args.args,
+            (
+                "regen_dock_vina",
+                [
+                    "dock-vina", str(receptor.resolve()), str(ligand.resolve()),
+                    "-o", str((regen_mcp.WORKBENCH_ROOT / "data" / "docked.pdbqt").resolve()),
+                    "--center_x", "1.0", "--center_y", "2.5", "--center_z", "-3.0",
+                    "--size_x", "20.0", "--size_y", "21.0", "--size_z", "22.0",
+                    "--exhaustiveness", "8", "--num_modes", "9", "--cpu", "4", "--seed", "7",
+                ],
+            ),
+        )
+
+    def test_vina_rejects_bad_boxes_paths_and_existing_outputs(self) -> None:
+        receptor = regen_mcp.WORKBENCH_ROOT / "data" / "receptor.pdbqt"
+        ligand = regen_mcp.WORKBENCH_ROOT / "data" / "ligand.pdbqt"
+        receptor.write_text("ATOM  test\n")
+        ligand.write_text("HETATM test\n")
+        base = {
+            "receptor": str(receptor),
+            "ligand": str(ligand),
+            "output": "data/docked.pdbqt",
+            "center_x": 0,
+            "center_y": 0,
+            "center_z": 0,
+            "size_x": 20,
+            "size_y": 20,
+            "size_z": 20,
+        }
+        for changes in (
+            {"center_x": float("nan")},
+            {"size_y": 0},
+            {"cpu": 17},
+            {"output": "/etc/owned.pdbqt"},
+        ):
+            with self.subTest(changes=changes), self.assertRaises(regen_mcp.ToolInputError):
+                regen_mcp._validate_arguments("regen_dock_vina", {**base, **changes})
+        (regen_mcp.WORKBENCH_ROOT / "data" / "docked.pdbqt").write_text("existing")
+        with self.assertRaises(regen_mcp.ToolInputError):
+            regen_mcp._validate_arguments("regen_dock_vina", base)
+
+    def test_gnina_arguments_map_to_bounded_sdf_runner(self) -> None:
+        receptor = regen_mcp.WORKBENCH_ROOT / "data" / "gnina-receptor.pdbqt"
+        ligand = regen_mcp.WORKBENCH_ROOT / "data" / "gnina-ligand.pdbqt"
+        receptor.write_text("ATOM      1  C   GLY A   1      0.000   0.000   0.000\n")
+        ligand.write_text("HETATM    1  C1  UNL     1      0.000   0.000   0.000\n")
+        args = {
+            "receptor": str(receptor),
+            "ligand": str(ligand),
+            "output": "data/gnina-docked.sdf",
+            "center_x": 1,
+            "center_y": 2.5,
+            "center_z": -3,
+            "size_x": 20,
+            "size_y": 21,
+            "size_z": 22,
+            "cnn_scoring": "rescore",
+            "seed": 7,
+        }
+        with patch.object(regen_mcp, "run_regen", return_value="ok") as run:
+            self.assertEqual(regen_mcp.call_tool("regen_dock_gnina", args), "ok")
+        self.assertEqual(
+            run.call_args.args,
+            (
+                "regen_dock_gnina",
+                [
+                    "dock-gnina", str(receptor.resolve()), str(ligand.resolve()),
+                    "-o", str((regen_mcp.WORKBENCH_ROOT / "data" / "gnina-docked.sdf").resolve()),
+                    "--center_x", "1.0", "--center_y", "2.5", "--center_z", "-3.0",
+                    "--size_x", "20.0", "--size_y", "21.0", "--size_z", "22.0",
+                    "--exhaustiveness", "8", "--num_modes", "9", "--cpu", "4", "--seed", "7",
+                    "--cnn_scoring", "rescore",
+                ],
+            ),
+        )
+
+    def test_gnina_rejects_unbounded_modes_and_wrong_output_extension(self) -> None:
+        receptor = regen_mcp.WORKBENCH_ROOT / "data" / "gnina-validation-receptor.pdbqt"
+        ligand = regen_mcp.WORKBENCH_ROOT / "data" / "gnina-validation-ligand.pdbqt"
+        receptor.write_text("ATOM test\n")
+        ligand.write_text("HETATM test\n")
+        base = {
+            "receptor": str(receptor),
+            "ligand": str(ligand),
+            "output": "data/gnina-validation.sdf",
+            "center_x": 0,
+            "center_y": 0,
+            "center_z": 0,
+            "size_x": 20,
+            "size_y": 20,
+            "size_z": 20,
+        }
+        for changes in (
+            {"cnn_scoring": "all"},
+            {"output": "data/gnina-validation.pdbqt"},
+            {"cpu": 17},
+        ):
+            with self.subTest(changes=changes), self.assertRaises(regen_mcp.ToolInputError):
+                regen_mcp._validate_arguments("regen_dock_gnina", {**base, **changes})
 
     def test_unknown_tool_does_not_run_a_command(self) -> None:
         with patch.object(regen_mcp, "run_regen") as run:

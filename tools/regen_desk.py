@@ -11,14 +11,17 @@ import math
 import mimetypes
 import os
 import re
+import shutil
+import subprocess
 import threading
 import time
 import uuid
+import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode, urlsplit
+from urllib.parse import parse_qs, quote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
 import regen
@@ -36,8 +39,11 @@ PROVIDERS = {
     "brave": ("Brave web / forums", "BRAVE_SEARCH_API_KEY", True),
     "exa": ("Exa web / forums", "EXA_API_KEY", True),
 }
-KINDS = {"search", "compound", "neighbors", "variants", "compare", "conformers"}
+KINDS = {"search", "compound", "neighbors", "variants", "compare", "conformers", "docking"}
 BLUEPRINT_FIELDS = ("title", "area", "query", "question", "who", "what", "where", "when", "why", "how", "falsifier", "desired_changes")
+CAMPAIGN_FIELDS = ("title", "target", "species", "tissue", "hypothesis", "endpoint", "falsifier", "evidence_stage", "study_design", "reference_url", "receptor", "structure_notes", "starter_id")
+EVIDENCE_STATUS = {"not assessed", "source reports positive signal", "source reports mixed signal", "source reports no signal", "conflicting sources"}
+EVIDENCE_FIELDS = ("status", "value", "unit", "comparator", "timepoint", "source_url", "notes")
 
 
 def text_field(data, key, default="", maximum=4000):
@@ -51,6 +57,34 @@ def bounded_int(value, low, high):
     if isinstance(value, bool) or not isinstance(value, int) or not low <= value <= high:
         raise ValueError(f"Expected an integer from {low} to {high}")
     return value
+
+
+def bounded_number(value, low, high, label):
+    if isinstance(value, bool):
+        raise ValueError(f"{label} must be a finite number from {low} to {high}")
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        raise ValueError(f"{label} must be a finite number from {low} to {high}") from None
+    if not math.isfinite(result) or not low <= result <= high:
+        raise ValueError(f"{label} must be a finite number from {low} to {high}")
+    return result
+
+
+def campaign_structure_path(value, label):
+    raw = Path(value)
+    if not raw.is_absolute():
+        raw = regen.ROOT / raw
+    try:
+        path = raw.resolve(strict=True)
+        structures = (regen.DATA / "structures").resolve(strict=True)
+    except OSError:
+        raise ValueError(f"{label} must exist under data/structures") from None
+    if path == structures or structures not in path.parents or not path.is_file():
+        raise ValueError(f"{label} must be a regular file under data/structures")
+    if path.suffix.lower() != ".pdbqt" or path.stat().st_size > 25 * 1024 * 1024:
+        raise ValueError(f"{label} must be a .pdbqt file no larger than 25 MiB")
+    return path
 
 
 def public_url(value):
@@ -241,10 +275,15 @@ class Desk:
         self.lock = threading.RLock()
         self.executor = ThreadPoolExecutor(max_workers=1)
         self.pending = 0
+        self._docking_status_cache = None
         self.store_path = self.root / "workspace.json"
         seeds = json.loads((HOME / "config" / "research-blueprints.json").read_text(encoding="utf-8"))
         self.seed_findings = seeds.get("findings", [])
-        self.store = json.loads(self.store_path.read_text(encoding="utf-8")) if self.store_path.exists() else {"blueprints": seeds["blueprints"], "notes": []}
+        self.store = json.loads(self.store_path.read_text(encoding="utf-8")) if self.store_path.exists() else {"blueprints": seeds["blueprints"], "notes": [], "campaigns": []}
+        self.store.setdefault("campaigns", [])
+        self.store.setdefault("notes", [])
+        self.campaign_frameworks = seeds.get("campaign_frameworks", {})
+        self.campaign_starters = seeds.get("campaign_starters", {})
         known = {item["id"] for item in self.store["blueprints"]}
         added = [item for item in seeds["blueprints"] if item["id"] not in known]
         self.store["blueprints"].extend(added)
@@ -280,6 +319,74 @@ class Desk:
             self.save_store()
         return item
 
+    def campaign(self, data):
+        item = {key: text_field(data, key, maximum=4000) for key in CAMPAIGN_FIELDS}
+        item["blueprint_id"] = text_field(data, "blueprint_id", maximum=64)
+        supplied_id = text_field(data, "id", maximum=64)
+        if not item["title"] or not item["target"] or not item["hypothesis"]:
+            raise ValueError("Campaign title, target and hypothesis are required")
+        blueprint = next((b for b in self.store["blueprints"] if b["id"] == item["blueprint_id"]), None)
+        if blueprint is None:
+            raise ValueError("Unknown blueprint")
+        if item["reference_url"] and not public_url(item["reference_url"]):
+            raise ValueError("Reference source must be an http(s) URL")
+        starters = self.campaign_starters.get(item["blueprint_id"], [])
+        if item["starter_id"] and item["starter_id"] not in {starter["id"] for starter in starters}:
+            raise ValueError("Unknown campaign starter for this blueprint")
+        if item["receptor"]:
+            receptor = campaign_structure_path(item["receptor"], "Receptor")
+            item["receptor"] = receptor.relative_to(regen.ROOT).as_posix()
+        center = [bounded_number(data.get(f"center_{axis}", 0), -10000, 10000, f"Box center {axis}") for axis in "xyz"]
+        size = [bounded_number(data.get(f"size_{axis}", 20), 1, 80, f"Box size {axis}") for axis in "xyz"]
+        with self.lock:
+            old = next((x for x in self.store["campaigns"] if x["id"] == supplied_id), None)
+            if old and old["blueprint_id"] != item["blueprint_id"]:
+                raise ValueError("A campaign cannot be moved to another blueprint")
+            previous_evidence = {entry.get("axis_id"): entry for entry in (old or {}).get("evidence", [])}
+            incoming_evidence = data.get("evidence")
+            if incoming_evidence is None:
+                incoming_evidence = list(previous_evidence.values())
+            if not isinstance(incoming_evidence, list):
+                raise ValueError("Campaign evidence must be a list")
+            submitted_evidence = {}
+            for entry in incoming_evidence:
+                if not isinstance(entry, dict):
+                    raise ValueError("Each evidence entry must be an object")
+                axis_id = text_field(entry, "axis_id", maximum=64)
+                if axis_id in submitted_evidence:
+                    raise ValueError("Evidence axes must be unique")
+                submitted_evidence[axis_id] = entry
+            framework = self.campaign_frameworks.get(item["blueprint_id"], [])
+            known_axes = {axis["id"] for axis in framework}
+            if set(submitted_evidence) - known_axes:
+                raise ValueError("Evidence contains an axis not defined for this blueprint")
+            evidence = []
+            for axis in framework:
+                entry = submitted_evidence.get(axis["id"], {})
+                status = text_field(entry, "status", "not assessed", 64) or "not assessed"
+                if status not in EVIDENCE_STATUS:
+                    raise ValueError(f"Unknown evidence status for {axis['label']}")
+                saved = {"axis_id": axis["id"], "status": status}
+                for field in EVIDENCE_FIELDS[1:]:
+                    saved[field] = text_field(entry, field, maximum=3000)
+                if saved["source_url"] and not public_url(saved["source_url"]):
+                    raise ValueError(f"Evidence source for {axis['label']} must be an http(s) URL")
+                evidence.append(saved)
+            item.update(
+                id=old["id"] if old else uuid.uuid4().hex,
+                evidence=evidence,
+                center=center,
+                size=size,
+                created_utc=old["created_utc"] if old else regen.now(),
+                updated_utc=regen.now(),
+            )
+            if old:
+                self.store["campaigns"][self.store["campaigns"].index(old)] = item
+            else:
+                self.store["campaigns"].append(item)
+            self.save_store()
+        return item
+
     def note(self, data):
         item = {k: text_field(data, k) for k in ("blueprint_id", "title", "url", "claim", "species", "confounders")}
         kind = text_field(data, "kind")
@@ -302,9 +409,36 @@ class Desk:
         with self.lock:
             runs = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
             runs.sort(key=lambda r: r["created_utc"], reverse=True)
-            return {**self.store, "findings": self.seed_findings, "runs": [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "created_utc", "status", "error", "summary")} for r in runs[:100]],
+            tools = self.docking_tool_status()
+            return {**self.store, "findings": self.seed_findings, "runs": [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "campaign_id", "created_utc", "status", "error", "summary")} for r in runs[:100]],
                     "providers": [{"id": k, "name": v[0], "key_configured": bool(os.environ.get(v[1], "")) if v[1] else None, "key_required": v[2]} for k, v in PROVIDERS.items()],
-                    "rdkit_available": importlib.util.find_spec("rdkit") is not None}
+                    "campaign_frameworks": self.campaign_frameworks,
+                    "campaign_starters": self.campaign_starters,
+                    "rdkit_available": importlib.util.find_spec("rdkit") is not None,
+                    "docking_tools": {"vina": tools["vina"]["available"], "gnina": tools["gnina"]["available"], "details": tools}}
+
+    def docking_tool_status(self, force=False):
+        vina_path = shutil.which("vina")
+        gnina_path = regen.CACHE / "gnina" / "gnina"
+        fingerprint = (vina_path, (gnina_path.stat().st_size, gnina_path.stat().st_mtime_ns) if gnina_path.is_file() else None)
+        cached = self._docking_status_cache
+        if not force and cached and cached[0] == fingerprint and time.monotonic() - cached[1] < 30:
+            return cached[2]
+        current = {
+            "vina": regen.probe_executable(vina_path),
+            "gnina": regen.probe_executable(gnina_path if gnina_path.is_file() else None, regen.GNINA_ASSET_SHA256),
+        }
+        if not gnina_path.is_file():
+            current["gnina"]["error"] = "not installed in the research runtime"
+        self._docking_status_cache = (fingerprint, time.monotonic(), current)
+        return current
+
+    def run_page(self, blueprint_id, offset=0, limit=50):
+        with self.lock:
+            rows = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
+        rows = sorted((r for r in rows if r.get("blueprint_id") == blueprint_id), key=lambda r: r["created_utc"], reverse=True)
+        summaries = [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "campaign_id", "created_utc", "status", "error", "summary")} for r in rows[offset:offset + limit]]
+        return {"runs": summaries, "offset": offset, "limit": limit, "total": len(rows)}
 
     def save_run(self, path, run):
         with self.lock:
@@ -316,7 +450,10 @@ class Desk:
         if not re.fullmatch(r"[a-f0-9]{32}", run_id):
             raise ValueError("Invalid run ID")
         with self.lock:
-            return json.loads((self.runs / run_id / "run.json").read_text())
+            path = self.runs / run_id
+            result = json.loads((path / "run.json").read_text())
+            result["artifacts"] = {name: (path / name).is_file() for name in ("submission.json", "manifest.json", "result.json")}
+            return result
 
     def submit(self, data):
         kind = data.get("kind")
@@ -326,7 +463,40 @@ class Desk:
         if not any(b["id"] == blueprint_id for b in self.store["blueprints"]):
             raise ValueError("Unknown blueprint")
         params = {"kind": kind, "blueprint_id": blueprint_id}
-        if kind == "search":
+        campaign_id = text_field(data, "campaign_id", maximum=64)
+        campaign = next((c for c in self.store["campaigns"] if c["id"] == campaign_id and c["blueprint_id"] == blueprint_id), None) if campaign_id else None
+        if campaign_id and campaign is None:
+            raise ValueError("Unknown campaign for this blueprint")
+        if kind == "docking":
+            if campaign is None:
+                raise ValueError("Save or select a campaign before docking")
+            engine = text_field(data, "engine", maximum=16)
+            if engine not in {"vina", "gnina"}:
+                raise ValueError("Docking engine must be Vina or GNINA")
+            tool_status = self.docking_tool_status(force=True)[engine]
+            if not tool_status["available"]:
+                raise ValueError(f"{engine.upper()} is unavailable: {tool_status['error']}")
+            receptor = campaign_structure_path(campaign["receptor"], "Receptor") if campaign["receptor"] else None
+            if receptor is None:
+                raise ValueError("Add a prepared receptor .pdbqt file to the campaign first")
+            ligand = campaign_structure_path(text_field(data, "ligand", maximum=1000), "Ligand")
+            role = text_field(data, "role", maximum=32)
+            if role not in {"candidate", "known_active", "known_inactive", "reference_pose"}:
+                raise ValueError("Choose candidate, known active, known inactive or reference pose")
+            params.update(
+                engine=engine,
+                receptor=receptor.relative_to(regen.ROOT).as_posix(),
+                ligand=ligand.relative_to(regen.ROOT).as_posix(),
+                label=text_field(data, "label", maximum=200),
+                role=role,
+                center=campaign["center"],
+                size=campaign["size"],
+                exhaustiveness=bounded_int(data.get("exhaustiveness", 8), 1, 32),
+                num_modes=bounded_int(data.get("num_modes", 9), 1, 20),
+                cpu=bounded_int(data.get("cpu", 4), 1, 8),
+                seed=bounded_int(data.get("seed", 42), 1, 2147483647),
+            )
+        elif kind == "search":
             params["query"] = text_field(data, "query", maximum=500)
             providers = data.get("providers", ["pubmed", "europepmc", "trials"])
             if not isinstance(providers, list) or not providers or len(providers) > 8 or any(not isinstance(p, str) or p not in PROVIDERS for p in providers):
@@ -350,6 +520,8 @@ class Desk:
             if kind == "variants":
                 params["max_mw"] = bounded_int(data.get("max_mw", 600), 50, 2000)
                 params["max_tpsa"] = bounded_int(data.get("max_tpsa", 160), 0, 500)
+        if campaign_id:
+            params["campaign_id"] = campaign_id
         with self.lock:
             if self.pending >= 8:
                 raise ValueError("Queue is full; wait for current runs")
@@ -357,7 +529,12 @@ class Desk:
             run_id = uuid.uuid4().hex
             path = self.runs / run_id
             path.mkdir()
-            run = {"id": run_id, "kind": kind, "blueprint_id": blueprint_id, "created_utc": regen.now(), "status": "queued", "parameters": params}
+            created = regen.now()
+            blueprint = next(b for b in self.store["blueprints"] if b["id"] == blueprint_id)
+            context = {"schema_version": 1, "submitted_utc": created, "blueprint": blueprint, "campaign": campaign, "parameters": params}
+            snapshot_bytes = json.dumps(redact(context), ensure_ascii=True, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8") + b"\n"
+            (path / "submission.json").write_bytes(snapshot_bytes)
+            run = {"id": run_id, "kind": kind, "blueprint_id": blueprint_id, "campaign_id": campaign_id or None, "created_utc": created, "status": "queued", "parameters": params, "submission_sha256": hashlib.sha256(snapshot_bytes).hexdigest()}
             self.save_run(path, run)
             self.executor.submit(self.execute, path, run)
         return run
@@ -449,6 +626,73 @@ class Desk:
         return {"molecules": rows, "snapshots": snapshots, "rdkit_version": rdBase.rdkitVersion, "identity_note": "Multiple database records match this name; inspect stereochemistry and choose an exact CID" if params["kind"] == "compound" and len(records) > 1 else "",
                 "interpretation": "PubChem identity and structural neighbors, not shared biological effects. PubChem similarity and local Morgan similarity use different fingerprints"}
 
+    def docking(self, path, params):
+        import contextlib
+
+        receptor = campaign_structure_path(params["receptor"], "Receptor")
+        ligand = campaign_structure_path(params["ligand"], "Ligand")
+        receptor_copy = path / "receptor-input.pdbqt"
+        ligand_copy = path / "ligand-input.pdbqt"
+        shutil.copyfile(receptor, receptor_copy)
+        shutil.copyfile(ligand, ligand_copy)
+        suffix = ".sdf" if params["engine"] == "gnina" else ".pdbqt"
+        output = path / f"poses{suffix}"
+        runner = regen.run_gnina_docking if params["engine"] == "gnina" else regen.run_vina_docking
+        options = {
+            "center": tuple(params["center"]),
+            "size": tuple(params["size"]),
+            "exhaustiveness": params["exhaustiveness"],
+            "num_modes": params["num_modes"],
+            "cpu": params["cpu"],
+            "seed": params["seed"],
+        }
+        if params["engine"] == "gnina":
+            options["cnn_scoring"] = "rescore"
+        try:
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                receipt = runner(str(receptor_copy), str(ligand_copy), str(output), **options)
+        except SystemExit as exc:
+            detail = str(exc.code) if exc.code not in (None, 0) else "Docking engine stopped without a result"
+            raise ValueError(detail[:4000]) from None
+        metrics = {}
+        if params["engine"] == "vina":
+            try:
+                for line in output.read_text(encoding="ascii", errors="ignore").splitlines():
+                    match = re.match(r"REMARK VINA RESULT:\s*(-?\d+(?:\.\d+)?)", line)
+                    if match:
+                        metrics["vina_energy_kcal_mol"] = float(match.group(1))
+                        break
+            except OSError:
+                pass
+        else:
+            try:
+                from rdkit import Chem
+                poses = Chem.SDMolSupplier(str(output), removeHs=False)
+                first = next((mol for mol in poses if mol is not None), None)
+                if first is not None:
+                    for prop, key in (("minimizedAffinity", "minimized_affinity_kcal_mol"), ("CNNscore", "cnnscore"), ("CNNaffinity", "cnnaffinity")):
+                        if first.HasProp(prop):
+                            try:
+                                metrics[key] = float(first.GetProp(prop))
+                            except ValueError:
+                                pass
+            except Exception:
+                metrics["score_note"] = "GNINA score properties could not be parsed; inspect the retained SDF"
+        receipt["label"] = params["label"] or Path(params["ligand"]).stem
+        receipt["role"] = params["role"]
+        receipt["metrics"] = metrics
+        receipt["output_artifact"] = f"/api/artifact/{path.name}/{output.name}"
+        receipt["input_artifacts"] = [
+            f"/api/artifact/{path.name}/{receptor_copy.name}",
+            f"/api/artifact/{path.name}/{ligand_copy.name}",
+        ]
+        receipt["interpretation"] = (
+            "Exploratory docking only. These scores are not measured binding, target engagement, "
+            "cellular senolysis, mutation correction, tissue repair, efficacy, safety or anti-aging benefit. "
+            "Vina and GNINA share method lineage; score agreement is not independent confirmation."
+        )
+        return receipt
+
     def execute(self, path, run):
         run["status"] = "running"
         self.save_run(path, run)
@@ -476,37 +720,64 @@ class Desk:
             elif run["kind"] in {"compound", "neighbors"}:
                 result = self.compounds(path, params)
                 run.update(status="complete", summary=f"{len(result['molecules'])} database structures")
+            elif run["kind"] == "docking":
+                result = self.docking(path, params)
+                label = result.get("label") or "Ligand"
+                summary_score = next((f"{key} {value}" for key, value in result.get("metrics", {}).items() if isinstance(value, (int, float))), "score unavailable")
+                run.update(status="complete", summary=f"{label} · {params['engine'].upper()} · {params['role'].replace('_', ' ')} · {summary_score}")
             else:
                 result = self.compute(path, params)
                 run.update(status="complete", summary=f"{len(result.get('molecules', []))} computed structures")
             run["result"] = result
-            write_json(path / "result.json", redact(result))
-            write_json(path / "parameters.json", params)
-            manifest(path, "research-desk", params, {}, {"desk_implementation_sha256": regen.sha256_file(Path(__file__)), "rdkit": result.get("rdkit_version", "not recorded / lookup")})
-            report = json.loads((path / "manifest.json").read_text())
-            # Run status is mutable; the manifest covers immutable data and nested reports.
-            report["outputs"].pop("run.json", None)
-            for nested in path.glob("*/*"):
-                if nested.is_file():
-                    report["outputs"][nested.relative_to(path).as_posix()] = {"sha256": regen.sha256_file(nested), "bytes": nested.stat().st_size}
-            write_json(path / "manifest.json", report)
-            regen.record("desk-run", {"run_id": run["id"], "kind": run["kind"], "status": run["status"]}, [path / "manifest.json", path / "result.json"])
         except (ProviderError, ValueError) as exc:
             run.update(status="failed", error=str(exc))
         except Exception as exc:
             run.update(status="failed", error=f"{type(exc).__name__}: run failed; raw exception suppressed to protect credentials")
         finally:
             run["finished_utc"] = regen.now()
+            try:
+                params = run.get("parameters", {})
+                result = redact(run.get("result", {}))
+                write_json(path / "result.json", result)
+                write_json(path / "parameters.json", params)
+                write_json(path / "completion.json", {k: run.get(k) for k in ("id", "kind", "status", "summary", "error", "created_utc", "finished_utc")})
+                inputs = {"submission.json": (path / "submission.json").read_bytes()} if (path / "submission.json").is_file() else {}
+                if run["kind"] == "docking":
+                    for name in ("receptor-input.pdbqt", "ligand-input.pdbqt"):
+                        input_path = path / name
+                        if input_path.is_file():
+                            inputs[name] = input_path.read_bytes()
+                versions = {"desk_implementation_sha256": regen.sha256_file(Path(__file__)), "rdkit": result.get("rdkit_version", "not recorded / lookup")}
+                if run["kind"] == "docking":
+                    versions["docking_engine"] = result.get("version", params.get("engine", "unknown"))
+                manifest(path, "research-desk", params, inputs, versions)
+                report = json.loads((path / "manifest.json").read_text(encoding="utf-8"))
+                report["outputs"].pop("run.json", None)
+                for artifact in path.rglob("*"):
+                    if artifact.is_file() and artifact not in {path / "manifest.json", path / "run.json"}:
+                        relative = artifact.relative_to(path).as_posix()
+                        report["outputs"][relative] = {"sha256": regen.sha256_file(artifact), "bytes": artifact.stat().st_size}
+                write_json(path / "manifest.json", report)
+                regen.record("desk-run", {"run_id": run["id"], "kind": run["kind"], "status": run["status"]}, [path / "manifest.json", path / "result.json"])
+            except Exception as exc:
+                run.update(status="failed", error=f"Provenance finalization failed: {type(exc).__name__}")
             self.save_run(path, run)
             with self.lock:
                 self.pending -= 1
 
-    def export(self, blueprint_id):
+    def export(self, blueprint_id, include_notes=False):
         with self.lock:
             blueprint = next(b for b in self.store["blueprints"] if b["id"] == blueprint_id)
-            notes = [n for n in self.store["notes"] if n["blueprint_id"] == blueprint_id]
+            all_notes = [n for n in self.store["notes"] if n["blueprint_id"] == blueprint_id]
+            notes = all_notes if include_notes else []
+            campaigns = [c for c in self.store["campaigns"] if c["blueprint_id"] == blueprint_id]
             runs = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
             runs = sorted((r for r in runs if r.get("blueprint_id") == blueprint_id), key=lambda r: r["created_utc"])
+        for run in runs:
+            submission_path = self.runs / run["id"] / "submission.json"
+            if submission_path.is_file():
+                run["submission"] = json.loads(submission_path.read_text(encoding="utf-8"))
+                run["submission_sha256_valid"] = hashlib.sha256(submission_path.read_bytes()).hexdigest() == run.get("submission_sha256")
         parts = [f"# {blueprint['title']}", "Research hypothesis. Computational outputs, source reports, and demonstrated effects remain distinct."]
         for field in BLUEPRINT_FIELDS[2:]:
             parts.extend([f"## {field.replace('_', ' ').title()}", blueprint.get(field) or "Not specified"])
@@ -514,15 +785,90 @@ class Desk:
         parts.append("## Source-reviewed starting points")
         for finding in findings:
             parts.append(f"- {finding['claim']} {finding['boundary']} Source: {finding['url']}")
-        parts.append("## Source notes (manually entered, unreviewed)")
-        for note in notes:
-            parts.append(f"- [{note['kind']}; {note['direction']}] {note['claim']}\n  Source: {note['url'] or 'not provided'}\n  Confounders: {note['confounders'] or 'not assessed'}")
+        parts.append("## Target-centered campaigns")
+        for campaign in campaigns:
+            parts.append(f"### {campaign['title']} - {campaign['target']}")
+            parts.append(f"Hypothesis: {campaign['hypothesis']}\nEndpoint: {campaign['endpoint'] or 'Not specified'}\nFalsifier: {campaign['falsifier'] or 'Not specified'}")
+            if campaign.get("reference_url"):
+                parts.append(f"Reference ({campaign.get('evidence_stage') or 'stage not specified'}; {campaign.get('study_design') or 'design not specified'}): {campaign['reference_url']}")
+            for item in campaign.get("evidence", []):
+                axis = next((axis for axis in self.campaign_frameworks.get(blueprint_id, []) if axis["id"] == item["axis_id"]), {"label": item["axis_id"]})
+                parts.append(f"- {axis['label']}: {item['status']}; {item.get('value') or 'no value recorded'} {item.get('unit', '')}; comparator: {item.get('comparator') or 'not recorded'}; timepoint: {item.get('timepoint') or 'not recorded'}; source: {item.get('source_url') or 'not recorded'}")
+            campaign_runs = [r for r in runs if r.get("campaign_id") == campaign["id"]]
+            for run in campaign_runs:
+                snapshot = run.get("submission", {}).get("campaign")
+                frozen_title = snapshot.get("title") if snapshot else campaign["title"]
+                parts.append(f"- {run['id']} | {run['kind']} | {run['status']} | submitted under: {frozen_title} | snapshot hash valid: {run.get('submission_sha256_valid', False)} | {run.get('summary', run.get('error', ''))}")
+        if include_notes:
+            parts.append("## Source notes (manually entered; not independently verified)")
+            for note in notes:
+                parts.append(f"- [{note['kind']}; {note['direction']}] {note['claim']}\n  Source: {note['url'] or 'not provided'}\n  Confounders: {note['confounders'] or 'not assessed'}")
+        else:
+            parts.append(f"## Private notes\n{len(all_notes)} manually entered note(s) excluded from this export.")
         parts.append("## Reproducible runs")
         for run in runs:
             parts.append(f"- {run['id']} | {run['kind']} | {run['status']} | {run.get('summary', run.get('error', ''))}")
             for h in run.get("result", {}).get("hits", []):
                 parts.append(f"  - {h['title']} | {h['url']} | {h['evidence_type']}")
-        return {"blueprint": blueprint, "findings": findings, "notes": notes, "runs": runs, "markdown": "\n\n".join(parts), "exported_utc": regen.now()}
+        public_parts = [f"# Discussion draft: {blueprint['title']}", "Human review required. This draft summarizes local research records and does not establish efficacy, safety or anti-aging benefit."]
+        public_parts.extend(f"- {f['claim']} {f['boundary']} Source: {f['url']}" for f in findings)
+        for campaign in campaigns:
+            public_parts.append(f"## {campaign['title']}\nHypothesis: {campaign['hypothesis']}\nEndpoint: {campaign['endpoint'] or 'Not specified'}\nFalsifier: {campaign['falsifier'] or 'Not specified'}")
+            if campaign.get("reference_url"):
+                public_parts.append(f"Reference source: {campaign['reference_url']}")
+        for run in runs:
+            public_parts.append(f"- Run {run['id']}: {run['kind']} / {run['status']} / {run.get('summary', run.get('error', ''))}; submission snapshot hash valid: {run.get('submission_sha256_valid', False)}")
+        return {"blueprint": blueprint, "campaigns": campaigns, "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs, "markdown": "\n\n".join(parts), "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
+
+    def export_archive(self, blueprint_id, include_notes=False):
+        dossier = self.export(blueprint_id, include_notes=include_notes)
+        buffer = io.BytesIO()
+        index = []
+        with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+            for name, content in (("research_dossier.md", dossier["markdown"]), ("public_draft.md", dossier["public_draft"])):
+                blob = content.encode("utf-8")
+                archive.writestr(name, blob)
+                index.append({"path": name, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
+            dossier_blob = json.dumps(dossier, ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
+            archive.writestr("dossier.json", dossier_blob)
+            index.append({"path": "dossier.json", "sha256": hashlib.sha256(dossier_blob).hexdigest(), "bytes": len(dossier_blob)})
+            for run in dossier["runs"]:
+                run_id = run.get("id", "")
+                if not re.fullmatch(r"[a-f0-9]{32}", run_id):
+                    continue
+                run_dir = self.runs / run_id
+                manifest_path = run_dir / "manifest.json"
+                declared = {}
+                if manifest_path.is_file():
+                    try:
+                        declared = json.loads(manifest_path.read_text(encoding="utf-8")).get("outputs", {})
+                    except (OSError, json.JSONDecodeError):
+                        declared = {}
+                for artifact in sorted(run_dir.rglob("*")):
+                    if not artifact.is_file() or artifact.name.endswith(".tmp"):
+                        continue
+                    relative = artifact.relative_to(run_dir).as_posix()
+                    if relative in {"run.json"}:
+                        source_bytes = json.dumps(redact(run), ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
+                    else:
+                        source_bytes = artifact.read_bytes()
+                        if artifact.suffix.lower() in {".json", ".md", ".txt", ".csv"}:
+                            try:
+                                decoded = source_bytes.decode("utf-8")
+                                parsed = json.loads(decoded) if artifact.suffix.lower() == ".json" else decoded
+                                safe = redact(parsed)
+                                source_bytes = (json.dumps(safe, ensure_ascii=True, indent=2, allow_nan=False) if artifact.suffix.lower() == ".json" else safe).encode("utf-8")
+                            except (UnicodeDecodeError, json.JSONDecodeError):
+                                pass
+                    archived_path = f"runs/{run_id}/{relative}"
+                    archive.writestr(archived_path, source_bytes)
+                    expected = declared.get(relative, {})
+                    index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(), "source_sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
+                                  "bytes": len(source_bytes), "listed_in_run_manifest": relative in declared,
+                                  "source_matches_run_manifest": relative in declared and expected.get("sha256") == hashlib.sha256(artifact.read_bytes()).hexdigest()})
+            index_blob = json.dumps({"schema_version": 1, "notes_included": include_notes, "files": index}, ensure_ascii=True, indent=2).encode("utf-8")
+            archive.writestr("archive-index.json", index_blob)
+        return buffer.getvalue()
 
 
 def make_handler(desk):
@@ -564,14 +910,26 @@ def make_handler(desk):
             try:
                 if route == "/api/state":
                     return self.send(200, desk.state())
+                if route == "/api/runs":
+                    query = parse_qs(urlsplit(self.path).query)
+                    blueprint_id = query.get("blueprint_id", [""])[0]
+                    if not any(b["id"] == blueprint_id for b in desk.store["blueprints"]):
+                        raise ValueError("Unknown blueprint")
+                    offset = bounded_int(int(query.get("offset", ["0"])[0]), 0, 1_000_000)
+                    limit = bounded_int(int(query.get("limit", ["50"])[0]), 1, 100)
+                    return self.send(200, desk.run_page(blueprint_id, offset, limit))
                 if route.startswith("/api/run/"):
                     return self.send(200, desk.run(route.rsplit("/", 1)[1]))
+                if route.startswith("/api/export/") and route.endswith(".zip"):
+                    blueprint_id = route.removeprefix("/api/export/").removesuffix(".zip")
+                    include_notes = parse_qs(urlsplit(self.path).query).get("include_notes") == ["1"]
+                    return self.send(200, desk.export_archive(blueprint_id, include_notes=include_notes), "application/zip")
                 if route.startswith("/api/export/"):
                     return self.send(200, desk.export(route.rsplit("/", 1)[1]))
                 if route.startswith("/api/artifact/"):
                     relative = route.removeprefix("/api/artifact/")
                     path = (desk.runs / relative).resolve()
-                    if not path.is_relative_to(desk.runs.resolve()) or path.suffix not in {".json", ".png", ".csv", ".sdf", ".md"}:
+                    if not path.is_relative_to(desk.runs.resolve()) or path.suffix not in {".json", ".png", ".csv", ".sdf", ".pdbqt", ".md"}:
                         return self.send(403, {"error": "Artifact path is not allowed"})
                     return self.send(200, path.read_bytes(), mimetypes.guess_type(path.name)[0] or "application/octet-stream")
                 static = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css"}.get(route)
@@ -595,7 +953,7 @@ def make_handler(desk):
                 if not isinstance(data, dict):
                     raise ValueError("Expected a JSON object")
                 route = urlsplit(self.path).path
-                action = {"/api/jobs": desk.submit, "/api/blueprints": desk.blueprint, "/api/notes": desk.note}.get(route)
+                action = {"/api/jobs": desk.submit, "/api/blueprints": desk.blueprint, "/api/campaigns": desk.campaign, "/api/notes": desk.note}.get(route)
                 if not action:
                     return self.send(404, {"error": "Not found"})
                 self.send(202 if route == "/api/jobs" else 200, action(data))

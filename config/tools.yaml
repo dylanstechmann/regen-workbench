@@ -18,7 +18,7 @@ capabilities:
     local: [regen uniprot, regen interpro]
   structures:
     fetch: [regen afdb, regen pdb]
-    predict_local: [esmfold via fair-esm, boltz if installed, colabfold sibling image]
+    predict_local: [esmfold via fair-esm, boltz if installed, colabfold sibling image, OpenFold3 preview optional profile]
     predict_overflow: [Tamarind, Colab paid GPU, Vertex]
     visualize: [pymol -cq, py3Dmol in Jupyter]
   sequences:
@@ -28,8 +28,24 @@ capabilities:
   interactions_pathways:
     remote: [regen string; Reactome REST from notebooks when needed]
   chemistry:
-    local: [rdkit, regen compound-screen, openbabel, vina]
+    local: [rdkit, regen compound-screen, openbabel, vina, gnina after explicit install]
     remote: [regen chembl, regen pubchem]
+  docking:
+    small_molecule_local_ready: [AutoDock Vina via regen dock-vina, GNINA via regen dock-gnina after explicit cache install, control-aware validation via regen docking-benchmark]
+    small_molecule_not_installed: [UCSF DOCK, rDock, LeDock, DiffDock]
+    small_molecule_hosted_manual: [SwissDock]
+    small_molecule_license_gated: [GOLD, Schrödinger Glide, MOE, Discovery Studio, FlexX]
+    protein_peptide_hosted_manual: [HADDOCK, ClusPro, ZDOCK]
+    protein_peptide_not_installed: [RosettaDock]
+    interpretation: >
+      OpenFold3 and Boltz predict complex structures; they are not docking
+      engines. Vina poses/scores and GNINA CNNscore/CNNaffinity are hypotheses,
+      not measured binding, affinity, efficacy, safety, or anti-aging benefit.
+      The validation report computes ROC AUC and enrichment on explicitly labelled
+      active/inactive controls, and optional symmetry-aware redocking RMSD on SDF
+      pose/reference pairs. It does not include decoys in primary metrics.
+      Hosted tools are not called automatically and may require uploading
+      structures/sequences.
   expression_exploration:
     local: [regen expression-contrast]
     notes: Linear normalized input only; effect sizes and leave-one-out sensitivity, no significance testing.
@@ -42,7 +58,8 @@ capabilities:
 fold_routing:
   designed_or_orphan_monomer: esmfold
   natural_protein_with_homologs: colabfold_msa_server
-  complex_or_ligand_or_affinity: boltz2_if_fits_16gb_else_tamarind
+  protein_ligand_complex_prediction: openfold3_preview_or_boltz_if_fits_16gb_else_tamarind
+  known_small_molecule_binding_site: vina_and_optional_gnina_on_prepared_inputs
   experimental_structure_exists: fetch_pdb_first
   already_in_afdb: fetch_afdb_first
 
@@ -63,6 +80,9 @@ mcp:
     - regen_pubchem
     - regen_msa
     - regen_rdkit
+    - regen_dock_vina
+    - regen_dock_gnina
+    - regen_docking_benchmark
     - regen_compound_screen
     - regen_expression_contrast
     - regen_pymol_png
