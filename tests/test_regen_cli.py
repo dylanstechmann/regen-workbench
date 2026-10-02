@@ -36,7 +36,7 @@ class RegenCliTests(unittest.TestCase):
              contextlib.redirect_stdout(io.StringIO()) as output:
             regen.cmd_afdb(["P04637"])
 
-        structure = regen.DATA / "structures" / "AF-P04637.pdb"
+        structure = next((regen.DATA / "structures").glob("AF-P04637_*.pdb"))
         self.assertEqual(structure.read_bytes(), b"HEADER\n")
         summary = json.loads(output.getvalue().split("# provenance", 1)[0])
         self.assertEqual(summary["format"], "pdb")
@@ -48,7 +48,7 @@ class RegenCliTests(unittest.TestCase):
              contextlib.redirect_stdout(io.StringIO()) as output:
             regen.cmd_afdb(["P04637"])
 
-        structure = regen.DATA / "structures" / "AF-P04637.cif"
+        structure = next((regen.DATA / "structures").glob("AF-P04637_*.cif"))
         summary = json.loads(output.getvalue().split("# provenance", 1)[0])
         self.assertEqual(summary["cif"], str(structure))
         self.assertEqual(summary["format"], "cif")
@@ -62,7 +62,7 @@ class RegenCliTests(unittest.TestCase):
              contextlib.redirect_stdout(io.StringIO()):
             regen.cmd_interpro(["P04637"])
 
-        saved = json.loads((regen.DATA / "sequences" / "interpro_P04637.json").read_text())
+        saved = json.loads(next((regen.DATA / "sequences").glob("interpro_P04637_*.json")).read_text())
         self.assertEqual([entry["metadata"]["accession"] for entry in saved["results"]], ["IPR001", "IPR002"])
         self.assertEqual(saved["pages_fetched"], 2)
         self.assertIsNone(saved["next"])
@@ -73,19 +73,30 @@ class RegenCliTests(unittest.TestCase):
              contextlib.redirect_stderr(io.StringIO()), \
              self.assertRaises(SystemExit):
             regen.cmd_interpro(["P04637"])
-        self.assertFalse((regen.DATA / "sequences" / "interpro_P04637.json").exists())
+        self.assertEqual(list((regen.DATA / "sequences").glob("interpro_P04637_*.json")), [])
 
     def test_doctor_records_missing_tools(self) -> None:
         with patch.object(regen.shutil, "which", return_value=None), \
              patch.object(regen.subprocess, "check_output", side_effect=FileNotFoundError), \
              patch.object(regen, "record") as record, \
-             contextlib.redirect_stdout(io.StringIO()):
+             contextlib.redirect_stdout(io.StringIO()), \
+             self.assertRaises(SystemExit) as error:
             regen.cmd_doctor([])
 
         status = record.call_args.args[1]
         self.assertFalse(status["ok"])
+        self.assertEqual(error.exception.code, 1)
         self.assertIn("jupyter", status["missing_binaries"])
         self.assertFalse(status["gpu_visible"])
+
+    def test_fold_route_matches_compose_colabfold_entrypoint(self) -> None:
+        with contextlib.redirect_stdout(io.StringIO()) as output:
+            regen.cmd_fold_route(["P04637"])
+        data = json.loads(output.getvalue().split("# provenance", 1)[0])
+        command = data["local_commands"]["colabfold"]
+        self.assertTrue(command.endswith("colabfold /data/sequences/query.fasta /data/structures/colabfold"))
+        self.assertNotIn("colabfold_batch", command)
+        self.assertNotIn("-v $PWD", command)
 
     def test_openalex_sends_key_as_bearer_header(self) -> None:
         with patch.object(regen, "OPENALEX_KEY", "example-test-key"), \

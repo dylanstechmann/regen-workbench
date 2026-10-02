@@ -6,7 +6,7 @@ services:
       dockerfile: docker/research.Dockerfile
     image: regen-research:local
     environment:
-      REGEN_CACHE: /tmp/regen-cache
+      REGEN_CACHE: /lab/cache
       EMAIL: ${EMAIL:-}
       NCBI_API_KEY: ${NCBI_API_KEY:-}
       OPENALEX_API_KEY: ${OPENALEX_API_KEY:-}
@@ -19,7 +19,9 @@ services:
     volumes:
       - ./tools:/lab/workbench/tools:ro
       - ./config:/lab/workbench/config:ro
+      - ./studies:/lab/workbench/studies:rw
       - ./data:/lab/data:rw
+      - ./cache/gnina:/lab/cache/gnina:ro
     read_only: true
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]

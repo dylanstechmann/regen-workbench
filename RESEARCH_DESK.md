@@ -44,18 +44,29 @@ observations; existing areas are reordered without overwriting their fields.
   compare a submitted SMILES variant, enumerate a bounded set of single
   aromatic C-H substitutions, and sample conformers. Images are real RDKit
   depictions, not generated scientific illustrations.
+- **Campaign:** Keep one target hypothesis, species/tissue, endpoint and
+  falsifier together with linked search and chemistry runs. Optional Vina or
+  GNINA docking runs accept one labelled candidate, known-active, known-inactive
+  or bound-reference ligand at a time. Prepared receptor and ligand files must
+  be under `data/structures/`; campaign records also retain the search box and
+  preparation notes. Pose files, copied inputs, settings and hashes are
+  downloadable with each run. The CLI/MCP `regen docking-benchmark` report
+  evaluates score ranking on labelled active/inactive controls and optionally
+  computes no-alignment, symmetry-aware pose RMSD against a native reference.
+  Decoys are excluded from primary metrics; small control sets remain unstable.
 - **Blueprint:** Editable question, population, mechanism, tissue, time,
   rationale, computational approach, falsifier and desired changes.
 - **Runs:** Persistent status, exact parameters, raw response snapshots
   reserialized with secrets removed, calculated results and SHA-256 manifests.
   Individual provider failures yield partial results. Interruptions and
-  failures remain visible. The UI displays the newest 100 runs globally;
-  exports include all persisted runs associated with the chosen blueprint.
+  failures remain visible. History is paginated across all runs for the current
+  blueprint. Exports include all persisted runs and their available artifacts.
 
-Export produces local JSON with the blueprint, observations, complete run
-records and a Markdown draft. It does not publish to Reddit or GitHub. A
-public-facing draft should be reviewed for private details and evidence
-claims; an exported research dossier is not automatically anonymous.
+Export downloads a ZIP with dossier JSON, a research summary, a discussion
+draft, run snapshots, manifests and an artifact index. Manually entered notes
+are excluded by default; an explicit option includes them. It does not publish
+to Reddit or GitHub. Review private details and evidence claims; an exported
+research dossier is not automatically anonymous.
 
 ## What the chemistry actually computes
 
@@ -86,6 +97,28 @@ the existing conformer engine also caps atoms including hydrogens at 300.
 Large peptides such as tirzepatide can be resolved as database records but
 are not forced through this small-molecule workflow. PubChem stereochemical
 SMILES are retained, and unresolved stereochemistry is visible.
+
+## Target Campaigns and Docking
+
+The Campaign view organizes a specific target or mechanism with its species,
+cell/tissue, causal hypothesis, functional endpoint and falsifier. Campaigns
+belong to one research blueprint. Searches and chemistry jobs started while a
+campaign is selected are attached to it. Docking is optional: the research
+image provides Debian-packaged AutoDock Vina and mounts the shared
+`cache/gnina/` directory read-only. GNINA is available only after its pinned
+binary has been installed into that cache.
+
+Docking accepts only existing `.pdbqt` files under `data/structures/`, limits
+files to 25 MiB, fixes GNINA to CNN rescoring, and routes through the same
+bounded workbench runner used by the CLI. No browser-supplied executable or
+arbitrary shell command is run. The runner retains prepared inputs, output
+poses, settings and SHA-256 provenance. Structure preparation, pocket
+selection, protonation, cofactors/metals/waters and pose symmetry still require
+human review. Use the separate `regen docking-benchmark` CLI/MCP operation for
+labelled-control ranking and symmetry-aware redocking RMSD. Vina and GNINA are
+related approaches, so agreement is not independent confirmation. Neither
+score demonstrates binding, senolysis, mutation correction, tissue repair or
+an anti-aging effect.
 
 ## Credentials and integration scope
 

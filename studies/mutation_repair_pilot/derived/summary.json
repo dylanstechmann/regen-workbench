@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-02T17:37:18.597949+00:00",
+  "source_files": [
+    {
+      "file": "body_map_somatic_mutations_supplementary_table3.xlsx",
+      "sha256": "6276DEB0F16AD45871347CA3E705907384A4D66D0EB40833BE18B0A853D837A2",
+      "bytes": 6580184,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM5_ESM.xlsx",
+      "table": "Body-map Supplementary Table 3; coding mutation calls",
+      "verified_sha256": "6276DEB0F16AD45871347CA3E705907384A4D66D0EB40833BE18B0A853D837A2"
+    },
+    {
+      "file": "body_map_somatic_mutations_supplementary_table10.xlsx",
+      "sha256": "25882DE72D6BDBE3BBC901FB88AADC781E105D19BEDF2FA8D5030CF2870EDA23",
+      "bytes": 12413,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-021-03836-1/MediaObjects/41586_2021_3836_MOESM12_ESM.xlsx",
+      "table": "Body-map Supplementary Table 10; driver enrichment p-values",
+      "verified_sha256": "25882DE72D6BDBE3BBC901FB88AADC781E105D19BEDF2FA8D5030CF2870EDA23"
+    },
+    {
+      "file": "skin_supplementary_datasets_s1_s2.xlsx",
+      "sha256": "17F6A04FB38486D62E66A1D5EC0112E5B72C8046302697E8CF73ED95F87D0F14",
+      "bytes": 488802,
+      "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0923753420431990-mmc2.xlsx",
+      "table": "Skin study Supplementary Datasets S1-S2",
+      "verified_sha256": "17F6A04FB38486D62E66A1D5EC0112E5B72C8046302697E8CF73ED95F87D0F14"
+    },
+    {
+      "file": "nanoseq_oral_mutations_supplementary_table8.xlsx",
+      "sha256": "8B79B04D2951F45F70A90A6AD040EB433502A92DB201E161DE6EEE8ACBE15389",
+      "bytes": 46876574,
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12611758/supplementaryFiles",
+      "table": "NanoSeq Supplementary Table 8; oral mutation rows, no participant IDs",
+      "verified_sha256": "8B79B04D2951F45F70A90A6AD040EB433502A92DB201E161DE6EEE8ACBE15389"
+    },
+    {
+      "file": "nanoseq_blood_mutations_supplementary_table9.xlsx",
+      "sha256": "F9705B1E49538257C23EDBD13819C7BB90C82A39F46E0EA242C230FEF435AA55",
+      "bytes": 12921435,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM11_ESM.xlsx",
+      "table": "NanoSeq Supplementary Table 9; blood mutation rows, no participant IDs",
+      "verified_sha256": "F9705B1E49538257C23EDBD13819C7BB90C82A39F46E0EA242C230FEF435AA55"
+    },
+    {
+      "file": "nanoseq_site_selected_replacements_supplementary_table4.xlsx",
+      "sha256": "C37134557DE188F8BFB2CAC998D4DB4B2D73AB1685266AFF4CEB867B5F48B1B6",
+      "bytes": 220995,
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-09584-w/MediaObjects/41586_2025_9584_MOESM6_ESM.xlsx",
+      "table": "NanoSeq Supplementary Table 4; site-level selected replacements",
+      "verified_sha256": "C37134557DE188F8BFB2CAC998D4DB4B2D73AB1685266AFF4CEB867B5F48B1B6"
+    }
+  ],
+  "body_map": {
+    "coding_variant_rows": 66188,
+    "sample_count_with_at_least_one_row": 1731,
+    "liver_coding_variant_rows": 18246,
+    "liver_impact_counts": {
+      "Essential_Splice": 313,
+      "Missense": 12218,
+      "Nonsense": 905,
+      "Stop_loss": 23,
+      "Synonymous": 4587,
+      "no-SNV": 200
+    },
+    "date_coerced_gene_cells": 67,
+    "driver_test_count": 288,
+    "liver_driver_enrichment": [
+      {
+        "gene": "KMT2D",
+        "p_value": 0.000321026892050933,
+        "bh_q_value": 0.012018042680876891
+      },
+      {
+        "gene": "APOB",
+        "p_value": 0.0072389182783176,
+        "bh_q_value": 0.13898723094369794
+      },
+      {
+        "gene": "AMER1",
+        "p_value": 0.0129143943254379,
+        "bh_q_value": 0.21878503327800677
+      },
+      {
+        "gene": "NOTCH2",
+        "p_value": 0.0191901898676289,
+        "bh_q_value": 0.2908828779935328
+      },
+      {
+        "gene": "ARHGAP35",
+        "p_value": 0.0283901901285021,
+        "bh_q_value": 0.36380081424930316
+      },
+      {
+        "gene": "PTCH1",
+        "p_value": 0.0283901901285021,
+        "bh_q_value": 0.36380081424930316
+      },
+      {
+        "gene": "ZNF750",
+        "p_value": 0.0412747571199707,
+        "bh_q_value": 0.45719730963659855
+      },
+      {
+        "gene": "NF1",
+        "p_value": 0.064752739769059,
+        "bh_q_value": 0.5651148198026967
+      },
+      {
+        "gene": "FAT1",
+        "p_value": 0.0922943687839737,
+        "bh_q_value": 0.7383549502717895
+      },
+      {
+        "gene": "ARID2",
+        "p_value": 0.12525545325476,
+        "bh_q_value": 0.9493044878255495
+      },
+      {
+        "gene": "EP300",
+        "p_value": 0.19910004933521,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "NOTCH3",
+        "p_value": 0.248833124628336,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "BNC2",
+        "p_value": 0.319904755715792,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "ERBB2",
+        "p_value": 0.319904755715792,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "RP1L1",
+        "p_value": 0.364148596774325,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "SMARCA4",
+        "p_value": 0.528531498113832,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "CHEK2",
+        "p_value": 0.537558089967051,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "MUC6",
+        "p_value": 0.582673382897184,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "BCOR",
+        "p_value": 0.654205826600432,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "PAX9",
+        "p_value": 0.660541035022596,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "CREBBP",
+        "p_value": 0.750913925450933,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "SETD2",
+        "p_value": 0.750913925450933,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "ERBB3",
+        "p_value": 0.866042109235337,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "MACF1",
+        "p_value": 0.866042109235337,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "RBM10",
+        "p_value": 0.885312153846495,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "ZFHX3",
+        "p_value": 0.915959529332046,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "ARID1A",
+        "p_value": 0.928069951601455,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "TP53",
+        "p_value": 0.928069951601455,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "NOTCH1",
+        "p_value": 1.0,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "SETBP1",
+        "p_value": 1.0,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "STAG2",
+        "p_value": 1.0,
+        "bh_q_value": 1.0
+      },
+      {
+        "gene": "ZFP36L2",
+        "p_value": 1.0,
+        "bh_q_value": 1.0
+      }
+    ],
+    "interpretation": "Rows and one-sided enrichment tests are not per-cell burdens, causal targets, or correction results."
+  },
+  "skin": {
+    "variant_rows": 5214,
+    "donors_joined": 123,
+    "mean_calls_per_donor": 42.390243902439025,
+    "median_calls_per_donor": 27,
+    "min_calls_per_donor": 2,
+    "max_calls_per_donor": 169,
+    "donors_with_protein_altering_TP53_NOTCH1_or_FAT1_call": 98,
+    "protein_altering_annotation_rule": [
+      "missense",
+      "nonsense",
+      "frameshift",
+      "frame_shift",
+      "splice",
+      "in-frame",
+      "inframe",
+      "stop_gain",
+      "stop gain"
+    ],
+    "annotation_counts": {
+      "frameshift": 338,
+      "in frame": 26,
+      "missense": 1690,
+      "non-coding": 2051,
+      "nonsense": 358,
+      "splicing": 232,
+      "synonymous": 519
+    },
+    "complete_case_n": 104,
+    "full_model_r_squared": 0.5474886093749072,
+    "full_model_adjusted_r_squared": 0.4933839865827765,
+    "lmg_share_percent": {
+      "age": 55.09719509667068,
+      "skin_phototype": 17.954416499950007,
+      "sex": 3.838912329574344,
+      "UV_exposure_tissue": 7.786887230291942,
+      "sun_damage_tissue": 7.9165391290784495,
+      "sun_history": 5.412497302825621,
+      "MC1R_genotype": 1.9935524116090275
+    },
+    "by_phototype": [
+      {
+        "phototype": "I",
+        "donors": 14,
+        "mean_age_years": 45.214285714285715,
+        "median_calls": 15.0,
+        "age_multiplier_per_decade": 1.5061551570491434,
+        "predicted_calls_at_65": 50.41608606689543,
+        "bootstrap_95_percent_interval_at_65": [
+          28.209195914980725,
+          92.02993956263286
+        ],
+        "age_model_status": "computed"
+      },
+      {
+        "phototype": "II",
+        "donors": 47,
+        "mean_age_years": 58.59574468085106,
+        "median_calls": 26,
+        "age_multiplier_per_decade": 1.3748654380672272,
+        "predicted_calls_at_65": 35.571903669055416,
+        "bootstrap_95_percent_interval_at_65": [
+          28.861961502348446,
+          44.25053766669909
+        ],
+        "age_model_status": "computed"
+      },
+      {
+        "phototype": "III",
+        "donors": 46,
+        "mean_age_years": 61.891304347826086,
+        "median_calls": 38.5,
+        "age_multiplier_per_decade": 1.300061497642876,
+        "predicted_calls_at_65": 38.85372003041732,
+        "bootstrap_95_percent_interval_at_65": [
+          30.540779808424016,
+          48.02343627458204
+        ],
+        "age_model_status": "computed"
+      },
+      {
+        "phototype": "IV",
+        "donors": 15,
+        "mean_age_years": 59.13333333333333,
+        "median_calls": 16,
+        "age_multiplier_per_decade": 1.2320973284567063,
+        "predicted_calls_at_65": 14.714731016964523,
+        "bootstrap_95_percent_interval_at_65": [
+          9.356786464036368,
+          21.668359266321595
+        ],
+        "age_model_status": "computed"
+      },
+      {
+        "phototype": "missing",
+        "donors": 1,
+        "mean_age_years": 74.0,
+        "median_calls": 26,
+        "age_multiplier_per_decade": null,
+        "predicted_calls_at_65": null,
+        "bootstrap_95_percent_interval_at_65": null,
+        "age_model_status": "insufficient phototype/age observations"
+      }
+    ],
+    "interpretation": "Targeted-panel clone counts are not whole-genome burden, causal effects, edit targets, or evidence that correction reverses skin aging."
+  },
+  "nanoseq": {
+    "oral": {
+      "tissue": "oral",
+      "mutation_rows": 341620,
+      "rows_with_duplex_vaf": 341620,
+      "type_counts": {
+        "del": 30662,
+        "dnv": 1622,
+        "ins": 13181,
+        "mnv": 27,
+        "snv": 296128
+      },
+      "duplex_vaf_p05": 0.000517330574236937,
+      "duplex_vaf_median": 0.00147275405007364,
+      "duplex_vaf_p95": 0.00930232558139535,
+      "interpretation": "Mutation-row distribution; no participant identifiers or person-level prevalence denominator."
+    },
+    "blood": {
+      "tissue": "blood",
+      "mutation_rows": 75377,
+      "rows_with_duplex_vaf": 75377,
+      "type_counts": {
+        "del": 4031,
+        "dnv": 441,
+        "ins": 2395,
+        "mnv": 22,
+        "snv": 68488
+      },
+      "duplex_vaf_p05": 0.000656167979002625,
+      "duplex_vaf_median": 0.00173310225303293,
+      "duplex_vaf_p95": 0.0102040816326531,
+      "interpretation": "Mutation-row distribution; no participant identifiers or person-level prevalence denominator."
+    },
+    "site_selection": {
+      "oral": {
+        "selected_site_rows": 1308,
+        "distinct_genes": 58
+      },
+      "blood": {
+        "selected_site_rows": 21,
+        "distinct_genes": 11
+      }
+    },
+    "interpretation": "Site-level selection and mutation-row VAF summaries are not participant-level outcomes or beneficial repair targets."
+  },
+  "overall_interpretation": "Descriptive reconstruction of public supplementary tables. No source study tested broad correction of ordinary age-acquired mutations as a rejuvenation intervention."
+}

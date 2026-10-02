@@ -31,8 +31,9 @@ only the named child repo. See [PROJECT_SEEDS.md](PROJECT_SEEDS.md).
 2. Natural UniProt protein? `regen afdb ACCESSION`
 3. Designed / orphan monomer ≲ 600 aa? ESMFold (`fair-esm`) on this GPU
 4. Natural sequence that needs an MSA? Use the ColabFold image manually from the host + public MSA server
-5. Complex + ligand + affinity, modest token count? `boltz predict` if installed
-6. Anything that OOMs or needs AF3-class size? Stop. Write a Tamarind/Colab job card in METHODS.md
+5. Known small-molecule site with prepared receptor/ligand PDBQT? Run `regen dock-vina` with an explicit box; if GNINA is installed, compare using `regen dock-gnina --cnn_scoring rescore` with the same box and retain both hash-linked receipts. Agreement prioritizes follow-up; it does not establish binding.
+6. Need a predicted non-covalent protein-ligand complex? Try the optional OpenFold3 preview profile or Boltz if installed and the job fits. These are co-folding predictions, not docking or affinity measurements.
+7. Anything that OOMs or needs more than this laptop? Stop. Write a Tamarind/Colab job card in METHODS.md
 
 ## Chemistry
 
@@ -51,7 +52,9 @@ only the named child repo. See [PROJECT_SEEDS.md](PROJECT_SEEDS.md).
 ## Quality bar
 
 Good: units, hashes, group holdout, published protocol windows, fixtures labeled
-as fixtures, hypothesis cards that include a way to be wrong.
+as fixtures, hypothesis cards that include a way to be wrong. Docking records
+must retain receptor/ligand hashes and search settings; compare methods where
+feasible.
 
 Not good: home cell therapy, uncited structure hallucinations, AF3 claims from
 ESMFold, committing checkpoints, stacking advice, keys in git or chat.

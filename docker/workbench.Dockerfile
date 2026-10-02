@@ -2,7 +2,7 @@
 # CUDA runtime + micromamba scientific stack + agent CLI.
 # Heavy folding weights are NOT baked in; they download into /lab/cache on first use.
 
-FROM nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
+FROM nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     MAMBA_ROOT_PREFIX=/opt/conda \
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libegl1 libopengl0 \
         bzip2 unzip zip jq less vim tmux htop tree \
         ca-certificates gnupg \
-        default-jre-headless \
+        default-jre-headless autodock-vina=1.2.3-2 \
     && rm -rf /var/lib/apt/lists/*
 
 # micromamba
@@ -30,6 +30,7 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
         notebook \
         ipywidgets \
         numpy pandas scipy scikit-learn matplotlib seaborn \
+        openpyxl \
         biopython \
         rdkit \
         openbabel \
@@ -65,7 +66,6 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
         seqkit \
         csvtk \
         parallel \
-        autodock-vina \
         openmm \
     && micromamba clean -a -y
 
@@ -87,9 +87,22 @@ RUN pip install --no-cache-dir \
         fair-esm pubchempy chembl-webresource-client mygene \
         bioservices pyfaidx gemmi
 
-# Optional: Boltz CLI if the package is on PyPI in this environment.
-# Failure here must not break the workbench.
-RUN pip install --no-cache-dir boltz && echo "boltz installed" || echo "boltz pip install skipped"
+# fair-esm's ESMFold import path requires Torch; match the CUDA 12.8 image.
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cu128 \
+        "torch==2.11.0" \
+    && python -c "import esm, torch; print('ESMFold runtime', torch.__version__)"
+
+# Keep Boltz's rapidly changing Torch/CUDA dependencies out of the core stack.
+# Failure to install the optional predictor must not break the workbench.
+RUN python -m venv /opt/boltz \
+    && if /opt/boltz/bin/pip install --no-cache-dir boltz; then \
+        ln -sf /opt/boltz/bin/boltz /usr/local/bin/boltz \
+        && /opt/boltz/bin/boltz --help >/dev/null \
+        && echo "boltz installed in isolated environment"; \
+    else \
+        rm -rf /opt/boltz \
+        && echo "boltz pip install skipped"; \
+    fi
 
 # Non-root user matching typical laptop UIDs; compose can still run as root if needed.
 RUN useradd -m -u 1000 -s /bin/bash regen \
@@ -110,5 +123,6 @@ import Bio, rdkit, numpy, pandas
 from rdkit import Chem
 print("ok", Chem.MolFromSmiles("CCO").GetNumAtoms())
 PY
+RUN vina --version
 
 CMD ["bash"]

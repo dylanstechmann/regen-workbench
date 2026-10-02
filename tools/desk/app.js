@@ -1,7 +1,8 @@
 'use strict';
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
-let workspace, selected = 'reprogramming', activeTab = 'evidence', chemistryRun = null;
+let workspace, selected = 'reprogramming', activeTab = 'evidence', chemistryRun = null, selectedCampaignId = null;
+let runPage = 0, runPageSize = 50, historyRuns = [], historyTotal = 0;
 const runCache = new Map();
 const labels = {title:'Blueprint name',area:'Research area',query:'Default search',question:'Research question',who:'Who / population / species',what:'What / mechanism / intervention',where:'Where / tissue / cell state',when:'When / time horizon',why:'Why / causal hypothesis',how:'How / computational approach',falsifier:'What would disprove the hypothesis?',desired_changes:'Desired changes / competing objectives'};
 const busy = new Set(['queued','running']);
@@ -105,10 +106,10 @@ function renderRecords() {
   }
   $('#evidence-count').textContent = unique.size;
   $('#records').replaceChildren();
-  $('#provider-status').replaceChildren(...currentProviders.map(p => badge(`${p.provider}: ${p.status === 'ok' ? `${p.count} records` : p.error}`,p.status)));
+  $('#provider-status').replaceChildren(...currentProviders.map(p => badge(`${p.run_label} / ${p.provider}: ${p.status === 'ok' ? `${p.count} records` : p.error}`,p.status)));
   for (const h of unique.values()) {
     const row = el('article',null,'record');
-    const source = el('div',null,'source'); source.append(el('div',h.providers.join(' + ')),el('div',h.date));
+    const source = el('div',null,'source'); source.append(el('div',h.providers.join(' + ')),el('div',h.date),el('small',h.run_label || ''));
     const body = el('div'); const title = el('h3'); title.append(safeLink(h.title,h.url)); body.append(title,el('p',h.evidence_type));
     if (h.publication_types?.length) body.append(badge(h.publication_types.join(' / ')));
     if (h.status) body.append(badge(h.status),el('p',`${(h.phases || []).join(', ') || 'Phase not specified'} · Results posted: ${h.has_results ? 'Yes' : 'No'}`));
@@ -125,11 +126,17 @@ async function renderResults() {
   const searches = workspace.runs.filter(r => r.blueprint_id === selected && r.kind === 'search').slice(0,6);
   const runs = await Promise.all(searches.map(r => getRun(r.id,r.status)));
   if (selected !== areaAtStart) return;
-  currentHits = runs.flatMap(r => r.result?.hits || []);
-  currentProviders = runs[0]?.result?.providers || [];
+  currentHits = [];
+  currentProviders = [];
+  for (const run of runs) {
+    const query = run.parameters?.query || '';
+    const runLabel = `${new Date(run.created_utc).toLocaleString()} · ${query.slice(0,72)}`;
+    currentProviders.push(...(run.result?.providers || []).map(provider => ({...provider, run_id:run.id, query, run_label:runLabel})));
+    currentHits.push(...(run.result?.hits || []).map(hit => ({...hit, run_id:run.id, query, run_label:runLabel})));
+  }
   renderRecords();
   if (!chemistryRun) {
-    const latest = workspace.runs.find(r => r.blueprint_id === selected && r.kind !== 'search' && ['complete','partial'].includes(r.status));
+    const latest = workspace.runs.find(r => r.blueprint_id === selected && !['search','docking'].includes(r.kind) && ['complete','partial'].includes(r.status));
     if (latest) {
       const loaded = await getRun(latest.id,latest.status);
       if (selected !== areaAtStart) return;
@@ -147,7 +154,7 @@ function setReference(row) {
 }
 function renderChemistry() {
   const picker = $('#chemistry-run'); picker.replaceChildren();
-  for (const run of workspace.runs.filter(r => r.blueprint_id === selected && r.kind !== 'search' && ['complete','partial'].includes(r.status))) {
+  for (const run of workspace.runs.filter(r => r.blueprint_id === selected && !['search','docking'].includes(r.kind) && ['complete','partial'].includes(r.status))) {
     const option = el('option',`${run.kind} · ${new Date(run.created_utc).toLocaleTimeString()} · ${run.id.slice(0,6)}`);
     option.value = run.id; option.selected = run.id === chemistryRun?.id; picker.append(option);
   }
@@ -194,10 +201,10 @@ function renderChemistry() {
   }
 }
 function renderRuns() {
-  const runs = workspace.runs.filter(r => r.blueprint_id === selected);
-  $('#run-count').textContent = runs.length;
+  const runs = historyRuns;
+  $('#run-count').textContent = historyTotal;
   const container = $('#run-list'); container.replaceChildren();
-  if (!runs.length) { container.append(el('p','No runs in this blueprint.','empty')); return; }
+  if (!historyTotal) { container.append(el('p','No runs in this blueprint.','empty')); $('#run-pagination').replaceChildren(); return; }
   const wrap = el('div',null,'table-wrap'), table = el('table'), header = el('tr');
   ['Started','Operation','Status','Result',''].forEach(s => header.append(el('th',s))); table.append(header);
   for (const run of runs) {
@@ -208,14 +215,33 @@ function renderRuns() {
       const full = await getRun(run.id,run.status); const detail = el('div',null,'run-detail');
       detail.append(el('h3',`${full.kind} · ${full.id.slice(0,12)}`));
       const links = el('div',null,'row'); links.append(safeLink('Run JSON',`/api/artifact/${run.id}/run.json`));
-      if (full.result) links.append(safeLink('Results',`/api/artifact/${run.id}/result.json`),safeLink('Manifest',`/api/artifact/${run.id}/manifest.json`));
-      if (full.kind !== 'search' && full.result) { const show = el('button','Open molecule results'); show.addEventListener('click',() => { chemistryRun = full; if (full.result.molecules?.[0]) setReference(full.result.molecules[0]); renderChemistry(); switchTab('molecules'); }); links.append(show); }
-      detail.append(links,el('pre',JSON.stringify({parameters:full.parameters,status:full.status,error:full.error,providers:full.result?.providers},null,2)));
+      if (full.artifacts?.submission) links.append(safeLink('Submission snapshot',`/api/artifact/${run.id}/submission.json`));
+      if (full.artifacts?.manifest) links.append(safeLink('Manifest',`/api/artifact/${run.id}/manifest.json`));
+      if (full.result && full.artifacts?.result) links.append(safeLink('Results',`/api/artifact/${run.id}/result.json`));
+      if (full.kind === 'docking' && full.result) {
+        links.append(safeLink('Docked poses',full.result.output_artifact));
+        for (const file of full.result.input_artifacts || []) links.append(safeLink('Prepared input',file));
+      }
+      if (!['search','docking'].includes(full.kind) && full.result) { const show = el('button','Open molecule results'); show.addEventListener('click',() => { chemistryRun = full; if (full.result.molecules?.[0]) setReference(full.result.molecules[0]); renderChemistry(); switchTab('molecules'); }); links.append(show); }
+      detail.append(links,el('pre',JSON.stringify({parameters:full.parameters,status:full.status,error:full.error,submission_sha256:full.submission_sha256,providers:full.result?.providers,metrics:full.result?.metrics,interpretation:full.result?.interpretation},null,2)));
       $('#run-detail').replaceChildren(detail);
     }));
     cell.append(open); row.append(cell); table.append(row);
   }
   wrap.append(table); container.append(wrap);
+  const pagination = $('#run-pagination'); pagination.replaceChildren();
+  const pages = Math.max(1,Math.ceil(historyTotal / runPageSize));
+  const previous = el('button','Previous'); previous.disabled = runPage === 0; previous.addEventListener('click',task(async () => { await loadRunPage(runPage - 1); }));
+  const next = el('button','Next'); next.disabled = runPage + 1 >= pages; next.addEventListener('click',task(async () => { await loadRunPage(runPage + 1); }));
+  pagination.append(previous,el('span',`Page ${runPage + 1} of ${pages} · ${historyTotal} runs`),next);
+}
+async function loadRunPage(page = runPage) {
+  const areaAtStart = selected;
+  const params = new URLSearchParams({blueprint_id:selected,offset:String(page * runPageSize),limit:String(runPageSize)});
+  const result = await api(`/api/runs?${params}`);
+  if (selected !== areaAtStart) return;
+  runPage = page; historyRuns = result.runs; historyTotal = result.total;
+  renderRuns();
 }
 async function renderArea() {
   areaNavigation(); const b = current();
@@ -223,18 +249,116 @@ async function renderArea() {
   $('#query').value = b.query || ''; $('#reference-smiles').value = ''; $('#candidate-smiles').value = '';
   $('#reference-visual').replaceChildren(el('span','No structure selected'));
   $('#run-detail').replaceChildren(); $('#notice').hidden = true;
-  renderBlueprint(); renderFindings(); renderNotes(); renderRuns(); await renderResults();
+  selectedCampaignId = null; $('#link-campaign').checked = false;
+  renderBlueprint(); renderFindings(); renderNotes(); renderCampaign(); await loadRunPage(0); await renderResults();
 }
 async function refresh() {
   workspace = await api('/api/state');
   const active = workspace.runs.filter(r => busy.has(r.status));
   $('#connection').textContent = active.length ? `${active.length} active run${active.length === 1 ? '' : 's'}` : 'Ready';
-  renderNotes(); renderRuns(); await renderResults();
+  renderNotes(); renderCampaignRuns(); await loadRunPage(runPage); await renderResults();
 }
 async function submitJob(params) {
-  const run = await api('/api/jobs',{...params,blueprint_id:selected});
+  const {campaign_id:explicitCampaignId, ...jobParams} = params;
+  const campaignId = explicitCampaignId || ($('#link-campaign').checked ? selectedCampaignId : null);
+  const run = await api('/api/jobs',{...jobParams,blueprint_id:selected,...(campaignId ? {campaign_id:campaignId} : {})});
   notice(`${run.kind} run queued. ${run.id.slice(0,12)}`);
   await refresh();
+}
+
+function campaignById() { return workspace.campaigns.find(c => c.id === selectedCampaignId && c.blueprint_id === selected) || null; }
+function updateCampaignLink() {
+  const campaign = campaignById(), toggle = $('#link-campaign');
+  toggle.disabled = !campaign;
+  if (!campaign) toggle.checked = false;
+  $('#campaign-link-target').textContent = campaign ? campaign.title : 'Select a saved campaign to link runs';
+}
+function renderEvidenceAxes(campaign, preset = []) {
+  const container = $('#campaign-evidence'); container.replaceChildren();
+  const axes = workspace.campaign_frameworks?.[selected] || [];
+  const saved = new Map([...(campaign?.evidence || []), ...preset].map(item => [item.axis_id,item]));
+  for (const axis of axes) {
+    const value = saved.get(axis.id) || {};
+    const fieldset = el('fieldset',null,'evidence-axis'); fieldset.append(el('legend',axis.label),el('small',axis.prompt));
+    const fields = el('div',null,'evidence-fields');
+    for (const [field,label] of [['status','Source direction'],['value','Reported value'],['unit','Unit / denominator'],['comparator','Comparator'],['timepoint','Timepoint'],['source_url','Source URL'],['notes','Interpretation / limitations']]) {
+      const wrapper = el('label',label);
+      let input;
+      if (field === 'status') {
+        input = el('select');
+        for (const option of ['not assessed','source reports positive signal','source reports mixed signal','source reports no signal','conflicting sources']) {
+          const choice = el('option',option); choice.value = option; input.append(choice);
+        }
+      } else if (field === 'notes') {
+        input = el('textarea'); input.rows = 2; input.maxLength = 3000;
+      } else {
+        input = el('input'); input.type = field === 'source_url' ? 'url' : 'text'; input.maxLength = 3000;
+      }
+      input.id = `evidence_${axis.id}_${field}`; input.dataset.axis = axis.id; input.dataset.field = field; input.value = value[field] || (field === 'status' ? 'not assessed' : '');
+      wrapper.append(input); fields.append(wrapper);
+    }
+    fieldset.append(fields); container.append(fieldset);
+  }
+}
+function collectCampaignEvidence() {
+  return (workspace.campaign_frameworks?.[selected] || []).map(axis => {
+    const entry = {axis_id:axis.id};
+    for (const field of ['status','value','unit','comparator','timepoint','source_url','notes']) entry[field] = $(`#evidence_${axis.id}_${field}`).value.trim();
+    return entry;
+  });
+}
+function renderCampaign() {
+  const campaigns = workspace.campaigns.filter(c => c.blueprint_id === selected);
+  if (selectedCampaignId && !campaigns.some(c => c.id === selectedCampaignId)) selectedCampaignId = null;
+  $('#campaign-count').textContent = campaigns.length || '';
+  const picker = $('#campaign-select'); picker.replaceChildren();
+  const blank = el('option','New campaign'); blank.value = ''; picker.append(blank);
+  for (const campaign of campaigns) { const option = el('option',campaign.title); option.value = campaign.id; picker.append(option); }
+  picker.value = selectedCampaignId || '';
+  const campaign = campaignById(), form = $('#campaign-form');
+  for (const name of ['title','target','species','tissue','hypothesis','endpoint','falsifier','evidence_stage','study_design','reference_url','receptor','structure_notes','starter_id']) form.elements[name].value = campaign?.[name] || '';
+  const starterPicker = $('#campaign-starter'); starterPicker.replaceChildren(el('option','Blank campaign'));
+  starterPicker.options[0].value = '';
+  for (const starter of workspace.campaign_starters?.[selected] || []) { const option = el('option',starter.title); option.value = starter.id; starterPicker.append(option); }
+  starterPicker.value = campaign?.starter_id || '';
+  renderEvidenceAxes(campaign);
+  for (const [axis,index] of [['x',0],['y',1],['z',2]]) {
+    form.elements[`center_${axis}`].value = campaign?.center?.[index] ?? 0;
+    form.elements[`size_${axis}`].value = campaign?.size?.[index] ?? 20;
+  }
+  const tools = workspace.docking_tools || {};
+  const engine = $('#docking-form').elements.engine;
+  engine.querySelector('[value="vina"]').disabled = !tools.vina;
+  engine.querySelector('[value="gnina"]').disabled = !tools.gnina;
+  if (!tools.vina && tools.gnina) engine.value = 'gnina';
+  else if (tools.vina && engine.selectedOptions[0]?.disabled) engine.value = 'vina';
+  $('#docking-status').textContent = `Vina ${tools.vina ? 'available' : 'unavailable'} · GNINA ${tools.gnina ? 'available' : 'unavailable'}`;
+  $('#docking-form button[type="submit"]').disabled = !campaign || (!tools.vina && !tools.gnina);
+  updateCampaignLink();
+  renderCampaignRuns();
+}
+async function saveCampaign() {
+  const form = $('#campaign-form');
+  const values = Object.fromEntries(new FormData(form));
+  const saved = await api('/api/campaigns',{...values,evidence:collectCampaignEvidence(),id:selectedCampaignId || '',blueprint_id:selected});
+  workspace = await api('/api/state');
+  selectedCampaignId = saved.id;
+  renderCampaign();
+  notice('Campaign saved.');
+  return saved;
+}
+function renderCampaignRuns() {
+  const container = $('#campaign-runs');
+  if (!container) return;
+  const runs = workspace.runs.filter(r => r.campaign_id === selectedCampaignId);
+  container.replaceChildren();
+  if (!selectedCampaignId || !runs.length) { container.append(el('p',selectedCampaignId ? 'No runs linked to this campaign.' : 'Save a campaign to start attaching runs.','empty')); return; }
+  const wrap = el('div',null,'table-wrap'), table = el('table'), header = el('tr');
+  ['Started','Operation','Status','Result'].forEach(label => header.append(el('th',label))); table.append(header);
+  for (const run of runs) {
+    const row = el('tr'); row.append(el('td',new Date(run.created_utc).toLocaleString()),el('td',run.kind),el('td',run.status),el('td',run.summary || run.error || 'Pending')); table.append(row);
+  }
+  wrap.append(table); container.append(wrap);
 }
 $$('[data-tab]').forEach(button => button.addEventListener('click',() => switchTab(button.dataset.tab)));
 $('#source-filter').addEventListener('change',renderRecords); $('#record-filter').addEventListener('input',renderRecords);
@@ -247,6 +371,32 @@ $('#chemistry-run').addEventListener('change',task(async event => {
   renderChemistry();
 }));
 $('#search-form').addEventListener('submit',task(async event => { event.preventDefault(); await submitJob({kind:'search',query:$('#query').value,limit:Number($('#limit').value),providers:$$('#providers input:checked').map(n => n.value)}); }));
+$('#campaign-select').addEventListener('change',task(async event => { selectedCampaignId = event.target.value || null; $('#link-campaign').checked = false; renderCampaign(); }));
+$('#new-campaign').addEventListener('click',() => { selectedCampaignId = null; renderCampaign(); $('#campaign-form [name=title]').focus(); });
+$('#campaign-starter').addEventListener('change',event => {
+  const starter = (workspace.campaign_starters?.[selected] || []).find(item => item.id === event.target.value);
+  if (!starter) return;
+  selectedCampaignId = null; $('#link-campaign').checked = false;
+  renderCampaign();
+  const form = $('#campaign-form');
+  for (const name of ['title','target','species','tissue','hypothesis','endpoint','falsifier','evidence_stage','study_design','reference_url','structure_notes']) form.elements[name].value = starter[name] || '';
+  form.elements.starter_id.value = starter.id;
+  renderEvidenceAxes(null,starter.evidence || []);
+  $('#campaign-starter').value = starter.id;
+  updateCampaignLink();
+  notice('Reference campaign loaded. Verify its source methods and adapt the hypothesis before saving.');
+});
+$('#link-campaign').addEventListener('change',() => {
+  if ($('#link-campaign').checked && !campaignById()) $('#link-campaign').checked = false;
+});
+$('#campaign-form').addEventListener('submit',task(async event => { event.preventDefault(); await saveCampaign(); }));
+$('#docking-form').addEventListener('submit',task(async event => {
+  event.preventDefault();
+  if (!campaignById()) throw new Error('Save a target campaign before docking.');
+  const values = Object.fromEntries(new FormData(event.target));
+  await saveCampaign();
+  await submitJob({kind:'docking',campaign_id:selectedCampaignId,...values,exhaustiveness:Number(values.exhaustiveness),num_modes:Number(values.num_modes),cpu:Number(values.cpu),seed:Number(values.seed)});
+}));
 $('#compound-form').addEventListener('submit',task(async event => { event.preventDefault(); chemistryRun = null; $('#reference-smiles').value = ''; await submitJob({kind:event.submitter.value,name:$('#compound-name').value,threshold:Number($('#threshold').value)}); }));
 $('#variant-form').addEventListener('submit',task(async event => { event.preventDefault(); await submitJob({kind:'variants',smiles:$('#reference-smiles').value,max_mw:Number($('#max-mw').value),max_tpsa:Number($('#max-tpsa').value)}); }));
 $('#compare-form').addEventListener('submit',task(async event => { event.preventDefault(); await submitJob({kind:'compare',smiles:$('#reference-smiles').value,candidate:$('#candidate-smiles').value}); }));
@@ -254,7 +404,14 @@ $('#conformer-form').addEventListener('submit',task(async event => { event.preve
 $('#blueprint-form').addEventListener('submit',task(async event => { event.preventDefault(); const saved = await api('/api/blueprints',{...Object.fromEntries(new FormData(event.target)),id:selected}); await refresh(); areaNavigation(); $('#area-title').textContent = saved.title; $('#area-question').textContent = saved.question; $('#area-category').textContent = saved.area; $('#query').value = saved.query; notice('Blueprint saved.'); }));
 $('#note-form').addEventListener('submit',task(async event => { event.preventDefault(); await api('/api/notes',{...Object.fromEntries(new FormData(event.target)),blueprint_id:selected}); event.target.reset(); await refresh(); notice('Observation saved with its source type and review status.'); }));
 $('#new-blueprint').addEventListener('click',task(async () => { const item = await api('/api/blueprints',{title:'Untitled research blueprint',area:'Open exploration'}); workspace = await api('/api/state'); selected = item.id; chemistryRun = null; await renderArea(); switchTab('blueprint'); $('#blueprint-form [name=title]').select(); }));
-$('#export').addEventListener('click',task(async () => { const data = await api(`/api/export/${selected}`); const url = URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})); const a = el('a'); a.href = url; a.download = `regen-${selected}-dossier.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000); notice('Dossier exported with blueprint, source notes, runs and a Markdown draft.'); }));
+$('#export').addEventListener('click',task(async () => {
+  const includeNotes = $('#include-notes').checked;
+  const response = await fetch(`/api/export/${encodeURIComponent(selected)}.zip?include_notes=${includeNotes ? '1' : '0'}`);
+  if (!response.ok) { const detail = await response.json(); throw new Error(detail.error || `Export failed (${response.status})`); }
+  const url = URL.createObjectURL(await response.blob()), a = el('a'); a.href = url; a.download = `regen-${selected}-dossier.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url),1000);
+  notice(includeNotes ? 'Dossier archive downloaded with manual notes included.' : 'Dossier archive downloaded. Manual notes were excluded.');
+}));
 
 async function init() {
   workspace = await api('/api/state');
@@ -280,7 +437,7 @@ async function init() {
       for (const run of finished) {
         if (run.blueprint_id !== selected) continue;
         notice(`${run.kind}: ${run.summary || run.error || run.status}`,run.status === 'failed');
-        if (run.kind !== 'search' && ['complete','partial'].includes(run.status)) {
+        if (!['search','docking'].includes(run.kind) && ['complete','partial'].includes(run.status)) {
           const loaded = await getRun(run.id,run.status);
           if (run.blueprint_id !== selected) continue;
           chemistryRun = loaded;

@@ -16,11 +16,15 @@ Examples:
   regen msa data/seqs.fasta -o data/seqs.aln
   regen fold-route P04637
   regen rdkit "CCO" --descriptors
+  regen dock-vina receptor.pdbqt ligand.pdbqt --center_x 10 --center_y 12 --center_z 8 --size_x 20 --size_y 20 --size_z 20 -o data/structures/run.pdbqt
+  regen dock-gnina receptor.pdbqt ligand.pdbqt --center_x 10 --center_y 12 --center_z 8 --size_x 20 --size_y 20 --size_z 20 -o data/structures/run.sdf
+  regen docking-benchmark data/structures/controls.csv --direction lower --out data/structures/validation-01
 """
 from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import re
 import shutil
@@ -34,7 +38,7 @@ from typing import Any
 from urllib.parse import quote, urlencode, urljoin, urlsplit
 from urllib.request import Request, urlopen
 
-ROOT = Path(os.environ.get("REGEN_ROOT", "/lab"))
+ROOT = Path(os.environ.get("REGEN_ROOT", str(Path(__file__).resolve().parents[1])))
 DATA = Path(os.environ.get("REGEN_DATA", ROOT / "data"))
 CACHE = Path(os.environ.get("REGEN_CACHE", ROOT / "cache"))
 PROV = DATA / "provenance"
@@ -49,6 +53,11 @@ _RETRYABLE_HTTP_CODES = {429, 500, 502, 503, 504}
 _MAX_RETRIES = 3
 _BACKOFF_BASE_SECONDS = 1.0
 
+GNINA_VERSION = "1.3.3"
+GNINA_ASSET_URL = "https://github.com/gnina/gnina/releases/download/v1.3.3/gnina.cuda12.8.static"
+GNINA_ASSET_SIZE = 2_056_131_000
+GNINA_ASSET_SHA256 = "3340c1f49cd3c7c84d8699182a1c6af13c7fa2a22448d1204640446106f72172"
+
 
 def die(msg: str, code: int = 1) -> None:
     print(f"error: {msg}", file=sys.stderr)
@@ -56,7 +65,9 @@ def die(msg: str, code: int = 1) -> None:
 
 
 def ensure_dirs() -> None:
-    for p in (DATA, CACHE, PROV, DATA / "structures", DATA / "sequences", DATA / "literature"):
+    for p in (
+        DATA, CACHE, PROV, DATA / "structures", DATA / "sequences", DATA / "literature",
+    ):
         p.mkdir(parents=True, exist_ok=True)
 
 
@@ -70,6 +81,26 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(1 << 16), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def probe_executable(path: str | Path | None, expected_sha256: str | None = None) -> dict[str, Any]:
+    if not path:
+        return {"available": False, "path": None, "version": None, "sha256": None, "error": "not installed"}
+    executable = Path(path)
+    if not executable.is_file():
+        return {"available": False, "path": str(executable), "version": None, "sha256": None, "error": "not a regular file"}
+    digest = sha256_file(executable)
+    if expected_sha256 and digest != expected_sha256:
+        return {"available": False, "path": str(executable), "version": None, "sha256": digest, "error": "binary SHA-256 does not match pinned release"}
+    try:
+        completed = subprocess.run([str(executable), "--version"], capture_output=True, text=True, timeout=15, check=False)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {"available": False, "path": str(executable), "version": None, "sha256": digest, "error": f"runtime probe failed: {exc.__class__.__name__}"}
+    version = (completed.stdout or completed.stderr).strip()
+    if completed.returncode != 0 or not version:
+        return {"available": False, "path": str(executable), "version": version.splitlines()[0][:200] if version else None,
+                "sha256": digest, "error": f"runtime probe failed with status {completed.returncode}"}
+    return {"available": True, "path": str(executable), "version": version.splitlines()[0][:200], "sha256": digest, "error": None}
 
 
 def record(action: str, payload: dict[str, Any], outputs: list[Path] | None = None) -> Path:
@@ -151,6 +182,15 @@ def write_bytes(path: Path, blob: bytes) -> Path:
     return path
 
 
+def snapshot_path(directory: Path, prefix: str, suffix: str) -> Path:
+    directory.mkdir(parents=True, exist_ok=True)
+    safe_prefix = re.sub(r"[^A-Za-z0-9._-]+", "_", prefix).strip("._-") or "snapshot"
+    candidate = directory / f"{safe_prefix}_{time.time_ns()}{suffix}"
+    while candidate.exists():
+        candidate = directory / f"{safe_prefix}_{time.time_ns()}{suffix}"
+    return candidate
+
+
 # ---------- commands ----------
 
 def cmd_pubmed(args: list[str]) -> None:
@@ -214,8 +254,10 @@ def cmd_uniprot(args: list[str]) -> None:
     acc = ns.accession.strip()
     meta = http_json(f"https://rest.uniprot.org/uniprotkb/{acc}.json")
     fasta = http_text(f"https://rest.uniprot.org/uniprotkb/{acc}.fasta")
-    meta_path = DATA / "sequences" / f"{acc}.uniprot.json"
-    fa_path = DATA / "sequences" / f"{acc}.fasta"
+    stamp = time.time_ns()
+    safe_acc = re.sub(r"[^A-Za-z0-9._-]+", "_", acc).strip("._-") or "accession"
+    meta_path = DATA / "sequences" / f"{safe_acc}_{stamp}.uniprot.json"
+    fa_path = DATA / "sequences" / f"{safe_acc}_{stamp}.fasta"
     meta_path.write_text(json.dumps(meta, indent=2))
     fa_path.write_text(fasta)
     rec = meta.get("proteinDescription", {}).get("recommendedName", {}).get("fullName", {}).get("value", acc)
@@ -241,7 +283,7 @@ def cmd_afdb(args: list[str]) -> None:
         die("AFDB entry missing structure URL")
     extension = ".cif" if entry.get("cifUrl") else ".pdb"
     blob = http_bytes(structure_url)
-    dest = DATA / "structures" / f"AF-{acc}{extension}"
+    dest = snapshot_path(DATA / "structures", f"AF-{acc}", extension)
     write_bytes(dest, blob)
     summary = {
         "uniprot": acc,
@@ -254,7 +296,7 @@ def cmd_afdb(args: list[str]) -> None:
     }
     summary["cif" if extension == ".cif" else "pdb"] = str(dest)
     print(json.dumps(summary, indent=2))
-    record("afdb", summary, [dest])
+    record("afdb", {**summary, "source_url": structure_url}, [dest])
 
 
 def cmd_pdb(args: list[str]) -> None:
@@ -264,8 +306,10 @@ def cmd_pdb(args: list[str]) -> None:
     p.add_argument("pdb_id")
     ns = p.parse_args(args)
     pdb_id = ns.pdb_id.strip().lower()
+    if not re.fullmatch(r"[a-z0-9]{4}", pdb_id):
+        die("PDB ID must be four letters or digits")
     url = f"https://files.rcsb.org/download/{pdb_id}.cif"
-    dest = DATA / "structures" / f"{pdb_id}.cif"
+    dest = snapshot_path(DATA / "structures", f"pdb-{pdb_id}", ".cif")
     write_bytes(dest, http_bytes(url))
     print(dest)
     record("pdb", {"pdb_id": pdb_id}, [dest])
@@ -283,7 +327,7 @@ def cmd_string(args: list[str]) -> None:
         f"?identifiers={quote(ns.protein)}&species={ns.species}"
     )
     data = http_json(url)
-    out = DATA / "sequences" / f"string_{ns.protein}_{ns.species}.json"
+    out = snapshot_path(DATA / "sequences", f"string_{ns.protein}_{ns.species}", ".json")
     out.write_text(json.dumps(data, indent=2))
     print(f"{len(data)} edges -> {out}")
     record("string", {"protein": ns.protein, "species": ns.species}, [out])
@@ -339,6 +383,10 @@ def cmd_msa(args: list[str]) -> None:
     src, dest = Path(ns.fasta), Path(ns.out)
     if not src.exists():
         die(f"missing fasta {src}")
+    if not src.is_file():
+        die(f"fasta input must be a regular file: {src}")
+    if dest.exists():
+        die(f"refusing to overwrite existing alignment output: {dest}; choose a new path")
     dest.parent.mkdir(parents=True, exist_ok=True)
     if ns.engine == "mafft":
         cmd = ["mafft", "--auto", "--quiet", str(src)]
@@ -348,7 +396,7 @@ def cmd_msa(args: list[str]) -> None:
     else:
         subprocess.check_call(["clustalo", "-i", str(src), "-o", str(dest), "--force"])
     print(dest)
-    record("msa", {"engine": ns.engine, "input": str(src)}, [dest])
+    record("msa", {"engine": ns.engine, "input": str(src.resolve()), "input_sha256": sha256_file(src)}, [dest])
 
 
 def cmd_rdkit(args: list[str]) -> None:
@@ -394,6 +442,10 @@ def cmd_pymol_png(args: list[str]) -> None:
     p.add_argument("-o", "--out", required=True)
     ns = p.parse_args(args)
     src, dest = Path(ns.structure), Path(ns.out)
+    if not src.is_file():
+        die(f"structure input must be a regular file: {src}")
+    if dest.exists():
+        die(f"refusing to overwrite existing image output: {dest}; choose a new path")
     dest.parent.mkdir(parents=True, exist_ok=True)
     # Use Python string literals for user-controlled filesystem paths. Raw
     # interpolation can turn quotes in a filename into executable code.
@@ -422,7 +474,7 @@ cmd.quit()
     finally:
         tmp.unlink(missing_ok=True)
     print(dest)
-    record("pymol-png", {"structure": str(src)}, [dest])
+    record("pymol-png", {"structure": str(src.resolve()), "input_sha256": sha256_file(src)}, [dest])
 
 
 def cmd_openalex(args: list[str]) -> None:
@@ -499,7 +551,7 @@ def cmd_interpro(args: list[str]) -> None:
     data["results"] = entries
     data["next"] = None
     data["pages_fetched"] = pages
-    out = DATA / "sequences" / f"interpro_{acc}.json"
+    out = snapshot_path(DATA / "sequences", f"interpro_{acc}", ".json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, indent=2))
     if not entries:
@@ -526,7 +578,7 @@ def cmd_ensembl(args: list[str]) -> None:
     )
     if not data or "id" not in data:
         die(f"no Ensembl record for {record_id}")
-    out = DATA / "sequences" / f"ensembl_{record_id}.json"
+    out = snapshot_path(DATA / "sequences", f"ensembl_{record_id}", ".json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, indent=2))
     location = ""
@@ -555,18 +607,28 @@ def cmd_fold_route(args: list[str]) -> None:
             "If an experimental structure exists, try: regen pdb PDBID.",
             "If designed / orphan / no good homologs: ESMFold on this laptop for ~<600 aa.",
             "If natural sequence with homologs: colabfold sibling image + public MSA server.",
-            "If complex + ligand + affinity and length fits 16GB: boltz predict (keep tokens modest).",
+            "For a modest non-covalent protein-ligand co-folding hypothesis: optional OpenFold3 preview or Boltz; neither is a docking-score substitute.",
+            "For a known binding site and prepared small-molecule PDBQT inputs: regen dock-vina; compare poses/scores with independent methods.",
             "If it OOMs or is a large multimer: Tamarind academic job or Colab paid GPU — do not fight the card.",
         ],
         "local_commands": {
             "afdb": f"regen afdb {q}",
             "colabfold": (
                 "docker compose --profile gpu run --rm "
-                "-v $PWD/data:/data -v $PWD/cache/colabfold:/cache "
-                "colabfold colabfold_batch /data/sequences/query.fasta /data/structures/colabfold"
+                "colabfold /data/sequences/query.fasta /data/structures/colabfold"
             ),
             "esmfold_hint": "python -c 'import esm; print(\"fair-esm present\")'",
+            "openfold3": (
+                "docker compose --profile openfold3 run --rm openfold3 predict "
+                "--query-json=/data/structures/query.json "
+                "--output-dir=/data/structures/openfold3/run-01"
+            ),
         },
+        "model_notes": [
+            "OpenFold3 is a separate optional Docker profile; current upstream inference is a preview.",
+            "OpenFold3 predicts complex structures; Vina searches poses in a specified binding box.",
+            "Neither a predicted complex nor a docking score demonstrates binding, efficacy, safety, or rejuvenation.",
+        ],
     }
     # If it looks like an accession, probe AFDB.
     if q.isalnum() and q[0].isalpha() and len(q) <= 10:
@@ -578,6 +640,489 @@ def cmd_fold_route(args: list[str]) -> None:
             advice["afdb_error"] = str(e)
     print(json.dumps(advice, indent=2))
     record("fold-route", advice, [])
+
+
+def _docking_input_path(value: str, label: str) -> Path:
+    raw = Path(value)
+    if not raw.is_absolute():
+        raw = ROOT / raw
+    try:
+        path = raw.resolve(strict=True)
+    except OSError:
+        die(f"{label} does not exist or cannot be resolved")
+    roots = [DATA.resolve(strict=False), (ROOT / "projects").resolve(strict=False)]
+    if not any(path == root or root in path.parents for root in roots):
+        die(f"{label} must be under {DATA} or {ROOT / 'projects'}")
+    if not path.is_file() or path.suffix.lower() != ".pdbqt":
+        die(f"{label} must be a regular .pdbqt file")
+    if path.stat().st_size == 0 or path.stat().st_size > 25 * 1024 * 1024:
+        die(f"{label} must be non-empty and no larger than 25 MiB")
+    try:
+        with path.open(encoding="ascii", errors="ignore") as handle:
+            has_atoms = any(line.startswith(("ATOM  ", "HETATM")) for line in handle)
+    except OSError:
+        die(f"{label} cannot be read")
+    if not has_atoms:
+        die(f"{label} contains no ATOM or HETATM records")
+    return path
+
+
+def _docking_output_path(value: str, suffix: str = ".pdbqt") -> Path:
+    raw = Path(value)
+    if not raw.is_absolute():
+        raw = ROOT / raw
+    if raw.suffix.lower() != suffix or not raw.name:
+        die(f"--out must name a {suffix} file")
+    try:
+        parent = raw.parent.resolve(strict=True)
+        data_root = DATA.resolve(strict=False)
+    except OSError:
+        die("--out parent must already exist")
+    if parent != data_root and data_root not in parent.parents:
+        die(f"--out must be under {DATA}")
+    dest = parent / raw.name
+    if dest.exists() or dest.is_symlink():
+        die("--out must be a new file; existing results are never overwritten")
+    return dest
+
+
+def _docking_transcript(
+    stdout: str | bytes | None,
+    stderr: str | bytes | None,
+    replacements: tuple[tuple[str, str], ...] = (),
+) -> str:
+    parts = []
+    for value in (stdout, stderr):
+        if isinstance(value, bytes):
+            value = value.decode("utf-8", errors="replace")
+        if value and value.strip():
+            parts.append(value.strip())
+    transcript = "\n".join(parts)
+    for source, target in replacements:
+        transcript = transcript.replace(source, target)
+    return transcript[-12000:]
+
+
+def _record_docking_failure(
+    action: str,
+    settings: dict[str, Any],
+    message: str,
+    *,
+    stdout: str | bytes | None = None,
+    stderr: str | bytes | None = None,
+    replacements: tuple[tuple[str, str], ...] = (),
+    started: float,
+) -> None:
+    settings.update({
+        "status": "failed",
+        "error": message[:4000],
+        "transcript": _docking_transcript(stdout, stderr, replacements),
+        "elapsed_seconds": round(time.monotonic() - started, 3),
+    })
+    record(action, settings)
+    die(message)
+
+
+def install_gnina() -> dict[str, Any]:
+    """Fetch the pinned official Linux binary into the shared, ignored cache."""
+    ensure_dirs()
+    install_dir = CACHE / "gnina"
+    install_dir.mkdir(parents=True, exist_ok=True)
+    target = install_dir / "gnina"
+    if target.exists():
+        if (target.is_file() and target.stat().st_size == GNINA_ASSET_SIZE
+                and sha256_file(target) == GNINA_ASSET_SHA256):
+            result = {
+                "version": GNINA_VERSION,
+                "status": "verified_existing",
+                "path": str(target),
+                "sha256": GNINA_ASSET_SHA256,
+            }
+            record("install-gnina", result, [target])
+            print(json.dumps(result, indent=2))
+            return result
+        die(f"refusing to overwrite an existing, unverified GNINA file at {target}")
+
+    fd, temp_name = tempfile.mkstemp(prefix=".gnina-download-", dir=install_dir)
+    temp_path = Path(temp_name)
+    digest = hashlib.sha256()
+    total = 0
+    try:
+        request = Request(
+            GNINA_ASSET_URL,
+            headers={"User-Agent": UA, "Accept": "application/octet-stream"},
+        )
+        with os.fdopen(fd, "wb") as output, urlopen(request, timeout=120) as response:
+            content_length = response.headers.get("Content-Length")
+            if content_length and int(content_length) != GNINA_ASSET_SIZE:
+                raise ValueError("release asset size did not match the pinned binary")
+            while chunk := response.read(4 * 1024 * 1024):
+                total += len(chunk)
+                if total > GNINA_ASSET_SIZE:
+                    raise ValueError("release asset exceeded its pinned size")
+                digest.update(chunk)
+                output.write(chunk)
+        if total != GNINA_ASSET_SIZE or digest.hexdigest() != GNINA_ASSET_SHA256:
+            raise ValueError("release asset failed the pinned size or SHA-256 check")
+        os.chmod(temp_path, 0o755)
+        os.link(temp_path, target)
+    except Exception as exc:
+        die(f"GNINA download was not installed: {exc.__class__.__name__}: {exc}")
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+    result = {
+        "version": GNINA_VERSION,
+        "status": "installed",
+        "path": str(target),
+        "size_bytes": total,
+        "sha256": digest.hexdigest(),
+        "release_url": GNINA_ASSET_URL,
+    }
+    record("install-gnina", result, [target])
+    print(json.dumps(result, indent=2))
+    return result
+
+
+def _docking_command_settings(
+    center: tuple[float, float, float],
+    size: tuple[float, float, float],
+    exhaustiveness: int,
+    num_modes: int,
+    cpu: int,
+    seed: int,
+) -> list[str]:
+    if not 1 <= exhaustiveness <= 64:
+        die("exhaustiveness must be between 1 and 64")
+    if not 1 <= num_modes <= 20:
+        die("num_modes must be between 1 and 20")
+    if not 1 <= cpu <= 16:
+        die("cpu must be between 1 and 16")
+    if not 1 <= seed <= 2147483647:
+        die("seed must be between 1 and 2147483647")
+    settings: list[str] = []
+    for axis, value in zip("xyz", center):
+        settings.extend([f"--center_{axis}", str(value)])
+    for axis, value in zip("xyz", size):
+        settings.extend([f"--size_{axis}", str(value)])
+    settings.extend([
+        "--exhaustiveness", str(exhaustiveness),
+        "--num_modes", str(num_modes),
+        "--cpu", str(cpu),
+        "--seed", str(seed),
+    ])
+    return settings
+
+
+def _run_pdbqt_docking(
+    *,
+    action: str,
+    engine: str,
+    executable: str,
+    receptor_arg: str,
+    ligand_arg: str,
+    output_arg: str,
+    center: tuple[float, float, float],
+    size: tuple[float, float, float],
+    command_settings: list[str],
+    engine_settings: dict[str, Any],
+    output_suffix: str = ".pdbqt",
+    timeout: int = 900,
+    exhaustiveness: int = 8,
+    num_modes: int = 9,
+    cpu: int = 4,
+    seed: int = 42,
+) -> dict[str, Any]:
+    receptor = _docking_input_path(receptor_arg, "receptor")
+    ligand = _docking_input_path(ligand_arg, "ligand")
+    dest = _docking_output_path(output_arg, output_suffix)
+    if dest in {receptor, ligand}:
+        die("--out must not overwrite an input")
+    if len(center) != 3 or any(not math.isfinite(v) or abs(v) > 10000 for v in center):
+        die("box center coordinates must be finite and within +/-10000 Angstroms")
+    if len(size) != 3 or any(not math.isfinite(v) or v < 0.1 or v > 80 for v in size):
+        die("box dimensions must be between 0.1 and 80 Angstroms")
+    version = "unknown"
+    try:
+        version_run = subprocess.run(
+            [executable, "--version"], capture_output=True, text=True,
+            timeout=15, check=False,
+        )
+        version_text = (version_run.stdout or version_run.stderr).strip()
+        if version_text:
+            version = version_text.splitlines()[0][:200]
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+
+    started = time.monotonic()
+    settings = {
+        "engine": engine,
+        "version": version,
+        "status": "running",
+        "receptor": str(receptor),
+        "ligand": str(ligand),
+        "center_angstrom": list(center),
+        "box_size_angstrom": list(size),
+        "exhaustiveness": exhaustiveness,
+        "num_modes": num_modes,
+        "cpu": cpu,
+        "seed": seed,
+        "interpretation": (
+            "Docking scores, CNN predictions, and poses are computational hypotheses, "
+            "not measured binding affinity, target engagement, efficacy, safety, "
+            "or anti-aging benefit."
+        ),
+    }
+    settings.update(engine_settings)
+    with tempfile.TemporaryDirectory(prefix=f".regen-{action}-", dir=dest.parent) as temp_dir:
+        temp_dir_path = Path(temp_dir)
+        staged_receptor = temp_dir_path / "receptor.pdbqt"
+        staged_ligand = temp_dir_path / "ligand.pdbqt"
+        temp_output = temp_dir_path / f"poses{output_suffix}"
+        shutil.copyfile(receptor, staged_receptor)
+        shutil.copyfile(ligand, staged_ligand)
+        receptor_sha256 = sha256_file(staged_receptor)
+        ligand_sha256 = sha256_file(staged_ligand)
+        settings["receptor_sha256"] = receptor_sha256
+        settings["ligand_sha256"] = ligand_sha256
+        command = [
+            executable, "--receptor", str(staged_receptor), "--ligand", str(staged_ligand),
+            *command_settings, "--out", str(temp_output),
+        ]
+        try:
+            completed = subprocess.run(
+                command, capture_output=True, text=True, timeout=timeout, check=False,
+            )
+        except subprocess.TimeoutExpired as exc:
+            _record_docking_failure(
+                action,
+                settings,
+                f"{engine} exceeded the {timeout // 60}-minute run limit; no result was published",
+                stdout=exc.stdout,
+                stderr=exc.stderr,
+                replacements=(
+                    (str(staged_receptor), str(receptor)),
+                    (str(staged_ligand), str(ligand)),
+                    (str(temp_output), str(dest)),
+                ),
+                started=started,
+            )
+        except OSError as exc:
+            _record_docking_failure(
+                action,
+                settings,
+                f"could not start {engine}: {exc.__class__.__name__}",
+                started=started,
+            )
+        replacements = (
+            (str(staged_receptor), str(receptor)),
+            (str(staged_ligand), str(ligand)),
+            (str(temp_output), str(dest)),
+        )
+        transcript = _docking_transcript(completed.stdout, completed.stderr, replacements)
+        if completed.returncode != 0:
+            detail = (completed.stderr or completed.stdout or "no diagnostic returned").strip()
+            _record_docking_failure(
+                action,
+                settings,
+                f"{engine} exited with status {completed.returncode}: {detail[-4000:]}",
+                stdout=completed.stdout,
+                stderr=completed.stderr,
+                replacements=replacements,
+                started=started,
+            )
+        if not temp_output.is_file() or temp_output.stat().st_size == 0:
+            _record_docking_failure(
+                action,
+                settings,
+                f"{engine} reported success but produced no pose file",
+                stdout=completed.stdout,
+                stderr=completed.stderr,
+                replacements=replacements,
+                started=started,
+            )
+        try:
+            file_descriptor = os.open(dest, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError:
+            _record_docking_failure(
+                action,
+                settings,
+                "--out was created by another run; existing results are never overwritten",
+                stdout=completed.stdout,
+                stderr=completed.stderr,
+                replacements=replacements,
+                started=started,
+            )
+        os.close(file_descriptor)
+        temp_output.replace(dest)
+
+    settings.update({
+        "status": "succeeded",
+        "elapsed_seconds": round(time.monotonic() - started, 3),
+        "transcript": transcript,
+    })
+    record(action, settings, [dest])
+    result = {**settings, "output": str(dest), "transcript": transcript[-12000:]}
+    print(json.dumps(result, indent=2))
+    return result
+
+
+def run_vina_docking(
+    receptor_arg: str,
+    ligand_arg: str,
+    output_arg: str,
+    *,
+    center: tuple[float, float, float],
+    size: tuple[float, float, float],
+    exhaustiveness: int = 8,
+    num_modes: int = 9,
+    cpu: int = 4,
+    seed: int = 42,
+) -> dict[str, Any]:
+    command_settings = _docking_command_settings(
+        center, size, exhaustiveness, num_modes, cpu, seed,
+    )
+    executable = shutil.which("vina")
+    if not executable:
+        die("AutoDock Vina is not installed; rebuild the workbench image")
+    return _run_pdbqt_docking(
+        action="dock-vina",
+        engine="AutoDock Vina",
+        executable=executable,
+        receptor_arg=receptor_arg,
+        ligand_arg=ligand_arg,
+        output_arg=output_arg,
+        center=center,
+        size=size,
+        command_settings=command_settings,
+        engine_settings={},
+        exhaustiveness=exhaustiveness,
+        num_modes=num_modes,
+        cpu=cpu,
+        seed=seed,
+    )
+
+
+def run_gnina_docking(
+    receptor_arg: str,
+    ligand_arg: str,
+    output_arg: str,
+    *,
+    center: tuple[float, float, float],
+    size: tuple[float, float, float],
+    exhaustiveness: int = 8,
+    num_modes: int = 9,
+    cpu: int = 4,
+    seed: int = 42,
+    cnn_scoring: str = "rescore",
+) -> dict[str, Any]:
+    if cnn_scoring not in {"none", "rescore"}:
+        die("cnn_scoring must be none or rescore in the bounded workbench runner")
+    executable = CACHE / "gnina" / "gnina"
+    gnina_status = probe_executable(executable, GNINA_ASSET_SHA256)
+    if not gnina_status["available"]:
+        die(f"GNINA is unavailable: {gnina_status['error']}; install the pinned release and its runtime libraries")
+    executable_sha256 = gnina_status["sha256"]
+    command_settings = _docking_command_settings(
+        center, size, exhaustiveness, num_modes, cpu, seed,
+    )
+    command_settings.extend(["--cnn_scoring", cnn_scoring, "--no_gpu"])
+    return _run_pdbqt_docking(
+        action="dock-gnina",
+        engine="GNINA",
+        executable=str(executable),
+        receptor_arg=receptor_arg,
+        ligand_arg=ligand_arg,
+        output_arg=output_arg,
+        center=center,
+        size=size,
+        command_settings=command_settings,
+        engine_settings={
+            "cnn_scoring": cnn_scoring,
+            "gpu": False,
+            "cnn_outputs_are_predictions": True,
+            "executable_sha256": executable_sha256,
+        },
+        output_suffix=".sdf",
+        exhaustiveness=exhaustiveness,
+        num_modes=num_modes,
+        cpu=cpu,
+        seed=seed,
+    )
+
+
+def cmd_dock_vina(args: list[str]) -> None:
+    import argparse
+
+    p = argparse.ArgumentParser(prog="regen dock-vina")
+    p.add_argument("receptor", help="prepared receptor .pdbqt under data/ or projects/")
+    p.add_argument("ligand", help="prepared ligand .pdbqt under data/ or projects/")
+    for axis in "xyz":
+        p.add_argument(f"--center_{axis}", type=float, required=True)
+        p.add_argument(f"--size_{axis}", type=float, required=True)
+    p.add_argument("-o", "--out", required=True, help="new output .pdbqt under data/")
+    p.add_argument("--exhaustiveness", type=int, default=8)
+    p.add_argument("--num_modes", type=int, default=9)
+    p.add_argument("--cpu", type=int, default=4)
+    p.add_argument("--seed", type=int, default=42)
+    ns = p.parse_args(args)
+    run_vina_docking(
+        ns.receptor, ns.ligand, ns.out,
+        center=(ns.center_x, ns.center_y, ns.center_z),
+        size=(ns.size_x, ns.size_y, ns.size_z),
+        exhaustiveness=ns.exhaustiveness, num_modes=ns.num_modes,
+        cpu=ns.cpu, seed=ns.seed,
+    )
+
+
+def cmd_install_gnina(args: list[str]) -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(prog="regen install-gnina")
+    parser.parse_args(args)
+    install_gnina()
+
+
+def cmd_dock_gnina(args: list[str]) -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(prog="regen dock-gnina")
+    parser.add_argument("receptor", help="prepared receptor .pdbqt under data/ or projects/")
+    parser.add_argument("ligand", help="prepared ligand .pdbqt under data/ or projects/")
+    for axis in "xyz":
+        parser.add_argument(f"--center_{axis}", type=float, required=True)
+        parser.add_argument(f"--size_{axis}", type=float, required=True)
+    parser.add_argument("-o", "--out", required=True, help="new output .sdf under data/")
+    parser.add_argument("--exhaustiveness", type=int, default=8)
+    parser.add_argument("--num_modes", type=int, default=9)
+    parser.add_argument("--cpu", type=int, default=4)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--cnn_scoring", choices=("none", "rescore"), default="rescore")
+    ns = parser.parse_args(args)
+    run_gnina_docking(
+        ns.receptor, ns.ligand, ns.out,
+        center=(ns.center_x, ns.center_y, ns.center_z),
+        size=(ns.size_x, ns.size_y, ns.size_z),
+        exhaustiveness=ns.exhaustiveness, num_modes=ns.num_modes,
+        cpu=ns.cpu, seed=ns.seed, cnn_scoring=ns.cnn_scoring,
+    )
+
+
+def cmd_docking_benchmark(args: list[str]) -> None:
+    import argparse
+
+    from docking_benchmark import create_report
+
+    parser = argparse.ArgumentParser(prog="regen docking-benchmark")
+    parser.add_argument("input", help="CSV with compound_id, role, score and optional pose/reference SDF columns")
+    parser.add_argument("--direction", choices=("lower", "higher"), default="lower", help="which score direction ranks better")
+    parser.add_argument("-o", "--out", required=True, help="new report directory under data/")
+    ns = parser.parse_args(args)
+    try:
+        result = create_report(ns.input, ns.out, ns.direction, workbench_root=ROOT, data_root=DATA, record=record)
+    except (ValueError, OSError) as exc:
+        die(str(exc))
+    print(json.dumps(result, ensure_ascii=True, indent=2, allow_nan=False))
 
 
 def cmd_doctor(args: list[str]) -> None:
@@ -594,6 +1139,13 @@ def cmd_doctor(args: list[str]) -> None:
         print(f"{b:12} {path or 'MISSING'}")
         if not path:
             missing_binaries.append(b)
+    gnina_path = CACHE / "gnina" / "gnina"
+    gnina_status = probe_executable(gnina_path if gnina_path.is_file() else None, GNINA_ASSET_SHA256)
+    if not gnina_path.is_file():
+        gnina_status["error"] = "not installed (regen install-gnina)"
+    vina_status = probe_executable(shutil.which("vina"))
+    print(f"{'vina':12} {vina_status['version'] or vina_status['error']}")
+    print(f"{'gnina':12} {gnina_status['version'] or gnina_status['error']}")
     print("\n== python ==")
     failed_imports = []
     for mod in ["Bio", "rdkit", "numpy", "pandas", "scanpy", "anndata", "esm"]:
@@ -613,12 +1165,21 @@ def cmd_doctor(args: list[str]) -> None:
         print("nvidia-smi not visible:", e)
     print("\n== container isolation ==")
     print("Docker socket is intentionally not mounted; manage Docker pipelines from the host.")
+    required_failures = list(missing_binaries) + list(failed_imports)
+    if not vina_status["available"]:
+        required_failures.append("vina runtime probe")
+    ok = not required_failures
     record("doctor", {
-        "ok": not missing_binaries and not failed_imports,
+        "ok": ok,
+        "required_failures": required_failures,
         "missing_binaries": missing_binaries,
         "failed_imports": failed_imports,
         "gpu_visible": gpu_visible,
+        "vina": vina_status,
+        "gnina": gnina_status,
     }, [])
+    if not ok:
+        raise SystemExit(1)
 
 
 def cmd_help(_: list[str]) -> None:
@@ -671,6 +1232,10 @@ COMMANDS = {
     "rdkit": cmd_rdkit,
     "pymol-png": cmd_pymol_png,
     "fold-route": cmd_fold_route,
+    "dock-vina": cmd_dock_vina,
+    "install-gnina": cmd_install_gnina,
+    "dock-gnina": cmd_dock_gnina,
+    "docking-benchmark": cmd_docking_benchmark,
     "doctor": cmd_doctor,
     "help": cmd_help,
 }
