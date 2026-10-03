@@ -1,0 +1,25 @@
+{
+  "request_id": "1UBQ-public",
+  "inputs": [
+    {
+      "input_id": "1UBQ-public",
+      "molecules": [
+        {
+          "type": "protein",
+          "id": "A",
+          "sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+          "msa": {
+            "query_only": {
+              "a3m": {
+                "alignment": ">query\nMQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG\n",
+                "format": "a3m"
+              }
+            }
+          }
+        }
+      ],
+      "diffusion_samples": 1,
+      "output_format": "cif"
+    }
+  ]
+}

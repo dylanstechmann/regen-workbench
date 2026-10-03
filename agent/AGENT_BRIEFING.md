@@ -9,7 +9,10 @@ Do not ask anyone to paste API keys or passwords into chat.
 
 Hardware: ~64 GB RAM, 16 GB VRAM, i9, lots of disk. Docker image
 `regen-workbench:local` is already running. Heavy tools that do not fit
-16 GB must be routed to Tamarind / Colab, not hammered until OOM.
+16 GB must not be retried until OOM; route supported inputs to the opt-in
+JapanFold or NVIDIA hosted CLI, or to Tamarind / Colab / an explicitly approved
+Modal job after checking cost, licensing, and data flow.
+Modal is a compute option, not an integrated workbench backend yet.
 
 ## First commands
 
@@ -32,8 +35,10 @@ only the named child repo. See [PROJECT_SEEDS.md](PROJECT_SEEDS.md).
 3. Designed / orphan monomer ≲ 600 aa? ESMFold (`fair-esm`) on this GPU
 4. Natural sequence that needs an MSA? Use the ColabFold image manually from the host + public MSA server
 5. Known small-molecule site with prepared receptor/ligand PDBQT? Run `regen dock-vina` with an explicit box; if GNINA is installed, compare using `regen dock-gnina --cnn_scoring rescore` with the same box and retain both hash-linked receipts. Agreement prioritizes follow-up; it does not establish binding.
-6. Need a predicted non-covalent protein-ligand complex? Try the optional OpenFold3 preview profile or Boltz if installed and the job fits. These are co-folding predictions, not docking or affinity measurements.
-7. Anything that OOMs or needs more than this laptop? Stop. Write a Tamarind/Colab job card in METHODS.md
+6. Need a predicted non-covalent protein-ligand complex? Try the optional local OpenFold3 preview profile or Boltz if installed and the job fits. The NVIDIA hosted OpenFold3 trial accepts ligands for opt-in public inputs; JapanFold's OpenFold3 checkpoint currently does not. These are co-folding predictions, not docking or affinity measurements.
+7. Anything that OOMs or needs more than this laptop? Stop. Select the
+   opt-in JapanFold/NVIDIA CLI, Tamarind, Colab, or Modal after checking provider
+   terms, input handling, and cost. For a manual provider, write a job card in METHODS.md.
 
 ## Chemistry
 

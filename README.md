@@ -139,6 +139,14 @@ what data has already been fetched. The server has no arbitrary shell tool and
 does not run folding models. Fetch/render calls write provenance under
 `data/provenance/`.
 
+Hosted OpenFold3 runs use a separate, one-off `remote-fold` Compose profile:
+`regen fold-japanfold` for protein/RNA/DNA inputs and `regen fold-nvidia` for
+native NVIDIA requests, followed by `regen compare-structures` for a reference
+check. The profile reads only the two provider keys from the ignored host
+`.env`, saves outputs under ignored `data/structures/`, and exits after each
+command. It does not expose inference through MCP or the research desk. See
+[DOCKING.md](DOCKING.md) for commands, provider limits, and public benchmarks.
+
 Saved desk-run integrity can be checked without changing data or making
 network calls:
 

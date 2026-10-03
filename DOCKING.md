@@ -186,6 +186,142 @@ OpenFold3 and Boltz are alternatives for complex-structure hypotheses. For a
 known ligand pocket, use an experimental receptor and a docking engine; do not
 interpret co-folded placement as a docking score or measured binding.
 
+### Remote OpenFold3 Options
+
+Checked 2026-10-03. The explicit `regen fold-japanfold` and
+`regen fold-nvidia` CLI commands run in a one-off Compose service. Remote model
+inference is not exposed through MCP or the research desk.
+
+- **JapanFold (ai& / Tenstorrent):** Its async API lists OpenFold3 and starts
+  new accounts with $100 credit and no card. The published rate is
+  **$0.26 per processor-hour**, billed for chip time used (queue wait is not
+  charged), rather than a fixed price per prediction. The provider does not
+  publish an OpenFold3 per-fold example, so actual cost depends on measured job
+  time. Important capability caveat: its current `openfold3` model accepts
+  protein/RNA/DNA but not small-molecule ligands; `openbind` is the separate
+  OpenFold-derived checkpoint that accepts ligands. Its model table reports a
+  1664-residue limit in the live `GET /v1/models` response checked on this date
+  and describes OpenFold3 as a preview checkpoint. The provider says job files
+  are retained for up to 30 days and inputs are not used to train models.
+  With MSA enabled, the sequence also goes to an external MSA server; review
+  that data flow before submitting private inputs. See [API overview and pricing](https://japanfold.aiand.com/),
+  [API workflow](https://japanfold.aiand.com/docs/),
+  [model limits](https://japanfold.aiand.com/docs/models-and-limits/), and
+  [prediction input and MSA handling](https://docs.japanfold.aiand.com/predictions/).
+- **NVIDIA API Catalog:** NVIDIA publishes a hosted OpenFold3 prediction
+  endpoint. NVIDIA Developer program members have free NIM API access for
+  prototyping, but I found no published per-job rate, quota, or production price.
+  This preview is subject to NVIDIA API Trial Terms. NVIDIA's model page says
+  trial inputs and outputs may be recorded to provide the trial and improve
+  products; do not use it for confidential or personal data without reviewing
+  the terms. The hosted service is the lowest-cost first test for public,
+  non-sensitive sequences if the account is eligible. See the
+  [endpoint reference](https://docs.api.nvidia.com/nim/reference/openfold-openfold3-infer),
+  [NIM pricing/access](https://docs.api.nvidia.com/nim/docs/run-anywhere), and
+  [model page and trial notice](https://build.nvidia.com/openfold/openfold3).
+- **OMTX Om API:** Its public route list includes asynchronous OpenFold3 jobs
+  (`POST /v2/hub/openfold3/start`). The authenticated `GET /v2/pricing`
+  manifest returns current model prices. The configured account's manifest
+  returned **150 cents ($1.50) per OpenFold3 job** on 2026-10-03; treat this as
+  a dated account-specific snapshot and recheck before each campaign. See the
+  [OpenFold3 route](https://www.omtx.ai/docs/api/hub/routes) and
+  [pricing manifest](https://www.omtx.ai/docs/api/pricing).
+- **Tamarind Bio:** Its hosted catalog includes OpenFold3 served by NVIDIA
+  BioNeMo NIM, and its Free plan advertises 10 jobs/month with access to all
+  models. Open API access is listed under Premium, whose price is not public.
+  This may be useful for manual trials, but it is not yet a priced API option
+  for automated workbench runs. See [OpenFold3](https://app.tamarind.bio/openfold)
+  and [plan comparison](https://www.tamarind.bio/pricing).
+- **Modal:** A self-hosted OpenFold3 NIM is supported on an L40S. Using
+  Modal's published L40S, CPU, and memory rates with NVIDIA's minimum NIM
+  allocation (8 physical CPU cores and 64 GiB RAM) gives a rough baseline of
+  **$2.84 per billable hour** (about **$0.047 per minute**), before startup,
+  model downloads, storage, or any region premium. Modal bills application
+  loading and its default 60-second post-request container retention; Starter
+  currently includes $30/month compute credit. This is an infrastructure
+  estimate for the NIM deployment, not a measured per-prediction cost for the
+  upstream `openfoldconsortium/openfold3` image used by this Compose profile.
+  NVIDIA's developer-program NIM allowance is for research/development/testing;
+  production NIM licensing is separate (NVIDIA currently lists AI Enterprise
+  starting at $4,500/GPU/year) and is not included in this estimate.
+  See [Modal pricing](https://modal.com/pricing), [NIM requirements](https://docs.nvidia.com/nim/bionemo/openfold3/1.6.0/support-matrix.html),
+  and [Modal GPU options](https://modal.com/docs/guide/gpu).
+
+**Recommended order:** for protein/RNA/DNA-only predictions, JapanFold is the
+clearest low-cost API to benchmark: it has a $100 starter credit and the lowest
+publicly posted compute rate. For an OpenFold3 protein-ligand complex, the
+NVIDIA hosted preview is the first zero-price prototype to test if its trial
+data terms are acceptable; its API schema supports ligand inputs. If that
+preview's terms or account limits are unsuitable, query OMTX's authenticated
+price or compare JapanFold's ligand-capable `openbind`/Boltz-2 as different
+models. Use Modal when control, reproducibility, or provider limits justify
+the higher infrastructure cost. The raw published hourly rates differ by
+about 11x between JapanFold and the Modal NIM baseline, but their hardware and
+resource units are not equivalent; benchmark actual time, cost, and outputs.
+An `NGC_API_KEY` used to pull containers should not be assumed to authorize
+NVIDIA API Catalog requests. Keep remote execution opt-in per run: show the
+provider, data leaving the machine, and known cost/unknown pricing before
+submission; record provider, model/version, input hash, job ID, and result
+hashes without recording secrets.
+
+### Remote CLI
+
+From the repository root, these commands use only the configured provider
+keys in the ignored host `.env`. Choose a new output directory for each run.
+The one-off container has a read-only root and no host Git or Docker socket;
+results and provenance remain under gitignored `data/`.
+
+```powershell
+docker compose --profile remote-fold run --rm --no-deps remote-fold fold-japanfold submit --input /lab/workbench/examples/mdm2-p53-1ycr.yaml --out /lab/data/structures/openfold3/my-1ycr-japanfold
+docker compose --profile remote-fold run --rm --no-deps remote-fold fold-japanfold wait --out /lab/data/structures/openfold3/my-1ycr-japanfold
+docker compose --profile remote-fold run --rm --no-deps remote-fold fold-japanfold collect --out /lab/data/structures/openfold3/my-1ycr-japanfold
+docker compose --profile remote-fold run --rm --no-deps remote-fold fold-nvidia predict /lab/workbench/examples/openfold3-nvidia-mdm2-p53-1ycr.json --out /lab/data/structures/openfold3/my-1ycr-nvidia
+```
+
+Use `fold-japanfold submit --fasta` for a single protein chain and `--input`
+for a protein/RNA/DNA complex FASTA or Boltz YAML. JapanFold's default MSA
+step sends sequences to an external MSA server; `--no-msa` requests a
+single-sequence fold. NVIDIA's hosted API requires an explicit MSA for each
+protein/RNA input; the tracked JSON examples supply only the query sequence,
+not a homology search. The NVIDIA API may retain trial inputs and outputs.
+`regen compare-structures` validates run manifest hashes and reports selected
+chain C-alpha RMSD; its optional partner-chain mode measures partner pose and
+contact recovery after receptor alignment. It does not estimate binding.
+
+### Public OpenFold3 Benchmarks
+
+On 2026-10-03, we ran two public [RCSB 1UBQ](https://www.rcsb.org/structure/1UBQ)
+ubiquitin monomer predictions and two public
+[RCSB 1YCR](https://www.rcsb.org/structure/1YCR) MDM2/p53-peptide complex
+predictions. Each used one diffusion sample and CIF output. The comparer
+verified saved output hashes before measuring coordinates.
+
+| Input | Provider and MSA | Receptor/monomer C-alpha RMSD vs PDB | Partner pose and 8 Angstrom contacts vs PDB |
+|---|---|---:|---|
+| 1UBQ (76 residues) | JapanFold, MSA depth 9656 | 1.0889 Angstrom (76/76 C-alpha) | Not applicable |
+| 1UBQ (76 residues) | NVIDIA, query-only MSA | 0.9860 Angstrom (76/76 C-alpha) | Not applicable |
+| 1YCR MDM2 A + p53 B | JapanFold, MSA depth 1202 | 0.7348 Angstrom (85 observed A C-alpha) | B pose 1.7000 Angstrom; 19/28 reference contacts recovered |
+| 1YCR MDM2 A + p53 B | NVIDIA, query-only MSA | 8.0160 Angstrom (85 observed A C-alpha) | B pose 26.0104 Angstrom; 1/28 reference contacts recovered |
+
+For 1YCR, the crystal structure has coordinates for 85/109 MDM2 and 13/15
+p53 input residues. Comparisons used an explicit 0.75 candidate coverage gate
+and exact sequence identity on aligned residues. JapanFold reported ipTM
+0.79791; NVIDIA reported ipTM 0.13512. The NVIDIA result does not reproduce
+the experimental complex placement in this run. Different MSA inputs are a
+major confounder, and both PDB entries were released decades ago and may
+overlap model training data. This is an operational benchmark, not a blind
+accuracy study or evidence about
+age reversal. Neither prediction is a measured interaction or treatment.
+
+The JapanFold 1UBQ job reported 59.0 s runtime and 1.1 s load; the 1YCR job
+reported 101.7 s runtime. At $0.26 per processor-hour on one processor, these
+suggest approximately $0.00434 and $0.00735, respectively. The API did not
+return billed amounts. NVIDIA's trial responses did not include a charge.
+Saved structures, comparison reports, and provenance are local in gitignored
+`data/structures/openfold3/` and `data/provenance/`. New submissions also save
+the exact input and request bytes with hashes; the earlier 1YCR JapanFold run
+has a plan input hash matching the tracked public YAML example.
+
 ## Tool Availability
 
 The Campaign view in the research desk can group a target hypothesis and link

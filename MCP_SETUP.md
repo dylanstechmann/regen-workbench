@@ -28,10 +28,12 @@ docking is CPU-only and CNN scores remain computational hypotheses. MCP does
 not launch structure-model inference. The docking benchmark requires an input
 CSV under `/lab/data` or `/lab/projects`, and writes a new hashed report under
 `/lab/data`; it excludes decoys from measured active/inactive-control metrics.
-OpenFold3 is an optional host-side
-Compose profile; see [DOCKING.md](DOCKING.md). For structures, fetch
-experimental/AFDB entries first; jobs that exceed the laptop's actual GPU/RAM
-budget need an explicitly chosen overflow provider.
+Local OpenFold3 remains an optional host-side Compose profile. JapanFold and
+NVIDIA hosted OpenFold3 use a separate one-off `remote-fold` profile with an
+explicit CLI command; provider keys are not passed to MCP. See
+[DOCKING.md](DOCKING.md). For structures, fetch experimental/AFDB entries
+first; jobs that exceed the laptop's actual GPU/RAM budget need an explicitly
+chosen overflow provider.
 
 ## Start the services
 

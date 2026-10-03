@@ -1,0 +1,9 @@
+# Public two-chain structure benchmark: https://www.rcsb.org/structure/1YCR
+# Chain A is the human MDM2 N-terminal domain; chain B is a p53 peptide.
+sequences:
+  - protein:
+      id: A
+      sequence: SQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVVNQQESSDSGTSVSEN
+  - protein:
+      id: B
+      sequence: SQETFSDLWKLLPEN

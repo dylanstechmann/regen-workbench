@@ -119,6 +119,27 @@ class RegenCliTests(unittest.TestCase):
              self.assertRaises(SystemExit):
             regen.cmd_pipeline(["--bad"])
 
+    def test_remote_fold_commands_dispatch_explicit_arguments(self) -> None:
+        with patch("regen_japanfold.main", return_value=0) as japanfold:
+            regen.main(["fold-japanfold", "submit", "--fasta", "public.fasta", "--out", "run"])
+            japanfold.assert_called_once_with(["submit", "--fasta", "public.fasta", "--out", "run"])
+        with patch("regen_nvidia.main") as nvidia:
+            regen.main(["fold-nvidia", "predict", "public.json", "--out", "run"])
+            nvidia.assert_called_once_with(["predict", "public.json", "--out", "run"])
+
+    def test_structure_comparison_failure_is_not_silent(self) -> None:
+        with patch("structure_compare.main", return_value=2) as compare, \
+             self.assertRaises(SystemExit) as error:
+            regen.main(["compare-structures", "reference.cif", "prediction.cif"])
+        compare.assert_called_once_with(["reference.cif", "prediction.cif"])
+        self.assertEqual(error.exception.code, 2)
+
+    def test_japanfold_failure_is_not_silent(self) -> None:
+        with patch("regen_japanfold.main", return_value=1), \
+             self.assertRaises(SystemExit) as error:
+            regen.main(["fold-japanfold", "status", "--out", "missing-run"])
+        self.assertEqual(error.exception.code, 1)
+
 
 class RetryTests(unittest.TestCase):
     """Tests for _http_with_retry exponential backoff."""

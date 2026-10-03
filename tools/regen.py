@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """regen — local stand-in for ChatGPT / Antigravity science-plugin lookups.
 
-Subcommands talk to public APIs or local binaries and always write a
-provenance record under $REGEN_DATA/provenance/.
+Subcommands talk to public APIs or local binaries. Fetches and runs write
+provenance under $REGEN_DATA/provenance/; hosted folds also save run manifests.
 
 Examples:
   regen pubmed "AK2 splice variant iPSC" --retmax 15
@@ -15,6 +15,9 @@ Examples:
   regen pdb 1A3N
   regen msa data/seqs.fasta -o data/seqs.aln
   regen fold-route P04637
+  regen fold-japanfold submit --fasta examples/ubiquitin-1ubq.fasta --out data/structures/openfold3/ubiquitin-run
+  regen fold-nvidia predict examples/openfold3-nvidia-1ubq.json --out data/structures/openfold3/nvidia-run
+  regen compare-structures data/structures/reference.cif data/structures/prediction.cif
   regen rdkit "CCO" --descriptors
   regen dock-vina receptor.pdbqt ligand.pdbqt --center_x 10 --center_y 12 --center_z 8 --size_x 20 --size_y 20 --size_z 20 -o data/structures/run.pdbqt
   regen dock-gnina receptor.pdbqt ligand.pdbqt --center_x 10 --center_y 12 --center_z 8 --size_x 20 --size_y 20 --size_z 20 -o data/structures/run.sdf
@@ -1213,6 +1216,28 @@ def cmd_pipeline(argv: list[str]) -> None:
         die(str(exc))
 
 
+def cmd_fold_japanfold(argv: list[str]) -> None:
+    from regen_japanfold import main as japanfold_main
+
+    status = japanfold_main(argv)
+    if status:
+        raise SystemExit(status)
+
+
+def cmd_fold_nvidia(argv: list[str]) -> None:
+    from regen_nvidia import main as nvidia_main
+
+    nvidia_main(argv)
+
+
+def cmd_compare_structures(argv: list[str]) -> None:
+    from structure_compare import main as compare_main
+
+    status = compare_main(argv)
+    if status:
+        raise SystemExit(status)
+
+
 COMMANDS = {
     "pipeline": cmd_pipeline,
     "expression-contrast": cmd_expression_contrast,
@@ -1232,6 +1257,9 @@ COMMANDS = {
     "rdkit": cmd_rdkit,
     "pymol-png": cmd_pymol_png,
     "fold-route": cmd_fold_route,
+    "fold-japanfold": cmd_fold_japanfold,
+    "fold-nvidia": cmd_fold_nvidia,
+    "compare-structures": cmd_compare_structures,
     "dock-vina": cmd_dock_vina,
     "install-gnina": cmd_install_gnina,
     "dock-gnina": cmd_dock_gnina,

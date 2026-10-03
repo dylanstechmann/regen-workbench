@@ -112,6 +112,34 @@ services:
       - /tmp:rw,noexec,nosuid,size=256m
     command: ["sleep", "infinity"]
 
+  # One-off hosted folding commands. Keys are passed from the ignored host
+  # .env only to this container, never to the long-lived MCP service.
+  remote-fold:
+    image: regen-workbench:local
+    profiles: ["remote-fold"]
+    user: "0:0"
+    read_only: true
+    working_dir: /lab/workbench
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - REGEN_ROOT=/lab/workbench
+      - REGEN_DATA=/lab/data
+      - REGEN_CACHE=/tmp/regen-cache
+      - JAPANFOLD_API_KEY=${JAPANFOLD_API_KEY:-}
+      - NVIDIA_API_KEY=${NVIDIA_API_KEY:-}
+    volumes:
+      - ./tools:/lab/workbench/tools:ro
+      - ./examples:/lab/workbench/examples:ro
+      - ./data:/lab/data:rw
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    entrypoint: ["python", "/lab/workbench/tools/regen.py"]
+    command: ["help"]
+
   # Official ColabFold image — used as a sibling, not baked into workbench.
   # Started on demand: docker compose --profile gpu run --rm colabfold ...
   colabfold:

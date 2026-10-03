@@ -19,7 +19,10 @@ capabilities:
   structures:
     fetch: [regen afdb, regen pdb]
     predict_local: [esmfold via fair-esm, boltz if installed, colabfold sibling image, OpenFold3 preview optional profile]
-    predict_overflow: [Tamarind, Colab paid GPU, Vertex]
+    predict_remote_opt_in: [regen fold-japanfold for protein/RNA/DNA, regen fold-nvidia for protein/RNA/DNA/ligand]
+    predict_overflow_manual: [Tamarind, Colab paid GPU, Modal]
+    compare: [regen compare-structures for chain RMSD and complex contact recovery]
+    remote_execution: One-off remote-fold Compose profile only; no model inference through MCP or the research desk.
     visualize: [pymol -cq, py3Dmol in Jupyter]
   sequences:
     align_local: [mafft, muscle, clustalo]
@@ -58,7 +61,12 @@ capabilities:
 fold_routing:
   designed_or_orphan_monomer: esmfold
   natural_protein_with_homologs: colabfold_msa_server
-  protein_ligand_complex_prediction: openfold3_preview_or_boltz_if_fits_16gb_else_tamarind
+  protein_ligand_complex_prediction: >-
+    Try NVIDIA OpenFold3 hosted preview or local Boltz if it fits. JapanFold
+    OpenFold3 currently rejects ligands.
+  protein_nucleic_complex_prediction: >-
+    Try JapanFold OpenFold3 or the NVIDIA OpenFold3 trial after reviewing each
+    provider's input handling and limits.
   known_small_molecule_binding_site: vina_and_optional_gnina_on_prepared_inputs
   experimental_structure_exists: fetch_pdb_first
   already_in_afdb: fetch_afdb_first

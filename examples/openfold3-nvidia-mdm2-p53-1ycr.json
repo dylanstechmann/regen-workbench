@@ -1,0 +1,38 @@
+{
+  "request_id": "1YCR-mdm2-p53-public",
+  "inputs": [
+    {
+      "input_id": "1YCR-mdm2-p53-public",
+      "molecules": [
+        {
+          "type": "protein",
+          "id": "A",
+          "sequence": "SQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVVNQQESSDSGTSVSEN",
+          "msa": {
+            "query_only": {
+              "a3m": {
+                "alignment": ">query\nSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVVNQQESSDSGTSVSEN\n",
+                "format": "a3m"
+              }
+            }
+          }
+        },
+        {
+          "type": "protein",
+          "id": "B",
+          "sequence": "SQETFSDLWKLLPEN",
+          "msa": {
+            "query_only": {
+              "a3m": {
+                "alignment": ">query\nSQETFSDLWKLLPEN\n",
+                "format": "a3m"
+              }
+            }
+          }
+        }
+      ],
+      "diffusion_samples": 1,
+      "output_format": "cif"
+    }
+  ]
+}
