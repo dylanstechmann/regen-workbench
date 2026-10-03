@@ -12,8 +12,8 @@ from typing import Any
 
 try:
     import jsonschema
-except ImportError as exc:  # pragma: no cover - guarded by runtime dependency
-    raise SystemExit("jsonschema is required to validate experiment manifests") from exc
+except ImportError:  # pragma: no cover - guarded by the runtime check below
+    jsonschema = None
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCHEMA = Path(__file__).resolve().parent / "schemas" / "experiment-manifest.schema.json"
@@ -76,6 +76,8 @@ def validate_experiment_manifest(
     repo_root: Path = ROOT,
     schema_path: Path = DEFAULT_SCHEMA,
 ) -> dict[str, Any]:
+    if jsonschema is None:  # pragma: no cover - guarded by the test skip
+        raise SystemExit("jsonschema is required to validate experiment manifests")
     try:
         document = json.loads(manifest_path.read_text(encoding="utf-8"))
         schema = json.loads(schema_path.read_text(encoding="utf-8"))

@@ -15,6 +15,12 @@ sys.path.insert(0, str(ROOT / "studies" / "mutation_repair_pilot" / "tebv_benchm
 import analyze  # noqa: E402
 from validate_experiment_manifest import ManifestValidationError, validate_experiment_manifest  # noqa: E402
 
+try:
+    import jsonschema  # noqa: F401
+    HAS_JSONSCHEMA = True
+except ImportError:
+    HAS_JSONSCHEMA = False
+
 
 MANIFEST = ROOT / "studies" / "mutation_repair_pilot" / "tebv_benchmark" / "experiment.json"
 
@@ -47,6 +53,7 @@ class TEBVBenchmarkTests(unittest.TestCase):
                 analyze.run_analysis(altered, Path(temp) / "derived")
 
 
+@unittest.skipUnless(HAS_JSONSCHEMA, "jsonschema is required to validate experiment manifests; installed in the workbench image")
 class ExperimentManifestTests(unittest.TestCase):
     def _temporary_manifest(self, edit):
         document = json.loads(MANIFEST.read_text(encoding="utf-8"))

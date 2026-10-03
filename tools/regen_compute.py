@@ -585,22 +585,22 @@ def _compute_auroc(truth: list[int], probs: list[float]) -> float:
     return max(0.0, min(1.0, u / (n1 * n0)))
 
 
-def _pearson_r(x: list[float], y: list[float]) -> float:
+def _pearson_r(x: list[float], y: list[float]) -> float | None:
     if len(x) < 2 or len(x) != len(y):
-        return 0.0
+        return None
     mx = sum(x) / len(x)
     my = sum(y) / len(y)
     vx = sum((v - mx) ** 2 for v in x)
     vy = sum((v - my) ** 2 for v in y)
     if vx <= 1e-15 or vy <= 1e-15:
-        return 0.0
+        return None
     cov = sum((xi - mx) * (yi - my) for xi, yi in zip(x, y))
     return cov / math.sqrt(vx * vy)
 
 
-def _spearman_rho(x: list[float], y: list[float]) -> float:
+def _spearman_rho(x: list[float], y: list[float]) -> float | None:
     if len(x) < 2:
-        return 0.0
+        return None
 
     def rank(vals):
         items = sorted(enumerate(vals), key=lambda t: t[1])
@@ -617,6 +617,10 @@ def _spearman_rho(x: list[float], y: list[float]) -> float:
         return r
 
     return _pearson_r(rank(x), rank(y))
+
+
+def _format_correlation(value: float | None) -> str:
+    return "undefined (constant or insufficient data)" if value is None else f"{value:.4f}"
 
 
 def pipeline(argv: list[str], record) -> None:
@@ -775,6 +779,12 @@ def pipeline(argv: list[str], record) -> None:
         mean_raw = statistics.mean(raw_scores)
         sd_raw = statistics.stdev(raw_scores) if len(raw_scores) > 1 and statistics.stdev(raw_scores) > 1e-12 else 1.0
         z_scores = [(s - mean_raw) / sd_raw for s in raw_scores]
+        group_labels = [
+            0.0 if samples[sample_name]["group"] == args.reference else 1.0
+            for sample_name in sample_names
+        ]
+        score_p_r = _pearson_r(raw_scores, group_labels)
+        score_s_rho = _spearman_rho(raw_scores, group_labels)
 
         score_rows = []
         for s_name, r_score, z_score in zip(sample_names, raw_scores, z_scores):
@@ -1035,8 +1045,8 @@ Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scori
 - This whole-dataset score is descriptive only; cross-validation refits controls and score scaling within each training fold.
 - **Mean Reference Raw Score**: {statistics.mean([r_score for s_idx, r_score in enumerate(raw_scores) if s_idx in ref_idx]):.4f}
 - **Mean Comparison Raw Score**: {statistics.mean([r_score for s_idx, r_score in enumerate(raw_scores) if s_idx in comp_idx]):.4f}
-- **Pearson correlation (Score vs Group)**: {p_r:.4f}
-- **Spearman rank correlation**: {s_rho:.4f}
+- **Pearson correlation (Score vs Group)**: {_format_correlation(score_p_r)}
+- **Spearman rank correlation (Score vs Group)**: {_format_correlation(score_s_rho)}
 
 ## Stage 3: Out-of-Fold Benchmark Evaluation
 - **Evaluation Scheme**: {len(folds)}-fold stratified connected-component cross-validation; samples sharing a donor or batch stay in one fold.
@@ -1046,7 +1056,7 @@ Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scori
 - **Model Balanced Accuracy**: {bacc_model:.4f} vs **Majority Baseline**: {bacc_majority:.4f}
 - **AUROC**: {auroc:.4f}
 - **Brier Score**: {brier:.4f}
-- **OOF probability correlations**: Pearson r {p_r:.4f}; Spearman rho {s_rho:.4f}
+- **OOF probability correlations**: Pearson r {_format_correlation(p_r)}; Spearman rho {_format_correlation(s_rho)}
 
 ## Provenance Chain & Cryptographic Audit
 All stages link directly to upstream input data and preceding stage manifests:
