@@ -1,0 +1,213 @@
+{
+  "author_reported_model": {
+    "locally_refit": false,
+    "method": "ordinary two-way ANOVA",
+    "ratio_p_value": 0.0044,
+    "reported_pairwise_comparison": {
+      "adjusted_p_value": 0.0156,
+      "left": "25% edited, week 5",
+      "right": "HGPS, week 5"
+    },
+    "source_member": "Figure 8/ANOVA_Fig8.pdf",
+    "week_p_value": 0.4139
+  },
+  "calibration": {
+    "raw_flow_or_calibration_record_available": false,
+    "reported_flow_ml_min_per_tebv": 0.5,
+    "reported_nominal_wall_shear_dyn_cm2": 6.8,
+    "status": "not_reported"
+  },
+  "donor_generalization": {
+    "independent_healthy_donors": 1,
+    "independent_hgps_donors": 1,
+    "minimum_disease_donors_for_benchmark": 3,
+    "reason": "All HGPS lines in the study derive from donor 003; the public Figure 8 workbook has no donor or TEBV identifiers per value.",
+    "split": "leave-one-HGPS-donor-out",
+    "status": "not_testable"
+  },
+  "experiment_id": "hgps003-lmna-abe-tebv-vasodilation",
+  "experimental_unit": "TEBV",
+  "interpretation": "The observed group means do not rise monotonically with edited fraction at either timepoint. This descriptive falsifier and the source-reported ratio effect apply to one HGPS donor in an in-vitro TEBV model; they do not establish a donor-general threshold or rejuvenation.",
+  "model_specification": {
+    "falsifier": "Any adjacent dose pair with a lower mean at the higher edited fraction falsifies the descriptive monotone pattern.",
+    "research_question": "Does the initial edited-cell fraction predict a monotone increase in acetylcholine-evoked vasodilation in HGPS tissue-engineered blood vessels?"
+  },
+  "monotone_dose_response_check": [
+    {
+      "dose_means": [
+        [
+          0.25,
+          1.23897995
+        ],
+        [
+          0.5,
+          2.23227874
+        ],
+        [
+          0.75,
+          2.08055026
+        ]
+      ],
+      "nondecreasing": false,
+      "violations": [
+        {
+          "from_fraction": 0.5,
+          "from_mean": 2.23227874,
+          "to_fraction": 0.75,
+          "to_mean": 2.08055026
+        }
+      ],
+      "week": 3
+    },
+    {
+      "dose_means": [
+        [
+          0.25,
+          2.5320525
+        ],
+        [
+          0.5,
+          1.5468525
+        ],
+        [
+          0.75,
+          1.41837
+        ]
+      ],
+      "nondecreasing": false,
+      "violations": [
+        {
+          "from_fraction": 0.25,
+          "from_mean": 2.5320525,
+          "to_fraction": 0.5,
+          "to_mean": 1.5468525
+        },
+        {
+          "from_fraction": 0.5,
+          "from_mean": 1.5468525,
+          "to_fraction": 0.75,
+          "to_mean": 1.41837
+        }
+      ],
+      "week": 5
+    }
+  ],
+  "monotone_dose_response_supported_descriptively": false,
+  "primary_endpoint": "Percent change in TEBV diameter from after phenylephrine to after acetylcholine.",
+  "source_observation_count": 35,
+  "source_provenance": {
+    "archive": {
+      "member": "Figure_8.zip",
+      "sha256": "27c87f55dec8f2f82fcbe89ec8af6ac5dcc9ce582d47b14fa85a2d221058a41c",
+      "size_bytes": 324302
+    },
+    "members": {
+      "Figure 8/ANOVA_Fig8.pdf": {
+        "sha256": "17d3ef546e11d6bd79a42cfb82948b4eab075d9a68799bae80c499a07ec7be7f",
+        "size_bytes": 324025
+      },
+      "Figure 8/Fig 8.xlsx": {
+        "sha256": "781ddbdf80fe00eb8a9616d5e2e5bed04c3f1649aea12f9a5236280d17d64891",
+        "size_bytes": 17790
+      }
+    },
+    "worksheet": {
+      "member": "Figure 8/Fig 8.xlsx",
+      "name": "Fig 8A. Vasodilation",
+      "xml_path": "xl/worksheets/sheet2.xml"
+    }
+  },
+  "summaries": [
+    {
+      "group": "25:75",
+      "maximum": 2.32067092,
+      "mean": 1.23897995,
+      "median": 1.09919903,
+      "minimum": 0.43685082,
+      "n_source_values": 4,
+      "sd": 0.81067595,
+      "week": 3
+    },
+    {
+      "group": "50:50",
+      "maximum": 2.36181475,
+      "mean": 2.23227874,
+      "median": 2.22216887,
+      "minimum": 2.11285259,
+      "n_source_values": 3,
+      "sd": 0.12478861,
+      "week": 3
+    },
+    {
+      "group": "75:25",
+      "maximum": 2.71660638,
+      "mean": 2.08055026,
+      "median": 2.02609877,
+      "minimum": 1.55339712,
+      "n_source_values": 4,
+      "sd": 0.55814117,
+      "week": 3
+    },
+    {
+      "group": "HGPS",
+      "maximum": 1.7148986,
+      "mean": 1.22642272,
+      "median": 1.19606837,
+      "minimum": 0.79865554,
+      "n_source_values": 4,
+      "sd": 0.47080422,
+      "week": 3
+    },
+    {
+      "group": "Healthy",
+      "maximum": 5.8578511,
+      "mean": 3.39400827,
+      "median": 2.69881348,
+      "minimum": 2.32055501,
+      "n_source_values": 4,
+      "sd": 1.67010604,
+      "week": 3
+    },
+    {
+      "group": "25:75",
+      "maximum": 3.772912,
+      "mean": 2.5320525,
+      "median": 2.435033,
+      "minimum": 1.485232,
+      "n_source_values": 4,
+      "sd": 1.13003561,
+      "week": 5
+    },
+    {
+      "group": "50:50",
+      "maximum": 2.403768,
+      "mean": 1.5468525,
+      "median": 1.3561495,
+      "minimum": 1.071343,
+      "n_source_values": 4,
+      "sd": 0.62702991,
+      "week": 5
+    },
+    {
+      "group": "75:25",
+      "maximum": 2.571783,
+      "mean": 1.41837,
+      "median": 1.3134955,
+      "minimum": 0.474706,
+      "n_source_values": 4,
+      "sd": 0.88735557,
+      "week": 5
+    },
+    {
+      "group": "HGPS",
+      "maximum": 0.624791,
+      "mean": 0.06715,
+      "median": 0.0737095,
+      "minimum": -0.50361,
+      "n_source_values": 4,
+      "sd": 0.52700169,
+      "week": 5
+    }
+  ],
+  "unit": "% diameter change"
+}

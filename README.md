@@ -60,6 +60,15 @@ all six workbook snapshots against pinned sizes and SHA-256 values before
 writing aggregate tables; it does not model or demonstrate mutation repair.
 See [`MUTATION_REPAIR_PILOT.md`](MUTATION_REPAIR_PILOT.md).
 
+The pilot also includes a reproducible HGPS TEBV vasodilation benchmark. A
+versioned [experiment manifest schema](tools/schemas/experiment-manifest.schema.json)
+links protocol, raw assay data, analysis/model, and calibration status;
+`docker compose exec workbench python /lab/workbench/tools/validate_experiment_manifest.py PATH`
+checks the schema, linked artifact IDs, safe repository paths, and local
+SHA-256/byte counts. The current
+public study has one HGPS donor, so its donor-held-out validation is marked
+`not_testable`.
+
 ## What you get after bootstrap
 
 | Layer | Contents |

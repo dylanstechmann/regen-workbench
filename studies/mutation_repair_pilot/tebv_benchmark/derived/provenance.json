@@ -1,0 +1,54 @@
+{
+  "analysis_code": {
+    "path": "studies/mutation_repair_pilot/tebv_benchmark/analyze.py",
+    "sha256": "20c8ad13876d68aeb73e47f0cd30078e24ce2d06b0a4dab9f0b862879ec2526f",
+    "size_bytes": 19504
+  },
+  "analysis_specification": {
+    "path": "studies/mutation_repair_pilot/tebv_benchmark/model_spec.json",
+    "sha256": "dd1a83025b9eae845b32c1a846dd2b31b3e6a6075dceac0b40ceb8e146715151",
+    "size_bytes": 2590
+  },
+  "experiment_id": "hgps003-lmna-abe-tebv-vasodilation",
+  "outputs": [
+    {
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/vasodilation_observations.csv",
+      "sha256": "ff2d3e9cc5223b4166972a0ea252d46251ea07b395b854b6294dcf50fb29818f",
+      "size_bytes": 2221
+    },
+    {
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/summary.json",
+      "sha256": "e4d75cd9f513b70e129c1a9786b43ad146fe656c9f16878c982247886abf9921",
+      "size_bytes": 5555
+    },
+    {
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/REPORT.md",
+      "sha256": "35c471299b10046e612e664df4da53394640395120f5e1eda9aabd47d86d367e",
+      "size_bytes": 3145
+    }
+  ],
+  "reproduction_command": "python studies/mutation_repair_pilot/tebv_benchmark/analyze.py",
+  "schema_version": 1,
+  "source": {
+    "archive": {
+      "member": "Figure_8.zip",
+      "sha256": "27c87f55dec8f2f82fcbe89ec8af6ac5dcc9ce582d47b14fa85a2d221058a41c",
+      "size_bytes": 324302
+    },
+    "members": {
+      "Figure 8/ANOVA_Fig8.pdf": {
+        "sha256": "17d3ef546e11d6bd79a42cfb82948b4eab075d9a68799bae80c499a07ec7be7f",
+        "size_bytes": 324025
+      },
+      "Figure 8/Fig 8.xlsx": {
+        "sha256": "781ddbdf80fe00eb8a9616d5e2e5bed04c3f1649aea12f9a5236280d17d64891",
+        "size_bytes": 17790
+      }
+    },
+    "worksheet": {
+      "member": "Figure 8/Fig 8.xlsx",
+      "name": "Fig 8A. Vasodilation",
+      "xml_path": "xl/worksheets/sheet2.xml"
+    }
+  }
+}

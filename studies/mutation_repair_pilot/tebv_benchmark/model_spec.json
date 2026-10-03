@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "model_type": "descriptive dose-response falsifier",
+  "research_question": "Does the initial edited-cell fraction predict a monotone increase in acetylcholine-evoked vasodilation in HGPS tissue-engineered blood vessels?",
+  "primary_endpoint": {
+    "name": "acetylcholine-evoked TEBV diameter change",
+    "unit": "% diameter change",
+    "definition": "Percent change from diameter after 1 uM phenylephrine to diameter after 1 uM acetylcholine, each for 5 minutes.",
+    "experimental_unit": "one TEBV"
+  },
+  "planned_falsifier": {
+    "pattern": "Group means rise monotonically over edited fractions 0.25, 0.50, 0.75 at both weeks 3 and 5.",
+    "decision_rule": "Any adjacent dose pair with a lower mean at the higher edited fraction falsifies the descriptive monotone pattern.",
+    "inference_scope": "descriptive only; not a donor-population hypothesis test"
+  },
+  "source_analysis": {
+    "method": "ordinary two-way ANOVA",
+    "factors": ["edited:unedited ratio", "perfusion week"],
+    "source_output": "Figure 8/ANOVA_Fig8.pdf",
+    "locally_refit": false,
+    "reason": "The source provides no donor or TEBV identifiers per workbook value, the disease arm contains one independent donor, and the raw table has one missing value relative to the caption's stated N.",
+    "author_reported_results": {
+      "ratio_p_value": 0.0044,
+      "week_p_value": 0.4139,
+      "pairwise_comparison": {
+        "left": "25% edited, week 5",
+        "right": "HGPS, week 5",
+        "adjusted_p_value": 0.0156
+      }
+    }
+  },
+  "donor_held_out_validation": {
+    "status": "not_testable",
+    "split": "leave-one-HGPS-donor-out",
+    "minimum_independent_hgps_donors": 3,
+    "required_observation_fields": ["donor_id", "cell_line_id", "tebv_id", "edited_fraction", "week", "vasodilation_percent_diameter_change"],
+    "current_independent_hgps_donors": 1
+  },
+  "calibration": {
+    "status": "not_reported",
+    "reported_operating_conditions": {
+      "flow_rate_ml_min_per_tebv": 0.5,
+      "nominal_wall_shear_dyn_cm2": 6.8
+    },
+    "needed_for_physical_reproduction": [
+      "per-run measured flow trace",
+      "pump and balance identifiers",
+      "fluid density at measurement temperature",
+      "measurement uncertainty budget"
+    ]
+  },
+  "non_claims": [
+    "This benchmark does not establish functional rescue across independent HGPS donors.",
+    "This in-vitro monogenic disease model is not a model of heterogeneous ordinary human aging.",
+    "No edited cells, vectors, drugs, or procedures are recommended for use in a person."
+  ]
+}

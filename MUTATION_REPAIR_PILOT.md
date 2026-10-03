@@ -97,6 +97,15 @@ controlled-access and were not downloaded.
 | **LMNA correction in a human tissue-engineered vascular model** | In HGPS iPSC-derived cells, ABE restored about 97.5% wild-type allele at the target in two cell lines. Differentiated edited endothelial and smooth-muscle cells lacked detectable progerin; edited cells improved shear response, and edited-cell TEBVs restored vasodilation and smooth-muscle density. Mixtures required at least 50% edited smooth-muscle cells for significant improvement in proliferation and myosin-heavy-chain levels. | This is the closest inspected bridge from editing to tissue-level function: human engineered vessels were tested for flow response, vasoactivity, cell density and contractile markers. | It is an engineered model of a single, known pathogenic LMNA mutation, not an implanted vessel or a test of heterogeneous ordinary aging. Paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC11871533/ |
 | **LMNA correction in HGPS animal models** | Earlier ABE work corrected the known HGPS variant in mice and reported vascular rescue and longer survival. In the 2026 bone study, correction measured at six months was about 14%, 22%, 10% and under 1% after treatment at P3, P14, one month and four months, respectively; P14 treatment partially rescued bone structural and physical parameters. | These are intervention results with disease-specific tissue and functional readouts, unlike the esophageal clone-association studies. | Strong positive-control class for monogenic correction; not evidence that diverse age-acquired variants can be corrected safely or that normal human aging is reversed. Papers: https://pubmed.ncbi.nlm.nih.gov/33408413/ and https://pubmed.ncbi.nlm.nih.gov/42689491/ |
 
+The [reproducible TEBV benchmark](studies/mutation_repair_pilot/tebv_benchmark/README.md)
+now checks the published vasodilation data against a monotone edited-fraction
+hypothesis and uses a versioned experiment manifest to link its protocol, raw
+assay workbook, author ANOVA, analysis, and calibration status. It recovers 35
+source values and flags the missing 50:50 week-3 value. The data come from one
+HGPS donor and contain no vessel-level identifiers, so donor-held-out model
+validation is explicitly not testable. The benchmark is descriptive and does
+not establish a rejuvenation effect.
+
 ## Cross-Tissue Mutation Landscape
 
 I extended the pilot beyond esophagus using targeted `regen europepmc` searches,

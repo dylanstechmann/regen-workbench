@@ -38,6 +38,7 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
         mdanalysis \
         biotite \
         pyyaml \
+        jsonschema \
         rich \
         typer \
         httpx \

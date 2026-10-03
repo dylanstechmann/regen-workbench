@@ -1,0 +1,261 @@
+{
+  "manifest_schema_version": "1.0.0",
+  "repository_id": "regen-workbench",
+  "experiment_id": "hgps003-lmna-abe-tebv-vasodilation",
+  "title": "LMNA correction fraction and TEBV vasodilation in an HGPS model",
+  "question": "In the published HGPS tissue-engineered vessel model, does the fraction of LMNA-corrected cells predict a monotone rise in acetylcholine-evoked vasodilation at weeks 3 and 5?",
+  "scope": {
+    "model_system": "Human induced-pluripotent-stem-cell-derived vascular cells in an in-vitro tissue-engineered blood vessel model of Hutchinson-Gilford progeria syndrome.",
+    "claim_boundary": "One donor's monogenic disease model; no result here establishes correction benefit across donors or rejuvenation of ordinary human aging."
+  },
+  "artifacts": [
+    {
+      "id": "paper-2025",
+      "kind": "publication",
+      "description": "Primary source for the TEBV correction experiment and published assay protocol.",
+      "uri": "https://doi.org/10.1063/5.0244026",
+      "repository": "external",
+      "license": "CC BY 4.0",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "duke-dataset-record",
+      "kind": "source_dataset",
+      "description": "Duke Research Data Repository record and source metadata for Figure 8 files.",
+      "uri": "https://doi.org/10.7924/r4pg1xv1b",
+      "repository": "external",
+      "license": "CC0-1.0",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "figure8-source-archive",
+      "kind": "source_dataset",
+      "description": "Unmodified public Figure 8.zip archive retained for offline reproduction.",
+      "uri": "https://research.repository.duke.edu/record/362",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/inputs/Figure_8.zip",
+      "sha256": "27c87f55dec8f2f82fcbe89ec8af6ac5dcc9ce582d47b14fa85a2d221058a41c",
+      "size_bytes": 324302,
+      "license": "CC0-1.0",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "figure8-vasodilation-data",
+      "kind": "raw_assay_data",
+      "description": "Source workbook member containing the individual Figure 8 vasodilation values.",
+      "uri": "https://doi.org/10.7924/r4pg1xv1b",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/inputs/Figure_8.zip",
+      "member_path": "Figure 8/Fig 8.xlsx",
+      "sha256": "781ddbdf80fe00eb8a9616d5e2e5bed04c3f1649aea12f9a5236280d17d64891",
+      "size_bytes": 17790,
+      "license": "CC0-1.0",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "author-figure8-statistics",
+      "kind": "author_analysis",
+      "description": "Author-provided Figure 8 statistical output, including the ordinary two-way ANOVA and pairwise comparisons.",
+      "uri": "https://doi.org/10.7924/r4pg1xv1b",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/inputs/Figure_8.zip",
+      "member_path": "Figure 8/ANOVA_Fig8.pdf",
+      "sha256": "17d3ef546e11d6bd79a42cfb82948b4eab075d9a68799bae80c499a07ec7be7f",
+      "size_bytes": 324025,
+      "license": "CC0-1.0",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "analysis-code",
+      "kind": "analysis_code",
+      "description": "Standard-library parser and descriptive benchmark runner for the pinned archive.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/analyze.py",
+      "sha256": "20c8ad13876d68aeb73e47f0cd30078e24ce2d06b0a4dab9f0b862879ec2526f",
+      "size_bytes": 19504
+    },
+    {
+      "id": "benchmark-model-specification",
+      "kind": "analysis_specification",
+      "description": "Endpoint, monotonicity falsifier, donor holdout requirements, source analysis, and calibration requirements.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/model_spec.json",
+      "sha256": "dd1a83025b9eae845b32c1a846dd2b31b3e6a6075dceac0b40ceb8e146715151",
+      "size_bytes": 2590
+    },
+    {
+      "id": "source-manifest-index",
+      "kind": "analysis_specification",
+      "description": "Pinned source archive and embedded member hashes, license, and retrieval record.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/source_manifest.json",
+      "sha256": "42a4380a6978793fd37779f788de3e7ee01ab13e3cc9b65a39844d09626de499",
+      "size_bytes": 889
+    },
+    {
+      "id": "shared-manifest-schema",
+      "kind": "analysis_specification",
+      "description": "Versioned JSON Schema for shared experiment manifests.",
+      "repository": "regen-workbench",
+      "path": "tools/schemas/experiment-manifest.schema.json",
+      "sha256": "eb2a1d418a93cb368a71b2cf211b0f5802833702597393d5f5a0cd18055bf978",
+      "size_bytes": 8331
+    },
+    {
+      "id": "manifest-validator",
+      "kind": "analysis_code",
+      "description": "Schema, cross-reference, file-path, size, and SHA-256 validator for experiment manifests.",
+      "repository": "regen-workbench",
+      "path": "tools/validate_experiment_manifest.py",
+      "sha256": "850af2de4229ae0c3aa2e1e5bd7ec5be1f23e2e5039539e499a94d54e032f429",
+      "size_bytes": 7155
+    },
+    {
+      "id": "benchmark-summary",
+      "kind": "analysis_output",
+      "description": "Machine-readable summaries, source-level ANOVA values, falsifier result, donor gate, and calibration status.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/summary.json",
+      "sha256": "e4d75cd9f513b70e129c1a9786b43ad146fe656c9f16878c982247886abf9921",
+      "size_bytes": 5555
+    },
+    {
+      "id": "tidy-observations",
+      "kind": "analysis_output",
+      "description": "One row per nonempty vasodilation value, retaining source worksheet coordinates and explicitly blank missing donor and TEBV IDs.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/vasodilation_observations.csv",
+      "sha256": "ff2d3e9cc5223b4166972a0ea252d46251ea07b395b854b6294dcf50fb29818f",
+      "size_bytes": 2221
+    },
+    {
+      "id": "benchmark-report",
+      "kind": "analysis_output",
+      "description": "Human-readable reproduction report with the single-donor and calibration boundaries.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/REPORT.md",
+      "sha256": "35c471299b10046e612e664df4da53394640395120f5e1eda9aabd47d86d367e",
+      "size_bytes": 3145
+    },
+    {
+      "id": "analysis-provenance",
+      "kind": "analysis_output",
+      "description": "Generated input-member, analysis-code, model-specification, and output hashes.",
+      "repository": "regen-workbench",
+      "path": "studies/mutation_repair_pilot/tebv_benchmark/derived/provenance.json",
+      "sha256": "de5bbdf766c44db3ba7a8601434c8dc6632c710bbabf05a7714a9d7ed95f6117",
+      "size_bytes": 1911
+    },
+    {
+      "id": "perfusion-calibration-tool",
+      "kind": "tool_reference",
+      "description": "Related gravimetric flow-analysis workflow; linked for future measurements but not applied to the source experiment.",
+      "uri": "https://github.com/dylanstechmann/perfusion-calibration-lab",
+      "repository": "perfusion-calibration-lab",
+      "revision": "00a0109a1ebc8d880b47b2c30c308a4170c082ac",
+      "path": "README.md",
+      "applied": false
+    }
+  ],
+  "protocol": {
+    "source_artifact_id": "paper-2025",
+    "summary": "The paper measures diameter after baseline perfusion, after 1 uM phenylephrine for 5 minutes, then after 1 uM acetylcholine for 5 minutes; vasodilation is the percent diameter change from the phenylephrine point to the acetylcholine point. TEBVs were perfused at a reported 0.5 mL/min per vessel and nominal 6.8 dyn/cm^2 wall shear.",
+    "deviations": [
+      "No new wet-lab experiment was performed; this package reproduces a public summary-level source workbook."
+    ]
+  },
+  "design": {
+    "intervention": "ABE7.10max-sgPro correction of the HGPS LMNA c.1824 C>T allele, mixed with unedited HGPS vascular cells at edited:unedited ratios of 25:75, 50:50, and 75:25.",
+    "experimental_unit": "one tissue-engineered blood vessel (TEBV)",
+    "independent_unit": "human donor",
+    "groups": [
+      {
+        "label": "Healthy",
+        "role": "healthy_control",
+        "edited_fraction": null
+      },
+      {
+        "label": "HGPS",
+        "role": "disease_control",
+        "edited_fraction": 0.0
+      },
+      {
+        "label": "25:75",
+        "role": "intervention",
+        "edited_fraction": 0.25
+      },
+      {
+        "label": "50:50",
+        "role": "intervention",
+        "edited_fraction": 0.5
+      },
+      {
+        "label": "75:25",
+        "role": "intervention",
+        "edited_fraction": 0.75
+      }
+    ],
+    "donor_structure": {
+      "disease_donor_count": 1,
+      "healthy_donor_count": 1,
+      "observation_level_ids_available": false,
+      "notes": "The study describes HGPS iPSC clones CL1C and CL1D from donor 003; those clones are not independent donors. Healthy control cells are from donor 168, and no healthy TEBVs were included at week 5. The public workbook has no donor or TEBV IDs per observation."
+    }
+  },
+  "assays": [
+    {
+      "assay_id": "tebv-vasodilation",
+      "name": "Acetylcholine-evoked TEBV vasodilation",
+      "endpoint": "Percent change in vessel diameter from 1 uM phenylephrine to 1 uM acetylcholine, each for 5 minutes.",
+      "unit": "% diameter change",
+      "raw_artifact_id": "figure8-vasodilation-data",
+      "experimental_unit": "one TEBV",
+      "source_n": "The figure caption reports N=4 TEBVs per vasoactivity group; the source workbook and author ANOVA summary contain 35 values, with n=3 for the 50:50 group at week 3.",
+      "notes": "The workbook does not identify each vessel or indicate how week-3 and week-5 rows pair."
+    }
+  ],
+  "modeling": {
+    "status": "source_provided",
+    "source_model": {
+      "method": "Author-provided ordinary two-way ANOVA for edited:unedited ratio and week, with pairwise comparisons.",
+      "artifact_id": "author-figure8-statistics",
+      "locally_refit": false,
+      "reason": "The source analysis is retained as published; this package recalculates descriptive summaries and a group-mean monotonicity check only."
+    },
+    "donor_validation": {
+      "status": "not_testable",
+      "split": "leave-one-HGPS-donor-out",
+      "minimum_independent_donors": 3,
+      "reason": "There is one independent HGPS donor, and observation-level donor and TEBV IDs are absent; donor-held-out model performance cannot be estimated."
+    },
+    "falsifier": "A higher edited fraction with a lower group mean at either timepoint falsifies a simple monotone vasodilation response; this is descriptive and not donor-population inference.",
+    "result_artifact_id": "benchmark-summary"
+  },
+  "calibration": {
+    "status": "not_reported",
+    "related_tool_artifact_id": "perfusion-calibration-tool",
+    "reported_conditions": [
+      {
+        "name": "perfusion flow rate per TEBV",
+        "value": 0.5,
+        "unit": "mL/min/TEBV",
+        "source_artifact_id": "paper-2025"
+      },
+      {
+        "name": "nominal wall shear stress",
+        "value": 6.8,
+        "unit": "dyn/cm^2",
+        "source_artifact_id": "paper-2025"
+      }
+    ],
+    "notes": "These are published operating settings, not measured calibration results. The public archive includes no original flow trace, pump calibration record, fluid-density record, or uncertainty budget. The linked calibration repository is a candidate analysis tool and was not used on this experiment."
+  },
+  "limitations": [
+    "All HGPS cell lines in the study derive from one person, so donor-held-out validation is not testable.",
+    "The public Figure 8 workbook has no individual TEBV IDs, donor IDs per observation, or explicit longitudinal pairing.",
+    "The workbook contains three 50:50 week-3 observations although the figure caption reports four TEBVs per group.",
+    "No healthy-control TEBVs were included at week 5.",
+    "There is no measured perfusion calibration or flow trace in the public Figure 8 archive.",
+    "This is an engineered model of a rare, known mutation and does not test heterogeneous normal human aging, in-vivo delivery, or human benefit."
+  ]
+}

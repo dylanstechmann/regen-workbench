@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regen Workbench experiment manifest",
+  "description": "A provenance contract joining an experimental question, protocol, raw assays, analysis/model, and calibration evidence without treating missing evidence as measured.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_schema_version",
+    "repository_id",
+    "experiment_id",
+    "title",
+    "question",
+    "scope",
+    "artifacts",
+    "protocol",
+    "design",
+    "assays",
+    "modeling",
+    "calibration",
+    "limitations"
+  ],
+  "properties": {
+    "manifest_schema_version": { "const": "1.0.0" },
+    "repository_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,95}$"
+    },
+    "title": { "type": "string", "minLength": 8 },
+    "question": { "type": "string", "minLength": 12 },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_system", "claim_boundary"],
+      "properties": {
+        "model_system": { "type": "string", "minLength": 4 },
+        "claim_boundary": { "type": "string", "minLength": 12 }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/artifact" }
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_artifact_id", "summary", "deviations"],
+      "properties": {
+        "source_artifact_id": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 20 },
+        "deviations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intervention",
+        "experimental_unit",
+        "independent_unit",
+        "groups",
+        "donor_structure"
+      ],
+      "properties": {
+        "intervention": { "type": "string", "minLength": 8 },
+        "experimental_unit": { "type": "string", "minLength": 2 },
+        "independent_unit": { "type": "string", "minLength": 2 },
+        "groups": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "role"],
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "role": { "enum": ["healthy_control", "disease_control", "intervention"] },
+              "edited_fraction": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "donor_structure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["disease_donor_count", "healthy_donor_count", "observation_level_ids_available", "notes"],
+          "properties": {
+            "disease_donor_count": { "type": "integer", "minimum": 0 },
+            "healthy_donor_count": { "type": "integer", "minimum": 0 },
+            "observation_level_ids_available": { "type": "boolean" },
+            "notes": { "type": "string", "minLength": 8 }
+          }
+        }
+      }
+    },
+    "assays": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assay_id", "name", "endpoint", "unit", "raw_artifact_id", "experimental_unit", "source_n"],
+        "properties": {
+          "assay_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+          "name": { "type": "string", "minLength": 4 },
+          "endpoint": { "type": "string", "minLength": 8 },
+          "unit": { "type": "string", "minLength": 1 },
+          "raw_artifact_id": { "type": "string", "minLength": 1 },
+          "experimental_unit": { "type": "string", "minLength": 2 },
+          "source_n": { "type": "string", "minLength": 4 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "modeling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "source_model", "donor_validation", "falsifier"],
+      "properties": {
+        "status": { "enum": ["source_provided", "fit_locally", "planned", "not_fit"] },
+        "source_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "artifact_id", "locally_refit"],
+          "properties": {
+            "method": { "type": "string", "minLength": 4 },
+            "artifact_id": { "type": "string", "minLength": 1 },
+            "locally_refit": { "type": "boolean" },
+            "reason": { "type": "string" }
+          }
+        },
+        "donor_validation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "split", "minimum_independent_donors", "reason"],
+          "properties": {
+            "status": { "enum": ["passed", "not_testable", "failed"] },
+            "split": { "type": "string", "minLength": 4 },
+            "minimum_independent_donors": { "type": "integer", "minimum": 2 },
+            "reason": { "type": "string", "minLength": 12 }
+          }
+        },
+        "falsifier": { "type": "string", "minLength": 12 },
+        "result_artifact_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "notes"],
+      "properties": {
+        "status": { "enum": ["measured", "reported_only", "not_reported", "not_applicable"] },
+        "record_artifact_id": { "type": "string", "minLength": 1 },
+        "related_tool_artifact_id": { "type": "string", "minLength": 1 },
+        "reported_conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "value", "unit", "source_artifact_id"],
+            "properties": {
+              "name": { "type": "string", "minLength": 2 },
+              "value": { "type": ["number", "string"] },
+              "unit": { "type": "string", "minLength": 1 },
+              "source_artifact_id": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "notes": { "type": "string", "minLength": 12 }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 8 }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "description"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+        "kind": {
+          "enum": [
+            "publication",
+            "source_dataset",
+            "raw_assay_data",
+            "author_analysis",
+            "analysis_code",
+            "analysis_specification",
+            "analysis_output",
+            "calibration_record",
+            "tool_reference"
+          ]
+        },
+        "description": { "type": "string", "minLength": 8 },
+        "uri": { "type": "string", "format": "uri" },
+        "repository": { "type": "string", "minLength": 2 },
+        "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string", "minLength": 1 },
+        "member_path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "license": { "type": "string", "minLength": 2 },
+        "retrieved_on": { "type": "string", "format": "date" },
+        "applied": { "type": "boolean" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "enum": ["source_dataset", "raw_assay_data", "author_analysis", "analysis_code", "analysis_specification", "analysis_output", "calibration_record"] } }, "required": ["kind", "path"] },
+          "then": { "required": ["repository", "sha256", "size_bytes"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "tool_reference" } }, "required": ["kind"] },
+          "then": { "required": ["repository", "path", "revision", "applied"] }
+        }
+      ]
+    }
+  }
+}

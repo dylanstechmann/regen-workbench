@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "dataset_doi": "10.7924/r4pg1xv1b",
+  "dataset_record": "https://research.repository.duke.edu/record/362",
+  "license": "CC0-1.0",
+  "retrieved_on": "2026-10-03",
+  "archive": {
+    "file": "inputs/Figure_8.zip",
+    "source_filename": "Figure 8.zip",
+    "sha256": "27c87f55dec8f2f82fcbe89ec8af6ac5dcc9ce582d47b14fa85a2d221058a41c",
+    "size_bytes": 324302
+  },
+  "members": [
+    {
+      "file": "Figure 8/Fig 8.xlsx",
+      "sha256": "781ddbdf80fe00eb8a9616d5e2e5bed04c3f1649aea12f9a5236280d17d64891",
+      "size_bytes": 17790,
+      "role": "source replicate values for Figure 8, including vasodilation panel B"
+    },
+    {
+      "file": "Figure 8/ANOVA_Fig8.pdf",
+      "sha256": "17d3ef546e11d6bd79a42cfb82948b4eab075d9a68799bae80c499a07ec7be7f",
+      "size_bytes": 324025,
+      "role": "author-reported statistical analysis for Figure 8"
+    }
+  ]
+}
