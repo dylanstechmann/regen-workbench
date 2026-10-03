@@ -117,23 +117,15 @@ def expression_contrast(argv: list[str], record) -> None:
     sample_header, sample_rows = table(sample_data)
     if header[0] != "gene" or not 5 <= len(header) <= 201 or len(matrix) > 50000:
         raise ValueError("matrix requires gene plus 4-200 samples and at most 50,000 genes")
-    if sample_header != ["sample", "group"]:
-        raise ValueError("sample CSV header must be sample,group")
-    samples = {}
-    for sample, group in sample_rows:
-        identifier(sample, "sample")
-        identifier(group, "group")
-        if sample in samples:
-            raise ValueError(f"duplicate sample: {sample}")
-        samples[sample] = group
+    samples = _parse_sample_metadata(sample_header, sample_rows)
     if set(header[1:]) != set(samples):
         raise ValueError("matrix sample columns and sample metadata must match exactly")
-    if set(samples.values()) != {args.reference, args.comparison}:
+    if {info["group"] for info in samples.values()} != {args.reference, args.comparison}:
         raise ValueError("metadata must contain exactly the two selected groups")
-    ref = [i for i, sample in enumerate(header[1:]) if samples[sample] == args.reference]
-    comp = [i for i, sample in enumerate(header[1:]) if samples[sample] == args.comparison]
+    ref = [i for i, sample in enumerate(header[1:]) if samples[sample]["group"] == args.reference]
+    comp = [i for i, sample in enumerate(header[1:]) if samples[sample]["group"] == args.comparison]
     if min(len(ref), len(comp)) < 2:
-        raise ValueError("each group requires at least two independent biological samples")
+        raise ValueError("each group requires at least two sample rows")
     results, seen = [], set()
     for row in matrix:
         gene = identifier(row[0], "gene")
@@ -309,11 +301,6 @@ def compound_screen(argv: list[str], record) -> None:
 
 
 GENE_SETS: dict[str, list[str]] = {
-    "senmayo": [
-        "CDKN2A", "CDKN1A", "TP53", "IL6", "CXCL8", "SERPINE1", "CCL2", "MMP1", "MMP3", "MMP9",
-        "TGFB1", "IGFBP3", "IGFBP7", "FN1", "VEGFA", "PLAU", "PTGER2", "EDN1", "IL1A", "IL1B",
-        "CTSB", "LMNB1", "GADD45A", "GLB1", "CCL7", "CXCL1", "CXCL2", "HGF", "FAS", "ICAM1",
-    ],
     "fridman": [
         "CDKN1A", "CDKN2A", "GADD45A", "BTG1", "BTG2", "ATF3", "FOS", "JUN", "CCND1", "MDM2",
         "PLK2", "SERPINE1", "SOD2", "IGFBP3", "IGFBP7", "EGR1", "MYC", "BCL2", "BAX", "FAS",
@@ -323,6 +310,195 @@ GENE_SETS: dict[str, list[str]] = {
         "VEGFA", "HGF", "AREG", "EREG", "FGF2", "IL1A", "IL1B", "CXCL1", "CXCL2", "CXCL3",
     ],
 }
+
+
+def _gene_set_metadata(name: str) -> tuple[list[str], dict, bytes | None]:
+    if name == "senmayo":
+        path = Path(__file__).resolve().parent / "data" / "gene-sets" / "senmayo-human.json"
+        data = path.read_bytes()
+        try:
+            entry = json.loads(data)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ValueError("the vendored SenMayo gene-set file is invalid") from exc
+        genes = entry.get("symbols")
+        if (entry.get("set_id") != "senmayo" or entry.get("source_status") != "published_gene_set"
+                or not isinstance(genes, list) or len(genes) != 125 or len(set(genes)) != 125
+                or set(genes) & set(entry.get("orthogonal_not_members", []))):
+            raise ValueError("the vendored SenMayo gene set failed its integrity checks")
+        return genes, {**{k: v for k, v in entry.items() if k != "symbols"},
+                       "sha256": hashlib.sha256(data).hexdigest()}, data
+    if name not in GENE_SETS:
+        raise ValueError(f"unknown gene set: {name}")
+    return GENE_SETS[name], {
+        "set_id": name,
+        "name": {"fridman": "Custom Fridman-inspired panel", "sasp": "Custom SASP-oriented panel"}[name],
+        "source_status": "custom_unverified",
+        "citation": "Project-curated panel; membership is not verified against a source gene list.",
+        "description": "Exploratory custom panel only; not a source-transcribed published signature.",
+        "sha256": hashlib.sha256(json.dumps(GENE_SETS[name], separators=(",", ":")).encode()).hexdigest(),
+    }, None
+
+
+def _parse_sample_metadata(sample_header: list[str], sample_rows: list[list[str]]) -> dict[str, dict[str, str]]:
+    allowed = {"sample", "group", "donor_id", "batch_id"}
+    if not {"sample", "group"}.issubset(sample_header) or set(sample_header) - allowed:
+        raise ValueError("sample CSV header must contain sample,group and optional donor_id,batch_id")
+    if sample_header[:2] != ["sample", "group"]:
+        raise ValueError("sample CSV columns must begin with sample,group")
+    samples: dict[str, dict[str, str]] = {}
+    for row in sample_rows:
+        values = dict(zip(sample_header, row))
+        sample = identifier(values["sample"], "sample")
+        group = identifier(values["group"], "group")
+        if sample in samples:
+            raise ValueError(f"duplicate sample: {sample}")
+        samples[sample] = {"group": group, "donor_id": "", "batch_id": ""}
+        for field in ("donor_id", "batch_id"):
+            value = values.get(field, "")
+            if value:
+                identifier(value, field)
+                samples[sample][field] = value
+    return samples
+
+
+def _grouped_stratified_folds(sample_names: list[str], labels: list[int],
+                              sample_info: dict[str, dict[str, str]], requested: int) -> tuple[list[list[int]], list[str]]:
+    """Keep samples joined by donor or batch in one test fold."""
+    parents = list(range(len(sample_names)))
+
+    def find(index: int) -> int:
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+
+    def union(left: int, right: int) -> None:
+        root_l, root_r = find(left), find(right)
+        if root_l != root_r:
+            parents[root_r] = root_l
+
+    seen_ids: dict[tuple[str, str], int] = {}
+    used_fields = [field for field in ("donor_id", "batch_id")
+                   if any(sample_info[s].get(field) for s in sample_names)]
+    for index, sample in enumerate(sample_names):
+        for field in used_fields:
+            value = sample_info[sample].get(field, "")
+            if not value:
+                continue
+            key = (field, value)
+            if key in seen_ids:
+                union(index, seen_ids[key])
+            else:
+                seen_ids[key] = index
+
+    components: dict[int, list[int]] = {}
+    for index in range(len(sample_names)):
+        components.setdefault(find(index), []).append(index)
+    component_rows = []
+    for indexes in components.values():
+        counts = [sum(labels[i] == label for i in indexes) for label in (0, 1)]
+        component_rows.append((indexes, counts))
+    n_components_by_label = [sum(counts[label] > 0 for _, counts in component_rows) for label in (0, 1)]
+    k_folds = min(requested, *n_components_by_label)
+    if k_folds < 2:
+        raise ValueError("grouped cross-validation needs at least two independent donor/batch components per class")
+
+    total_by_label = [sum(labels[i] == label for i in range(len(labels))) for label in (0, 1)]
+    target = [count / k_folds for count in total_by_label]
+    fold_counts = [[0, 0] for _ in range(k_folds)]
+    folds: list[list[int]] = [[] for _ in range(k_folds)]
+    # Place larger and label-balanced components first; deterministic ties keep runs reproducible.
+    component_rows.sort(key=lambda row: (-len(row[0]), -sum(n > 0 for n in row[1]), min(row[0])))
+    for indexes, counts in component_rows:
+        choices = []
+        for fold_index in range(k_folds):
+            missing_present_labels = sum(counts[label] > 0 and fold_counts[fold_index][label] == 0
+                                         for label in (0, 1))
+            imbalance = sum(((fold_counts[fold_index][label] + counts[label] - target[label])
+                             / max(1.0, target[label])) ** 2 for label in (0, 1))
+            choices.append((-missing_present_labels, imbalance, len(folds[fold_index]), fold_index))
+        fold_index = min(choices)[-1]
+        folds[fold_index].extend(indexes)
+        for label in (0, 1):
+            fold_counts[fold_index][label] += counts[label]
+
+    for fold in folds:
+        fold.sort()
+    if any(not fold or not any(labels[i] == 0 for i in fold) or not any(labels[i] == 1 for i in fold)
+           for fold in folds):
+        raise ValueError("donor/batch components cannot form stratified folds containing both classes")
+    return folds, used_fields or ["sample_id"]
+
+
+def _training_fold_features(gene_matrix_map: dict[str, list[float]], train_idx: list[int],
+                            test_idx: list[int], train_y: list[int],
+                            signature_genes: list[str], n_controls: int
+                            ) -> tuple[list[list[float]], list[list[float]], list[str]]:
+    """Fit control selection, score normalization, and marker selection on training rows only."""
+    matched = [gene for gene in signature_genes if gene in gene_matrix_map]
+    candidates = [gene for gene in sorted(gene_matrix_map) if gene not in set(signature_genes)]
+    if not matched or len(candidates) < n_controls:
+        raise ValueError("not enough non-signature genes to fit training-fold controls")
+    candidate_means = [(gene, statistics.mean(gene_matrix_map[gene][i] for i in train_idx))
+                       for gene in candidates]
+    candidate_means.sort(key=lambda item: (item[1], item[0]))
+    n_bins = min(25, max(1, len(candidate_means) // n_controls))
+    bins = [candidate_means[b * len(candidate_means) // n_bins:
+                            (b + 1) * len(candidate_means) // n_bins] for b in range(n_bins)]
+    control_map = {}
+    for gene in matched:
+        mean_value = statistics.mean(gene_matrix_map[gene][i] for i in train_idx)
+        best_bin = min(range(len(bins)), key=lambda b: (
+            abs(statistics.mean(value for _, value in bins[b]) - mean_value), b))
+        control_map[gene] = [candidate for candidate, _ in bins[best_bin][:n_controls]]
+        if not control_map[gene]:
+            raise ValueError("training-fold control selection produced an empty control set")
+
+    def score(index: int) -> float:
+        return statistics.mean(gene_matrix_map[gene][index] -
+                               statistics.mean(gene_matrix_map[control][index] for control in control_map[gene])
+                               for gene in matched)
+
+    train_scores = [score(i) for i in train_idx]
+    mean_score = statistics.mean(train_scores)
+    sd_score = statistics.stdev(train_scores) if len(train_scores) > 1 else 1.0
+    if sd_score <= 1e-12:
+        sd_score = 1.0
+    score_z = {i: (score(i) - mean_score) / sd_score for i in train_idx + test_idx}
+
+    class_means = []
+    for label in (0, 1):
+        indexes = [index for index, y in zip(train_idx, train_y) if y == label]
+        if not indexes:
+            raise ValueError("each training fold must contain both classes")
+        class_means.append(indexes)
+    contrast_rows = []
+    for gene in gene_matrix_map:
+        means = [statistics.mean(gene_matrix_map[gene][i] for i in indexes) for indexes in class_means]
+        effect = math.log2(means[1] + 1.0) - math.log2(means[0] + 1.0)
+        # Rank only on training data. Stability uses the training rows' leave-one-out effects.
+        leave_one_out = []
+        for label, indexes in enumerate(class_means):
+            if len(indexes) < 2:
+                continue
+            other_mean = means[1 - label]
+            for removed in indexes:
+                retained = [i for i in indexes if i != removed]
+                retained_mean = statistics.mean(gene_matrix_map[gene][i] for i in retained)
+                a, b = (retained_mean, other_mean) if label == 0 else (other_mean, retained_mean)
+                leave_one_out.append(math.log2(b + 1.0) - math.log2(a + 1.0))
+        stable_up = effect > 0 and bool(leave_one_out) and min(leave_one_out) > 0
+        contrast_rows.append((gene, stable_up, effect))
+    stable_up = sorted((row for row in contrast_rows if row[1]), key=lambda row: (-row[2], row[0]))
+    ranked = stable_up or sorted(contrast_rows, key=lambda row: (-abs(row[2]), row[0]))
+    selected_markers = [row[0] for row in ranked[:5]]
+    if not selected_markers:
+        raise ValueError("training-fold marker selection produced no genes")
+
+    def features(index: int) -> list[float]:
+        return [score_z[index], statistics.mean(gene_matrix_map[gene][index] for gene in selected_markers)]
+
+    return [features(i) for i in train_idx], [features(i) for i in test_idx], selected_markers
 
 
 def _sigmoid(z: float) -> float:
@@ -450,7 +626,8 @@ def pipeline(argv: list[str], record) -> None:
     parser.add_argument("--reference", required=True)
     parser.add_argument("--comparison", required=True)
     parser.add_argument("--pseudocount", type=float, default=1.0)
-    parser.add_argument("--gene-set", default="senmayo", choices=["senmayo", "fridman", "sasp"])
+    parser.add_argument("--gene-set", default="senmayo", choices=["senmayo", "fridman", "sasp"],
+                        help="senmayo is the published 125-gene set; fridman and sasp are custom, unverified panels")
     parser.add_argument("--n-bins", type=lambda s: integer(s, 5, 100), default=25)
     parser.add_argument("--n-controls", type=lambda s: integer(s, 1, 20), default=5)
     parser.add_argument("--n-splits", type=lambda s: integer(s, 2, 10), default=3)
@@ -473,27 +650,18 @@ def pipeline(argv: list[str], record) -> None:
 
     if header[0] != "gene" or not 5 <= len(header) <= 201 or len(matrix) > 50000:
         raise ValueError("matrix requires gene plus 4-200 samples and at most 50,000 genes")
-    if sample_header != ["sample", "group"]:
-        raise ValueError("sample CSV header must be sample,group")
-
-    samples: dict[str, str] = {}
-    for sample, group in sample_rows:
-        identifier(sample, "sample")
-        identifier(group, "group")
-        if sample in samples:
-            raise ValueError(f"duplicate sample: {sample}")
-        samples[sample] = group
+    samples = _parse_sample_metadata(sample_header, sample_rows)
 
     if set(header[1:]) != set(samples):
         raise ValueError("matrix sample columns and sample metadata must match exactly")
-    if set(samples.values()) != {args.reference, args.comparison}:
+    if {info["group"] for info in samples.values()} != {args.reference, args.comparison}:
         raise ValueError("metadata must contain exactly the two selected groups")
 
     sample_names = header[1:]
-    ref_idx = [i for i, s in enumerate(sample_names) if samples[s] == args.reference]
-    comp_idx = [i for i, s in enumerate(sample_names) if samples[s] == args.comparison]
+    ref_idx = [i for i, s in enumerate(sample_names) if samples[s]["group"] == args.reference]
+    comp_idx = [i for i, s in enumerate(sample_names) if samples[s]["group"] == args.comparison]
     if min(len(ref_idx), len(comp_idx)) < 2:
-        raise ValueError("each group requires at least two independent biological samples")
+        raise ValueError("each group requires at least two sample rows")
 
     with report_directory(args.out):
         # ---------------------------------------------------------
@@ -569,17 +737,16 @@ def pipeline(argv: list[str], record) -> None:
         stage2_dir = args.out / "stage2_senescence"
         stage2_dir.mkdir(parents=False, exist_ok=False)
 
-        predefined_genes = GENE_SETS[args.gene_set]
+        predefined_genes, gene_set_info, gene_set_data = _gene_set_metadata(args.gene_set)
         matched_genes = [g for g in predefined_genes if g in gene_matrix_map]
-        if not matched_genes:
-            matched_genes = [g for g in gene_matrix_map if "SEN" in g or "PANEL" in g]
-            if not matched_genes:
-                pos_contrast = [r["gene"] for r in contrast_results if r["log2_ratio"] > 0]
-                matched_genes = pos_contrast[:5] if pos_contrast else list(gene_matrix_map.keys())[:5]
+        coverage_fraction = len(matched_genes) / len(predefined_genes)
+        if coverage_fraction < 0.60:
+            raise ValueError(f"gene-set coverage is {coverage_fraction:.1%}; at least 60% is required; "
+                             "no contrast-derived or name-based fallback is used")
 
-        candidate_genes = [g for g in gene_matrix_map if g not in set(matched_genes)]
-        if not candidate_genes:
-            candidate_genes = matched_genes
+        candidate_genes = [g for g in gene_matrix_map if g not in set(predefined_genes)]
+        if len(candidate_genes) < args.n_controls:
+            raise ValueError("at least n-controls non-signature genes are required for control matching")
 
         cand_means = [(g, sum(gene_matrix_map[g]) / len(sample_names)) for g in candidate_genes]
         cand_means.sort(key=lambda t: t[1])
@@ -590,12 +757,10 @@ def pipeline(argv: list[str], record) -> None:
                 for b in range(n_bins)]
 
         control_map = {}
-        for g_idx, g in enumerate(matched_genes):
+        for g in matched_genes:
             g_mean = sum(gene_matrix_map[g]) / len(sample_names)
             best_bin = min(range(len(bins)), key=lambda b: abs((sum(x[1] for x in bins[b]) / max(1, len(bins[b]))) - g_mean))
             selected = [gene for gene, _ in bins[best_bin][:args.n_controls]]
-            if not selected:
-                selected = [g]
             control_map[g] = selected
 
         raw_scores = []
@@ -615,19 +780,28 @@ def pipeline(argv: list[str], record) -> None:
         for s_name, r_score, z_score in zip(sample_names, raw_scores, z_scores):
             score_rows.append({
                 "sample": s_name,
-                "group": samples[s_name],
+                "group": samples[s_name]["group"],
+                "donor_id": samples[s_name]["donor_id"],
+                "batch_id": samples[s_name]["batch_id"],
                 "raw_score": r_score,
                 "z_score": z_score,
             })
 
-        write_csv(stage2_dir / "senescence_scores.csv", ["sample", "group", "raw_score", "z_score"], score_rows)
+        write_csv(stage2_dir / "senescence_scores.csv",
+                  ["sample", "group", "donor_id", "batch_id", "raw_score", "z_score"], score_rows)
         stage2_params = {
             "gene_set": args.gene_set,
+            "gene_set_name": gene_set_info["name"],
+            "gene_set_source_status": gene_set_info["source_status"],
+            "gene_set_citation": gene_set_info["citation"],
+            "gene_set_sha256": gene_set_info["sha256"],
             "target_genes_in_set": len(predefined_genes),
             "genes_matched_in_matrix": len(matched_genes),
-            "coverage_fraction": len(matched_genes) / max(1, len(predefined_genes)),
+            "coverage_fraction": coverage_fraction,
+            "minimum_coverage_fraction": 0.60,
             "n_bins": n_bins,
             "n_controls_per_gene": args.n_controls,
+            "score_method": "control-subtracted mean; not the source paper's GSEA procedure",
             "mean_raw_score": mean_raw,
             "sd_raw_score": sd_raw,
         }
@@ -639,7 +813,10 @@ def pipeline(argv: list[str], record) -> None:
         })
         (stage2_dir / "README.md").write_text(
             "# Stage 2: Senescence Module Scoring\n\n"
-            "Calculates control-subtracted senescence module scores per sample.\n",
+            f"Calculates a control-subtracted module score from `{gene_set_info['name']}` "
+            f"({gene_set_info['source_status']}). This is not the source paper's GSEA procedure. "
+            "The stage 2 score uses the full dataset and is descriptive; Stage 3 refits all score "
+            "controls and normalization within each training fold.\n",
             encoding="utf-8",
         )
         stage2_input_records = {
@@ -648,6 +825,8 @@ def pipeline(argv: list[str], record) -> None:
             "stage1_manifest.json": stage1_manifest_bytes,
             "contrast.csv": stage1_contrast_csv_bytes,
         }
+        if gene_set_data is not None:
+            stage2_input_records["senmayo-human.json"] = gene_set_data
         manifest(stage2_dir, "senescence-scoring", stage2_params, stage2_input_records, {})
         stage2_manifest_bytes = (stage2_dir / "manifest.json").read_bytes()
         stage2_manifest_sha = hashlib.sha256(stage2_manifest_bytes).hexdigest()
@@ -660,41 +839,24 @@ def pipeline(argv: list[str], record) -> None:
         stage3_dir = args.out / "stage3_benchmark"
         stage3_dir.mkdir(parents=False, exist_ok=False)
 
-        labels = [1 if samples[s] == args.comparison else 0 for s in sample_names]
-
-        top_stable = [r["gene"] for r in contrast_results if r["direction_stable"] and r["log2_ratio"] > 0]
-        if not top_stable:
-            top_stable = [contrast_results[0]["gene"]]
-
-        feature_matrix = []
-        for s_idx in range(len(sample_names)):
-            feat_score = z_scores[s_idx]
-            feat_contrast = statistics.mean([gene_matrix_map[g][s_idx] for g in top_stable])
-            feature_matrix.append([feat_score, feat_contrast])
-
+        labels = [1 if samples[s]["group"] == args.comparison else 0 for s in sample_names]
+        folds, split_fields = _grouped_stratified_folds(sample_names, labels, samples, args.n_splits)
         n_samples = len(sample_names)
-        pos_indices = [i for i, y in enumerate(labels) if y == 1]
-        neg_indices = [i for i, y in enumerate(labels) if y == 0]
-
-        k_folds = min(args.n_splits, len(pos_indices), len(neg_indices))
-        if k_folds < 2:
-            folds = [[i] for i in range(n_samples)]
-        else:
-            folds = [[] for _ in range(k_folds)]
-            for idx_list in (neg_indices, pos_indices):
-                for rank_i, sample_i in enumerate(idx_list):
-                    folds[rank_i % k_folds].append(sample_i)
 
         test_preds = [0] * n_samples
         test_probs = [0.0] * n_samples
         majority_preds = [0] * n_samples
         fold_assignment = [0] * n_samples
+        fold_details = []
 
         for f_idx, test_fold in enumerate(folds):
-            train_idx = [i for i in range(n_samples) if i not in set(test_fold)]
-            train_x = [feature_matrix[i] for i in train_idx]
+            test_set = set(test_fold)
+            train_idx = [i for i in range(n_samples) if i not in test_set]
             train_y = [labels[i] for i in train_idx]
-            test_x = [feature_matrix[i] for i in test_fold]
+            train_x, test_x, selected_markers = _training_fold_features(
+                gene_matrix_map, train_idx, test_fold, train_y,
+                predefined_genes, args.n_controls,
+            )
 
             f_probs, f_preds, _, _ = _logistic_fit_predict(train_x, train_y, test_x)
             majority_val = 1 if sum(train_y) >= len(train_y) - sum(train_y) else 0
@@ -704,21 +866,31 @@ def pipeline(argv: list[str], record) -> None:
                 test_preds[global_i] = f_preds[local_i]
                 majority_preds[global_i] = majority_val
                 fold_assignment[global_i] = f_idx + 1
-
-        _, _, final_w, final_b = _logistic_fit_predict(feature_matrix, labels, feature_matrix)
+            fold_details.append({
+                "fold": f_idx + 1,
+                "train_samples": len(train_idx),
+                "test_samples": len(test_fold),
+                "selected_marker_genes": selected_markers,
+                "training_only_transformations": [
+                    "expression-bin control selection", "control-subtracted score normalization",
+                    "differential marker selection", "logistic feature scaling",
+                ],
+            })
 
         bacc_model = _balanced_accuracy(labels, test_preds)
         bacc_majority = _balanced_accuracy(labels, majority_preds)
         auroc = _compute_auroc(labels, test_probs)
         brier = statistics.mean([(p - y) ** 2 for p, y in zip(test_probs, labels)])
-        p_r = _pearson_r(z_scores, [float(y) for y in labels])
-        s_rho = _spearman_rho(z_scores, [float(y) for y in labels])
+        p_r = _pearson_r(test_probs, [float(y) for y in labels])
+        s_rho = _spearman_rho(test_probs, [float(y) for y in labels])
 
         benchmark_pred_rows = []
         for s_idx, s_name in enumerate(sample_names):
             benchmark_pred_rows.append({
                 "sample": s_name,
-                "group": samples[s_name],
+                "group": samples[s_name]["group"],
+                "donor_id": samples[s_name]["donor_id"],
+                "batch_id": samples[s_name]["batch_id"],
                 "true_label": labels[s_idx],
                 "predicted_label": test_preds[s_idx],
                 "predicted_probability": round(test_probs[s_idx], 4),
@@ -727,24 +899,26 @@ def pipeline(argv: list[str], record) -> None:
             })
 
         write_csv(stage3_dir / "benchmark_predictions.csv",
-                  ["sample", "group", "true_label", "predicted_label", "predicted_probability", "majority_baseline", "fold"],
+                  ["sample", "group", "donor_id", "batch_id", "true_label", "predicted_label",
+                   "predicted_probability", "majority_baseline", "fold"],
                   benchmark_pred_rows)
 
         stage3_params = {
             "n_folds": len(folds),
-            "features": ["senescence_score_z", "top_contrast_mean"],
+            "requested_n_folds": args.n_splits,
+            "split_strategy": "stratified connected components; samples sharing donor_id or batch_id are held together",
+            "split_fields": split_fields,
+            "feature_selection_scope": "training fold only",
+            "scoring_and_control_fit_scope": "training fold only",
+            "features": ["training-fold SenMayo/custom-panel control score z", "training-fold selected marker mean"],
             "model": "logistic_regression_l2",
             "logistic_balanced_accuracy": bacc_model,
             "majority_balanced_accuracy": bacc_majority,
             "auroc": auroc,
             "brier_score": brier,
-            "pearson_r_score_vs_group": p_r,
-            "spearman_rho_score_vs_group": s_rho,
-            "weights": {
-                "senescence_score_weight": final_w[0] if final_w else 0.0,
-                "contrast_weight": final_w[1] if len(final_w) > 1 else 0.0,
-                "bias": final_b,
-            },
+            "pearson_r_oof_probability_vs_group": p_r,
+            "spearman_rho_oof_probability_vs_group": s_rho,
+            "fold_details": fold_details,
         }
         write_json(stage3_dir / "benchmark_results.json", {
             "parameters": stage3_params,
@@ -752,11 +926,16 @@ def pipeline(argv: list[str], record) -> None:
         })
         (stage3_dir / "README.md").write_text(
             "# Stage 3: Benchmark Evaluation\n\n"
-            "Evaluates predictive generalization of senescence scores and differential features "
-            "against phenotypic ground truth using out-of-fold cross-validation.\n",
+            "Evaluates exploratory out-of-fold predictions. Donor/batch-connected samples stay "
+            "together; control selection, score normalization, differential marker selection, and "
+            "model scaling are fitted within each training fold. Without donor/batch IDs, the "
+            "split is sample-level and biological independence is unverified. Few groups make "
+            "metrics unstable; these are not evidence of external generalization or rejuvenation.\n",
             encoding="utf-8",
         )
         stage3_input_records = {
+            "matrix.input.csv": matrix_data,
+            "samples.input.csv": sample_data,
             "stage1_manifest.json": stage1_manifest_bytes,
             "stage2_manifest.json": stage2_manifest_bytes,
             "senescence_scores.csv": stage2_scores_csv_bytes,
@@ -807,7 +986,10 @@ def pipeline(argv: list[str], record) -> None:
                     "key_outputs": {
                         "senescence_scores.csv": stage2_scores_csv_sha,
                     },
-                    "upstream_dependencies": ["matrix.csv", "samples.csv", "stage1_manifest.json", "contrast.csv"],
+                    "upstream_dependencies": ["matrix.csv", "samples.csv", "senmayo-human.json",
+                                              "stage1_manifest.json", "contrast.csv"]
+                    if gene_set_data is not None else
+                    ["matrix.csv", "samples.csv", "stage1_manifest.json", "contrast.csv"],
                 },
                 {
                     "stage": 3,
@@ -817,11 +999,16 @@ def pipeline(argv: list[str], record) -> None:
                     "key_outputs": {
                         "benchmark_results.json": stage3_results_json_sha,
                     },
-                    "upstream_dependencies": ["stage1_manifest.json", "stage2_manifest.json", "senescence_scores.csv"],
+                    "upstream_dependencies": ["matrix.csv", "samples.csv", "stage1_manifest.json",
+                                              "stage2_manifest.json", "senescence_scores.csv"],
                 },
             ],
             "provenance_chain_intact": True,
         }
+        if gene_set_data is not None:
+            pipeline_manifest["upstream_inputs"]["senmayo-human.json"] = {
+                "sha256": gene_set_info["sha256"], "bytes": len(gene_set_data),
+            }
         write_json(args.out / "pipeline_manifest.json", pipeline_manifest)
 
         top_up = [r for r in contrast_results if r["log2_ratio"] > 0][:3]
@@ -831,7 +1018,7 @@ def pipeline(argv: list[str], record) -> None:
 
         report_md = f"""# Integrated Pipeline Report
 
-Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scoring -> Benchmark Evaluation.
+Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scoring -> Grouped Out-of-Fold Benchmark.
 
 ## Stage 1: Differential Expression Contrast
 - **Groups**: Reference `{args.reference}` (N={len(ref_idx)}) vs Comparison `{args.comparison}` (N={len(comp_idx)})
@@ -842,18 +1029,24 @@ Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scori
 - **Direction-Stable Genes**: {sum(1 for r in contrast_results if r['direction_stable'])} / {len(contrast_results)}
 
 ## Stage 2: Senescence Module Scoring
-- **Module Gene Set**: `{args.gene_set}` ({len(matched_genes)} matched genes in matrix)
+- **Module Gene Set**: {gene_set_info['name']} (`{args.gene_set}`, {gene_set_info['source_status']}; {len(matched_genes)} / {len(predefined_genes)} matched)
+- **Gene Set Source**: {gene_set_info['citation']}
 - **Expression Bins**: {n_bins} (using {args.n_controls} controls per gene)
+- This whole-dataset score is descriptive only; cross-validation refits controls and score scaling within each training fold.
 - **Mean Reference Raw Score**: {statistics.mean([r_score for s_idx, r_score in enumerate(raw_scores) if s_idx in ref_idx]):.4f}
 - **Mean Comparison Raw Score**: {statistics.mean([r_score for s_idx, r_score in enumerate(raw_scores) if s_idx in comp_idx]):.4f}
 - **Pearson correlation (Score vs Group)**: {p_r:.4f}
 - **Spearman rank correlation**: {s_rho:.4f}
 
 ## Stage 3: Out-of-Fold Benchmark Evaluation
-- **Evaluation Scheme**: {len(folds)}-fold stratified cross-validation
+- **Evaluation Scheme**: {len(folds)}-fold stratified connected-component cross-validation; samples sharing a donor or batch stay in one fold.
+- **Split Fields**: {", ".join(split_fields)}
+- **Fold-local steps**: control matching, module-score scaling, marker selection, and logistic feature scaling are fit on training samples only.
+- **Independence note**: {"donor and batch metadata were supplied" if split_fields != ["sample_id"] else "no donor/batch identifiers were supplied; sample independence is unverified"}
 - **Model Balanced Accuracy**: {bacc_model:.4f} vs **Majority Baseline**: {bacc_majority:.4f}
 - **AUROC**: {auroc:.4f}
 - **Brier Score**: {brier:.4f}
+- **OOF probability correlations**: Pearson r {p_r:.4f}; Spearman rho {s_rho:.4f}
 
 ## Provenance Chain & Cryptographic Audit
 All stages link directly to upstream input data and preceding stage manifests:
@@ -863,7 +1056,7 @@ All stages link directly to upstream input data and preceding stage manifests:
 - **Stage 2 Manifest SHA-256**: `{stage2_manifest_sha}`
 - **Stage 3 Manifest SHA-256**: `{stage3_manifest_sha}`
 
-*Note: All outputs are computational exploratory research artifacts. An expression or module score shift is not a clinical diagnosis, an anti-aging claim, or a rejuvenation protocol.*
+*Note: Cross-validation metrics and uncalibrated model probabilities are exploratory and can be unstable with few independent components. They do not establish external generalization, a senescence diagnosis, rejuvenation, or clinical benefit. The SenMayo paper used GSEA; this software uses a distinct control-subtracted score.*
 """
         (args.out / "REPORT.md").write_text(report_md, encoding="utf-8")
 

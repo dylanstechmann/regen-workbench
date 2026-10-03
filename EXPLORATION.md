@@ -32,10 +32,12 @@ claim. Replace it with your own appropriately normalized expression matrix:
   finite, nonnegative, **linear-scale normalized** values. No implicit
   normalization is performed. Raw counts and log-transformed values need
   an appropriate preprocessing workflow before this command.
-- Metadata CSV: exactly `sample,group`, with every matrix sample listed once.
-  Exactly two groups, at least two independent biological samples per group,
-  at most 200 samples and 50,000 genes. The tool validates the file contract;
-  it cannot verify biological independence or how values were normalized.
+- Metadata CSV: `sample,group` plus optional `donor_id,batch_id`, with every matrix sample listed once.
+  Exactly two groups and at least two sample rows per group, at most 200 samples
+  and 50,000 genes. The expression contrast validates the file contract; it
+  cannot verify biological independence or how values were normalized. The
+  grouped pipeline uses the optional identifiers to keep linked samples out of
+  different folds.
 - IDs and group labels: 1-128 ASCII letters/digits/`_.:-`, starting with a
   letter, digit, or underscore. Map other identifiers explicitly before use.
 - `contrast.csv` / `contrast.json`: group means, sample standard deviations,
@@ -123,12 +125,12 @@ It calls `expression-contrast`, then a separate Welch/BH summary, and records
 hashes for a later atlas citation. Read the protocol before the report.
 Swapped labels and `FLIP_A` are the negative control and the declared failure case.
 
-## Chained pipeline (contrast → senescence scoring → benchmark evaluation)
+## Chained pipeline (contrast → senescence scoring → grouped benchmark evaluation)
 
 The `pipeline` subcommand runs a unified, multi-stage workflow in one call:
 1. **Stage 1 (Expression Contrast)**: Calculates linear differential fold-changes, non-zero counts, and leave-one-out sensitivity diagnostics.
-2. **Stage 2 (Senescence Module Scoring)**: Quantifies control-subtracted senescence module scores per sample using published gene sets (`senmayo`, `fridman`, `sasp`).
-3. **Stage 3 (Benchmark Evaluation)**: Evaluates whether senescence scores and differential markers predict phenotype in out-of-fold cross-validation (balanced accuracy vs majority baseline, AUROC, Brier score).
+2. **Stage 2 (Senescence Module Scoring)**: Quantifies control-subtracted scores. `senmayo` is the published 125-gene set; `fridman` and `sasp` are explicitly marked custom, unverified panels. Runs fail below 60% gene-set coverage and never substitute contrast-selected genes for a missing signature.
+3. **Stage 3 (Benchmark Evaluation)**: Evaluates predictions in stratified out-of-fold cross-validation. Every fold refits expression-matched controls, score scaling, differential marker selection, and logistic scaling on its training samples only. Samples sharing a `donor_id` or `batch_id` are held together as connected components. If these identifiers are absent, folds are sample-level and biological independence remains unverified. At least two independent components per class are required.
 4. **Stage 4 (Provenance Audit)**: Generates a unified `pipeline_manifest.json` and `REPORT.md` cryptographically linking every stage manifest to its upstream inputs and predecessor stage manifests via SHA-256 hashes.
 
 ```bash
@@ -140,6 +142,12 @@ regen pipeline \
   --gene-set senmayo \
   --out data/pipeline_report
 ```
+
+The stage 2 whole-dataset module score is descriptive and is not used as a
+cross-validation feature; the benchmark recomputes its score inside every
+training fold. The SenMayo source paper used GSEA; this pipeline uses a distinct
+control-subtracted score. Cross-validation metrics with few donors or batches
+are unstable and do not establish external generalization or rejuvenation.
 
 ## Development validation
 

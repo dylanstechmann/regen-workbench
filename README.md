@@ -42,7 +42,7 @@ New local activities: [compare expression datasets and explore compound
 conformers](EXPLORATION.md), with runnable examples, sensitivity diagnostics,
 3D SDF outputs, and reproducible input/parameter records. Use
 `regen expression-contrast --help`, `regen compound-screen --help`, and
-`regen pipeline --help` (chained contrast -> senescence scoring -> benchmark evaluation with cryptographic provenance wiring).
+`regen pipeline --help` (chained contrast -> source-labeled module scoring -> grouped, fold-local benchmark evaluation with cryptographic provenance wiring).
 
 Structure-based exploration includes local, provenance-recorded Vina and
 optional GNINA CNN-rescoring CLI/MCP runners plus an on-demand OpenFold3 preview

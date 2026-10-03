@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import random
+import statistics
 import sys
 import tempfile
 import unittest
@@ -44,6 +46,33 @@ class ComputeTests(unittest.TestCase):
         source.write_text(text, encoding="utf-8")
         compute.compound_screen(["--input", str(source), "--out", str(self.out),
                                  "--conformers", "3", *extra], self.record)
+
+    def pipeline_fixture(self, signature_count=80, include_custom=False):
+        signature, _, _ = compute._gene_set_metadata("senmayo")
+        custom = list(dict.fromkeys(GENE for name in ("fridman", "sasp")
+                                    for GENE in compute.GENE_SETS[name]))
+        genes = list(dict.fromkeys(signature[:signature_count] + (custom if include_custom else [])
+                                   + [f"BG{i}" for i in range(180)]))
+        matrix = self.root / "pipeline_matrix.csv"
+        samples = self.root / "pipeline_samples.csv"
+        names = [f"S{i}" for i in range(8)]
+        rows = ["gene," + ",".join(names)]
+        for gene_index, gene in enumerate(genes):
+            base = 2.0 + (gene_index % 19)
+            values = []
+            for sample_index in range(8):
+                is_old = sample_index >= 4
+                signature_shift = 3.0 if is_old and gene in signature else 0.0
+                values.append(f"{base + sample_index * 0.01 + signature_shift:.4f}")
+            rows.append(gene + "," + ",".join(values))
+        matrix.write_text("\n".join(rows) + "\n", encoding="utf-8")
+        sample_rows = ["sample,group,donor_id,batch_id"]
+        for i, sample in enumerate(names):
+            group = "old" if i >= 4 else "young"
+            donor = ("O" if group == "old" else "Y") + str((i % 4) // 2 + 1)
+            sample_rows.append(f"{sample},{group},{donor},{donor}_batch")
+        samples.write_text("\n".join(sample_rows) + "\n", encoding="utf-8")
+        return matrix, samples
 
     def test_contrast_known_effect_and_outlier_sensitivity(self):
         self.expression()
@@ -214,7 +243,8 @@ class ComputeTests(unittest.TestCase):
             self.assertIn("--gene-set", run.call_args.args[1])
 
     def test_pipeline_end_to_end_and_provenance_chain(self):
-        compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
+        matrix, samples = self.pipeline_fixture()
+        compute.pipeline(["--matrix", str(matrix), "--samples", str(samples),
                           "--reference", "young", "--comparison", "old", "--out", str(self.out)], self.record)
 
         # 1. Check directory structure
@@ -227,7 +257,7 @@ class ComputeTests(unittest.TestCase):
         # 2. Stage 1 checks
         s1_contrast = json.loads((self.out / "stage1_contrast" / "contrast.json").read_text())
         self.assertIn("genes", s1_contrast)
-        self.assertEqual(len(s1_contrast["genes"]), 3)
+        self.assertGreater(len(s1_contrast["genes"]), 200)
         s1_manifest = json.loads((self.out / "stage1_contrast" / "manifest.json").read_text())
         self.assertEqual(s1_manifest["action"], "expression-contrast")
         self.assertIn("matrix.input.csv", s1_manifest["inputs"])
@@ -235,7 +265,12 @@ class ComputeTests(unittest.TestCase):
         # 3. Stage 2 checks
         s2_scores = json.loads((self.out / "stage2_senescence" / "senescence_scores.json").read_text())
         self.assertIn("scores", s2_scores)
-        self.assertEqual(len(s2_scores["scores"]), 4)
+        self.assertEqual(len(s2_scores["scores"]), 8)
+        self.assertEqual(s2_scores["parameters"]["genes_matched_in_matrix"], 80)
+        self.assertEqual(s2_scores["parameters"]["gene_set_source_status"], "published_gene_set")
+        self.assertEqual(s2_scores["parameters"]["minimum_coverage_fraction"], 0.6)
+        self.assertNotIn("CDKN1A", s2_scores["matched_genes"])
+        self.assertNotIn("CDKN2A", s2_scores["matched_genes"])
         s2_manifest = json.loads((self.out / "stage2_senescence" / "manifest.json").read_text())
         self.assertEqual(s2_manifest["action"], "senescence-scoring")
         # Stage 2 inputs must link to Stage 1 manifest and contrast.csv
@@ -247,6 +282,19 @@ class ComputeTests(unittest.TestCase):
         self.assertIn("logistic_balanced_accuracy", s3_results["parameters"])
         self.assertIn("auroc", s3_results["parameters"])
         self.assertIn("brier_score", s3_results["parameters"])
+        self.assertEqual(s3_results["parameters"]["scoring_and_control_fit_scope"], "training fold only")
+        self.assertEqual(s3_results["parameters"]["split_fields"], ["donor_id", "batch_id"])
+        predictions = s3_results["predictions"]
+        for field in ("donor_id", "batch_id"):
+            assignments = {}
+            for prediction in predictions:
+                value = prediction[field]
+                if value:
+                    assignments.setdefault(value, set()).add(prediction["fold"])
+            self.assertTrue(all(len(folds) == 1 for folds in assignments.values()))
+        for fold in s3_results["parameters"]["fold_details"]:
+            self.assertEqual(len(fold["selected_marker_genes"]), 5)
+            self.assertIn("differential marker selection", fold["training_only_transformations"])
         s3_manifest = json.loads((self.out / "stage3_benchmark" / "manifest.json").read_text())
         self.assertEqual(s3_manifest["action"], "benchmark-evaluation")
         # Stage 3 inputs must link to Stage 2 manifest and senescence_scores.csv
@@ -275,17 +323,23 @@ class ComputeTests(unittest.TestCase):
         self.assertIn(s1_hash, report_text)
         self.assertIn(s2_hash, report_text)
         self.assertIn(s3_hash, report_text)
+        self.assertIn("training samples only", report_text)
+        self.assertIn("GSEA", report_text)
 
         self.record.assert_called_once()
 
     def test_pipeline_gene_sets_and_parameter_validation(self):
+        matrix, samples = self.pipeline_fixture(include_custom=True)
         # Test alternative gene sets
         for gset in ["fridman", "sasp"]:
             out_dir = self.root / f"out_{gset}"
-            compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
+            compute.pipeline(["--matrix", str(matrix), "--samples", str(samples),
                               "--reference", "young", "--comparison", "old", "--gene-set", gset,
                               "--out", str(out_dir)], self.record)
             self.assertTrue((out_dir / "pipeline_manifest.json").is_file())
+            scores = json.loads((out_dir / "stage2_senescence" / "senescence_scores.json").read_text())
+            self.assertEqual(scores["parameters"]["gene_set_source_status"], "custom_unverified")
+            self.assertIn("Custom", scores["parameters"]["gene_set_name"])
 
         # Test validation failures
         bad_out = self.root / "bad_out"
@@ -294,6 +348,100 @@ class ComputeTests(unittest.TestCase):
             compute.pipeline(["--matrix", str(self.matrix), "--samples", str(self.samples),
                               "--reference", "young", "--comparison", "young", "--out", str(bad_out)], self.record)
         self.assertFalse(bad_out.exists())
+
+    def test_low_signature_coverage_fails_closed_without_fallback(self):
+        matrix, samples = self.pipeline_fixture(signature_count=74)
+        with self.assertRaisesRegex(ValueError, "at least 60% is required"):
+            compute.pipeline(["--matrix", str(matrix), "--samples", str(samples),
+                              "--reference", "young", "--comparison", "old", "--out", str(self.out)],
+                             self.record)
+        self.assertFalse(self.out.exists())
+
+    def test_fold_features_ignore_held_out_expression_for_fitting(self):
+        genes = {
+            "SEN_A": [3, 4, 900, 800, 10, 11],
+            "SEN_B": [5, 6, 700, 600, 12, 13],
+            "MARKER": [1, 2, 1000, 2000, 20, 21],
+            "BG_A": [2, 2, 500, 500, 3, 3],
+            "BG_B": [4, 4, 400, 400, 5, 5],
+            "BG_C": [8, 8, 300, 300, 9, 9],
+        }
+        train_idx, test_idx, train_y = [0, 1, 4, 5], [2, 3], [0, 0, 1, 1]
+        original = compute._training_fold_features(genes, train_idx, test_idx,
+                                                   train_y, ["SEN_A", "SEN_B"], 1)
+        changed_test = {gene: list(values) for gene, values in genes.items()}
+        for values in changed_test.values():
+            values[2] *= 100
+            values[3] *= 100
+        changed = compute._training_fold_features(changed_test, train_idx, test_idx,
+                                                  train_y, ["SEN_A", "SEN_B"], 1)
+        self.assertEqual(original[0], changed[0])
+        self.assertEqual(original[2], changed[2])
+
+    def test_grouped_folds_keep_transitively_shared_batches_together(self):
+        names = [f"S{i}" for i in range(8)]
+        labels = [0, 0, 0, 0, 1, 1, 1, 1]
+        info = {name: {"group": "young" if labels[i] == 0 else "old",
+                       "donor_id": f"D{i}", "batch_id": f"B{i}"}
+                for i, name in enumerate(names)}
+        # A donor link plus a crossing batch link forms one connected component.
+        info["S0"]["donor_id"] = info["S1"]["donor_id"] = "donor0"
+        info["S1"]["batch_id"] = info["S2"]["batch_id"] = "batch_cross"
+        folds, fields = compute._grouped_stratified_folds(names, labels, info, 2)
+        assignment = {i: fold_number for fold_number, fold in enumerate(folds) for i in fold}
+        self.assertEqual(assignment[0], assignment[1])
+        self.assertEqual(assignment[1], assignment[2])
+        self.assertEqual(fields, ["donor_id", "batch_id"])
+        self.assertTrue(all({labels[i] for i in fold} == {0, 1} for fold in folds))
+
+    def test_senmayo_registry_is_the_source_labeled_125_gene_set(self):
+        genes, metadata, raw_data = compute._gene_set_metadata("senmayo")
+        self.assertEqual(len(genes), 125)
+        self.assertEqual(len(set(genes)), 125)
+        self.assertEqual(metadata["source_status"], "published_gene_set")
+        self.assertIn("10.1038/s41467-022-32552-1", metadata["citation"])
+        self.assertEqual(metadata["sha256"], hashlib.sha256(raw_data).hexdigest())
+        self.assertTrue({"CDKN1A", "CDKN2A"}.isdisjoint(genes))
+        self.assertNotIn("senmayo", compute.GENE_SETS)
+
+    def test_null_label_permutations_are_near_chance_across_seeds_and_coverage(self):
+        signature, _, _ = compute._gene_set_metadata("senmayo")
+        sample_count = 60
+        balanced_groups = ["young"] * (sample_count // 2) + ["old"] * (sample_count // 2)
+        accuracies, aurocs = [], []
+        for seed in range(5):
+            label_rng = random.Random(10_000 + seed)
+            labels = list(balanced_groups)
+            label_rng.shuffle(labels)
+            sample_names = [f"S{i}" for i in range(sample_count)]
+            sample_rows = ["sample,group,donor_id,batch_id"] + [
+                f"{sample},{label},D{i},B{i}" for i, (sample, label) in enumerate(zip(sample_names, labels))
+            ]
+            sample_path = self.root / f"null_samples_{seed}.csv"
+            sample_path.write_text("\n".join(sample_rows) + "\n", encoding="utf-8")
+            for coverage_index, signature_count in enumerate((125, 75)):
+                rng = random.Random(20_000 + seed * 10 + coverage_index)
+                genes = signature[:signature_count] + [f"BG{i}" for i in range(1000 - signature_count)]
+                matrix_path = self.root / f"null_matrix_{seed}_{coverage_index}.csv"
+                matrix_rows = ["gene," + ",".join(sample_names)]
+                matrix_rows.extend(gene + "," + ",".join(
+                    f"{rng.uniform(0.0, 100.0):.6f}" for _ in sample_names
+                ) for gene in genes)
+                matrix_path.write_text("\n".join(matrix_rows) + "\n", encoding="utf-8")
+                out = self.root / f"null_report_{seed}_{coverage_index}"
+                compute.pipeline(["--matrix", str(matrix_path), "--samples", str(sample_path),
+                                  "--reference", "young", "--comparison", "old", "--out", str(out)],
+                                 self.record)
+                parameters = json.loads((out / "stage3_benchmark" / "benchmark_results.json").read_text())["parameters"]
+                accuracies.append(parameters["logistic_balanced_accuracy"])
+                aurocs.append(parameters["auroc"])
+
+        self.assertGreaterEqual(statistics.mean(accuracies), 0.40)
+        self.assertLessEqual(statistics.mean(accuracies), 0.60)
+        self.assertGreaterEqual(statistics.mean(aurocs), 0.40)
+        self.assertLessEqual(statistics.mean(aurocs), 0.60)
+        self.assertLess(max(accuracies), 0.80)
+        self.assertLess(max(aurocs), 0.80)
 
 
 if __name__ == "__main__":

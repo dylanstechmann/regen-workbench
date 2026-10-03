@@ -76,7 +76,7 @@ TOOLS: list[dict[str, Any]] = [
     },
     {
         "name": "regen_pipeline",
-        "description": "Chain expression-contrast -> senescence-scoring -> benchmark-evaluation in a single local pipeline with cryptographic SHA-256 provenance hashes connecting all stages. Saves staged reports and top-level manifest under /lab/data.",
+        "description": "Run a local expression and module-score pipeline with a source-labeled SenMayo signature, strict coverage checks, donor/batch-grouped folds, and training-fold-only control fitting, feature selection, and scaling. Saves exploratory metrics and SHA-256 provenance under /lab/data; results are not evidence of rejuvenation.",
         "inputSchema": _schema({
             "matrix": {"type": "string", "minLength": 1, "maxLength": 1000},
             "samples": {"type": "string", "minLength": 1, "maxLength": 1000},
