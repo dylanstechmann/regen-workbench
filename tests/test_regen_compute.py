@@ -89,6 +89,65 @@ class ComputeTests(unittest.TestCase):
         self.assertIn("not confidence", (self.out / "README.md").read_text())
         self.record.assert_called_once()
 
+    def test_fridman_source_assets_are_pinned_without_sibling_installation(self):
+        up, up_metadata, _ = compute._gene_set_metadata("fridman_up")
+        down, down_metadata, _ = compute._gene_set_metadata("fridman_down")
+        senmayo, _, _ = compute._gene_set_metadata("senmayo")
+        self.assertEqual((len(up), len(down), len(senmayo)), (77, 13, 125))
+        self.assertEqual(up_metadata["systematic_id"], "M9143")
+        self.assertEqual(down_metadata["systematic_id"], "M9487")
+        raw = (compute.SENESCORE_ASSET_ROOT / "msigdb-c2-v2025.1.Hs-fridman-senescence.gmt").read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+                         "4cb3926f5e4898e1c30225baf44152c03fe4d1b815c17406422c3537c053ef33")
+        for name, metadata in (("fridman-senescence-up.json", up_metadata),
+                               ("fridman-senescence-down.json", down_metadata)):
+            self.assertEqual(metadata["sha256"], hashlib.sha256(
+                (compute.SENESCORE_ASSET_ROOT / name).read_bytes()).hexdigest())
+
+    def test_fridman_changed_source_snapshot_is_rejected(self):
+        import shutil
+        assets = self.root / "assets"
+        shutil.copytree(compute.SENESCORE_ASSET_ROOT, assets)
+        snapshot = assets / "msigdb-c2-v2025.1.Hs-fridman-senescence.gmt"
+        snapshot.write_bytes(snapshot.read_bytes() + b"unreviewed source change")
+        with patch.object(compute, "SENESCORE_ASSET_ROOT", assets):
+            with self.assertRaisesRegex(ValueError, "integrity checks"):
+                compute._gene_set_metadata("fridman_up")
+
+    def test_signed_score_combines_raw_directions_before_training_normalization(self):
+        data = {"UP": [0, 2, 4, 6, 8], "DOWN": [0, 1, 2, 3, 4],
+                "BG": [1, 1, 1, 1, 1]}
+        train, test, _ = compute._training_fold_features(
+            data, [0, 1, 2, 3], [4], [0, 0, 1, 1], ["UP"], 1,
+            signed_down_genes=["DOWN"])
+        expected_sd = statistics.stdev([0, 1, 2, 3])
+        self.assertAlmostEqual(train[0][0], -1.5 / expected_sd)
+        self.assertAlmostEqual(test[0][0], 2.5 / expected_sd)
+
+    def test_training_control_selection_respects_requested_expression_bins(self):
+        data = {"SIG": [5, 6, 7, 8, 9], "BG1": [1, 1, 2, 2, 2],
+                "BG2": [3, 4, 3, 4, 4], "BG3": [7, 8, 10, 9, 10],
+                "BG4": [10, 10, 11, 11, 11]}
+        coarse = compute._training_fold_features(
+            data, [0, 1, 2, 3], [4], [0, 0, 1, 1], ["SIG"], 1, n_bins=1)[1]
+        fine = compute._training_fold_features(
+            data, [0, 1, 2, 3], [4], [0, 0, 1, 1], ["SIG"], 1, n_bins=4)[1]
+        self.assertNotAlmostEqual(coarse[0][0], fine[0][0])
+
+    def test_training_marker_selection_respects_requested_pseudocount(self):
+        data = {"SIG": [5, 5, 6, 6, 7]}
+        data["SMALL"] = [0.01, 0.01, 0.1, 0.1, 0.2]
+        for j in range(5):
+            data[f"BIG{j}"] = [10+j, 10+j, 15+j, 15+j, 20+j]
+        small = compute._training_fold_features(data, [0, 1, 2, 3], [4],
+                                                [0, 0, 1, 1], ["SIG"], 1,
+                                                pseudocount=0.0001)[2]
+        large = compute._training_fold_features(data, [0, 1, 2, 3], [4],
+                                                [0, 0, 1, 1], ["SIG"], 1,
+                                                pseudocount=10.0)[2]
+        self.assertIn("SMALL", small)
+        self.assertNotIn("SMALL", large)
+
     def test_sample_order_uses_identifiers(self):
         self.samples.write_text("sample,group\nd,old\nb,young\na,young\nc,old\n", encoding="utf-8")
         self.expression()
@@ -340,6 +399,26 @@ class ComputeTests(unittest.TestCase):
             scores = json.loads((out_dir / "stage2_senescence" / "senescence_scores.json").read_text())
             self.assertEqual(scores["parameters"]["gene_set_source_status"], "custom_unverified")
             self.assertIn("Custom", scores["parameters"]["gene_set_name"])
+
+        # A source-direction contrast exposes each set's coverage separately.
+        signed_matrix, signed_samples = self.pipeline_fixture(signature_count=0)
+        matrix_text = signed_matrix.read_text(encoding="utf-8")
+        signed_genes = (compute._gene_set_metadata("fridman_up")[0]
+                        + compute._gene_set_metadata("fridman_down")[0])
+        for gene in signed_genes:
+            if f"\n{gene}," in matrix_text:
+                continue
+            values = "2,2,2,2,2,2,2,2"
+            matrix_text += f"{gene},{values}\n"
+        signed_matrix.write_text(matrix_text, encoding="utf-8")
+        signed_out = self.root / "out_fridman_signed"
+        compute.pipeline(["--matrix", str(signed_matrix), "--samples", str(signed_samples),
+                          "--reference", "young", "--comparison", "old",
+                          "--gene-set", "fridman_signed", "--out", str(signed_out)], self.record)
+        signed = json.loads((signed_out / "stage2_senescence" / "senescence_scores.json").read_text())
+        self.assertEqual(signed["parameters"]["gene_set_source_status"], "published_gene_set")
+        self.assertEqual(signed["parameters"]["directional_coverage"], {"up": 1.0, "down": 1.0})
+        self.assertEqual(signed["parameters"]["direction"], "up_minus_down")
 
         # Test validation failures
         bad_out = self.root / "bad_out"

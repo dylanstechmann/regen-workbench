@@ -66,9 +66,50 @@ class ExperimentManifestTests(unittest.TestCase):
 
     def test_case_manifest_schema_and_all_local_hashes_pass(self):
         document = validate_experiment_manifest(MANIFEST)
-        self.assertEqual(document["manifest_schema_version"], "1.0.0")
+        self.assertEqual(document["manifest_schema_version"], "1.1.0")
         self.assertEqual(document["modeling"]["donor_validation"]["status"], "not_testable")
         self.assertEqual(document["calibration"]["status"], "not_reported")
+        self.assertEqual(
+            {entry["domain"] for entry in document["environmental_conditions"]},
+            {"oxygen", "perfusion"},
+        )
+
+    def test_legacy_manifest_without_environmental_extension_still_validates(self):
+        def legacy(document):
+            document["manifest_schema_version"] = "1.0.0"
+            document.pop("environmental_conditions")
+        path = self._temporary_manifest(legacy)
+        self.assertEqual(validate_experiment_manifest(path)["manifest_schema_version"], "1.0.0")
+
+    def test_legacy_version_cannot_claim_new_environmental_fields(self):
+        path = self._temporary_manifest(
+            lambda document: document.update(manifest_schema_version="1.0.0"))
+        with self.assertRaisesRegex(ManifestValidationError, "schema validation failed"):
+            validate_experiment_manifest(path)
+
+    def test_environmental_conditions_require_linked_source_artifacts(self):
+        path = self._temporary_manifest(
+            lambda document: document["environmental_conditions"][0].update(source_artifact_id="missing-source")
+        )
+        with self.assertRaisesRegex(ManifestValidationError, "environmental_conditions\\[0\\].*unknown artifact id"):
+            validate_experiment_manifest(path)
+
+    def test_environmental_condition_cannot_be_added_without_all_provenance_fields(self):
+        path = self._temporary_manifest(
+            lambda document: document["environmental_conditions"][0].pop("status")
+        )
+        with self.assertRaisesRegex(ManifestValidationError, "schema validation failed"):
+            validate_experiment_manifest(path)
+
+    def test_reported_environmental_condition_cannot_cite_analysis_code(self):
+        def cite_code_as_measurement(document):
+            condition = document["environmental_conditions"][0]
+            condition["status"] = "reported"
+            condition["source_artifact_id"] = "analysis-code"
+
+        path = self._temporary_manifest(cite_code_as_measurement)
+        with self.assertRaisesRegex(ManifestValidationError, "status reported cannot cite analysis_code"):
+            validate_experiment_manifest(path)
 
     def test_schema_can_validate_a_manifest_from_another_repo_id(self):
         def rename_local_repository(document):

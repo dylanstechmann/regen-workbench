@@ -68,6 +68,8 @@ def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
             refs.append((f"calibration.{name}", calibration[name]))
     for i, condition in enumerate(calibration.get("reported_conditions", [])):
         refs.append((f"calibration.reported_conditions[{i}].source_artifact_id", condition["source_artifact_id"]))
+    for i, condition in enumerate(document.get("environmental_conditions", [])):
+        refs.append((f"environmental_conditions[{i}].source_artifact_id", condition["source_artifact_id"]))
     for i, endpoint in enumerate(document.get("validation_endpoints", [])):
         if "artifact_id" in endpoint:
             refs.append((f"validation_endpoints[{i}].artifact_id", endpoint["artifact_id"]))
@@ -116,6 +118,22 @@ def validate_experiment_manifest(
     for location, artifact_id in _referenced_artifact_ids(document):
         if artifact_id not in by_id:
             raise ManifestValidationError(f"{location} references unknown artifact id: {artifact_id}")
+
+    allowed_environmental_evidence = {
+        "measured": {"raw_assay_data", "source_dataset", "calibration_record"},
+        "reported": {"publication", "source_dataset", "author_analysis"},
+        "simulated": {"analysis_code", "analysis_output"},
+        "assumed": {"analysis_specification", "analysis_code"},
+        "not_available": {"publication", "source_dataset", "analysis_output", "analysis_specification"},
+    }
+    for index, condition in enumerate(document.get("environmental_conditions", [])):
+        artifact = by_id[condition["source_artifact_id"]]
+        allowed = allowed_environmental_evidence[condition["status"]]
+        if artifact["kind"] not in allowed:
+            raise ManifestValidationError(
+                f"environmental_conditions[{index}] status {condition['status']} "
+                f"cannot cite {artifact['kind']} evidence"
+            )
 
     validation_endpoints = document.get("validation_endpoints")
     if validation_endpoints is not None:

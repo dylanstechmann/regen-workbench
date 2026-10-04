@@ -117,6 +117,22 @@ class McpProtocolTests(unittest.TestCase):
             regen_mcp._validate_arguments(
                 "regen_europepmc", {"query": "x", "limit": True}
             )
+
+    def test_regen_pipeline_accepts_source_pinned_fridman_gene_sets(self) -> None:
+        (regen_mcp.WORKBENCH_ROOT / "data" / "matrix.csv").write_text("gene,a,b\nA,1,2\n", encoding="utf-8")
+        (regen_mcp.WORKBENCH_ROOT / "data" / "samples.csv").write_text(
+            "sample,group\na,young\nb,old\n", encoding="utf-8"
+        )
+        base = {
+            "matrix": str(regen_mcp.WORKBENCH_ROOT / "data" / "matrix.csv"),
+            "samples": str(regen_mcp.WORKBENCH_ROOT / "data" / "samples.csv"),
+            "reference": "young", "comparison": "old", "output": "data/pipeline",
+        }
+        for gene_set in ("fridman_up", "fridman_down", "fridman_signed"):
+            args = regen_mcp._validate_arguments("regen_pipeline", {**base, "gene_set": gene_set})
+            self.assertEqual(args["--gene-set"], gene_set)
+        with self.assertRaises(regen_mcp.ToolInputError):
+            regen_mcp._validate_arguments("regen_pipeline", {**base, "gene_set": "invented"})
         with self.assertRaises(regen_mcp.ToolInputError):
             regen_mcp._validate_arguments(
                 "regen_interpro", {"accession": "P04637/metadata"}

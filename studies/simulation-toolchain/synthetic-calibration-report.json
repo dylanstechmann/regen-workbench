@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "input_sha256": "0878d191bc76b93435b2e5a337fd62f9cb3c641d0ce25ca6fef0034d6dc7a030",
+  "configuration": {
+    "density_mg_ul": 1.0,
+    "discard_seconds": 0,
+    "seed": 0,
+    "bootstrap_draws": 2000,
+    "outlier_method": "iqr",
+    "outlier_threshold": null
+  },
+  "measurement_uncertainty_budget": {
+    "status": "not_provided",
+    "input_sha256": null,
+    "combination_assumption": null,
+    "components": {
+      "density": {
+        "status": "not_available",
+        "unit": "mg/uL",
+        "reason": "No measurement uncertainty budget was supplied."
+      },
+      "balance_gain": {
+        "status": "not_available",
+        "unit": "relative_fraction",
+        "reason": "No measurement uncertainty budget was supplied."
+      },
+      "balance_slope_drift": {
+        "status": "not_available",
+        "unit": "mg/s",
+        "reason": "No measurement uncertainty budget was supplied."
+      },
+      "evaporation_rate": {
+        "status": "not_available",
+        "unit": "mg/s",
+        "reason": "No measurement uncertainty budget was supplied."
+      },
+      "timing_scale": {
+        "status": "not_available",
+        "unit": "relative_fraction",
+        "reason": "No measurement uncertainty budget was supplied."
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_id": "synthetic-100-0",
+      "mass_rate_mg_s": 1.5559524470445347,
+      "intercept_mg": 6.974044509531581,
+      "r_squared": 0.9999995643288246,
+      "residual_rmse_mg": 0.09185881143087707,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        18,
+        29,
+        30
+      ],
+      "outlier_count": 3,
+      "target_flow_ul_min": 100.0,
+      "measured_flow_ul_min": 93.35714682267208,
+      "error_percent": -6.642853177327923,
+      "flow_after_available_corrections_ul_min": 93.35714682267208,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.03296831598482568,
+      "outlier_times_s": [
+        180.0,
+        290.0,
+        300.0
+      ],
+      "outlier_residuals_mg": [
+        -0.1721,
+        -0.1716,
+        0.1824
+      ],
+      "flags": [
+        "outlier_readings_detected(3)"
+      ]
+    },
+    {
+      "run_id": "synthetic-100-1",
+      "mass_rate_mg_s": 1.5432690819984347,
+      "intercept_mg": 7.026220847568283,
+      "r_squared": 0.9999995655453163,
+      "residual_rmse_mg": 0.09098273443476605,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 100.0,
+      "measured_flow_ul_min": 92.59614491990608,
+      "error_percent": -7.40385508009392,
+      "flow_after_available_corrections_ul_min": 92.59614491990608,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.0018879572271011016,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-100-2",
+      "mass_rate_mg_s": 1.5367179470224437,
+      "intercept_mg": 6.990172334527671,
+      "r_squared": 0.9999994699930203,
+      "residual_rmse_mg": 0.10006450846335298,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        28
+      ],
+      "outlier_count": 1,
+      "target_flow_ul_min": 100.0,
+      "measured_flow_ul_min": 92.20307682134663,
+      "error_percent": -7.796923178653373,
+      "flow_after_available_corrections_ul_min": 92.20307682134663,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.08063201643399706,
+      "outlier_times_s": [
+        280.0
+      ],
+      "outlier_residuals_mg": [
+        -0.283
+      ],
+      "flags": [
+        "outlier_readings_detected(1)"
+      ]
+    },
+    {
+      "run_id": "synthetic-100-3",
+      "mass_rate_mg_s": 1.542773180853179,
+      "intercept_mg": 7.022089573404742,
+      "r_squared": 0.9999994805093715,
+      "residual_rmse_mg": 0.09945715812423575,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 100.0,
+      "measured_flow_ul_min": 92.56639085119075,
+      "error_percent": -7.433609148809253,
+      "flow_after_available_corrections_ul_min": 92.56639085119075,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.03496544333834372,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-100-4",
+      "mass_rate_mg_s": 1.559172431666254,
+      "intercept_mg": 7.010254738411163,
+      "r_squared": 0.999999352405385,
+      "residual_rmse_mg": 0.1122253311996859,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        29
+      ],
+      "outlier_count": 1,
+      "target_flow_ul_min": 100.0,
+      "measured_flow_ul_min": 93.55034589997524,
+      "error_percent": -6.449654100024759,
+      "flow_after_available_corrections_ul_min": 93.55034589997524,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.0033314378871792854,
+      "outlier_times_s": [
+        290.0
+      ],
+      "outlier_residuals_mg": [
+        -0.3391
+      ],
+      "flags": [
+        "outlier_readings_detected(1)"
+      ]
+    },
+    {
+      "run_id": "synthetic-25-0",
+      "mass_rate_mg_s": 0.3879543584601622,
+      "intercept_mg": 6.994333686990451,
+      "r_squared": 0.9999945854294487,
+      "residual_rmse_mg": 0.08074373092990961,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        11
+      ],
+      "outlier_count": 1,
+      "target_flow_ul_min": 25.0,
+      "measured_flow_ul_min": 23.27726150760973,
+      "error_percent": -6.890953969561082,
+      "flow_after_available_corrections_ul_min": 23.27726150760973,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.16376438337241755,
+      "outlier_times_s": [
+        110.0
+      ],
+      "outlier_residuals_mg": [
+        -0.2192
+      ],
+      "flags": [
+        "outlier_readings_detected(1)"
+      ]
+    },
+    {
+      "run_id": "synthetic-25-1",
+      "mass_rate_mg_s": 0.3865886212339758,
+      "intercept_mg": 7.06718339776009,
+      "r_squared": 0.9999924383475085,
+      "residual_rmse_mg": 0.09508325921179375,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 25.0,
+      "measured_flow_ul_min": 23.195317274038548,
+      "error_percent": -7.2187309038458105,
+      "flow_after_available_corrections_ul_min": 23.195317274038548,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.376871872653186,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-25-2",
+      "mass_rate_mg_s": 0.3888625079493895,
+      "intercept_mg": 7.022755588264438,
+      "r_squared": 0.9999909244189603,
+      "residual_rmse_mg": 0.1047804493577747,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 25.0,
+      "measured_flow_ul_min": 23.331750476963368,
+      "error_percent": -6.672998092146529,
+      "flow_after_available_corrections_ul_min": 23.331750476963368,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.12128557102811373,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-25-3",
+      "mass_rate_mg_s": 0.3883537738973164,
+      "intercept_mg": 6.961337347250165,
+      "r_squared": 0.9999930616344086,
+      "residual_rmse_mg": 0.0914961078070872,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 25.0,
+      "measured_flow_ul_min": 23.301226433838984,
+      "error_percent": -6.795094264644064,
+      "flow_after_available_corrections_ul_min": 23.301226433838984,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.23538538553879598,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-25-4",
+      "mass_rate_mg_s": 0.3847352889733065,
+      "intercept_mg": 7.0452099132480654,
+      "r_squared": 0.9999924103364136,
+      "residual_rmse_mg": 0.09480252998129235,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        9
+      ],
+      "outlier_count": 1,
+      "target_flow_ul_min": 25.0,
+      "measured_flow_ul_min": 23.08411733839839,
+      "error_percent": -7.663530646406444,
+      "flow_after_available_corrections_ul_min": 23.08411733839839,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.28432579684780285,
+      "outlier_times_s": [
+        90.0
+      ],
+      "outlier_residuals_mg": [
+        -0.2461
+      ],
+      "flags": [
+        "outlier_readings_detected(1)"
+      ]
+    },
+    {
+      "run_id": "synthetic-50-0",
+      "mass_rate_mg_s": 0.778992053856514,
+      "intercept_mg": 7.038947301221867,
+      "r_squared": 0.9999982043875233,
+      "residual_rmse_mg": 0.09336513258504968,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 50.0,
+      "measured_flow_ul_min": 46.73952323139084,
+      "error_percent": -6.520953537218317,
+      "flow_after_available_corrections_ul_min": 46.73952323139084,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.05733542771490096,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-50-1",
+      "mass_rate_mg_s": 0.7841553440453088,
+      "intercept_mg": 6.984216706508477,
+      "r_squared": 0.9999976518466304,
+      "residual_rmse_mg": 0.10747583790357858,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        18,
+        26
+      ],
+      "outlier_count": 2,
+      "target_flow_ul_min": 50.0,
+      "measured_flow_ul_min": 47.04932064271853,
+      "error_percent": -5.901358714562946,
+      "flow_after_available_corrections_ul_min": 47.04932064271853,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.032462411227028365,
+      "outlier_times_s": [
+        180.0,
+        260.0
+      ],
+      "outlier_residuals_mg": [
+        0.2291,
+        0.2968
+      ],
+      "flags": [
+        "outlier_readings_detected(2)"
+      ]
+    },
+    {
+      "run_id": "synthetic-50-2",
+      "mass_rate_mg_s": 0.7710385072851073,
+      "intercept_mg": 6.962127476407574,
+      "r_squared": 0.9999969404745502,
+      "residual_rmse_mg": 0.12062817603231761,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [],
+      "outlier_count": 0,
+      "target_flow_ul_min": 50.0,
+      "measured_flow_ul_min": 46.262310437106436,
+      "error_percent": -7.4753791257871285,
+      "flow_after_available_corrections_ul_min": 46.262310437106436,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.2025280573694284,
+      "outlier_times_s": [],
+      "outlier_residuals_mg": [],
+      "flags": []
+    },
+    {
+      "run_id": "synthetic-50-3",
+      "mass_rate_mg_s": 0.769155728263455,
+      "intercept_mg": 7.014197220305121,
+      "r_squared": 0.999997598254556,
+      "residual_rmse_mg": 0.10661622017533358,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        2,
+        13,
+        27
+      ],
+      "outlier_count": 3,
+      "target_flow_ul_min": 50.0,
+      "measured_flow_ul_min": 46.1493436958073,
+      "error_percent": -7.701312608385393,
+      "flow_after_available_corrections_ul_min": 46.1493436958073,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": -0.08076305142988839,
+      "outlier_times_s": [
+        20.0,
+        130.0,
+        270.0
+      ],
+      "outlier_residuals_mg": [
+        0.226,
+        0.2978,
+        -0.2321
+      ],
+      "flags": [
+        "outlier_readings_detected(3)"
+      ]
+    },
+    {
+      "run_id": "synthetic-50-4",
+      "mass_rate_mg_s": 0.7696780376255725,
+      "intercept_mg": 6.986750975431022,
+      "r_squared": 0.9999978597947018,
+      "residual_rmse_mg": 0.10071224337330204,
+      "n_readings": 31,
+      "duration_s": 300.0,
+      "outlier_indices": [
+        14
+      ],
+      "outlier_count": 1,
+      "target_flow_ul_min": 50.0,
+      "measured_flow_ul_min": 46.18068225753435,
+      "error_percent": -7.6386354849312985,
+      "flow_after_available_corrections_ul_min": 46.18068225753435,
+      "corrections_applied": [],
+      "late_vs_early_slope_change_percent": 0.03219379424434013,
+      "outlier_times_s": [
+        140.0
+      ],
+      "outlier_residuals_mg": [
+        -0.3659
+      ],
+      "flags": [
+        "outlier_readings_detected(1)"
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "target_flow_ul_min": 25.0,
+      "n_runs": 5,
+      "mean_flow_ul_min": 23.2379346061698,
+      "sd_flow_ul_min": 0.09978710726087613,
+      "mean_error_percent": -7.048261575320794,
+      "mean_flow_ci95": [
+        23.150810845903287,
+        23.308643065842887
+      ],
+      "mean_flow_after_available_corrections_ul_min": 23.2379346061698,
+      "mean_flow_after_available_corrections_ci95": [
+        23.155883953239417,
+        23.308643065842887
+      ],
+      "correction_status": "none_available",
+      "measurement_system_uncertainty": {
+        "status": "unavailable",
+        "combined_standard_uncertainty_ul_min": null,
+        "component_contributions_ul_min": {
+          "density": null,
+          "balance_gain": null,
+          "balance_slope_drift": null,
+          "evaporation_rate": null,
+          "timing_scale": null
+        },
+        "unquantified_components": [
+          "density",
+          "balance_gain",
+          "balance_slope_drift",
+          "evaporation_rate",
+          "timing_scale"
+        ],
+        "combination_assumption": "independent_standard_uncertainties",
+        "note": "First-order contributions around the flow after available source-linked corrections. This is separate from run resampling and excludes unlisted loss mechanisms.",
+        "flow_after_corrections_ul_min": 23.2379346061698,
+        "corrections_applied": []
+      },
+      "flagged_runs": [
+        "synthetic-25-0",
+        "synthetic-25-4"
+      ],
+      "outlier_runs": [
+        "synthetic-25-0",
+        "synthetic-25-4"
+      ]
+    },
+    {
+      "target_flow_ul_min": 50.0,
+      "n_runs": 5,
+      "mean_flow_ul_min": 46.47623605291149,
+      "sd_flow_ul_min": 0.39928715031242,
+      "mean_error_percent": -7.047527894177023,
+      "mean_flow_ci95": [
+        46.18447246875795,
+        46.80736577107075
+      ],
+      "mean_flow_after_available_corrections_ul_min": 46.47623605291149,
+      "mean_flow_after_available_corrections_ci95": [
+        46.18447246875795,
+        46.813633483416154
+      ],
+      "correction_status": "none_available",
+      "measurement_system_uncertainty": {
+        "status": "unavailable",
+        "combined_standard_uncertainty_ul_min": null,
+        "component_contributions_ul_min": {
+          "density": null,
+          "balance_gain": null,
+          "balance_slope_drift": null,
+          "evaporation_rate": null,
+          "timing_scale": null
+        },
+        "unquantified_components": [
+          "density",
+          "balance_gain",
+          "balance_slope_drift",
+          "evaporation_rate",
+          "timing_scale"
+        ],
+        "combination_assumption": "independent_standard_uncertainties",
+        "note": "First-order contributions around the flow after available source-linked corrections. This is separate from run resampling and excludes unlisted loss mechanisms.",
+        "flow_after_corrections_ul_min": 46.47623605291149,
+        "corrections_applied": []
+      },
+      "flagged_runs": [
+        "synthetic-50-1",
+        "synthetic-50-3",
+        "synthetic-50-4"
+      ],
+      "outlier_runs": [
+        "synthetic-50-1",
+        "synthetic-50-3",
+        "synthetic-50-4"
+      ]
+    },
+    {
+      "target_flow_ul_min": 100.0,
+      "n_runs": 5,
+      "mean_flow_ul_min": 92.85462106301816,
+      "sd_flow_ul_min": 0.572486169767054,
+      "mean_error_percent": -7.145378936981842,
+      "mean_flow_ci95": [
+        92.42701605299617,
+        93.3149150747577
+      ],
+      "mean_flow_after_available_corrections_ul_min": 92.85462106301816,
+      "mean_flow_after_available_corrections_ci95": [
+        92.42701605299617,
+        93.3149150747577
+      ],
+      "correction_status": "none_available",
+      "measurement_system_uncertainty": {
+        "status": "unavailable",
+        "combined_standard_uncertainty_ul_min": null,
+        "component_contributions_ul_min": {
+          "density": null,
+          "balance_gain": null,
+          "balance_slope_drift": null,
+          "evaporation_rate": null,
+          "timing_scale": null
+        },
+        "unquantified_components": [
+          "density",
+          "balance_gain",
+          "balance_slope_drift",
+          "evaporation_rate",
+          "timing_scale"
+        ],
+        "combination_assumption": "independent_standard_uncertainties",
+        "note": "First-order contributions around the flow after available source-linked corrections. This is separate from run resampling and excludes unlisted loss mechanisms.",
+        "flow_after_corrections_ul_min": 92.85462106301816,
+        "corrections_applied": []
+      },
+      "flagged_runs": [
+        "synthetic-100-0",
+        "synthetic-100-2",
+        "synthetic-100-4"
+      ],
+      "outlier_runs": [
+        "synthetic-100-0",
+        "synthetic-100-2",
+        "synthetic-100-4"
+      ]
+    }
+  ],
+  "notes": [
+    "Offline research analysis. No hardware commands are generated.",
+    "This report alone is not a physical pump calibration or acceptance decision.",
+    "Intervals resample independent run slopes, not serially correlated readings.",
+    "Fewer than three runs: no interval. Small repeat counts give unstable intervals.",
+    "The run-bootstrap interval excludes density, balance, evaporation and timing uncertainty.",
+    "The optional uncertainty budget applies only source-linked corrections that are explicitly marked measured.",
+    "Correlated uncertainty components require covariance propagation; this tool only combines components declared independent.",
+    "Retained droplets, collection losses and other unlisted effects are not quantified.",
+    "R-squared <0.95 and >20% half-run drift are diagnostic flags, not acceptance standards.",
+    "IQR and Grubbs outlier flags do not alter regression weights; Grubbs' independent-normal assumptions may not hold for correlated linear-fit residuals.",
+    "Flagged runs remain in summaries; inspect them before interpreting mean flow."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "perfusioncal": "0.1.0"
+  }
+}

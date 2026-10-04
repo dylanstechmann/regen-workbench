@@ -1,5 +1,5 @@
 {
-  "manifest_schema_version": "1.0.0",
+  "manifest_schema_version": "1.1.0",
   "repository_id": "regen-workbench",
   "experiment_id": "hgps003-lmna-abe-tebv-vasodilation",
   "title": "LMNA correction fraction and TEBV vasodilation in an HGPS model",
@@ -98,8 +98,8 @@
       "description": "Versioned JSON Schema for shared experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/schemas/experiment-manifest.schema.json",
-      "sha256": "85f27c35f2760662047c68899f7bc7e09aa9f4667b282a65f65b9fbc3ae95384",
-      "size_bytes": 9636
+      "sha256": "eb1fe9f38965862edb32235c4c2470910c2c092c900d8076e9ecc300b0ad10ee",
+      "size_bytes": 11128
     },
     {
       "id": "manifest-validator",
@@ -107,8 +107,8 @@
       "description": "Schema, cross-reference, file-path, size, and SHA-256 validator for experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/validate_experiment_manifest.py",
-      "sha256": "ad54ebc3a8f61eda841a447fb49d83da68a4fc1fad257346d5de60d10423612d",
-      "size_bytes": 9732
+      "sha256": "68d73a4340a00977802c009bfd542be22cb2d771dec16fcf84026b11833c0a66",
+      "size_bytes": 10805
     },
     {
       "id": "benchmark-summary",
@@ -284,6 +284,35 @@
     ],
     "notes": "These are published operating settings, not measured calibration results. The public archive includes no original flow trace, pump calibration record, fluid-density record, or uncertainty budget. The linked calibration repository is a candidate analysis tool and was not used on this experiment."
   },
+  "environmental_conditions": [
+    {
+      "domain": "perfusion",
+      "name": "reported perfusion flow rate per tissue-engineered blood vessel",
+      "value": 0.5,
+      "unit": "mL/min/TEBV",
+      "status": "reported",
+      "source_artifact_id": "paper-2025",
+      "notes": "Published operating condition only; no measured pump trace or independent physical calibration is in the linked source archive."
+    },
+    {
+      "domain": "perfusion",
+      "name": "nominal wall shear stress",
+      "value": 6.8,
+      "unit": "dyn/cm^2",
+      "status": "reported",
+      "source_artifact_id": "paper-2025",
+      "notes": "Nominal publication-reported setting; not a local physical measurement."
+    },
+    {
+      "domain": "oxygen",
+      "name": "oxygen model profile",
+      "value": "not modeled in the published Figure 8 benchmark",
+      "unit": "not applicable",
+      "status": "not_available",
+      "source_artifact_id": "benchmark-report",
+      "notes": "The benchmark contains no oxygen measurements or oxygen transport simulation. Do not infer oxygen exposure from flow settings."
+    }
+  ],
   "limitations": [
     "All HGPS cell lines in the study derive from one person, so donor-held-out validation is not testable.",
     "The public Figure 8 workbook has no individual TEBV IDs, donor IDs per observation, or explicit longitudinal pairing.",

@@ -311,10 +311,12 @@ GENE_SETS: dict[str, list[str]] = {
     ],
 }
 
+SENESCORE_ASSET_ROOT = Path(__file__).resolve().parent / "data" / "gene-sets"
+
 
 def _gene_set_metadata(name: str) -> tuple[list[str], dict, bytes | None]:
     if name == "senmayo":
-        path = Path(__file__).resolve().parent / "data" / "gene-sets" / "senmayo-human.json"
+        path = SENESCORE_ASSET_ROOT / "senmayo-human.json"
         data = path.read_bytes()
         try:
             entry = json.loads(data)
@@ -327,6 +329,57 @@ def _gene_set_metadata(name: str) -> tuple[list[str], dict, bytes | None]:
             raise ValueError("the vendored SenMayo gene set failed its integrity checks")
         return genes, {**{k: v for k, v in entry.items() if k != "symbols"},
                        "sha256": hashlib.sha256(data).hexdigest()}, data
+    if name in {"fridman_up", "fridman_down"}:
+        filename = "fridman-senescence-up.json" if name == "fridman_up" else "fridman-senescence-down.json"
+        path = SENESCORE_ASSET_ROOT / filename
+        data = path.read_bytes()
+        entry = json.loads(data)
+        expected_id, count, direction = (
+            ("FRIDMAN_SENESCENCE_UP", 77, "up")
+            if name == "fridman_up" else ("FRIDMAN_SENESCENCE_DN", 13, "down")
+        )
+        genes = entry.get("symbols")
+        source_snapshot = (SENESCORE_ASSET_ROOT / "msigdb-c2-v2025.1.Hs-fridman-senescence.gmt").read_bytes()
+        source_lines = [line for line in source_snapshot.splitlines(keepends=True)
+                        if line.startswith((expected_id + "\t").encode("ascii"))]
+        if (hashlib.sha256(source_snapshot).hexdigest() !=
+                "4cb3926f5e4898e1c30225baf44152c03fe4d1b815c17406422c3537c053ef33"
+                or entry.get("set_id") != expected_id or entry.get("direction") != direction
+                or entry.get("source", {}).get("release") != "2025.1.Hs"
+                or not isinstance(genes, list) or len(genes) != count or len(set(genes)) != count
+                or len(source_lines) != 1
+                or hashlib.sha256(source_lines[0]).hexdigest() != entry.get("source", {}).get("raw_line_sha256")
+                or source_lines[0].decode("utf-8").rstrip("\n").split("\t")[2:] != genes):
+            raise ValueError(f"vendored MSigDB gene set failed integrity checks: {filename}")
+        return genes, {
+            "set_id": expected_id,
+            "name": f"MSigDB {expected_id}",
+            "source_status": "published_gene_set",
+            "citation": "Fridman AL, Tainsky MA. Oncogene. 2008;27:5975-5987. DOI:10.1038/onc.2008.213; MSigDB C2 2025.1.Hs Table 2S.",
+            "description": f"Source-pinned {count}-gene direction-specific signature.",
+            "direction": direction,
+            "systematic_id": entry.get("systematic_id"),
+            "source": entry.get("source"),
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }, data
+    if name == "fridman_signed":
+        up_genes, up_info, up_data = _gene_set_metadata("fridman_up")
+        down_genes, down_info, down_data = _gene_set_metadata("fridman_down")
+        genes = list(dict.fromkeys(up_genes + down_genes))
+        data = json.dumps(
+            {"up": json.loads(up_data), "down": json.loads(down_data)},
+            sort_keys=True, separators=(",", ":"),
+        ).encode("utf-8")
+        return genes, {
+            "set_id": "fridman_signed",
+            "name": "MSigDB FRIDMAN_SENESCENCE_UP minus FRIDMAN_SENESCENCE_DN",
+            "source_status": "published_gene_set",
+            "citation": up_info["citation"],
+            "description": "Direction-aware signed contrast using separately scored MSigDB up/down sets.",
+            "direction": "up_minus_down",
+            "components": {"up": up_info, "down": down_info},
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }, data
     if name not in GENE_SETS:
         raise ValueError(f"unknown gene set: {name}")
     return GENE_SETS[name], {
@@ -433,17 +486,22 @@ def _grouped_stratified_folds(sample_names: list[str], labels: list[int],
 
 def _training_fold_features(gene_matrix_map: dict[str, list[float]], train_idx: list[int],
                             test_idx: list[int], train_y: list[int],
-                            signature_genes: list[str], n_controls: int
+                            signature_genes: list[str], n_controls: int,
+                            signed_down_genes: list[str] | None = None,
+                            n_bins: int = 25, pseudocount: float = 1.0,
                             ) -> tuple[list[list[float]], list[list[float]], list[str]]:
     """Fit control selection, score normalization, and marker selection on training rows only."""
-    matched = [gene for gene in signature_genes if gene in gene_matrix_map]
-    candidates = [gene for gene in sorted(gene_matrix_map) if gene not in set(signature_genes)]
+    up_genes = [gene for gene in signature_genes if gene in gene_matrix_map]
+    down_genes = [gene for gene in (signed_down_genes or []) if gene in gene_matrix_map]
+    matched = list(dict.fromkeys(up_genes + down_genes))
+    signature_union = set(signature_genes) | set(signed_down_genes or [])
+    candidates = [gene for gene in sorted(gene_matrix_map) if gene not in signature_union]
     if not matched or len(candidates) < n_controls:
         raise ValueError("not enough non-signature genes to fit training-fold controls")
     candidate_means = [(gene, statistics.mean(gene_matrix_map[gene][i] for i in train_idx))
                        for gene in candidates]
     candidate_means.sort(key=lambda item: (item[1], item[0]))
-    n_bins = min(25, max(1, len(candidate_means) // n_controls))
+    n_bins = min(n_bins, max(1, len(candidate_means) // n_controls))
     bins = [candidate_means[b * len(candidate_means) // n_bins:
                             (b + 1) * len(candidate_means) // n_bins] for b in range(n_bins)]
     control_map = {}
@@ -460,12 +518,25 @@ def _training_fold_features(gene_matrix_map: dict[str, list[float]], train_idx: 
                                statistics.mean(gene_matrix_map[control][index] for control in control_map[gene])
                                for gene in matched)
 
-    train_scores = [score(i) for i in train_idx]
+    if signed_down_genes is not None:
+        def direction_score(index: int, genes: list[str]) -> float:
+            return statistics.mean(
+                gene_matrix_map[gene][index] - statistics.mean(
+                    gene_matrix_map[control][index] for control in control_map[gene]
+                ) for gene in genes
+            )
+
+        def combined_score(index):
+            return direction_score(index, up_genes) - direction_score(index, down_genes)
+    else:
+        combined_score = score
+
+    train_scores = [combined_score(i) for i in train_idx]
     mean_score = statistics.mean(train_scores)
     sd_score = statistics.stdev(train_scores) if len(train_scores) > 1 else 1.0
     if sd_score <= 1e-12:
         sd_score = 1.0
-    score_z = {i: (score(i) - mean_score) / sd_score for i in train_idx + test_idx}
+    score_z = {i: (combined_score(i) - mean_score) / sd_score for i in train_idx + test_idx}
 
     class_means = []
     for label in (0, 1):
@@ -476,7 +547,7 @@ def _training_fold_features(gene_matrix_map: dict[str, list[float]], train_idx: 
     contrast_rows = []
     for gene in gene_matrix_map:
         means = [statistics.mean(gene_matrix_map[gene][i] for i in indexes) for indexes in class_means]
-        effect = math.log2(means[1] + 1.0) - math.log2(means[0] + 1.0)
+        effect = math.log2(means[1] + pseudocount) - math.log2(means[0] + pseudocount)
         # Rank only on training data. Stability uses the training rows' leave-one-out effects.
         leave_one_out = []
         for label, indexes in enumerate(class_means):
@@ -487,7 +558,7 @@ def _training_fold_features(gene_matrix_map: dict[str, list[float]], train_idx: 
                 retained = [i for i in indexes if i != removed]
                 retained_mean = statistics.mean(gene_matrix_map[gene][i] for i in retained)
                 a, b = (retained_mean, other_mean) if label == 0 else (other_mean, retained_mean)
-                leave_one_out.append(math.log2(b + 1.0) - math.log2(a + 1.0))
+                leave_one_out.append(math.log2(b + pseudocount) - math.log2(a + pseudocount))
         stable_up = effect > 0 and bool(leave_one_out) and min(leave_one_out) > 0
         contrast_rows.append((gene, stable_up, effect))
     stable_up = sorted((row for row in contrast_rows if row[1]), key=lambda row: (-row[2], row[0]))
@@ -631,8 +702,8 @@ def pipeline(argv: list[str], record) -> None:
     parser.add_argument("--reference", required=True)
     parser.add_argument("--comparison", required=True)
     parser.add_argument("--pseudocount", type=float, default=1.0)
-    parser.add_argument("--gene-set", default="senmayo", choices=["senmayo", "fridman", "sasp"],
-                        help="senmayo is the published 125-gene set; fridman and sasp are custom, unverified panels")
+    parser.add_argument("--gene-set", default="senmayo", choices=["senmayo", "fridman", "fridman_up", "fridman_down", "fridman_signed", "sasp"],
+                        help="senmayo and Fridman sets are source-pinned; fridman and sasp are custom panels")
     parser.add_argument("--n-bins", type=lambda s: integer(s, 5, 100), default=25)
     parser.add_argument("--n-controls", type=lambda s: integer(s, 1, 20), default=5)
     parser.add_argument("--n-splits", type=lambda s: integer(s, 2, 10), default=3)
@@ -762,20 +833,44 @@ def pipeline(argv: list[str], record) -> None:
                 for b in range(n_bins)]
 
         control_map = {}
-        for g in matched_genes:
-            g_mean = sum(gene_matrix_map[g]) / len(sample_names)
-            best_bin = min(range(len(bins)), key=lambda b: abs((sum(x[1] for x in bins[b]) / max(1, len(bins[b]))) - g_mean))
-            selected = [gene for gene, _ in bins[best_bin][:args.n_controls]]
-            control_map[g] = selected
+        signed_sets = None
+        if args.gene_set == "fridman_signed":
+            up_genes, _, _ = _gene_set_metadata("fridman_up")
+            down_genes, _, _ = _gene_set_metadata("fridman_down")
+            up_matched = [gene for gene in up_genes if gene in gene_matrix_map]
+            down_matched = [gene for gene in down_genes if gene in gene_matrix_map]
+            if (len(up_matched) / len(up_genes) < 0.60 or len(down_matched) / len(down_genes) < 0.60):
+                raise ValueError("signed Fridman scoring requires at least 60% coverage of both UP and DOWN sets")
+            signed_sets = {"up": up_matched, "down": down_matched}
+            for direction, signature in signed_sets.items():
+                for g in signature:
+                    g_mean = sum(gene_matrix_map[g]) / len(sample_names)
+                    best_bin = min(range(len(bins)), key=lambda b: abs((sum(x[1] for x in bins[b]) / max(1, len(bins[b]))) - g_mean))
+                    control_map[f"{direction}:{g}"] = [gene for gene, _ in bins[best_bin][:args.n_controls]]
+        else:
+            for g in matched_genes:
+                g_mean = sum(gene_matrix_map[g]) / len(sample_names)
+                best_bin = min(range(len(bins)), key=lambda b: abs((sum(x[1] for x in bins[b]) / max(1, len(bins[b]))) - g_mean))
+                selected = [gene for gene, _ in bins[best_bin][:args.n_controls]]
+                control_map[g] = selected
 
         raw_scores = []
+        component_scores = {"up": [], "down": []} if signed_sets else None
         for s_idx in range(len(sample_names)):
-            module_diffs = []
-            for g in matched_genes:
-                val = gene_matrix_map[g][s_idx]
-                ctrl_mean = statistics.mean([gene_matrix_map[cg][s_idx] for cg in control_map[g]])
-                module_diffs.append(val - ctrl_mean)
-            raw_scores.append(statistics.mean(module_diffs))
+            if signed_sets:
+                for direction, signature in signed_sets.items():
+                    diffs = [gene_matrix_map[g][s_idx] - statistics.mean(
+                        gene_matrix_map[cg][s_idx] for cg in control_map[f"{direction}:{g}"]
+                    ) for g in signature]
+                    component_scores[direction].append(statistics.mean(diffs))
+                raw_scores.append(component_scores["up"][s_idx] - component_scores["down"][s_idx])
+            else:
+                module_diffs = []
+                for g in matched_genes:
+                    val = gene_matrix_map[g][s_idx]
+                    ctrl_mean = statistics.mean([gene_matrix_map[cg][s_idx] for cg in control_map[g]])
+                    module_diffs.append(val - ctrl_mean)
+                raw_scores.append(statistics.mean(module_diffs))
 
         mean_raw = statistics.mean(raw_scores)
         sd_raw = statistics.stdev(raw_scores) if len(raw_scores) > 1 and statistics.stdev(raw_scores) > 1e-12 else 1.0
@@ -816,10 +911,22 @@ def pipeline(argv: list[str], record) -> None:
             "mean_raw_score": mean_raw,
             "sd_raw_score": sd_raw,
         }
+        if signed_sets:
+            stage2_params["genes_matched_in_matrix"] = len(signed_sets["up"]) + len(signed_sets["down"])
+            stage2_params["coverage_fraction"] = min(
+                len(signed_sets["up"]) / 77, len(signed_sets["down"]) / 13
+            )
+            stage2_params["directional_coverage"] = {
+                direction: len(genes) / (77 if direction == "up" else 13)
+                for direction, genes in signed_sets.items()
+            }
+            stage2_params["direction"] = "up_minus_down"
+            stage2_params["signed_scoring"] = "independently control-subtracted UP score minus independently control-subtracted DOWN score"
         write_json(stage2_dir / "senescence_scores.json", {
             "parameters": stage2_params,
             "matched_genes": matched_genes,
             "control_genes": control_map,
+            "directional_raw_scores": component_scores,
             "scores": score_rows,
         })
         (stage2_dir / "README.md").write_text(
@@ -837,7 +944,7 @@ def pipeline(argv: list[str], record) -> None:
             "contrast.csv": stage1_contrast_csv_bytes,
         }
         if gene_set_data is not None:
-            stage2_input_records["senmayo-human.json"] = gene_set_data
+            stage2_input_records[f"{args.gene_set}.json"] = gene_set_data
         manifest(stage2_dir, "senescence-scoring", stage2_params, stage2_input_records, {})
         stage2_manifest_bytes = (stage2_dir / "manifest.json").read_bytes()
         stage2_manifest_sha = hashlib.sha256(stage2_manifest_bytes).hexdigest()
@@ -873,7 +980,16 @@ def pipeline(argv: list[str], record) -> None:
             train_y = [labels[i] for i in train_idx]
             train_x, test_x, selected_markers = _training_fold_features(
                 gene_matrix_map, train_idx, test_fold, train_y,
-                predefined_genes, args.n_controls,
+                (
+                    _gene_set_metadata("fridman_up")[0]
+                    if args.gene_set == "fridman_signed" else predefined_genes
+                ),
+                args.n_controls,
+                signed_down_genes=(
+                    _gene_set_metadata("fridman_down")[0]
+                    if args.gene_set == "fridman_signed" else None
+                ),
+                n_bins=args.n_bins, pseudocount=args.pseudocount,
             )
 
             f_probs, f_preds, _, _ = _logistic_fit_predict(train_x, train_y, test_x)
@@ -928,7 +1044,14 @@ def pipeline(argv: list[str], record) -> None:
             "split_fields": split_fields,
             "feature_selection_scope": "training fold only",
             "scoring_and_control_fit_scope": "training fold only",
-            "features": ["training-fold SenMayo/custom-panel control score z", "training-fold selected marker mean"],
+            "features": ["training-fold control-subtracted module score z", "training-fold selected marker mean"],
+            "requested_expression_bins": args.n_bins,
+            "n_controls_per_gene": args.n_controls,
+            "marker_pseudocount": args.pseudocount,
+            "module_score_definition": (
+                "raw control-subtracted UP minus raw control-subtracted DOWN, then training-fold z"
+                if signed_sets else "raw control-subtracted mean, then training-fold z"
+            ),
             "model": "logistic_regression_l2",
             "logistic_balanced_accuracy": bacc_model,
             "majority_balanced_accuracy": bacc_majority,
@@ -1004,7 +1127,7 @@ def pipeline(argv: list[str], record) -> None:
                     "key_outputs": {
                         "senescence_scores.csv": stage2_scores_csv_sha,
                     },
-                    "upstream_dependencies": ["matrix.csv", "samples.csv", "senmayo-human.json",
+                    "upstream_dependencies": ["matrix.csv", "samples.csv", f"{args.gene_set}.json",
                                               "stage1_manifest.json", "contrast.csv"]
                     if gene_set_data is not None else
                     ["matrix.csv", "samples.csv", "stage1_manifest.json", "contrast.csv"],
@@ -1024,7 +1147,7 @@ def pipeline(argv: list[str], record) -> None:
             "provenance_chain_intact": True,
         }
         if gene_set_data is not None:
-            pipeline_manifest["upstream_inputs"]["senmayo-human.json"] = {
+            pipeline_manifest["upstream_inputs"][f"{args.gene_set}.json"] = {
                 "sha256": gene_set_info["sha256"], "bytes": len(gene_set_data),
             }
         write_json(args.out / "pipeline_manifest.json", pipeline_manifest)

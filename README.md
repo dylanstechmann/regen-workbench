@@ -61,7 +61,7 @@ writing aggregate tables; it does not model or demonstrate mutation repair.
 See [`MUTATION_REPAIR_PILOT.md`](MUTATION_REPAIR_PILOT.md).
 
 The pilot also includes a reproducible HGPS TEBV vasodilation benchmark. A
-versioned [experiment manifest schema](tools/schemas/experiment-manifest.schema.json)
+versioned 1.1 [experiment manifest schema](tools/schemas/experiment-manifest.schema.json)
 links protocol, raw assay data, analysis/model, and calibration status;
 `docker compose exec workbench python /lab/workbench/tools/validate_experiment_manifest.py PATH`
 checks the schema, linked artifact IDs, safe repository paths, and local
@@ -75,6 +75,12 @@ not assessed, or unavailable. `not_assessed` means the study explicitly did not
 collect that outcome; `not_available` means this manifest lacks supporting
 evidence. A measured outcome must link to assay data, and all six domains must
 be represented when this section is present.
+
+The [simulation-toolchain fixture](studies/simulation-toolchain/README.md) links
+protocol constraints, synthetic media-planner observations, an illustrative
+oxygen transient, and a synthetic calibration report across the sibling methods
+repositories. Its local validator checks all artifact hashes. It is software
+verification only and makes no wet-lab, physical calibration, or biological claim.
 
 ## What you get after bootstrap
 
@@ -250,3 +256,12 @@ Scripts in this folder are CC0. Third-party tools keep their own licenses
 (RDKit BSD, PyMOL BSD-like open-source build, ColabFold / AF2 weights
 Apache + DeepMind terms, Boltz separate, NCBI data use policies).
 Read those before you publish a paper off this stack.
+
+
+The signed Fridman score subtracts independently control-adjusted raw DOWN
+expression from raw UP expression; training folds normalize that contrast only
+after subtraction, matching the standalone scorer's direction convention.
+Stage 3 honors the requested expression-bin count and marker pseudocount.
+Simulation manifests validate in any sibling workspace, while standalone
+contract tests require no sibling clone. Experiment manifest version 1.0
+remains supported; environmental fields require version 1.1.

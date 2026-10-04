@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "candidate_id": "c4",
+  "factors": {
+    "CHIR99021_uM": 12.0,
+    "IWP2_uM": 2.0,
+    "SB431542_uM": 6.0,
+    "LDN193189_nM": 100.0
+  },
+  "method": "expected_improvement",
+  "predicted_mean": 0.26860841986069806,
+  "predicted_std": 0.03817139437172561,
+  "expected_improvement": 0.0034728408197718203,
+  "seed": 0,
+  "noise": 0.02,
+  "n_observed": 2,
+  "n_pending": 0,
+  "input_sha256": {
+    "candidates": "838cbfd710c9971eff73ef1c6b5b29e09211a89a04e3f65edd4ddd3e22de0daf",
+    "observations": "6f5fc69e0b90f2fd02918c4f3d2d482fa8f98383e0c681c2c84f558f71e04ed8",
+    "pending": null
+  },
+  "note": "Maximizes the supplied response. A proposal is not an executable protocol. Record it as pending before asking again.",
+  "measurement_context": {
+    "schema_version": 1,
+    "assay_id": "SYNTHETIC-READER",
+    "endpoint": "illustrative_signal",
+    "unit": "fraction",
+    "objective_direction": "maximize",
+    "response_transform": "identity",
+    "assay_measurement_uncertainty_status": "measured",
+    "aggregation_method": "mean technical replicates within biological_unit_id, then unweighted mean across biological units",
+    "source_measurements_sha256": "09033095e246adc0107c771365416b0ea74bfc5ace72b1caa77c57a776d3ce38",
+    "source_candidates_sha256": "838cbfd710c9971eff73ef1c6b5b29e09211a89a04e3f65edd4ddd3e22de0daf",
+    "aggregated_observations_sha256": "6f5fc69e0b90f2fd02918c4f3d2d482fa8f98383e0c681c2c84f558f71e04ed8",
+    "shared_biological_units_across_conditions": true,
+    "conditions": {
+      "c1": {
+        "n_biological_units": 2,
+        "n_measured_wells": 4,
+        "n_failed_wells": 0,
+        "biological_unit_mean_sd": 0.014142135623730944,
+        "biological_unit_mean_sem": 0.009999999999999995,
+        "assay_measurement_standard_uncertainty_of_mean": 0.005
+      },
+      "c2": {
+        "n_biological_units": 2,
+        "n_measured_wells": 4,
+        "n_failed_wells": 0,
+        "biological_unit_mean_sd": 0.014142135623730925,
+        "biological_unit_mean_sem": 0.009999999999999981,
+        "assay_measurement_standard_uncertainty_of_mean": 0.005
+      }
+    },
+    "note": "The fixed-noise GP maximizes this one endpoint. It does not use per-condition biological SEM or model batch/shared-unit covariance. Set --noise explicitly for the planner."
+  },
+  "constraints": {
+    "sha256": "e56854f22d0764a6dcdd783f9c8a5058246ea2b70372e8d7c21abbce43eea774",
+    "protocols": [
+      {
+        "protocol_id": "giwi_cardiac",
+        "protocol_sha256": "f05ba1e8005650e4035f3c3fab29f6ecb851d2a873854855d998f7d2da7efe4d"
+      },
+      {
+        "protocol_id": "dual_smad_neural",
+        "protocol_sha256": "9f153eae7e897968d58be08e740817a919a2401ae9e98209abc72a52a1362a50"
+      }
+    ]
+  }
+}

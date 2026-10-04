@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "radius_um": 300.0,
+    "diffusivity_m2_s": 2e-09,
+    "bulk_oxygen_mol_m3": 0.2,
+    "vmax_mol_m3_s": 0.02,
+    "km_mol_m3": 0.01,
+    "transfer_m_s": 2e-05,
+    "threshold_mol_m3": 0.02,
+    "shells": 160,
+    "kinetics": "michaelis_menten"
+  },
+  "total_time_s": 120.0,
+  "time_steps": 24,
+  "initial_oxygen_mol_m3": 0.0,
+  "diffusion_time_scale_s": 44.99999999999999,
+  "initial_core_oxygen_mol_m3": 0.0,
+  "final_core_oxygen_mol_m3": 0.007896435117360595,
+  "steady_core_oxygen_mol_m3": 0.007896437256547444,
+  "final_vs_steady_core_error_mol_m3": 2.1391868484932353e-09,
+  "max_step_iterations": 6,
+  "max_scaled_step_residual": 4.379229994937351e-09,
+  "max_relative_transient_mass_balance_error": 4.485563500197743e-10,
+  "time_to_half_steady_core_s": 15.652173913043478,
+  "time_to_95pct_steady_core_s": 36.52173913043478,
+  "final_surface_oxygen_mol_m3": 0.11571362500070993,
+  "final_volume_mean_oxygen_mol_m3": 0.06826661982701249,
+  "final_fraction_below_threshold": 0.06104663085937502,
+  "final_total_uptake_mol_s": 1.906512828519514e-12,
+  "final_surface_influx_mol_s": 1.9065128867674853e-12,
+  "interpretation": [
+    "Transient PDE mode solving del(c)/del(t) = D nabla^2(c) - R(c) from initial concentration.",
+    "Illustrative numerical model; parameters need experimental calibration.",
+    "Core oxygen is tracked at innermost shell center, surface at r=R with Robin/Dirichlet boundary.",
+    "Times to 50% and 95% of steady-state core oxygen are first threshold crossings; the crossing direction follows whether the initial core is below or above steady state.",
+    "Spherical, homogeneous organoid model with fixed bath oxygen; no vascularization or cell death."
+  ],
+  "schema_version": 1,
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "oxygenlab": "0.1.0"
+  },
+  "parameters_sha256": "39baa3b3b1606e5a52829a03af4c4c0c6a766669ef70fce00ed7a85ca8757f1c",
+  "input_sha256": "74ab6e080530312db4004b800051e8dbb9349b06c1acc7e4caac6bb71e189f29"
+}

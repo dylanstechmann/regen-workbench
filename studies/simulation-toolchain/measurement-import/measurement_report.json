@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "source_measurements_sha256": "09033095e246adc0107c771365416b0ea74bfc5ace72b1caa77c57a776d3ce38",
+  "source_candidates_sha256": "838cbfd710c9971eff73ef1c6b5b29e09211a89a04e3f65edd4ddd3e22de0daf",
+  "assay_id": "SYNTHETIC-READER",
+  "endpoint": "illustrative_signal",
+  "unit": "fraction",
+  "objective_direction": "maximize",
+  "response_transform": "identity",
+  "assay_measurement_uncertainty_status": "measured",
+  "aggregation_method": "mean technical replicates within biological_unit_id, then unweighted mean across biological units",
+  "shared_biological_units_across_conditions": true,
+  "batches_present": [
+    "synthetic-batch"
+  ],
+  "n_rows": 8,
+  "n_measured_wells": 8,
+  "n_failed_wells": 0,
+  "failed_reasons": {},
+  "conditions": {
+    "c1": {
+      "status": "aggregated",
+      "raw_endpoint_mean": 0.21500000000000002,
+      "planner_response": 0.21500000000000002,
+      "n_biological_units_attempted": 2,
+      "n_biological_units_measured": 2,
+      "n_measured_wells": 4,
+      "n_failed_wells": 0,
+      "biological_unit_mean_sd": 0.014142135623730944,
+      "biological_unit_mean_sem": 0.009999999999999995,
+      "assay_measurement_standard_uncertainty_of_mean": 0.005,
+      "failed_reasons": {}
+    },
+    "c2": {
+      "status": "aggregated",
+      "raw_endpoint_mean": 0.29500000000000004,
+      "planner_response": 0.29500000000000004,
+      "n_biological_units_attempted": 2,
+      "n_biological_units_measured": 2,
+      "n_measured_wells": 4,
+      "n_failed_wells": 0,
+      "biological_unit_mean_sd": 0.014142135623730925,
+      "biological_unit_mean_sem": 0.009999999999999981,
+      "assay_measurement_standard_uncertainty_of_mean": 0.005,
+      "failed_reasons": {}
+    },
+    "c3": {
+      "status": "no_measured_wells",
+      "n_biological_units_attempted": 0,
+      "n_biological_units_measured": 0,
+      "n_measured_wells": 0,
+      "n_failed_wells": 0,
+      "assay_measurement_standard_uncertainty_of_mean": null,
+      "failed_reasons": {}
+    },
+    "c4": {
+      "status": "no_measured_wells",
+      "n_biological_units_attempted": 0,
+      "n_biological_units_measured": 0,
+      "n_measured_wells": 0,
+      "n_failed_wells": 0,
+      "assay_measurement_standard_uncertainty_of_mean": null,
+      "failed_reasons": {}
+    }
+  },
+  "notes": [
+    "Technical replicates are averaged within biological_unit_id; biological units receive equal weight.",
+    "Biological-unit SD and SEM describe the imported replicates and are not used by the fixed-noise GP.",
+    "When provided, well measurement standard uncertainties are propagated separately through technical and biological means under independence; shared calibration uncertainty is not included.",
+    "The planner maximizes one declared endpoint and does not model shared-unit, batch, or assay covariance.",
+    "Failed wells are retained in this report and excluded from numeric aggregation; they are never imputed.",
+    "A proposal is not a validated protocol or evidence of rejuvenation."
+  ],
+  "aggregated_observations_sha256": "6f5fc69e0b90f2fd02918c4f3d2d482fa8f98383e0c681c2c84f558f71e04ed8"
+}
