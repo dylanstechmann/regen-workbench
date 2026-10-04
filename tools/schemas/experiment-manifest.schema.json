@@ -112,6 +112,12 @@
         }
       }
     },
+    "validation_endpoints": {
+      "description": "Explicitly records whether core outcome domains were measured, planned, explicitly not assessed, or lack available evidence in this manifest. A measured endpoint must link to assay data.",
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/validationEndpoint" }
+    },
     "modeling": {
       "type": "object",
       "additionalProperties": false,
@@ -176,6 +182,30 @@
     }
   },
   "$defs": {
+    "validationEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "status", "rationale"],
+      "properties": {
+        "role": { "enum": ["functional", "cell_identity", "viability", "genome_stability", "adverse_effects", "durability"] },
+        "status": { "enum": ["measured", "planned", "not_assessed", "not_available"] },
+        "assay_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "timepoint": { "type": "string", "minLength": 1 },
+        "rationale": { "type": "string", "minLength": 12 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "measured" } }, "required": ["status"] },
+          "then": {
+            "anyOf": [
+              { "required": ["assay_id"] },
+              { "required": ["artifact_id"] }
+            ]
+          }
+        }
+      ]
+    },
     "artifact": {
       "type": "object",
       "additionalProperties": false,

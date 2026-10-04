@@ -98,8 +98,8 @@
       "description": "Versioned JSON Schema for shared experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/schemas/experiment-manifest.schema.json",
-      "sha256": "eb2a1d418a93cb368a71b2cf211b0f5802833702597393d5f5a0cd18055bf978",
-      "size_bytes": 8331
+      "sha256": "85f27c35f2760662047c68899f7bc7e09aa9f4667b282a65f65b9fbc3ae95384",
+      "size_bytes": 9636
     },
     {
       "id": "manifest-validator",
@@ -107,8 +107,8 @@
       "description": "Schema, cross-reference, file-path, size, and SHA-256 validator for experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/validate_experiment_manifest.py",
-      "sha256": "850af2de4229ae0c3aa2e1e5bd7ec5be1f23e2e5039539e499a94d54e032f429",
-      "size_bytes": 7155
+      "sha256": "ad54ebc3a8f61eda841a447fb49d83da68a4fc1fad257346d5de60d10423612d",
+      "size_bytes": 9732
     },
     {
       "id": "benchmark-summary",
@@ -212,6 +212,40 @@
       "experimental_unit": "one TEBV",
       "source_n": "The figure caption reports N=4 TEBVs per vasoactivity group; the source workbook and author ANOVA summary contain 35 values, with n=3 for the 50:50 group at week 3.",
       "notes": "The workbook does not identify each vessel or indicate how week-3 and week-5 rows pair."
+    }
+  ],
+  "validation_endpoints": [
+    {
+      "role": "functional",
+      "status": "measured",
+      "assay_id": "tebv-vasodilation",
+      "timepoint": "weeks 3 and 5",
+      "rationale": "The source workbook reports acetylcholine-evoked vessel diameter change. This is a vascular function endpoint in one HGPS donor, not evidence of general rejuvenation."
+    },
+    {
+      "role": "cell_identity",
+      "status": "not_available",
+      "rationale": "The linked source files do not provide observation-level cell identity or lineage confirmation for the vasodilation measurements."
+    },
+    {
+      "role": "viability",
+      "status": "not_available",
+      "rationale": "The linked source package does not provide vessel-level viability measurements associated with the functional endpoint."
+    },
+    {
+      "role": "genome_stability",
+      "status": "not_available",
+      "rationale": "The benchmark has no post-editing genome stability or off-target endpoint linked to the tested vessels."
+    },
+    {
+      "role": "adverse_effects",
+      "status": "not_available",
+      "rationale": "The linked Figure 8 data do not report a broad adverse phenotype or safety endpoint."
+    },
+    {
+      "role": "durability",
+      "status": "not_available",
+      "rationale": "Weeks 3 and 5 are reported measurement times, but longitudinal vessel identifiers and post-intervention persistence data are unavailable."
     }
   ],
   "modeling": {

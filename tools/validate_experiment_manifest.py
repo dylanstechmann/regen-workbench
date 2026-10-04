@@ -68,6 +68,9 @@ def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
             refs.append((f"calibration.{name}", calibration[name]))
     for i, condition in enumerate(calibration.get("reported_conditions", [])):
         refs.append((f"calibration.reported_conditions[{i}].source_artifact_id", condition["source_artifact_id"]))
+    for i, endpoint in enumerate(document.get("validation_endpoints", [])):
+        if "artifact_id" in endpoint:
+            refs.append((f"validation_endpoints[{i}].artifact_id", endpoint["artifact_id"]))
     return refs
 
 
@@ -103,9 +106,50 @@ def validate_experiment_manifest(
             raise ManifestValidationError(f"duplicate artifact id: {artifact_id}")
         by_id[artifact_id] = artifact
 
+    assays_by_id: dict[str, dict[str, Any]] = {}
+    for assay in document["assays"]:
+        assay_id = assay["assay_id"]
+        if assay_id in assays_by_id:
+            raise ManifestValidationError(f"duplicate assay id: {assay_id}")
+        assays_by_id[assay_id] = assay
+
     for location, artifact_id in _referenced_artifact_ids(document):
         if artifact_id not in by_id:
             raise ManifestValidationError(f"{location} references unknown artifact id: {artifact_id}")
+
+    validation_endpoints = document.get("validation_endpoints")
+    if validation_endpoints is not None:
+        required_roles = {
+            "functional", "cell_identity", "viability", "genome_stability", "adverse_effects", "durability"
+        }
+        reported_roles = {endpoint["role"] for endpoint in validation_endpoints}
+        missing_roles = sorted(required_roles - reported_roles)
+        if missing_roles:
+            raise ManifestValidationError(
+                "validation_endpoints must report each core domain; missing: " + ", ".join(missing_roles)
+            )
+        for index, endpoint in enumerate(validation_endpoints):
+            assay_id = endpoint.get("assay_id")
+            artifact_id = endpoint.get("artifact_id")
+            if assay_id is not None and assay_id not in assays_by_id:
+                raise ManifestValidationError(
+                    f"validation_endpoints[{index}].assay_id references unknown assay id: {assay_id}"
+                )
+            if endpoint["status"] == "measured":
+                if assay_id is None and artifact_id is None:
+                    raise ManifestValidationError(
+                        f"validation_endpoints[{index}] is marked measured without an assay or evidence artifact"
+                    )
+                allowed_kinds = {"raw_assay_data", "source_dataset", "author_analysis", "analysis_output"}
+                evidence_artifact_ids = [artifact_id] if artifact_id is not None else []
+                if assay_id is not None:
+                    evidence_artifact_ids.append(assays_by_id[assay_id]["raw_artifact_id"])
+                for evidence_artifact_id in evidence_artifact_ids:
+                    evidence_kind = by_id[evidence_artifact_id]["kind"]
+                    if evidence_kind not in allowed_kinds:
+                        raise ManifestValidationError(
+                            f"validation_endpoints[{index}] links {evidence_kind}, not an assay-data artifact"
+                        )
 
     for artifact in artifacts:
         data = _artifact_bytes(repo_root, document["repository_id"], artifact)

@@ -12,6 +12,10 @@ simple falsifier, and links the source protocol, assay data, author ANOVA,
 analysis code, model specification, and calibration status in the shared
 experiment manifest. The generic manifest format lives in the
 [shared JSON Schema](../../../tools/schemas/experiment-manifest.schema.json).
+The manifest marks vasodilation as the available functional outcome and
+separately records cell identity, viability, genome stability, adverse effects,
+and durability as unavailable in the linked evidence. Those gaps are not
+imputed from the functional result.
 
 Run from the workbench root:
 

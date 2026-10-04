@@ -114,6 +114,48 @@ class ExperimentManifestTests(unittest.TestCase):
         with self.assertRaisesRegex(ManifestValidationError, "must stay inside the repository"):
             validate_experiment_manifest(path)
 
+    def test_validation_endpoints_require_each_core_domain(self):
+        def remove_domain(document):
+            endpoint = next(item for item in document["validation_endpoints"]
+                            if item["role"] == "durability")
+            endpoint["role"] = "functional"
+
+        path = self._temporary_manifest(remove_domain)
+        with self.assertRaisesRegex(ManifestValidationError, "must report each core domain.*durability"):
+            validate_experiment_manifest(path)
+
+    def test_measured_validation_endpoint_requires_evidence(self):
+        def unlink_evidence(document):
+            endpoint = next(item for item in document["validation_endpoints"]
+                            if item["role"] == "functional")
+            endpoint.pop("assay_id")
+            endpoint.pop("artifact_id", None)
+
+        path = self._temporary_manifest(unlink_evidence)
+        with self.assertRaisesRegex(ManifestValidationError, "schema validation failed"):
+            validate_experiment_manifest(path)
+
+    def test_validation_endpoint_rejects_unknown_assay(self):
+        def unknown_assay(document):
+            endpoint = next(item for item in document["validation_endpoints"]
+                            if item["role"] == "functional")
+            endpoint["assay_id"] = "missing-assay"
+
+        path = self._temporary_manifest(unknown_assay)
+        with self.assertRaisesRegex(ManifestValidationError, "references unknown assay id"):
+            validate_experiment_manifest(path)
+
+    def test_measured_validation_endpoint_rejects_non_assay_artifact(self):
+        def link_model_artifact(document):
+            endpoint = next(item for item in document["validation_endpoints"]
+                            if item["role"] == "functional")
+            endpoint.pop("assay_id")
+            endpoint["artifact_id"] = "analysis-code"
+
+        path = self._temporary_manifest(link_model_artifact)
+        with self.assertRaisesRegex(ManifestValidationError, "not an assay-data artifact"):
+            validate_experiment_manifest(path)
+
 
 if __name__ == "__main__":
     unittest.main()

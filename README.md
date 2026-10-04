@@ -69,6 +69,13 @@ SHA-256/byte counts. The current
 public study has one HGPS donor, so its donor-held-out validation is marked
 `not_testable`.
 
+Manifests can also enumerate functional, cell-identity, viability,
+genome-stability, adverse-effect, and durability outcomes as measured, planned,
+not assessed, or unavailable. `not_assessed` means the study explicitly did not
+collect that outcome; `not_available` means this manifest lacks supporting
+evidence. A measured outcome must link to assay data, and all six domains must
+be represented when this section is present.
+
 ## What you get after bootstrap
 
 | Layer | Contents |

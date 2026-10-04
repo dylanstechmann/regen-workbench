@@ -380,11 +380,12 @@ def _grouped_stratified_folds(sample_names: list[str], labels: list[int],
     seen_ids: dict[tuple[str, str], int] = {}
     used_fields = [field for field in ("donor_id", "batch_id")
                    if any(sample_info[s].get(field) for s in sample_names)]
+    for field in used_fields:
+        if any(not sample_info[s].get(field) for s in sample_names):
+            raise ValueError(f"{field} must be present for every sample when used for grouped cross-validation")
     for index, sample in enumerate(sample_names):
         for field in used_fields:
             value = sample_info[sample].get(field, "")
-            if not value:
-                continue
             key = (field, value)
             if key in seen_ids:
                 union(index, seen_ids[key])
@@ -851,6 +852,13 @@ def pipeline(argv: list[str], record) -> None:
 
         labels = [1 if samples[s]["group"] == args.comparison else 0 for s in sample_names]
         folds, split_fields = _grouped_stratified_folds(sample_names, labels, samples, args.n_splits)
+        if split_fields == ["sample_id"]:
+            independence_note = "no donor or batch identifiers were supplied; sample independence is unverified"
+        else:
+            independence_note = (
+                f"folds grouped by {', '.join(split_fields)}; "
+                "independence beyond these identifiers is unverified"
+            )
         n_samples = len(sample_names)
 
         test_preds = [0] * n_samples
@@ -1052,7 +1060,7 @@ Three-stage exploratory pipeline: Expression Contrast -> Senescence Module Scori
 - **Evaluation Scheme**: {len(folds)}-fold stratified connected-component cross-validation; samples sharing a donor or batch stay in one fold.
 - **Split Fields**: {", ".join(split_fields)}
 - **Fold-local steps**: control matching, module-score scaling, marker selection, and logistic feature scaling are fit on training samples only.
-- **Independence note**: {"donor and batch metadata were supplied" if split_fields != ["sample_id"] else "no donor/batch identifiers were supplied; sample independence is unverified"}
+- **Independence note**: {independence_note}
 - **Model Balanced Accuracy**: {bacc_model:.4f} vs **Majority Baseline**: {bacc_majority:.4f}
 - **AUROC**: {auroc:.4f}
 - **Brier Score**: {brier:.4f}
