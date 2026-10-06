@@ -56,6 +56,10 @@ beside their simpler alternative equations. All values remain dimensionless;
 developmental tags do not calibrate a model to a species. A receipt establishes
 file integrity only. The model source and configurations are not mounted; only
 receipt-listed files inside recognized bundles can be opened through the UI.
+It also displays step-halving error curves from `verify-transport` against the
+bundle's closed-form dimensionless reference, including actual steps, errors
+and observed order. This checks numerical discretization for the supplied
+fixture and is not biological model validation.
 When two verified design sweeps use the same input hash and exact same design
 coordinates, the bench can show their reported medians side by side and the
 descriptive B−A difference. Missing metrics remain missing, estimable replicate

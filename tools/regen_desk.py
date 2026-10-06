@@ -37,6 +37,7 @@ ECTOGENESIS_BUNDLE_KINDS = {
     "synthetic_exchange_design_sweep": "Dimensionless cadence/noise design sweep",
     "dimensionless_transport_theory": "Dimensionless two-compartment transport theory",
     "dimensionless_mechanics_theory": "Dimensionless Kelvin–Voigt mechanics theory",
+    "dimensionless_transport_numerical_verification": "Dimensionless transport numerical verification",
 }
 ECTOGENESIS_SWEEP_METRICS = {
     "median_prospective_forecast_rmse": {
@@ -191,7 +192,8 @@ def ectogenesis_artifact_bundle(path):
                       "synthetic_exchange_observability_diagnostic": "source_manifest.json",
                       "synthetic_exchange_design_sweep": "input_config.json",
                       "dimensionless_transport_theory": "input_config.json",
-                      "dimensionless_mechanics_theory": "input_config.json"}[kind]
+                      "dimensionless_mechanics_theory": "input_config.json",
+                      "dimensionless_transport_numerical_verification": "input_config.json"}[kind]
         outputs = receipt.get("outputs")
         if (not isinstance(outputs, dict) or not 1 <= len(outputs) <= 12
                 or input_file not in outputs):
@@ -226,7 +228,8 @@ def ectogenesis_artifact_bundle(path):
                         "synthetic_exchange_observability_diagnostic": "observability_report.json",
                         "synthetic_exchange_design_sweep": "design_sweep_report.json",
                         "dimensionless_transport_theory": "transport_report.json",
-                        "dimensionless_mechanics_theory": "mechanics_report.json"}[kind]
+                        "dimensionless_mechanics_theory": "mechanics_report.json",
+                        "dimensionless_transport_numerical_verification": "numerical_verification_report.json"}[kind]
         if summary_file not in outputs:
             raise ValueError
         summary_path = base / summary_file
@@ -332,6 +335,61 @@ def ectogenesis_artifact_bundle(path):
                            prospective_forecast_contract=detail.get("prospective_forecast_contract"),
                            prospective_forecast_training_cutoff=detail.get("prospective_forecast_training_cutoff"),
                            temporal_holdout_contract=detail.get("temporal_holdout_contract"))
+        elif kind == "dimensionless_transport_numerical_verification":
+            if (detail.get("result_kind") != kind or detail.get("input_sha256") != receipt["input_sha256"]
+                    or any(detail.get(flag) is not False for flag in
+                           ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))):
+                raise ValueError
+            method = detail.get("reference_method")
+            levels = detail.get("convergence")
+            count = detail.get("n_refinement_levels")
+            total_points = detail.get("n_total_timepoints")
+            if (not isinstance(method, str) or not method or len(method) > 1_000
+                    or not isinstance(levels, list) or not 1 <= len(levels) <= 5
+                    or isinstance(count, bool) or not isinstance(count, int) or count != len(levels)
+                    or isinstance(total_points, bool) or not isinstance(total_points, int)
+                    or not 1 <= total_points <= 100_000):
+                raise ValueError
+            checked_levels = []
+            point_total = 0
+            previous_factor = math.inf
+            for item in levels:
+                if not isinstance(item, dict):
+                    raise ValueError
+                factor = item.get("refinement_factor")
+                requested_step = item.get("requested_step")
+                actual_max_step = item.get("actual_max_step")
+                intervals = item.get("n_intervals")
+                timepoints = item.get("n_timepoints")
+                if (isinstance(factor, bool) or not isinstance(factor, (int, float))
+                        or not math.isfinite(factor) or not 0 < factor <= 1 or factor >= previous_factor
+                        or isinstance(requested_step, bool) or not isinstance(requested_step, (int, float))
+                        or not math.isfinite(requested_step) or requested_step <= 0
+                        or isinstance(actual_max_step, bool) or not isinstance(actual_max_step, (int, float))
+                        or not math.isfinite(actual_max_step) or actual_max_step <= 0
+                        or actual_max_step > requested_step * (1 + 1e-9)
+                        or isinstance(intervals, bool) or not isinstance(intervals, int) or intervals < 1
+                        or isinstance(timepoints, bool) or not isinstance(timepoints, int)
+                        or timepoints != intervals + 1):
+                    raise ValueError
+                previous_factor = factor
+                point_total += timepoints
+                for name in ("max_abs_interface_error", "max_abs_core_error",
+                             "max_abs_state_error", "state_rmse"):
+                    value = item.get(name)
+                    if (isinstance(value, bool) or not isinstance(value, (int, float))
+                            or not math.isfinite(value) or value < 0):
+                        raise ValueError
+                for name in ("error_ratio_from_previous", "observed_order"):
+                    value = item.get(name)
+                    if value is not None and (isinstance(value, bool) or not isinstance(value, (int, float))
+                                              or not math.isfinite(value)):
+                        raise ValueError
+                checked_levels.append(item)
+            if point_total != total_points:
+                raise ValueError
+            summary.update(reference_method=method, n_refinement_levels=count,
+                           n_total_timepoints=total_points, convergence=checked_levels)
         else:
             expected_result_kind = {
                 "dimensionless_transport_theory": "dimensionless_two_compartment_transport",

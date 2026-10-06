@@ -112,6 +112,67 @@ class EctogenesisDeskTests(unittest.TestCase):
                     (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
                     self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
 
+    def test_summarizes_receipt_bound_transport_numerical_verification(self):
+        bundle = self.root / "transport-verification"
+        bundle.mkdir()
+        input_bytes = b'{"dimensionless_fixture":true}\n'
+        input_sha = hashlib.sha256(input_bytes).hexdigest()
+        report = {
+            "schema_version": 1,
+            "result_kind": "dimensionless_transport_numerical_verification",
+            "biological_measurements": False,
+            "physiologically_calibrated": False,
+            "human_gestation_prediction": False,
+            "input_sha256": input_sha,
+            "reference_method": "Closed-form two-state matrix exponential.",
+            "n_refinement_levels": 2,
+            "n_total_timepoints": 8,
+            "convergence": [
+                {"refinement_factor": 1.0, "requested_step": 0.2, "actual_max_step": 0.2,
+                 "n_intervals": 2, "n_timepoints": 3, "max_abs_interface_error": 0.1,
+                 "max_abs_core_error": 0.08, "max_abs_state_error": 0.1, "state_rmse": 0.06,
+                 "error_ratio_from_previous": None, "observed_order": None},
+                {"refinement_factor": 0.5, "requested_step": 0.1, "actual_max_step": 0.1,
+                 "n_intervals": 4, "n_timepoints": 5, "max_abs_interface_error": 0.05,
+                 "max_abs_core_error": 0.04, "max_abs_state_error": 0.05, "state_rmse": 0.03,
+                 "error_ratio_from_previous": 2.0, "observed_order": 1.0},
+            ],
+            "limits": ["Dimensionless numerical check; no biological validation."],
+        }
+        report_bytes = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        curve_bytes = b"refinement_factor,max_abs_state_error\n1,0.1\n0.5,0.05\n"
+        point_bytes = b"dimensionless_time,absolute_error\n0,0\n1,0.05\n"
+        (bundle / "input_config.json").write_bytes(input_bytes)
+        (bundle / "numerical_verification_report.json").write_bytes(report_bytes)
+        (bundle / "transport_convergence.csv").write_bytes(curve_bytes)
+        (bundle / "finest_step_trajectory.csv").write_bytes(point_bytes)
+        outputs = {}
+        for name, content in (("input_config.json", input_bytes),
+                              ("numerical_verification_report.json", report_bytes),
+                              ("transport_convergence.csv", curve_bytes),
+                              ("finest_step_trajectory.csv", point_bytes)):
+            outputs[name] = {"sha256": hashlib.sha256(content).hexdigest(), "size_bytes": len(content)}
+        receipt = {
+            "schema_version": 1,
+            "bundle_kind": "dimensionless_transport_numerical_verification",
+            "package_version": "0.2.2", "python_version": "3.x", "input_sha256": input_sha,
+            "implementation_sha256": {"pyproject.toml": "b" * 64}, "metadata": {}, "outputs": outputs,
+        }
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        result = desk.ectogenesis_artifact_bundle(bundle)
+        self.assertTrue(result["verified"], result)
+        self.assertEqual(result["summary"]["n_refinement_levels"], 2)
+        self.assertEqual(result["summary"]["convergence"][1]["observed_order"], 1.0)
+        self.assertIn("finest_step_trajectory.csv", result["outputs"])
+
+        report["convergence"][1]["n_timepoints"] = 4
+        malformed_bytes = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        (bundle / "numerical_verification_report.json").write_bytes(malformed_bytes)
+        receipt["outputs"]["numerical_verification_report.json"] = {
+            "sha256": hashlib.sha256(malformed_bytes).hexdigest(), "size_bytes": len(malformed_bytes)}
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
+
     def _write_design_sweep_bundle(self, bundle_id, *, input_text="same dimensionless config",
                                    rows=None, implementation_digest="b"):
         bundle = self.root / bundle_id

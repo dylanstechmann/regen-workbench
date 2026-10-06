@@ -206,7 +206,7 @@ function renderModelBench() {
   renderModelBenchComparison(verified);
   if (!state.bundles?.length) {
     container.append(el('p',state.available
-      ? 'No recognized receipt-bearing reports are available yet. Generate an evidence, simulation, identifiability, or design-sweep bundle in artificial-womb-models/artifacts, then refresh.'
+      ? 'No recognized receipt-bearing reports are available yet. Generate an evidence, simulation, identifiability, design-sweep, or transport-verification bundle in artificial-womb-models/artifacts, then refresh.'
       : (state.message || 'The sibling artifact folder is not mounted.'),'empty'));
     return;
   }
@@ -295,6 +295,19 @@ function renderModelBench() {
       card.append(el('p',`Fixture outputs: ${Object.entries(outputs).map(([key,value])=>`${key.replaceAll('_',' ')} ${modelNumber(value)}`).join(' · ') || 'report contains no scalar output fields'}`,'model-bench-metric'));
       card.append(el('p',`Alternative: ${alternative.name || 'reported comparator'} · ${alternative.equation || 'equation recorded in report'} · ${alternative.comparison_scope || 'theoretical comparison only'}`,'boundary'));
       const assumptions=el('details',null,'model-bench-limitations');assumptions.append(el('summary','Model assumptions'));const list=el('ul');(summary.assumptions || []).slice(0,12).forEach(item=>list.append(el('li',String(item).slice(0,1200))));assumptions.append(list);card.append(assumptions);
+    } else if (bundle.bundle_kind === 'dimensionless_transport_numerical_verification') {
+      card.append(el('p',`${summary.n_refinement_levels ?? '—'} forward-Euler step sizes · ${summary.n_total_timepoints ?? '—'} total timepoints compared with a closed-form two-state reference.`));
+      const method=(summary.reference_method || 'Reference method not recorded').replace(/[.!?]+$/,'');
+      card.append(el('p',`${method}. All errors and time values are dimensionless numerical diagnostics for this fixture.`,'boundary'));
+      const table=el('table',null,'model-bench-verification-table'),header=el('tr');
+      for(const label of ['Step factor','Requested step','Actual max step','Max state error','State RMSE','Observed order'])header.append(el('th',label));
+      const thead=el('thead');thead.append(header);const body=el('tbody');
+      for(const item of summary.convergence || []){
+        const row=el('tr');
+        for(const value of [modelNumber(item.refinement_factor),modelNumber(item.requested_step),modelNumber(item.actual_max_step),modelNumber(item.max_abs_state_error),modelNumber(item.state_rmse),modelNumber(item.observed_order)])row.append(el('td',value));
+        body.append(row);
+      }
+      table.append(thead,body);card.append(table);
     }
     if (Array.isArray(summary.limitations) && summary.limitations.length) {
       const limits=el('details',null,'model-bench-limitations');
@@ -304,7 +317,7 @@ function renderModelBench() {
       limits.append(list); card.append(limits);
     }
     const links = el('div',null,'row model-bench-links');
-    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
     for (const filename of bundle.outputs || []) {
       if (!labelsByFile[filename]) continue;
       links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));
