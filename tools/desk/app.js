@@ -308,6 +308,19 @@ function renderModelBench() {
         body.append(row);
       }
       table.append(thead,body);card.append(table);
+    } else if (bundle.bundle_kind === 'dimensionless_transport_parameter_matrix_numerical_verification') {
+      const method=(summary.reference_method || 'Reference method not recorded').replace(/[.!?]+$/,'');
+      card.append(el('p',`${summary.n_scenarios ?? '—'} deterministic rate regimes · ${summary.n_refinement_levels ?? '—'} refinement levels · ${summary.n_total_timepoints ?? '—'} total dimensionless timepoints.`));
+      card.append(el('p',`${method}. Each curve compares forward Euler with the same closed-form two-state reference; profiles are software stress cases, not biological parameter estimates.`,'boundary'));
+      const table=el('table',null,'model-bench-verification-table'),header=el('tr');
+      for(const label of ['Regime','Exchange','Transfer','Loss','Requested step','Stability product','Finest max error'])header.append(el('th',label));
+      const thead=el('thead');thead.append(header);const body=el('tbody');
+      for(const item of summary.scenarios || []){
+        const row=el('tr'),rates=item.rates || {};
+        for(const value of [item.name,modelNumber(rates.boundary_exchange),modelNumber(rates.intercompartment_transport),modelNumber(rates.loss),modelNumber(item.requested_step),modelNumber(item.stability_product),modelNumber(item.finest_max_abs_state_error)])row.append(el('td',value));
+        body.append(row);
+      }
+      table.append(thead,body);card.append(table);
     } else if (bundle.bundle_kind === 'dimensionless_mechanics_numerical_verification') {
       const method=(summary.reference_method || 'Reference method not recorded').replace(/[.!?]+$/,'');
       const errors=summary.errors || {};
@@ -328,7 +341,7 @@ function renderModelBench() {
       limits.append(list); card.append(limits);
     }
     const links = el('div',null,'row model-bench-links');
-    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","mechanics_verification_report.json":"Mechanics verification JSON","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","mechanics_pointwise_errors.csv":"Mechanics pointwise errors","mechanics_boundary_errors.csv":"Mechanics boundary errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","mechanics_verification_report.json":"Mechanics verification JSON","transport_matrix_report.json":"Transport regime matrix JSON","transport_matrix_convergence.csv":"Transport regime convergence table","transport_matrix_scenario_configs.json":"Exact regime configurations","transport_configured_baseline_finest_errors.csv":"Baseline pointwise errors","transport_zero_dynamics_finest_errors.csv":"Zero-dynamics pointwise errors","transport_exchange_only_finest_errors.csv":"Exchange-only pointwise errors","transport_transfer_only_finest_errors.csv":"Transfer-only pointwise errors","transport_unequal_coupled_finest_errors.csv":"Unequal-rate pointwise errors","transport_high_mixing_finest_errors.csv":"High-mixing pointwise errors","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","mechanics_pointwise_errors.csv":"Mechanics pointwise errors","mechanics_boundary_errors.csv":"Mechanics boundary errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
     for (const filename of bundle.outputs || []) {
       if (!labelsByFile[filename]) continue;
       links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));

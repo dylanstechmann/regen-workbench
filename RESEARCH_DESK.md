@@ -62,7 +62,11 @@ and observed order. It also verifies `verify-mechanics` bundles and shows
 pointwise plus load-boundary errors against the piecewise-load convolution
 reference. The mechanics solver already uses exact transitions, so that report
 is a consistency check rather than a discretization study. Neither report is
-biological model validation.
+biological model validation. `verify-transport-matrix` adds six deterministic
+rate regimes with their exact hashed configurations, five-level convergence
+curves and separate finest-step errors; the view compares rates, stability
+products and finest-level errors. Those profiles are software stress cases,
+not biological parameter estimates.
 When two verified design sweeps use the same input hash and exact same design
 coordinates, the bench can show their reported medians side by side and the
 descriptive B−A difference. Missing metrics remain missing, estimable replicate

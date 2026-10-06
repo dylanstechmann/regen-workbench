@@ -39,6 +39,7 @@ ECTOGENESIS_BUNDLE_KINDS = {
     "dimensionless_mechanics_theory": "Dimensionless Kelvin–Voigt mechanics theory",
     "dimensionless_transport_numerical_verification": "Dimensionless transport numerical verification",
     "dimensionless_mechanics_numerical_verification": "Dimensionless mechanics numerical verification",
+    "dimensionless_transport_parameter_matrix_numerical_verification": "Dimensionless transport parameter matrix",
 }
 ECTOGENESIS_SWEEP_METRICS = {
     "median_prospective_forecast_rmse": {
@@ -195,7 +196,8 @@ def ectogenesis_artifact_bundle(path):
                       "dimensionless_transport_theory": "input_config.json",
                       "dimensionless_mechanics_theory": "input_config.json",
                       "dimensionless_transport_numerical_verification": "input_config.json",
-                      "dimensionless_mechanics_numerical_verification": "input_config.json"}[kind]
+                      "dimensionless_mechanics_numerical_verification": "input_config.json",
+                      "dimensionless_transport_parameter_matrix_numerical_verification": "input_config.json"}[kind]
         outputs = receipt.get("outputs")
         if (not isinstance(outputs, dict) or not 1 <= len(outputs) <= 12
                 or input_file not in outputs):
@@ -232,7 +234,8 @@ def ectogenesis_artifact_bundle(path):
                         "dimensionless_transport_theory": "transport_report.json",
                         "dimensionless_mechanics_theory": "mechanics_report.json",
                         "dimensionless_transport_numerical_verification": "numerical_verification_report.json",
-                        "dimensionless_mechanics_numerical_verification": "mechanics_verification_report.json"}[kind]
+                        "dimensionless_mechanics_numerical_verification": "mechanics_verification_report.json",
+                        "dimensionless_transport_parameter_matrix_numerical_verification": "transport_matrix_report.json"}[kind]
         if summary_file not in outputs:
             raise ValueError
         summary_path = base / summary_file
@@ -430,6 +433,163 @@ def ectogenesis_artifact_bundle(path):
                            relative_tolerance=tolerance,
                            maximum_scaled_error=maximum_scaled_error,
                            verification_passed=True, errors=checked_errors)
+        elif kind == "dimensionless_transport_parameter_matrix_numerical_verification":
+            scenario_names = {"configured_baseline", "zero_dynamics", "exchange_only",
+                              "transfer_only", "unequal_coupled", "high_mixing"}
+            required_outputs = {"transport_matrix_report.json", "transport_matrix_convergence.csv",
+                                "transport_matrix_scenario_configs.json"}
+            required_outputs.update(f"transport_{name}_finest_errors.csv" for name in scenario_names)
+            if (detail.get("result_kind") != kind or detail.get("input_sha256") != receipt["input_sha256"]
+                    or any(detail.get(flag) is not False for flag in
+                           ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))
+                    or not required_outputs.issubset(outputs)):
+                raise ValueError
+            method = detail.get("reference_method")
+            scenarios = detail.get("scenarios")
+            count = detail.get("n_scenarios")
+            levels = detail.get("n_refinement_levels")
+            total_points = detail.get("n_total_timepoints")
+            if (not isinstance(method, str) or not method or len(method) > 1_000
+                    or not isinstance(scenarios, list) or len(scenarios) != 6
+                    or isinstance(count, bool) or not isinstance(count, int) or count != len(scenarios)
+                    or isinstance(levels, bool) or not isinstance(levels, int) or levels != 5
+                    or isinstance(total_points, bool) or not isinstance(total_points, int)
+                    or not 1 <= total_points <= 160_000):
+                raise ValueError
+            observed_names = set()
+            point_sum = 0
+            checked_scenarios = []
+            for item in scenarios:
+                if not isinstance(item, dict):
+                    raise ValueError
+                name = item.get("name")
+                config_sha = item.get("config_sha256")
+                rates = item.get("rates")
+                if (name not in scenario_names or name in observed_names
+                        or not isinstance(config_sha, str) or not re.fullmatch(r"[0-9a-f]{64}", config_sha)
+                        or not isinstance(rates, dict)
+                        or set(rates) != {"boundary_exchange", "intercompartment_transport", "loss"}):
+                    raise ValueError
+                observed_names.add(name)
+                for rate in rates.values():
+                    if (isinstance(rate, bool) or not isinstance(rate, (int, float))
+                            or not math.isfinite(rate) or rate < 0):
+                        raise ValueError
+                for field in ("requested_step", "stability_product",
+                              "finest_actual_max_step", "finest_max_abs_state_error", "finest_state_rmse"):
+                    value = item.get(field)
+                    if (isinstance(value, bool) or not isinstance(value, (int, float))
+                            or not math.isfinite(value) or value < 0):
+                        raise ValueError
+                if (item["requested_step"] <= 0 or item["finest_actual_max_step"] <= 0
+                        or item["finest_actual_max_step"] > item["requested_step"] * (1 + 1e-9)
+                        or item["stability_product"] > 1.0 + 1e-9):
+                    raise ValueError
+                points = item.get("n_total_timepoints")
+                if (isinstance(points, bool) or not isinstance(points, int) or not 1 <= points <= 100_000):
+                    raise ValueError
+                point_sum += points
+                checked_scenarios.append(item)
+            if observed_names != scenario_names or point_sum != total_points:
+                raise ValueError
+            config_manifest_path = base / "transport_matrix_scenario_configs.json"
+            if config_manifest_path.stat().st_size > 2_000_000:
+                raise ValueError
+            config_manifest = json.loads(config_manifest_path.read_text(encoding="utf-8"))
+            manifest_scenarios = config_manifest.get("scenario_configs") if isinstance(config_manifest, dict) else None
+            if (config_manifest.get("schema_version") != 1
+                    or not isinstance(manifest_scenarios, list) or len(manifest_scenarios) != 6):
+                raise ValueError
+            manifest_hashes = {}
+            for item in manifest_scenarios:
+                if not isinstance(item, dict):
+                    raise ValueError
+                name = item.get("name")
+                config_hash = item.get("config_sha256")
+                config_text = item.get("config_json")
+                if (name not in scenario_names or name in manifest_hashes
+                        or not isinstance(config_hash, str)
+                        or not re.fullmatch(r"[0-9a-f]{64}", config_hash)
+                        or not isinstance(config_text, str) or len(config_text.encode("utf-8")) > 2_000_000
+                        or hashlib.sha256(config_text.encode("utf-8")).hexdigest() != config_hash):
+                    raise ValueError
+                scenario_config = json.loads(config_text)
+                if (not isinstance(scenario_config, dict)
+                        or set(scenario_config) != {"schema_version", "fixture_notice", "context",
+                                                    "dimensionless_time", "initial", "rates",
+                                                    "boundary_concentration"}
+                        or isinstance(scenario_config.get("schema_version"), bool)
+                        or scenario_config.get("schema_version") != 1
+                        or not isinstance(scenario_config.get("fixture_notice"), str)
+                        or not 1 <= len(scenario_config["fixture_notice"]) <= 512):
+                    raise ValueError
+                context = scenario_config.get("context")
+                if (not isinstance(context, dict)
+                        or set(context) != {"stage_track", "species", "interval_label"}
+                        or any(not isinstance(context[field], str) or len(context[field]) > 256
+                               for field in ("stage_track", "species", "interval_label"))):
+                    raise ValueError
+                time_config = scenario_config.get("dimensionless_time")
+                if not isinstance(time_config, dict) or set(time_config) != {"duration", "step"}:
+                    raise ValueError
+                duration, step = time_config["duration"], time_config["step"]
+                if (isinstance(duration, bool) or not isinstance(duration, (int, float))
+                        or not math.isfinite(duration) or duration <= 0
+                        or isinstance(step, bool) or not isinstance(step, (int, float))
+                        or not math.isfinite(step) or not 0 < step <= duration):
+                    raise ValueError
+                rates = scenario_config.get("rates")
+                if not isinstance(rates, dict) or set(rates) != {
+                        "boundary_exchange", "intercompartment_transport", "loss"}:
+                    raise ValueError
+                initial = scenario_config.get("initial")
+                boundary_concentration = scenario_config.get("boundary_concentration")
+                if (not isinstance(initial, dict) or set(initial) != {"interface", "core"}
+                        or isinstance(boundary_concentration, bool)
+                        or not isinstance(boundary_concentration, (int, float))
+                        or not math.isfinite(boundary_concentration)):
+                    raise ValueError
+                if any(isinstance(value, bool) or not isinstance(value, (int, float))
+                       or not math.isfinite(value) for value in initial.values()):
+                    raise ValueError
+                rate_sum = 0.0
+                for value in rates.values():
+                    if (isinstance(value, bool) or not isinstance(value, (int, float))
+                            or not math.isfinite(value) or value < 0):
+                        raise ValueError
+                    rate_sum += value
+                scenario_summary = next(value for value in checked_scenarios if value["name"] == name)
+                if (config_hash != scenario_summary["config_sha256"]
+                        or step != scenario_summary["requested_step"]
+                        or rates != scenario_summary["rates"]
+                        or not math.isclose(step * rate_sum, scenario_summary["stability_product"],
+                                            rel_tol=1e-12, abs_tol=1e-15)
+                        or (name != "configured_baseline" and step * rate_sum > 0.5 + 1e-9)
+                        or sum(math.ceil(duration / (step * factor)) + 1
+                               for factor in (1.0, 0.5, 0.25, 0.125, 0.0625)
+                               ) != scenario_summary["n_total_timepoints"]):
+                    raise ValueError
+                manifest_hashes[name] = config_hash
+            if manifest_hashes != {item["name"]: item["config_sha256"] for item in checked_scenarios}:
+                raise ValueError
+            if manifest_hashes.get("configured_baseline") != receipt["input_sha256"]:
+                raise ValueError
+            with (base / "transport_matrix_convergence.csv").open("r", encoding="utf-8", newline="") as stream:
+                curve_rows = list(csv.DictReader(stream))
+            curve_counts = {}
+            if len(curve_rows) != 30:
+                raise ValueError
+            for row in curve_rows:
+                name = row.get("scenario")
+                factor = row.get("refinement_factor")
+                if (name not in scenario_names or factor not in {"1.0", "0.5", "0.25", "0.125", "0.0625"}):
+                    raise ValueError
+                curve_counts[(name, factor)] = curve_counts.get((name, factor), 0) + 1
+            if (len(curve_counts) != 30 or any(count != 1 for count in curve_counts.values())):
+                raise ValueError
+            summary.update(reference_method=method, n_scenarios=count,
+                           n_refinement_levels=levels, n_total_timepoints=total_points,
+                           scenarios=checked_scenarios)
         else:
             expected_result_kind = {
                 "dimensionless_transport_theory": "dimensionless_two_compartment_transport",

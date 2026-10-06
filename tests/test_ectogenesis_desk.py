@@ -227,6 +227,101 @@ class EctogenesisDeskTests(unittest.TestCase):
         (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
         self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
 
+    def test_summarizes_receipt_bound_transport_parameter_matrix(self):
+        bundle = self.root / "transport-matrix"
+        bundle.mkdir()
+        names = ["configured_baseline", "zero_dynamics", "exchange_only",
+                 "transfer_only", "unequal_coupled", "high_mixing"]
+        scenarios = []
+        config_json_by_name = {}
+        rates_by_name = {
+            "configured_baseline": {"boundary_exchange": 0.2, "intercompartment_transport": 0.3, "loss": 0.1},
+            "zero_dynamics": {"boundary_exchange": 0.0, "intercompartment_transport": 0.0, "loss": 0.0},
+            "exchange_only": {"boundary_exchange": 0.8, "intercompartment_transport": 0.0, "loss": 0.0},
+            "transfer_only": {"boundary_exchange": 0.0, "intercompartment_transport": 1.3, "loss": 0.0},
+            "unequal_coupled": {"boundary_exchange": 0.17, "intercompartment_transport": 0.83, "loss": 0.06},
+            "high_mixing": {"boundary_exchange": 0.8, "intercompartment_transport": 20.0, "loss": 0.1},
+        }
+        for index, name in enumerate(names):
+            rates = rates_by_name[name]
+            scenario_config = {
+                "schema_version": 1,
+                "fixture_notice": "Dimensionless software test fixture.",
+                "context": {"stage_track": "postimplantation_embryonic",
+                            "species": "unspecified", "interval_label": "test"},
+                "dimensionless_time": {"duration": 2.0, "step": 0.01},
+                "initial": {"interface": 0.2, "core": 0.4},
+                "rates": rates,
+                "boundary_concentration": 1.0,
+            }
+            config_json = json.dumps(scenario_config, indent=2, sort_keys=True,
+                                     ensure_ascii=False, allow_nan=False) + "\n"
+            config_json_by_name[name] = config_json
+            config_digest = hashlib.sha256(config_json.encode()).hexdigest()
+            scenarios.append({
+                "name": name, "config_sha256": config_digest, "rates": rates,
+                "requested_step": 0.01,
+                "stability_product": 0.01 * sum(rates.values()),
+                "n_total_timepoints": 6205,
+                "finest_actual_max_step": 0.000625,
+                "finest_max_abs_state_error": 0.001 * (index + 1),
+                "finest_state_rmse": 0.0005 * (index + 1),
+            })
+        input_bytes = config_json_by_name["configured_baseline"].encode()
+        input_sha = hashlib.sha256(input_bytes).hexdigest()
+        report = {
+            "schema_version": 1,
+            "result_kind": "dimensionless_transport_parameter_matrix_numerical_verification",
+            "biological_measurements": False,
+            "physiologically_calibrated": False,
+            "human_gestation_prediction": False,
+            "input_sha256": input_sha,
+            "reference_method": "Closed-form two-state matrix exponential.",
+            "n_scenarios": 6, "n_refinement_levels": 5, "n_total_timepoints": 37230,
+            "scenarios": scenarios,
+            "limits": ["Dimensionless software checks; no biological validation."],
+        }
+        config_manifest = {"schema_version": 1, "scenario_configs": [
+            {"name": item["name"], "config_sha256": item["config_sha256"],
+             "config_json": config_json_by_name[item["name"]]} for item in scenarios]}
+        report_bytes = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        manifest_bytes = json.dumps(config_manifest, sort_keys=True, allow_nan=False).encode() + b"\n"
+        curve_text = "scenario,refinement_factor\n" + "".join(
+            f"{name},{factor}\n" for name in names for factor in (1.0, 0.5, 0.25, 0.125, 0.0625))
+        files = {
+            "input_config.json": input_bytes,
+            "transport_matrix_report.json": report_bytes,
+            "transport_matrix_convergence.csv": curve_text.encode(),
+            "transport_matrix_scenario_configs.json": manifest_bytes,
+        }
+        point_bytes = b"scenario,dimensionless_time,absolute_interface_error,absolute_core_error\n"
+        for name in names:
+            files[f"transport_{name}_finest_errors.csv"] = point_bytes
+        for name, content in files.items():
+            (bundle / name).write_bytes(content)
+        outputs = {name: {"sha256": hashlib.sha256(content).hexdigest(),
+                          "size_bytes": len(content)} for name, content in files.items()}
+        receipt = {
+            "schema_version": 1,
+            "bundle_kind": "dimensionless_transport_parameter_matrix_numerical_verification",
+            "package_version": "0.2.2", "python_version": "3.x", "input_sha256": input_sha,
+            "implementation_sha256": {"pyproject.toml": "b" * 64}, "metadata": {}, "outputs": outputs,
+        }
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        result = desk.ectogenesis_artifact_bundle(bundle)
+        self.assertTrue(result["verified"], result)
+        self.assertEqual(result["summary"]["n_scenarios"], 6)
+        self.assertEqual(len(result["summary"]["scenarios"]), 6)
+        self.assertIn("transport_high_mixing_finest_errors.csv", result["outputs"])
+
+        report["scenarios"][-1]["stability_product"] = 1.2
+        malformed = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        (bundle / "transport_matrix_report.json").write_bytes(malformed)
+        receipt["outputs"]["transport_matrix_report.json"] = {
+            "sha256": hashlib.sha256(malformed).hexdigest(), "size_bytes": len(malformed)}
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
+
     def _write_design_sweep_bundle(self, bundle_id, *, input_text="same dimensionless config",
                                    rows=None, implementation_digest="b"):
         bundle = self.root / bundle_id
