@@ -38,6 +38,7 @@ ECTOGENESIS_BUNDLE_KINDS = {
     "dimensionless_transport_theory": "Dimensionless two-compartment transport theory",
     "dimensionless_mechanics_theory": "Dimensionless Kelvin–Voigt mechanics theory",
     "dimensionless_transport_numerical_verification": "Dimensionless transport numerical verification",
+    "dimensionless_mechanics_numerical_verification": "Dimensionless mechanics numerical verification",
 }
 ECTOGENESIS_SWEEP_METRICS = {
     "median_prospective_forecast_rmse": {
@@ -193,7 +194,8 @@ def ectogenesis_artifact_bundle(path):
                       "synthetic_exchange_design_sweep": "input_config.json",
                       "dimensionless_transport_theory": "input_config.json",
                       "dimensionless_mechanics_theory": "input_config.json",
-                      "dimensionless_transport_numerical_verification": "input_config.json"}[kind]
+                      "dimensionless_transport_numerical_verification": "input_config.json",
+                      "dimensionless_mechanics_numerical_verification": "input_config.json"}[kind]
         outputs = receipt.get("outputs")
         if (not isinstance(outputs, dict) or not 1 <= len(outputs) <= 12
                 or input_file not in outputs):
@@ -229,7 +231,8 @@ def ectogenesis_artifact_bundle(path):
                         "synthetic_exchange_design_sweep": "design_sweep_report.json",
                         "dimensionless_transport_theory": "transport_report.json",
                         "dimensionless_mechanics_theory": "mechanics_report.json",
-                        "dimensionless_transport_numerical_verification": "numerical_verification_report.json"}[kind]
+                        "dimensionless_transport_numerical_verification": "numerical_verification_report.json",
+                        "dimensionless_mechanics_numerical_verification": "mechanics_verification_report.json"}[kind]
         if summary_file not in outputs:
             raise ValueError
         summary_path = base / summary_file
@@ -390,6 +393,43 @@ def ectogenesis_artifact_bundle(path):
                 raise ValueError
             summary.update(reference_method=method, n_refinement_levels=count,
                            n_total_timepoints=total_points, convergence=checked_levels)
+        elif kind == "dimensionless_mechanics_numerical_verification":
+            required_outputs = {"mechanics_verification_report.json", "mechanics_pointwise_errors.csv",
+                                "mechanics_boundary_errors.csv"}
+            if (detail.get("result_kind") != kind or detail.get("input_sha256") != receipt["input_sha256"]
+                    or any(detail.get(flag) is not False for flag in
+                           ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))
+                    or not required_outputs.issubset(outputs)):
+                raise ValueError
+            method = detail.get("reference_method")
+            points = detail.get("n_timepoints")
+            boundaries = detail.get("n_load_boundaries")
+            tolerance = detail.get("relative_tolerance")
+            maximum_scaled_error = detail.get("maximum_scaled_error")
+            errors = detail.get("errors")
+            if (not isinstance(method, str) or not method or len(method) > 1_000
+                    or isinstance(points, bool) or not isinstance(points, int) or not 1 <= points <= 100_000
+                    or isinstance(boundaries, bool) or not isinstance(boundaries, int)
+                    or not 0 <= boundaries <= min(points, 200)
+                    or isinstance(tolerance, bool) or not isinstance(tolerance, (int, float))
+                    or not math.isfinite(tolerance) or not 0 < tolerance <= 1e-6
+                    or isinstance(maximum_scaled_error, bool)
+                    or not isinstance(maximum_scaled_error, (int, float))
+                    or not math.isfinite(maximum_scaled_error) or not 0 <= maximum_scaled_error <= tolerance
+                    or detail.get("verification_passed") is not True or not isinstance(errors, dict)):
+                raise ValueError
+            checked_errors = {}
+            for name in ("max_absolute", "rmse", "max_boundary_absolute"):
+                value = errors.get(name)
+                if (isinstance(value, bool) or not isinstance(value, (int, float))
+                        or not math.isfinite(value) or value < 0):
+                    raise ValueError
+                checked_errors[name] = value
+            summary.update(reference_method=method, n_timepoints=points,
+                           n_load_boundaries=boundaries,
+                           relative_tolerance=tolerance,
+                           maximum_scaled_error=maximum_scaled_error,
+                           verification_passed=True, errors=checked_errors)
         else:
             expected_result_kind = {
                 "dimensionless_transport_theory": "dimensionless_two_compartment_transport",

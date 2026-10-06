@@ -173,6 +173,60 @@ class EctogenesisDeskTests(unittest.TestCase):
         (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
         self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
 
+    def test_summarizes_receipt_bound_mechanics_numerical_verification(self):
+        bundle = self.root / "mechanics-verification"
+        bundle.mkdir()
+        input_bytes = b'{"dimensionless_fixture":true}\n'
+        input_sha = hashlib.sha256(input_bytes).hexdigest()
+        report = {
+            "schema_version": 1,
+            "result_kind": "dimensionless_mechanics_numerical_verification",
+            "biological_measurements": False,
+            "physiologically_calibrated": False,
+            "human_gestation_prediction": False,
+            "input_sha256": input_sha,
+            "reference_method": "Piecewise rectangular-load convolution.",
+            "n_timepoints": 401,
+            "n_load_boundaries": 4,
+            "relative_tolerance": 1e-10,
+            "maximum_scaled_error": 2e-16,
+            "verification_passed": True,
+            "errors": {"max_absolute": 2e-16, "rmse": 1e-16,
+                       "max_boundary_absolute": 1e-16},
+            "limits": ["Dimensionless mathematical check; no biological validation."],
+        }
+        report_bytes = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        point_bytes = b"dimensionless_time,solver_strain,convolution_reference_strain,absolute_error,is_load_boundary\n"
+        boundary_bytes = point_bytes
+        files = {"input_config.json": input_bytes,
+                 "mechanics_verification_report.json": report_bytes,
+                 "mechanics_pointwise_errors.csv": point_bytes,
+                 "mechanics_boundary_errors.csv": boundary_bytes}
+        for name, content in files.items():
+            (bundle / name).write_bytes(content)
+        outputs = {name: {"sha256": hashlib.sha256(content).hexdigest(),
+                          "size_bytes": len(content)} for name, content in files.items()}
+        receipt = {
+            "schema_version": 1,
+            "bundle_kind": "dimensionless_mechanics_numerical_verification",
+            "package_version": "0.2.2", "python_version": "3.x", "input_sha256": input_sha,
+            "implementation_sha256": {"pyproject.toml": "b" * 64}, "metadata": {}, "outputs": outputs,
+        }
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        result = desk.ectogenesis_artifact_bundle(bundle)
+        self.assertTrue(result["verified"], result)
+        self.assertEqual(result["summary"]["n_load_boundaries"], 4)
+        self.assertTrue(result["summary"]["verification_passed"])
+        self.assertIn("mechanics_boundary_errors.csv", result["outputs"])
+
+        report["maximum_scaled_error"] = 1e-4
+        malformed = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"
+        (bundle / "mechanics_verification_report.json").write_bytes(malformed)
+        receipt["outputs"]["mechanics_verification_report.json"] = {
+            "sha256": hashlib.sha256(malformed).hexdigest(), "size_bytes": len(malformed)}
+        (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
+
     def _write_design_sweep_bundle(self, bundle_id, *, input_text="same dimensionless config",
                                    rows=None, implementation_digest="b"):
         bundle = self.root / bundle_id

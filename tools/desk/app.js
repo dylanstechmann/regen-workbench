@@ -308,6 +308,17 @@ function renderModelBench() {
         body.append(row);
       }
       table.append(thead,body);card.append(table);
+    } else if (bundle.bundle_kind === 'dimensionless_mechanics_numerical_verification') {
+      const method=(summary.reference_method || 'Reference method not recorded').replace(/[.!?]+$/,'');
+      const errors=summary.errors || {};
+      card.append(el('p',`${summary.n_timepoints ?? '—'} timepoints · ${summary.n_load_boundaries ?? '—'} load boundaries compared with a closed-form reference.`));
+      card.append(el('p',`${method}. Maximum scaled error ${modelNumber(summary.maximum_scaled_error)} against tolerance ${modelNumber(summary.relative_tolerance)}; ${summary.verification_passed ? 'verification passed' : 'verification status unavailable'}. All values are dimensionless software diagnostics.`,'boundary'));
+      const table=el('table',null,'model-bench-verification-table'),header=el('tr');
+      for(const label of ['Maximum absolute error','RMSE','Maximum boundary error'])header.append(el('th',label));
+      const row=el('tr');
+      for(const value of [modelNumber(errors.max_absolute),modelNumber(errors.rmse),modelNumber(errors.max_boundary_absolute)])row.append(el('td',value));
+      const thead=el('thead');thead.append(header);const body=el('tbody');body.append(row);
+      table.append(thead,body);card.append(table);
     }
     if (Array.isArray(summary.limitations) && summary.limitations.length) {
       const limits=el('details',null,'model-bench-limitations');
@@ -317,7 +328,7 @@ function renderModelBench() {
       limits.append(list); card.append(limits);
     }
     const links = el('div',null,'row model-bench-links');
-    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","mechanics_verification_report.json":"Mechanics verification JSON","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","mechanics_pointwise_errors.csv":"Mechanics pointwise errors","mechanics_boundary_errors.csv":"Mechanics boundary errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
     for (const filename of bundle.outputs || []) {
       if (!labelsByFile[filename]) continue;
       links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));
