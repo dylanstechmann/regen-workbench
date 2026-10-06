@@ -4,7 +4,14 @@ Code and repository review: 2026-10-06. Prioritize stem cells, organoids and
 tissue regeneration, with ectogenesis as a substantial theoretical research
 area. This is an implementation plan; unchecked milestones are future work.
 
-## Current baseline and this update
+The [research programs](RESEARCH_PROGRAMS.md) connect this backlog to four
+scientific programs: ectogenesis interfaces/transitions, functional tissue
+regeneration, aging-state/identity confounding, and age-acquired damage/repair.
+Their D1–D6 milestones extend R1–R5 through competing hypotheses, dataset
+eligibility and frozen evaluation plans. New source/data candidates remain
+proposed until qualified and reviewed.
+
+## Current verified baseline and next milestone
 
 ResearchDesk already has an ectogenesis blueprint, stage-aware campaign
 starters, receipt-checked artificial-womb reports, experiment cards, append-only
@@ -13,16 +20,21 @@ artifacts and dossier exports. It can display TEBV measured-data reanalysis
 and import blinded organoid pilot/repeat-agreement audits. These capabilities
 should be extended rather than rebuilt.
 
-This update fixes two integrity defects: transport/mechanics reports must
-match their receipt's model family, and annotation re-imports compare the
-receipt itself as well as outputs. Receipt and CSV interpretation use the
-same bounded bytes that were checked and retained. The UI also explains
-unavailable forecast intervals from the model package.
+Existing integrity protections require transport/mechanics reports to match
+their receipt's model family and annotation re-imports to compare the receipt
+itself as well as outputs. Receipt and CSV interpretation use the same bounded
+bytes that were checked and retained. The UI explains unavailable forecast
+intervals and displays mechanics verification plus the seven-regime transport
+matrix, including its near-degenerate case. Jobs already retain canonical
+campaign/parameter submission snapshots; reviewed scientific revisions still
+need a first-class lifecycle.
 
-The next large milestone is one human-reviewed organoid measurement case
+The next integrated milestone is one human-reviewed organoid measurement case
 carried from source images through frozen masks, grouped evaluation and a
-portable ResearchDesk dossier. Review agreement, morphology, model accuracy
-and biological function must remain separately labeled.
+portable ResearchDesk dossier. In parallel, qualify placental/interface and
+paired aging-state datasets and freeze one discriminating question for each
+eligible pilot. Review agreement, morphology, model accuracy and biological
+function must remain separately labeled.
 
 ## R1 — Preserve reviewed evidence and campaign revisions
 
@@ -104,8 +116,11 @@ The local `organoid-phenotyping` package is the methods owner. Its first
 source is the [Bonn kidney-tubuloid dataset](https://doi.org/10.60507/FK2/OM25XQ)
 and [associated study](https://doi.org/10.1186/s12860-026-00591-x).
 
-1. Fix annotation task-switch races and add reliable full-resolution review,
-   editable contours and dispositions for empty/ambiguous/unusable images.
+1. Preserve the implemented load/save task-switch guards and polygon
+   creation/removal; add completed-contour editing, genuine full-resolution
+   review and dispositions for
+   empty/ambiguous/unusable images. Zooming the current 1600-pixel overview
+   does not recover source-image detail.
 2. Freeze submitted masks; record independent review, adjudication and accepted
    revisions before calling geometry reviewed. Different pseudonyms alone do
    not demonstrate independent review.
@@ -118,7 +133,10 @@ and [associated study](https://doi.org/10.1186/s12860-026-00591-x).
    results and source/license card into one independently verifiable dossier.
 
 **Acceptance:** a reviewer can follow every displayed number to the accepted
-input and independent unit. Report descriptive image geometry if original
+input, source field and declared grouping hierarchy. Source kidney IDs are
+grouping identifiers, not verified donors; retain unresolved independence
+and restrict inference when biological-unit identities are absent. Report
+descriptive image geometry if original
 measurement identities are unavailable; do not label it an exact reproduction
 of the paper's selected-object analysis or a biological treatment effect.
 
@@ -149,14 +167,16 @@ units, reviewed assumptions and propagated uncertainty.
 
 ## Delivery sequence and portfolio value
 
-1. **Next release:** model accuracy/identifiability work, annotation correctness
-   and frozen review lifecycle, plus immutable evidence/campaign revisions.
-2. **Next integrated release:** strict portable dossier verification/export and
-   the reviewed organoid development case with grouped evaluation.
-3. **Next empirical release:** one eligible oxygen, perfusion or senescence
-   case; independent-experiment lineage work and qualified chemical evaluation.
-4. **After review:** a concise methods manuscript, reproducible figures,
-   installation example, explicit limitations and contribution-sized issues.
+1. **Questions and eligible inputs:** D1–D3/R1/R4 scientific revisions,
+   dataset cards and frozen competing-prediction plans; ectogenesis E1–E3;
+   reprogramming/senescence qualification; annotation review alongside.
+2. **Measured demonstrator:** D4 input/preprocessing/split/method binding before
+   runs; reviewed organoid development case and one eligible interface or
+   paired-omics analysis with source-faithful baselines.
+3. **Reproduction and challenge:** D5–D6/R2/R3 portable dossiers, untouched
+   group/source evaluation, independent review and scoped failure reports.
+4. **After those gates:** one justified next mechanism or reusable method,
+   a concise methods report, reproducible figures and contributor tasks.
 
 Each release should have a tagged revision, passing relevant checks, exact
 inputs/reproduction instructions and an inspectable failure example. Genuine

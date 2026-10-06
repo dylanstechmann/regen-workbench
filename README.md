@@ -15,6 +15,9 @@ for the owner's ambitions and approach to scrutinizing evidence and bias.
 The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
 verification, reviewed organoid measurements, portable ResearchDesk dossiers
 and concrete empirical milestones across the companion methods repositories.
+The [research programs](RESEARCH_PROGRAMS.md) develop the next questions toward
+artificial gestation and durable youthful function, with competing explanations,
+eligible dataset candidates, repository ownership and release gates.
 
 ## Interactive research desk
 
