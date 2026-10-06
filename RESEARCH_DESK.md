@@ -47,7 +47,9 @@ limitations. It shows
 reviewed evidence-map bundles, synthetic exchange runs and dimensionless
 identifiability diagnostics. It also displays a bounded cadence/noise/fault/
 event-timing sweep with seeded replicates and post-fit synthetic parameter-recovery
-summaries. When outages or monitor faults are configured, it includes a reflected
+summaries and same-run temporal holdout residuals. The holdout fits the first 70%
+of usable intervals and scores only later intervals from that generated run;
+it is an internal diagnostic, not independent validation. When outages or monitor faults are configured, it includes a reflected
 event-timing sensitivity profile that preserves interval lengths; this does not
 represent a realistic outage distribution. Sweep bundles expose a design-plan
 artifact with actual cadence/noise values and the configured/reflected intervals.

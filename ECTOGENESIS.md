@@ -60,7 +60,10 @@ generated run. A bounded cadence/noise/fault/event-timing sweep compares seeded
 synthetic runs; reflected event timing preserves interval lengths while testing
 dependence on placement within the fixture. Generator-known rates are used only
 for post-fit software-recovery scoring. It
-does not fit hidden model states. These values and alarm
+does not fit hidden model states. Sweep summaries also report a same-run temporal
+holdout: rates fit from the first 70% of usable intervals score only later
+intervals from that generated run. This is an internal fit diagnostic, not
+independent validation. These values and alarm
 thresholds are software fixtures, not measured physiology, life-support
 settings or a pregnancy-duration prediction. Evidence, simulation,
 observability and design-sweep bundles appear in Model bench after starting the

@@ -244,9 +244,9 @@ function renderModelBench() {
         : timingProfiles.has('time-reflected event timing')
           ? 'The reflected schedule preserves event durations and maps intervals across the fixture midpoint; it tests timing sensitivity for this fixture, not a realistic outage distribution.'
           : 'No event-timing contrast was needed because the source fixture contains no outage or monitor-fault intervals.';
-      card.append(el('p',`Generator-known rates score fits only after estimation. Replicates share one fixture and event schedule within each design. ${faultBoundary} ${timingBoundary}`,'boundary'));
+      card.append(el('p',`Generator-known rates score fits only after estimation. Replicates share one fixture and event schedule within each design. A temporal holdout trains on each run's first 70% of usable intervals and scores later intervals from that same run; it is not independent validation. ${faultBoundary} ${timingBoundary}`,'boundary'));
       const table = el('table',null,'model-bench-sweep-table'), header = el('tr');
-      ['Requested cadence × noise','Fault profile','Event timing','Actual step · noise SD','Estimable runs','Condition med / P90','Input abs error med / P90','Conversion abs error med / P90'].forEach(label => header.append(el('th',label)));
+      ['Requested cadence × noise','Fault profile','Event timing','Actual step · noise SD','Estimable runs','Same-run holdout fits','Holdout RMSE med / P90','Condition med / P90','Input abs error med / P90','Conversion abs error med / P90'].forEach(label => header.append(el('th',label)));
       table.append(header);
       for (const design of designSummaries.slice(0,36)) {
         const row = el('tr');
@@ -255,6 +255,8 @@ function renderModelBench() {
         row.append(el('td',design.event_timing_profile || 'not reported'));
         row.append(el('td',`${modelNumber(design.actual_output_step)} · ${modelNumber(design.actual_noise_sd)}`));
         row.append(el('td',`${design.estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
+        row.append(el('td',`${design.temporal_holdout_estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
+        row.append(el('td',`${modelNumber(design.median_temporal_holdout_fixture_scale_rmse)} / ${modelNumber(design.p90_temporal_holdout_fixture_scale_rmse)}`));
         row.append(el('td',`${modelNumber(design.median_design_condition_number)} / ${modelNumber(design.p90_design_condition_number)}`));
         row.append(el('td',`${modelNumber(design.median_absolute_error_powered_input)} / ${modelNumber(design.p90_absolute_error_powered_input)}`));
         row.append(el('td',`${modelNumber(design.median_absolute_error_conversion)} / ${modelNumber(design.p90_absolute_error_conversion)}`));
