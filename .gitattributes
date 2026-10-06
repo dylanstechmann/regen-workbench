@@ -1,3 +1,7 @@
 # Normalize all text files to LF in the repository and on checkout.
 # Prevents CRLF churn when contributors edit on Windows.
 * text=auto eol=lf
+
+# These imported outputs are receipt-bound byte snapshots. Preserve their
+# original line endings so a fresh checkout matches the recorded hashes.
+/studies/organoid/**/derived/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -164,6 +164,11 @@ receipt-listed files inside recognized bundles can be opened through the UI.
   `acquisitions-annotated-*.csv` and register that separate package receipt.
   Agreement, geometry, and treatment response remain distinct evidence stages.
 
+  Imported organoid outputs under `studies/organoid/**/derived/` retain their
+  exact receipt-bound bytes through Git checkout; their original line endings
+  must not be reformatted. Editable source and documentation use the repository's
+  normal LF policy.
+
 Export downloads a ZIP with dossier JSON, a research summary, a discussion
 draft, run snapshots, manifests and an artifact index. Campaign-linked
 experiments contribute their freshly validated manifest and local analysis
