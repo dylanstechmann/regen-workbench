@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "pilot_id": "bonn-kidney-cyst-annotation-24h-v1",
+  "purpose": "Manual mask-workflow usability and repeatability; no biological effect estimate.",
+  "dataset_id": "10.60507/FK2/OM25XQ",
+  "license": "CC-BY-4.0",
+  "source_archive_sha256": "9a71323938338558eafcb169eeb3dffae98d3b1fec7947bafa71d64768a3358b",
+  "acquisition_manifest_sha256": "6aca395889ff5864793d27f0327eda93d9e609aca7eb3c24069b789d605894fd",
+  "study_plan_sha256": "768b4e7862482ac660d84528e616e16a119c42a0ac275f9559833e1747692ac2",
+  "selection": {
+    "timepoint_h": 24,
+    "seed": 20261005,
+    "rule": "Select the lowest SHA-256 rank of seed and frame ID within each available development biological-unit \u00d7 culture-condition \u00d7 treatment stratum at the fixed timepoint.",
+    "n_unique_frames": 15,
+    "n_round1_tasks": 15,
+    "n_round2_concealed_repeat_tasks": 5,
+    "n_total_tasks": 20,
+    "n_development_source_groups_represented": 4,
+    "final_test_group_excluded": true
+  },
+  "annotation_protocol_version": "bonn-cyst-annotation-pilot-0.1",
+  "masks_generated": false,
+  "biological_results_generated": false,
+  "blinding_limit": "Treatment labels and source filenames are withheld from queues; appearance may reveal condition."
+}

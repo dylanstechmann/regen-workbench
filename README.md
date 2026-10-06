@@ -61,7 +61,7 @@ writing aggregate tables; it does not model or demonstrate mutation repair.
 See [`MUTATION_REPAIR_PILOT.md`](MUTATION_REPAIR_PILOT.md).
 
 The pilot also includes a reproducible HGPS TEBV vasodilation benchmark. A
-versioned 1.1 [experiment manifest schema](tools/schemas/experiment-manifest.schema.json)
+versioned 1.4 [experiment manifest schema](tools/schemas/experiment-manifest.schema.json)
 links protocol, raw assay data, analysis/model, and calibration status;
 `docker compose exec workbench python /lab/workbench/tools/validate_experiment_manifest.py PATH`
 checks the schema, linked artifact IDs, safe repository paths, and local
@@ -75,6 +75,18 @@ not assessed, or unavailable. `not_assessed` means the study explicitly did not
 collect that outcome; `not_available` means this manifest lacks supporting
 evidence. A measured outcome must link to assay data, and all six domains must
 be represented when this section is present.
+
+Schema 1.3 also distinguishes measured, planned, and unavailable assays. A
+measured assay must link its data artifact; planned or unavailable assays can
+be described without inventing a raw-data link. ResearchDesk displays assay
+status alongside its endpoint and sample-count description. The kidney
+tubuloid cyst-induction image inventory is an example: the public archive has
+images but no masks or object tracks in this local record, so the analysis is
+marked unavailable pending reviewed annotations. Schema 1.4 records the model
+system's species and developmental interval separately from run history, and
+preserves imported runs with explicit current-analysis pointers. The local
+annotation plan and the package's zero-mask receipt remain separate, hash-linked
+records; re-imports append history instead of replacing previous outputs.
 
 The [simulation-toolchain fixture](studies/simulation-toolchain/README.md) links
 protocol constraints, synthetic media-planner observations, an illustrative

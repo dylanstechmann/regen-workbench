@@ -4,6 +4,7 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 let workspace, selected = 'reprogramming', activeTab = 'evidence', chemistryRun = null, selectedCampaignId = null;
 let runPage = 0, runPageSize = 50, historyRuns = [], historyTotal = 0;
 const runCache = new Map();
+let experimentRecords = [];
 let modelArtifactState = null;
 const trajectoryCache = new Map();
 const labels = {title:'Blueprint name',area:'Research area',query:'Default search',question:'Research question',who:'Who / population / species',what:'What / mechanism / intervention',where:'Where / tissue / cell state',when:'When / time horizon',why:'Why / causal hypothesis',how:'How / computational approach',falsifier:'What would disprove the hypothesis?',desired_changes:'Desired changes / competing objectives'};
@@ -229,7 +230,11 @@ function renderModelBench() {
       const estimates = fit.parameter_estimates || {};
       card.append(el('p',`${summary.n_usable_readings ?? '—'} usable readings · design rank ${fit.rank ?? 'unresolved'} · condition ${modelNumber(fit.normalized_design_condition_number)}`));
       card.append(el('p',`Full-run fixture-rate estimates · powered input ${modelNumber(estimates.powered_input)} · conversion ${modelNumber(estimates.conversion)}`,'model-bench-metric'));
-      card.append(el('p',`First 70% window: ${early.estimable ? `rank ${early.rank}; condition ${modelNumber(early.normalized_design_condition_number)}` : (early.reason || 'not identified')}. Later-window observations are from the same generated run.`,'boundary'));
+      const stateModel = summary.noise_aware_state_model || {};
+      const forecast = stateModel.prospective_forecast || {};
+      const stateFit = stateModel.full_series_fit || {};
+      card.append(el('p',`Forward forecast: ${forecast.estimable ? `${forecast.n_training_readings} prefix readings trained through time ${modelNumber(forecast.split_time)}; ${forecast.n_scored_readings} later readings scored · RMSE ${modelNumber(forecast.fixture_scale_rmse)} vs last-reading baseline ${modelNumber(forecast.baseline_last_observation_rmse)} · 95% interval coverage ${modelNumber(forecast.coverage_95)}` : (forecast.reason || 'not estimable')}.`,'model-bench-metric'));
+      card.append(el('p',`Noise-aware state fit: ${stateFit.estimable ? `powered input ${modelNumber(stateFit.parameters?.powered_input)} · conversion ${modelNumber(stateFit.parameters?.conversion)} · assumed sensor noise SD ${modelNumber(stateFit.sensor_noise_sd_assumed)}` : (stateFit.reason || 'not estimable')}. ${early.estimable ? `Legacy balance fit: rank ${early.rank}, condition ${modelNumber(early.normalized_design_condition_number)}.` : ''} The balance residual uses endpoint readings inside its predictors, so it is a same-run consistency diagnostic, not a forecast.`,'boundary'));
     } else if (bundle.bundle_kind === 'synthetic_exchange_design_sweep') {
       card.append(el('p',`${summary.n_synthetic_runs ?? '—'} seeded fixture runs across ${summary.n_designs ?? '—'} design conditions.`));
       const designSummaries = Array.isArray(summary.design_summaries) ? summary.design_summaries : [];
@@ -244,28 +249,47 @@ function renderModelBench() {
         : timingProfiles.has('time-reflected event timing')
           ? 'The reflected schedule preserves event durations and maps intervals across the fixture midpoint; it tests timing sensitivity for this fixture, not a realistic outage distribution.'
           : 'No event-timing contrast was needed because the source fixture contains no outage or monitor-fault intervals.';
-      card.append(el('p',`Generator-known rates score fits only after estimation. Replicates share one fixture and event schedule within each design. A temporal holdout trains on each run's first 70% of usable intervals and scores later intervals from that same run. Leave-one-seed-out fits train on other runs of the same design and score the omitted run; both are synthetic diagnostics, not independent experimental validation. ${faultBoundary} ${timingBoundary}`,'boundary'));
-      const table = el('table',null,'model-bench-sweep-table'), header = el('tr');
-      ['Requested cadence × noise','Fault profile','Event timing','Actual step · noise SD','Estimable runs','Same-run holdout fits','Same-run RMSE med / P90','Leave-one-seed-out fits','Cross-run RMSE med / P90','Condition med / P90','Input abs error med / P90','Conversion abs error med / P90'].forEach(label => header.append(el('th',label)));
-      table.append(header);
-      for (const design of designSummaries.slice(0,36)) {
-        const row = el('tr');
-        row.append(el('td',`${modelNumber(design.cadence_factor_requested)}× cadence · ${modelNumber(design.noise_multiplier_requested)}× noise`));
-        row.append(el('td',design.monitor_fault_profile || 'not reported'));
-        row.append(el('td',design.event_timing_profile || 'not reported'));
-        row.append(el('td',`${modelNumber(design.actual_output_step)} · ${modelNumber(design.actual_noise_sd)}`));
-        row.append(el('td',`${design.estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
-        row.append(el('td',`${design.temporal_holdout_estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
-        row.append(el('td',`${modelNumber(design.median_temporal_holdout_fixture_scale_rmse)} / ${modelNumber(design.p90_temporal_holdout_fixture_scale_rmse)}`));
-        row.append(el('td',`${design.cross_replicate_holdout_estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
-        row.append(el('td',`${modelNumber(design.median_cross_replicate_holdout_fixture_scale_rmse)} / ${modelNumber(design.p90_cross_replicate_holdout_fixture_scale_rmse)}`));
-        row.append(el('td',`${modelNumber(design.median_design_condition_number)} / ${modelNumber(design.p90_design_condition_number)}`));
-        row.append(el('td',`${modelNumber(design.median_absolute_error_powered_input)} / ${modelNumber(design.p90_absolute_error_powered_input)}`));
-        row.append(el('td',`${modelNumber(design.median_absolute_error_conversion)} / ${modelNumber(design.p90_absolute_error_conversion)}`));
-        table.append(row);
-      }
-      const tableWrap = el('div',null,'table-wrap model-bench-sweep-wrap');
-      tableWrap.append(table); card.append(tableWrap);
+      card.append(el('p',`The primary forecast trains on scheduled, unbiased readings through 70% of elapsed dimensionless duration, propagates the fitted state forward without later readings, and compares with a last-reading baseline. The older balance residual uses endpoint readings in its predictors and is shown only as a consistency diagnostic. Seeded runs share one generated fixture, so these are software sensitivity results. ${faultBoundary} ${timingBoundary}`,'boundary'));
+      const fields = el('div',null,'model-bench-sweep-controls');
+      const faultSelect = el('select'); faultSelect.setAttribute('aria-label','Filter monitor-fault profile');
+      [...new Set(designSummaries.map(item=>item.monitor_fault_profile || 'not reported'))].forEach(value=>{const option=el('option',value);option.value=value;faultSelect.append(option);});
+      const timingSelect = el('select'); timingSelect.setAttribute('aria-label','Filter event-timing profile');
+      [...new Set(designSummaries.map(item=>item.event_timing_profile || 'not reported'))].forEach(value=>{const option=el('option',value);option.value=value;timingSelect.append(option);});
+      const metricOptions = [
+        ['median_prospective_forecast_rmse','Forward forecast RMSE'],
+        ['median_prospective_forecast_baseline_rmse','Last-reading baseline RMSE'],
+        ['median_prospective_forecast_coverage_95','Approx. 95% interval coverage'],
+        ['median_prospective_forecast_interval_width_95','Approx. 95% interval width'],
+        ['median_cross_replicate_holdout_fixture_scale_rmse','Leave-one-seed-out balance residual (not forecast)'],
+        ['median_temporal_holdout_fixture_scale_rmse','Same-run balance residual (not forecast)'],
+        ['median_design_condition_number','Balance-regression condition number'],
+      ];
+      const metricSelect = el('select'); metricSelect.setAttribute('aria-label','Sweep metric');
+      metricOptions.forEach(([value,label])=>{const option=el('option',label);option.value=value;metricSelect.append(option);});
+      for (const [label,control] of [['Monitor-fault profile',faultSelect],['Event timing',timingSelect],['Metric',metricSelect]]) { const wrapper=el('label',label);wrapper.append(control);fields.append(wrapper); }
+      card.append(fields);
+      const matrixContainer = el('div',null,'model-bench-sweep-matrix');
+      const drawMatrix = () => {
+        const filtered=designSummaries.filter(item=>(item.monitor_fault_profile || 'not reported')===faultSelect.value&&(item.event_timing_profile || 'not reported')===timingSelect.value);
+        const byCell=new Map(filtered.map(item=>[`${item.cadence_factor_requested}|${item.noise_multiplier_requested}`,item]));
+        const cadences=[...new Set(filtered.map(item=>item.cadence_factor_requested))].sort((a,b)=>a-b);
+        const noises=[...new Set(filtered.map(item=>item.noise_multiplier_requested))].sort((a,b)=>a-b);
+        const metric=metricSelect.value, values=filtered.map(item=>item[metric]).filter(value=>typeof value==='number'&&Number.isFinite(value));
+        const low=values.length?Math.min(...values):0, high=values.length?Math.max(...values):0;
+        const table=el('table',null,'model-bench-sweep-table'), header=el('tr');header.append(el('th','Cadence × baseline step'));
+        noises.forEach(noise=>header.append(el('th',`${modelNumber(noise)}× noise`)));table.append(header);
+        for(const cadence of cadences){const row=el('tr');row.append(el('th',`${modelNumber(cadence)}× cadence · step ${modelNumber(filtered.find(item=>item.cadence_factor_requested===cadence)?.actual_output_step)}`));for(const noise of noises){const item=byCell.get(`${cadence}|${noise}`),cell=el('td');if(!item){cell.textContent='—';}else{const value=item[metric];cell.textContent=`${modelNumber(value)}\n${item.prospective_forecast_estimable_replicates ?? item.cross_replicate_holdout_estimable_replicates ?? item.temporal_holdout_estimable_replicates ?? '—'} / ${item.replicates ?? '—'} estimable`;if(typeof value==='number'&&Number.isFinite(value)){const t=high===low?0.5:(value-low)/(high-low);cell.style.backgroundColor=`hsl(${125-115*t} 36% 91%)`;}}row.append(cell);}table.append(row);}
+        matrixContainer.replaceChildren(table);
+      };
+      for(const select of [faultSelect,timingSelect,metricSelect])select.addEventListener('change',drawMatrix);
+      drawMatrix();card.append(matrixContainer);
+    } else if (bundle.bundle_kind === 'dimensionless_transport_theory' || bundle.bundle_kind === 'dimensionless_mechanics_theory') {
+      const outputs=summary.outputs || {}, alternative=summary.alternative_model || {};
+      const context=summary.stage_context || {};
+      card.append(el('p',`${summary.result_kind || 'Dimensionless theory fixture'} · context tags ${context.species || 'unspecified'} / ${context.stage_track || 'unspecified'} / ${context.interval_label || 'unassigned'}. These tags organize questions and do not calibrate the equations to a biological system.`));
+      card.append(el('p',`Fixture outputs: ${Object.entries(outputs).map(([key,value])=>`${key.replaceAll('_',' ')} ${modelNumber(value)}`).join(' · ') || 'report contains no scalar output fields'}`,'model-bench-metric'));
+      card.append(el('p',`Alternative: ${alternative.name || 'reported comparator'} · ${alternative.equation || 'equation recorded in report'} · ${alternative.comparison_scope || 'theoretical comparison only'}`,'boundary'));
+      const assumptions=el('details',null,'model-bench-limitations');assumptions.append(el('summary','Model assumptions'));const list=el('ul');(summary.assumptions || []).slice(0,12).forEach(item=>list.append(el('li',String(item).slice(0,1200))));assumptions.append(list);card.append(assumptions);
     }
     if (Array.isArray(summary.limitations) && summary.limitations.length) {
       const limits=el('details',null,'model-bench-limitations');
@@ -275,7 +299,7 @@ function renderModelBench() {
       limits.append(list); card.append(limits);
     }
     const links = el('div',null,'row model-bench-links');
-    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
     for (const filename of bundle.outputs || []) {
       if (!labelsByFile[filename]) continue;
       links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));
@@ -298,6 +322,191 @@ async function refreshModelBench() {
     modelArtifactState = result;
     renderModelBench();
   } finally { button.disabled = false; }
+}
+function renderExperiments(records = experimentRecords) {
+  const container = $('#experiment-records');
+  if (!container) return;
+  experimentRecords = records;
+  $('#experiment-count').textContent = records.length || '';
+  container.replaceChildren();
+  if (!records.length) {
+    container.append(el('p','No experiment manifests were found under studies/.','empty'));
+    return;
+  }
+  for (const study of records) {
+    const card = el('article',null,'experiment-card');
+    const heading = el('div',null,'experiment-heading');
+    heading.append(el('div',null),badge(study.validation_status,study.validation_status));
+    heading.firstChild.append(el('h3',study.title),el('small',`ID ${study.experiment_id} · ${study.manifest_path}`));
+    card.append(heading);
+    if (study.validation_status !== 'valid') {
+      card.append(el('p',study.validation_error || 'Manifest could not be validated.','boundary'));
+      container.append(card); continue;
+    }
+    card.append(el('p',study.question),el('p',study.model_system),el('p',study.claim_boundary,'boundary'));
+    const units = study.design?.donor_structure || {};
+    const unitSummary = el('p',`Independent donor counts · disease: ${units.disease_donor_count ?? 'unknown'} · healthy: ${units.healthy_donor_count ?? 'unknown'} · observation-level IDs: ${units.observation_level_ids_available ? 'available' : 'unavailable'}`,'experiment-units');
+    card.append(unitSummary);
+    if (study.developmental_context) {
+      const context=study.developmental_context;
+      const developmental=el('div',null,'experiment-developmental-context');
+      developmental.append(el('h4','Species and developmental context'),el('p',`${context.species.replaceAll('_',' ')} · ${context.stage_track.replaceAll('_',' ')} · ${context.interval_label} · ${context.interval_kind.replaceAll('_',' ')}`),el('p',context.notes,'boundary'));
+      card.append(developmental);
+    }
+    const assays = el('div',null,'experiment-assays');
+    assays.append(el('h4','Assay inventory'));
+    if (study.assays?.length) {
+      const table = el('table'), header = el('tr');
+      ['Status','Assay','Endpoint','Unit','Experimental unit','Source n'].forEach(label => header.append(el('th',label)));
+      table.append(header);
+      for (const assay of study.assays) {
+        const row = el('tr');
+        const assayStatus = assay.status || 'measured';
+        const statusCell = el('td'); statusCell.append(badge(assayStatus,assayStatus === 'measured' ? 'complete' : 'unreviewed'));
+        row.append(statusCell);
+        [assay.name,assay.endpoint,assay.unit,assay.experimental_unit,assay.source_n].forEach(value => row.append(el('td',value)));
+        table.append(row);
+        if (assay.notes) {
+          const notes = el('tr'), cell = el('td',assay.notes,'boundary'); cell.colSpan = 6;
+          notes.append(cell); table.append(notes);
+        }
+      }
+      assays.append(table);
+    } else assays.append(el('p','No assay entries.','empty'));
+    card.append(assays);
+    const outcomes = el('div',null,'experiment-outcomes');
+    outcomes.append(el('h4','Function, identity, viability, genome stability, adverse effects, and durability'));
+    for (const endpoint of study.validation_endpoints || []) {
+      const row = el('div',null,'experiment-outcome');
+      row.append(el('strong',endpoint.role.replaceAll('_',' ')),badge(endpoint.status,endpoint.status === 'measured' ? 'complete' : 'unreviewed'));
+      if (endpoint.rationale) row.append(el('span',endpoint.rationale));
+      if (endpoint.assay_id) row.append(badge(`assay ${endpoint.assay_id}`));
+      outcomes.append(row);
+    }
+    card.append(outcomes);
+    const evidence = el('div',null,'experiment-evidence');
+    evidence.append(el('h4','Analysis and limitations'));
+    if (study.analysis_history?.length) {
+      const history=el('div',null,'experiment-analysis-history');
+      history.append(el('h4','Analysis run history'));
+      const current=study.current_analysis_by_kind || {};
+      for (const run of study.analysis_history) {
+        const row=el('section',null,'experiment-analysis-run');
+        row.append(el('div',null,`${run.kind.replaceAll('_',' ')} · ${run.registered_utc}`),badge(run.status,run.status === 'receipt_verified' ? 'complete' : 'unreviewed'),el('small',`Bundle ${run.bundle_id}`));
+        if (current[run.kind] === run.bundle_id) row.append(badge('Current','complete'));
+        const outputs=el('div',null,'row experiment-analysis-outputs');
+        const artifactById=new Map((study.artifacts || []).map(artifact=>[artifact.id,artifact]));
+        for (const id of run.artifact_ids || []) {
+          const artifact=artifactById.get(id);
+          if (artifact?.previewable) outputs.append(safeLink(artifact.id,`/api/experiment/artifact?experiment_id=${encodeURIComponent(study.experiment_id)}&artifact_id=${encodeURIComponent(id)}`));
+        }
+        row.append(outputs);history.append(row);
+      }
+      evidence.append(history);
+    }
+    const validation = study.modeling?.donor_validation || {};
+    evidence.append(badge(`Donor validation: ${validation.status || 'not assessed'}`,validation.status === 'passed' ? 'complete' : 'unreviewed'));
+    if (validation.reason) evidence.append(el('p',validation.reason));
+    if (validation.success_criterion) evidence.append(el('p',`Prespecified criterion: ${validation.success_criterion}`));
+    if (study.modeling?.falsifier) evidence.append(el('p',`Falsifier: ${study.modeling.falsifier}`));
+    if (study.summary?.interpretation) evidence.append(el('p',study.summary.interpretation,'boundary'));
+    if (study.summary?.tool === 'organoid-phenotyping') {
+      const receipt = study.summary;
+      const intake = el('div',null,'experiment-evidence');
+      intake.append(el('h4','Organoid image-analysis receipt'));
+      intake.append(el('p',`Frames indexed: ${receipt.n_manifest_rows ?? 'unknown'} · measured masks: ${receipt.n_measured_frames ?? 'unknown'} · pending annotation: ${receipt.n_pending_annotation_frames ?? 'unknown'} · missing: ${receipt.n_missing_frames ?? 'unknown'} · failed: ${receipt.n_failed_frames ?? 'unknown'}`));
+      const tracking = receipt.object_tracking || {};
+      intake.append(el('p',`Object tracks: ${tracking.n_tracked_object_trajectories ?? 0} trajectories from ${tracking.status || 'no track map'}. No tracked growth is inferred without reviewed object identities.`,'boundary'));
+      evidence.append(intake);
+    }
+    for (const pilot of study.annotation_pilots || []) {
+      const plan = el('div',null,'experiment-evidence');
+      plan.append(el('h4','Manual annotation pilot plan'));
+      plan.append(el('p',`${pilot.n_unique_frames ?? 'unknown'} selected frames · ${pilot.n_total_tasks ?? 'unknown'} assignments, including ${pilot.n_round2_concealed_repeat_tasks ?? 'unknown'} concealed repeats · ${pilot.n_development_source_groups_represented ?? 'unknown'} development source groups · ${pilot.timepoint_h ?? 'unknown'} h`));
+      plan.append(el('p',`Final-test source group excluded: ${pilot.final_test_group_excluded ? 'yes' : 'no'}. This is a worklist only; no masks or biological results have been generated. The full-resolution images remain in the sibling annotation pack.`,'boundary'));
+      if (pilot.blinding_limit) plan.append(el('p',pilot.blinding_limit,'boundary'));
+      evidence.append(plan);
+    }
+    for (const review of study.annotation_reviews || []) {
+      const audit = el('div',null,'experiment-evidence');
+      audit.append(el('h4','Manual mask agreement review'));
+      audit.append(el('p',`${review.n_annotated_tasks} tasks annotated · ${review.n_repeat_pairs_scored} concealed repeat pairs scored · ${review.n_repeat_pairs_with_distinct_annotator_ids} pairs used different annotator IDs`));
+      audit.append(el('p','Foreground Dice describes segmentation agreement only. It does not establish mask correctness, tissue function, treatment response, or a biological effect. Manual masks still require review.','boundary'));
+      evidence.append(audit);
+    }
+    if (study.summary?.monotone_dose_response_check?.length) {
+      const checks = study.summary.monotone_dose_response_check.map(check => `week ${check.week}: ${check.nondecreasing ? 'nondecreasing' : 'not nondecreasing'}`).join(' · ');
+      evidence.append(el('p',`Monotonicity check: ${checks}`));
+    }
+    if (study.summary?.summaries?.length) {
+      const measured = el('div',null,'experiment-evidence');
+      measured.append(el('h4','Locally recomputed group summaries'));
+      measured.append(badge('Descriptive; source workbook values have no vessel IDs','unreviewed'));
+      const table = el('table'), header = el('tr');
+      ['Group','Week','Source values','Mean','SD'].forEach(label => header.append(el('th',label)));
+      table.append(header);
+      for (const item of study.summary.summaries) {
+        const row = el('tr');
+        [item.group,`week ${item.week}`,item.n_source_values,item.mean,item.sd].forEach(value => row.append(el('td',value)));
+        table.append(row);
+      }
+      measured.append(table);
+      const author = study.summary.author_reported_model;
+      if (author) {
+        measured.append(badge(`Author-reported ${author.method || 'analysis'} · not locally refit`,'unreviewed'));
+        const comparisons = [];
+        if (author.ratio_p_value !== undefined) comparisons.push(`ratio p=${author.ratio_p_value}`);
+        if (author.week_p_value !== undefined) comparisons.push(`week p=${author.week_p_value}`);
+        const pair = author.reported_pairwise_comparison;
+        if (pair) comparisons.push(`${pair.left} vs ${pair.right}, adjusted p=${pair.adjusted_p_value}`);
+        if (comparisons.length) measured.append(el('p',comparisons.join(' · ')));
+      }
+      evidence.append(measured);
+    }
+    if (study.limitations?.length) {
+      const list = el('ul'); study.limitations.forEach(limitation => list.append(el('li',limitation)));
+      evidence.append(list);
+    }
+    card.append(evidence);
+    for (const dataTable of study.tables || []) {
+      const details = el('details',null,'experiment-table-details');
+      details.append(el('summary',`Linked observation table · ${dataTable.total_rows} rows${dataTable.truncated ? ' (first 100 shown)' : ''}`));
+      details.append(el('p',`Declared artifact: ${dataTable.artifact_id}. Blank identifiers are shown as “Not reported”; rows remain observations, not independent donors.`,'boundary'));
+      const table = el('table'), header = el('tr');
+      dataTable.columns.forEach(column => header.append(el('th',column)));
+      table.append(header);
+      for (const values of dataTable.rows) {
+        const row = el('tr');
+        dataTable.columns.forEach(column => row.append(el('td',values[column])));
+        table.append(row);
+      }
+      details.append(table); card.append(details);
+    }
+    const calibration = study.calibration || {};
+    if (study.environmental_conditions?.length) {
+      const conditions=el('div',null,'experiment-environment');conditions.append(el('h4','Environmental measurements and assumptions'));
+      for (const condition of study.environmental_conditions) conditions.append(el('p',`${condition.domain} · ${condition.name}: ${typeof condition.value === 'object' ? JSON.stringify(condition.value) : condition.value} ${condition.unit} · ${condition.status} · source ${condition.source_artifact_id}`));
+      card.append(conditions);
+    }
+    card.append(el('p',`Calibration: ${calibration.status || 'not assessed'} · ${calibration.notes || ''}`,'experiment-calibration'));
+    const links = el('div',null,'row experiment-artifacts');
+    for (const artifact of study.artifacts || []) {
+      if (artifact.previewable && ['raw_assay_data','analysis_output','analysis_code','calibration_record'].includes(artifact.kind)) {
+        const link = safeLink(`${artifact.kind.replaceAll('_',' ')} · ${artifact.id}`,`/api/experiment/artifact?experiment_id=${encodeURIComponent(study.experiment_id)}&artifact_id=${encodeURIComponent(artifact.id)}`);
+        links.append(link);
+      } else if (artifact.uri) links.append(safeLink(artifact.kind.replaceAll('_',' ')+' · source',artifact.uri));
+    }
+    card.append(links);
+    container.append(card);
+  }
+}
+async function refreshExperiments() {
+  const button = $('#refresh-experiments');
+  if (button) button.disabled = true;
+  try {
+    const result = await api('/api/experiments');
+    renderExperiments(result.experiments || []);
+  } finally { if (button) button.disabled = false; }
 }
 function renderNotes() {
   const notes = workspace.notes.filter(n => n.blueprint_id === selected);
@@ -483,6 +692,7 @@ async function renderArea() {
     renderModelBench();
     await refreshModelBench();
   }
+  if (!experimentRecords.length) await refreshExperiments();
 }
 async function refresh() {
   workspace = await api('/api/state');
@@ -506,7 +716,7 @@ function updateCampaignLink() {
   $('#campaign-link-target').textContent = campaign ? campaign.title : 'Select a saved campaign to link runs';
 }
 function renderEvidenceAxes(campaign, preset = []) {
-  const container = $('#campaign-evidence'); container.replaceChildren();
+  const container = $('#campaign-evidence'); container.className='evidence-matrix';container.replaceChildren();
   const axes = workspace.campaign_frameworks?.[selected] || [];
   const saved = new Map([...(campaign?.evidence || []), ...preset].map(item => [item.axis_id,item]));
   for (const axis of axes) {
@@ -539,6 +749,44 @@ function collectCampaignEvidence() {
     return entry;
   });
 }
+const evidenceRecordFields = [
+  ['source_type','Source type'],['source_title','Source title'],['source_url','Source URL'],['license','License'],
+  ['species','Species / population'],['stage_track','Stage or model track'],['developmental_interval','Developmental interval'],
+  ['model_system','Model system'],['comparator','Comparator'],['outcome','Outcome'],['measure','Measure / endpoint'],
+  ['value','Reported value'],['unit','Unit / denominator'],['independent_unit','Independent unit'],['sample_size','Reported n'],
+  ['follow_up','Follow-up / timepoint'],['status','Source status'],['direction','Interpretation direction'],
+  ['dataset_sha256','Dataset SHA-256'],['notes','Design details and limitations'],
+];
+function renderEvidenceRecords(records=[]) {
+  const container=$('#campaign-evidence-records');container.replaceChildren();
+  const heading=el('div',null,'evidence-record-heading');heading.append(el('h3','Source-linked observations'),el('p','Keep each source, species, stage, outcome, comparator, reported sample size and independent unit as its own record. Values remain source-reported; this form does not combine them.','boundary'));
+  const add=el('button','Add source observation');add.type='button';add.addEventListener('click',()=>renderEvidenceRecords([...collectCampaignEvidenceRecords(),{}]));heading.append(add);container.append(heading);
+  const axes=workspace.campaign_frameworks?.[selected] || [];
+  for(const record of records){
+    const fieldset=el('fieldset',null,'evidence-record');fieldset.dataset.recordId=record.record_id || '';
+    const legend=el('legend','Source observation');fieldset.append(legend);
+    const axisLabel=el('label','Evidence question');const axis=el('select');axis.dataset.recordField='axis_id';
+    for(const item of axes){const option=el('option',item.label);option.value=item.id;axis.append(option);}axis.value=record.axis_id || axes[0]?.id || '';axisLabel.append(axis);fieldset.append(axisLabel);
+    const grid=el('div',null,'evidence-record-grid');
+    for(const [field,label] of evidenceRecordFields){
+      const wrapper=el('label',label);let control;
+      if(field==='source_type'){control=el('select');for(const value of ['publication','preprint','dataset','trial_registry','patent','protocol','other']){const option=el('option',value.replaceAll('_',' '));option.value=value;control.append(option);}}
+      else if(field==='status'){control=el('select');for(const value of ['not assessed','source reports positive signal','source reports mixed signal','source reports no signal','conflicting sources']){const option=el('option',value);option.value=value;control.append(option);}}
+      else if(field==='direction'){control=el('select');for(const value of ['unclear','supports','contradicts','mixed']){const option=el('option',value);option.value=value;control.append(option);}}
+      else if(field==='notes'){control=el('textarea');control.rows=2;}
+      else{control=el('input');control.type=field==='source_url'?'url':'text';}
+      control.dataset.recordField=field;control.maxLength=(field==='notes'||field==='source_url')?3000:800;control.value=record[field] || (field==='status'?'not assessed':field==='direction'?'unclear':field==='source_type'?'publication':'');wrapper.append(control);grid.append(wrapper);
+    }
+    fieldset.append(grid);const remove=el('button','Remove source observation');remove.type='button';remove.addEventListener('click',()=>{const remaining=collectCampaignEvidenceRecords();remaining.splice([...container.querySelectorAll('.evidence-record')].indexOf(fieldset),1);renderEvidenceRecords(remaining);});fieldset.append(remove);container.append(fieldset);
+  }
+}
+function collectCampaignEvidenceRecords() {
+  return [...$('#campaign-evidence-records').querySelectorAll('.evidence-record')].map(fieldset=>{
+    const record={record_id:fieldset.dataset.recordId};
+    for(const control of fieldset.querySelectorAll('[data-record-field]'))record[control.dataset.recordField]=control.value.trim();
+    return record;
+  });
+}
 function renderCampaign() {
   const campaigns = workspace.campaigns.filter(c => c.blueprint_id === selected);
   if (selectedCampaignId && !campaigns.some(c => c.id === selectedCampaignId)) selectedCampaignId = null;
@@ -549,11 +797,14 @@ function renderCampaign() {
   picker.value = selectedCampaignId || '';
   const campaign = campaignById(), form = $('#campaign-form');
   for (const name of ['title','target','species','tissue','hypothesis','endpoint','falsifier','evidence_stage','study_design','reference_url','receptor','structure_notes','starter_id']) form.elements[name].value = campaign?.[name] || '';
+  form.elements.experiment_ids.value=(campaign?.experiment_ids || []).join('\n');
+  form.elements.model_bundle_ids.value=(campaign?.model_bundle_ids || []).join('\n');
   const starterPicker = $('#campaign-starter'); starterPicker.replaceChildren(el('option','Blank campaign'));
   starterPicker.options[0].value = '';
   for (const starter of workspace.campaign_starters?.[selected] || []) { const option = el('option',starter.title); option.value = starter.id; starterPicker.append(option); }
   starterPicker.value = campaign?.starter_id || '';
   renderEvidenceAxes(campaign);
+  renderEvidenceRecords(campaign?.evidence_records || []);
   for (const [axis,index] of [['x',0],['y',1],['z',2]]) {
     form.elements[`center_${axis}`].value = campaign?.center?.[index] ?? 0;
     form.elements[`size_${axis}`].value = campaign?.size?.[index] ?? 20;
@@ -572,7 +823,8 @@ function renderCampaign() {
 async function saveCampaign() {
   const form = $('#campaign-form');
   const values = Object.fromEntries(new FormData(form));
-  const saved = await api('/api/campaigns',{...values,evidence:collectCampaignEvidence(),id:selectedCampaignId || '',blueprint_id:selected});
+  const splitIds=value=>String(value || '').split(/\r?\n/).map(item=>item.trim()).filter(Boolean);
+  const saved = await api('/api/campaigns',{...values,experiment_ids:splitIds(values.experiment_ids),model_bundle_ids:splitIds(values.model_bundle_ids),evidence:collectCampaignEvidence(),evidence_records:collectCampaignEvidenceRecords(),id:selectedCampaignId || '',blueprint_id:selected});
   workspace = await api('/api/state');
   selectedCampaignId = saved.id;
   renderCampaign();
@@ -598,6 +850,7 @@ $$('[data-tab]').forEach(button => button.addEventListener('click',task(async ()
 })));
 $('#source-filter').addEventListener('change',renderRecords); $('#record-filter').addEventListener('input',renderRecords);
 $('#passing-only').addEventListener('change',renderChemistry);
+$('#refresh-experiments').addEventListener('click',task(refreshExperiments));
 $('#refresh-model-bench').addEventListener('click',task(refreshModelBench));
 $('#chemistry-run').addEventListener('change',task(async event => {
   const area = selected, loaded = await getRun(event.target.value);

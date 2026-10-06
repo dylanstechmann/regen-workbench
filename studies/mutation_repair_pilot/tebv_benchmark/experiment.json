@@ -1,5 +1,5 @@
 {
-  "manifest_schema_version": "1.1.0",
+  "manifest_schema_version": "1.2.0",
   "repository_id": "regen-workbench",
   "experiment_id": "hgps003-lmna-abe-tebv-vasodilation",
   "title": "LMNA correction fraction and TEBV vasodilation in an HGPS model",
@@ -98,8 +98,8 @@
       "description": "Versioned JSON Schema for shared experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/schemas/experiment-manifest.schema.json",
-      "sha256": "eb1fe9f38965862edb32235c4c2470910c2c092c900d8076e9ecc300b0ad10ee",
-      "size_bytes": 11128
+      "sha256": "db29a2ad9645806b2e67b660fe0c59dffeab7ffc81761a2341480d2879d9922e",
+      "size_bytes": 14677
     },
     {
       "id": "manifest-validator",
@@ -107,8 +107,8 @@
       "description": "Schema, cross-reference, file-path, size, and SHA-256 validator for experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/validate_experiment_manifest.py",
-      "sha256": "68d73a4340a00977802c009bfd542be22cb2d771dec16fcf84026b11833c0a66",
-      "size_bytes": 10805
+      "sha256": "9f09cc9452c1e0ad943589b5c48c6d38bd1759a8d521e9915b6c9fe507d88fa5",
+      "size_bytes": 14703
     },
     {
       "id": "benchmark-summary",

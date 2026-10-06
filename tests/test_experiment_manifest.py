@@ -66,7 +66,7 @@ class ExperimentManifestTests(unittest.TestCase):
 
     def test_case_manifest_schema_and_all_local_hashes_pass(self):
         document = validate_experiment_manifest(MANIFEST)
-        self.assertEqual(document["manifest_schema_version"], "1.1.0")
+        self.assertEqual(document["manifest_schema_version"], "1.2.0")
         self.assertEqual(document["modeling"]["donor_validation"]["status"], "not_testable")
         self.assertEqual(document["calibration"]["status"], "not_reported")
         self.assertEqual(
@@ -140,7 +140,13 @@ class ExperimentManifestTests(unittest.TestCase):
 
     def test_donor_validation_cannot_be_marked_passed_without_donor_count_and_ids(self):
         def falsely_pass(document):
-            document["modeling"]["donor_validation"]["status"] = "passed"
+            validation = document["modeling"]["donor_validation"]
+            validation.update(
+                status="passed",
+                heldout_result_artifact_id="benchmark-summary",
+                success_criterion_artifact_id="benchmark-model-specification",
+                success_criterion="The held-out donor must meet the prespecified functional threshold.",
+            )
 
         path = self._temporary_manifest(falsely_pass)
         with self.assertRaisesRegex(ManifestValidationError, "below its minimum donor count"):
@@ -195,6 +201,88 @@ class ExperimentManifestTests(unittest.TestCase):
 
         path = self._temporary_manifest(link_model_artifact)
         with self.assertRaisesRegex(ManifestValidationError, "not an assay-data artifact"):
+            validate_experiment_manifest(path)
+
+    def test_schema_1_3_can_record_an_assay_that_is_not_available_without_fabricating_raw_data(self):
+        def mark_unavailable(document):
+            document["manifest_schema_version"] = "1.3.0"
+            assay = document["assays"][0]
+            assay["status"] = "not_available"
+            assay.pop("raw_artifact_id")
+            assay["source_n"] = "No observations available in this record."
+            assay["notes"] = "A future assay is planned but not present in the source files."
+            endpoint = next(item for item in document["validation_endpoints"] if item["role"] == "functional")
+            endpoint["status"] = "not_available"
+            endpoint.pop("assay_id")
+            endpoint["rationale"] = "No functional assay data are available in this source record."
+
+        path = self._temporary_manifest(mark_unavailable)
+        validated = validate_experiment_manifest(path)
+        self.assertEqual(validated["assays"][0]["status"], "not_available")
+
+    def test_schema_1_4_records_developmental_context_and_immutable_analysis_history(self):
+        def add_run_history(document):
+            document["manifest_schema_version"] = "1.4.0"
+            document["developmental_context"] = {
+                "species": "human", "stage_track": "organoid_or_tissue_model",
+                "interval_label": "Adult vascular cells in vitro", "interval_kind": "source_defined_interval",
+                "source_artifact_id": "paper-2025", "notes": "The source describes an adult-cell model, not embryo development."
+            }
+            document["analysis_history"] = [{
+                "bundle_id": "abcdef0123456789", "kind": "benchmark",
+                "registered_utc": "2026-10-06T12:00:00Z", "artifact_ids": ["benchmark-summary"],
+                "status": "receipt_verified"
+            }]
+            document["current_analysis_by_kind"] = {"benchmark": "abcdef0123456789"}
+
+        path = self._temporary_manifest(add_run_history)
+        validated = validate_experiment_manifest(path)
+        self.assertEqual(validated["current_analysis_by_kind"]["benchmark"], "abcdef0123456789")
+
+    def test_current_analysis_pointer_must_resolve_to_same_kind_history(self):
+        def wrong_pointer(document):
+            document["manifest_schema_version"] = "1.4.0"
+            document["developmental_context"] = {
+                "species": "human", "stage_track": "organoid_or_tissue_model",
+                "interval_label": "Adult vascular cells in vitro", "interval_kind": "source_defined_interval",
+                "source_artifact_id": "paper-2025", "notes": "The source describes an adult-cell model, not embryo development."
+            }
+            document["analysis_history"] = [{
+                "bundle_id": "abcdef0123456789", "kind": "benchmark",
+                "registered_utc": "2026-10-06T12:00:00Z", "artifact_ids": ["benchmark-summary"],
+                "status": "receipt_verified"
+            }]
+            document["current_analysis_by_kind"] = {"benchmark": "0123456789abcdef"}
+
+        path = self._temporary_manifest(wrong_pointer)
+        with self.assertRaisesRegex(ManifestValidationError, "must point to an analysis-history bundle"):
+            validate_experiment_manifest(path)
+
+    def test_measured_assay_cannot_omit_or_misclassify_its_data_artifact(self):
+        def omit_data(document):
+            document["manifest_schema_version"] = "1.3.0"
+            document["assays"][0].pop("raw_artifact_id")
+
+        path = self._temporary_manifest(omit_data)
+        with self.assertRaisesRegex(ManifestValidationError, "schema validation failed"):
+            validate_experiment_manifest(path)
+
+        def cite_code(document):
+            document["manifest_schema_version"] = "1.3.0"
+            document["assays"][0]["raw_artifact_id"] = "analysis-code"
+
+        path = self._temporary_manifest(cite_code)
+        with self.assertRaisesRegex(ManifestValidationError, "measured status cannot cite analysis_code"):
+            validate_experiment_manifest(path)
+
+    def test_measured_domain_cannot_link_to_an_unavailable_assay(self):
+        def mismatch(document):
+            document["manifest_schema_version"] = "1.3.0"
+            document["assays"][0]["status"] = "not_available"
+            document["assays"][0].pop("raw_artifact_id")
+
+        path = self._temporary_manifest(mismatch)
+        with self.assertRaisesRegex(ManifestValidationError, "cannot cite an assay that is not measured"):
             validate_experiment_manifest(path)
 
 

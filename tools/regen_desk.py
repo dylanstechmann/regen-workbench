@@ -35,6 +35,8 @@ ECTOGENESIS_BUNDLE_KINDS = {
     "synthetic_exchange_software_fixture": "Dimensionless exchange simulation",
     "synthetic_exchange_observability_diagnostic": "Dimensionless identifiability report",
     "synthetic_exchange_design_sweep": "Dimensionless cadence/noise design sweep",
+    "dimensionless_transport_theory": "Dimensionless two-compartment transport theory",
+    "dimensionless_mechanics_theory": "Dimensionless Kelvin–Voigt mechanics theory",
 }
 ECTOGENESIS_ARTIFACT_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,95}\.(?:json|csv|md)")
 ECTOGENESIS_BUNDLE_BYTE_LIMIT = 24_000_000
@@ -53,6 +55,72 @@ BLUEPRINT_FIELDS = ("title", "area", "query", "question", "who", "what", "where"
 CAMPAIGN_FIELDS = ("title", "target", "species", "tissue", "hypothesis", "endpoint", "falsifier", "evidence_stage", "study_design", "reference_url", "receptor", "structure_notes", "starter_id")
 EVIDENCE_STATUS = {"not assessed", "source reports positive signal", "source reports mixed signal", "source reports no signal", "conflicting sources"}
 EVIDENCE_FIELDS = ("status", "value", "unit", "comparator", "timepoint", "source_url", "notes")
+EVIDENCE_RECORD_FIELDS = ("source_type", "source_title", "source_url", "license", "species", "stage_track",
+                          "developmental_interval", "model_system", "comparator", "outcome", "measure",
+                          "value", "unit", "independent_unit", "sample_size", "follow_up", "status",
+                          "direction", "notes", "dataset_sha256")
+
+
+def experiment_manifest_tools():
+    """Load the shared experiment validator without adding a methods package here."""
+    path = HOME / "tools" / "validate_experiment_manifest.py"
+    spec = importlib.util.spec_from_file_location("regen_experiment_manifest_validator", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("Shared experiment manifest validator is unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def text_field(data, key, default="", maximum=4000):
+    value = data.get(key, default)
+    if not isinstance(value, str) or len(value) > maximum:
+        raise ValueError(f"{key} must be text of at most {maximum} characters")
+    return value.strip()
+
+
+def bounded_int(value, low, high):
+    if isinstance(value, bool) or not isinstance(value, int) or not low <= value <= high:
+        raise ValueError(f"Expected an integer from {low} to {high}")
+    return value
+
+
+def bounded_number(value, low, high, label):
+    if isinstance(value, bool):
+        raise ValueError(f"{label} must be a finite number from {low} to {high}")
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        raise ValueError(f"{label} must be a finite number from {low} to {high}") from None
+    if not math.isfinite(result) or not low <= result <= high:
+        raise ValueError(f"{label} must be a finite number from {low} to {high}")
+    return result
+
+
+def campaign_structure_path(value, label):
+    raw = Path(value)
+    if not raw.is_absolute():
+        raw = regen.ROOT / raw
+    try:
+        path = raw.resolve(strict=True)
+        structures = (regen.DATA / "structures").resolve(strict=True)
+    except OSError:
+        raise ValueError(f"{label} must exist under data/structures") from None
+    if path == structures or structures not in path.parents or not path.is_file():
+        raise ValueError(f"{label} must be a regular file under data/structures")
+    if path.suffix.lower() != ".pdbqt" or path.stat().st_size > 25 * 1024 * 1024:
+        raise ValueError(f"{label} must be a .pdbqt file no larger than 25 MiB")
+    return path
+
+
+def public_url(value):
+    if not isinstance(value, str) or len(value) > 3000:
+        return ""
+    try:
+        parsed = urlsplit(value)
+        return value if parsed.scheme in {"https", "http"} and parsed.hostname and not parsed.username and not parsed.password else ""
+    except ValueError:
+        return ""
 
 
 def redact(value):
@@ -103,7 +171,9 @@ def ectogenesis_artifact_bundle(path):
         input_file = {"reviewed_evidence_map": "input_ledger.json",
                       "synthetic_exchange_software_fixture": "input_config.json",
                       "synthetic_exchange_observability_diagnostic": "source_manifest.json",
-                      "synthetic_exchange_design_sweep": "input_config.json"}[kind]
+                      "synthetic_exchange_design_sweep": "input_config.json",
+                      "dimensionless_transport_theory": "input_config.json",
+                      "dimensionless_mechanics_theory": "input_config.json"}[kind]
         outputs = receipt.get("outputs")
         if (not isinstance(outputs, dict) or not 1 <= len(outputs) <= 12
                 or input_file not in outputs):
@@ -136,7 +206,9 @@ def ectogenesis_artifact_bundle(path):
         summary_file = {"reviewed_evidence_map": "evidence_report.json",
                         "synthetic_exchange_software_fixture": "simulation_summary.json",
                         "synthetic_exchange_observability_diagnostic": "observability_report.json",
-                        "synthetic_exchange_design_sweep": "design_sweep_report.json"}[kind]
+                        "synthetic_exchange_design_sweep": "design_sweep_report.json",
+                        "dimensionless_transport_theory": "transport_report.json",
+                        "dimensionless_mechanics_theory": "mechanics_report.json"}[kind]
         if summary_file not in outputs:
             raise ValueError
         summary_path = base / summary_file
@@ -145,7 +217,10 @@ def ectogenesis_artifact_bundle(path):
         detail = json.loads(summary_path.read_text(encoding="utf-8"))
         if not isinstance(detail, dict):
             raise ValueError
-        if detail.get("schema_version") != 1 or isinstance(detail.get("schema_version"), bool):
+        expected_report_version = 2 if kind in {
+            "synthetic_exchange_observability_diagnostic", "synthetic_exchange_design_sweep"
+        } else 1
+        if detail.get("schema_version") != expected_report_version or isinstance(detail.get("schema_version"), bool):
             raise ValueError
         limits = detail.get("limits")
         if (not isinstance(limits, list) or len(limits) > 12
@@ -174,9 +249,11 @@ def ectogenesis_artifact_bundle(path):
                 raise ValueError
             summary.update(full_series_fit=detail.get("full_series_fit"),
                            early_series_fit=detail.get("early_series_fit"),
-                           temporal_holdout=detail.get("temporal_holdout"),
+                           balance_residual_diagnostic=detail.get("balance_residual_diagnostic"),
+                           noise_aware_state_model=detail.get("noise_aware_state_model"),
+                           simulation_binding=detail.get("simulation_binding"),
                            n_usable_readings=detail.get("n_usable_readings"))
-        else:
+        elif kind == "synthetic_exchange_design_sweep":
             if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in
                    ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))):
                 raise ValueError
@@ -189,7 +266,22 @@ def ectogenesis_artifact_bundle(path):
                     or isinstance(count, bool) or not isinstance(count, int) or count != len(designs)):
                 raise ValueError
             summary.update(n_designs=count, n_synthetic_runs=runs,
-                           design_summaries=designs)
+                           design_summaries=designs,
+                           prospective_forecast_contract=detail.get("prospective_forecast_contract"),
+                           prospective_forecast_training_cutoff=detail.get("prospective_forecast_training_cutoff"),
+                           temporal_holdout_contract=detail.get("temporal_holdout_contract"))
+        else:
+            if (detail.get("result_kind") not in {
+                    "dimensionless_two_compartment_transport", "dimensionless_kelvin_voigt_mechanics"}
+                    or any(detail.get(flag) is not False for flag in
+                           ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))
+                    or not isinstance(detail.get("outputs"), dict)
+                    or not isinstance(detail.get("alternative_model"), dict)
+                    or not isinstance(detail.get("assumptions"), list)):
+                raise ValueError
+            summary.update(result_kind=detail["result_kind"], stage_context=detail.get("stage_context"),
+                           outputs=detail["outputs"], alternative_model=detail["alternative_model"],
+                           assumptions=detail["assumptions"])
         return {"bundle_id": path.name, "bundle_kind": kind,
                 "label": ECTOGENESIS_BUNDLE_KINDS[kind],
                 "verified": True,
@@ -476,6 +568,26 @@ class Desk:
         if item["receptor"]:
             receptor = campaign_structure_path(item["receptor"], "Receptor")
             item["receptor"] = receptor.relative_to(regen.ROOT).as_posix()
+        if not isinstance(data.get("experiment_ids", []), list) or not isinstance(data.get("model_bundle_ids", []), list):
+            raise ValueError("Linked experiment and model bundle IDs must be lists")
+        experiment_ids = data.get("experiment_ids", [])
+        model_bundle_ids = data.get("model_bundle_ids", [])
+        if len(experiment_ids) > 20 or len(model_bundle_ids) > 20:
+            raise ValueError("A campaign may link at most 20 experiment cards and 20 model bundles")
+        experiment_ids = [text_field({"id": value}, "id", maximum=96) for value in experiment_ids]
+        model_bundle_ids = [text_field({"id": value}, "id", maximum=255) for value in model_bundle_ids]
+        if len(set(experiment_ids)) != len(experiment_ids) or len(set(model_bundle_ids)) != len(model_bundle_ids):
+            raise ValueError("Linked experiment and model bundle IDs must be unique")
+        if experiment_ids:
+            valid_ids = {record["experiment_id"] for record in self.experiments()["experiments"]
+                         if record["validation_status"] == "valid"}
+            if set(experiment_ids) - valid_ids:
+                raise ValueError("Campaign links must reference currently valid experiment cards")
+        if model_bundle_ids:
+            verified_ids = {record["bundle_id"] for record in ectogenesis_artifacts(ECTOGENESIS_MODEL_ROOT).get("bundles", [])
+                            if record.get("verified") is True}
+            if set(model_bundle_ids) - verified_ids:
+                raise ValueError("Campaign links must reference currently receipt-verified model bundles")
         center = [bounded_number(data.get(f"center_{axis}", 0), -10000, 10000, f"Box center {axis}") for axis in "xyz"]
         size = [bounded_number(data.get(f"size_{axis}", 20), 1, 80, f"Box size {axis}") for axis in "xyz"]
         with self.lock:
@@ -512,9 +624,44 @@ class Desk:
                 if saved["source_url"] and not public_url(saved["source_url"]):
                     raise ValueError(f"Evidence source for {axis['label']} must be an http(s) URL")
                 evidence.append(saved)
+            incoming_records = data.get("evidence_records", (old or {}).get("evidence_records", []))
+            if not isinstance(incoming_records, list) or len(incoming_records) > 100:
+                raise ValueError("Campaign source observations must be a list of at most 100 records")
+            evidence_records = []
+            record_ids = set()
+            for index, entry in enumerate(incoming_records):
+                if not isinstance(entry, dict):
+                    raise ValueError("Each source observation must be an object")
+                axis_id = text_field(entry, "axis_id", maximum=64)
+                if axis_id not in known_axes:
+                    raise ValueError(f"Source observation {index + 1} references an unknown evidence axis")
+                record = {"axis_id": axis_id}
+                for field in EVIDENCE_RECORD_FIELDS:
+                    record[field] = text_field(entry, field, maximum=3000 if field in {"notes", "source_url"} else 800)
+                if record["source_type"] not in {"publication", "preprint", "dataset", "trial_registry", "patent", "protocol", "other"}:
+                    raise ValueError(f"Source observation {index + 1} has an unknown source type")
+                if record["status"] not in EVIDENCE_STATUS:
+                    raise ValueError(f"Source observation {index + 1} has an unknown source status")
+                if record["direction"] not in {"supports", "contradicts", "mixed", "unclear"}:
+                    raise ValueError(f"Source observation {index + 1} has an unknown direction")
+                if not record["source_title"] and not record["source_url"]:
+                    raise ValueError(f"Source observation {index + 1} needs a title or source URL")
+                if record["source_url"] and not public_url(record["source_url"]):
+                    raise ValueError(f"Source observation {index + 1} URL must be http(s)")
+                digest = record["dataset_sha256"]
+                if digest and not re.fullmatch(r"[0-9a-fA-F]{64}", digest):
+                    raise ValueError(f"Source observation {index + 1} dataset hash must be a SHA-256 digest")
+                record["record_id"] = text_field(entry, "record_id", maximum=64) or uuid.uuid4().hex
+                if not re.fullmatch(r"[a-f0-9]{32}", record["record_id"]) or record["record_id"] in record_ids:
+                    raise ValueError(f"Source observation {index + 1} has an invalid or duplicate record ID")
+                record_ids.add(record["record_id"])
+                evidence_records.append(record)
             item.update(
                 id=old["id"] if old else uuid.uuid4().hex,
                 evidence=evidence,
+                evidence_records=evidence_records,
+                experiment_ids=experiment_ids,
+                model_bundle_ids=model_bundle_ids,
                 center=center,
                 size=size,
                 created_utc=old["created_utc"] if old else regen.now(),
@@ -579,6 +726,194 @@ class Desk:
         rows = sorted((r for r in rows if r.get("blueprint_id") == blueprint_id), key=lambda r: r["created_utc"], reverse=True)
         summaries = [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "campaign_id", "created_utc", "status", "error", "summary")} for r in rows[offset:offset + limit]]
         return {"runs": summaries, "offset": offset, "limit": limit, "total": len(rows)}
+
+    def experiments(self):
+        """List validated experiment records discoverable under studies/ only."""
+        studies_root = (HOME / "studies").resolve()
+        cards = []
+        validator = experiment_manifest_tools()
+        for path in sorted((HOME / "studies").glob("**/experiment.json")):
+            if len(cards) >= 100 or path.is_symlink():
+                continue
+            try:
+                manifest_path = path.resolve(strict=True)
+                manifest_path.relative_to(studies_root)
+                document = validator.validate_experiment_manifest(manifest_path, repo_root=HOME)
+                artifacts = {artifact["id"]: artifact for artifact in document["artifacts"]}
+                summary = None
+                annotation_pilots = []
+                annotation_reviews = []
+                tables = []
+                result_id = document["modeling"].get("result_artifact_id")
+                result_artifact = artifacts.get(result_id)
+                if result_artifact and result_artifact["kind"] == "analysis_output":
+                    raw = validator._artifact_bytes(HOME, document["repository_id"], result_artifact)
+                    if raw is not None and len(raw) <= 2_000_000:
+                        try:
+                            summary = json.loads(raw.decode("utf-8"))
+                        except (UnicodeDecodeError, json.JSONDecodeError):
+                            summary = None
+                for artifact in document["artifacts"]:
+                    if (artifact.get("repository") != document["repository_id"]
+                            or artifact.get("kind") != "analysis_output"
+                            or not artifact.get("id", "").startswith("organoid-pilot-plan-")):
+                        continue
+                    raw = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+                    if raw is None or len(raw) > 1_000_000:
+                        continue
+                    try:
+                        pilot_plan = json.loads(raw.decode("utf-8"))
+                    except (UnicodeDecodeError, json.JSONDecodeError):
+                        continue
+                    if not isinstance(pilot_plan, dict):
+                        continue
+                    selection = pilot_plan.get("selection")
+                    if (pilot_plan.get("schema_version") != 1 or not isinstance(selection, dict)
+                            or pilot_plan.get("masks_generated") is not False
+                            or pilot_plan.get("biological_results_generated") is not False):
+                        continue
+                    annotation_pilots.append({
+                        "pilot_id": str(pilot_plan.get("pilot_id", "unidentified pilot"))[:120],
+                        "purpose": str(pilot_plan.get("purpose", ""))[:300],
+                        "timepoint_h": selection.get("timepoint_h"),
+                        "n_unique_frames": selection.get("n_unique_frames"),
+                        "n_round1_tasks": selection.get("n_round1_tasks"),
+                        "n_round2_concealed_repeat_tasks": selection.get("n_round2_concealed_repeat_tasks"),
+                        "n_total_tasks": selection.get("n_total_tasks"),
+                        "n_development_source_groups_represented": selection.get("n_development_source_groups_represented"),
+                        "final_test_group_excluded": selection.get("final_test_group_excluded") is True,
+                        "blinding_limit": str(pilot_plan.get("blinding_limit", ""))[:500],
+                    })
+                for artifact in document["artifacts"]:
+                    artifact_id = artifact.get("id", "")
+                    prefix = "organoid-review-audit-report-"
+                    if (artifact.get("repository") != document["repository_id"]
+                            or artifact.get("kind") != "analysis_output"
+                            or not artifact_id.startswith(prefix)):
+                        continue
+                    raw = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+                    if raw is None or len(raw) > 1_000_000:
+                        continue
+                    try:
+                        report = json.loads(raw.decode("utf-8"))
+                    except (UnicodeDecodeError, json.JSONDecodeError):
+                        continue
+                    audit_id = artifact_id[len(prefix):]
+                    if (not isinstance(report, dict) or report.get("schema_version") != 1
+                            or report.get("activity") != "manual_annotation_repeat_audit"
+                            or report.get("audit_id") != audit_id
+                            or report.get("biological_results_generated") is not False
+                            or not isinstance(report.get("n_annotated_tasks"), int)
+                            or isinstance(report.get("n_annotated_tasks"), bool)
+                            or not isinstance(report.get("n_repeat_pairs_scored"), int)
+                            or isinstance(report.get("n_repeat_pairs_scored"), bool)
+                            or not isinstance(report.get("n_repeat_pairs_with_distinct_annotator_ids"), int)
+                            or isinstance(report.get("n_repeat_pairs_with_distinct_annotator_ids"), bool)):
+                        continue
+                    annotation_reviews.append({
+                        "audit_id": audit_id,
+                        "n_annotated_tasks": report["n_annotated_tasks"],
+                        "n_repeat_pairs_scored": report["n_repeat_pairs_scored"],
+                        "n_repeat_pairs_with_distinct_annotator_ids": report[
+                            "n_repeat_pairs_with_distinct_annotator_ids"],
+                        "annotation_review_needed": report.get("annotation_review_needed") is True,
+                        "interpretation": str(report.get("interpretation", ""))[:600],
+                    })
+                for artifact in document["artifacts"]:
+                    if (artifact.get("repository") != document["repository_id"]
+                            or Path(artifact.get("member_path", artifact["path"])).suffix.lower() != ".csv"
+                            or artifact["kind"] not in {"raw_assay_data", "analysis_output"}):
+                        continue
+                    raw = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+                    if raw is None or len(raw) > 2_000_000:
+                        continue
+                    try:
+                        reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig"), newline=""))
+                        columns = (reader.fieldnames or [])[:24]
+                        rows = []
+                        total_rows = 0
+                        for row in reader:
+                            total_rows += 1
+                            if len(rows) < 100:
+                                rows.append({key: row.get(key, "") or "Not reported" for key in columns})
+                        if columns:
+                            tables.append({"artifact_id": artifact["id"], "columns": columns, "rows": rows,
+                                           "total_rows": total_rows, "truncated": total_rows > len(rows)})
+                    except (UnicodeDecodeError, csv.Error):
+                        continue
+                cards.append({
+                    "experiment_id": document["experiment_id"],
+                    "title": document["title"],
+                    "question": document["question"],
+                    "model_system": document["scope"]["model_system"],
+                    "claim_boundary": document["scope"]["claim_boundary"],
+                    "design": document["design"],
+                    "developmental_context": document.get("developmental_context"),
+                    "assays": document["assays"],
+                    "validation_endpoints": document.get("validation_endpoints", []),
+                    "modeling": document["modeling"],
+                    "calibration": document["calibration"],
+                    "environmental_conditions": document.get("environmental_conditions", []),
+                    "analysis_history": document.get("analysis_history", []),
+                    "current_analysis_by_kind": document.get("current_analysis_by_kind", {}),
+                    "limitations": document["limitations"],
+                    "artifacts": [{"id": item["id"], "kind": item["kind"], "description": item["description"],
+                                   "uri": item.get("uri"), "local": item.get("repository") == document["repository_id"],
+                                   "previewable": item.get("repository") == document["repository_id"]
+                                   and Path(item.get("member_path", item["path"])).suffix.lower()
+                                   in {".json", ".csv", ".md", ".txt", ".pdf", ".xlsx", ".png"}}
+                                  for item in document["artifacts"]],
+                    "summary": summary,
+                    "annotation_pilots": annotation_pilots,
+                    "annotation_reviews": annotation_reviews,
+                    "tables": tables,
+                    "manifest_path": manifest_path.relative_to(HOME).as_posix(),
+                    "validation_status": "valid",
+                })
+            except Exception as exc:
+                fallback = {}
+                try:
+                    fallback = json.loads(path.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    pass
+                cards.append({"experiment_id": fallback.get("experiment_id", path.parent.name),
+                              "title": fallback.get("title", path.parent.name),
+                              "manifest_path": path.relative_to(HOME).as_posix(),
+                              "validation_status": "invalid",
+                              "validation_error": str(exc)[:1000]})
+        return {"experiments": cards, "count": len(cards),
+                "discovery_scope": "Validated experiment.json files beneath studies/ only; linked local artifacts must match declared hashes and byte counts."}
+
+    def experiment_artifact(self, experiment_id, artifact_id):
+        """Read one declared local artifact from a currently valid study manifest."""
+        if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{2,95}", experiment_id):
+            raise ValueError("Invalid experiment ID")
+        if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{1,63}", artifact_id):
+            raise ValueError("Invalid artifact ID")
+        studies_root = (HOME / "studies").resolve()
+        validator = experiment_manifest_tools()
+        for path in studies_root.glob("**/experiment.json"):
+            if path.is_symlink():
+                continue
+            try:
+                manifest_path = path.resolve(strict=True)
+                manifest_path.relative_to(studies_root)
+                document = validator.validate_experiment_manifest(manifest_path, repo_root=HOME)
+            except Exception:
+                continue
+            if document["experiment_id"] != experiment_id:
+                continue
+            artifact = next((item for item in document["artifacts"] if item["id"] == artifact_id), None)
+            if artifact is None or artifact.get("repository") != document["repository_id"]:
+                raise ValueError("Artifact is not a declared local artifact for this experiment")
+            content = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+            if content is None or len(content) > 20_000_000:
+                raise ValueError("Artifact is unavailable or exceeds the 20 MB preview limit")
+            suffix = Path(artifact.get("member_path", artifact["path"])).suffix.lower()
+            if suffix not in {".json", ".csv", ".md", ".txt", ".pdf", ".xlsx", ".png"}:
+                raise ValueError("Artifact type is not available through the research view")
+            return content, mimetypes.guess_type("artifact" + suffix)[0] or "application/octet-stream"
+        raise ValueError("Unknown or invalid experiment")
 
     def save_run(self, path, run):
         with self.lock:
@@ -905,6 +1240,80 @@ class Desk:
             with self.lock:
                 self.pending -= 1
 
+    def _verified_linked_research(self, campaigns):
+        """Collect only freshly validated experiment outputs and receipt-bound model files."""
+        experiment_ids = sorted({value for campaign in campaigns for value in campaign.get("experiment_ids", [])})
+        bundle_ids = sorted({value for campaign in campaigns for value in campaign.get("model_bundle_ids", [])})
+        files = {}
+        total_bytes = 0
+
+        def add_file(archive_path, raw, metadata):
+            nonlocal total_bytes
+            if len(raw) > 20_000_000:
+                raise ValueError("A selected research artifact exceeds the 20 MB dossier limit")
+            if archive_path in files:
+                if files[archive_path] != raw:
+                    raise ValueError("Selected research artifacts have a conflicting archive path")
+                return
+            total_bytes += len(raw)
+            if total_bytes > 100_000_000:
+                raise ValueError("Selected research artifacts exceed the 100 MB dossier limit")
+            files[archive_path] = raw
+            metadata.append({"archive_path": archive_path, "sha256": hashlib.sha256(raw).hexdigest(),
+                             "bytes": len(raw)})
+
+        linked_experiments = []
+        cards = {item["experiment_id"]: item for item in self.experiments()["experiments"]
+                 if item.get("validation_status") == "valid"}
+        validator = experiment_manifest_tools()
+        for experiment_id in experiment_ids:
+            card = cards.get(experiment_id)
+            if card is None:
+                raise ValueError(f"Selected experiment is no longer valid: {experiment_id}")
+            manifest_path = (HOME / card["manifest_path"]).resolve(strict=True)
+            document = validator.validate_experiment_manifest(manifest_path, repo_root=HOME)
+            archived = []
+            manifest_archive = f"linked-research/experiments/{experiment_id}/experiment.json"
+            manifest_bytes = manifest_path.read_bytes()
+            add_file(manifest_archive, manifest_bytes, archived)
+            for artifact in document["artifacts"]:
+                if artifact["kind"] != "analysis_output" or artifact.get("repository") != document["repository_id"]:
+                    continue
+                raw = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+                if raw is None:
+                    raise ValueError(f"Selected experiment output is unavailable: {artifact['id']}")
+                suffix = Path(artifact.get("member_path", artifact["path"])).suffix.lower()
+                archive_path = f"linked-research/experiments/{experiment_id}/outputs/{artifact['id']}{suffix}"
+                add_file(archive_path, raw, archived)
+            linked_experiments.append({"experiment_id": experiment_id, "title": document["title"],
+                                       "manifest_path": card["manifest_path"],
+                                       "manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+                                       "files": archived})
+
+        linked_model_bundles = []
+        if bundle_ids:
+            inventory = ectogenesis_artifacts(ECTOGENESIS_MODEL_ROOT)
+            if not inventory.get("available"):
+                raise ValueError("Selected artificial-womb model bundle directory is unavailable")
+            verified = {item["bundle_id"]: item for item in inventory.get("bundles", [])
+                        if item.get("verified") is True}
+            for bundle_id in bundle_ids:
+                card = verified.get(bundle_id)
+                if card is None:
+                    raise ValueError(f"Selected model bundle is no longer receipt-verified: {bundle_id}")
+                archived = []
+                receipt_path = ECTOGENESIS_MODEL_ROOT / bundle_id / "receipt.json"
+                if receipt_path.is_symlink() or not receipt_path.is_file() or receipt_path.stat().st_size > 512_000:
+                    raise ValueError(f"Selected model receipt is unavailable: {bundle_id}")
+                add_file(f"linked-research/model-bundles/{bundle_id}/receipt.json",
+                         receipt_path.read_bytes(), archived)
+                for filename in card.get("outputs", []):
+                    raw, _content_type = ectogenesis_artifact_file(ECTOGENESIS_MODEL_ROOT, bundle_id, filename)
+                    add_file(f"linked-research/model-bundles/{bundle_id}/{filename}", raw, archived)
+                linked_model_bundles.append({"bundle_id": bundle_id, "bundle_kind": card["bundle_kind"],
+                                             "files": archived})
+        return {"experiments": linked_experiments, "model_bundles": linked_model_bundles}, files
+
     def export(self, blueprint_id, include_notes=False):
         with self.lock:
             blueprint = next(b for b in self.store["blueprints"] if b["id"] == blueprint_id)
@@ -934,6 +1343,13 @@ class Desk:
             for item in campaign.get("evidence", []):
                 axis = next((axis for axis in self.campaign_frameworks.get(blueprint_id, []) if axis["id"] == item["axis_id"]), {"label": item["axis_id"]})
                 parts.append(f"- {axis['label']}: {item['status']}; {item.get('value') or 'no value recorded'} {item.get('unit', '')}; comparator: {item.get('comparator') or 'not recorded'}; timepoint: {item.get('timepoint') or 'not recorded'}; source: {item.get('source_url') or 'not recorded'}")
+            for item in campaign.get("evidence_records", []):
+                axis = next((axis for axis in self.campaign_frameworks.get(blueprint_id, []) if axis["id"] == item["axis_id"]), {"label": item["axis_id"]})
+                parts.append(f"- Source observation · {axis['label']} · {item.get('source_type')} · {item.get('source_title') or item.get('source_url')} · {item.get('species') or 'species unreported'} / {item.get('stage_track') or 'stage unreported'} / {item.get('developmental_interval') or 'interval unreported'} · {item.get('outcome') or 'outcome unreported'}: {item.get('value') or 'value unreported'} {item.get('unit')}; comparator {item.get('comparator') or 'unreported'}; independent unit {item.get('independent_unit') or 'unreported'}; reported n {item.get('sample_size') or 'unreported'}; source status {item.get('status')}; direction {item.get('direction')}; license {item.get('license') or 'unreported'}; dataset SHA-256 {item.get('dataset_sha256') or 'not supplied'}; notes {item.get('notes') or 'none'}")
+            if campaign.get("experiment_ids"):
+                parts.append("Linked experiment cards: " + ", ".join(campaign["experiment_ids"]))
+            if campaign.get("model_bundle_ids"):
+                parts.append("Linked receipt-verified model bundles: " + ", ".join(campaign["model_bundle_ids"]))
             campaign_runs = [r for r in runs if r.get("campaign_id") == campaign["id"]]
             for run in campaign_runs:
                 snapshot = run.get("submission", {}).get("campaign")
@@ -956,12 +1372,26 @@ class Desk:
             public_parts.append(f"## {campaign['title']}\nHypothesis: {campaign['hypothesis']}\nEndpoint: {campaign['endpoint'] or 'Not specified'}\nFalsifier: {campaign['falsifier'] or 'Not specified'}")
             if campaign.get("reference_url"):
                 public_parts.append(f"Reference source: {campaign['reference_url']}")
+            for item in campaign.get("evidence_records", []):
+                public_parts.append(f"- Source metadata only · {item.get('source_title') or item.get('source_url')} · {item.get('species') or 'species unreported'} / {item.get('stage_track') or 'stage unreported'} · {item.get('outcome') or 'outcome unreported'} · independent unit {item.get('independent_unit') or 'unreported'} · reported n {item.get('sample_size') or 'unreported'} · status {item.get('status')} · source {item.get('source_url') or 'not supplied'}")
         for run in runs:
             public_parts.append(f"- Run {run['id']}: {run['kind']} / {run['status']} / {run.get('summary', run.get('error', ''))}; submission snapshot hash valid: {run.get('submission_sha256_valid', False)}")
-        return {"blueprint": blueprint, "campaigns": campaigns, "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs, "markdown": "\n\n".join(parts), "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
+        linked_research, _linked_files = self._verified_linked_research(campaigns)
+        if linked_research["experiments"] or linked_research["model_bundles"]:
+            parts.append("## Selected verified experiment and model artifacts")
+            for experiment in linked_research["experiments"]:
+                parts.append(f"- Experiment {experiment['experiment_id']} · {experiment['title']} · {len(experiment['files'])} archived files including the validated manifest and local analysis outputs.")
+                parts.extend(f"  - {file['archive_path']} · SHA-256 {file['sha256']} · {file['bytes']} bytes" for file in experiment["files"])
+            for bundle in linked_research["model_bundles"]:
+                parts.append(f"- Model bundle {bundle['bundle_id']} · {bundle['bundle_kind']} · receipt and {len(bundle['files'])-1} hash-matched outputs archived.")
+                parts.extend(f"  - {file['archive_path']} · SHA-256 {file['sha256']} · {file['bytes']} bytes" for file in bundle["files"])
+        return {"blueprint": blueprint, "campaigns": campaigns, "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs, "linked_research": linked_research, "markdown": "\n\n".join(parts), "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
 
     def export_archive(self, blueprint_id, include_notes=False):
         dossier = self.export(blueprint_id, include_notes=include_notes)
+        linked_research, linked_files = self._verified_linked_research(dossier["campaigns"])
+        if linked_research != dossier.get("linked_research"):
+            raise ValueError("Selected linked research changed while the dossier was being prepared")
         buffer = io.BytesIO()
         index = []
         with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
@@ -1006,6 +1436,10 @@ class Desk:
                     index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(), "source_sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
                                   "bytes": len(source_bytes), "listed_in_run_manifest": relative in declared,
                                   "source_matches_run_manifest": relative in declared and expected.get("sha256") == hashlib.sha256(artifact.read_bytes()).hexdigest()})
+            for archived_path, source_bytes in sorted(linked_files.items()):
+                archive.writestr(archived_path, source_bytes)
+                index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(),
+                              "bytes": len(source_bytes), "selected_research_artifact": True})
             index_blob = json.dumps({"schema_version": 1, "notes_included": include_notes, "files": index}, ensure_ascii=True, indent=2).encode("utf-8")
             archive.writestr("archive-index.json", index_blob)
         return buffer.getvalue()
@@ -1050,6 +1484,8 @@ def make_handler(desk):
             try:
                 if route == "/api/state":
                     return self.send(200, desk.state())
+                if route == "/api/experiments":
+                    return self.send(200, desk.experiments())
                 if route == "/api/ectogenesis/models":
                     if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
                         raise ValueError("The ectogenesis research area is not configured")
@@ -1062,6 +1498,12 @@ def make_handler(desk):
                         raise FileNotFoundError
                     content, content_type = ectogenesis_artifact_file(
                         ECTOGENESIS_MODEL_ROOT, values[0], values[1])
+                    return self.send(200, content, content_type)
+                if route == "/api/experiment/artifact":
+                    query = parse_qs(urlsplit(self.path).query)
+                    experiment_id = query.get("experiment_id", [""])[0]
+                    artifact_id = query.get("artifact_id", [""])[0]
+                    content, content_type = desk.experiment_artifact(experiment_id, artifact_id)
                     return self.send(200, content, content_type)
                 if route == "/api/runs":
                     query = parse_qs(urlsplit(self.path).query)

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "tool": "organoid-phenotyping",
+  "tool_version": "0.1.0",
+  "created_utc": "2026-10-04T20:41:06.346548+00:00",
+  "dataset": {
+    "dataset_id": "10.60507/FK2/OM25XQ",
+    "title": "Microscopic analysis of human ASC-derived kidney organoids for polycystic kidney disease modelling \u2014 Figure 4 cyst induction",
+    "source_url": "https://doi.org/10.60507/FK2/OM25XQ",
+    "license": "CC-BY-4.0",
+    "retrieved_on": "2026-10-04",
+    "publication_doi": "10.1186/s12860-026-00591-x",
+    "source_file_id": 14509,
+    "source_file_api_url": "https://bonndata.uni-bonn.de/api/access/datafile/14509",
+    "source_archive_bytes": 904984408,
+    "source_archive_md5": "89dbdd5be4b3d4c4602536f35bca3f70",
+    "source_archive_sha256": "9a71323938338558eafcb169eeb3dffae98d3b1fec7947bafa71d64768a3358b",
+    "source_readme_license_statement": "Dataset README states CC-BY-4.0."
+  },
+  "input_manifest_sha256": "6aca395889ff5864793d27f0327eda93d9e609aca7eb3c24069b789d605894fd",
+  "study_plan_sha256": "768b4e7862482ac660d84528e616e16a119c42a0ac275f9559833e1747692ac2",
+  "n_manifest_rows": 280,
+  "n_measured_frames": 0,
+  "n_missing_frames": 0,
+  "n_failed_frames": 0,
+  "n_pending_annotation_frames": 280,
+  "n_biological_units": 5,
+  "object_tracking": {
+    "status": "no_track_map",
+    "track_map_path": null,
+    "track_map_sha256": null,
+    "n_tracked_object_observations": 0,
+    "n_tracked_object_trajectories": 0
+  },
+  "split": {
+    "grouping_field": "biological_unit_id",
+    "grouping_unit": "source kidney identifier",
+    "development_group_count": 4,
+    "final_test_group_count": 1,
+    "development_specimen_count": 39,
+    "final_test_specimen_count": 17,
+    "specimen_overlap": [],
+    "microscope_holdout_ids": [],
+    "microscope_holdout_shared_specimens_with_development": [],
+    "microscope_holdout_shared_specimens_with_final_test": [],
+    "microscope_holdout_interpretation": "No microscope-specific holdout was declared."
+  },
+  "outputs": {
+    "measurements.csv": "2a5c51b89fec9f32c7187b08afd4186dfdb6a0d5e25ade007bb7f4dee4f2a4b6",
+    "cross_sectional_summary.csv": "71b7d8ba66309a7cc23fddf108ab52d06052b0fe3dd05057a8abdad43f5c410b",
+    "tracked_object_growth.csv": "b6b177a6924899873c15c0009f4163e316bee34858a1d730306f5911363caa1b",
+    "objects.csv": "59a9807c479b8cf6229b144827e1bda41448938780be04787bbbfe2ce4dafc23",
+    "segmentation_comparison.csv": "c96e0579f4029394009ffe916423e0a34e54ca04dfbaad49a00357b4a1c14955",
+    "overlays": {},
+    "REPORT.md": "e1eaf99be56b9e98250bba31d2878cae5ed6337afcad04a3b269282c7dd78685"
+  },
+  "limitations": [
+    "Mask measurements describe the supplied segmentation; this package does not segment images or validate a mask as biologically correct.",
+    "Area, diameter, shape and growth do not establish viability, identity, maturation, regenerative potency or rejuvenation.",
+    "Repeated images and microscope acquisitions in one declared specimen unit are nested observations, not independent biological units.",
+    "Object areas are cross-sectional unless a reviewed object-to-track map explicitly links labels across acquisitions.",
+    "Physical area is reported only when pixel_size_um is supplied with provenance; otherwise only pixel geometry is available."
+  ]
+}

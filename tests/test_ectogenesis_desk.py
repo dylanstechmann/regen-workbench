@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import sys
+import hashlib
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -46,6 +48,56 @@ class EctogenesisDeskTests(unittest.TestCase):
         self.assertEqual(identifiers.index("ectogenesis"), identifiers.index("organs") + 1)
         organs = next(item for item in reloaded.store["blueprints"] if item["id"] == "organs")
         self.assertEqual(organs["question"], "My saved research question")
+
+    def test_summarizes_v2_forecast_reports_and_new_theory_bundles(self):
+        cases = [
+            ("synthetic_exchange_observability_diagnostic", "source_manifest.json", "observability_report.json", {
+                "schema_version": 2, "result_kind": "synthetic_exchange_observability_diagnostic",
+                "biological_measurements": False, "physiologically_calibrated": False,
+                "human_gestation_prediction": False, "limits": [], "n_usable_readings": 8,
+                "full_series_fit": {"rank": 2}, "early_series_fit": {"estimable": True},
+                "balance_residual_diagnostic": {"label": "same-run diagnostic"},
+                "noise_aware_state_model": {"prospective_forecast": {"estimable": True}},
+                "simulation_binding": {"trajectory_sha256": "a" * 64},
+            }),
+            ("dimensionless_transport_theory", "input_config.json", "transport_report.json", {
+                "schema_version": 1, "result_kind": "dimensionless_two_compartment_transport",
+                "biological_measurements": False, "physiologically_calibrated": False,
+                "human_gestation_prediction": False, "limits": [], "outputs": {"final_core_state": 0.2},
+                "alternative_model": {"name": "single stock"}, "assumptions": ["dimensionless fixture"]
+            }),
+            ("dimensionless_mechanics_theory", "input_config.json", "mechanics_report.json", {
+                "schema_version": 1, "result_kind": "dimensionless_kelvin_voigt_mechanics",
+                "biological_measurements": False, "physiologically_calibrated": False,
+                "human_gestation_prediction": False, "limits": [], "outputs": {"final_strain": 0.1},
+                "alternative_model": {"name": "elastic reference"}, "assumptions": ["dimensionless fixture"]
+            }),
+        ]
+        for kind, input_name, report_name, report in cases:
+            with self.subTest(kind=kind):
+                bundle = self.root / (kind.replace("_", "-") + "-bundle")
+                bundle.mkdir()
+                input_bytes = b'{"fixture":"dimensionless"}\n'
+                report_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+                (bundle / input_name).write_bytes(input_bytes)
+                (bundle / report_name).write_bytes(report_bytes)
+                files = {
+                    input_name: {"sha256": hashlib.sha256(input_bytes).hexdigest(), "size_bytes": len(input_bytes)},
+                    report_name: {"sha256": hashlib.sha256(report_bytes).hexdigest(), "size_bytes": len(report_bytes)},
+                }
+                receipt = {
+                    "schema_version": 1, "bundle_kind": kind, "package_version": "0.2.0",
+                    "python_version": "3.x", "input_sha256": hashlib.sha256(input_bytes).hexdigest(),
+                    "implementation_sha256": {"pyproject.toml": "b" * 64}, "metadata": {}, "outputs": files,
+                }
+                (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+                result = desk.ectogenesis_artifact_bundle(bundle)
+                self.assertTrue(result["verified"], result)
+                if kind == "synthetic_exchange_observability_diagnostic":
+                    self.assertIn("prospective_forecast", result["summary"]["noise_aware_state_model"])
+                    self.assertEqual(result["summary"]["simulation_binding"]["trajectory_sha256"], "a" * 64)
+                else:
+                    self.assertIn("outputs", result["summary"])
 
 
 if __name__ == "__main__":

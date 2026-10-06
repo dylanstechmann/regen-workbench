@@ -43,26 +43,19 @@ The ectogenesis area also has a **Model bench** view. The ResearchDesk Compose
 service receives only `../artificial-womb-models/artifacts/`, mounted
 read-only. The view checks each bundle's receipt, source binding, output sizes
 and SHA-256 before displaying report/runtime provenance and the report's own
-limitations. It shows
-reviewed evidence-map bundles, synthetic exchange runs and dimensionless
-identifiability diagnostics. It also displays a bounded cadence/noise/fault/
-event-timing sweep with seeded replicates and post-fit synthetic parameter-recovery
-summaries, same-run temporal residuals and leave-one-seed-out residuals. The
-temporal holdout fits the first 70% of usable intervals and scores later
-intervals from that run. Leave-one-seed-out fits use other seeded runs of the
-same design to score an omitted run, and need at least two runs. Both remain
-internal software diagnostics because the simulations share one fixture
-schedule; they are not independent experimental validation. When outages or
-monitor faults are configured, it includes a reflected
-event-timing sensitivity profile that preserves interval lengths; this does not
-represent a realistic outage distribution. Sweep bundles expose a design-plan
-artifact with actual cadence/noise values and the configured/reflected intervals.
-Simulation reports can plot the receipt-checked dimensionless sensor trace,
-including scheduled gaps and modeled power states. A matching receipt means
-the listed bytes match that receipt; it does not establish the truth of a
-claim or the validity of a model. The model source and working configuration
-folders are not mounted; only safe, receipt-listed files within recognized
-bundle directories can be opened through the local interface.
+limitations. It shows reviewed evidence-map bundles, dimensionless exchange
+runs and noise-aware forward identifiability reports. Forecast cards compare
+later readings with a last-reading baseline; endpoint-based integral-balance
+residuals remain separately labeled as same-run consistency checks. The bounded
+cadence/noise/fault/event-timing sweep filters a compact 3×3 design matrix by
+profile and metric, including prospective forecast error, baseline error,
+approximate interval coverage/width, and legacy residual or conditioning metrics.
+Seeded runs share one fixture, so these are software sensitivity results. The
+bridge also displays two-compartment transport and Kelvin–Voigt theory bundles
+beside their simpler alternative equations. All values remain dimensionless;
+developmental tags do not calibrate a model to a species. A receipt establishes
+file integrity only. The model source and configurations are not mounted; only
+receipt-listed files inside recognized bundles can be opened through the UI.
 
 - **Evidence:** PubMed, Europe PMC, OpenAlex, ClinicalTrials.gov, Semantic
   Scholar, CORE, Brave and Exa. Select sources and request 1-10 results each.
@@ -89,6 +82,12 @@ bundle directories can be opened through the local interface.
   evaluates score ranking on labelled active/inactive controls and optionally
   computes no-alignment, symmetry-aware pose RMSD against a native reference.
   Decoys are excluded from primary metrics; small control sets remain unstable.
+  Campaign evidence has an axis summary plus multiple source observation rows.
+  Each row retains its own source, species, stage or model track, developmental
+  interval, endpoint, comparator, reported value/unit, independent unit, reported
+  sample size, follow-up, status, interpretation, license and optional dataset
+  hash. These are citations and transcribed metadata; ResearchDesk does not pool
+  values or infer effects across studies.
 - **Blueprint:** Editable question, population, mechanism, tissue, time,
   rationale, computational approach, falsifier and desired changes.
 - **Runs:** Persistent status, exact parameters, raw response snapshots
@@ -96,8 +95,80 @@ bundle directories can be opened through the local interface.
   Individual provider failures yield partial results. Interruptions and
   failures remain visible. History is paginated across all runs for the current
   blueprint. Exports include all persisted runs and their available artifacts.
+- **Experiments:** discover `experiment.json` records beneath `studies/`, validate
+  each against the shared schema and declared local artifact hashes, then display
+  its question, model system, independent-unit metadata, assay endpoint/units,
+  assay availability, six outcome-domain statuses, descriptive group summaries, author-reported
+  analyses separately from local outputs, bounded CSV observations, calibration,
+  falsifier and recorded limitations. Missing identifiers stay visible as
+  “Not reported.”
+  Only artifacts declared by a currently valid local manifest can be opened,
+  and previews are limited to 20 MB. Schema 1.4 adds species/stage/interval
+  context and immutable analysis-run history with one current pointer per kind.
+  Re-importing a receipt appends a run and keeps earlier output records. A passed donor-validation status now also
+  requires a linked held-out analysis result, a linked analysis specification,
+  and a stated success criterion under manifest schema 1.2. Schema 1.3 adds
+  measured/planned/unavailable assay status; measured assays require a linked
+  data artifact, while an unavailable endpoint can be represented without a
+  fabricated raw-data link. The kidney tubuloid cyst-induction card preserves
+  its 280-image inventory, zero-mask receipt and treatment-concealed annotation
+  worklist as distinct runs. Morphology remains unavailable until masks and
+  object identities are reviewed. These links make
+  evidence inspectable; the validator does not infer that an analysis or
+  scientific criterion is sound.
+
+  To register a run from the sibling `organoid-phenotyping` package, call
+  `python tools/import_organoid_phenotyping.py --output PATH --manifest PATH
+  --plan PATH` with the exact package output and the exact acquisition manifest
+  and study plan used for that run. The adapter checks all three input hashes,
+  the output hashes and split receipt, then copies only bounded CSV/JSON/Markdown
+  outputs into the study folder. It does not copy raw images or overlays and
+  does not mark a cyst assay as measured merely because mask geometry exists.
+
+  The sibling package can also prepare a treatment-concealed 24-hour annotation
+  worklist with one image per available development kidney × culture × treatment
+  stratum and five hidden repeat assignments. To register its public queues,
+  provisional protocol, plan, and low-resolution contact sheet, run from this
+  repository:
+
+  ```powershell
+  python tools/import_organoid_annotation_pilot.py `
+    --output ..\organoid-phenotyping\artifacts\annotation-pilot-bonn-cyst-24h-v1 `
+    --manifest ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\acquisitions.csv `
+    --plan ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\study-plan.json
+  ```
+
+  The import verifies the source frame hashes, private key, queue fields, and
+  frozen final-test exclusion. It copies only those five public artifacts; the
+  full-resolution source images and the unblinding key stay in the sibling
+  package. ResearchDesk describes this as a worklist, not a completed mask
+  assay or biological result. Visible morphology may still reveal treatment.
+
+  The sibling package's `annotate` command opens a loopback-only polygon workbench
+  for human mask creation. It preserves blinded task IDs, image hashes, protocol
+  version, and pseudonymous annotator IDs. Once reviewers finish, run
+  `organoid-phenotyping audit-annotations --session SESSION_PATH`; the local
+  audit computes foreground Dice only for concealed repeats and writes a new
+  annotated acquisition manifest only when every primary task has a mask.
+  Register the audit summary in ResearchDesk with:
+
+  ```powershell
+  python tools/import_organoid_annotation_review.py `
+    --audit ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\annotation-session-v1\audits\AUDIT_ID
+  ```
+
+  This import verifies receipt hashes and appends report, agreement table and
+  receipt as an `annotation_review` run; it does not import masks, treatment
+  labels, or biological outcomes. To calculate image geometry after mask
+  review, run the package's `measure` command against the newly written
+  `acquisitions-annotated-*.csv` and register that separate package receipt.
+  Agreement, geometry, and treatment response remain distinct evidence stages.
+
 Export downloads a ZIP with dossier JSON, a research summary, a discussion
-draft, run snapshots, manifests and an artifact index. Manually entered notes
+draft, run snapshots, manifests and an artifact index. Campaign-linked
+experiments contribute their freshly validated manifest and local analysis
+outputs; linked artificial-womb bundles contribute their receipt and
+hash-matched outputs. Files are capped at 20 MB each and 100 MB total. Manually entered notes
 are excluded by default; an explicit option includes them. It does not publish
 to Reddit or GitHub. Review private details and evidence claims; an exported
 research dossier is not automatically anonymous.

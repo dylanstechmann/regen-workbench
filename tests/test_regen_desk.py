@@ -68,6 +68,25 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(note["kind"], "vendor claim")
         self.assertEqual(note["review_status"], "unreviewed")
 
+    def test_experiment_reader_shows_unavailable_organoid_assay_and_external_sources(self):
+        result = self.desk.experiments()
+        record = next(item for item in result["experiments"]
+                      if item["experiment_id"] == "bonn-kidney-tubuloid-cyst-induction-imaging")
+        self.assertEqual(record["validation_status"], "valid")
+        self.assertEqual(record["assays"][0]["status"], "not_available")
+        self.assertEqual(record["summary"]["tool"], "organoid-phenotyping")
+        self.assertEqual(record["summary"]["n_manifest_rows"], 280)
+        self.assertEqual(record["summary"]["n_pending_annotation_frames"], 280)
+        self.assertEqual(record["developmental_context"]["stage_track"], "organoid_or_tissue_model")
+        self.assertEqual(len(record["analysis_history"]), 3)
+        self.assertEqual(record["current_analysis_by_kind"]["annotation_pilot"], "dede39dccb4cb6db")
+        self.assertTrue(any(table["artifact_id"].startswith("phenotyping-measurements-")
+                            for table in record["tables"]))
+        self.assertFalse(next(item for item in record["artifacts"]
+                              if item["id"] == "figure4-cyst-images")["local"])
+        self.assertTrue(any(item["uri"] == "https://doi.org/10.60507/FK2/OM25XQ"
+                            for item in record["artifacts"]))
+
     def test_campaign_evidence_is_typed_and_submission_context_is_frozen(self):
         data = {
             "blueprint_id": "reprogramming", "title": "LMNA positive control", "target": "LMNA",
@@ -75,18 +94,84 @@ class DeskTests(unittest.TestCase):
             "evidence": [{"axis_id": "tissue_function", "status": "source reports positive signal",
                           "value": "vasodilation restored", "unit": "qualitative", "comparator": "source control",
                           "timepoint": "in vitro", "source_url": "https://example.org/paper", "notes": "verify methods"}],
+            "evidence_records": [
+                {"axis_id": "tissue_function", "source_type": "publication", "source_title": "Primary paper",
+                 "source_url": "https://example.org/paper", "species": "human", "stage_track": "adult vascular cells",
+                 "developmental_interval": "in vitro assay", "model_system": "TEBV", "comparator": "unedited HGPS",
+                 "outcome": "acetylcholine-evoked vasodilation", "measure": "percent diameter change",
+                 "value": "reported group values", "unit": "%", "independent_unit": "donor",
+                 "sample_size": "one HGPS donor", "follow_up": "study endpoint", "license": "CC BY 4.0",
+                 "status": "source reports positive signal", "direction": "supports",
+                 "notes": "No vessel-level IDs; donor-level generalization is unavailable."},
+                {"axis_id": "tissue_function", "source_type": "dataset", "source_title": "Figure 8 data workbook",
+                 "source_url": "https://example.org/dataset", "species": "human", "stage_track": "adult vascular cells",
+                 "developmental_interval": "in vitro assay", "model_system": "TEBV", "comparator": "vehicle",
+                 "outcome": "vasodilation", "measure": "percent diameter change", "value": "see source table",
+                 "unit": "%", "independent_unit": "not recoverable", "sample_size": "35 vessel-summary values",
+                 "follow_up": "week 3 and 5", "license": "CC0-1.0", "status": "source reports mixed signal",
+                 "direction": "mixed", "dataset_sha256": "a" * 64, "notes": "Values do not identify independent donors."},
+            ],
         }
         campaign = self.desk.campaign(data)
         self.assertEqual(campaign["evidence"][5]["status"], "source reports positive signal")
+        self.assertEqual(len(campaign["evidence_records"]), 2)
+        self.assertEqual(campaign["evidence_records"][0]["independent_unit"], "donor")
+        self.assertNotEqual(campaign["evidence_records"][0]["record_id"], campaign["evidence_records"][1]["record_id"])
+        self.assertIn("35 vessel-summary values", self.desk.export("reprogramming")["markdown"])
         with self.assertRaises(ValueError):
             self.desk.campaign({**data, "evidence": [{"axis_id": "tissue_function", "status": "proven efficacy"}]})
+        with self.assertRaisesRegex(ValueError, "SHA-256"):
+            self.desk.campaign({**data, "evidence_records": [{**data["evidence_records"][0], "dataset_sha256": "not-a-hash"}]})
         with patch.object(self.desk.executor, "submit"):
             run = self.desk.submit({"blueprint_id": "reprogramming", "kind": "search", "query": "test", "providers": ["pubmed"], "campaign_id": campaign["id"]})
         saved_path = self.desk.runs / run["id"] / "submission.json"
         frozen = json.loads(saved_path.read_text())
-        self.desk.campaign({**data, "id": campaign["id"], "title": "Edited campaign", "evidence": campaign["evidence"]})
+        self.desk.campaign({**data, "id": campaign["id"], "title": "Edited campaign", "evidence": campaign["evidence"], "evidence_records": campaign["evidence_records"]})
         self.assertEqual(frozen["campaign"]["title"], "LMNA positive control")
         self.assertEqual(hashlib.sha256(saved_path.read_bytes()).hexdigest(), run["submission_sha256"])
+
+    def test_dossier_links_hash_verified_experiment_artifacts(self):
+        campaign = self.desk.campaign({
+            "blueprint_id": "tissues", "title": "Organoid image workflow", "target": "kidney tubuloids",
+            "hypothesis": "The source image workflow can support transparent, blinded morphology scoring.",
+            "experiment_ids": ["bonn-kidney-tubuloid-cyst-induction-imaging"],
+        })
+        dossier = self.desk.export("tissues")
+        self.assertEqual(dossier["linked_research"]["experiments"][0]["experiment_id"], campaign["experiment_ids"][0])
+        archive = zipfile.ZipFile(io.BytesIO(self.desk.export_archive("tissues")))
+        names = set(archive.namelist())
+        self.assertIn("linked-research/experiments/bonn-kidney-tubuloid-cyst-induction-imaging/experiment.json", names)
+        self.assertTrue(any("outputs/phenotyping-receipt-" in name for name in names))
+        index = json.loads(archive.read("archive-index.json"))
+        linked = next(row for row in index["files"] if "outputs/phenotyping-receipt-" in row["path"])
+        self.assertEqual(linked["sha256"], hashlib.sha256(archive.read(linked["path"])).hexdigest())
+
+    def test_dossier_links_receipt_verified_model_bundle_outputs(self):
+        model_root=self.root / "model-bundles";bundle=model_root / "transport-fixture-01";bundle.mkdir(parents=True)
+        input_bytes=b'{"fixture":"dimensionless"}\n'
+        report_bytes=json.dumps({"schema_version":1,"result_kind":"dimensionless_two_compartment_transport",
+            "biological_measurements":False,"physiologically_calibrated":False,"human_gestation_prediction":False,
+            "limits":[],"outputs":{"final_core_state":0.2},"alternative_model":{"name":"one stock"},
+            "assumptions":["dimensionless test fixture"]}).encode()+b"\n"
+        (bundle/"input_config.json").write_bytes(input_bytes);(bundle/"transport_report.json").write_bytes(report_bytes)
+        outputs={name:{"sha256":hashlib.sha256(raw).hexdigest(),"size_bytes":len(raw)}
+                 for name,raw in (("input_config.json",input_bytes),("transport_report.json",report_bytes))}
+        (bundle/"receipt.json").write_text(json.dumps({"schema_version":1,"bundle_kind":"dimensionless_transport_theory",
+            "package_version":"0.2.0","python_version":"3.12","input_sha256":outputs["input_config.json"]["sha256"],
+            "implementation_sha256":{"pyproject.toml":"b"*64},"metadata":{},"outputs":outputs}),encoding="utf-8")
+        with patch.object(desk,"ECTOGENESIS_MODEL_ROOT",model_root):
+            self.desk.campaign({"blueprint_id":"tissues","title":"Transport fixture review","target":"exchange",
+                "hypothesis":"Compare a dimensionless compartment model with a single-stock alternative.",
+                "model_bundle_ids":["transport-fixture-01"]})
+            dossier=self.desk.export("tissues")
+            self.assertEqual(dossier["linked_research"]["model_bundles"][0]["bundle_kind"],"dimensionless_transport_theory")
+            archive=zipfile.ZipFile(io.BytesIO(self.desk.export_archive("tissues")))
+        receipt_name="linked-research/model-bundles/transport-fixture-01/receipt.json"
+        report_name="linked-research/model-bundles/transport-fixture-01/transport_report.json"
+        self.assertIn(receipt_name,archive.namelist());self.assertIn(report_name,archive.namelist())
+        index=json.loads(archive.read("archive-index.json"))
+        row=next(item for item in index["files"] if item["path"]==report_name)
+        self.assertEqual(row["sha256"],hashlib.sha256(archive.read(report_name)).hexdigest())
 
     def test_campaign_starters_cover_repair_tissue_and_delivery(self):
         state = self.desk.state()

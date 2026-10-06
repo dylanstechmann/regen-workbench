@@ -1,0 +1,360 @@
+{
+  "manifest_schema_version": "1.4.0",
+  "repository_id": "regen-workbench",
+  "experiment_id": "bonn-kidney-tubuloid-cyst-induction-imaging",
+  "title": "Human kidney tubuloid cyst-induction imaging inventory",
+  "question": "Can the public bright-field cyst-induction images support a reproducible, object-level phenotype analysis without confusing image fields with independent biological samples?",
+  "scope": {
+    "model_system": "Adult stem-cell-derived human kidney tubuloids cultured in collagen domes or suspension, with source images of forskolin, DMSO vehicle, and untreated conditions.",
+    "claim_boundary": "This is a source-image inventory for a disease-modeling study; there are no local segmentations or measurements, and image morphology does not demonstrate renal function, rejuvenation, or human benefit."
+  },
+  "artifacts": [
+    {
+      "id": "rohe-kidney-paper",
+      "kind": "publication",
+      "description": "Primary article describing the tubuloid model, cyst-induction experiment, and image-analysis design.",
+      "uri": "https://doi.org/10.1186/s12860-026-00591-x"
+    },
+    {
+      "id": "bonn-kidney-dataset",
+      "kind": "source_dataset",
+      "description": "Bonn Data repository record for the source microscopy archive; the dataset README states CC BY 4.0.",
+      "uri": "https://doi.org/10.60507/FK2/OM25XQ",
+      "license": "CC-BY-4.0",
+      "retrieved_on": "2026-10-04"
+    },
+    {
+      "id": "figure4-cyst-images",
+      "kind": "source_dataset",
+      "description": "Figure 4 cyst-induction ZIP archive, pinned by the source record as Bonn Data file 14509; not copied into RegenWorkbench.",
+      "uri": "https://bonndata.uni-bonn.de/api/access/datafile/14509",
+      "license": "CC-BY-4.0",
+      "retrieved_on": "2026-10-04"
+    },
+    {
+      "id": "phenotyping-report-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Human-readable package receipt and interpretation limits.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/REPORT.md",
+      "sha256": "e1eaf99be56b9e98250bba31d2878cae5ed6337afcad04a3b269282c7dd78685",
+      "size_bytes": 1820
+    },
+    {
+      "id": "phenotyping-measurements-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Acquisition-level image-mask measurements and source hashes.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/measurements.csv",
+      "sha256": "2a5c51b89fec9f32c7187b08afd4186dfdb6a0d5e25ade007bb7f4dee4f2a4b6",
+      "size_bytes": 146514
+    },
+    {
+      "id": "phenotyping-objects-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Per-label instance geometry from supplied masks.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/objects.csv",
+      "sha256": "59a9807c479b8cf6229b144827e1bda41448938780be04787bbbfe2ce4dafc23",
+      "size_bytes": 291
+    },
+    {
+      "id": "phenotyping-cross-sectional-summary-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Cross-sectional object-area summaries without inferred trajectories.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/cross_sectional_summary.csv",
+      "sha256": "71b7d8ba66309a7cc23fddf108ab52d06052b0fe3dd05057a8abdad43f5c410b",
+      "size_bytes": 346
+    },
+    {
+      "id": "phenotyping-tracked-object-growth-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Object trajectories only when a reviewed track map was supplied.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/tracked_object_growth.csv",
+      "sha256": "b6b177a6924899873c15c0009f4163e316bee34858a1d730306f5911363caa1b",
+      "size_bytes": 196
+    },
+    {
+      "id": "phenotyping-segmentation-comparison-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Comparison with supplied reference masks, if available.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/segmentation_comparison.csv",
+      "sha256": "c96e0579f4029394009ffe916423e0a34e54ca04dfbaad49a00357b4a1c14955",
+      "size_bytes": 260
+    },
+    {
+      "id": "phenotyping-receipt-c346840fbe4eee7a",
+      "kind": "analysis_output",
+      "description": "Hash-bound run receipt with source, split and frame-status metadata.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/c346840fbe4eee7a/receipt.json",
+      "sha256": "7d382036f843bb57c7bfb8e2d774725d468bfc134e642bfef361140de0a4c546",
+      "size_bytes": 3342
+    },
+    {
+      "id": "organoid-pilot-queue1-4d568b9660f04534",
+      "kind": "analysis_output",
+      "description": "Treatment-concealed first-round manual annotation tasks; images remain in the sibling annotation pack.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-4d568b9660f04534/annotation_queue_round1.csv",
+      "sha256": "f4099e22307ca1b82e4a23e50d083278e8577474cc3a33289015f7a01b4cc49b",
+      "size_bytes": 4250
+    },
+    {
+      "id": "organoid-pilot-queue2-4d568b9660f04534",
+      "kind": "analysis_output",
+      "description": "Five concealed repeat tasks for independent annotation review.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-4d568b9660f04534/annotation_queue_round2.csv",
+      "sha256": "4f505fcb9a2b8b183275d89dc9e270e1d1fb6920631f03f7fe3dfe14210294c9",
+      "size_bytes": 1498
+    },
+    {
+      "id": "organoid-pilot-protocol-4d568b9660f04534",
+      "kind": "analysis_output",
+      "description": "Provisional annotation instructions and source-method limits.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-4d568b9660f04534/annotation_protocol.md",
+      "sha256": "5d40e0eaf130a5593b883f64da16b8312741046d4c86facee3b473b8c578afce",
+      "size_bytes": 3083
+    },
+    {
+      "id": "organoid-pilot-plan-4d568b9660f04534",
+      "kind": "analysis_output",
+      "description": "Hash-bound, development-only annotation pilot plan; no masks or biological outcomes.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-4d568b9660f04534/pilot_plan.json",
+      "sha256": "a5f3e822872861ee40218044877ac7bfd180f7190ac1ec73d84474394023bf19",
+      "size_bytes": 1274
+    },
+    {
+      "id": "organoid-pilot-contact-sheet-4d568b9660f04534",
+      "kind": "analysis_output",
+      "description": "Low-resolution, treatment-concealed navigation sheet; not a measurement source.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-4d568b9660f04534/annotation_contact_sheet.png",
+      "sha256": "bf44d4fb27b6d633450dc0a50f55300e3041b2629912aea046d3b2892f71df5b",
+      "size_bytes": 503215
+    },
+    {
+      "id": "organoid-pilot-queue1-dede39dccb4cb6db",
+      "kind": "analysis_output",
+      "description": "Treatment-concealed first-round manual annotation tasks; images remain in the sibling annotation pack.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-dede39dccb4cb6db/annotation_queue_round1.csv",
+      "sha256": "f4099e22307ca1b82e4a23e50d083278e8577474cc3a33289015f7a01b4cc49b",
+      "size_bytes": 4250
+    },
+    {
+      "id": "organoid-pilot-queue2-dede39dccb4cb6db",
+      "kind": "analysis_output",
+      "description": "Five concealed repeat tasks for independent annotation review.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-dede39dccb4cb6db/annotation_queue_round2.csv",
+      "sha256": "4f505fcb9a2b8b183275d89dc9e270e1d1fb6920631f03f7fe3dfe14210294c9",
+      "size_bytes": 1498
+    },
+    {
+      "id": "organoid-pilot-protocol-dede39dccb4cb6db",
+      "kind": "analysis_output",
+      "description": "Provisional annotation instructions and source-method limits.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-dede39dccb4cb6db/annotation_protocol.md",
+      "sha256": "5d40e0eaf130a5593b883f64da16b8312741046d4c86facee3b473b8c578afce",
+      "size_bytes": 3083
+    },
+    {
+      "id": "organoid-pilot-plan-dede39dccb4cb6db",
+      "kind": "analysis_output",
+      "description": "Hash-bound, development-only annotation pilot plan; no masks or biological outcomes.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-dede39dccb4cb6db/pilot_plan.json",
+      "sha256": "a5f3e822872861ee40218044877ac7bfd180f7190ac1ec73d84474394023bf19",
+      "size_bytes": 1274
+    },
+    {
+      "id": "organoid-pilot-contact-sheet-dede39dccb4cb6db",
+      "kind": "analysis_output",
+      "description": "Low-resolution, treatment-concealed navigation sheet; not a measurement source.",
+      "repository": "regen-workbench",
+      "path": "studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-dede39dccb4cb6db/annotation_contact_sheet.png",
+      "sha256": "bf44d4fb27b6d633450dc0a50f55300e3041b2629912aea046d3b2892f71df5b",
+      "size_bytes": 503215
+    }
+  ],
+  "protocol": {
+    "source_artifact_id": "rohe-kidney-paper",
+    "summary": "The source article describes bright-field imaging at 5, 24, 48, and 72 hours after treatment and QuPath-based tracking and measurement. This repository record indexes 280 Figure 4 images; it does not reproduce the wet-lab procedure or the source annotations.",
+    "deviations": [
+      "No culture, treatment, image segmentation, or biological assay was performed in this repository.",
+      "Individual tubuloid track identities are not present in the archive filenames or this source-image inventory."
+    ]
+  },
+  "design": {
+    "intervention": "10 µM forskolin to activate chronic cAMP signaling, compared with DMSO vehicle and untreated medium across dome and suspension culture.",
+    "experimental_unit": "Source culture replicate A, B, or C within a kidney, culture condition, and treatment; each unit can have multiple timepoint images.",
+    "independent_unit": "Source kidney identifier for the frozen development/test partition; mapping to unique human donors is not established by this manifest.",
+    "groups": [
+      {
+        "label": "Dome / untreated medium",
+        "role": "untreated_control"
+      },
+      {
+        "label": "Dome / DMSO",
+        "role": "vehicle_control"
+      },
+      {
+        "label": "Dome / forskolin",
+        "role": "intervention"
+      },
+      {
+        "label": "Suspension / untreated medium",
+        "role": "untreated_control"
+      },
+      {
+        "label": "Suspension / DMSO",
+        "role": "vehicle_control"
+      },
+      {
+        "label": "Suspension / forskolin",
+        "role": "intervention"
+      }
+    ],
+    "donor_structure": {
+      "disease_donor_count": null,
+      "healthy_donor_count": null,
+      "observation_level_ids_available": false,
+      "notes": "Five source kidney identifiers appear in the Figure 4 filenames. This inventory uses them to keep related images together but does not treat them as verified donor identities or estimate donor-level performance."
+    }
+  },
+  "assays": [
+    {
+      "assay_id": "cyst-morphology-images",
+      "name": "Bright-field cyst morphology and object tracking",
+      "endpoint": "Per-object cyst area and longitudinal cyst change across the reported post-treatment imaging times.",
+      "unit": "not available",
+      "status": "not_available",
+      "experimental_unit": "Culture replicate with its image fields; individual tubuloids are not linked across images here.",
+      "source_n": "280 indexed source images; 0 image masks measured, 280 pending annotation, 0 missing, 0 failed.",
+      "notes": "The linked intake indexed the source images but measured no masks. No cyst morphology or biological outcome is claimed."
+    }
+  ],
+  "validation_endpoints": [
+    {
+      "role": "functional",
+      "status": "not_available",
+      "rationale": "Kidney function is not measured by these source bright-field images or by the current intake."
+    },
+    {
+      "role": "cell_identity",
+      "status": "not_available",
+      "rationale": "No cell-identity assay is linked to this Figure 4 image inventory."
+    },
+    {
+      "role": "viability",
+      "status": "not_available",
+      "rationale": "Image morphology alone does not establish viability, and no linked viability values are in this record."
+    },
+    {
+      "role": "genome_stability",
+      "status": "not_available",
+      "rationale": "No genome-stability or off-target measurements are linked to this cyst-induction image inventory."
+    },
+    {
+      "role": "adverse_effects",
+      "status": "not_available",
+      "rationale": "No linked adverse-effect assay is available in this source-image intake."
+    },
+    {
+      "role": "durability",
+      "status": "not_available",
+      "rationale": "The indexed images do not provide verified object tracks or durable post-treatment function."
+    }
+  ],
+  "modeling": {
+    "status": "not_fit",
+    "source_model": {
+      "method": "No segmentation or phenotype model has been fit; this record catalogs source images only.",
+      "artifact_id": "figure4-cyst-images",
+      "locally_refit": false,
+      "reason": "The archive contains images but no masks or annotation identities for a local evaluation."
+    },
+    "donor_validation": {
+      "status": "not_testable",
+      "split": "Frozen holdout of one source kidney identifier; source IDs are not asserted to be unique donor IDs.",
+      "minimum_independent_donors": 2,
+      "reason": "No reviewed mask outcomes are available, and the mapping from the five source kidney IDs to independent human donors is not established in this analysis record."
+    },
+    "falsifier": "Any future image-based cyst-suppression claim should fail if blinded, reviewed object-level scoring does not reproduce the prespecified difference across held-out biological units.",
+    "result_artifact_id": "phenotyping-receipt-c346840fbe4eee7a"
+  },
+  "calibration": {
+    "status": "not_reported",
+    "notes": "The archive metadata reports a 5x objective, but this intake has not validated pixel calibration for each image; physical morphology is not reported."
+  },
+  "limitations": [
+    "The image intake has 280 TIFF frames and no supplied instance masks; every frame remains pending annotation.",
+    "The source kidney identifier is used only to prevent split leakage; this manifest does not equate it with a unique donor.",
+    "Filename replicate letters identify source technical replicates, not individual tracked tubuloids.",
+    "The current case has no local segmentation benchmark, phenotype summary, or reproduced source measurement.",
+    "Cyst morphology in an in-vitro kidney disease model does not measure kidney function, general tissue regeneration, aging reversal, or human benefit."
+  ],
+  "developmental_context": {
+    "species": "human",
+    "stage_track": "organoid_or_tissue_model",
+    "interval_label": "Adult stem-cell-derived kidney tubuloids; source images span 5–72 hours after culture treatment.",
+    "interval_kind": "source_defined_interval",
+    "source_artifact_id": "rohe-kidney-paper",
+    "notes": "This is an in-vitro adult kidney disease-model track, not embryonic development or gestational support."
+  },
+  "analysis_history": [
+    {
+      "bundle_id": "c346840fbe4eee7a",
+      "kind": "organoid_phenotyping",
+      "registered_utc": "2026-10-04T20:41:06.346548Z",
+      "artifact_ids": [
+        "phenotyping-report-c346840fbe4eee7a",
+        "phenotyping-measurements-c346840fbe4eee7a",
+        "phenotyping-objects-c346840fbe4eee7a",
+        "phenotyping-cross-sectional-summary-c346840fbe4eee7a",
+        "phenotyping-tracked-object-growth-c346840fbe4eee7a",
+        "phenotyping-segmentation-comparison-c346840fbe4eee7a",
+        "phenotyping-receipt-c346840fbe4eee7a"
+      ],
+      "status": "receipt_verified"
+    },
+    {
+      "bundle_id": "4d568b9660f04534",
+      "kind": "annotation_pilot",
+      "registered_utc": "2026-10-06T03:54:32Z",
+      "artifact_ids": [
+        "organoid-pilot-queue1-4d568b9660f04534",
+        "organoid-pilot-queue2-4d568b9660f04534",
+        "organoid-pilot-protocol-4d568b9660f04534",
+        "organoid-pilot-plan-4d568b9660f04534",
+        "organoid-pilot-contact-sheet-4d568b9660f04534"
+      ],
+      "status": "plan_only"
+    },
+    {
+      "bundle_id": "dede39dccb4cb6db",
+      "kind": "annotation_pilot",
+      "registered_utc": "2026-10-06T17:50:29.605343+00:00",
+      "artifact_ids": [
+        "organoid-pilot-contact-sheet-dede39dccb4cb6db",
+        "organoid-pilot-plan-dede39dccb4cb6db",
+        "organoid-pilot-protocol-dede39dccb4cb6db",
+        "organoid-pilot-queue1-dede39dccb4cb6db",
+        "organoid-pilot-queue2-dede39dccb4cb6db"
+      ],
+      "status": "plan_only"
+    }
+  ],
+  "current_analysis_by_kind": {
+    "organoid_phenotyping": "c346840fbe4eee7a",
+    "annotation_pilot": "dede39dccb4cb6db"
+  }
+}

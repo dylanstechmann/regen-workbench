@@ -1,0 +1,1 @@
+frame_id,specimen_id,biological_unit_id,culture_condition,treatment,technical_replicate,timepoint_h,split,mask_sha256,instance_label_value,area_pixels,area_um2,equivalent_diameter_pixels,equivalent_diameter_um,perimeter_pixels,perimeter_um,circularity,touches_image_edge,foreground_fraction

@@ -1,0 +1,1 @@
+frame_id,specimen_id,clone_id,culture_batch_id,imaging_lab,microscope_id,timepoint_h,split,mask_path,reference_mask_path,mask_sha256,reference_mask_sha256,reference_mask_annotator,intersection_over_union,dice,absolute_area_error_pixels,absolute_area_error_um2

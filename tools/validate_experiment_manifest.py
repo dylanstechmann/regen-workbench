@@ -57,9 +57,14 @@ def _artifact_bytes(repo_root: Path, local_repository_id: str, artifact: dict[st
 def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
     refs = [("protocol.source_artifact_id", document["protocol"]["source_artifact_id"])]
     for i, assay in enumerate(document["assays"]):
-        refs.append((f"assays[{i}].raw_artifact_id", assay["raw_artifact_id"]))
+        if "raw_artifact_id" in assay:
+            refs.append((f"assays[{i}].raw_artifact_id", assay["raw_artifact_id"]))
     modeling = document["modeling"]
     refs.append(("modeling.source_model.artifact_id", modeling["source_model"]["artifact_id"]))
+    donor_validation = modeling["donor_validation"]
+    for name in ("heldout_result_artifact_id", "success_criterion_artifact_id"):
+        if name in donor_validation:
+            refs.append((f"modeling.donor_validation.{name}", donor_validation[name]))
     if "result_artifact_id" in modeling:
         refs.append(("modeling.result_artifact_id", modeling["result_artifact_id"]))
     calibration = document["calibration"]
@@ -73,6 +78,12 @@ def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
     for i, endpoint in enumerate(document.get("validation_endpoints", [])):
         if "artifact_id" in endpoint:
             refs.append((f"validation_endpoints[{i}].artifact_id", endpoint["artifact_id"]))
+    context = document.get("developmental_context")
+    if context:
+        refs.append(("developmental_context.source_artifact_id", context["source_artifact_id"]))
+    for i, run in enumerate(document.get("analysis_history", [])):
+        for artifact_id in run.get("artifact_ids", []):
+            refs.append((f"analysis_history[{i}].artifact_ids", artifact_id))
     return refs
 
 
@@ -119,6 +130,49 @@ def validate_experiment_manifest(
         if artifact_id not in by_id:
             raise ManifestValidationError(f"{location} references unknown artifact id: {artifact_id}")
 
+    analysis_history = document.get("analysis_history", [])
+    runs_by_bundle: dict[str, dict[str, Any]] = {}
+    for index, run in enumerate(analysis_history):
+        bundle_id = run["bundle_id"]
+        if bundle_id in runs_by_bundle:
+            raise ManifestValidationError(f"analysis_history contains duplicate bundle_id: {bundle_id}")
+        runs_by_bundle[bundle_id] = run
+        expected_status = {"annotation_pilot": "plan_only",
+                           "organoid_phenotyping": "receipt_verified"}.get(run["kind"])
+        if expected_status is not None and run["status"] != expected_status:
+            raise ManifestValidationError(
+                f"analysis_history[{index}] kind {run['kind']} must have status {expected_status}"
+            )
+        for artifact_id in run["artifact_ids"]:
+            if by_id[artifact_id]["kind"] != "analysis_output":
+                raise ManifestValidationError(
+                    f"analysis_history[{index}] references non-output artifact: {artifact_id}"
+                )
+
+    for kind, bundle_id in document.get("current_analysis_by_kind", {}).items():
+        run = runs_by_bundle.get(bundle_id)
+        if run is None or run["kind"] != kind:
+            raise ManifestValidationError(
+                f"current_analysis_by_kind.{kind} must point to an analysis-history bundle of the same kind"
+            )
+    if document.get("manifest_schema_version") == "1.4.0":
+        for run in analysis_history:
+            if run["bundle_id"] not in document.get("current_analysis_by_kind", {}).values():
+                continue
+            if run["kind"] == "organoid_phenotyping" and document["modeling"].get("result_artifact_id") not in run["artifact_ids"]:
+                raise ManifestValidationError("current organoid phenotyping run must contain modeling.result_artifact_id")
+
+    for index, assay in enumerate(document["assays"]):
+        status = assay.get("status", "measured")
+        raw_artifact_id = assay.get("raw_artifact_id")
+        if status == "measured":
+            if raw_artifact_id is None:
+                raise ManifestValidationError(f"assays[{index}] is measured without a linked data artifact")
+            if by_id[raw_artifact_id]["kind"] not in {"raw_assay_data", "source_dataset"}:
+                raise ManifestValidationError(
+                    f"assays[{index}] measured status cannot cite {by_id[raw_artifact_id]['kind']} evidence"
+                )
+
     allowed_environmental_evidence = {
         "measured": {"raw_assay_data", "source_dataset", "calibration_record"},
         "reported": {"publication", "source_dataset", "author_analysis"},
@@ -161,6 +215,10 @@ def validate_experiment_manifest(
                 allowed_kinds = {"raw_assay_data", "source_dataset", "author_analysis", "analysis_output"}
                 evidence_artifact_ids = [artifact_id] if artifact_id is not None else []
                 if assay_id is not None:
+                    if assays_by_id[assay_id].get("status", "measured") != "measured":
+                        raise ManifestValidationError(
+                            f"validation_endpoints[{index}] cannot cite an assay that is not measured"
+                        )
                     evidence_artifact_ids.append(assays_by_id[assay_id]["raw_artifact_id"])
                 for evidence_artifact_id in evidence_artifact_ids:
                     evidence_kind = by_id[evidence_artifact_id]["kind"]
@@ -191,6 +249,12 @@ def validate_experiment_manifest(
             raise ManifestValidationError("donor validation is marked passed below its minimum donor count")
         if not donors["observation_level_ids_available"]:
             raise ManifestValidationError("donor validation cannot pass without observation-level donor IDs")
+        result_id = donor_validation["heldout_result_artifact_id"]
+        criterion_id = donor_validation["success_criterion_artifact_id"]
+        if by_id[result_id]["kind"] != "analysis_output":
+            raise ManifestValidationError("passed donor validation must link a held-out analysis_output artifact")
+        if by_id[criterion_id]["kind"] != "analysis_specification":
+            raise ManifestValidationError("passed donor validation must link a prespecified analysis_specification artifact")
 
     calibration = document["calibration"]
     if calibration["status"] == "measured":

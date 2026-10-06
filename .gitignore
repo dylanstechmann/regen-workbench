@@ -12,6 +12,7 @@ projects/*
 *.cif
 *.pdb
 *.png
+!studies/organoid/kidney-tubuloid-cyst-induction/derived/annotation-pilot-*/annotation_contact_sheet.png
 *.fastq
 *.fastq.gz
 *.npz
