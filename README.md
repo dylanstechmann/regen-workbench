@@ -39,6 +39,13 @@ observations stay under `data/research-desk/`; fetch receipts remain under
 engineered tissues and nanomedicine, followed by organs, senescence and
 structural restoration.
 
+The **Study design** view stores content-hashed, append-only question,
+dataset-card and analysis-plan drafts. Dataset metadata includes source-file
+inventory, unit hierarchy, exact quantities, missingness and exclusions; plans
+link exact revisions and require competing predictions and a falsifier. The
+records are included in dossier exports. Their presence does not establish
+source review, data eligibility or a completed analysis.
+
 The dated [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md) is a
 historical snapshot:
 57 runs, 173 provider records before deduplication, 236 verified artifact

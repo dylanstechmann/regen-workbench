@@ -188,8 +188,25 @@ input hash, comparison metric, per-condition values, missingness and deltas.
   must not be reformatted. Editable source and documentation use the repository's
   normal LF policy.
 
-Export downloads a ZIP with dossier JSON, a research summary, a discussion
-draft, run snapshots, manifests and an artifact index. Campaign-linked
+- **Study design:** save immutable JSON revisions for a research question with
+  competing hypotheses, a source-scoped dataset card, and an analysis plan
+  linked to exact question/card revision IDs. Each revision records a canonical
+  SHA-256; edits append a new revision, and plans show when linked inputs have
+  since changed. Dataset cards capture access and license claims, file names
+  and optional declared hashes, species/model and interval, data granularity, unit
+  hierarchy, measured endpoints and units, calibration state, groups,
+  missingness and exclusions. A generated gap list describes absent metadata;
+  it does not certify eligibility. Plans require alternatives, a primary
+  outcome, comparator, independent unit, baseline, split, uncertainty,
+  confounding, falsification and ambiguity rules. Plans remain drafts and do not
+  run analyses. Declared hashes are not checked against external file bytes:
+  citations are stored but never fetched. Reviewer
+  identity is not authenticated. Dossier exports include the exact revisions
+  and their hashes. Source-observation review decisions and binding revisions
+  to submitted runs remain future work.
+
+Export downloads a ZIP with dossier JSON, immutable research-record JSON, a
+research summary, a discussion draft, run snapshots, manifests and an artifact index. Campaign-linked
 experiments contribute their freshly validated manifest and local analysis
 outputs; linked artificial-womb bundles contribute their receipt and
 hash-matched outputs. Linked research artifacts are capped at 20 MB each and

@@ -6,6 +6,8 @@ let runPage = 0, runPageSize = 50, historyRuns = [], historyTotal = 0;
 const runCache = new Map();
 let experimentRecords = [];
 let modelArtifactState = null;
+let researchRecords = [], researchRecordTotal = 0, researchRecordPage = 0, researchRecordBlueprint = null;
+let researchEditorType = 'question';
 const trajectoryCache = new Map();
 const sweepMetricOptions = [
   ['median_prospective_forecast_rmse','Forward forecast RMSE'],
@@ -41,10 +43,56 @@ async function api(path, data) {
   return result;
 }
 function current() { return workspace.blueprints.find(b => b.id === selected); }
+const researchTemplates = {
+  question: {question:'',scope:'Species or model, exact source groups, and observed interval.',claim_boundary:'What this question could and could not establish.',hypotheses:[{id:'h1',prediction:'Prediction that would favor the first explanation.',falsifier:'Observation that would count against it.'},{id:'h2',prediction:'A different measurable prediction for a competing explanation.',falsifier:'Observation that would count against it.'}],source_refs:[]},
+  dataset_card: {citation:'',source_url:'',access_status:'public_open',license:'',scope:'Data provenance and intended comparison.',species_or_model:'',stage_or_interval:'',data_granularity:'unknown',files:[{path:'replace-with-exact-relative-filename.csv',format:'csv',sha256:null,rows:null}],unit_hierarchy:[{level:'replace-with-source-unit-level',kind:'donor, embryo, culture, or source-defined group',source_field:'exact source column or not reported',identity_status:'not_reported'}],independent_unit_level:'not_reported',observed_quantities:[],groups:[],missingness:'Describe source-reported missingness or state not reported.',exclusions:'Describe recorded exclusions or state not reported.'},
+  analysis_plan: {question_revision_id:'paste-saved-question-revision-id',dataset_revision_ids:['paste-saved-dataset-card-revision-id'],estimand:'Define the quantity or comparison the analysis targets.',primary_outcome:{endpoint:'',unit:'',timepoint:'',comparator:'',independent_unit:''},alternatives:[{hypothesis_id:'h1',prediction:'Expected measurable outcome under explanation h1.'},{hypothesis_id:'h2',prediction:'Different expected measurable outcome under explanation h2.'}],baseline:'Name a simple comparator and its exact inputs.',split:'State the independent-unit split or why no split is possible.',uncertainty:'State the uncertainty summary and its unit of replication.',missingness_rule:'State how missing records and unavailable endpoints will be handled.',confounding:'Name source-specific confounders and the planned sensitivity checks.',falsification_rule:'State what result would count against the favored explanation.',ambiguity_rule:'State what remains unresolved if alternatives make similar predictions.',analysis_status:'exploratory'}
+};
+function researchRecordTemplate() {
+  const type = $('#research-record-type').value;
+  $('#research-record-content').value = JSON.stringify(researchTemplates[type],null,2);
+  $('#research-record-content').placeholder = '';
+}
 function switchTab(tab) {
   activeTab = tab;
   $$('.view').forEach(view => { view.hidden = view.id !== tab; });
   $$('[data-tab]').forEach(button => { button.classList.toggle('active', button.dataset.tab === tab); button.setAttribute('aria-current',button.dataset.tab === tab ? 'page' : 'false'); });
+}
+function renderStudyRecords() {
+  const container=$('#research-records');container.replaceChildren();
+  $('#study-design-count').textContent=workspace.research_record_counts?.[selected] || '';
+  $('#research-record-total').textContent=researchRecordTotal ? `${researchRecordTotal} immutable revisions` : 'No revisions yet';
+  if(!researchRecords.length){container.append(el('p','No research-design records in this area yet. Save a question, a dataset card, then a plan that links their exact revision IDs.','empty'));}
+  for(const record of researchRecords){
+    const card=el('article',null,'finding'),heading=el('div',null,'section-heading');
+    heading.append(el('h3',record.title),badge(`${record.record_type.replaceAll('_',' ')} · revision ${record.revision_number}`,record.is_current_revision?'complete':'unreviewed'));
+    if(record.content_integrity_valid===false)heading.append(badge('Content hash mismatch','unreviewed'));
+    if(record.stale_dependency_revision_ids?.length)heading.append(badge('Plan dependencies changed','partial'));
+    card.append(heading,el('p',`Revision ${record.revision_id} · SHA-256 ${record.content_sha256}`,'model-bench-id'));
+    card.append(el('p',`${record.record_state} · citations were not fetched · created ${new Date(record.created_utc).toLocaleString()}`,'method-note'));
+    if(record.stale_dependency_revision_ids?.length)card.append(el('p',`Superseded input revisions: ${record.stale_dependency_revision_ids.join(', ')}`,'boundary'));
+    if(record.data_qualification_gaps?.length){const list=el('ul');record.data_qualification_gaps.forEach(item=>list.append(el('li',item)));card.append(el('h4','Data qualification gaps'),list);}
+    const details=el('details'),summary=el('summary','Inspect exact structured content'),pre=el('pre',JSON.stringify(record.content,null,2));details.append(summary,pre);card.append(details);
+    if(record.is_current_revision&&record.content_integrity_valid!==false){const button=el('button','Create next revision');button.type='button';button.addEventListener('click',()=>{
+      const form=$('#research-record-form');form.elements.record_type.value=record.record_type;form.elements.title.value=record.title;
+      researchEditorType=record.record_type;
+      form.elements.family_id.value=record.family_id;form.elements.supersedes_revision_id.value=record.revision_id;
+      $('#research-record-content').value=JSON.stringify(record.content,null,2);$('#research-record-content').placeholder='';
+      $('#research-record-type').focus();switchTab('study-design');
+    });card.append(button);}
+    container.append(card);
+  }
+  const pagination=$('#research-record-pagination');pagination.replaceChildren();
+  const pages=Math.max(1,Math.ceil(researchRecordTotal/20));
+  if(researchRecordTotal>20){const previous=el('button','Previous');previous.disabled=researchRecordPage===0;previous.addEventListener('click',task(()=>loadResearchRecords(researchRecordPage-1)));
+    const next=el('button','Next');next.disabled=researchRecordPage+1>=pages;next.addEventListener('click',task(()=>loadResearchRecords(researchRecordPage+1)));
+    pagination.append(previous,el('span',`Page ${researchRecordPage+1} of ${pages}`),next);}
+}
+async function loadResearchRecords(page=0) {
+  const blueprintAtStart=selected,params=new URLSearchParams({blueprint_id:selected,offset:String(page*20),limit:'20'});
+  const result=await api(`/api/research-records?${params}`);
+  if(selected!==blueprintAtStart)return;
+  researchRecordBlueprint=selected;researchRecordPage=page;researchRecords=result.records;researchRecordTotal=result.total;renderStudyRecords();
 }
 async function getRun(id, status) {
   const cached = runCache.get(id);
@@ -224,6 +272,24 @@ function renderModelBench() {
     if (bundle.bundle_kind === 'reviewed_evidence_map') {
       card.append(el('p',`${summary.source_count ?? '—'} sources · ${summary.claim_count ?? '—'} claims · ${summary.requirement_count ?? '—'} requirements`));
       if (summary.reviewed_on) card.append(el('p',`Ledger review date: ${summary.reviewed_on}. Review and update it before relying on a source card.`,'boundary'));
+    } else if (bundle.bundle_kind === 'developmental_observation_intake') {
+      card.append(el('p',`${summary.title || summary.dataset_id || 'Dataset'} · source revision ${summary.source_revision_id || 'not recorded'} · source state ${summary.source_review_status || 'not recorded'}`));
+      card.append(el('p',`${summary.n_observation_records ?? '—'} records in ${summary.n_exact_comparison_groups ?? '—'} exact-source/unit groups · ${summary.n_transitions ?? '—'} recorded transitions · ${summary.n_continuity_not_reported ?? '—'} with continuity not reported.`));
+      card.append(el('p',`Analysis eligibility: ${summary.analysis_eligibility || 'requires source-specific review'}. Identifier counts do not verify biological units, and this intake did not perform an assay or pool measurements.`,'boundary'));
+      const groups = Array.isArray(summary.groups) ? summary.groups : [];
+      if (groups.length) {
+        const table=el('table',null,'model-bench-verification-table'),head=el('tr');
+        for(const label of ['Species','Stage / interval','Endpoint / reported unit','Source file','Records','Distinct unit keys'])head.append(el('th',label));
+        table.append(head);
+        for(const group of groups.slice(0,100)){
+          const row=el('tr');
+          for(const value of [group.species,`${group.stage_track} · ${group.interval_label} (${group.interval_unit})`,`${group.endpoint} · ${group.unit}`,group.source_artifact_id,group.n_records,group.n_distinct_reported_unit_keys])row.append(el('td',String(value ?? 'not reported')));
+          table.append(row);
+        }
+        card.append(table);
+        if(summary.groups_truncated)card.append(el('p',`Showing 100 of ${summary.n_exact_comparison_groups} groups. Download the complete CSV for review.`,'boundary'));
+      }
+      if(Array.isArray(summary.warnings))summary.warnings.forEach(item=>card.append(el('p',String(item),'boundary')));
     } else if (bundle.bundle_kind === 'synthetic_exchange_software_fixture') {
       const residuals = Object.values(summary.balances || {}).filter(value => typeof value === 'number' && Number.isFinite(value));
       const maxResidual = residuals.length ? Math.max(...residuals) : null;
@@ -341,7 +407,7 @@ function renderModelBench() {
       limits.append(list); card.append(limits);
     }
     const links = el('div',null,'row model-bench-links');
-    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","mechanics_verification_report.json":"Mechanics verification JSON","transport_matrix_report.json":"Transport regime matrix JSON","transport_matrix_convergence.csv":"Transport regime convergence table","transport_matrix_scenario_configs.json":"Exact regime configurations","transport_configured_baseline_finest_errors.csv":"Baseline pointwise errors","transport_zero_dynamics_finest_errors.csv":"Zero-dynamics pointwise errors","transport_exchange_only_finest_errors.csv":"Exchange-only pointwise errors","transport_transfer_only_finest_errors.csv":"Transfer-only pointwise errors","transport_unequal_coupled_finest_errors.csv":"Unequal-rate pointwise errors","transport_high_mixing_finest_errors.csv":"High-mixing pointwise errors","transport_near_degenerate_finest_errors.csv":"Near-degenerate pointwise errors","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","mechanics_pointwise_errors.csv":"Mechanics pointwise errors","mechanics_boundary_errors.csv":"Mechanics boundary errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    const labelsByFile = {"REPORT.md":"Readable report","observation_intake_report.json":"Observation intake JSON","observation_records.csv":"Source-linked observation records","interval_groups.csv":"Exact comparison groups","transitions.csv":"Developmental transitions","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","transport_report.json":"Transport theory JSON","mechanics_report.json":"Mechanics theory JSON","numerical_verification_report.json":"Numerical verification JSON","mechanics_verification_report.json":"Mechanics verification JSON","transport_matrix_report.json":"Transport regime matrix JSON","transport_matrix_convergence.csv":"Transport regime convergence table","transport_matrix_scenario_configs.json":"Exact regime configurations","transport_configured_baseline_finest_errors.csv":"Baseline pointwise errors","transport_zero_dynamics_finest_errors.csv":"Zero-dynamics pointwise errors","transport_exchange_only_finest_errors.csv":"Exchange-only pointwise errors","transport_transfer_only_finest_errors.csv":"Transfer-only pointwise errors","transport_unequal_coupled_finest_errors.csv":"Unequal-rate pointwise errors","transport_high_mixing_finest_errors.csv":"High-mixing pointwise errors","transport_near_degenerate_finest_errors.csv":"Near-degenerate pointwise errors","transport_convergence.csv":"Transport error curve","finest_step_trajectory.csv":"Finest-step pointwise errors","mechanics_pointwise_errors.csv":"Mechanics pointwise errors","mechanics_boundary_errors.csv":"Mechanics boundary errors","transport_trajectory.csv":"Transport trajectory","well_mixed_reference.csv":"Single-compartment reference","mechanics_trajectory.csv":"Mechanics trajectory","elastic_reference.csv":"Elastic reference","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
     for (const filename of bundle.outputs || []) {
       if (!labelsByFile[filename]) continue;
       links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));
@@ -805,6 +871,7 @@ async function renderArea() {
   $('#run-detail').replaceChildren(); $('#notice').hidden = true;
   selectedCampaignId = null; $('#link-campaign').checked = false;
   renderBlueprint(); renderFindings(); renderNotes(); renderCampaign(); await loadRunPage(0); await renderResults();
+  if(activeTab==='study-design')await loadResearchRecords(0);
   if (selected === 'ectogenesis' && activeTab === 'model-bench') {
     renderModelBench();
     await refreshModelBench();
@@ -964,7 +1031,29 @@ function renderCampaignRuns() {
 $$('[data-tab]').forEach(button => button.addEventListener('click',task(async () => {
   switchTab(button.dataset.tab);
   if (button.dataset.tab === 'model-bench') await refreshModelBench();
+  if (button.dataset.tab === 'study-design') await loadResearchRecords(0);
 })));
+$('#research-record-type').addEventListener('change',event=>{
+  if($('#research-record-content').value.trim()&&!window.confirm('Discard the current structured content and load the selected template?')){
+    event.currentTarget.value=researchEditorType;return;
+  }
+  researchEditorType=event.currentTarget.value;researchRecordTemplate();
+});
+$('#research-record-new').addEventListener('click',()=>{
+  const form=$('#research-record-form');form.reset();form.elements.family_id.value='';form.elements.supersedes_revision_id.value='';
+  researchEditorType='question';researchRecordTemplate();form.elements.title.focus();
+});
+$('#research-record-form').addEventListener('submit',task(async event=>{
+  event.preventDefault();const form=event.currentTarget,blueprintAtStart=selected;
+  let content;try{content=JSON.parse($('#research-record-content').value);}catch{throw new Error('Structured content must be valid JSON. Start from the example shown in the editor.');}
+  const values=Object.fromEntries(new FormData(form));
+  const saved=await api('/api/research-records',{...values,blueprint_id:blueprintAtStart,content});
+  if(selected!==blueprintAtStart)return;
+  workspace.research_record_counts=workspace.research_record_counts||{};
+  workspace.research_record_counts[selected]=(workspace.research_record_counts[selected]||0)+1;
+  form.reset();form.elements.family_id.value='';form.elements.supersedes_revision_id.value='';researchEditorType='question';researchRecordTemplate();
+  await loadResearchRecords(0);notice(`${saved.record_type.replaceAll('_',' ')} revision ${saved.revision_number} saved with SHA-256 ${saved.content_sha256}.`);
+}));
 $('#source-filter').addEventListener('change',renderRecords); $('#record-filter').addEventListener('input',renderRecords);
 $('#passing-only').addEventListener('change',renderChemistry);
 $('#refresh-experiments').addEventListener('click',task(refreshExperiments));
@@ -1021,6 +1110,7 @@ $('#export').addEventListener('click',task(async () => {
 
 async function init() {
   workspace = await api('/api/state');
+  researchRecordTemplate();
   if (!workspace.blueprints.some(b => b.id === selected)) selected = workspace.blueprints[0].id;
   $('#compute-status').textContent = workspace.rdkit_available ? 'RDKit available · CPU' : 'RDKit unavailable';
   for (const provider of workspace.providers) {

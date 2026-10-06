@@ -32,6 +32,7 @@ STATIC = Path(__file__).with_name("desk")
 ECTOGENESIS_MODEL_ROOT = Path("/lab/ectogenesis-models")
 ECTOGENESIS_BUNDLE_KINDS = {
     "reviewed_evidence_map": "Evidence map",
+    "developmental_observation_intake": "Developmental observation intake",
     "synthetic_exchange_software_fixture": "Dimensionless exchange simulation",
     "synthetic_exchange_observability_diagnostic": "Dimensionless identifiability report",
     "synthetic_exchange_design_sweep": "Dimensionless cadence/noise design sweep",
@@ -80,6 +81,217 @@ EVIDENCE_RECORD_FIELDS = ("source_type", "source_title", "source_url", "license"
                           "developmental_interval", "model_system", "comparator", "outcome", "measure",
                           "value", "unit", "independent_unit", "sample_size", "follow_up", "status",
                           "direction", "notes", "dataset_sha256")
+RESEARCH_RECORD_TYPES = {"question", "dataset_card", "analysis_plan"}
+RESEARCH_ACCESS_STATES = {"public_open", "controlled", "request_required", "unavailable", "synthetic_example"}
+RESEARCH_HYPOTHESIS_ID = re.compile(r"[a-z0-9][a-z0-9_-]{1,63}")
+SHA256_HEX = re.compile(r"[0-9a-f]{64}")
+
+
+def research_text(value, label, maximum=4000, *, empty=False):
+    if not isinstance(value, str) or len(value) > maximum or (not empty and not value.strip()):
+        raise ValueError(f"{label} must be {'text' if empty else 'nonempty text'} of at most {maximum} characters")
+    return value.strip()
+
+
+def research_object(value, required, optional, label):
+    if not isinstance(value, dict) or set(value) - set(required) - set(optional) or set(required) - set(value):
+        raise ValueError(f"{label} must contain exactly its documented fields")
+    return value
+
+
+def research_choice(value, choices, label):
+    if not isinstance(value, str) or value not in choices:
+        raise ValueError(f"Unknown {label}")
+    return value
+
+
+def _research_string_list(value, label, *, minimum=0, maximum=30, item_max=500):
+    if (not isinstance(value, list) or not minimum <= len(value) <= maximum
+            or not all(isinstance(item, str) and 1 <= len(item.strip()) <= item_max for item in value)):
+        raise ValueError(f"{label} must contain {minimum}-{maximum} text items")
+    return [item.strip() for item in value]
+
+
+def validate_research_content(record_type, content):
+    """Validate a method-neutral, non-executable scientific record revision."""
+    if not isinstance(content, dict):
+        raise ValueError("Research record content must be a JSON object")
+    if record_type == "question":
+        value = research_object(content, {"question", "scope", "claim_boundary", "hypotheses", "source_refs"}, set(), "Question content")
+        for field, limit in (("question", 2000), ("scope", 3000), ("claim_boundary", 3000)):
+            value[field] = research_text(value[field], f"Question {field}", limit)
+        hypotheses = value["hypotheses"]
+        if not isinstance(hypotheses, list) or not 2 <= len(hypotheses) <= 8:
+            raise ValueError("Question records need 2-8 competing hypotheses")
+        seen = set()
+        for hypothesis in hypotheses:
+            hypothesis = research_object(hypothesis, {"id", "prediction", "falsifier"}, set(), "Hypothesis")
+            identifier = research_text(hypothesis["id"], "Hypothesis ID", 64)
+            if not RESEARCH_HYPOTHESIS_ID.fullmatch(identifier) or identifier in seen:
+                raise ValueError("Hypothesis IDs must be unique lower-case identifiers")
+            seen.add(identifier)
+            hypothesis["prediction"] = research_text(hypothesis["prediction"], "Hypothesis prediction", 2000)
+            hypothesis["falsifier"] = research_text(hypothesis["falsifier"], "Hypothesis falsifier", 2000)
+        source_refs = value["source_refs"]
+        if not isinstance(source_refs, list) or len(source_refs) > 50:
+            raise ValueError("Question source_refs must be a list of at most 50 citations")
+        for source in source_refs:
+            source = research_object(source, {"label", "url"}, set(), "Question source reference")
+            source["label"] = research_text(source["label"], "Source label", 500)
+            source["url"] = research_text(source["url"], "Source URL", 3000)
+            if not public_url(source["url"]):
+                raise ValueError("Question citations must use a valid http(s) URL")
+        return value
+
+    if record_type == "dataset_card":
+        required = {"citation", "source_url", "access_status", "license", "scope", "species_or_model",
+                    "stage_or_interval", "data_granularity", "files",
+                    "unit_hierarchy", "independent_unit_level", "observed_quantities", "groups",
+                    "missingness", "exclusions"}
+        value = research_object(content, required, set(), "Dataset-card content")
+        for field, limit in (("citation", 2000), ("source_url", 3000), ("license", 200),
+                             ("scope", 3000), ("species_or_model", 500), ("stage_or_interval", 500),
+                             ("independent_unit_level", 300),
+                             ("missingness", 3000), ("exclusions", 3000)):
+            value[field] = research_text(value[field], f"Dataset {field}", limit,
+                                         empty=field in {"source_url", "license", "species_or_model",
+                                                         "stage_or_interval", "missingness", "exclusions"})
+        if value["source_url"] and not public_url(value["source_url"]):
+            raise ValueError("Dataset source_url must be a valid http(s) URL")
+        research_choice(value["access_status"], RESEARCH_ACCESS_STATES, "dataset access status")
+        research_choice(value["data_granularity"], {"individual_level", "summary_only", "mixed", "unknown"},
+                        "dataset data granularity")
+        files = value["files"]
+        if not isinstance(files, list) or not 1 <= len(files) <= 50:
+            raise ValueError("Dataset cards need 1-50 exact source files")
+        filenames = set()
+        for item in files:
+            item = research_object(item, {"path", "format", "sha256", "rows"}, set(), "Dataset file")
+            path = research_text(item["path"], "Dataset file path", 500)
+            parts = path.replace("\\", "/").split("/")
+            if (path.startswith(("/", "\\")) or re.match(r"^[A-Za-z]:", path)
+                    or any(part in {"", ".", ".."} for part in parts)):
+                raise ValueError("Dataset file paths must be nonempty relative paths without dot segments")
+            if path in filenames:
+                raise ValueError("Dataset file paths must be unique")
+            filenames.add(path)
+            item["path"] = path
+            item["format"] = research_text(item["format"], "Dataset file format", 80)
+            digest = item["sha256"]
+            if digest is not None and (not isinstance(digest, str) or not SHA256_HEX.fullmatch(digest)):
+                raise ValueError("Dataset file sha256 must be 64 lower-case hexadecimal characters or null")
+            rows = item["rows"]
+            if rows is not None and (isinstance(rows, bool) or not isinstance(rows, int) or not 0 <= rows <= 1_000_000_000_000):
+                raise ValueError("Dataset file rows must be an integer from zero through one trillion or null")
+        hierarchy = value["unit_hierarchy"]
+        if not isinstance(hierarchy, list) or len(hierarchy) > 20:
+            raise ValueError("Dataset unit_hierarchy must contain at most 20 levels")
+        level_names = set()
+        for level in hierarchy:
+            level = research_object(level, {"level", "kind", "source_field", "identity_status"}, set(), "Unit hierarchy level")
+            level["level"] = research_text(level["level"], "Unit level", 200)
+            if level["level"] in level_names:
+                raise ValueError("Unit hierarchy level names must be unique")
+            level_names.add(level["level"])
+            level["kind"] = research_text(level["kind"], "Unit kind", 200)
+            level["source_field"] = research_text(level["source_field"], "Unit source field", 200, empty=True)
+            research_choice(level["identity_status"], {"reported", "not_reported", "unclear"},
+                            "unit identity_status")
+        value["independent_unit_level"] = research_text(value["independent_unit_level"], "Independent-unit level", 300)
+        if value["independent_unit_level"] != "not_reported" and value["independent_unit_level"] not in level_names:
+            raise ValueError("independent_unit_level must name a declared hierarchy level or be not_reported")
+        quantities = value["observed_quantities"]
+        if not isinstance(quantities, list) or len(quantities) > 100:
+            raise ValueError("observed_quantities must contain at most 100 endpoints")
+        for quantity in quantities:
+            quantity = research_object(quantity, {"endpoint", "unit", "measurement_role", "calibration_status"}, set(), "Observed quantity")
+            for field, limit in (("endpoint", 500), ("unit", 120), ("measurement_role", 200)):
+                quantity[field] = research_text(quantity[field], f"Observed quantity {field}", limit)
+            research_choice(quantity["calibration_status"],
+                            {"documented", "not_documented", "not_applicable", "not_reported"},
+                            "quantity calibration_status")
+        groups = value["groups"]
+        if not isinstance(groups, list) or len(groups) > 50:
+            raise ValueError("Dataset groups must contain at most 50 definitions")
+        for group in groups:
+            group = research_object(group, {"label", "source_fields", "role"}, set(), "Dataset group")
+            group["label"] = research_text(group["label"], "Group label", 200)
+            group["source_fields"] = _research_string_list(group["source_fields"], "Group source_fields", minimum=1, maximum=20, item_max=200)
+            group["role"] = research_text(group["role"], "Group role", 500)
+        return value
+
+    if record_type == "analysis_plan":
+        required = {"question_revision_id", "dataset_revision_ids", "estimand", "primary_outcome",
+                    "alternatives", "baseline", "split", "uncertainty", "missingness_rule",
+                    "confounding", "falsification_rule", "ambiguity_rule", "analysis_status"}
+        value = research_object(content, required, set(), "Analysis-plan content")
+        value["question_revision_id"] = research_text(value["question_revision_id"], "Question revision ID", 64)
+        datasets = value["dataset_revision_ids"]
+        if (not isinstance(datasets, list) or not 1 <= len(datasets) <= 20
+                or not all(isinstance(item, str) and 1 <= len(item) <= 64 for item in datasets)
+                or len(set(datasets)) != len(datasets)):
+            raise ValueError("Analysis plans need 1-20 unique dataset-card revision IDs")
+        for field, limit in (("estimand", 2000), ("baseline", 2000), ("split", 2000),
+                             ("uncertainty", 2000), ("missingness_rule", 2000),
+                             ("confounding", 2000), ("falsification_rule", 2000),
+                             ("ambiguity_rule", 2000)):
+            value[field] = research_text(value[field], f"Analysis plan {field}", limit)
+        outcome = research_object(value["primary_outcome"], {"endpoint", "unit", "timepoint", "comparator", "independent_unit"}, set(), "Primary outcome")
+        for field in outcome:
+            outcome[field] = research_text(outcome[field], f"Primary outcome {field}", 500)
+        alternatives = value["alternatives"]
+        if not isinstance(alternatives, list) or not 2 <= len(alternatives) <= 8:
+            raise ValueError("Analysis plans need predictions for at least two alternatives")
+        hypothesis_ids = set()
+        for alternative in alternatives:
+            alternative = research_object(alternative, {"hypothesis_id", "prediction"}, set(), "Plan alternative")
+            hypothesis_id = research_text(alternative["hypothesis_id"], "Plan hypothesis ID", 64)
+            if hypothesis_id in hypothesis_ids:
+                raise ValueError("Plan hypothesis references must be unique")
+            hypothesis_ids.add(hypothesis_id)
+            alternative["prediction"] = research_text(alternative["prediction"], "Alternative prediction", 2000)
+        research_choice(value["analysis_status"], {"exploratory", "proposed_confirmatory"},
+                        "analysis status")
+        return value
+    raise ValueError("Unknown research record type")
+
+
+def dataset_qualification_gaps(content):
+    gaps = []
+    if not content["species_or_model"].strip():
+        gaps.append("Species or model is not specified.")
+    if not content["stage_or_interval"].strip():
+        gaps.append("Developmental or experimental interval is not specified.")
+    if content["data_granularity"] in {"summary_only", "mixed", "unknown"}:
+        gaps.append("Individual-record availability is not established for every source file.")
+    if content["access_status"] != "public_open":
+        gaps.append("Public file access is not established.")
+    if any(item["sha256"] is None for item in content["files"]):
+        gaps.append("At least one exact source-file SHA-256 is missing.")
+    if content["independent_unit_level"] == "not_reported" or not any(
+            item["level"] == content["independent_unit_level"] and item["identity_status"] == "reported"
+            for item in content["unit_hierarchy"]):
+        gaps.append("An identified independent-unit level is not recorded.")
+    if not content["observed_quantities"]:
+        gaps.append("No observed endpoint and reported unit are recorded.")
+    if any(item["calibration_status"] in {"not_documented", "not_reported"}
+           for item in content["observed_quantities"]):
+        gaps.append("Calibration status is missing for at least one endpoint.")
+    if not content["groups"]:
+        gaps.append("No source-defined comparison groups are recorded.")
+    if any(item["rows"] is None for item in content["files"]):
+        gaps.append("At least one file row count is not recorded.")
+    if not content["missingness"]:
+        gaps.append("Missingness has not been described.")
+    if not content["exclusions"]:
+        gaps.append("Exclusions have not been described.")
+    return gaps
+
+
+def research_record_hash(record_type, title, content):
+    canonical = json.dumps({"record_type": record_type, "title": title, "content": content},
+                           ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def experiment_manifest_tools():
@@ -183,13 +395,14 @@ def ectogenesis_artifact_bundle(path):
         if not isinstance(implementation, dict) or not 1 <= len(implementation) <= 64:
             raise ValueError
         if any(not isinstance(name, str)
-               or not re.fullmatch(r"(?:src/wombmodels/[A-Za-z0-9_.-]+\.py|pyproject\.toml)", name)
+               or not re.fullmatch(r"(?:src/wombmodels/[A-Za-z0-9_.-]+\.py|schemas/[A-Za-z0-9_.-]+\.json|pyproject\.toml)", name)
                or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)
                for name, digest in implementation.items()):
             raise ValueError
         if not isinstance(receipt.get("metadata"), dict):
             raise ValueError
         input_file = {"reviewed_evidence_map": "input_ledger.json",
+                      "developmental_observation_intake": "input_dataset.json",
                       "synthetic_exchange_software_fixture": "input_config.json",
                       "synthetic_exchange_observability_diagnostic": "source_manifest.json",
                       "synthetic_exchange_design_sweep": "input_config.json",
@@ -228,6 +441,7 @@ def ectogenesis_artifact_bundle(path):
                 raise ValueError
         summary = {}
         summary_file = {"reviewed_evidence_map": "evidence_report.json",
+                        "developmental_observation_intake": "observation_intake_report.json",
                         "synthetic_exchange_software_fixture": "simulation_summary.json",
                         "synthetic_exchange_observability_diagnostic": "observability_report.json",
                         "synthetic_exchange_design_sweep": "design_sweep_report.json",
@@ -262,6 +476,71 @@ def ectogenesis_artifact_bundle(path):
                            claim_count=len(detail.get("claims", [])),
                            requirement_count=len(detail.get("requirements", [])),
                            reviewed_on=detail.get("reviewed_on"))
+        elif kind == "developmental_observation_intake":
+            required_outputs = {"observation_intake_report.json", "observation_records.csv",
+                                "interval_groups.csv", "transitions.csv", "REPORT.md"}
+            metadata = receipt["metadata"]
+            groups = detail.get("groups")
+            warnings = detail.get("warnings")
+            if (detail.get("report_kind") != kind
+                    or detail.get("biological_assay_performed") is not False
+                    or detail.get("analysis_eligibility") !=
+                    "requires source-specific human review and a frozen analysis plan"
+                    or not required_outputs.issubset(outputs)
+                    or not isinstance(metadata.get("dataset_id"), str)
+                    or detail.get("dataset_id") != metadata.get("dataset_id")
+                    or detail.get("source_revision_id") != metadata.get("source_revision_id")
+                    or detail.get("source_review_status") != metadata.get("source_review_status")
+                    or detail.get("source_review_status") not in {
+                        "candidate", "locally_reviewed_included", "locally_reviewed_excluded"}
+                    or not isinstance(groups, list) or len(groups) > 5000
+                    or isinstance(detail.get("n_groups_in_report"), bool)
+                    or not isinstance(detail.get("n_groups_in_report"), int)
+                    or detail["n_groups_in_report"] != len(groups)
+                    or detail.get("groups_truncated") is not (detail.get("n_exact_comparison_groups", 0) > 100)
+                    or not isinstance(warnings, list) or len(warnings) > 20
+                    or not isinstance(detail.get("limitations"), list)
+                    or not all(isinstance(item, str) and len(item) <= 2000 for item in warnings)):
+                raise ValueError
+            counts = ("n_source_artifacts", "n_observation_records", "n_exact_comparison_groups",
+                      "n_transitions", "n_continuity_not_reported")
+            if any(isinstance(detail.get(name), bool) or not isinstance(detail.get(name), int)
+                   or not 0 <= detail[name] <= 5000 for name in counts):
+                raise ValueError
+            if (detail["n_groups_in_report"] != min(detail["n_exact_comparison_groups"], 100)
+                    or detail["n_continuity_not_reported"] > detail["n_transitions"]
+                    or detail["n_observation_records"] < 1 or detail["n_source_artifacts"] < 1
+                    or detail["n_source_artifacts"] > 100 or detail["n_transitions"] > 500):
+                raise ValueError
+            required_group_fields = {"group_id", "species", "stage_track", "interval_label", "interval_unit",
+                                     "model_system", "assay", "endpoint", "unit", "measurement_role",
+                                     "source_artifact_id", "n_records", "n_distinct_reported_unit_keys", "record_ids"}
+            seen_groups = set()
+            for group in groups:
+                if (not isinstance(group, dict) or not required_group_fields.issubset(group)
+                        or not all(isinstance(group.get(field), str)
+                                   and len(group[field]) <= (100_000 if field == "record_ids" else 500)
+                                   for field in required_group_fields - {"n_records", "n_distinct_reported_unit_keys"})
+                        or not re.fullmatch(r"g[0-9]{4}", group["group_id"])
+                        or group["group_id"] in seen_groups
+                        or any(isinstance(group.get(field), bool) or not isinstance(group.get(field), int)
+                               or not 0 <= group[field] <= detail["n_observation_records"]
+                               for field in ("n_records", "n_distinct_reported_unit_keys"))
+                        or group["n_records"] < 1
+                        or group["n_distinct_reported_unit_keys"] > group["n_records"]):
+                    raise ValueError
+                seen_groups.add(group["group_id"])
+            summary.update(dataset_id=detail["dataset_id"], title=detail.get("title"),
+                           source_revision_id=detail["source_revision_id"],
+                           source_review_status=detail["source_review_status"],
+                           n_source_artifacts=detail["n_source_artifacts"],
+                           n_observation_records=detail["n_observation_records"],
+                           n_exact_comparison_groups=detail["n_exact_comparison_groups"],
+                           n_transitions=detail["n_transitions"],
+                           n_continuity_not_reported=detail["n_continuity_not_reported"],
+                           analysis_eligibility=detail["analysis_eligibility"], groups=groups,
+                           groups_truncated=detail["groups_truncated"],
+                           warnings=warnings)
         elif kind == "synthetic_exchange_software_fixture":
             if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in
                    ("biological_assay_performed", "physiologically_calibrated", "human_gestation_prediction"))):
@@ -915,6 +1194,7 @@ class Desk:
         self.store = json.loads(self.store_path.read_text(encoding="utf-8")) if self.store_path.exists() else {"blueprints": seeds["blueprints"], "notes": [], "campaigns": []}
         self.store.setdefault("campaigns", [])
         self.store.setdefault("notes", [])
+        self.store.setdefault("research_records", [])
         self.campaign_frameworks = seeds.get("campaign_frameworks", {})
         self.campaign_starters = seeds.get("campaign_starters", {})
         known = {item["id"] for item in self.store["blueprints"]}
@@ -1093,12 +1373,140 @@ class Desk:
             self.save_store()
         return item
 
+    def research_record(self, data):
+        """Append an immutable question, dataset-card, or analysis-plan revision."""
+        record_type = text_field(data, "record_type", maximum=32)
+        if record_type not in RESEARCH_RECORD_TYPES:
+            raise ValueError("Unknown research record type")
+        blueprint_id = text_field(data, "blueprint_id", maximum=64)
+        title = research_text(data.get("title"), "Research record title", 300)
+        family_id = text_field(data, "family_id", maximum=64)
+        supersedes_id = text_field(data, "supersedes_revision_id", maximum=64)
+        content = validate_research_content(record_type, data.get("content"))
+        try:
+            content_hash = research_record_hash(record_type, title, content)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("Research record must contain finite JSON values") from exc
+        if len(json.dumps(content, ensure_ascii=False, separators=(",", ":"), allow_nan=False).encode("utf-8")) > 32_000:
+            raise ValueError("Research record content exceeds 32 KB")
+        with self.lock:
+            if not any(item["id"] == blueprint_id for item in self.store["blueprints"]):
+                raise ValueError("Unknown research area")
+            family = [item for item in self.store["research_records"]
+                      if item["family_id"] == family_id and item["blueprint_id"] == blueprint_id]
+            if family_id:
+                if not family or any(item["record_type"] != record_type for item in family):
+                    raise ValueError("Revision family does not match a saved research record")
+                latest = max(family, key=lambda item: item["revision_number"])
+                if research_record_hash(latest["record_type"], latest["title"], latest["content"]) != latest["content_sha256"]:
+                    raise ValueError("The current research revision failed its content hash check")
+                if supersedes_id != latest["revision_id"]:
+                    raise ValueError("Create a new revision from the current family revision")
+                revision_number = latest["revision_number"] + 1
+            else:
+                if supersedes_id:
+                    raise ValueError("A new research record cannot supersede an unrelated revision")
+                family_id = uuid.uuid4().hex
+                revision_number = 1
+            dependencies = []
+            if record_type == "analysis_plan":
+                question = next((item for item in self.store["research_records"]
+                                 if item["revision_id"] == content["question_revision_id"]
+                                 and item["blueprint_id"] == blueprint_id
+                                 and item["record_type"] == "question"), None)
+                if question is None:
+                    raise ValueError("Analysis plans must reference a saved question revision in this research area")
+                if research_record_hash(question["record_type"], question["title"], question["content"]) != question["content_sha256"]:
+                    raise ValueError("The linked question revision failed its content hash check")
+                hypothesis_ids = {item["id"] for item in question["content"]["hypotheses"]}
+                plan_hypothesis_ids = {item["hypothesis_id"] for item in content["alternatives"]}
+                if not plan_hypothesis_ids.issubset(hypothesis_ids):
+                    raise ValueError("Plan alternatives must use hypothesis IDs from the linked question")
+                dataset_ids = set(content["dataset_revision_ids"])
+                cards = [item for item in self.store["research_records"]
+                         if item["revision_id"] in dataset_ids and item["blueprint_id"] == blueprint_id
+                         and item["record_type"] == "dataset_card"]
+                if len(cards) != len(dataset_ids):
+                    raise ValueError("Analysis plans must reference saved dataset-card revisions in this research area")
+                if any(research_record_hash(item["record_type"], item["title"], item["content"])
+                       != item["content_sha256"] for item in cards):
+                    raise ValueError("A linked dataset-card revision failed its content hash check")
+                dependencies = [question["revision_id"], *sorted(dataset_ids)]
+            record = {
+                "revision_id": uuid.uuid4().hex,
+                "family_id": family_id,
+                "revision_number": revision_number,
+                "record_type": record_type,
+                "blueprint_id": blueprint_id,
+                "title": title,
+                "content": content,
+                "content_sha256": content_hash,
+                "supersedes_revision_id": supersedes_id or None,
+                "dependency_revision_ids": dependencies,
+                "record_state": "draft",
+                "source_urls_fetched": False,
+                "created_utc": regen.now(),
+            }
+            if record_type == "dataset_card":
+                record["data_qualification_gaps"] = dataset_qualification_gaps(content)
+            self.store["research_records"].append(record)
+            if len(self.store["research_records"]) > 1000:
+                self.store["research_records"].pop()
+                raise ValueError("This workspace has reached the 1000 research-revision limit")
+            self.save_store()
+            return dict(record)
+
+    def research_record_state(self, blueprint_id):
+        with self.lock:
+            records = [dict(item) for item in self.store["research_records"]
+                       if item["blueprint_id"] == blueprint_id]
+        for item in records:
+            try:
+                item["content_integrity_valid"] = (
+                    research_record_hash(item["record_type"], item["title"], item["content"])
+                    == item["content_sha256"])
+            except (KeyError, TypeError, ValueError):
+                item["content_integrity_valid"] = False
+            if item.get("record_type") == "dataset_card" and isinstance(item.get("content"), dict):
+                try:
+                    item["data_qualification_gaps"] = dataset_qualification_gaps(item["content"])
+                except (KeyError, TypeError):
+                    item["data_qualification_gaps"] = ["Dataset-card content failed its structural check."]
+            if item.get("record_type") == "analysis_plan" and isinstance(item.get("content"), dict):
+                question_id = item["content"].get("question_revision_id")
+                dataset_ids = item["content"].get("dataset_revision_ids", [])
+                item["dependency_revision_ids"] = ([question_id] + dataset_ids
+                                                    if isinstance(question_id, str)
+                                                    and isinstance(dataset_ids, list)
+                                                    and all(isinstance(value, str) for value in dataset_ids)
+                                                    else [])
+            else:
+                item["dependency_revision_ids"] = []
+        superseded = {item["supersedes_revision_id"] for item in records if item.get("supersedes_revision_id")}
+        current_ids = {item["revision_id"] for item in records
+                       if item["revision_id"] not in superseded and item["content_integrity_valid"]}
+        for item in records:
+            item["is_current_revision"] = item["revision_id"] not in superseded
+            item["stale_dependency_revision_ids"] = [value for value in item.get("dependency_revision_ids", [])
+                                                       if value not in current_ids]
+        return sorted(records, key=lambda item: (item["created_utc"], item["revision_number"]), reverse=True)
+
+    def research_record_page(self, blueprint_id, offset=0, limit=20):
+        if not any(item["id"] == blueprint_id for item in self.store["blueprints"]):
+            raise ValueError("Unknown research area")
+        rows = self.research_record_state(blueprint_id)
+        return {"records": rows[offset:offset + limit], "offset": offset, "limit": limit, "total": len(rows)}
+
     def state(self):
         with self.lock:
             runs = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
             runs.sort(key=lambda r: r["created_utc"], reverse=True)
             tools = self.docking_tool_status()
-            return {**self.store, "findings": self.seed_findings, "runs": [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "campaign_id", "created_utc", "status", "error", "summary")} for r in runs[:100]],
+            record_counts = {blueprint["id"]: sum(1 for item in self.store["research_records"]
+                                                  if item["blueprint_id"] == blueprint["id"])
+                             for blueprint in self.store["blueprints"]}
+            return {**self.store, "research_records": [], "research_record_counts": record_counts,
+                    "findings": self.seed_findings, "runs": [{k: r.get(k) for k in ("id", "kind", "blueprint_id", "campaign_id", "created_utc", "status", "error", "summary")} for r in runs[:100]],
                     "providers": [{"id": k, "name": v[0], "key_configured": bool(os.environ.get(v[1], "")) if v[1] else None, "key_required": v[2]} for k, v in PROVIDERS.items()],
                     "campaign_frameworks": self.campaign_frameworks,
                     "campaign_starters": self.campaign_starters,
@@ -1721,6 +2129,7 @@ class Desk:
             all_notes = [n for n in self.store["notes"] if n["blueprint_id"] == blueprint_id]
             notes = all_notes if include_notes else []
             campaigns = [c for c in self.store["campaigns"] if c["blueprint_id"] == blueprint_id]
+            research_records = self.research_record_state(blueprint_id)
             runs = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
             runs = sorted((r for r in runs if r.get("blueprint_id") == blueprint_id), key=lambda r: r["created_utc"])
         for run in runs:
@@ -1735,6 +2144,16 @@ class Desk:
         parts.append("## Source-reviewed starting points")
         for finding in findings:
             parts.append(f"- {finding['claim']} {finding['boundary']} Source: {finding['url']}")
+        parts.append("## Immutable research-design revisions")
+        if research_records:
+            for record in research_records:
+                state = "current revision" if record["is_current_revision"] else "superseded revision"
+                stale = ("; stale dependencies: " + ", ".join(record["stale_dependency_revision_ids"])
+                         if record["stale_dependency_revision_ids"] else "")
+                parts.append(f"- {record['record_type']} · {record['title']} · revision {record['revision_number']} · {state} · SHA-256 {record['content_sha256']}{stale}")
+        else:
+            parts.append("No question, dataset-card or analysis-plan revisions have been recorded.")
+        parts.append("Citation URLs in these records are stored as references and were not fetched by ResearchDesk. Draft plans do not execute analyses or establish dataset eligibility.")
         parts.append("## Target-centered campaigns")
         for campaign in campaigns:
             parts.append(f"### {campaign['title']} - {campaign['target']}")
@@ -1786,7 +2205,10 @@ class Desk:
             for bundle in linked_research["model_bundles"]:
                 parts.append(f"- Model bundle {bundle['bundle_id']} · {bundle['bundle_kind']} · receipt and {len(bundle['files'])-1} hash-matched outputs archived.")
                 parts.extend(f"  - {file['archive_path']} · SHA-256 {file['sha256']} · {file['bytes']} bytes" for file in bundle["files"])
-        return {"blueprint": blueprint, "campaigns": campaigns, "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs, "linked_research": linked_research, "markdown": "\n\n".join(parts), "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
+        return {"blueprint": blueprint, "campaigns": campaigns, "research_records": research_records,
+                "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs,
+                "linked_research": linked_research, "markdown": "\n\n".join(parts),
+                "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
 
     def export_archive(self, blueprint_id, include_notes=False):
         dossier = self.export(blueprint_id, include_notes=include_notes)
@@ -1803,6 +2225,11 @@ class Desk:
             dossier_blob = json.dumps(dossier, ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
             archive.writestr("dossier.json", dossier_blob)
             index.append({"path": "dossier.json", "sha256": hashlib.sha256(dossier_blob).hexdigest(), "bytes": len(dossier_blob)})
+            records_blob = json.dumps({"schema_version": 1, "records": dossier["research_records"]},
+                                      ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
+            archive.writestr("research_records.json", records_blob)
+            index.append({"path": "research_records.json", "sha256": hashlib.sha256(records_blob).hexdigest(),
+                          "bytes": len(records_blob)})
             for run in dossier["runs"]:
                 run_id = run.get("id", "")
                 if not re.fullmatch(r"[a-f0-9]{32}", run_id):
@@ -1925,6 +2352,14 @@ def make_handler(desk):
                     offset = bounded_int(int(query.get("offset", ["0"])[0]), 0, 1_000_000)
                     limit = bounded_int(int(query.get("limit", ["50"])[0]), 1, 100)
                     return self.send(200, desk.run_page(blueprint_id, offset, limit))
+                if route == "/api/research-records":
+                    query = parse_qs(urlsplit(self.path).query, keep_blank_values=True)
+                    blueprint_values = query.get("blueprint_id", [])
+                    if len(blueprint_values) != 1 or not blueprint_values[0]:
+                        raise ValueError("Select one research area")
+                    offset = bounded_int(int(query.get("offset", ["0"])[0]), 0, 1_000_000)
+                    limit = bounded_int(int(query.get("limit", ["20"])[0]), 1, 20)
+                    return self.send(200, desk.research_record_page(blueprint_values[0], offset, limit))
                 if route.startswith("/api/run/"):
                     return self.send(200, desk.run(route.rsplit("/", 1)[1]))
                 if route.startswith("/api/export/") and route.endswith(".zip"):
@@ -1960,7 +2395,9 @@ def make_handler(desk):
                 if not isinstance(data, dict):
                     raise ValueError("Expected a JSON object")
                 route = urlsplit(self.path).path
-                action = {"/api/jobs": desk.submit, "/api/blueprints": desk.blueprint, "/api/campaigns": desk.campaign, "/api/notes": desk.note}.get(route)
+                action = {"/api/jobs": desk.submit, "/api/blueprints": desk.blueprint,
+                          "/api/campaigns": desk.campaign, "/api/notes": desk.note,
+                          "/api/research-records": desk.research_record}.get(route)
                 if not action:
                     return self.send(404, {"error": "Not found"})
                 self.send(202 if route == "/api/jobs" else 200, action(data))

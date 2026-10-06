@@ -1,8 +1,9 @@
 # Research programs for ectogenesis and durable youthful function
 
-Planning revision: **2026-10-06**. All new milestones below are proposed.
-No new biological measurements, source-review signoffs or empirical validation
-are produced by this planning revision.
+Planning revision: **2026-10-06**. The Initial Release A software tranche below
+is implemented; remaining scientific gates and Releases B–D are proposed.
+No biological measurements, source-review signoffs or empirical validation
+are produced by this software tranche.
 
 The long-term goals remain complete artificial gestation and sustained
 youthful function. The useful near-term contribution is to identify a missing
@@ -228,21 +229,41 @@ predictions within their qualified scope.
 
 Reuse campaigns, typed source observations, experiment manifests, imported
 analysis history, receipt adapters and six outcome domains. Submitted jobs
-already retain a canonical campaign/parameter snapshot and hash. The missing
-feature is a first-class immutable scientific revision/review lifecycle, not
-basic run snapshots.
+already retain a canonical campaign/parameter snapshot and hash. The remaining
+work is to extend the new immutable draft records into source-review decisions,
+validated data eligibility, and run-to-revision bindings.
 
-| Proposed milestone | Concrete feature | Acceptance |
+| Milestone | Concrete feature | Current status | Acceptance |
 | --- | --- | --- |
-| **D1 — Scientific revisions** | Content-addressed question, hypothesis-set, source observation and review revisions; supersession and current pointers | Archived runs/dossiers resolve original revisions; source edits mark dependent plans/results stale |
-| **D2 — Dataset cards** | Access/license, exact file inventory, unit hierarchy, units/calibration, groups, age/stage, raw/aggregate status, exclusions | Invalid pooling and missing identities produce explicit scope restrictions; publication presence does not create a measurement |
-| **D3 — Discriminating plans** | Immutable method-neutral research plan with favored/simple/alternative explanations and opposing measurable predictions | Plans specify what would favor each explanation and what remains ambiguous; associations retain observational status |
-| **D4 — Frozen evaluation** | Pin dataset, preprocessing, split and method revisions; registry of bounded sibling receipt adapters | Every metric resolves to exact inputs/code; changing the plan yields a new exploratory revision; final-test access is recorded |
-| **D5 — Scientific review** | Append-only supported-within-scope/contradicted/inconclusive/not-testable decisions, rationale and next discriminator | Byte integrity, computational reproduction, accepted annotation and scientific review are distinct statuses |
-| **D6 — Portable reproduction** | Common bounded export collector, standalone verifier and reproduction manifest | A relocated dossier verifies; eligible public analyses rerun; missing/private inputs and corrupt/escaping files fail explicitly |
+| **D1 — Scientific revisions** | Content-addressed question, hypothesis-set, source observation and review revisions; supersession and current pointers | Partial: question revisions and supersession exist; source observations, reviews and run binding remain | Archived runs/dossiers resolve original revisions; source edits mark dependent plans/results stale |
+| **D2 — Dataset cards** | Access/license, exact file inventory, unit hierarchy, units/calibration, groups, age/stage, raw/aggregate status, exclusions | Partial: structured cards and gap reporting exist; external files and eligibility are not verified | Invalid pooling and missing identities produce explicit scope restrictions; publication presence does not create a measurement |
+| **D3 — Discriminating plans** | Immutable method-neutral research plan with favored/simple/alternative explanations and opposing measurable predictions | Partial: draft plan structure exists; it is not frozen or bound to a run | Plans specify what would favor each explanation and what remains ambiguous; associations retain observational status |
+| **D4 — Frozen evaluation** | Pin dataset, preprocessing, split and method revisions; registry of bounded sibling receipt adapters | Proposed | Every metric resolves to exact inputs/code; changing the plan yields a new exploratory revision; final-test access is recorded |
+| **D5 — Scientific review** | Append-only supported-within-scope/contradicted/inconclusive/not-testable decisions, rationale and next discriminator | Proposed | Byte integrity, computational reproduction, accepted annotation and scientific review are distinct statuses |
+| **D6 — Portable reproduction** | Common bounded export collector, standalone verifier and reproduction manifest | Proposed | A relocated dossier verifies; eligible public analyses rerun; missing/private inputs and corrupt/escaping files fail explicitly |
 
-Proposed plan fields, to be implemented through the existing
-`analysis_specification` artifact mechanism:
+### Initial Release A implementation (2026-10-06)
+
+ResearchDesk's Study design view now appends content-hashed question, dataset
+card and analysis-plan revisions. Plans link exact question and dataset-card
+revisions; a later edit marks dependent plans stale. Dataset cards record
+source/file metadata, stated access and license, species/model, stage/interval,
+data granularity, unit hierarchy, endpoints/units, calibration state, groups,
+missingness and exclusions. A deterministic gap list exposes absent fields;
+it is not an eligibility score. Supplied file hashes are metadata and are not
+checked against external bytes by this feature. Plans require multiple
+hypothesis-linked predictions, an estimand, outcome/unit/time, comparator, baseline, split,
+uncertainty, missingness, confounding, falsification and ambiguity rules.
+Dossier exports preserve the exact structured records and hashes.
+
+This is the first software tranche of D1–D3. It does not yet version source
+observation review decisions, authenticate a reviewer's identity, verify
+download rights or file availability, or bind submitted runs to scientific
+revisions. Plans remain drafts; D4 is required before they can serve as frozen
+evaluation records.
+
+Further D4 plan fields, to be pinned through the existing run submission and
+`analysis_specification` artifact mechanisms:
 
 ```text
 plan/revision, question revision hash, scope and claim boundary
@@ -256,10 +277,11 @@ exploratory/confirmatory status, evaluation and ambiguity criteria
 required outcome domains, source-review references and limitations
 ```
 
-The proposed UI progression is **Question → Alternatives → Data eligibility
-→ Frozen plan → Runs → Review**. Use validated selectors and source/quantity
-compatibility tables. Do not add browser-supplied shell execution or merge
-the sibling methods into the Desk.
+The UI progression is **Question → Alternatives → Data eligibility → Frozen
+plan → Runs → Review**. The Study design view now provides the first three
+draft record types. D4 will add validated selectors, source/quantity
+compatibility and immutable run bindings. Keep browser-supplied shell execution
+out of the Desk and keep sibling methods in their own repositories.
 
 ## 5. Sequence releases by evidence gates
 

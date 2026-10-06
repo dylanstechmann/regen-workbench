@@ -26,15 +26,16 @@ itself as well as outputs. Receipt and CSV interpretation use the same bounded
 bytes that were checked and retained. The UI explains unavailable forecast
 intervals and displays mechanics verification plus the seven-regime transport
 matrix, including its near-degenerate case. Jobs already retain canonical
-campaign/parameter submission snapshots; reviewed scientific revisions still
-need a first-class lifecycle.
-
-The next integrated milestone is one human-reviewed organoid measurement case
-carried from source images through frozen masks, grouped evaluation and a
-portable ResearchDesk dossier. In parallel, qualify placental/interface and
-paired aging-state datasets and freeze one discriminating question for each
-eligible pilot. Review agreement, morphology, model accuracy and biological
-function must remain separately labeled.
+campaign/parameter submission snapshots. The Study design view now stores
+content-hashed question, dataset-card and analysis-plan drafts, exact revision
+links and stale-plan detection. Dataset hashes remain user-supplied metadata;
+source-review decisions and run-to-revision binding remain open. The next
+integrated milestone is one human-reviewed organoid measurement case carried
+from source images through frozen masks, grouped evaluation and a portable
+ResearchDesk dossier. In parallel, qualify placental/interface and paired
+aging-state datasets and freeze one discriminating question for each eligible
+pilot. Review agreement, morphology, model accuracy and biological function
+must remain separately labeled.
 
 ## R1 — Preserve reviewed evidence and campaign revisions
 
