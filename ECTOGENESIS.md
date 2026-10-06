@@ -62,8 +62,10 @@ dependence on placement within the fixture. Generator-known rates are used only
 for post-fit software-recovery scoring. It
 does not fit hidden model states. Sweep summaries also report a same-run temporal
 holdout: rates fit from the first 70% of usable intervals score only later
-intervals from that generated run. This is an internal fit diagnostic, not
-independent validation. These values and alarm
+intervals from that generated run. A leave-one-seed-out fit uses other seeded
+runs of the same design to score an omitted run; it needs at least two runs.
+Both are internal software diagnostics because they share one fixture schedule,
+not independent experimental validation. These values and alarm
 thresholds are software fixtures, not measured physiology, life-support
 settings or a pregnancy-duration prediction. Evidence, simulation,
 observability and design-sweep bundles appear in Model bench after starting the

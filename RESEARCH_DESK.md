@@ -47,9 +47,13 @@ limitations. It shows
 reviewed evidence-map bundles, synthetic exchange runs and dimensionless
 identifiability diagnostics. It also displays a bounded cadence/noise/fault/
 event-timing sweep with seeded replicates and post-fit synthetic parameter-recovery
-summaries and same-run temporal holdout residuals. The holdout fits the first 70%
-of usable intervals and scores only later intervals from that generated run;
-it is an internal diagnostic, not independent validation. When outages or monitor faults are configured, it includes a reflected
+summaries, same-run temporal residuals and leave-one-seed-out residuals. The
+temporal holdout fits the first 70% of usable intervals and scores later
+intervals from that run. Leave-one-seed-out fits use other seeded runs of the
+same design to score an omitted run, and need at least two runs. Both remain
+internal software diagnostics because the simulations share one fixture
+schedule; they are not independent experimental validation. When outages or
+monitor faults are configured, it includes a reflected
 event-timing sensitivity profile that preserves interval lengths; this does not
 represent a realistic outage distribution. Sweep bundles expose a design-plan
 artifact with actual cadence/noise values and the configured/reflected intervals.
