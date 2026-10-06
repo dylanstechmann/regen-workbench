@@ -56,6 +56,11 @@ beside their simpler alternative equations. All values remain dimensionless;
 developmental tags do not calibrate a model to a species. A receipt establishes
 file integrity only. The model source and configurations are not mounted; only
 receipt-listed files inside recognized bundles can be opened through the UI.
+When two verified design sweeps use the same input hash and exact same design
+coordinates, the bench can show their reported medians side by side and the
+descriptive B−A difference. Missing metrics remain missing, estimable replicate
+counts stay visible, and implementation-hash changes are flagged. The comparison
+does not pool runs or rank models, and it carries no biological interpretation.
 
 - **Evidence:** PubMed, Europe PMC, OpenAlex, ClinicalTrials.gov, Semantic
   Scholar, CORE, Brave and Exa. Select sources and request 1-10 results each.

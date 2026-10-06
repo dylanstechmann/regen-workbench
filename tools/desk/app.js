@@ -7,6 +7,15 @@ const runCache = new Map();
 let experimentRecords = [];
 let modelArtifactState = null;
 const trajectoryCache = new Map();
+const sweepMetricOptions = [
+  ['median_prospective_forecast_rmse','Forward forecast RMSE'],
+  ['median_prospective_forecast_baseline_rmse','Last-reading baseline RMSE'],
+  ['median_prospective_forecast_coverage_95','Approx. 95% interval coverage'],
+  ['median_prospective_forecast_interval_width_95','Approx. 95% interval width'],
+  ['median_cross_replicate_holdout_fixture_scale_rmse','Leave-one-seed-out balance residual (not forecast)'],
+  ['median_temporal_holdout_fixture_scale_rmse','Same-run balance residual (not forecast)'],
+  ['median_design_condition_number','Balance-regression condition number'],
+];
 const labels = {title:'Blueprint name',area:'Research area',query:'Default search',question:'Research question',who:'Who / population / species',what:'What / mechanism / intervention',where:'Where / tissue / cell state',when:'When / time horizon',why:'Why / causal hypothesis',how:'How / computational approach',falsifier:'What would disprove the hypothesis?',desired_changes:'Desired changes / competing objectives'};
 const busy = new Set(['queued','running']);
 let refreshing = false;
@@ -186,6 +195,7 @@ function renderModelBench() {
   const state = modelArtifactState, status = $('#model-bench-status'), container = $('#model-bench-cards');
   container.replaceChildren();
   if (!state) {
+    $('#model-bench-comparison').hidden = true;
     status.replaceChildren(badge('Reports have not been loaded','unreviewed'));
     $('#model-bench-count').textContent = '';
     return;
@@ -193,6 +203,7 @@ function renderModelBench() {
   const verified = (state.bundles || []).filter(bundle => bundle.verified === true);
   $('#model-bench-count').textContent = verified.length ? String(verified.length) : '';
   status.replaceChildren(badge(state.available ? `${verified.length} hash-matched bundles` : 'Sibling artifact folder not mounted',state.available ? 'complete' : 'unreviewed'),el('span',state.message || ''));
+  renderModelBenchComparison(verified);
   if (!state.bundles?.length) {
     container.append(el('p',state.available
       ? 'No recognized receipt-bearing reports are available yet. Generate an evidence, simulation, identifiability, or design-sweep bundle in artificial-womb-models/artifacts, then refresh.'
@@ -258,17 +269,8 @@ function renderModelBench() {
       [...new Set(designSummaries.map(item=>item.monitor_fault_profile || 'not reported'))].forEach(value=>{const option=el('option',value);option.value=value;faultSelect.append(option);});
       const timingSelect = el('select'); timingSelect.setAttribute('aria-label','Filter event-timing profile');
       [...new Set(designSummaries.map(item=>item.event_timing_profile || 'not reported'))].forEach(value=>{const option=el('option',value);option.value=value;timingSelect.append(option);});
-      const metricOptions = [
-        ['median_prospective_forecast_rmse','Forward forecast RMSE'],
-        ['median_prospective_forecast_baseline_rmse','Last-reading baseline RMSE'],
-        ['median_prospective_forecast_coverage_95','Approx. 95% interval coverage'],
-        ['median_prospective_forecast_interval_width_95','Approx. 95% interval width'],
-        ['median_cross_replicate_holdout_fixture_scale_rmse','Leave-one-seed-out balance residual (not forecast)'],
-        ['median_temporal_holdout_fixture_scale_rmse','Same-run balance residual (not forecast)'],
-        ['median_design_condition_number','Balance-regression condition number'],
-      ];
       const metricSelect = el('select'); metricSelect.setAttribute('aria-label','Sweep metric');
-      metricOptions.forEach(([value,label])=>{const option=el('option',label);option.value=value;metricSelect.append(option);});
+      sweepMetricOptions.forEach(([value,label])=>{const option=el('option',label);option.value=value;metricSelect.append(option);});
       for (const [label,control] of [['Monitor-fault profile',faultSelect],['Event timing',timingSelect],['Metric',metricSelect]]) { const wrapper=el('label',label);wrapper.append(control);fields.append(wrapper); }
       card.append(fields);
       const matrixContainer = el('div',null,'model-bench-sweep-matrix');
@@ -313,6 +315,72 @@ function renderModelBench() {
     card.append(provenance);
     container.append(card);
   }
+}
+function renderModelBenchComparison(verified) {
+  const panel = $('#model-bench-comparison');
+  panel.replaceChildren();
+  panel.hidden = true;
+  const sweeps = verified.filter(bundle => bundle.bundle_kind === 'synthetic_exchange_design_sweep');
+  if (sweeps.length < 2) return;
+  panel.hidden = false;
+  const title = el('h3','Compare compatible design sweeps');
+  title.id = 'model-bench-comparison-title';
+  panel.append(title,el('p','Select two receipt-verified reports to compare matching dimensionless design conditions. Input hashes and complete coordinates must match; implementation-hash changes are called out. The difference is B−A between reported medians, with no pooling, model ranking, or biological inference.','boundary'));
+  const fields = el('div',null,'model-bench-sweep-controls model-bench-comparison-controls');
+  const selectA = el('select'); selectA.setAttribute('aria-label','First design-sweep bundle');
+  const selectB = el('select'); selectB.setAttribute('aria-label','Second design-sweep bundle');
+  const compatiblePair = (()=>{
+    const coordinateSet=bundle=>{
+      const rows=bundle.summary?.design_summaries;
+      if(!Array.isArray(rows)||!rows.length)return null;
+      const keys=rows.map(row=>JSON.stringify([row.cadence_factor_requested,row.noise_multiplier_requested,
+        row.monitor_fault_profile,row.event_timing_profile ?? null]));
+      return new Set(keys).size===keys.length ? new Set(keys) : null;
+    };
+    for(let i=0;i<sweeps.length;i++)for(let j=i+1;j<sweeps.length;j++){
+      if(sweeps[i].input_sha256!==sweeps[j].input_sha256)continue;
+      const left=coordinateSet(sweeps[i]),right=coordinateSet(sweeps[j]);
+      if(left&&right&&left.size===right.size&&[...left].every(key=>right.has(key)))return [i,j];
+    }
+    return null;
+  })();
+  const initialIndexes=compatiblePair || [0,1];
+  for (const [select,index] of [[selectA,initialIndexes[0]],[selectB,initialIndexes[1]]]) {
+    sweeps.forEach((bundle,i)=>{const option=el('option',`${bundle.bundle_id} · ${bundle.package_version || 'version not recorded'}`);option.value=bundle.bundle_id;select.append(option);});
+    select.selectedIndex = Math.min(index,sweeps.length-1);
+  }
+  const metric = el('select'); metric.setAttribute('aria-label','Comparison metric');
+  sweepMetricOptions.forEach(([value,label])=>{const option=el('option',label);option.value=value;metric.append(option);});
+  for (const [label,control] of [['Report A',selectA],['Report B',selectB],['Metric',metric]]) {const wrapper=el('label',label);wrapper.append(control);fields.append(wrapper);}
+  const resultPanel=el('div',null,'model-bench-comparison-result');
+  panel.append(fields,resultPanel);
+  let requestNumber=0;
+  const draw=async()=>{
+    const thisRequest=++requestNumber;
+    resultPanel.replaceChildren(el('p','Rechecking receipts and design coordinates…','boundary'));
+    const query=new URLSearchParams({bundle_a:selectA.value,bundle_b:selectB.value,metric:metric.value});
+    try {
+      const result=await api(`/api/ectogenesis/model-comparison?${query}`);
+      if(thisRequest!==requestNumber)return;
+      resultPanel.replaceChildren();
+      if (!result.compatible) {resultPanel.append(el('p',result.reason || 'These reports cannot be compared.','boundary'));return;}
+      const versions=`Report A ${result.bundle_a.bundle_id} (${result.bundle_a.package_version || 'version not recorded'}, ${result.bundle_a.n_synthetic_runs} seeded runs); Report B ${result.bundle_b.bundle_id} (${result.bundle_b.package_version || 'version not recorded'}, ${result.bundle_b.n_synthetic_runs} seeded runs).`;
+      resultPanel.append(el('p',`${versions} Implementation hashes ${result.implementation_hashes_match ? 'match' : 'differ'}. Input SHA-256: ${result.input_sha256}.`,'model-bench-id'));
+      const table=el('table',null,'model-bench-comparison-table'),head=el('tr');
+      for(const label of ['Design condition',`A · ${result.metric_label}`,'A estimable / total',`B · ${result.metric_label}`,'B estimable / total','B − A'])head.append(el('th',label));
+      const thead=el('thead');thead.append(head);const body=el('tbody');
+      for(const row of result.rows){
+        const c=row.coordinate, timing=c.event_timing_profile || 'timing not reported';
+        const condition=`${c.monitor_fault_profile} · ${timing} · ${modelNumber(c.cadence_factor_requested)}× cadence · ${modelNumber(c.noise_multiplier_requested)}× noise`;
+        const tr=el('tr');
+        for(const value of [condition,modelNumber(row.value_a),`${row.estimable_a ?? '—'} / ${row.replicates_a ?? '—'}`,modelNumber(row.value_b),`${row.estimable_b ?? '—'} / ${row.replicates_b ?? '—'}`,modelNumber(row.delta_b_minus_a)])tr.append(el('td',value));
+        body.append(tr);
+      }
+      table.append(thead,body);resultPanel.append(table,el('p',result.interpretation,'boundary'));
+    } catch(error) { if(thisRequest===requestNumber)resultPanel.replaceChildren(el('p',error.message || 'Comparison could not be loaded.','boundary')); }
+  };
+  for(const control of [selectA,selectB,metric])control.addEventListener('change',draw);
+  draw();
 }
 async function refreshModelBench() {
   if (selected !== 'ectogenesis') return;

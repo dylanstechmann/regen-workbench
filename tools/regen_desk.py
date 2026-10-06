@@ -38,6 +38,24 @@ ECTOGENESIS_BUNDLE_KINDS = {
     "dimensionless_transport_theory": "Dimensionless two-compartment transport theory",
     "dimensionless_mechanics_theory": "Dimensionless Kelvin–Voigt mechanics theory",
 }
+ECTOGENESIS_SWEEP_METRICS = {
+    "median_prospective_forecast_rmse": {
+        "label": "Forward forecast RMSE", "estimable_count": "prospective_forecast_estimable_replicates"},
+    "median_prospective_forecast_baseline_rmse": {
+        "label": "Last-reading baseline RMSE", "estimable_count": "prospective_forecast_estimable_replicates"},
+    "median_prospective_forecast_coverage_95": {
+        "label": "Approx. 95% interval coverage", "estimable_count": "prospective_forecast_interval_available_replicates"},
+    "median_prospective_forecast_interval_width_95": {
+        "label": "Approx. 95% interval width", "estimable_count": "prospective_forecast_interval_available_replicates"},
+    "median_cross_replicate_holdout_fixture_scale_rmse": {
+        "label": "Leave-one-seed-out balance residual (not forecast)",
+        "estimable_count": "cross_replicate_holdout_estimable_replicates"},
+    "median_temporal_holdout_fixture_scale_rmse": {
+        "label": "Same-run balance residual (not forecast)",
+        "estimable_count": "temporal_holdout_estimable_replicates"},
+    "median_design_condition_number": {
+        "label": "Balance-regression condition number", "estimable_count": "replicates"},
+}
 ECTOGENESIS_ARTIFACT_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,95}\.(?:json|csv|md)")
 ECTOGENESIS_BUNDLE_BYTE_LIMIT = 24_000_000
 PROVIDERS = {
@@ -265,6 +283,50 @@ def ectogenesis_artifact_bundle(path):
                     or isinstance(runs, bool) or not isinstance(runs, int) or not 1 <= runs <= 720
                     or isinstance(count, bool) or not isinstance(count, int) or count != len(designs)):
                 raise ValueError
+            coordinates = set()
+            replicate_total = 0
+            for item in designs:
+                cadence = item.get("cadence_factor_requested")
+                noise = item.get("noise_multiplier_requested")
+                fault_profile = item.get("monitor_fault_profile")
+                timing_profile = item.get("event_timing_profile")
+                if (isinstance(cadence, bool) or not isinstance(cadence, (int, float))
+                        or not math.isfinite(cadence) or cadence <= 0
+                        or isinstance(noise, bool) or not isinstance(noise, (int, float))
+                        or not math.isfinite(noise) or noise < 0
+                        or not isinstance(fault_profile, str) or not fault_profile or len(fault_profile) > 256
+                        or (timing_profile is not None and
+                            (not isinstance(timing_profile, str) or not timing_profile or len(timing_profile) > 256))):
+                    raise ValueError
+                coordinate = (float(cadence), float(noise), fault_profile, timing_profile)
+                if coordinate in coordinates:
+                    raise ValueError
+                coordinates.add(coordinate)
+                replicates = item.get("replicates")
+                if (isinstance(replicates, bool) or not isinstance(replicates, int)
+                        or not 1 <= replicates <= 720):
+                    raise ValueError
+                replicate_total += replicates
+                for name in ("actual_output_step", "actual_noise_sd"):
+                    value = item.get(name)
+                    if (isinstance(value, bool) or not isinstance(value, (int, float))
+                            or not math.isfinite(value) or (value <= 0 if name == "actual_output_step" else value < 0)):
+                        raise ValueError
+                for name in ECTOGENESIS_SWEEP_METRICS:
+                    value = item.get(name)
+                    if value is not None and (isinstance(value, bool) or not isinstance(value, (int, float))
+                                              or not math.isfinite(value)):
+                        raise ValueError
+                for name in ("prospective_forecast_estimable_replicates",
+                             "prospective_forecast_interval_available_replicates",
+                             "cross_replicate_holdout_estimable_replicates",
+                             "temporal_holdout_estimable_replicates"):
+                    value = item.get(name)
+                    if (value is not None and (isinstance(value, bool) or not isinstance(value, int)
+                                               or not 0 <= value <= replicates)):
+                        raise ValueError
+            if replicate_total != runs:
+                raise ValueError
             summary.update(n_designs=count, n_synthetic_runs=runs,
                            design_summaries=designs,
                            prospective_forecast_contract=detail.get("prospective_forecast_contract"),
@@ -297,6 +359,83 @@ def ectogenesis_artifact_bundle(path):
         return {"bundle_id": path.name, "verified": False,
                 "label": "Artifact bundle requires review",
                 "error": "Receipt, expected scope flags or output hashes did not validate."}
+
+
+def ectogenesis_artifact_bundle_by_id(root, bundle_id):
+    """Load one artifact only after validating its safe local identifier and receipt."""
+    if (not isinstance(bundle_id, str) or not re.fullmatch(r"[A-Za-z0-9._-]{1,255}", bundle_id)
+            or bundle_id in {".", ".."}):
+        raise FileNotFoundError
+    root = Path(root)
+    if root.is_symlink() or not root.is_dir():
+        raise FileNotFoundError
+    bundle = ectogenesis_artifact_bundle(root / bundle_id)
+    if bundle is None:
+        raise FileNotFoundError
+    if bundle.get("verified") is not True:
+        raise ValueError("Selected artifact bundle did not pass receipt verification")
+    return bundle
+
+
+def ectogenesis_design_sweep_comparison(bundle_a, bundle_b, metric):
+    """Compare summaries from compatible receipt-verified synthetic sweeps."""
+    if metric not in ECTOGENESIS_SWEEP_METRICS:
+        raise ValueError("Unsupported design-sweep metric")
+    descriptor = ECTOGENESIS_SWEEP_METRICS[metric]
+    if any(bundle.get("verified") is not True or
+           bundle.get("bundle_kind") != "synthetic_exchange_design_sweep"
+           for bundle in (bundle_a, bundle_b)):
+        return {"compatible": False, "reason": "Choose two receipt-verified design-sweep bundles."}
+    if bundle_a.get("bundle_id") == bundle_b.get("bundle_id"):
+        return {"compatible": False, "reason": "Choose two different bundles."}
+    if bundle_a.get("input_sha256") != bundle_b.get("input_sha256"):
+        return {"compatible": False, "reason": "Input configuration hashes differ."}
+
+    def index(bundle):
+        result = {}
+        for item in bundle.get("summary", {}).get("design_summaries", []):
+            coordinate = (float(item["cadence_factor_requested"]),
+                          float(item["noise_multiplier_requested"]),
+                          item["monitor_fault_profile"], item.get("event_timing_profile"))
+            if coordinate in result:
+                return None
+            result[coordinate] = item
+        return result
+
+    rows_a, rows_b = index(bundle_a), index(bundle_b)
+    if not rows_a or not rows_b or rows_a.keys() != rows_b.keys():
+        return {"compatible": False, "reason": "Design-condition coordinate sets differ."}
+
+    count_key = descriptor["estimable_count"]
+    rows = []
+    for coordinate in sorted(rows_a, key=lambda item: (item[0], item[1], item[2], item[3] or "")):
+        cadence, noise, fault_profile, timing_profile = coordinate
+        left, right = rows_a[coordinate], rows_b[coordinate]
+        value_a, value_b = left.get(metric), right.get(metric)
+        delta = value_b - value_a if value_a is not None and value_b is not None else None
+        rows.append({
+            "coordinate": {"cadence_factor_requested": cadence,
+                           "noise_multiplier_requested": noise,
+                           "monitor_fault_profile": fault_profile,
+                           "event_timing_profile": timing_profile},
+            "value_a": value_a, "value_b": value_b, "delta_b_minus_a": delta,
+            "estimable_a": left.get(count_key), "estimable_b": right.get(count_key),
+            "replicates_a": left.get("replicates"), "replicates_b": right.get("replicates"),
+        })
+    return {
+        "compatible": True, "metric": metric, "metric_label": descriptor["label"],
+        "input_sha256": bundle_a["input_sha256"],
+        "implementation_hashes_match": bundle_a.get("implementation_sha256") ==
+                                        bundle_b.get("implementation_sha256"),
+        "bundle_a": {"bundle_id": bundle_a["bundle_id"],
+                     "package_version": bundle_a.get("package_version"),
+                     "n_synthetic_runs": bundle_a["summary"].get("n_synthetic_runs")},
+        "bundle_b": {"bundle_id": bundle_b["bundle_id"],
+                     "package_version": bundle_b.get("package_version"),
+                     "n_synthetic_runs": bundle_b["summary"].get("n_synthetic_runs")},
+        "rows": rows,
+        "interpretation": "Descriptive differences between report medians; runs are not pooled and no model ranking or biological inference is made.",
+    }
 
 
 def ectogenesis_artifacts(root=ECTOGENESIS_MODEL_ROOT):
@@ -1493,6 +1632,17 @@ def make_handler(desk):
                     if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
                         raise ValueError("The ectogenesis research area is not configured")
                     return self.send(200, ectogenesis_artifacts())
+                if route == "/api/ectogenesis/model-comparison":
+                    if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
+                        raise ValueError("The ectogenesis research area is not configured")
+                    query = parse_qs(urlsplit(self.path).query, keep_blank_values=True)
+                    values = [query.get(name, []) for name in ("bundle_a", "bundle_b", "metric")]
+                    if any(len(items) != 1 or not items[0] for items in values):
+                        raise ValueError("Select two bundles and one design-sweep metric")
+                    bundle_a = ectogenesis_artifact_bundle_by_id(ECTOGENESIS_MODEL_ROOT, values[0][0])
+                    bundle_b = ectogenesis_artifact_bundle_by_id(ECTOGENESIS_MODEL_ROOT, values[1][0])
+                    result = ectogenesis_design_sweep_comparison(bundle_a, bundle_b, values[2][0])
+                    return self.send(200, result)
                 if route.startswith("/api/ectogenesis/model-artifact/"):
                     if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
                         raise ValueError("The ectogenesis research area is not configured")
