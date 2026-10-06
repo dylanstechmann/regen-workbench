@@ -29,6 +29,35 @@ delivery studies. They are curated context, not outputs of a newly run model.
 Adding new default areas on restart preserves saved blueprint changes and
 observations; existing areas are reordered without overwriting their fields.
 
+**Artificial wombs & ectogenesis** adds a separate developmental-bioengineering
+area after replacement organs. It preserves complete IVF-to-birth gestation as
+a theoretical ambition while tracking the actual species and developmental
+interval of each source. Starter campaigns cover capability gaps and growth
+comparisons during partial fetal support, including a source with impaired
+growth despite physiological maintenance. The sibling `artificial-womb-models`
+repository supplies the evidence ledger and dimensionless engineering fixtures.
+Use ordinary source searches, typed campaign observations and dossier exports
+to investigate it; these tools do not operate a biological-support device.
+
+The ectogenesis area also has a **Model bench** view. The ResearchDesk Compose
+service receives only `../artificial-womb-models/artifacts/`, mounted
+read-only. The view checks each bundle's receipt, source binding, output sizes
+and SHA-256 before displaying report/runtime provenance and the report's own
+limitations. It shows
+reviewed evidence-map bundles, synthetic exchange runs and dimensionless
+identifiability diagnostics. It also displays a bounded cadence/noise/fault/
+event-timing sweep with seeded replicates and post-fit synthetic parameter-recovery
+summaries. When outages or monitor faults are configured, it includes a reflected
+event-timing sensitivity profile that preserves interval lengths; this does not
+represent a realistic outage distribution. Sweep bundles expose a design-plan
+artifact with actual cadence/noise values and the configured/reflected intervals.
+Simulation reports can plot the receipt-checked dimensionless sensor trace,
+including scheduled gaps and modeled power states. A matching receipt means
+the listed bytes match that receipt; it does not establish the truth of a
+claim or the validity of a model. The model source and working configuration
+folders are not mounted; only safe, receipt-listed files within recognized
+bundle directories can be opened through the local interface.
+
 - **Evidence:** PubMed, Europe PMC, OpenAlex, ClinicalTrials.gov, Semantic
   Scholar, CORE, Brave and Exa. Select sources and request 1-10 results each.
   Bibliographic metadata is unreviewed until assessed. Registered/completed
@@ -61,7 +90,6 @@ observations; existing areas are reordered without overwriting their fields.
   Individual provider failures yield partial results. Interruptions and
   failures remain visible. History is paginated across all runs for the current
   blueprint. Exports include all persisted runs and their available artifacts.
-
 Export downloads a ZIP with dossier JSON, a research summary, a discussion
 draft, run snapshots, manifests and an artifact index. Manually entered notes
 are excluded by default; an explicit option includes them. It does not publish

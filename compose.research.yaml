@@ -22,6 +22,7 @@ services:
       - ./studies:/lab/workbench/studies:rw
       - ./data:/lab/data:rw
       - ./cache/gnina:/lab/cache/gnina:ro
+      - ../artificial-womb-models/artifacts:/lab/ectogenesis-models:ro
     read_only: true
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]

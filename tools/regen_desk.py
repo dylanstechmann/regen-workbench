@@ -21,7 +21,7 @@ from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import parse_qs, quote, urlencode, urlsplit
+from urllib.parse import parse_qs, quote, unquote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
 import regen
@@ -29,6 +29,15 @@ from regen_compute import compound_screen, manifest, write_json
 
 HOME = Path(__file__).resolve().parents[1]
 STATIC = Path(__file__).with_name("desk")
+ECTOGENESIS_MODEL_ROOT = Path("/lab/ectogenesis-models")
+ECTOGENESIS_BUNDLE_KINDS = {
+    "reviewed_evidence_map": "Evidence map",
+    "synthetic_exchange_software_fixture": "Dimensionless exchange simulation",
+    "synthetic_exchange_observability_diagnostic": "Dimensionless identifiability report",
+    "synthetic_exchange_design_sweep": "Dimensionless cadence/noise design sweep",
+}
+ECTOGENESIS_ARTIFACT_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,95}\.(?:json|csv|md)")
+ECTOGENESIS_BUNDLE_BYTE_LIMIT = 24_000_000
 PROVIDERS = {
     "pubmed": ("PubMed", "NCBI_API_KEY", False),
     "europepmc": ("Europe PMC", None, False),
@@ -46,57 +55,6 @@ EVIDENCE_STATUS = {"not assessed", "source reports positive signal", "source rep
 EVIDENCE_FIELDS = ("status", "value", "unit", "comparator", "timepoint", "source_url", "notes")
 
 
-def text_field(data, key, default="", maximum=4000):
-    value = data.get(key, default)
-    if not isinstance(value, str) or len(value) > maximum:
-        raise ValueError(f"{key} must be text of at most {maximum} characters")
-    return value.strip()
-
-
-def bounded_int(value, low, high):
-    if isinstance(value, bool) or not isinstance(value, int) or not low <= value <= high:
-        raise ValueError(f"Expected an integer from {low} to {high}")
-    return value
-
-
-def bounded_number(value, low, high, label):
-    if isinstance(value, bool):
-        raise ValueError(f"{label} must be a finite number from {low} to {high}")
-    try:
-        result = float(value)
-    except (TypeError, ValueError):
-        raise ValueError(f"{label} must be a finite number from {low} to {high}") from None
-    if not math.isfinite(result) or not low <= result <= high:
-        raise ValueError(f"{label} must be a finite number from {low} to {high}")
-    return result
-
-
-def campaign_structure_path(value, label):
-    raw = Path(value)
-    if not raw.is_absolute():
-        raw = regen.ROOT / raw
-    try:
-        path = raw.resolve(strict=True)
-        structures = (regen.DATA / "structures").resolve(strict=True)
-    except OSError:
-        raise ValueError(f"{label} must exist under data/structures") from None
-    if path == structures or structures not in path.parents or not path.is_file():
-        raise ValueError(f"{label} must be a regular file under data/structures")
-    if path.suffix.lower() != ".pdbqt" or path.stat().st_size > 25 * 1024 * 1024:
-        raise ValueError(f"{label} must be a .pdbqt file no larger than 25 MiB")
-    return path
-
-
-def public_url(value):
-    if not isinstance(value, str) or len(value) > 3000:
-        return ""
-    try:
-        parsed = urlsplit(value)
-        return value if parsed.scheme in {"https", "http"} and parsed.hostname and not parsed.username and not parsed.password else ""
-    except ValueError:
-        return ""
-
-
 def redact(value):
     encoded = json.dumps(value, ensure_ascii=True, allow_nan=False)
     for name, secret in os.environ.items():
@@ -105,6 +63,188 @@ def redact(value):
                 encoded = encoded.replace(json.dumps(secret)[1:-1], "[redacted]")
                 encoded = encoded.replace(quote(secret, safe=""), "[redacted]")
     return json.loads(encoded)
+
+
+def ectogenesis_artifact_bundle(path):
+    """Summarize a receipt-bound sibling bundle without changing its files."""
+    try:
+        if path.is_symlink() or not path.is_dir():
+            return None
+        base = path.resolve(strict=True)
+        root = path.parent.resolve(strict=True)
+        if base.parent != root:
+            return None
+        receipt_path = base / "receipt.json"
+        if receipt_path.is_symlink() or not receipt_path.is_file() or receipt_path.stat().st_size > 512_000:
+            raise ValueError
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        if (not isinstance(receipt, dict) or receipt.get("schema_version") != 1
+                or isinstance(receipt.get("schema_version"), bool)):
+            raise ValueError
+        if any(not isinstance(receipt.get(field), str) or len(receipt[field]) > 128
+               for field in ("package_version", "python_version")):
+            raise ValueError
+        kind = receipt.get("bundle_kind")
+        if kind not in ECTOGENESIS_BUNDLE_KINDS:
+            return None
+        if not isinstance(receipt.get("input_sha256"), str) or not re.fullmatch(
+                r"[0-9a-f]{64}", receipt["input_sha256"]):
+            raise ValueError
+        implementation = receipt.get("implementation_sha256")
+        if not isinstance(implementation, dict) or not 1 <= len(implementation) <= 64:
+            raise ValueError
+        if any(not isinstance(name, str)
+               or not re.fullmatch(r"(?:src/wombmodels/[A-Za-z0-9_.-]+\.py|pyproject\.toml)", name)
+               or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)
+               for name, digest in implementation.items()):
+            raise ValueError
+        if not isinstance(receipt.get("metadata"), dict):
+            raise ValueError
+        input_file = {"reviewed_evidence_map": "input_ledger.json",
+                      "synthetic_exchange_software_fixture": "input_config.json",
+                      "synthetic_exchange_observability_diagnostic": "source_manifest.json",
+                      "synthetic_exchange_design_sweep": "input_config.json"}[kind]
+        outputs = receipt.get("outputs")
+        if (not isinstance(outputs, dict) or not 1 <= len(outputs) <= 12
+                or input_file not in outputs):
+            raise ValueError
+        input_contract = outputs[input_file]
+        if not isinstance(input_contract, dict) or input_contract.get("sha256") != receipt["input_sha256"]:
+            raise ValueError
+        bundle_bytes = 0
+        for filename, contract in outputs.items():
+            if not isinstance(filename, str) or not ECTOGENESIS_ARTIFACT_NAME.fullmatch(filename):
+                raise ValueError
+            source = base / filename
+            if source.is_symlink() or not source.is_file() or source.resolve(strict=True).parent != base:
+                raise ValueError
+            size = source.stat().st_size
+            bundle_bytes += size
+            if bundle_bytes > ECTOGENESIS_BUNDLE_BYTE_LIMIT:
+                raise ValueError
+            if (not isinstance(contract, dict) or isinstance(contract.get("size_bytes"), bool)
+                    or not isinstance(contract.get("size_bytes"), int) or contract["size_bytes"] < 0):
+                raise ValueError
+            if size > 12_000_000 or size != contract.get("size_bytes"):
+                raise ValueError
+            digest = contract.get("sha256")
+            if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+                raise ValueError
+            if hashlib.sha256(source.read_bytes()).hexdigest() != digest:
+                raise ValueError
+        summary = {}
+        summary_file = {"reviewed_evidence_map": "evidence_report.json",
+                        "synthetic_exchange_software_fixture": "simulation_summary.json",
+                        "synthetic_exchange_observability_diagnostic": "observability_report.json",
+                        "synthetic_exchange_design_sweep": "design_sweep_report.json"}[kind]
+        if summary_file not in outputs:
+            raise ValueError
+        summary_path = base / summary_file
+        if summary_path.stat().st_size > 2_000_000:
+            raise ValueError
+        detail = json.loads(summary_path.read_text(encoding="utf-8"))
+        if not isinstance(detail, dict):
+            raise ValueError
+        if detail.get("schema_version") != 1 or isinstance(detail.get("schema_version"), bool):
+            raise ValueError
+        limits = detail.get("limits")
+        if (not isinstance(limits, list) or len(limits) > 12
+                or not all(isinstance(item, str) and len(item) <= 2_000 for item in limits)):
+            raise ValueError
+        summary["limitations"] = limits
+        if kind == "reviewed_evidence_map":
+            if (detail.get("report_kind") != kind
+                    or detail.get("biological_assay_performed") is not False):
+                raise ValueError
+            summary.update(source_count=len(detail.get("sources", [])),
+                           claim_count=len(detail.get("claims", [])),
+                           requirement_count=len(detail.get("requirements", [])),
+                           reviewed_on=detail.get("reviewed_on"))
+        elif kind == "synthetic_exchange_software_fixture":
+            if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in
+                   ("biological_assay_performed", "physiologically_calibrated", "human_gestation_prediction"))):
+                raise ValueError
+            summary.update(n_samples=detail.get("n_samples"),
+                           n_monitor_samples=detail.get("n_monitor_samples"),
+                           balances=detail.get("balances"),
+                           fault_metrics=detail.get("software_fault_metrics"))
+        elif kind == "synthetic_exchange_observability_diagnostic":
+            if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in
+                   ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))):
+                raise ValueError
+            summary.update(full_series_fit=detail.get("full_series_fit"),
+                           early_series_fit=detail.get("early_series_fit"),
+                           temporal_holdout=detail.get("temporal_holdout"),
+                           n_usable_readings=detail.get("n_usable_readings"))
+        else:
+            if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in
+                   ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))):
+                raise ValueError
+            designs = detail.get("design_summaries")
+            runs = detail.get("n_synthetic_runs")
+            count = detail.get("n_designs")
+            if (not isinstance(designs, list) or not 1 <= len(designs) <= 36
+                    or not all(isinstance(item, dict) for item in designs)
+                    or isinstance(runs, bool) or not isinstance(runs, int) or not 1 <= runs <= 720
+                    or isinstance(count, bool) or not isinstance(count, int) or count != len(designs)):
+                raise ValueError
+            summary.update(n_designs=count, n_synthetic_runs=runs,
+                           design_summaries=designs)
+        return {"bundle_id": path.name, "bundle_kind": kind,
+                "label": ECTOGENESIS_BUNDLE_KINDS[kind],
+                "verified": True,
+                "input_sha256": receipt.get("input_sha256"),
+                "package_version": receipt.get("package_version"),
+                "python_version": receipt.get("python_version"),
+                "implementation_sha256": receipt.get("implementation_sha256", {}),
+                "outputs": sorted(outputs), "summary": summary}
+    except (AttributeError, OSError, UnicodeError, TypeError, ValueError, OverflowError):
+        return {"bundle_id": path.name, "verified": False,
+                "label": "Artifact bundle requires review",
+                "error": "Receipt, expected scope flags or output hashes did not validate."}
+
+
+def ectogenesis_artifacts(root=ECTOGENESIS_MODEL_ROOT):
+    """Read a capped inventory from the dedicated read-only sibling mount."""
+    root = Path(root)
+    if root.is_symlink() or not root.is_dir():
+        return {"available": False, "read_only": True, "bundles": [],
+                "message": "Mount artificial-womb-models/artifacts at /lab/ectogenesis-models to display its local reports."}
+    cards = []
+    try:
+        paths = sorted((entry for entry in root.iterdir() if entry.is_dir() and not entry.is_symlink()),
+                       key=lambda entry: entry.name, reverse=True)[:50]
+        for path in paths:
+            card = ectogenesis_artifact_bundle(path)
+            if card is not None:
+                cards.append(card)
+    except OSError:
+        return {"available": False, "read_only": True, "bundles": [],
+                "message": "The local model artifact directory is not readable."}
+    return {"available": True, "read_only": True, "bundles": cards,
+            "message": "Receipt hashes verify file integrity; they do not review scientific validity."}
+
+
+def ectogenesis_artifact_file(root, bundle_id, filename):
+    if (not isinstance(bundle_id, str) or bundle_id in {".", ".."}
+            or not re.fullmatch(r"[A-Za-z0-9._-]{1,255}", bundle_id)
+            or not isinstance(filename, str) or not ECTOGENESIS_ARTIFACT_NAME.fullmatch(filename)):
+        raise FileNotFoundError
+    root = Path(root)
+    if root.is_symlink() or not root.is_dir():
+        raise FileNotFoundError
+    bundle = root / bundle_id
+    if bundle.is_symlink() or not bundle.is_dir():
+        raise FileNotFoundError
+    card = ectogenesis_artifact_bundle(bundle)
+    if not card or not card.get("verified") or filename not in card.get("outputs", []):
+        raise FileNotFoundError
+    path = bundle / filename
+    if path.is_symlink() or not path.is_file() or path.resolve(strict=True).parent != bundle.resolve(strict=True):
+        raise FileNotFoundError
+    if path.stat().st_size > 12_000_000:
+        raise ValueError("Research artifact exceeds the display limit")
+    return path.read_bytes(), mimetypes.guess_type(filename)[0] or "application/octet-stream"
 
 
 class ProviderError(Exception):
@@ -910,6 +1050,19 @@ def make_handler(desk):
             try:
                 if route == "/api/state":
                     return self.send(200, desk.state())
+                if route == "/api/ectogenesis/models":
+                    if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
+                        raise ValueError("The ectogenesis research area is not configured")
+                    return self.send(200, ectogenesis_artifacts())
+                if route.startswith("/api/ectogenesis/model-artifact/"):
+                    if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
+                        raise ValueError("The ectogenesis research area is not configured")
+                    values = unquote(route.removeprefix("/api/ectogenesis/model-artifact/")).split("/")
+                    if len(values) != 2:
+                        raise FileNotFoundError
+                    content, content_type = ectogenesis_artifact_file(
+                        ECTOGENESIS_MODEL_ROOT, values[0], values[1])
+                    return self.send(200, content, content_type)
                 if route == "/api/runs":
                     query = parse_qs(urlsplit(self.path).query)
                     blueprint_id = query.get("blueprint_id", [""])[0]

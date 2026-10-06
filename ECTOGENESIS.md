@@ -42,18 +42,31 @@ Registered or planned studies are not positive clinical outcomes.
 The sibling repo's `wombmodels desk-status` command provides a read-only,
 loopback-only check that this area is available. It handles no credentials,
 submits no jobs, and excludes private notes and unrelated campaign contents
-from its output. Simulations run in the sibling package; ResearchDesk remains
-the source and campaign workspace. No hardware endpoint is introduced.
+from its output. ResearchDesk's **Model bench** reads bundle directories from
+the sibling repo's `artifacts/` folder through a dedicated read-only container
+mount. It checks each output's recorded byte count and SHA-256 before showing
+report links, runtime and implementation fingerprints, summary metrics and
+the report's own limitations. Invalid bundles are
+marked for review; their files are not served. A receipt checks file
+integrity, not an evidence claim or a model.
 
 ## First software contribution
 
 The sibling package explores dimensionless exchange balances and artificial
-power or sensor faults, with source/config hashes and conservation checks.
-Its values and alarm thresholds are synthetic software fixtures, not measured
-physiology, life-support settings, or a pregnancy-duration prediction. The
-future research roadmap can incorporate independently reviewed measurements,
-stage-specific models and qualified animal-research partnerships as evidence
-becomes available.
+power or sensor faults, with source/config hashes and conservation checks. Its
+identifiability report fits two invented rates from scheduled sensor readings,
+shows design rank and conditioning, and uses a later time window from the same
+generated run. A bounded cadence/noise/fault/event-timing sweep compares seeded
+synthetic runs; reflected event timing preserves interval lengths while testing
+dependence on placement within the fixture. Generator-known rates are used only
+for post-fit software-recovery scoring. It
+does not fit hidden model states. These values and alarm
+thresholds are software fixtures, not measured physiology, life-support
+settings or a pregnancy-duration prediction. Evidence, simulation,
+observability and design-sweep bundles appear in Model bench after starting the
+service with the documented sibling mount. Simulation cards can also plot the
+bounded, hash-checked sensor trace with missing scheduled readings and power
+states visible. No biological assay record is created from a model bundle.
 
 Run the focused integration checks from this repository:
 

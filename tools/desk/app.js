@@ -4,6 +4,8 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 let workspace, selected = 'reprogramming', activeTab = 'evidence', chemistryRun = null, selectedCampaignId = null;
 let runPage = 0, runPageSize = 50, historyRuns = [], historyTotal = 0;
 const runCache = new Map();
+let modelArtifactState = null;
+const trajectoryCache = new Map();
 const labels = {title:'Blueprint name',area:'Research area',query:'Default search',question:'Research question',who:'Who / population / species',what:'What / mechanism / intervention',where:'Where / tissue / cell state',when:'When / time horizon',why:'Why / causal hypothesis',how:'How / computational approach',falsifier:'What would disprove the hypothesis?',desired_changes:'Desired changes / competing objectives'};
 const busy = new Set(['queued','running']);
 let refreshing = false;
@@ -72,6 +74,226 @@ function renderFindings() {
     container.append(article);
   }
   if (!findings.length) container.append(el('div','No reviewed starting point for this area yet.','empty'));
+}
+function modelNumber(value) {
+  return typeof value === 'number' && Number.isFinite(value) ? value.toPrecision(4) : 'not reported';
+}
+function parseModelTrajectory(text) {
+  const lines = text.split(/\r?\n/);
+  const header = (lines.shift() || '').split(',');
+  const indexes = Object.fromEntries(['dimensionless_time','power_source','sensor_sampled','sensor_reading']
+    .map(name => [name,header.indexOf(name)]));
+  if (Object.values(indexes).some(index => index < 0)) throw new Error('Trajectory is missing required plot columns.');
+  const rows = [];
+  let previous = -Infinity;
+  for (const line of lines) {
+    if (!line) continue;
+    if (rows.length >= 50402) throw new Error('Trajectory exceeds the plot row limit.');
+    const columns = line.split(',');
+    const time = Number(columns[indexes.dimensionless_time]);
+    const power = columns[indexes.power_source];
+    const sampledText = columns[indexes.sensor_sampled];
+    const readingText = columns[indexes.sensor_reading];
+    const reading = readingText === '' ? null : Number(readingText);
+    if (!Number.isFinite(time) || time <= previous || !['wall','backup','none'].includes(power)
+        || !['True','False'].includes(sampledText)
+        || (reading !== null && (!Number.isFinite(reading) || Math.abs(reading) > 1e12))) {
+      throw new Error('Trajectory contains an invalid dimensionless time, power label, or reading.');
+    }
+    const sampled = sampledText === 'True';
+    if (!sampled && reading !== null) throw new Error('An unscheduled trajectory row contains a reading.');
+    rows.push({time,power,sampled,reading});
+    previous = time;
+  }
+  if (rows.length < 2) throw new Error('Trajectory does not contain enough rows to plot.');
+  return rows;
+}
+function drawModelTrajectory(canvas, rows) {
+  const cardWidth = canvas.closest('.model-bench-card')?.clientWidth || canvas.clientWidth || 760;
+  const width = Math.max(480, Math.floor(cardWidth - 36)), height = 260;
+  const scale = Math.min(2, window.devicePixelRatio || 1);
+  canvas.width = Math.round(width * scale); canvas.height = Math.round(height * scale);
+  canvas.style.height = `${height}px`;
+  canvas.setAttribute('aria-label','Dimensionless synthetic sensor readings over time. Shaded intervals indicate backup power or no power.');
+  const context = canvas.getContext('2d');
+  context.setTransform(scale,0,0,scale,0,0);
+  context.fillStyle = '#fff'; context.fillRect(0,0,width,height);
+  const margin = {left:58,right:16,top:16,bottom:38};
+  const plotWidth = width-margin.left-margin.right, plotHeight = height-margin.top-margin.bottom;
+  const readings = rows.filter(row => row.sampled && row.reading !== null).map(row => row.reading);
+  if (!readings.length) throw new Error('This fixture has no usable sensor readings to plot.');
+  let low = Infinity, high = -Infinity;
+  for (const value of readings) { low=Math.min(low,value); high=Math.max(high,value); }
+  if (low === high) { low -= 0.5; high += 0.5; }
+  const firstTime = rows[0].time, lastTime = rows[rows.length-1].time;
+  const x = time => margin.left+(time-firstTime)/(lastTime-firstTime)*plotWidth;
+  const y = value => margin.top+(high-value)/(high-low)*plotHeight;
+  for (let index=0; index<rows.length-1; index++) {
+    const row=rows[index], next=rows[index+1];
+    if (row.power === 'wall') continue;
+    context.fillStyle = row.power === 'none' ? 'rgba(177,75,61,.12)' : 'rgba(51,116,160,.12)';
+    context.fillRect(x(row.time),margin.top,Math.max(1,x(next.time)-x(row.time)),plotHeight);
+  }
+  context.strokeStyle='#dce2e0'; context.lineWidth=1;
+  context.font='10px Segoe UI, Arial, sans-serif'; context.fillStyle='#67736f';
+  for (let tick=0;tick<=4;tick++) {
+    const fraction=tick/4, yy=margin.top+fraction*plotHeight;
+    context.beginPath(); context.moveTo(margin.left,yy); context.lineTo(width-margin.right,yy); context.stroke();
+    context.fillText((high-fraction*(high-low)).toPrecision(3),4,yy+3);
+  }
+  context.strokeStyle='#426e5d'; context.lineWidth=1.8; context.beginPath();
+  let active=false;
+  for (const row of rows) {
+    if (!row.sampled) continue;
+    if (row.reading === null) { active=false; continue; }
+    if (!active) { context.moveTo(x(row.time),y(row.reading)); active=true; }
+    else context.lineTo(x(row.time),y(row.reading));
+  }
+  context.stroke();
+  context.fillStyle='#146b55';
+  for (const row of rows) {
+    if (!row.sampled || row.reading === null) continue;
+    context.beginPath(); context.arc(x(row.time),y(row.reading),2.2,0,Math.PI*2); context.fill();
+  }
+  context.fillStyle='#67736f'; context.textAlign='left'; context.fillText(modelNumber(firstTime),margin.left,height-12);
+  context.textAlign='right'; context.fillText(modelNumber(lastTime),width-margin.right,height-12);
+  context.textAlign='center'; context.fillText('dimensionless time',margin.left+plotWidth/2,height-2);
+  context.save(); context.translate(13,margin.top+plotHeight/2); context.rotate(-Math.PI/2);
+  context.fillText('sensor reading (dimensionless)',0,0); context.restore();
+  return {scheduled:rows.filter(row=>row.sampled).length,usable:readings.length,missing:rows.filter(row=>row.sampled&&row.reading===null).length};
+}
+async function showModelTrajectory(bundleId, section, button) {
+  if (!section.hidden) { section.hidden=true; button.textContent='Show synthetic trajectory'; return; }
+  button.disabled=true;
+  try {
+    let rows=trajectoryCache.get(bundleId);
+    if (!rows) {
+      const response=await fetch(`/api/ectogenesis/model-artifact/${encodeURIComponent(bundleId)}/trajectory.csv`);
+      if (!response.ok) throw new Error(`Trajectory could not be loaded (${response.status}).`);
+      const csv=await response.text();
+      if (csv.length>12_000_000) throw new Error('Trajectory exceeds the 12 MB display limit.');
+      rows=parseModelTrajectory(csv); trajectoryCache.set(bundleId,rows);
+    }
+    section.replaceChildren();
+    const canvas=el('canvas',null,'model-bench-chart');
+    const summary=drawModelTrajectory(canvas,rows);
+    section.append(canvas,el('p',`${summary.usable} of ${summary.scheduled} scheduled readings were usable · ${summary.missing} gaps. Values and time are dimensionless; light blue marks backup power and light red marks no power.`,'boundary'));
+    section.hidden=false; button.textContent='Hide synthetic trajectory';
+  } finally { button.disabled=false; }
+}
+function renderModelBench() {
+  const state = modelArtifactState, status = $('#model-bench-status'), container = $('#model-bench-cards');
+  container.replaceChildren();
+  if (!state) {
+    status.replaceChildren(badge('Reports have not been loaded','unreviewed'));
+    $('#model-bench-count').textContent = '';
+    return;
+  }
+  const verified = (state.bundles || []).filter(bundle => bundle.verified === true);
+  $('#model-bench-count').textContent = verified.length ? String(verified.length) : '';
+  status.replaceChildren(badge(state.available ? `${verified.length} hash-matched bundles` : 'Sibling artifact folder not mounted',state.available ? 'complete' : 'unreviewed'),el('span',state.message || ''));
+  if (!state.bundles?.length) {
+    container.append(el('p',state.available
+      ? 'No recognized receipt-bearing reports are available yet. Generate an evidence, simulation, identifiability, or design-sweep bundle in artificial-womb-models/artifacts, then refresh.'
+      : (state.message || 'The sibling artifact folder is not mounted.'),'empty'));
+    return;
+  }
+  for (const bundle of state.bundles) {
+    const card = el('article',null,'model-bench-card');
+    const heading = el('div',null,'model-bench-card-heading');
+    heading.append(el('h3',bundle.label || 'Local bundle'),badge(bundle.verified ? 'Receipt hashes match files' : 'Needs review',bundle.verified ? 'complete' : 'unreviewed'));
+    card.append(heading,el('p',`Bundle: ${bundle.bundle_id}`,'model-bench-id'));
+    if (!bundle.verified) {
+      card.append(el('p',bundle.error || 'The bundle did not pass the receipt check. Files are not exposed in this view.','boundary'));
+      container.append(card);
+      continue;
+    }
+    const summary = bundle.summary || {};
+    if (bundle.bundle_kind === 'reviewed_evidence_map') {
+      card.append(el('p',`${summary.source_count ?? '—'} sources · ${summary.claim_count ?? '—'} claims · ${summary.requirement_count ?? '—'} requirements`));
+      if (summary.reviewed_on) card.append(el('p',`Ledger review date: ${summary.reviewed_on}. Review and update it before relying on a source card.`,'boundary'));
+    } else if (bundle.bundle_kind === 'synthetic_exchange_software_fixture') {
+      const residuals = Object.values(summary.balances || {}).filter(value => typeof value === 'number' && Number.isFinite(value));
+      const maxResidual = residuals.length ? Math.max(...residuals) : null;
+      card.append(el('p',`${summary.n_monitor_samples ?? '—'} scheduled monitor samples · ${summary.fault_metrics?.fault_intervals?.length ?? 0} modeled fault intervals`));
+      card.append(el('p',`Largest accounting residual: ${modelNumber(maxResidual)}`,'model-bench-metric'));
+      card.append(el('p','Accounting consistency is a property of this fixture; it is not a physiological validation.','boundary'));
+      if ((bundle.outputs || []).includes('trajectory.csv')) {
+        const plotButton=el('button','Show synthetic trajectory'); plotButton.type='button';
+        const plotSection=el('section',null,'model-bench-plot'); plotSection.hidden=true;
+        plotButton.addEventListener('click',task(()=>showModelTrajectory(bundle.bundle_id,plotSection,plotButton)));
+        card.append(plotButton,plotSection);
+      }
+    } else if (bundle.bundle_kind === 'synthetic_exchange_observability_diagnostic') {
+      const fit = summary.full_series_fit || {}, early = summary.early_series_fit || {};
+      const estimates = fit.parameter_estimates || {};
+      card.append(el('p',`${summary.n_usable_readings ?? '—'} usable readings · design rank ${fit.rank ?? 'unresolved'} · condition ${modelNumber(fit.normalized_design_condition_number)}`));
+      card.append(el('p',`Full-run fixture-rate estimates · powered input ${modelNumber(estimates.powered_input)} · conversion ${modelNumber(estimates.conversion)}`,'model-bench-metric'));
+      card.append(el('p',`First 70% window: ${early.estimable ? `rank ${early.rank}; condition ${modelNumber(early.normalized_design_condition_number)}` : (early.reason || 'not identified')}. Later-window observations are from the same generated run.`,'boundary'));
+    } else if (bundle.bundle_kind === 'synthetic_exchange_design_sweep') {
+      card.append(el('p',`${summary.n_synthetic_runs ?? '—'} seeded fixture runs across ${summary.n_designs ?? '—'} design conditions.`));
+      const designSummaries = Array.isArray(summary.design_summaries) ? summary.design_summaries : [];
+      const profiles = new Set(designSummaries.map(item=>item.monitor_fault_profile));
+      const timingProfiles = new Set(designSummaries.map(item=>item.event_timing_profile).filter(value=>typeof value==='string'));
+      const reportsTiming = designSummaries.some(item=>typeof item.event_timing_profile==='string');
+      const faultBoundary = profiles.has('injected monitor faults removed')
+        ? 'The fault-free profile removes injected monitor bias/dropout intervals while retaining wall outages and power-loss-related missing readings.'
+        : 'This source fixture has no configured monitor-fault contrast; modeled wall outages and power-loss-related missing readings remain in scope.';
+      const timingBoundary = !reportsTiming
+        ? 'This report predates the event-timing comparison field, so its timing profile is not recorded.'
+        : timingProfiles.has('time-reflected event timing')
+          ? 'The reflected schedule preserves event durations and maps intervals across the fixture midpoint; it tests timing sensitivity for this fixture, not a realistic outage distribution.'
+          : 'No event-timing contrast was needed because the source fixture contains no outage or monitor-fault intervals.';
+      card.append(el('p',`Generator-known rates score fits only after estimation. Replicates share one fixture and event schedule within each design. ${faultBoundary} ${timingBoundary}`,'boundary'));
+      const table = el('table',null,'model-bench-sweep-table'), header = el('tr');
+      ['Requested cadence × noise','Fault profile','Event timing','Actual step · noise SD','Estimable runs','Condition med / P90','Input abs error med / P90','Conversion abs error med / P90'].forEach(label => header.append(el('th',label)));
+      table.append(header);
+      for (const design of designSummaries.slice(0,36)) {
+        const row = el('tr');
+        row.append(el('td',`${modelNumber(design.cadence_factor_requested)}× cadence · ${modelNumber(design.noise_multiplier_requested)}× noise`));
+        row.append(el('td',design.monitor_fault_profile || 'not reported'));
+        row.append(el('td',design.event_timing_profile || 'not reported'));
+        row.append(el('td',`${modelNumber(design.actual_output_step)} · ${modelNumber(design.actual_noise_sd)}`));
+        row.append(el('td',`${design.estimable_replicates ?? '—'} / ${design.replicates ?? '—'}`));
+        row.append(el('td',`${modelNumber(design.median_design_condition_number)} / ${modelNumber(design.p90_design_condition_number)}`));
+        row.append(el('td',`${modelNumber(design.median_absolute_error_powered_input)} / ${modelNumber(design.p90_absolute_error_powered_input)}`));
+        row.append(el('td',`${modelNumber(design.median_absolute_error_conversion)} / ${modelNumber(design.p90_absolute_error_conversion)}`));
+        table.append(row);
+      }
+      const tableWrap = el('div',null,'table-wrap model-bench-sweep-wrap');
+      tableWrap.append(table); card.append(tableWrap);
+    }
+    if (Array.isArray(summary.limitations) && summary.limitations.length) {
+      const limits=el('details',null,'model-bench-limitations');
+      limits.append(el('summary','Limits recorded by this report'));
+      const list=el('ul');
+      summary.limitations.slice(0,12).forEach(item=>list.append(el('li',String(item).slice(0,2000))));
+      limits.append(list); card.append(limits);
+    }
+    const links = el('div',null,'row model-bench-links');
+    const labelsByFile = {"REPORT.md":"Readable report","observability_report.json":"Fit summary","simulation_summary.json":"Simulation summary","evidence_report.json":"Evidence map JSON","design_sweep_report.json":"Sweep summary JSON","sweep_plan.json":"Sweep design plan","design_sweep.csv":"Replicate table","design_summaries.csv":"Design summary table","trajectory.csv":"Trajectory","interval_design.csv":"Design intervals","claims.csv":"Claims table","stage_map.csv":"Stage map","requirements.csv":"Requirements"};
+    for (const filename of bundle.outputs || []) {
+      if (!labelsByFile[filename]) continue;
+      links.append(safeLink(labelsByFile[filename],`/api/ectogenesis/model-artifact/${encodeURIComponent(bundle.bundle_id)}/${encodeURIComponent(filename)}`));
+    }
+    card.append(links);
+    const provenance = el('details',null,'model-bench-provenance');
+    provenance.append(el('summary','Receipt, runtime and implementation provenance'),el('pre',JSON.stringify({package_version:bundle.package_version,python_version:bundle.python_version,input_sha256:bundle.input_sha256,implementation_sha256:bundle.implementation_sha256,outputs:bundle.outputs},null,2)));
+    card.append(provenance);
+    container.append(card);
+  }
+}
+async function refreshModelBench() {
+  if (selected !== 'ectogenesis') return;
+  const button = $('#refresh-model-bench');
+  button.disabled = true;
+  try {
+    const areaAtStart = selected;
+    const result = await api('/api/ectogenesis/models');
+    if (areaAtStart !== selected) return;
+    modelArtifactState = result;
+    renderModelBench();
+  } finally { button.disabled = false; }
 }
 function renderNotes() {
   const notes = workspace.notes.filter(n => n.blueprint_id === selected);
@@ -245,12 +467,18 @@ async function loadRunPage(page = runPage) {
 }
 async function renderArea() {
   areaNavigation(); const b = current();
+  $('#model-bench-tab').hidden = selected !== 'ectogenesis';
+  if (selected !== 'ectogenesis' && activeTab === 'model-bench') switchTab('evidence');
   $('#area-category').textContent = b.area; $('#area-title').textContent = b.title; $('#area-question').textContent = b.question;
   $('#query').value = b.query || ''; $('#reference-smiles').value = ''; $('#candidate-smiles').value = '';
   $('#reference-visual').replaceChildren(el('span','No structure selected'));
   $('#run-detail').replaceChildren(); $('#notice').hidden = true;
   selectedCampaignId = null; $('#link-campaign').checked = false;
   renderBlueprint(); renderFindings(); renderNotes(); renderCampaign(); await loadRunPage(0); await renderResults();
+  if (selected === 'ectogenesis' && activeTab === 'model-bench') {
+    renderModelBench();
+    await refreshModelBench();
+  }
 }
 async function refresh() {
   workspace = await api('/api/state');
@@ -360,9 +588,13 @@ function renderCampaignRuns() {
   }
   wrap.append(table); container.append(wrap);
 }
-$$('[data-tab]').forEach(button => button.addEventListener('click',() => switchTab(button.dataset.tab)));
+$$('[data-tab]').forEach(button => button.addEventListener('click',task(async () => {
+  switchTab(button.dataset.tab);
+  if (button.dataset.tab === 'model-bench') await refreshModelBench();
+})));
 $('#source-filter').addEventListener('change',renderRecords); $('#record-filter').addEventListener('input',renderRecords);
 $('#passing-only').addEventListener('change',renderChemistry);
+$('#refresh-model-bench').addEventListener('click',task(refreshModelBench));
 $('#chemistry-run').addEventListener('change',task(async event => {
   const area = selected, loaded = await getRun(event.target.value);
   if (selected !== area) return;
