@@ -231,7 +231,7 @@ class EctogenesisDeskTests(unittest.TestCase):
         bundle = self.root / "transport-matrix"
         bundle.mkdir()
         names = ["configured_baseline", "zero_dynamics", "exchange_only",
-                 "transfer_only", "unequal_coupled", "high_mixing"]
+                 "transfer_only", "unequal_coupled", "high_mixing", "near_degenerate"]
         scenarios = []
         config_json_by_name = {}
         rates_by_name = {
@@ -241,6 +241,7 @@ class EctogenesisDeskTests(unittest.TestCase):
             "transfer_only": {"boundary_exchange": 0.0, "intercompartment_transport": 1.3, "loss": 0.0},
             "unequal_coupled": {"boundary_exchange": 0.17, "intercompartment_transport": 0.83, "loss": 0.06},
             "high_mixing": {"boundary_exchange": 0.8, "intercompartment_transport": 20.0, "loss": 0.1},
+            "near_degenerate": {"boundary_exchange": 1e-10, "intercompartment_transport": 1e-10, "loss": 0.4},
         }
         for index, name in enumerate(names):
             rates = rates_by_name[name]
@@ -277,7 +278,7 @@ class EctogenesisDeskTests(unittest.TestCase):
             "human_gestation_prediction": False,
             "input_sha256": input_sha,
             "reference_method": "Closed-form two-state matrix exponential.",
-            "n_scenarios": 6, "n_refinement_levels": 5, "n_total_timepoints": 37230,
+            "n_scenarios": 7, "n_refinement_levels": 5, "n_total_timepoints": 43435,
             "scenarios": scenarios,
             "limits": ["Dimensionless software checks; no biological validation."],
         }
@@ -310,9 +311,10 @@ class EctogenesisDeskTests(unittest.TestCase):
         (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
         result = desk.ectogenesis_artifact_bundle(bundle)
         self.assertTrue(result["verified"], result)
-        self.assertEqual(result["summary"]["n_scenarios"], 6)
-        self.assertEqual(len(result["summary"]["scenarios"]), 6)
+        self.assertEqual(result["summary"]["n_scenarios"], 7)
+        self.assertEqual(len(result["summary"]["scenarios"]), 7)
         self.assertIn("transport_high_mixing_finest_errors.csv", result["outputs"])
+        self.assertIn("transport_near_degenerate_finest_errors.csv", result["outputs"])
 
         report["scenarios"][-1]["stability_product"] = 1.2
         malformed = json.dumps(report, sort_keys=True, allow_nan=False).encode() + b"\n"

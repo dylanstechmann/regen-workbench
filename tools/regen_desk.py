@@ -435,7 +435,8 @@ def ectogenesis_artifact_bundle(path):
                            verification_passed=True, errors=checked_errors)
         elif kind == "dimensionless_transport_parameter_matrix_numerical_verification":
             scenario_names = {"configured_baseline", "zero_dynamics", "exchange_only",
-                              "transfer_only", "unequal_coupled", "high_mixing"}
+                              "transfer_only", "unequal_coupled", "high_mixing",
+                              "near_degenerate"}
             required_outputs = {"transport_matrix_report.json", "transport_matrix_convergence.csv",
                                 "transport_matrix_scenario_configs.json"}
             required_outputs.update(f"transport_{name}_finest_errors.csv" for name in scenario_names)
@@ -450,7 +451,7 @@ def ectogenesis_artifact_bundle(path):
             levels = detail.get("n_refinement_levels")
             total_points = detail.get("n_total_timepoints")
             if (not isinstance(method, str) or not method or len(method) > 1_000
-                    or not isinstance(scenarios, list) or len(scenarios) != 6
+                    or not isinstance(scenarios, list) or len(scenarios) != 7
                     or isinstance(count, bool) or not isinstance(count, int) or count != len(scenarios)
                     or isinstance(levels, bool) or not isinstance(levels, int) or levels != 5
                     or isinstance(total_points, bool) or not isinstance(total_points, int)
@@ -498,7 +499,7 @@ def ectogenesis_artifact_bundle(path):
             config_manifest = json.loads(config_manifest_path.read_text(encoding="utf-8"))
             manifest_scenarios = config_manifest.get("scenario_configs") if isinstance(config_manifest, dict) else None
             if (config_manifest.get("schema_version") != 1
-                    or not isinstance(manifest_scenarios, list) or len(manifest_scenarios) != 6):
+                    or not isinstance(manifest_scenarios, list) or len(manifest_scenarios) != 7):
                 raise ValueError
             manifest_hashes = {}
             for item in manifest_scenarios:
@@ -577,7 +578,7 @@ def ectogenesis_artifact_bundle(path):
             with (base / "transport_matrix_convergence.csv").open("r", encoding="utf-8", newline="") as stream:
                 curve_rows = list(csv.DictReader(stream))
             curve_counts = {}
-            if len(curve_rows) != 30:
+            if len(curve_rows) != 35:
                 raise ValueError
             for row in curve_rows:
                 name = row.get("scenario")
@@ -585,7 +586,7 @@ def ectogenesis_artifact_bundle(path):
                 if (name not in scenario_names or factor not in {"1.0", "0.5", "0.25", "0.125", "0.0625"}):
                     raise ValueError
                 curve_counts[(name, factor)] = curve_counts.get((name, factor), 0) + 1
-            if (len(curve_counts) != 30 or any(count != 1 for count in curve_counts.values())):
+            if (len(curve_counts) != 35 or any(count != 1 for count in curve_counts.values())):
                 raise ValueError
             summary.update(reference_method=method, n_scenarios=count,
                            n_refinement_levels=levels, n_total_timepoints=total_points,
