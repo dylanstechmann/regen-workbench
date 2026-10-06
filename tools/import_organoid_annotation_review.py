@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import io
 import math
 import os
 from pathlib import Path
@@ -30,10 +31,10 @@ PUBLIC_FILES = {
 }
 
 
-def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
+def _read_csv(raw: bytes) -> tuple[list[str], list[dict[str, str]]]:
     import csv
     try:
-        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        with io.StringIO(raw.decode("utf-8-sig"), newline="") as handle:
             reader = csv.DictReader(handle)
             fields = reader.fieldnames or []
             rows = list(reader)
@@ -44,14 +45,44 @@ def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
     return fields, rows
 
 
+def _read_bounded(path: Path) -> bytes:
+    if path.is_symlink() or not path.is_file():
+        raise ReceiptImportError("annotation audit file is missing or unsafe")
+    with path.open("rb") as stream:
+        raw = stream.read(MAX_FILE_BYTES + 1)
+    if len(raw) > MAX_FILE_BYTES:
+        raise ReceiptImportError("annotation audit file exceeds 5 MB")
+    return raw
+
+
+def _receipt_from_bytes(raw: bytes) -> dict[str, Any]:
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ReceiptImportError(f"duplicate JSON key: {key}")
+            result[key] = value
+        return result
+    try:
+        receipt = json.loads(raw.decode("utf-8-sig"), object_pairs_hook=unique_object)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ReceiptImportError("annotation audit receipt is not valid UTF-8 JSON") from exc
+    if not isinstance(receipt, dict):
+        raise ReceiptImportError("annotation audit receipt must be a JSON object")
+    return receipt
+
+
 def register_annotation_review(audit_directory: str | Path, repo_root: str | Path = ROOT) -> dict[str, Any]:
     """Verify an annotation audit receipt and append its artifacts to the study record."""
     repo_root = Path(repo_root).resolve(strict=True)
+    if Path(audit_directory).is_symlink():
+        raise ReceiptImportError("annotation audit must be a regular directory")
     source_root = Path(audit_directory).resolve(strict=True)
     if not source_root.is_dir() or source_root.is_symlink():
         raise ReceiptImportError("annotation audit must be a regular directory")
     receipt_path = source_root / "audit_receipt.json"
-    receipt = _read_json(receipt_path)
+    receipt_bytes = _read_bounded(receipt_path)
+    receipt = _receipt_from_bytes(receipt_bytes)
     if (receipt.get("schema_version") != 1 or receipt.get("tool") != "organoid-phenotyping"
             or receipt.get("activity") != "manual_annotation_repeat_audit"
             or receipt.get("biological_results_generated") is not False):
@@ -62,13 +93,13 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
     outputs = receipt.get("outputs")
     if not isinstance(outputs, dict) or set(outputs) != set(PUBLIC_FILES):
         raise ReceiptImportError("annotation audit output index is incomplete or unexpected")
-    copied = {}
-    total = 0
+    copied = {"audit_receipt.json": receipt_bytes}
+    total = len(receipt_bytes)
     for filename in PUBLIC_FILES:
         path = source_root / filename
         if path.is_symlink() or not path.is_file() or path.resolve(strict=True).parent != source_root:
             raise ReceiptImportError(f"annotation audit output is missing or unsafe: {filename}")
-        raw = path.read_bytes()
+        raw = _read_bounded(path)
         record = outputs[filename]
         if (len(raw) > MAX_FILE_BYTES or not isinstance(record, dict)
                 or record.get("sha256") != _sha256_bytes(raw)
@@ -126,7 +157,7 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
             or dataset.get("license") != "CC-BY-4.0"
             or dataset.get("source_archive_sha256") != BONN_SOURCE_ARCHIVE_SHA256):
         raise ReceiptImportError("manual annotation report does not match the pinned source or receipt")
-    fields, repeat_rows = _read_csv(source_root / "repeat_agreement.csv")
+    fields, repeat_rows = _read_csv(copied["repeat_agreement.csv"])
     required_columns = {"primary_task_id", "repeat_task_id", "different_annotator_ids", "foreground_dice"}
     if not required_columns.issubset(fields) or len(repeat_rows) != len(report["repeat_agreement"]):
         raise ReceiptImportError("repeat-agreement table differs from its report summary")
@@ -169,16 +200,17 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
     bundle_dir.parent.mkdir(parents=True, exist_ok=True)
     created = False
     if bundle_dir.exists():
+        if bundle_dir.is_symlink() or not bundle_dir.is_dir():
+            raise ReceiptImportError("existing annotation audit bundle is unsafe")
         for name, raw in copied.items():
             path = bundle_dir / name
-            if not path.is_file() or path.read_bytes() != raw:
+            if path.is_symlink() or not path.is_file() or _read_bounded(path) != raw:
                 raise ReceiptImportError("existing annotation audit bundle conflicts with its verified receipt")
     else:
         stage = Path(tempfile.mkdtemp(prefix=f".annotation-review-{audit_id}-", dir=bundle_dir.parent))
         try:
             for name, raw in copied.items():
                 (stage / name).write_bytes(raw)
-            shutil.copyfile(receipt_path, stage / "audit_receipt.json")
             stage.rename(bundle_dir)
             created = True
         except BaseException:

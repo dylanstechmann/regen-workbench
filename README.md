@@ -12,6 +12,10 @@ and direct gene-expression and compound-data analysis for aging and
 regeneration. See [Research philosophy and priorities](RESEARCH_PHILOSOPHY.md)
 for the owner's ambitions and approach to scrutinizing evidence and bias.
 
+The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
+verification, reviewed organoid measurements, portable ResearchDesk dossiers
+and concrete empirical milestones across the companion methods repositories.
+
 ## Interactive research desk
 
 The [research desk](RESEARCH_DESK.md) adds editable hypothesis blueprints,

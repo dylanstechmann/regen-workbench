@@ -168,7 +168,10 @@ Export downloads a ZIP with dossier JSON, a research summary, a discussion
 draft, run snapshots, manifests and an artifact index. Campaign-linked
 experiments contribute their freshly validated manifest and local analysis
 outputs; linked artificial-womb bundles contribute their receipt and
-hash-matched outputs. Files are capped at 20 MB each and 100 MB total. Manually entered notes
+hash-matched outputs. Linked research artifacts are capped at 20 MB each and
+100 MB total; those limits currently do not cover the separate run-snapshot
+collector. A unified limit and independent archive verifier are planned in
+[ROADMAP.md](ROADMAP.md). Manually entered notes
 are excluded by default; an explicit option includes them. It does not publish
 to Reddit or GitHub. Review private details and evidence claims; an exported
 research dossier is not automatically anonymous.

@@ -133,6 +133,30 @@ class OrganoidAnnotationReviewImportTests(unittest.TestCase):
         document = json.loads((self.root / STUDY_RELATIVE / "experiment.json").read_text(encoding="utf-8"))
         self.assertEqual(document["analysis_history"], [])
 
+    def test_reimport_rejects_changed_input_binding_and_preserves_registered_bytes(self):
+        result = register_annotation_review(self.audit, self.root)
+        study_path = self.root / STUDY_RELATIVE / "experiment.json"
+        registered_receipt = self.root / result["bundle_path"] / "audit_receipt.json"
+        original_manifest = study_path.read_bytes()
+        original_receipt = registered_receipt.read_bytes()
+        for field in ("input_manifest_sha256", "pilot_receipt_sha256"):
+            with self.subTest(field=field):
+                changed = json.loads(original_receipt)
+                changed[field] = "f" * 64
+                (self.audit / "audit_receipt.json").write_text(json.dumps(changed), encoding="utf-8")
+                with self.assertRaisesRegex(ReceiptImportError, "conflicts"):
+                    register_annotation_review(self.audit, self.root)
+                self.assertEqual(study_path.read_bytes(), original_manifest)
+                self.assertEqual(registered_receipt.read_bytes(), original_receipt)
+
+    def test_rejects_duplicate_receipt_keys(self):
+        path = self.audit / "audit_receipt.json"
+        raw = path.read_text(encoding="utf-8")
+        path.write_text(raw.replace('"schema_version": 1,', '"schema_version": 1, "schema_version": 1,'),
+                        encoding="utf-8")
+        with self.assertRaisesRegex(ReceiptImportError, "duplicate JSON key"):
+            register_annotation_review(self.audit, self.root)
+
 
 if __name__ == "__main__":
     unittest.main()

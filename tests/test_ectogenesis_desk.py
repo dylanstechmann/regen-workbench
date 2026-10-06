@@ -98,6 +98,14 @@ class EctogenesisDeskTests(unittest.TestCase):
                     self.assertEqual(result["summary"]["simulation_binding"]["trajectory_sha256"], "a" * 64)
                 else:
                     self.assertIn("outputs", result["summary"])
+                    report["result_kind"] = ("dimensionless_kelvin_voigt_mechanics"
+                        if kind == "dimensionless_transport_theory" else "dimensionless_two_compartment_transport")
+                    swapped_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+                    (bundle / report_name).write_bytes(swapped_bytes)
+                    receipt["outputs"][report_name] = {
+                        "sha256": hashlib.sha256(swapped_bytes).hexdigest(), "size_bytes": len(swapped_bytes)}
+                    (bundle / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+                    self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
 
 
 if __name__ == "__main__":

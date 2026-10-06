@@ -233,6 +233,9 @@ function renderModelBench() {
       const stateModel = summary.noise_aware_state_model || {};
       const forecast = stateModel.prospective_forecast || {};
       const stateFit = stateModel.full_series_fit || {};
+      if (forecast.prediction_interval_available === false && forecast.prediction_interval_reason) {
+        card.append(el('p',`Forecast uncertainty: ${forecast.prediction_interval_reason}`,'boundary'));
+      }
       card.append(el('p',`Forward forecast: ${forecast.estimable ? `${forecast.n_training_readings} prefix readings trained through time ${modelNumber(forecast.split_time)}; ${forecast.n_scored_readings} later readings scored · RMSE ${modelNumber(forecast.fixture_scale_rmse)} vs last-reading baseline ${modelNumber(forecast.baseline_last_observation_rmse)} · 95% interval coverage ${modelNumber(forecast.coverage_95)}` : (forecast.reason || 'not estimable')}.`,'model-bench-metric'));
       card.append(el('p',`Noise-aware state fit: ${stateFit.estimable ? `powered input ${modelNumber(stateFit.parameters?.powered_input)} · conversion ${modelNumber(stateFit.parameters?.conversion)} · assumed sensor noise SD ${modelNumber(stateFit.sensor_noise_sd_assumed)}` : (stateFit.reason || 'not estimable')}. ${early.estimable ? `Legacy balance fit: rank ${early.rank}, condition ${modelNumber(early.normalized_design_condition_number)}.` : ''} The balance residual uses endpoint readings inside its predictors, so it is a same-run consistency diagnostic, not a forecast.`,'boundary'));
     } else if (bundle.bundle_kind === 'synthetic_exchange_design_sweep') {

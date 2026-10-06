@@ -271,8 +271,11 @@ def ectogenesis_artifact_bundle(path):
                            prospective_forecast_training_cutoff=detail.get("prospective_forecast_training_cutoff"),
                            temporal_holdout_contract=detail.get("temporal_holdout_contract"))
         else:
-            if (detail.get("result_kind") not in {
-                    "dimensionless_two_compartment_transport", "dimensionless_kelvin_voigt_mechanics"}
+            expected_result_kind = {
+                "dimensionless_transport_theory": "dimensionless_two_compartment_transport",
+                "dimensionless_mechanics_theory": "dimensionless_kelvin_voigt_mechanics",
+            }[kind]
+            if (detail.get("result_kind") != expected_result_kind
                     or any(detail.get(flag) is not False for flag in
                            ("biological_measurements", "physiologically_calibrated", "human_gestation_prediction"))
                     or not isinstance(detail.get("outputs"), dict)
