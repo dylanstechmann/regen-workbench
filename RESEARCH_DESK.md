@@ -54,7 +54,10 @@ Seeded runs share one fixture, so these are software sensitivity results. The
 bridge also displays two-compartment transport and Kelvin–Voigt theory bundles
 beside their simpler alternative equations. All values remain dimensionless;
 developmental tags do not calibrate a model to a species. A receipt establishes
-file integrity only. The model source and configurations are not mounted; only
+integrity of generated bundle files only. Observation-intake reports separately
+show whether local source bytes matched declared hashes; those source files are
+not copied into or verified by the bundle receipt. The model source and
+configurations are not mounted; only
 receipt-listed files inside recognized bundles can be opened through the UI.
 It displays step-halving error curves from `verify-transport` against the
 bundle's closed-form dimensionless reference, including actual steps, errors
@@ -199,8 +202,10 @@ input hash, comparison metric, per-condition values, missingness and deltas.
   it does not certify eligibility. Plans require alternatives, a primary
   outcome, comparator, independent unit, baseline, split, uncertainty,
   confounding, falsification and ambiguity rules. Plans remain drafts and do not
-  run analyses. Declared hashes are not checked against external file bytes:
-  citations are stored but never fetched. Reviewer
+  run analyses. Hashes on Study design dataset-card drafts remain user-supplied
+  metadata; this view does not check them against external file bytes. The
+  sibling observation-intake command has a separate optional local-byte check.
+  Citations are stored but never fetched. Reviewer
   identity is not authenticated. Dossier exports include the exact revisions
   and their hashes. Source-observation review decisions and binding revisions
   to submitted runs remain future work.

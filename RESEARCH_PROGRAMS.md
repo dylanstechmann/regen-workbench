@@ -236,7 +236,7 @@ validated data eligibility, and run-to-revision bindings.
 | Milestone | Concrete feature | Current status | Acceptance |
 | --- | --- | --- |
 | **D1 — Scientific revisions** | Content-addressed question, hypothesis-set, source observation and review revisions; supersession and current pointers | Partial: question revisions and supersession exist; source observations, reviews and run binding remain | Archived runs/dossiers resolve original revisions; source edits mark dependent plans/results stale |
-| **D2 — Dataset cards** | Access/license, exact file inventory, unit hierarchy, units/calibration, groups, age/stage, raw/aggregate status, exclusions | Partial: structured cards and gap reporting exist; external files and eligibility are not verified | Invalid pooling and missing identities produce explicit scope restrictions; publication presence does not create a measurement |
+| **D2 — Dataset cards** | Access/license, exact file inventory, unit hierarchy, units/calibration, groups, age/stage, raw/aggregate status, exclusions | Partial: structured cards exist; sibling ectogenesis intake offers local byte checks; source rights, review and eligibility remain unverified | Invalid pooling and missing identities produce explicit scope restrictions; publication presence does not create a measurement |
 | **D3 — Discriminating plans** | Immutable method-neutral research plan with favored/simple/alternative explanations and opposing measurable predictions | Partial: draft plan structure exists; it is not frozen or bound to a run | Plans specify what would favor each explanation and what remains ambiguous; associations retain observational status |
 | **D4 — Frozen evaluation** | Pin dataset, preprocessing, split and method revisions; registry of bounded sibling receipt adapters | Proposed | Every metric resolves to exact inputs/code; changing the plan yields a new exploratory revision; final-test access is recorded |
 | **D5 — Scientific review** | Append-only supported-within-scope/contradicted/inconclusive/not-testable decisions, rationale and next discriminator | Proposed | Byte integrity, computational reproduction, accepted annotation and scientific review are distinct statuses |
@@ -250,8 +250,10 @@ revisions; a later edit marks dependent plans stale. Dataset cards record
 source/file metadata, stated access and license, species/model, stage/interval,
 data granularity, unit hierarchy, endpoints/units, calibration state, groups,
 missingness and exclusions. A deterministic gap list exposes absent fields;
-it is not an eligibility score. Supplied file hashes are metadata and are not
-checked against external bytes by this feature. Plans require multiple
+  it is not an eligibility score. File hashes supplied to these Study design cards
+  remain metadata and are not checked against external bytes in this feature;
+  the sibling observation-intake tool provides a separate optional local check.
+  Plans require multiple
 hypothesis-linked predictions, an estimand, outcome/unit/time, comparator, baseline, split,
 uncertainty, missingness, confounding, falsification and ambiguity rules.
 Dossier exports preserve the exact structured records and hashes.

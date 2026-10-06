@@ -482,6 +482,7 @@ def ectogenesis_artifact_bundle(path):
             metadata = receipt["metadata"]
             groups = detail.get("groups")
             warnings = detail.get("warnings")
+            source_verification = detail.get("source_file_verification")
             if (detail.get("report_kind") != kind
                     or detail.get("biological_assay_performed") is not False
                     or detail.get("analysis_eligibility") !=
@@ -530,6 +531,46 @@ def ectogenesis_artifact_bundle(path):
                         or group["n_distinct_reported_unit_keys"] > group["n_records"]):
                     raise ValueError
                 seen_groups.add(group["group_id"])
+            if source_verification is None:
+                if "source_files.csv" in outputs:
+                    raise ValueError
+                source_verification = {"status": "not_reported_by_older_bundle",
+                                       "source_root_configured": False, "n_artifacts": detail["n_source_artifacts"],
+                                       "n_paths_declared": 0, "n_verified": 0, "n_mismatched": 0,
+                                       "n_not_checked": detail["n_source_artifacts"], "bytes_hashed": 0}
+            else:
+                verification_counts = ("n_artifacts", "n_paths_declared", "n_verified",
+                                       "n_mismatched", "n_not_checked", "bytes_hashed")
+                if (not isinstance(source_verification, dict)
+                        or source_verification.get("status") not in {"not_requested", "complete", "partial", "mismatch"}
+                        or type(source_verification.get("source_root_configured")) is not bool
+                        or any(isinstance(source_verification.get(name), bool)
+                               or not isinstance(source_verification.get(name), int)
+                               or source_verification[name] < 0 for name in verification_counts)
+                        or source_verification["n_artifacts"] != detail["n_source_artifacts"]
+                        or source_verification["n_paths_declared"] > source_verification["n_artifacts"]
+                        or source_verification["n_verified"] + source_verification["n_mismatched"]
+                        + source_verification["n_not_checked"] != source_verification["n_artifacts"]
+                        or source_verification["bytes_hashed"] > 2_000_000_000
+                        or "source_files.csv" not in outputs
+                        or metadata.get("source_file_verification_status") != source_verification["status"]):
+                    raise ValueError
+                if ((source_verification["status"] == "not_requested"
+                     and (source_verification["source_root_configured"]
+                          or source_verification["n_verified"] != 0
+                          or source_verification["n_mismatched"] != 0
+                          or source_verification["n_not_checked"] != source_verification["n_artifacts"]))
+                        or (source_verification["status"] != "not_requested"
+                            and not source_verification["source_root_configured"])
+                        or (source_verification["status"] == "complete"
+                            and (source_verification["n_verified"] != source_verification["n_artifacts"]
+                                 or source_verification["n_paths_declared"] != source_verification["n_artifacts"]))
+                        or (source_verification["status"] == "mismatch"
+                            and source_verification["n_mismatched"] == 0)
+                        or (source_verification["status"] == "partial"
+                            and (source_verification["n_verified"] == source_verification["n_artifacts"]
+                                 or source_verification["n_mismatched"] > 0))):
+                    raise ValueError
             summary.update(dataset_id=detail["dataset_id"], title=detail.get("title"),
                            source_revision_id=detail["source_revision_id"],
                            source_review_status=detail["source_review_status"],
@@ -540,6 +581,7 @@ def ectogenesis_artifact_bundle(path):
                            n_continuity_not_reported=detail["n_continuity_not_reported"],
                            analysis_eligibility=detail["analysis_eligibility"], groups=groups,
                            groups_truncated=detail["groups_truncated"],
+                           source_file_verification=source_verification,
                            warnings=warnings)
         elif kind == "synthetic_exchange_software_fixture":
             if (detail.get("result_kind") != kind or any(detail.get(flag) is not False for flag in

@@ -55,9 +55,11 @@ revisions for this area. A plan points to exact question and dataset-card
 revision IDs; later edits make it visibly stale. The sibling model repo's
 `wombmodels validate-observations --dataset PATH --out NEW_DIRECTORY` command
 creates a receipt-bound intake report that Model bench displays as exact
-source/unit groups and transition continuity records. This accepts structured
-source metadata only: a receipt does not verify the transcription, establish
-data eligibility, authenticate review, or constitute a biological assay.
+source/unit groups, transition continuity records and local byte-hash status.
+To compare available source bytes, declare relative `local_path` values and
+pass `--source-root`; the command does not fetch or copy source files. A match
+does not verify transcription, rights, data eligibility or local-review
+identity, and does not constitute a biological assay.
 
 ## First software contribution
 

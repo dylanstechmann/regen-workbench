@@ -28,8 +28,10 @@ intervals and displays mechanics verification plus the seven-regime transport
 matrix, including its near-degenerate case. Jobs already retain canonical
 campaign/parameter submission snapshots. The Study design view now stores
 content-hashed question, dataset-card and analysis-plan drafts, exact revision
-links and stale-plan detection. Dataset hashes remain user-supplied metadata;
-source-review decisions and run-to-revision binding remain open. The next
+links and stale-plan detection. Ectogenesis intake can now optionally hash
+local source bytes beneath an explicit root and report matches without copying
+the data. Source-review decisions, rights checks and run-to-revision binding
+remain open. The next
 integrated milestone is one human-reviewed organoid measurement case carried
 from source images through frozen masks, grouped evaluation and a portable
 ResearchDesk dossier. In parallel, qualify placental/interface and paired
