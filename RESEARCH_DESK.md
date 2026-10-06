@@ -61,6 +61,8 @@ coordinates, the bench can show their reported medians side by side and the
 descriptive B−A difference. Missing metrics remain missing, estimable replicate
 counts stay visible, and implementation-hash changes are flagged. The comparison
 does not pool runs or rank models, and it carries no biological interpretation.
+Each compatible view can be downloaded as JSON with its report IDs, versions,
+input hash, comparison metric, per-condition values, missingness and deltas.
 
 - **Evidence:** PubMed, Europe PMC, OpenAlex, ClinicalTrials.gov, Semantic
   Scholar, CORE, Brave and Exa. Select sources and request 1-10 results each.

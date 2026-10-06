@@ -376,7 +376,16 @@ function renderModelBenchComparison(verified) {
         for(const value of [condition,modelNumber(row.value_a),`${row.estimable_a ?? '—'} / ${row.replicates_a ?? '—'}`,modelNumber(row.value_b),`${row.estimable_b ?? '—'} / ${row.replicates_b ?? '—'}`,modelNumber(row.delta_b_minus_a)])tr.append(el('td',value));
         body.append(tr);
       }
-      table.append(thead,body);resultPanel.append(table,el('p',result.interpretation,'boundary'));
+      table.append(thead,body);
+      const download=el('button','Download comparison JSON');download.type='button';
+      download.addEventListener('click',()=>{
+        const record={schema_version:1,generated_at:new Date().toISOString(),application:'regen-workbench ResearchDesk',comparison:result};
+        const objectUrl=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)],{type:'application/json'}));
+        const link=el('a');link.href=objectUrl;
+        link.download=`${result.bundle_a.bundle_id}_vs_${result.bundle_b.bundle_id}_${result.metric}.json`;
+        link.click();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
+      });
+      resultPanel.append(table,download,el('p',result.interpretation,'boundary'));
     } catch(error) { if(thisRequest===requestNumber)resultPanel.replaceChildren(el('p',error.message || 'Comparison could not be loaded.','boundary')); }
   };
   for(const control of [selectA,selectB,metric])control.addEventListener('change',draw);
