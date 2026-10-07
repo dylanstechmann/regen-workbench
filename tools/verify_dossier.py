@@ -2,11 +2,16 @@
 """Verify an exported ResearchDesk dossier archive without the workstation that made it.
 
 The verifier uses only the Python standard library so a reviewer can run it in a
-clean environment. It answers three separate questions and never merges them:
+clean environment. It answers four separate questions and never merges them:
 
 * ``bytes_verified``   — do the archived members match the inventory hashes?
 * ``ancestry_resolved`` — does every archived file resolve to a declared source
   manifest or receipt entry carried inside the same archive?
+* ``scientific_lineage`` — do the archived research revisions still hash to what they
+  declare, do frozen-plan pins resolve to revisions inside the archive, is each
+  holdout-access ledger an unbroken hash chain, and does the recorded claim state
+  recompute from the archived records? It needs ``frozen_evaluation.py`` beside this
+  file (also standard library only); without it the status is ``not_checked``.
 * ``scientific_review`` — always ``not_established_by_this_tool``. A hash match
   is not a reviewed result.
 
@@ -21,6 +26,11 @@ import json
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
+
+try:  # the lineage checks live beside this file; the verifier still runs without them
+    import frozen_evaluation as _fe
+except ImportError:  # pragma: no cover - exercised by copying this file alone
+    _fe = None
 
 MAX_MEMBER_BYTES = 20_000_000
 MAX_TOTAL_BYTES = 100_000_000
@@ -119,6 +129,90 @@ def _declared_ancestry(dossier: dict, plan: dict | None) -> dict[str, str]:
     return declared
 
 
+def _lineage(archive: zipfile.ZipFile, members: dict) -> dict:
+    """Check the archived research revisions without the Desk that wrote them."""
+    if "research_records.json" not in members:
+        return {"status": "not_applicable", "n_records": 0, "freezes": [], "problems": []}
+    if _fe is None:
+        return {"status": "not_checked", "n_records": None, "freezes": [], "problems": [],
+                "detail": "frozen_evaluation.py was not found next to the verifier, so research "
+                          "revisions were not re-hashed."}
+    try:
+        payload = json.loads(archive.read("research_records.json").decode("utf-8"))
+        records = payload["records"]
+        if not isinstance(records, list) or not all(isinstance(item, dict) for item in records):
+            raise ValueError("records must be a list of objects")
+    except (KeyError, ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        return {"status": "unresolved", "n_records": 0, "freezes": [],
+                "problems": [f"research_records.json is not readable: {exc}"]}
+
+    problems, local = [], []
+    for item in records:
+        item = dict(item)
+        try:
+            recomputed = _fe.record_hash(item["record_type"], item["title"], item["content"])
+        except (KeyError, TypeError, ValueError):
+            recomputed = None
+        item["content_integrity_valid"] = recomputed is not None and recomputed == item.get("content_sha256")
+        if not item["content_integrity_valid"]:
+            problems.append(f"research revision {item.get('revision_id')} does not hash to its declared "
+                            "content_sha256")
+        local.append(item)
+    by_id = {item.get("revision_id"): item for item in local}
+    freezes = []
+    for freeze in (item for item in local if item.get("record_type") == "plan_freeze"):
+        identifier = freeze.get("revision_id")
+        row = {"revision_id": identifier, "pins_resolve": True, "claim_status": None,
+               "claim_status_matches_export": None}
+        try:
+            pins = freeze["content"]["pins"]
+            wanted = [(pins["plan"], "analysis_plan"), (pins["question"], "question"),
+                      *[(pin, "dataset_card") for pin in pins["datasets"]]]
+            for pin, record_type in wanted:
+                found = by_id.get(pin["revision_id"])
+                if found is None or found.get("record_type") != record_type:
+                    row["pins_resolve"] = False
+                    problems.append(f"freeze {identifier} pins {record_type} {pin['revision_id']}, which is "
+                                    "absent from the archive")
+                elif found["content_sha256"] != pin["content_sha256"] or not found["content_integrity_valid"]:
+                    row["pins_resolve"] = False
+                    problems.append(f"freeze {identifier} pins {record_type} {pin['revision_id']}, whose "
+                                    "archived content differs from the pinned hash")
+            split = freeze["content"]["split"]
+            expected = _fe._canonical_sha256({key: split[key] for key in (
+                "grouping_unit", "development_group_ids", "final_test_group_ids")})
+            if split.get("split_sha256") != expected:
+                problems.append(f"freeze {identifier} split does not hash to its declared split_sha256")
+            events = [item for item in local if item.get("record_type") == "holdout_access"
+                      and item.get("content", {}).get("freeze_revision_id") == identifier]
+            bindings = [item for item in local if item.get("record_type") == "evaluation_binding"
+                        and item.get("content", {}).get("freeze_revision_id") == identifier]
+            for item in bindings:
+                if item["content"].get("freeze_content_sha256") != freeze["content_sha256"]:
+                    problems.append(f"binding {item.get('revision_id')} is bound to different freeze content")
+            assessment = _fe.assess_freeze(freeze, events, bindings)
+            row["claim_status"] = assessment["claim_status"]
+            row["ledger_chain_valid"] = assessment["ledger"]["chain_valid"]
+            for problem in assessment["ledger"]["chain_problems"]:
+                problems.append(f"freeze {identifier} ledger: {problem}")
+            exported = freeze.get("freeze_assessment")
+            if isinstance(exported, dict):
+                row["claim_status_matches_export"] = (
+                    exported.get("claim_status") == assessment["claim_status"]
+                    and exported.get("record_supports_confirmatory_claim")
+                    == assessment["record_supports_confirmatory_claim"])
+                if not row["claim_status_matches_export"]:
+                    problems.append(f"freeze {identifier} exported claim state "
+                                    f"{exported.get('claim_status')!r} differs from the recomputed "
+                                    f"{assessment['claim_status']!r}")
+        except (KeyError, TypeError, AttributeError, ValueError) as exc:
+            row["pins_resolve"] = False
+            problems.append(f"freeze {identifier} could not be checked: {exc!r}")
+        freezes.append(row)
+    status = "unresolved" if problems else ("resolved" if freezes or local else "no_research_records")
+    return {"status": status, "n_records": len(local), "freezes": freezes, "problems": problems}
+
+
 def verify_dossier(archive_path: Path, *, strict: bool = False) -> dict:
     """Return a verification report for one exported dossier archive.
 
@@ -178,7 +272,7 @@ def verify_dossier(archive_path: Path, *, strict: bool = False) -> dict:
         if plan is None and "reproduction-plan.json" not in members:
             warnings.append("archive has no reproduction-plan.json; it was exported before plans were recorded")
         if index is None or dossier is None:
-            return _report(path, errors, warnings, {}, {}, None, None)
+            return _report(path, errors, warnings, {}, {}, None, None, None, strict)
         errors.extend(_structure_errors(index, dossier, plan))
 
         indexed: dict[str, dict] = {}
@@ -249,11 +343,14 @@ def verify_dossier(archive_path: Path, *, strict: bool = False) -> dict:
             "run_outputs_mismatched_at_export": unmatched_runs,
             "notes_included": bool(index.get("notes_included")),
         }
-        return _report(path, errors, warnings, results, inventory, ancestry, plan)
+        lineage = _lineage(archive, members)
+        if lineage["status"] == "not_checked":
+            warnings.append(lineage["detail"])
+        return _report(path, errors, warnings, results, inventory, ancestry, plan, lineage, strict)
 
 
 def _report(path: Path, errors: list[str], warnings: list[str], files: dict, inventory: dict,
-            ancestry: dict | None, plan: dict | None) -> dict:
+            ancestry: dict | None, plan: dict | None, lineage: dict | None, strict: bool = False) -> dict:
     if ancestry is None:
         ancestry_status = "unresolved"
     elif ancestry["missing"] or ancestry["mismatched"]:
@@ -266,7 +363,12 @@ def _report(path: Path, errors: list[str], warnings: list[str], files: dict, inv
         "schema_version": 1,
         "archive": path.name,
         "bytes_verified": not errors,
+        # Archive bytes and research lineage are separate questions. Under --strict an unresolved
+        # lineage also fails the run, without pretending any bytes were wrong.
+        "verified": not errors and not (strict and (lineage or {}).get("status") == "unresolved"),
         "ancestry_resolved": ancestry_status,
+        "scientific_lineage": (lineage or {"status": "not_checked"})["status"],
+        "lineage": lineage,
         "scientific_review": STATUS_NOT_REVIEWED,
         "reproduction": "not_attempted",
         "reproduction_requirements": {
@@ -320,6 +422,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"archive          {report['archive']}")
         print(f"bytes verified   {report['bytes_verified']}")
         print(f"ancestry         {report['ancestry_resolved']}")
+        print(f"sci. lineage     {report['scientific_lineage']}")
         print(f"scientific review {report['scientific_review']}")
         print(f"reproduction     {report['reproduction']}")
         inventory = report["inventory"]
@@ -328,7 +431,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"warning          {warning}")
         for error in report["errors"]:
             print(f"error            {error}")
-    return 0 if report["bytes_verified"] else 1
+        for problem in (report["lineage"] or {}).get("problems", []):
+            print(f"lineage          {problem}")
+    return 0 if report["verified"] else 1
 
 
 if __name__ == "__main__":

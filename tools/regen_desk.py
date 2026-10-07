@@ -25,6 +25,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
+import frozen_evaluation as fe
 import regen
 from regen_compute import compound_screen, manifest, write_json
 
@@ -82,7 +83,8 @@ EVIDENCE_RECORD_FIELDS = ("source_type", "source_title", "source_url", "license"
                           "developmental_interval", "model_system", "comparator", "outcome", "measure",
                           "value", "unit", "independent_unit", "sample_size", "follow_up", "status",
                           "direction", "notes", "dataset_sha256")
-RESEARCH_RECORD_TYPES = {"question", "dataset_card", "analysis_plan"}
+DESIGN_RECORD_TYPES = {"question", "dataset_card", "analysis_plan"}
+RESEARCH_RECORD_TYPES = DESIGN_RECORD_TYPES | set(fe.FROZEN_RECORD_TYPES)
 RESEARCH_ACCESS_STATES = {"public_open", "controlled", "request_required", "unavailable", "synthetic_example"}
 RESEARCH_HYPOTHESIS_ID = re.compile(r"[a-z0-9][a-z0-9_-]{1,63}")
 SHA256_HEX = re.compile(r"[0-9a-f]{64}")
@@ -290,9 +292,8 @@ def dataset_qualification_gaps(content):
 
 
 def research_record_hash(record_type, title, content):
-    canonical = json.dumps({"record_type": record_type, "title": title, "content": content},
-                           ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
-    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    """Canonical revision hash; defined once in frozen_evaluation so the standalone verifier can match it."""
+    return fe.record_hash(record_type, title, content)
 
 
 def experiment_manifest_tools():
@@ -345,6 +346,46 @@ def campaign_structure_path(value, label):
     if path.suffix.lower() != ".pdbqt" or path.stat().st_size > 25 * 1024 * 1024:
         raise ValueError(f"{label} must be a .pdbqt file no larger than 25 MiB")
     return path
+
+
+def evaluation_receipt_path(value):
+    """Resolve a receipt to a regular .json file under an allowed root, never through a symlink."""
+    raw = Path(value)
+    if not raw.is_absolute():
+        raw = regen.ROOT / raw
+    raw = Path(os.path.abspath(raw))
+    for root in (regen.DATA, HOME / "studies", regen.ROOT / "projects"):
+        root = Path(os.path.abspath(root))
+        try:
+            relative = raw.relative_to(root)
+        except ValueError:
+            continue
+        if not relative.parts or ".." in relative.parts:
+            continue
+        current = root
+        for part in relative.parts:
+            current = current / part
+            if current.is_symlink():
+                raise ValueError("A receipt path must not pass through a symbolic link")
+        try:
+            resolved, resolved_root = current.resolve(strict=True), root.resolve(strict=True)
+        except OSError:
+            raise ValueError("The receipt does not exist") from None
+        if resolved_root not in resolved.parents or not resolved.is_file():
+            raise ValueError("The receipt must be a regular file inside an allowed directory")
+        if resolved.suffix.lower() != ".json":
+            raise ValueError("The receipt must be a .json file")
+        return resolved
+    raise ValueError("A receipt must be a .json file under data/, studies/ or projects/")
+
+
+def read_receipt_bytes(path):
+    """One bounded read: the hash, the parse and the stored size all describe the same bytes."""
+    with path.open("rb") as stream:
+        raw = stream.read(fe.MAX_RECEIPT_BYTES + 1)
+    if not raw or len(raw) > fe.MAX_RECEIPT_BYTES:
+        raise ValueError(f"A receipt must be between 1 byte and {fe.MAX_RECEIPT_BYTES} bytes")
+    return raw
 
 
 def public_url(value):
@@ -408,7 +449,8 @@ def reproduction_plan(dossier, index):
         "python_version": sys.version.split()[0],
         "platform": sys.platform,
         "declared_dependencies": {
-            "verification": ["python>=3.10 standard library only"],
+            "verification": ["python>=3.10 standard library only",
+                             "tools/verify_dossier.py with tools/frozen_evaluation.py beside it for research-lineage checks"],
             "rerun": ["python>=3.10", "jsonschema (experiment-manifest validation)", "PyYAML (tool configuration)",
                       "network access and provider credentials for any search run",
                       "the sibling method repositories that produced each linked output"],
@@ -1811,6 +1853,8 @@ class Desk:
         record_type = text_field(data, "record_type", maximum=32)
         if record_type not in RESEARCH_RECORD_TYPES:
             raise ValueError("Unknown research record type")
+        if record_type in fe.FROZEN_RECORD_TYPES:
+            return self._frozen_record(record_type, data)
         blueprint_id = text_field(data, "blueprint_id", maximum=64)
         title = research_text(data.get("title"), "Research record title", 300)
         family_id = text_field(data, "family_id", maximum=64)
@@ -1882,12 +1926,90 @@ class Desk:
             }
             if record_type == "dataset_card":
                 record["data_qualification_gaps"] = dataset_qualification_gaps(content)
+            return self._append_research_record(record)
+
+    def _append_research_record(self, record):
+        with self.lock:
             self.store["research_records"].append(record)
             if len(self.store["research_records"]) > 1000:
                 self.store["research_records"].pop()
                 raise ValueError("This workspace has reached the 1000 research-revision limit")
             self.save_store()
             return dict(record)
+
+    def _frozen_record(self, record_type, data):
+        """Append a freeze, ledger event or receipt binding.
+
+        The client supplies intent only. Every pin, hash chain link, clock and check
+        result is computed here from the stored records and, for a binding, from one
+        bounded read of the receipt file, so none of it can be asserted by the caller.
+        """
+        blueprint_id = text_field(data, "blueprint_id", maximum=64)
+        title = research_text(data.get("title"), "Research record title", 300)
+        if text_field(data, "family_id", maximum=64) or text_field(data, "supersedes_revision_id", maximum=64):
+            raise ValueError("Freezes, access events and bindings are append-only and cannot be revised; "
+                             "create a new plan revision and freeze it again")
+        try:
+            with self.lock:
+                if not any(item["id"] == blueprint_id for item in self.store["blueprints"]):
+                    raise ValueError("Unknown research area")
+                state = {item["revision_id"]: item for item in self.research_record_state(blueprint_id)}
+                dependencies, label = [], "recorded"
+                if record_type == "plan_freeze":
+                    request = fe.validate_freeze_request(data.get("content"))
+                    plan = state.get(request["plan_revision_id"])
+                    if plan is None or plan["record_type"] != "analysis_plan":
+                        raise ValueError("Freeze a saved analysis-plan revision in this research area")
+                    question = state.get(plan["content"]["question_revision_id"])
+                    datasets = [state.get(value) for value in plan["content"]["dataset_revision_ids"]]
+                    if question is None or any(item is None for item in datasets):
+                        raise ValueError("The plan links a revision that is not saved in this research area")
+                    content = fe.build_freeze_content(request, plan=plan, question=question,
+                                                      datasets=datasets, frozen_utc=regen.now())
+                    fe.validate_freeze_content(content)
+                    dependencies = [plan["revision_id"], question["revision_id"],
+                                    *sorted(item["revision_id"] for item in datasets)]
+                    label = "frozen"
+                else:
+                    section = "access" if record_type == "holdout_access" else "binding"
+                    request = (fe.validate_access_request(data.get("content")) if section == "access"
+                               else fe.validate_binding_request(data.get("content")))
+                    freeze = state.get(request["freeze_revision_id"])
+                    if freeze is None or freeze["record_type"] != "plan_freeze":
+                        raise ValueError("Attach this record to a saved plan freeze in this research area")
+                    dependencies = [freeze["revision_id"]]
+                    if section == "access":
+                        events = [item for item in state.values() if item["record_type"] == "holdout_access"
+                                  and item["content"].get("freeze_revision_id") == freeze["revision_id"]]
+                        content = fe.build_access_content(request, freeze=freeze, events=events,
+                                                          recorded_utc=regen.now())
+                    else:
+                        path = evaluation_receipt_path(request["receipt_path"])
+                        raw = read_receipt_bytes(path)
+                        digest = fe.sha256_bytes(raw)
+                        if any(item["record_type"] == "evaluation_binding"
+                               and item["content"].get("freeze_revision_id") == freeze["revision_id"]
+                               and item["content"].get("receipt", {}).get("sha256") == digest
+                               and item["content"].get("stage") == request["stage"]
+                               for item in state.values()):
+                            raise ValueError("This receipt is already bound to the freeze at this stage")
+                        content = fe.build_binding_content(request, freeze=freeze, receipt_bytes=raw,
+                                                           receipt_name=path.name, bound_utc=regen.now())
+                        label = "bound"
+                size = len(json.dumps(content, ensure_ascii=False, separators=(",", ":"),
+                                      allow_nan=False).encode("utf-8"))
+                if size > 64_000:
+                    raise ValueError("Research record content exceeds 64 KB")
+                record = {
+                    "revision_id": uuid.uuid4().hex, "family_id": uuid.uuid4().hex, "revision_number": 1,
+                    "record_type": record_type, "blueprint_id": blueprint_id, "title": title,
+                    "content": content, "content_sha256": research_record_hash(record_type, title, content),
+                    "supersedes_revision_id": None, "dependency_revision_ids": dependencies,
+                    "record_state": label, "source_urls_fetched": False, "created_utc": regen.now(),
+                }
+                return self._append_research_record(record)
+        except fe.FrozenEvaluationError as exc:
+            raise ValueError(str(exc)) from exc
 
     def research_record_state(self, blueprint_id):
         with self.lock:
@@ -1922,7 +2044,55 @@ class Desk:
             item["is_current_revision"] = item["revision_id"] not in superseded
             item["stale_dependency_revision_ids"] = [value for value in item.get("dependency_revision_ids", [])
                                                        if value not in current_ids]
+        self._attach_freeze_assessments(records)
         return sorted(records, key=lambda item: (item["created_utc"], item["revision_number"]), reverse=True)
+
+    @staticmethod
+    def _attach_freeze_assessments(records):
+        """Derive each freeze's pin resolution, ledger and claim state from its immutable records.
+
+        Nothing here is stored: it is recomputed from the append-only records on every read, so a
+        tampered ledger or a later plan revision shows up immediately instead of being cached.
+        """
+        by_id = {item["revision_id"]: item for item in records}
+        events, bindings = {}, {}
+        for item in records:
+            content = item.get("content") if isinstance(item.get("content"), dict) else {}
+            if item["record_type"] == "holdout_access":
+                events.setdefault(content.get("freeze_revision_id"), []).append(item)
+            elif item["record_type"] == "evaluation_binding":
+                bindings.setdefault(content.get("freeze_revision_id"), []).append(item)
+        for item in records:
+            if item["record_type"] != "plan_freeze":
+                continue
+            try:
+                pins = item["content"]["pins"]
+                wanted = [(pins["plan"], "analysis_plan"), (pins["question"], "question"),
+                          *[(pin, "dataset_card") for pin in pins["datasets"]]]
+                missing, changed = [], []
+                for pin, record_type in wanted:
+                    found = by_id.get(pin["revision_id"])
+                    if found is None or found["record_type"] != record_type:
+                        missing.append(pin["revision_id"])
+                    elif found["content_sha256"] != pin["content_sha256"] or not found["content_integrity_valid"]:
+                        changed.append(pin["revision_id"])
+                item["pins_resolve"] = {
+                    "all_resolve": not missing and not changed, "missing_revision_ids": missing,
+                    "changed_revision_ids": changed,
+                    "plan_superseded_since_freeze": not by_id.get(pins["plan"]["revision_id"], {}).get(
+                        "is_current_revision", True)}
+                item["freeze_assessment"] = fe.assess_freeze(
+                    item, events.get(item["revision_id"], []), bindings.get(item["revision_id"], []))
+            except (KeyError, TypeError, AttributeError):
+                item["pins_resolve"] = {"all_resolve": False, "missing_revision_ids": [],
+                                        "changed_revision_ids": [], "plan_superseded_since_freeze": False}
+                item["freeze_assessment"] = {
+                    "claim_status": "assessment_failed", "violations": [], "bindings": [],
+                    "record_supports_confirmatory_claim": False,
+                    "ledger": {"n_events": 0, "head_sha256": None, "chain_valid": False,
+                               "chain_problems": ["The stored freeze could not be assessed."],
+                               "n_final_test_events": 0, "first_final_test_sequence": None},
+                    "claim_limits": list(fe.CLAIM_LIMITS)}
 
     def research_record_page(self, blueprint_id, offset=0, limit=20):
         if not any(item["id"] == blueprint_id for item in self.store["blueprints"]):
@@ -2619,6 +2789,19 @@ class Desk:
                 stale = ("; stale dependencies: " + ", ".join(record["stale_dependency_revision_ids"])
                          if record["stale_dependency_revision_ids"] else "")
                 parts.append(f"- {record['record_type']} · {record['title']} · revision {record['revision_number']} · {state} · SHA-256 {record['content_sha256']}{stale}")
+                if record["record_type"] == "plan_freeze" and "freeze_assessment" in record:
+                    assessment, body = record["freeze_assessment"], record["content"]
+                    parts.append(
+                        f"  - Freeze status {body['freeze_status']}; claim state {assessment['claim_status']}; "
+                        f"final-test groups sealed {len(body['split']['final_test_group_ids'])}; ledger events "
+                        f"{assessment['ledger']['n_events']} (head {assessment['ledger']['head_sha256'] or 'none'}); "
+                        f"pinned inputs resolve: {record['pins_resolve']['all_resolve']}; record supports a "
+                        f"confirmatory claim: {assessment['record_supports_confirmatory_claim']}. This is "
+                        "procedural bookkeeping, not a result or a review.")
+                elif record["record_type"] == "evaluation_binding":
+                    parts.append(
+                        f"  - Binding {record['content']['binding_status']} at the {record['content']['stage']} "
+                        f"stage for receipt {record['content']['receipt']['sha256']}.")
         else:
             parts.append("No question, dataset-card or analysis-plan revisions have been recorded.")
         parts.append("Citation URLs in these records are stored as references and were not fetched by ResearchDesk. Draft plans do not execute analyses or establish dataset eligibility.")

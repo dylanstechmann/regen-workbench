@@ -21,14 +21,14 @@
       <div id="experiment-records"></div>
     </section>
     <section id="study-design" class="view" hidden>
-      <div class="section-heading"><div><h2>Questions, dataset cards and analysis plans</h2><span>Immutable draft revisions with exact links between the question, candidate inputs and proposed analysis.</span></div><span id="research-record-total"></span></div>
-      <p class="model-bench-boundary">Records are content-hashed drafts. ResearchDesk does not fetch citations, authenticate reviewer identity, establish data eligibility or execute these plans. Changing a linked question or dataset card marks dependent plans stale.</p>
+      <div class="section-heading"><div><h2>Questions, dataset cards, analysis plans and frozen evaluations</h2><span>Immutable draft revisions with exact links between the question, candidate inputs and proposed analysis.</span></div><span id="research-record-total"></span></div>
+      <p class="model-bench-boundary">Records are content-hashed drafts. ResearchDesk does not fetch citations, authenticate reviewer identity, establish data eligibility or execute these plans. Changing a linked question or dataset card marks dependent plans stale. A freeze pins one plan revision, its inputs, the method and the split before a run; access events and receipt bindings are append-only and computed here. The freeze clock, the &ldquo;results inspected&rdquo; answer and the access actor are self-reported and not authenticated, and a clean record is procedure, not a result or a review.</p>
       <form id="research-record-form" class="search-panel">
         <input type="hidden" name="family_id"><input type="hidden" name="supersedes_revision_id">
-        <div class="form-grid"><label>Record type<select name="record_type" id="research-record-type"><option value="question">Research question</option><option value="dataset_card">Dataset card</option><option value="analysis_plan">Discriminating analysis plan</option></select></label><label>Title<input name="title" required maxlength="300"></label>
+        <div class="form-grid"><label>Record type<select name="record_type" id="research-record-type"><option value="question">Research question</option><option value="dataset_card">Dataset card</option><option value="analysis_plan">Discriminating analysis plan</option><option value="plan_freeze">Freeze an analysis plan</option><option value="holdout_access">Record holdout access</option><option value="evaluation_binding">Bind a receipt to a freeze</option></select></label><label>Title<input name="title" required maxlength="300"></label>
           <label class="full">Structured content (JSON)<textarea id="research-record-content" name="content" rows="18" required spellcheck="false"></textarea></label>
         </div>
-        <div class="row"><button type="submit" class="primary">Save immutable draft revision</button><button type="button" id="research-record-new">New record</button></div>
+        <div class="row"><button type="submit" class="primary">Save immutable record</button><button type="button" id="research-record-new">New record</button></div>
       </form>
       <div id="research-records"></div><div id="research-record-pagination" class="pagination"></div>
     </section>

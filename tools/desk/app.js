@@ -8,6 +8,7 @@ let experimentRecords = [];
 let modelArtifactState = null;
 let researchRecords = [], researchRecordTotal = 0, researchRecordPage = 0, researchRecordBlueprint = null;
 let researchEditorType = 'question';
+const frozenRecordTypes = new Set(['plan_freeze','holdout_access','evaluation_binding']);
 const trajectoryCache = new Map();
 const sweepMetricOptions = [
   ['median_prospective_forecast_rmse','Forward forecast RMSE'],
@@ -46,6 +47,9 @@ function current() { return workspace.blueprints.find(b => b.id === selected); }
 const researchTemplates = {
   question: {question:'',scope:'Species or model, exact source groups, and observed interval.',claim_boundary:'What this question could and could not establish.',hypotheses:[{id:'h1',prediction:'Prediction that would favor the first explanation.',falsifier:'Observation that would count against it.'},{id:'h2',prediction:'A different measurable prediction for a competing explanation.',falsifier:'Observation that would count against it.'}],source_refs:[]},
   dataset_card: {citation:'',source_url:'',access_status:'public_open',license:'',scope:'Data provenance and intended comparison.',species_or_model:'',stage_or_interval:'',data_granularity:'unknown',files:[{path:'replace-with-exact-relative-filename.csv',format:'csv',sha256:null,rows:null}],unit_hierarchy:[{level:'replace-with-source-unit-level',kind:'donor, embryo, culture, or source-defined group',source_field:'exact source column or not reported',identity_status:'not_reported'}],independent_unit_level:'not_reported',observed_quantities:[],groups:[],missingness:'Describe source-reported missingness or state not reported.',exclusions:'Describe recorded exclusions or state not reported.'},
+  plan_freeze: {plan_revision_id:'paste-current-analysis-plan-revision-id',method:{owner_repository:'sibling repository that owns the method',revision:'40-character git commit, or empty if not pinned',version:'',entry_point:'Describe the exact command. The Desk never runs it.',preprocessing:'State fixed preprocessing, or none.',parameters:'Fixed settings and random seeds.'},split:{grouping_unit:'the independent unit, e.g. donor or source well',development_group_ids:[],final_test_group_ids:[]},primary_metric:{name:'',direction:'lower_is_better',baseline:''},results_inspected_before_freeze:false,inspection_statement:''},
+  holdout_access: {freeze_revision_id:'paste-freeze-revision-id',scope:'development',action:'evaluate',actor:'who or what accessed the groups (self-reported)',reference:'run id, receipt hash or command',note:''},
+  evaluation_binding: {freeze_revision_id:'paste-freeze-revision-id',adapter:'regenbench-metrics/1',stage:'development',receipt_path:'a .json receipt under data/, studies/ or projects/'},
   analysis_plan: {question_revision_id:'paste-saved-question-revision-id',dataset_revision_ids:['paste-saved-dataset-card-revision-id'],estimand:'Define the quantity or comparison the analysis targets.',primary_outcome:{endpoint:'',unit:'',timepoint:'',comparator:'',independent_unit:''},alternatives:[{hypothesis_id:'h1',prediction:'Expected measurable outcome under explanation h1.'},{hypothesis_id:'h2',prediction:'Different expected measurable outcome under explanation h2.'}],baseline:'Name a simple comparator and its exact inputs.',split:'State the independent-unit split or why no split is possible.',uncertainty:'State the uncertainty summary and its unit of replication.',missingness_rule:'State how missing records and unavailable endpoints will be handled.',confounding:'Name source-specific confounders and the planned sensitivity checks.',falsification_rule:'State what result would count against the favored explanation.',ambiguity_rule:'State what remains unresolved if alternatives make similar predictions.',analysis_status:'exploratory'}
 };
 function researchRecordTemplate() {
@@ -58,22 +62,60 @@ function switchTab(tab) {
   $$('.view').forEach(view => { view.hidden = view.id !== tab; });
   $$('[data-tab]').forEach(button => { button.classList.toggle('active', button.dataset.tab === tab); button.setAttribute('aria-current',button.dataset.tab === tab ? 'page' : 'false'); });
 }
+function startFrozenRecord(type, content, title) {
+  const form=$('#research-record-form');form.reset();form.elements.family_id.value='';form.elements.supersedes_revision_id.value='';
+  form.elements.record_type.value=type;researchEditorType=type;form.elements.title.value=title;
+  $('#research-record-content').value=JSON.stringify({...researchTemplates[type],...content},null,2);$('#research-record-content').placeholder='';
+  switchTab('study-design');form.elements.title.focus();
+}
+const claimLabels={holdout_sealed:'Final-test groups sealed',single_final_evaluation_recorded:'Single final evaluation recorded',holdout_reused_not_independent:'Final-test groups reused',holdout_compromised:'Holdout compromised',ledger_integrity_failed:'Ledger integrity failed',exploratory_only:'Exploratory only',retrospective_not_confirmatory:'Retrospective, not confirmatory',assessment_failed:'Assessment failed'};
+function claimClass(status){return ['holdout_compromised','ledger_integrity_failed','assessment_failed'].includes(status)?'error':status==='single_final_evaluation_recorded'?'complete':'partial';}
+function renderFrozenDetails(record,card){
+  const body=record.content;
+  if(record.record_type==='plan_freeze'){
+    const assessment=record.freeze_assessment||{},ledger=assessment.ledger||{},pins=record.pins_resolve||{};
+    const status=badge(`freeze ${body.freeze_status}`,body.freeze_status==='confirmatory'?'complete':'partial');
+    card.querySelector('.section-heading').append(status,badge(claimLabels[assessment.claim_status]||assessment.claim_status||'unassessed',claimClass(assessment.claim_status)));
+    card.append(el('p',`Frozen ${new Date(body.frozen_utc).toLocaleString()} · ${body.split.development_group_ids.length} development and ${body.split.final_test_group_ids.length} sealed final-test ${body.split.grouping_unit} groups · split SHA-256 ${body.split.split_sha256}`,'method-note'));
+    card.append(el('p',`Method ${body.method.owner_repository} @ ${body.method.revision||'revision not pinned'}${body.method.version?` (version ${body.method.version})`:''} · primary metric ${body.primary_metric.name} (${body.primary_metric.direction.replaceAll('_',' ')}) against ${body.primary_metric.baseline}`,'method-note'));
+    card.append(el('p',`Pinned plan, question and dataset revisions resolve: ${pins.all_resolve?'yes':'NO'}${pins.plan_superseded_since_freeze?' · the plan has been revised since this freeze (this freeze still pins the original)':''}${pins.missing_revision_ids?.length?` · missing ${pins.missing_revision_ids.join(', ')}`:''}${pins.changed_revision_ids?.length?` · changed ${pins.changed_revision_ids.join(', ')}`:''}`,pins.all_resolve?'method-note':'boundary'));
+    if(body.confirmatory_blockers?.length){const list=el('ul');body.confirmatory_blockers.forEach(item=>list.append(el('li',item)));card.append(el('h4','Why this freeze is not confirmatory'),list);}
+    card.append(el('p',`Access ledger: ${ledger.n_events??0} event(s) · head ${ledger.head_sha256||'none'} · chain ${ledger.chain_valid===false?'BROKEN':'intact'} · final-test accesses ${ledger.n_final_test_events??0}`,ledger.chain_valid===false?'boundary':'method-note'));
+    (ledger.chain_problems||[]).forEach(item=>card.append(el('p',item,'boundary')));
+    if(assessment.violations?.length){const list=el('ul');assessment.violations.forEach(item=>list.append(el('li',`${item.id.replaceAll('_',' ')}: ${item.detail}`)));card.append(el('h4','Recorded holdout problems'),list);}
+    if(assessment.bindings?.length){const list=el('ul');assessment.bindings.forEach(item=>list.append(el('li',`${item.stage} stage · ${item.binding_status.replaceAll('_',' ')} · receipt ${item.receipt_sha256}`)));card.append(el('h4','Bound receipts'),list);}
+    card.append(el('p',`The record supports a confirmatory claim: ${assessment.record_supports_confirmatory_claim?'yes':'no'}. This is procedural bookkeeping. It does not show that the analysis was correct, that a receipt is genuine, or that any biological effect exists.`,'boundary'));
+    const row=el('div',null,'row'),access=el('button','Record access'),bind=el('button','Bind receipt');access.type=bind.type='button';
+    access.addEventListener('click',()=>startFrozenRecord('holdout_access',{freeze_revision_id:record.revision_id,expected_previous_event_sha256:ledger.head_sha256||null},'Holdout access'));
+    bind.addEventListener('click',()=>startFrozenRecord('evaluation_binding',{freeze_revision_id:record.revision_id},'Receipt binding'));
+    row.append(access,bind);card.append(row);
+  } else if(record.record_type==='holdout_access'){
+    card.append(el('p',`#${body.sequence} · ${body.scope.replaceAll('_',' ')} · ${body.action.replaceAll('_',' ')} · actor ${body.actor} (self-reported) · ${new Date(body.recorded_utc).toLocaleString()} · follows ${body.previous_event_sha256||'the start of the ledger'}`,'method-note'));
+    if(body.reference||body.note)card.append(el('p',[body.reference,body.note].filter(Boolean).join(' · '),'method-note'));
+  } else if(record.record_type==='evaluation_binding'){
+    card.querySelector('.section-heading').append(badge(body.binding_status.replaceAll('_',' '),body.binding_status==='mismatch'?'error':body.binding_status==='bound_prospective'?'complete':'partial'));
+    card.append(el('p',`${body.stage.replaceAll('_',' ')} stage · ${body.adapter} · receipt ${body.receipt.filename} (${body.receipt.bytes} bytes) SHA-256 ${body.receipt.sha256}`,'method-note'));
+    const list=el('ul');body.checks.forEach(item=>list.append(el('li',`${item.id.replaceAll('_',' ')}: ${item.status}. ${item.detail}`)));card.append(el('h4','Checks'),list);
+  }
+}
 function renderStudyRecords() {
   const container=$('#research-records');container.replaceChildren();
   $('#study-design-count').textContent=workspace.research_record_counts?.[selected] || '';
   $('#research-record-total').textContent=researchRecordTotal ? `${researchRecordTotal} immutable revisions` : 'No revisions yet';
-  if(!researchRecords.length){container.append(el('p','No research-design records in this area yet. Save a question, a dataset card, then a plan that links their exact revision IDs.','empty'));}
+  if(!researchRecords.length){container.append(el('p','No research-design records in this area yet. Save a question, a dataset card, then a plan that links their exact revision IDs; freeze the plan before any run.','empty'));}
   for(const record of researchRecords){
     const card=el('article',null,'finding'),heading=el('div',null,'section-heading');
-    heading.append(el('h3',record.title),badge(`${record.record_type.replaceAll('_',' ')} · revision ${record.revision_number}`,record.is_current_revision?'complete':'unreviewed'));
+    const isFrozen=frozenRecordTypes.has(record.record_type);
+    heading.append(el('h3',record.title),badge(isFrozen?record.record_type.replaceAll('_',' '):`${record.record_type.replaceAll('_',' ')} · revision ${record.revision_number}`,isFrozen?'':record.is_current_revision?'complete':'unreviewed'));
     if(record.content_integrity_valid===false)heading.append(badge('Content hash mismatch','unreviewed'));
     if(record.stale_dependency_revision_ids?.length)heading.append(badge('Plan dependencies changed','partial'));
     card.append(heading,el('p',`Revision ${record.revision_id} · SHA-256 ${record.content_sha256}`,'model-bench-id'));
     card.append(el('p',`${record.record_state} · citations were not fetched · created ${new Date(record.created_utc).toLocaleString()}`,'method-note'));
     if(record.stale_dependency_revision_ids?.length)card.append(el('p',`Superseded input revisions: ${record.stale_dependency_revision_ids.join(', ')}`,'boundary'));
+    if(isFrozen&&record.content_integrity_valid!==false)renderFrozenDetails(record,card);
     if(record.data_qualification_gaps?.length){const list=el('ul');record.data_qualification_gaps.forEach(item=>list.append(el('li',item)));card.append(el('h4','Data qualification gaps'),list);}
     const details=el('details'),summary=el('summary','Inspect exact structured content'),pre=el('pre',JSON.stringify(record.content,null,2));details.append(summary,pre);card.append(details);
-    if(record.is_current_revision&&record.content_integrity_valid!==false){const button=el('button','Create next revision');button.type='button';button.addEventListener('click',()=>{
+    if(!isFrozen&&record.is_current_revision&&record.content_integrity_valid!==false){const button=el('button','Create next revision');button.type='button';button.addEventListener('click',()=>{
       const form=$('#research-record-form');form.elements.record_type.value=record.record_type;form.elements.title.value=record.title;
       researchEditorType=record.record_type;
       form.elements.family_id.value=record.family_id;form.elements.supersedes_revision_id.value=record.revision_id;
