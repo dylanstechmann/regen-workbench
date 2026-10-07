@@ -6,6 +6,8 @@ import http.client
 import io
 import json
 import os
+import shutil
+import subprocess
 import sys
 import tempfile
 import threading
@@ -614,6 +616,31 @@ class PortableLineageTests(StudyRecordCase):
         self.assertEqual(report["scientific_lineage"], "not_checked")
         self.assertTrue(report["bytes_verified"])
         self.assertTrue(any("frozen_evaluation.py was not found" in item for item in report["warnings"]))
+
+    def run_isolated(self, script, archive):
+        """Run the CLI the way a careful reviewer runs untrusted input: ``python -I``."""
+        completed = subprocess.run([sys.executable, "-I", str(script), str(archive), "--strict", "--json"],
+                                   capture_output=True, text=True, timeout=120, cwd=self.root, check=False)
+        return completed.returncode, json.loads(completed.stdout)
+
+    def test_an_isolated_interpreter_still_checks_lineage_from_beside_the_script(self):
+        # -I leaves the script directory off sys.path; the lineage check must not silently vanish.
+        path, _freeze = self.export_lifecycle()
+        script = Path(__file__).resolve().parents[1] / "tools" / "verify_dossier.py"
+        code, report = self.run_isolated(script, path)
+        self.assertEqual(report["scientific_lineage"], "resolved")
+        self.assertEqual(code, 0)
+
+    def test_a_lone_copy_run_isolated_reports_not_checked_and_still_verifies_bytes(self):
+        path, _freeze = self.export_lifecycle()
+        lone = self.root / "lone"
+        lone.mkdir()
+        shutil.copyfile(Path(__file__).resolve().parents[1] / "tools" / "verify_dossier.py",
+                        lone / "verify_dossier.py")
+        code, report = self.run_isolated(lone / "verify_dossier.py", path)
+        self.assertEqual(report["scientific_lineage"], "not_checked")
+        self.assertTrue(report["bytes_verified"])
+        self.assertEqual(code, 0)
 
     def test_a_dossier_with_no_research_records_has_no_lineage_to_check(self):
         import verify_dossier

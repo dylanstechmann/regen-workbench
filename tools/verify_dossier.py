@@ -22,15 +22,42 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
+import importlib.util
 import json
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
 
-try:  # the lineage checks live beside this file; the verifier still runs without them
-    import frozen_evaluation as _fe
-except ImportError:  # pragma: no cover - exercised by copying this file alone
-    _fe = None
+
+def _sibling_module(name: str):
+    """Import ``name`` from beside this file, or return None.
+
+    ``python -I`` (the isolated mode a careful reviewer uses on an untrusted archive)
+    leaves this file's directory off ``sys.path``, so a plain import would quietly turn
+    the lineage check into ``not_checked``. Loading the exact sibling path avoids that
+    without searching the working directory.
+    """
+    try:
+        return importlib.import_module(name)
+    except ImportError:
+        pass
+    path = Path(__file__).resolve().with_name(f"{name}.py")
+    spec = importlib.util.spec_from_file_location(name, path) if path.is_file() else None
+    if spec is None or spec.loader is None:
+        return None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:  # a broken sibling must not take the integrity checks down with it
+        sys.modules.pop(name, None)
+        return None
+    return module
+
+
+# The lineage checks live beside this file; the verifier still runs without them.
+_fe = _sibling_module("frozen_evaluation")
 
 MAX_MEMBER_BYTES = 20_000_000
 MAX_TOTAL_BYTES = 100_000_000
@@ -135,8 +162,8 @@ def _lineage(archive: zipfile.ZipFile, members: dict) -> dict:
         return {"status": "not_applicable", "n_records": 0, "freezes": [], "problems": []}
     if _fe is None:
         return {"status": "not_checked", "n_records": None, "freezes": [], "problems": [],
-                "detail": "frozen_evaluation.py was not found next to the verifier, so research "
-                          "revisions were not re-hashed."}
+                "detail": "frozen_evaluation.py was not found next to the verifier (or could not be "
+                          "loaded), so research revisions were not re-hashed."}
     try:
         payload = json.loads(archive.read("research_records.json").decode("utf-8"))
         records = payload["records"]
