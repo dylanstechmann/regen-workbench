@@ -108,23 +108,30 @@ steps or private dependencies instead of pretending to contain them.
 
 ## R3 — Unify archive limits and strict integrity checks
 
-The linked-research collector has 20 MB per-file and 100 MB total limits.
-The separate run-snapshot collector currently lacks equivalent limits and
-can include undeclared/mismatched files with flags. Make this gap explicit
-until a common collector replaces it.
+**Progress (2026-10-07):** `tools/archive_collector.py` is now the one collector
+for every archive entry. It applies safe canonical names (the same rule the
+standalone verifier uses, kept in agreement by a test), duplicate and
+case-variant detection, a 20 MB per-file limit, a 20,000-member limit and a
+98 MB uncompressed budget that includes the reproduction plan and the index.
+Each run-folder file is read once without following symbolic links or reparse
+points, with the inventory hash computed from the exact archived bytes, and a
+file that changes while being read is refused. Unsuitable run files are
+excluded and listed in `archive-index.json` (`complete: false`); the verifier
+warns, and fails under `--strict`. Thirty-five tests cover the collector, the
+Desk export and the verifier's handling of a forged index.
 
-- Use one bounded collector for every archive entry, with consistent limits,
-  safe relative paths, symlink rejection, duplicate-entry checks and a total
-  byte budget that includes metadata and receipts.
-- Define a strict verified export that refuses mismatched/undeclared files.
-  Keep diagnostic inspection available under a clearly distinct status.
-- Read and archive the exact verified bytes, with an archive inventory that
-  a standalone verifier can check after relocation.
-- Test oversize run files, escaping paths, symlinks, duplicate names,
-  corruption, missing ancestry and source files changed during collection.
+- Remaining: the run list read in `export()` and the experiment-manifest
+  validator's own reads are outside the collector. A same-size rewrite on a
+  filesystem with coarse modification times would not be detected.
+- Remaining: refused-versus-excluded policy is a design choice. A run folder
+  with too many files or a total over budget refuses the export, while a single
+  unsuitable file is excluded and flagged. Revisit if either proves wrong in use.
+- Remaining: copy each source receipt into the archive when ancestry is claimed
+  (R2), so run-level ancestry resolves the same way linked research does.
 
 **Acceptance:** every archive entry obeys the same rules, no partial archive
 is presented as verified, and portable verification catches each negative case.
+Met for the cases above; a rerun harness (D6) is separate.
 
 ## R4 — Make comparisons useful for researchers
 

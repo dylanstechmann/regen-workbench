@@ -263,10 +263,22 @@ Export downloads a ZIP with dossier JSON, immutable research-record JSON, a
 research summary, a discussion draft, run snapshots, manifests and an artifact index. Campaign-linked
 experiments contribute their freshly validated manifest and local analysis
 outputs; linked artificial-womb bundles contribute their receipt and
-hash-matched outputs. Linked research artifacts are capped at 20 MB each and
-100 MB total; those limits currently do not cover the separate run-snapshot
-collector. A unified limit and independent archive verifier are planned in
-[ROADMAP.md](ROADMAP.md). Manually entered notes
+hash-matched outputs. One bounded collector (`tools/archive_collector.py`)
+gathers every entry, generated or copied, under the same rules: safe canonical
+relative names, no duplicates (including names differing only by letter case),
+20 MB per file, 20,000 members, and a 98 MB uncompressed budget that includes
+the reproduction plan and the index. Each run-folder file is read once, never
+through a symbolic link or reparse point, and the inventory hash is of exactly
+the bytes archived. A run file that is a symbolic link, a special file, over the
+per-file limit, or changed while it was being read is left out and listed under
+`excluded` in `archive-index.json` with its reason (`complete` becomes false);
+`verify_dossier.py` warns on such an archive and fails it under `--strict`. A
+run folder with too many files, or a total over budget, refuses the export with
+a message instead. The 98 MB budget leaves headroom under the verifier's
+100 MB limit, and the written ZIP is checked against that limit too. The
+filesystem check cannot detect a same-size rewrite on a filesystem with coarse
+modification times. Reading the run list itself (`export`) and the
+experiment-manifest validator's own reads are outside this collector. Manually entered notes
 are excluded by default; an explicit option includes them. It does not publish
 to Reddit or GitHub. Review private details and evidence claims; an exported
 research dossier is not automatically anonymous.

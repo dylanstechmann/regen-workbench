@@ -98,8 +98,10 @@ recomputation) and
 `reproduction` is always `not_attempted` — verifying an archive is not rerunning
 an analysis. Lineage needs `frozen_evaluation.py` beside the verifier and is
 `not_checked` without it. `--strict` also fails on members the inventory does not
-declare and on run outputs that did not match their run manifest at export time;
-without it, those are reported as warnings.
+declare, on run outputs that did not match their run manifest at export time, and
+on an archive whose index lists source files excluded at export (a symbolic link,
+a special file, an oversize or concurrently changed file); without it, those are
+reported as warnings.
 
 The dated [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md) is a
 historical snapshot:

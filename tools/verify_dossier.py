@@ -61,7 +61,7 @@ _fe = _sibling_module("frozen_evaluation")
 
 MAX_MEMBER_BYTES = 20_000_000
 MAX_TOTAL_BYTES = 100_000_000
-MAX_MEMBERS = 5_000
+MAX_MEMBERS = 20_000
 REQUIRED_DOCUMENTS = ("archive-index.json", "dossier.json", "research_records.json", "research_dossier.md")
 STATUS_NOT_REVIEWED = "not_established_by_this_tool"
 
@@ -74,6 +74,8 @@ def _unsafe_member_reason(name: str) -> str | None:
     """Reject names that could escape an extraction directory or hide a duplicate."""
     if not name or name.endswith("/"):
         return "empty or directory entry"
+    if any(ord(char) < 32 or ord(char) == 127 for char in name):
+        return "control character in archive path"
     if "\\" in name:
         return "backslash in archive path"
     if name.startswith("/") or (len(name) > 1 and name[1] == ":"):
@@ -112,6 +114,16 @@ def _structure_errors(index: dict, dossier: dict, plan: dict | None) -> list[str
                 errors.append(f"archive-index.json files[{position}] needs a 64-character sha256")
             if not isinstance(row.get("bytes"), int) or row["bytes"] < 0:
                 errors.append(f"archive-index.json files[{position}] needs a byte count")
+    if "excluded" in index:
+        excluded = index["excluded"]
+        if not isinstance(excluded, list) or not all(
+                isinstance(row, dict) and all(isinstance(row.get(key), str) for key in ("path", "kind", "reason"))
+                for row in excluded):
+            errors.append("archive-index.json excluded must be a list of objects with path, kind and reason")
+        elif index.get("complete") is True and excluded:
+            errors.append("archive-index.json claims to be complete but lists excluded source files")
+        elif index.get("complete") is False and not excluded:
+            errors.append("archive-index.json claims to be incomplete but lists no excluded source file")
     for field in ("blueprint", "campaigns", "runs", "linked_research", "exported_utc"):
         if field not in dossier:
             errors.append(f"dossier.json is missing {field}")
@@ -361,6 +373,18 @@ def verify_dossier(archive_path: Path, *, strict: bool = False) -> dict:
         for name in ancestry["mismatched"]:
             errors.append(f"declared source hash does not match the archived bytes: {name}")
 
+        excluded_rows = [
+            {key: row[key] for key in ("path", "kind", "reason")}
+            for row in (index.get("excluded") if isinstance(index.get("excluded"), list) else [])
+            if isinstance(row, dict) and all(isinstance(row.get(key), str) for key in ("path", "kind", "reason"))
+        ]
+        if excluded_rows:
+            shown = ", ".join(row["path"] for row in excluded_rows[:5])
+            more = f" and {len(excluded_rows) - 5} more" if len(excluded_rows) > 5 else ""
+            message = (f"archive is incomplete: {len(excluded_rows)} source file(s) were excluded when it was "
+                       f"written ({shown}{more}); each is listed under excluded in archive-index.json")
+            (errors if strict else warnings).append(message)
+
         inventory = {
             "members": len(members),
             "indexed_files": len(indexed),
@@ -368,6 +392,8 @@ def verify_dossier(archive_path: Path, *, strict: bool = False) -> dict:
             "uncompressed_bytes": sum(result.get("bytes", 0) for result in results.values()),
             "run_outputs_not_in_run_manifest": unlisted_runs,
             "run_outputs_mismatched_at_export": unmatched_runs,
+            "excluded_at_export": excluded_rows,
+            "complete_at_export": index.get("complete"),
             "notes_included": bool(index.get("notes_included")),
         }
         lineage = _lineage(archive, members)

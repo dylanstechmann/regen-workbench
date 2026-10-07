@@ -25,6 +25,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
+import archive_collector as ac
 import frozen_evaluation as fe
 import regen
 from regen_compute import compound_screen, manifest, write_json
@@ -2696,15 +2697,15 @@ class Desk:
 
         def add_file(archive_path, raw, metadata):
             nonlocal total_bytes
-            if len(raw) > 20_000_000:
+            if len(raw) > ac.MAX_MEMBER_BYTES:
                 raise ValueError("A selected research artifact exceeds the 20 MB dossier limit")
             if archive_path in files:
                 if files[archive_path] != raw:
                     raise ValueError("Selected research artifacts have a conflicting archive path")
                 return
             total_bytes += len(raw)
-            if total_bytes > 100_000_000:
-                raise ValueError("Selected research artifacts exceed the 100 MB dossier limit")
+            if total_bytes > ac.MAX_TOTAL_BYTES:
+                raise ValueError("Selected research artifacts exceed the dossier byte budget")
             files[archive_path] = raw
             metadata.append({"archive_path": archive_path, "sha256": hashlib.sha256(raw).hexdigest(),
                              "bytes": len(raw)})
@@ -2861,72 +2862,88 @@ class Desk:
                 "linked_research": linked_research, "markdown": "\n\n".join(parts),
                 "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
 
+    def _collect_run(self, collector, run):
+        """Add one run folder's files to ``collector``, each read once and never through a link.
+
+        A file that is unsuitable (a symbolic link, a special file, over the per-file limit, or
+        changed while being read) is left out and recorded as an exclusion, so the archive says it
+        is incomplete instead of presenting a partial snapshot as whole.
+        """
+        run_id = run.get("id", "")
+        if not re.fullmatch(r"[a-f0-9]{32}", run_id):
+            return
+        run_dir = self.runs / run_id
+        if not run_dir.is_dir():
+            return
+        try:
+            names, refused = ac.walk_regular_files(run_dir, max_files=collector.max_members)
+        except ac.CollectionError as exc:
+            raise ValueError(f"Run {run_id} cannot be archived: {exc}") from None
+        for relative, kind, detail in refused:
+            collector.exclude(f"runs/{run_id}/{relative}", kind, detail)
+        sources = {}
+        for relative in names:
+            if relative.endswith(".tmp"):
+                continue
+            try:
+                sources[relative] = ac.read_regular_file(run_dir, relative, limit=collector.max_member_bytes)
+            except ac.SourceRefused as exc:
+                collector.exclude(f"runs/{run_id}/{relative}", exc.kind, exc.detail)
+        declared = {}
+        if "manifest.json" in sources:
+            try:
+                declared = json.loads(sources["manifest.json"].decode("utf-8")).get("outputs", {})
+            except (AttributeError, UnicodeDecodeError, json.JSONDecodeError):
+                declared = {}
+            if not isinstance(declared, dict):
+                declared = {}
+        for relative, original in sources.items():
+            source_sha256 = hashlib.sha256(original).hexdigest()
+            if relative == "run.json":
+                archived = json.dumps(redact(run), ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
+            else:
+                archived, suffix = original, Path(relative).suffix.lower()
+                if suffix in {".json", ".md", ".txt", ".csv"}:
+                    try:
+                        decoded = original.decode("utf-8")
+                        parsed = json.loads(decoded) if suffix == ".json" else decoded
+                        safe = redact(parsed)
+                        archived = (json.dumps(safe, ensure_ascii=True, indent=2, allow_nan=False)
+                                    if suffix == ".json" else safe).encode("utf-8")
+                    except (UnicodeDecodeError, json.JSONDecodeError):
+                        pass
+            expected = declared.get(relative)
+            collector.add(f"runs/{run_id}/{relative}", archived, source_sha256=source_sha256,
+                          listed_in_run_manifest=relative in declared,
+                          source_matches_run_manifest=(relative in declared and isinstance(expected, dict)
+                                                       and expected.get("sha256") == source_sha256))
+
     def export_archive(self, blueprint_id, include_notes=False):
         dossier = self.export(blueprint_id, include_notes=include_notes)
         linked_research, linked_files = self._verified_linked_research(dossier["campaigns"])
         if linked_research != dossier.get("linked_research"):
             raise ValueError("Selected linked research changed while the dossier was being prepared")
-        buffer = io.BytesIO()
-        index = []
-        with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-            for name, content in (("research_dossier.md", dossier["markdown"]), ("public_draft.md", dossier["public_draft"])):
-                blob = content.encode("utf-8")
-                archive.writestr(name, blob)
-                index.append({"path": name, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
-            dossier_blob = json.dumps(dossier, ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
-            archive.writestr("dossier.json", dossier_blob)
-            index.append({"path": "dossier.json", "sha256": hashlib.sha256(dossier_blob).hexdigest(), "bytes": len(dossier_blob)})
-            records_blob = json.dumps({"schema_version": 1, "records": dossier["research_records"]},
-                                      ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
-            archive.writestr("research_records.json", records_blob)
-            index.append({"path": "research_records.json", "sha256": hashlib.sha256(records_blob).hexdigest(),
-                          "bytes": len(records_blob)})
-            for run in dossier["runs"]:
-                run_id = run.get("id", "")
-                if not re.fullmatch(r"[a-f0-9]{32}", run_id):
-                    continue
-                run_dir = self.runs / run_id
-                manifest_path = run_dir / "manifest.json"
-                declared = {}
-                if manifest_path.is_file():
-                    try:
-                        declared = json.loads(manifest_path.read_text(encoding="utf-8")).get("outputs", {})
-                    except (OSError, json.JSONDecodeError):
-                        declared = {}
-                for artifact in sorted(run_dir.rglob("*")):
-                    if not artifact.is_file() or artifact.name.endswith(".tmp"):
-                        continue
-                    relative = artifact.relative_to(run_dir).as_posix()
-                    if relative in {"run.json"}:
-                        source_bytes = json.dumps(redact(run), ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8")
-                    else:
-                        source_bytes = artifact.read_bytes()
-                        if artifact.suffix.lower() in {".json", ".md", ".txt", ".csv"}:
-                            try:
-                                decoded = source_bytes.decode("utf-8")
-                                parsed = json.loads(decoded) if artifact.suffix.lower() == ".json" else decoded
-                                safe = redact(parsed)
-                                source_bytes = (json.dumps(safe, ensure_ascii=True, indent=2, allow_nan=False) if artifact.suffix.lower() == ".json" else safe).encode("utf-8")
-                            except (UnicodeDecodeError, json.JSONDecodeError):
-                                pass
-                    archived_path = f"runs/{run_id}/{relative}"
-                    archive.writestr(archived_path, source_bytes)
-                    expected = declared.get(relative, {})
-                    index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(), "source_sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
-                                  "bytes": len(source_bytes), "listed_in_run_manifest": relative in declared,
-                                  "source_matches_run_manifest": relative in declared and expected.get("sha256") == hashlib.sha256(artifact.read_bytes()).hexdigest()})
-            for archived_path, source_bytes in sorted(linked_files.items()):
-                archive.writestr(archived_path, source_bytes)
-                index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(),
-                              "bytes": len(source_bytes), "selected_research_artifact": True})
-            plan_blob = json.dumps(reproduction_plan(dossier, index), ensure_ascii=True, indent=2,
-                                   allow_nan=False).encode("utf-8")
-            archive.writestr("reproduction-plan.json", plan_blob)
-            index.append({"path": "reproduction-plan.json", "sha256": hashlib.sha256(plan_blob).hexdigest(),
-                          "bytes": len(plan_blob)})
-            index_blob = json.dumps({"schema_version": 1, "notes_included": include_notes, "files": index}, ensure_ascii=True, indent=2).encode("utf-8")
-            archive.writestr("archive-index.json", index_blob)
-        return buffer.getvalue()
+        # One collector applies the same name, duplicate, size and member-count rules to every entry.
+        collector = ac.ArchiveCollector()
+        for name, content in (("research_dossier.md", dossier["markdown"]), ("public_draft.md", dossier["public_draft"])):
+            collector.add(name, content.encode("utf-8"))
+        collector.add("dossier.json", json.dumps(dossier, ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8"))
+        collector.add("research_records.json",
+                      json.dumps({"schema_version": 1, "records": dossier["research_records"]},
+                                 ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8"))
+        for run in dossier["runs"]:
+            self._collect_run(collector, run)
+        for archived_path, source_bytes in sorted(linked_files.items()):
+            collector.add(archived_path, source_bytes, selected_research_artifact=True)
+        collector.add("reproduction-plan.json",
+                      json.dumps(reproduction_plan(dossier, collector.rows), ensure_ascii=True, indent=2,
+                                 allow_nan=False).encode("utf-8"))
+        index_blob = json.dumps({"schema_version": 1, "notes_included": include_notes,
+                                 "complete": collector.complete, "excluded": collector.excluded,
+                                 "limits": collector.limits(), "files": collector.rows},
+                                ensure_ascii=True, indent=2).encode("utf-8")
+        collector.add("archive-index.json", index_blob, listed=False)
+        return collector.write_zip()
 
 
 def make_handler(desk):
