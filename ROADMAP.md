@@ -185,7 +185,7 @@ Do not convert organoid 2D mask area directly into spherical radius, oxygen
 uptake or biological function. Any cross-package physical input needs measured
 units, reviewed assumptions and propagated uncertainty.
 
-## Delivery sequence and portfolio value
+## Development sequence
 
 1. **Questions and eligible inputs:** D1–D3/R1/R4 scientific revisions,
    dataset cards and frozen competing-prediction plans; ectogenesis E1–E3;
@@ -205,6 +205,5 @@ required inputs; generated files cannot substitute for them.
 
 Prioritize these existing repositories over new ones. A new repository is
 justified when it has a distinct method, usable data, an independent interface
-and a falsifiable question. These outputs can demonstrate useful research
-software skills for paid research/engineering roles while preserving honest
-limitations; repository count and software demos do not guarantee a position.
+and a falsifiable question. These outputs support personal learning and
+exploratory research, with reproducible methods and explicit limitations.

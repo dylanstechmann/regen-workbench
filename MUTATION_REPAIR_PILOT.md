@@ -1,5 +1,10 @@
 # Somatic Mutation Repair Pilot
 
+This report documents AI-assisted searches and computational analyses for a
+personal hobby and learning project. It records local run outputs and
+source-reported observations; the cited studies retain credit for their
+biological findings. The report does not establish independent expert review.
+
 This is the first target-centered campaign created in the research desk. It
 starts with age-expanded clones in normal esophageal epithelium and asks what
 would need to be true before sequence correction is a plausible repair target.
@@ -81,7 +86,7 @@ papers and do not test mutation correction or rejuvenation.
 
 ## Structured Mutation Evidence Matrix
 
-This pass went beyond search-result abstracts. On 2026-10-01 I queried the
+This pass went beyond search-result abstracts. On 2026-10-01 the run queried the
 Europe PMC full-text API for the open SMART-PTA preprint, retrieved the
 publisher's public scG2P supplement workbook from Figshare, and checked both
 studies' EGA records. The workbook is retained locally under the ignored
@@ -92,7 +97,7 @@ controlled-access and were not downloaded.
 | Evidence | Reported observation | Intervention and endpoint | Boundary |
 | --- | --- | --- | --- |
 | **NOTCH1 mutation and LOH, normal human esophagus** | The six-donor scG2P study reports NOTCH1-mutant clones as common and associated with stunted differentiation; TP53-mutant clones show differentiation bias and increased cycling. In its additional ESO-6 sample, NOTCH1 LOH was called in 1,697 of 4,976 cells genotyped at the locus (34%); 811/1,697 LOH cells (48%) and 732/3,279 cells without LOH (22%) carried a driver SNV. LOH alone, a NOTCH1 SNV alone, and combined/double NOTCH1 hits were analyzed as distinct states. | No sequence correction was performed. The measured outcomes were genotype, clone structure, cycling and differentiation scores, not restored barrier or organ function. | Observational, tissue-specific, and vulnerable to targeted-panel dropout. The authors note incomplete NOTCH1 amplicon capture and that LOH without a detected SNV does not always establish NOTCH1 biallelic loss. Raw data: EGA study `EGAS50000001429`, request-controlled. Primary paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC12874418/ |
-| **Table-level scG2P supplement extraction** | The public S1-S14 workbook includes per-cell variant calls, clone-fraction fields, clone IDs, cell types, and cycling/differentiation scores. Its ESO-6 genotype/RNA tables contain 2,492 matched rows: 1,725 WT, 475 single-NOTCH1, 146 TP53, 57 FAT1, 50 PPM1D, and 39 double-NOTCH1 rows. | This enables a reproducible lead-triage layer; it does not add an intervention experiment. I retained the workbook's reported `clone_fraction` without reinterpreting its denominator as whole-tissue mutant burden. | The per-cell ESO-6 tables do not encode the LOH state alongside every phenotype row, so the article's LOH-specific aggregate results cannot be reconstructed from those two sheets alone. Publisher supplement, CC BY: https://aacr.figshare.com/articles/dataset/Supplementary_Tables_S1-S14_from_Genotype-to-Phenotype_Mapping_of_Somatic_Clonal_Mosaicism_via_Single-Cell_Co-Capture_of_DNA_Mutations_and_mRNA_Transcripts/31911152 |
+| **Table-level scG2P supplement extraction** | The public S1-S14 workbook includes per-cell variant calls, clone-fraction fields, clone IDs, cell types, and cycling/differentiation scores. Its ESO-6 genotype/RNA tables contain 2,492 matched rows: 1,725 WT, 475 single-NOTCH1, 146 TP53, 57 FAT1, 50 PPM1D, and 39 double-NOTCH1 rows. | This enables a reproducible lead-triage layer; it does not add an intervention experiment. The analysis retained the workbook's reported `clone_fraction` without reinterpreting its denominator as whole-tissue mutant burden. | The per-cell ESO-6 tables do not encode the LOH state alongside every phenotype row, so the article's LOH-specific aggregate results cannot be reconstructed from those two sheets alone. Publisher supplement, CC BY: https://aacr.figshare.com/articles/dataset/Supplementary_Tables_S1-S14_from_Genotype-to-Phenotype_Mapping_of_Somatic_Clonal_Mosaicism_via_Single-Cell_Co-Capture_of_DNA_Mutations_and_mRNA_Transcripts/31911152 |
 | **TP53/FAT1 and clonal evolution, normal human esophagus** | A separate SMART-PTA preprint profiled four donors aged 76-79 and 2,783 single cells. TP53 and FAT1 mutant cells were enriched in earlier basal states; some biallelic TP53-loss clones showed higher cell-cycle expression. CNLOH spanning the NOTCH1 locus was frequent, but NOTCH1 itself had low mean coverage (2.2x) in this assay. | No mutation correction or functional tissue rescue was tested. Clone phylogenies and RNA-state scores were the endpoints. | This remains a preprint. Its supplemental scG2P comparison reanalyzed an earlier scG2P dataset, so that comparison is not an independent cohort replication. The paper reports four donors, while the later EGA deposit and public iTOL project expose five sample/tree labels including `eso05`; keep that later material outside the paper's stated N=4 until reconciled. Paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC12632828/; EGA record: https://www.ega-archive.org/datasets/EGAD50000002573; public trees: https://itol.embl.de/shared/2CNE84KS0anV4 |
 | **LMNA correction in a human tissue-engineered vascular model** | In HGPS iPSC-derived cells, ABE restored about 97.5% wild-type allele at the target in two cell lines. Differentiated edited endothelial and smooth-muscle cells lacked detectable progerin; edited cells improved shear response, and edited-cell TEBVs restored vasodilation and smooth-muscle density. Mixtures required at least 50% edited smooth-muscle cells for significant improvement in proliferation and myosin-heavy-chain levels. | This is the closest inspected bridge from editing to tissue-level function: human engineered vessels were tested for flow response, vasoactivity, cell density and contractile markers. | It is an engineered model of a single, known pathogenic LMNA mutation, not an implanted vessel or a test of heterogeneous ordinary aging. Paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC11871533/ |
 | **LMNA correction in HGPS animal models** | Earlier ABE work corrected the known HGPS variant in mice and reported vascular rescue and longer survival. In the 2026 bone study, correction measured at six months was about 14%, 22%, 10% and under 1% after treatment at P3, P14, one month and four months, respectively; P14 treatment partially rescued bone structural and physical parameters. | These are intervention results with disease-specific tissue and functional readouts, unlike the esophageal clone-association studies. | Strong positive-control class for monogenic correction; not evidence that diverse age-acquired variants can be corrected safely or that normal human aging is reversed. Papers: https://pubmed.ncbi.nlm.nih.gov/33408413/ and https://pubmed.ncbi.nlm.nih.gov/42689491/ |
@@ -108,7 +113,7 @@ not establish a rejuvenation effect.
 
 ## Cross-Tissue Mutation Landscape
 
-I extended the pilot beyond esophagus using targeted `regen europepmc` searches,
+The pilot was extended beyond esophagus using targeted `regen europepmc` searches,
 primary papers, controlled-archive metadata and public supplementary data. The
 search receipts are under `data/provenance/`; downloaded workbooks and their
 hashes are recorded in `data/ACCESSIONS.tsv`.
@@ -123,7 +128,7 @@ hashes are recorded in `data/ACCESSIONS.tsv`.
 
 ### Donor-Aware Body-Map Summary
 
-From S3 Sheet2, I took each organ's reported sensitivity-corrected median
+From S3 Sheet2, the analysis took each organ's reported sensitivity-corrected median
 coding mutation burden per biopsy for each donor, then summarized those donor
 medians without pooling biopsies. The interval is the range across the
 contributing donors. These values are for the paper's VAF-qualified subset
@@ -169,7 +174,7 @@ independent people; the source table's sample n values total 128. This
 reinforces the warning against reading the pooled liver median as a population
 ranking.
 
-I also audited the row-level coding-call sheet. It contains 66,188 mutation
+The analysis also audited the row-level coding-call sheet. It contains 66,188 mutation
 rows for 1,731 distinct sampleIDs, whereas the paper reports 1,737 biopsies.
 The reason for the six-ID difference is not exposed by this sheet alone.
 Liver-coded IDs (`PN[donor]L-...`) account for 18,246 rows across 248 sampleIDs
@@ -178,13 +183,13 @@ from the five donors. Liver-row impact labels are 12,218 `Missense`, 4,587
 `no-SNV`.
 These are annotated coding-call rows, not per-cell burdens or independent
 donors. The `gene` column also loads as a date for 67 rows across the workbook,
-including 21 liver rows. I queried all 60 unique affected loci against
+including 21 liver rows. The run queried all 60 unique affected loci against
 Ensembl's GRCh37 gene-overlap endpoint. The source worksheet does not identify
 its reference assembly, so these are provisional coordinate checks rather
 than a complete annotation repair. The same date value, `2021-03-01`, maps to
 both `MARC1` and `MARCH1` at different loci; some other affected positions
 overlap multiple protein-coding genes. A date-to-symbol lookup is therefore
-unsafe. I left the workbook unchanged and withheld gene-frequency ranking
+unsafe. The analysis left the workbook unchanged and withheld gene-frequency ranking
 until the original transcript annotations and assembly are reconciled. The
 six-ID difference and date-coerced values are data-quality questions, not
 biological findings. Ensembl endpoint:
@@ -194,13 +199,13 @@ https://www.nature.com/articles/s41586-021-03836-1.
 ### Liver Hotspot and Driver-Enrichment Check
 
 Publisher Supplementary Table 9 lists one cancer-hotspot call in normal liver:
-`TP53 H179R` in `PN9L-1-3`. I matched it to the same `chr17:7578394 T>C`
+`TP53 H179R` in `PN9L-1-3`. The analysis matched it to the same `chr17:7578394 T>C`
 missense call in Table 3 Sheet1, confirming the two supplement tables agree
 for this variant. A hotspot in one sampled donor is not evidence that the
 mutation damaged liver function or that correcting it would improve function.
 
 Supplementary Table 10 reports one-sided hypergeometric p-values for 32 genes
-across nine organs. Seven liver entries have nominal p<0.05. I applied
+across nine organs. Seven liver entries have nominal p<0.05. The analysis applied
 Benjamini-Hochberg correction across the full 288 gene-by-organ tests; among
 those seven liver entries, only `KMT2D` remains below q=0.05. These are
 exploratory enrichment signals, not variant-level causal evidence or repair
@@ -223,7 +228,7 @@ signal causes age-related liver decline.
 
 ### Skin Supplement Audit
 
-I joined the public skin Supplementary Dataset S1 mutation calls to S2 donor
+The analysis joined the public skin Supplementary Dataset S1 mutation calls to S2 donor
 metadata by `sampleID`. The join is one-to-one across all 123 donors. The 5,214
 calls give a mean of 42.39 per sample (median 27; range 2-169), matching the
 paper's reported summary. These are calls in a targeted 46-gene, 0.32-Mb panel,
@@ -249,7 +254,7 @@ and report that other tested risk factors do not remain significant. This is a
 near-reconstruction of the overall model fit, and it does not turn the crude
 site contrast into a causal exposure effect.
 
-I also calculated an all-subsets Shapley/LMG decomposition: for each predictor,
+The analysis also calculated an all-subsets Shapley/LMG decomposition: for each predictor,
 average its incremental R-squared over all possible predictor orderings, then
 express that contribution as a share of the full model's explained variance.
 The results sum to 100%; the three percentages explicitly quoted in the paper
@@ -270,7 +275,7 @@ model-selection code was not available for direct comparison.
 The 30-page publisher supplement specifies the predictor set, names R's
 `relaimpo` package for relative importance, and reports AIC comparison of
 linear, log-linear, quadratic, cubic and non-linear age models. Using all 123
-donor-level counts, I reproduced the first four Figure S3 model comparisons.
+donor-level counts, the analysis reproduced the first four Figure S3 model comparisons.
 The local AIC values below use R's parameter-count convention (two points
 above `statsmodels`' default OLS AIC); model p-values are overall F tests.
 
@@ -291,7 +296,7 @@ count scale, still below the best raw-count polynomial AIC (1203.13). Thus the
 model preference remains under this correction, though the displayed AIC gap
 of 291 versus 1203 is not itself a like-for-like comparison.
 
-As a separate check, I fit `ln(call count) ~ age` within each phototype and
+As a separate check, the analysis fit `ln(call count) ~ age` within each phototype and
 ran 1,000 nonparametric paired-bootstrap resamples, resampling donors with
 replacement within each phototype (seed 12345). Predictions are expected S1
 panel calls at age 65 from the full-sample fits; intervals are percentile
@@ -318,7 +323,7 @@ https://pmc.ncbi.nlm.nih.gov/articles/PMC7614988/.
 
 ### Public NanoSeq Supplement Audit
 
-I streamed the public S8/S9 workbooks and the S4 selection table. S8 contains
+The run streamed the public S8/S9 workbooks and the S4 selection table. S8 contains
 341,620 oral mutation-record rows (296,128 SNVs, 30,662 deletions, 13,181
 insertions, 1,622 DNVs and 27 MNVs); S9 contains 75,377 blood rows (68,488
 SNVs, 4,031 deletions, 2,395 insertions, 441 DNVs and 22 MNVs). The median
@@ -336,7 +341,7 @@ signal, not evidence that editing those variants is beneficial.
 Neither S8 nor S9 exposes a participant/sample identifier. The supplementary
 analysis code uses sample IDs for donor-specific models and uses
 `times_called` as mutation-call multiplicity; this column is not a participant
-key. We therefore cannot reproduce donor-level age/exposure effects, twin
+key. The analysis therefore cannot reproduce donor-level age/exposure effects, twin
 comparisons, or matched buccal-blood contamination checks from the public
 workbooks alone. S8/S9 VAF distributions are descriptive over mutation rows,
 and should not be compared with the paper's selected-driver or per-person
@@ -355,7 +360,7 @@ mutation correction as a treatment for ordinary aging.
 
 ### Data Retrieval Notes
 
-I downloaded and inspected the public body-map S3 workbook, the 2025 NanoSeq
+The run downloaded and inspected the public body-map S3 workbook, the 2025 NanoSeq
 site-level selection workbook (S4), and blood mutation table (S9). The 44.7-MB
 oral mutation table (S8) was retrieved through Europe PMC's official
 `supplementaryFiles` REST endpoint after the publisher media host returned a

@@ -1,5 +1,8 @@
 # Regen Workbench
 
+This is a personal hobby and learning project, developed with substantial
+assistance from AI coding tools.
+
 Local Docker lab that covers most of the ChatGPT “Scientific Research”
 plugins and DeepMind Science Skills **without** putting those vendors in
 the loop for every lookup.

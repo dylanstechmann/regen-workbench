@@ -318,7 +318,7 @@ A later rejuvenation-function benchmark or somatic-variant/clone evaluator
 could meet that condition. Neither needs a new repository now.
 
 Credit source biology, software contributions and actual reviewer work
-precisely. Adoption, independent reproduction, review and a clear methods
-result are stronger contribution signals than a larger portfolio of similar
-simulators. The full ambitions remain open research goals; each release
+precisely. Independent reproduction, review and clear methods make these
+exploratory projects more useful and easier to assess. The full ambitions
+remain open research goals; each release
 should make one step toward them measurable and easier to challenge.
