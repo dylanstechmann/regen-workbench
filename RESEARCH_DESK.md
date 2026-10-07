@@ -55,8 +55,9 @@ bridge also displays two-compartment transport and Kelvin–Voigt theory bundles
 beside their simpler alternative equations. All values remain dimensionless;
 developmental tags do not calibrate a model to a species. A receipt establishes
 integrity of generated bundle files only. Observation-intake reports separately
-show whether local source bytes matched declared hashes; those source files are
-not copied into or verified by the bundle receipt. The model source and
+show whether local source bytes matched declared hashes, and Model bench checks
+that the file-level table agrees with the displayed counts. Those source files
+are not copied into or verified by the bundle receipt. The model source and
 configurations are not mounted; only
 receipt-listed files inside recognized bundles can be opened through the UI.
 It displays step-halving error curves from `verify-transport` against the

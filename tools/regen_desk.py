@@ -366,6 +366,90 @@ def redact(value):
     return json.loads(encoded)
 
 
+def _validate_observation_source_file_csv(path, summary):
+    """Check that the receipt-bound file-level checks agree with the displayed summary."""
+    expected_fields = ["artifact_id", "relative_path", "declared_sha256", "observed_sha256",
+                       "verification_status", "bytes_hashed", "note"]
+    if path.is_symlink() or not path.is_file() or path.stat().st_size > 2_000_000:
+        raise ValueError
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if reader.fieldnames != expected_fields:
+            raise ValueError
+        rows = list(reader)
+    if len(rows) != summary["n_artifacts"]:
+        raise ValueError
+
+    artifact_ids = set()
+    path_count = 0
+    bytes_hashed = 0
+    statuses = {"not_requested", "not_provided", "hash_not_declared", "symlink_rejected",
+                "file_limit_exceeded", "total_limit_exceeded", "changed_during_hash",
+                "verified", "mismatch", "unavailable"}
+    for row in rows:
+        if set(row) != set(expected_fields) or not all(isinstance(value, str) for value in row.values()):
+            raise ValueError
+        artifact_id = row["artifact_id"]
+        if (not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{1,95}", artifact_id)
+                or artifact_id in artifact_ids):
+            raise ValueError
+        artifact_ids.add(artifact_id)
+
+        relative_path = row["relative_path"]
+        if relative_path:
+            components = relative_path.split("/")
+            if (len(relative_path) > 500 or relative_path.startswith("/") or "\\" in relative_path
+                    or re.match(r"^[A-Za-z]:", relative_path)
+                    or any(part in {"", ".", ".."} or ":" in part for part in components)
+                    or any(ord(character) < 32 for character in relative_path)):
+                raise ValueError
+            path_count += 1
+
+        declared = row["declared_sha256"]
+        observed = row["observed_sha256"]
+        if declared and not re.fullmatch(r"[0-9a-f]{64}", declared):
+            raise ValueError
+        if observed and not re.fullmatch(r"[0-9a-f]{64}", observed):
+            raise ValueError
+        status = row["verification_status"]
+        if status not in statuses:
+            raise ValueError
+        if (status == "not_provided" and relative_path
+                or status == "hash_not_declared" and (not relative_path or declared)
+                or status not in {"not_requested", "not_provided"} and not relative_path
+                or status in {"symlink_rejected", "file_limit_exceeded", "total_limit_exceeded",
+                              "changed_during_hash", "verified", "mismatch", "unavailable"}
+                and not declared):
+            raise ValueError
+        if status in {"verified", "mismatch"}:
+            if not declared or not observed or (status == "verified") != (declared == observed):
+                raise ValueError
+        elif observed:
+            raise ValueError
+
+        if (not re.fullmatch(r"(?:0|[1-9][0-9]{0,9})", row["bytes_hashed"])
+                or int(row["bytes_hashed"]) > 1_000_000_000
+                or len(row["note"]) > 2_000
+                or any(ord(character) < 32 for character in row["note"])):
+            raise ValueError
+        bytes_hashed += int(row["bytes_hashed"])
+
+    verified = sum(row["verification_status"] == "verified" for row in rows)
+    mismatched = sum(row["verification_status"] == "mismatch" for row in rows)
+    not_checked = len(rows) - verified - mismatched
+    if (path_count != summary["n_paths_declared"] or bytes_hashed != summary["bytes_hashed"]
+            or verified != summary["n_verified"] or mismatched != summary["n_mismatched"]
+            or not_checked != summary["n_not_checked"] or bytes_hashed > 2_000_000_000):
+        raise ValueError
+    if summary["status"] == "not_requested":
+        if (summary["source_root_configured"]
+                or any(row["verification_status"] != "not_requested" for row in rows)):
+            raise ValueError
+    elif (not summary["source_root_configured"]
+          or any(row["verification_status"] == "not_requested" for row in rows)):
+        raise ValueError
+
+
 def ectogenesis_artifact_bundle(path):
     """Summarize a receipt-bound sibling bundle without changing its files."""
     try:
@@ -483,6 +567,7 @@ def ectogenesis_artifact_bundle(path):
             groups = detail.get("groups")
             warnings = detail.get("warnings")
             source_verification = detail.get("source_file_verification")
+            has_source_file_verification = source_verification is not None
             if (detail.get("report_kind") != kind
                     or detail.get("biological_assay_performed") is not False
                     or detail.get("analysis_eligibility") !=
@@ -571,6 +656,8 @@ def ectogenesis_artifact_bundle(path):
                             and (source_verification["n_verified"] == source_verification["n_artifacts"]
                                  or source_verification["n_mismatched"] > 0))):
                     raise ValueError
+            if has_source_file_verification:
+                _validate_observation_source_file_csv(base / "source_files.csv", source_verification)
             summary.update(dataset_id=detail["dataset_id"], title=detail.get("title"),
                            source_revision_id=detail["source_revision_id"],
                            source_review_status=detail["source_review_status"],
