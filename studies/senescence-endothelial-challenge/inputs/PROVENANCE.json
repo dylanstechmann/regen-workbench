@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "description": "Byte-identical copy of the receipt written by senescore.hrmec_validation, vendored so the binding can be re-checked from this repository alone.",
+  "source_repository": "https://github.com/dylanstechmann/senescence-module-score",
+  "source_path": "validation/GSE160356/evaluation_receipt.json",
+  "receipt_code_revision": "caa9eb38853449ffef7553eeda74f4509411ed8f",
+  "checkout_head_when_copied": "caa9eb38853449ffef7553eeda74f4509411ed8f",
+  "tracked_changes_when_copied": false,
+  "receipt_sha256": "8415126804fd27ff2ef24b661d9926f646f302028a20227d519b3207fd345a94",
+  "receipt_bytes": 2384
+}

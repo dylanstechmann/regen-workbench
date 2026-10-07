@@ -1,0 +1,29 @@
+{
+  "binding_checks": {
+    "final_test_not_in_training": "pass",
+    "inputs_pinned": "pass",
+    "method_revision_matches": "pass",
+    "primary_metric_present": "pass",
+    "producer_reported_overlap": "pass",
+    "result_postdates_freeze": "pass",
+    "split_matches_freeze": "pass"
+  },
+  "binding_status": "bound_prospective",
+  "claim_status": "exploratory_only",
+  "confirmatory_blockers": [
+    "The split grouping unit is not an identified independent-unit level of any pinned dataset card."
+  ],
+  "dossier_verification": {
+    "bytes_verified": true,
+    "reproduction": "not_attempted",
+    "scientific_lineage": "resolved",
+    "scientific_review": "not_established_by_this_tool",
+    "verified": true
+  },
+  "freeze_revision_id": "61da62f892c745b19ee3521ab04b1885",
+  "freeze_status": "exploratory",
+  "ledger_events": 1,
+  "receipt_sha256": "8415126804fd27ff2ef24b661d9926f646f302028a20227d519b3207fd345a94",
+  "record_supports_confirmatory_claim": false,
+  "violations": []
+}

@@ -296,6 +296,12 @@ a final-test evaluation of any well because every well was in training. A second
 labeled-SYNTHETIC path shows the clean prospective case once. This is a negative
 and procedural finding, not a biological result.
 
+The first use on a real, forward-run analysis is
+[studies/senescence-endothelial-challenge/](studies/senescence-endothelial-challenge/): a plan freeze recorded
+before the senescence-module-score GSE160356 check was run, then a ledger event and a `bound_prospective` receipt
+binding. The Desk derived freeze status `exploratory` (the library is not an identified independent unit) and claim
+state `exploratory_only`, so the record does not support a confirmatory claim, whatever the analysis found.
+
 Not done, and not implied: bindings for jobs submitted through the Desk; adapters
 for the other sibling tools (organoid agreement audits, ectogenesis receipts);
 authenticated reviewers or external timestamping (the freeze clock, the "results
