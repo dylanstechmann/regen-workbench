@@ -146,6 +146,32 @@ class DeskTests(unittest.TestCase):
         linked = next(row for row in index["files"] if "outputs/phenotyping-receipt-" in row["path"])
         self.assertEqual(linked["sha256"], hashlib.sha256(archive.read(linked["path"])).hexdigest())
 
+    def test_exported_archive_carries_a_plan_and_passes_standalone_verification(self):
+        from verify_dossier import verify_dossier
+
+        self.desk.campaign({
+            "blueprint_id": "tissues", "title": "Organoid image workflow", "target": "kidney tubuloids",
+            "hypothesis": "The source image workflow can support transparent, blinded morphology scoring.",
+            "experiment_ids": ["bonn-kidney-tubuloid-cyst-induction-imaging"],
+        })
+        blob = self.desk.export_archive("tissues")
+        plan = json.loads(zipfile.ZipFile(io.BytesIO(blob)).read("reproduction-plan.json"))
+        self.assertEqual(plan["schema_version"], 1)
+        self.assertIn("revision", plan["workbench_revision"])
+        self.assertIn("python>=3.10 standard library only", plan["declared_dependencies"]["verification"])
+        self.assertEqual(plan["linked_experiment_ids"], ["bonn-kidney-tubuloid-cyst-induction-imaging"])
+        self.assertTrue(plan["inputs"])
+        self.assertTrue(all(len(item["sha256"]) == 64 for item in plan["inputs"]))
+
+        path = self.root / "exported-dossier.zip"
+        path.write_bytes(blob)
+        report = verify_dossier(path, strict=True)
+        self.assertTrue(report["bytes_verified"], report["errors"])
+        self.assertEqual(report["ancestry_resolved"], "resolved")
+        self.assertEqual(report["scientific_review"], "not_established_by_this_tool")
+        self.assertEqual(report["reproduction"], "not_attempted")
+        self.assertEqual(report["inventory"]["undeclared_members"], [])
+
     def test_dossier_links_receipt_verified_model_bundle_outputs(self):
         model_root=self.root / "model-bundles";bundle=model_root / "transport-fixture-01";bundle.mkdir(parents=True)
         input_bytes=b'{"fixture":"dimensionless"}\n'

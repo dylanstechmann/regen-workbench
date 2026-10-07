@@ -46,6 +46,35 @@ link exact revisions and require competing predictions and a falsifier. The
 records are included in dossier exports. Their presence does not establish
 source review, data eligibility or a completed analysis.
 
+### Verify an exported dossier somewhere else
+
+A dossier export now carries `reproduction-plan.json` beside its inventory: the
+checked-out workbench revision (with an explicit `unknown` when git is absent and
+a flag when the working tree was dirty), the Python version, the dependencies a
+rerun would need, the commands, the hashed inputs and the expected outputs.
+
+`regen verify-dossier <archive.zip>` checks that archive on its own, using only
+the Python standard library, so a reviewer needs neither this repository nor the
+machine that exported it:
+
+```bash
+python tools/verify_dossier.py path/to/dossier.zip --strict --json
+```
+
+It rejects unsafe member paths, symlink entries, duplicate members and oversize
+files before reading them, recomputes every SHA-256 against the inventory,
+requires the core documents, and checks that each linked experiment manifest and
+model receipt declared in `dossier.json` resolves to the exact bytes archived
+alongside it. Relocating or renaming the archive does not affect the result.
+
+The report keeps three questions apart: `bytes_verified` (archive integrity),
+`ancestry_resolved` (declared sources resolve inside the archive) and
+`scientific_review`, which is always `not_established_by_this_tool`.
+`reproduction` is always `not_attempted` — verifying an archive is not rerunning
+an analysis. `--strict` also fails on members the inventory does not declare and
+on run outputs that did not match their run manifest at export time; without it,
+those are reported as warnings.
+
 The dated [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md) is a
 historical snapshot:
 57 runs, 173 provider records before deduplication, 236 verified artifact

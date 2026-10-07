@@ -13,6 +13,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import threading
 import time
 import uuid
@@ -364,6 +365,77 @@ def redact(value):
                 encoded = encoded.replace(json.dumps(secret)[1:-1], "[redacted]")
                 encoded = encoded.replace(quote(secret, safe=""), "[redacted]")
     return json.loads(encoded)
+
+
+def workbench_revision():
+    """Return the checked-out revision, or an explicit unknown marker.
+
+    A relocated archive must not claim a revision it cannot support, so a missing
+    or dirty working tree is reported rather than silently omitted.
+    """
+    try:
+        result = subprocess.run(["git", "-C", str(HOME), "rev-parse", "HEAD"],
+                                capture_output=True, text=True, timeout=10, check=False)
+        status = subprocess.run(["git", "-C", str(HOME), "status", "--porcelain"],
+                                capture_output=True, text=True, timeout=10, check=False)
+    except (OSError, subprocess.SubprocessError):
+        return {"revision": "unknown", "detail": "git is unavailable in this environment"}
+    if result.returncode != 0 or not re.fullmatch(r"[0-9a-f]{40}", result.stdout.strip()):
+        return {"revision": "unknown", "detail": "the workbench directory is not a readable git checkout"}
+    dirty = bool(status.stdout.strip()) if status.returncode == 0 else None
+    return {"revision": result.stdout.strip(),
+            "uncommitted_changes": dirty,
+            "detail": "a dirty working tree means the recorded revision does not describe the exact code that ran"
+            if dirty else "clean working tree at export time"}
+
+
+def reproduction_plan(dossier, index):
+    """Describe what rerunning this dossier's analyses would require.
+
+    The plan is a machine-readable record for a reviewer, not an executable script.
+    Verifying the archive and rerunning its analyses are separate statuses.
+    """
+    inputs = [{"archive_path": row["path"], "sha256": row["sha256"], "bytes": row["bytes"]}
+              for row in index if row.get("selected_research_artifact")]
+    runs = [{"id": run.get("id"), "kind": run.get("kind"), "status": run.get("status"),
+             "submission_snapshot_valid": bool(run.get("submission_sha256_valid"))}
+            for run in dossier.get("runs", [])]
+    linked = dossier.get("linked_research") or {}
+    return {
+        "schema_version": 1,
+        "generated_utc": regen.now(),
+        "workbench_revision": workbench_revision(),
+        "python_version": sys.version.split()[0],
+        "platform": sys.platform,
+        "declared_dependencies": {
+            "verification": ["python>=3.10 standard library only"],
+            "rerun": ["python>=3.10", "jsonschema (experiment-manifest validation)", "PyYAML (tool configuration)",
+                      "network access and provider credentials for any search run",
+                      "the sibling method repositories that produced each linked output"],
+        },
+        "commands": {
+            "verify_archive": "python tools/verify_dossier.py <archive.zip> --strict",
+            "validate_linked_experiment": "python tools/validate_experiment_manifest.py <experiment.json>",
+            "rerun_note": "Search and analysis runs are reproduced in the repository that owns each method, "
+                          "using the submission snapshot archived under runs/<run-id>/submission.json.",
+        },
+        "inputs": inputs,
+        "expected_outputs": [
+            {"archive_path": "dossier.json", "description": "campaign, record and run state at export time"},
+            {"archive_path": "research_records.json", "description": "immutable research-design revisions"},
+            {"archive_path": "research_dossier.md", "description": "reviewer-facing dossier narrative"},
+        ],
+        "runs": runs,
+        "linked_experiment_ids": [item.get("experiment_id") for item in linked.get("experiments", [])],
+        "linked_model_bundle_ids": [item.get("bundle_id") for item in linked.get("model_bundles", [])],
+        "limits": [
+            "This plan lists requirements; it does not contain the source data, credentials or sibling "
+            "repositories needed for a rerun.",
+            "A verified archive is not a reproduced analysis, and neither establishes scientific review.",
+            "Network-dependent search runs cannot be reproduced byte for byte; their archived submission "
+            "snapshot records exactly what was requested.",
+        ],
+    }
 
 
 def _validate_observation_source_file_csv(path, summary):
@@ -2664,6 +2736,11 @@ class Desk:
                 archive.writestr(archived_path, source_bytes)
                 index.append({"path": archived_path, "sha256": hashlib.sha256(source_bytes).hexdigest(),
                               "bytes": len(source_bytes), "selected_research_artifact": True})
+            plan_blob = json.dumps(reproduction_plan(dossier, index), ensure_ascii=True, indent=2,
+                                   allow_nan=False).encode("utf-8")
+            archive.writestr("reproduction-plan.json", plan_blob)
+            index.append({"path": "reproduction-plan.json", "sha256": hashlib.sha256(plan_blob).hexdigest(),
+                          "bytes": len(plan_blob)})
             index_blob = json.dumps({"schema_version": 1, "notes_included": include_notes, "files": index}, ensure_ascii=True, indent=2).encode("utf-8")
             archive.writestr("archive-index.json", index_blob)
         return buffer.getvalue()

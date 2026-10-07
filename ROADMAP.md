@@ -61,11 +61,28 @@ stages or outcome contexts cannot silently become one comparison.
 Coordinate the bundle contract with
 [artificial-womb-models](https://github.com/dylanstechmann/artificial-womb-models/blob/main/ROADMAP.md).
 
-- Add a standalone `verify-dossier` command for inventory, hashes, schemas,
-  linked manifest/receipt ancestry, code revision and declared dependencies.
+**Progress (2026-10-07):** `regen verify-dossier` is implemented as a
+standalone, standard-library-only verifier. It checks the inventory, member-path
+safety, symlink entries, duplicate members and size limits before reading,
+recomputes every SHA-256, requires the core documents, validates the document
+shapes without a schema library, and resolves each linked experiment manifest
+and model receipt declared in `dossier.json` against the archived bytes. Exports
+now carry `reproduction-plan.json` with the workbench revision (explicitly
+`unknown` without git, flagged when the tree was dirty), Python version, declared
+verification and rerun dependencies, commands, hashed inputs and expected
+outputs. The report keeps archive integrity, ancestry resolution, scientific
+review and reproduction as four separate statuses, and `--strict` fails on
+undeclared members and run outputs that did not match their run manifest at
+export time. Relocation and renaming do not change the result. Fifteen negative
+and positive cases plus an end-to-end export check cover it.
+
+- Remaining: copy each source receipt into the archive when ancestry is claimed
+  for a run output, so run-level ancestry resolves the same way linked research
+  already does. Run outputs currently carry only the export-time comparison.
 - Include a reproduction plan with exact input locations, commands,
   environment and expected outputs. Verification and rerunning are distinct
-  statuses; missing data/dependencies must be reported explicitly.
+  statuses; missing data/dependencies must be reported explicitly. **Implemented
+  for the plan contract above; a rerun harness is not implemented.**
 - Copy source receipts when ancestry is claimed, including the simulation
   receipt for observability and pilot/manifest/plan/mask bindings for
   annotation-derived records when licensed and authorized for the archive.

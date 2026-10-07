@@ -298,6 +298,14 @@ TOOLS: list[dict[str, Any]] = [
         }, ["input", "output"]),
     },
     {
+        "name": "regen_verify_dossier",
+        "description": "Verify an exported ResearchDesk dossier archive with the Python standard library only: inventory, member-path safety, size limits, SHA-256 matches, required documents, and whether every declared linked source resolves inside the archive. Reports archive integrity, ancestry resolution and reproduction status separately; a hash match is not scientific review, and this never reruns an analysis. Requires a local .zip under /lab/data or /lab/projects.",
+        "inputSchema": _schema({
+            "input": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "strict": {"type": "boolean"},
+        }, ["input"]),
+    },
+    {
         "name": "regen_doctor",
         "description": "Report installed workbench tools, Python imports, and visible GPU; writes a provenance receipt.",
         "inputSchema": _schema({}),
@@ -546,6 +554,18 @@ def _validate_arguments(name: str, args: Any) -> dict[str, Any]:
         if direction not in {"lower", "higher"}:
             raise ToolInputError("direction must be lower or higher")
         return {"input": str(source), "--direction": direction, "--out": str(output)}
+    if name == "regen_verify_dossier":
+        source = _contained_path(_require_string(args, "input", max_length=1000), must_exist=True)
+        if not source.is_file() or source.suffix.lower() != ".zip":
+            raise ToolInputError("input must point to an existing dossier .zip archive")
+        if source.stat().st_size == 0 or source.stat().st_size > 100 * 1024 * 1024:
+            raise ToolInputError("dossier archive must be non-empty and no larger than 100 MiB")
+        values: dict[str, Any] = {"input": str(source), "--json": True}
+        if args.get("strict") is not None:
+            if not isinstance(args["strict"], bool):
+                raise ToolInputError("strict must be a boolean")
+            values["--strict"] = args["strict"]
+        return values
     if name == "regen_doctor":
         return {}
     raise ToolInputError(f"no argument validator for tool '{name}'")

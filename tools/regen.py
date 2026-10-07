@@ -1216,6 +1216,14 @@ def cmd_pipeline(argv: list[str]) -> None:
         die(str(exc))
 
 
+def cmd_verify_dossier(argv: list[str]) -> None:
+    from verify_dossier import main as verify_main
+
+    status = verify_main(argv)
+    if status:
+        raise SystemExit(status)
+
+
 def cmd_fold_japanfold(argv: list[str]) -> None:
     from regen_japanfold import main as japanfold_main
 
@@ -1264,6 +1272,7 @@ COMMANDS = {
     "install-gnina": cmd_install_gnina,
     "dock-gnina": cmd_dock_gnina,
     "docking-benchmark": cmd_docking_benchmark,
+    "verify-dossier": cmd_verify_dossier,
     "doctor": cmd_doctor,
     "help": cmd_help,
 }
