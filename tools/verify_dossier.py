@@ -44,6 +44,10 @@ def _unsafe_member_reason(name: str) -> str | None:
     parts = PurePosixPath(name).parts
     if any(part in {"..", "."} for part in parts):
         return "relative traversal segment"
+    if PurePosixPath(name).as_posix() != name:
+        # "./a.md" and "a//b.md" resolve to a different member than they spell, so a
+        # consumer could silently read one file while the inventory names another.
+        return "non-canonical archive path"
     if any(part.strip() != part for part in parts):
         return "leading or trailing whitespace in a path segment"
     return None

@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from verify_dossier import (  # noqa: E402
     DossierVerificationError,
+    _unsafe_member_reason,
     main,
     verify_dossier,
 )
@@ -130,18 +131,14 @@ class VerifyDossierTests(unittest.TestCase):
         self.assertIn("required document is missing: research_records.json", report["errors"])
 
     def test_escaping_and_absolute_member_paths_are_rejected(self):
-        for unsafe in ("../escape.md", "/etc/passwd", "runs/../../escape.md", "dir\\file.md", " leading.md"):
+        for unsafe in ("../escape.md", "/etc/passwd", "runs/../../escape.md", " leading.md"):
             with self.subTest(unsafe=unsafe):
                 members = minimal_members()
                 buffer = io.BytesIO()
                 with zipfile.ZipFile(buffer, "w") as archive:
                     for name, blob in members.items():
                         archive.writestr(name, blob)
-                    # Assigning filename after construction keeps the exact bytes a
-                    # foreign archiver could emit: ZipInfo() rewrites os.sep on Windows.
-                    info = zipfile.ZipInfo("placeholder")
-                    info.filename = unsafe
-                    archive.writestr(info, b"payload")
+                    archive.writestr(unsafe, b"payload")
                     index = [{"path": name, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)}
                              for name, blob in members.items()]
                     archive.writestr("archive-index.json",
@@ -152,6 +149,30 @@ class VerifyDossierTests(unittest.TestCase):
                 # The verifier quotes the raw member name with !r, so compare the same way.
                 self.assertTrue(any("unsafe archive member" in error and repr(unsafe) in error
                                     for error in report["errors"]), report["errors"])
+
+    def test_member_name_rule_rejects_backslashes_and_traversal(self):
+        # Exercised directly because Windows zipfile rewrites os.sep both when
+        # writing and when reading names, so a backslash member cannot be built
+        # portably through an archive. A foreign archiver can still emit one.
+        for unsafe, reason in (
+            ("dir\\file.md", "backslash"),
+            ("..", "relative traversal"),
+            ("a/../../b.md", "relative traversal"),
+            ("./a.md", "non-canonical"),
+            ("a//b.md", "non-canonical"),
+            ("/abs.md", "absolute"),
+            ("C:/abs.md", "absolute"),
+            ("trailing /file.md", "whitespace"),
+            ("", "empty"),
+            ("runs/", "empty or directory"),
+        ):
+            with self.subTest(unsafe=unsafe):
+                detected = _unsafe_member_reason(unsafe)
+                self.assertIsNotNone(detected, unsafe)
+                self.assertIn(reason, detected)
+        for safe in ("dossier.json", "runs/abc/metrics.json", "linked-research/experiments/e1/experiment.json"):
+            with self.subTest(safe=safe):
+                self.assertIsNone(_unsafe_member_reason(safe))
 
     def test_symlink_member_is_rejected(self):
         buffer = io.BytesIO()
