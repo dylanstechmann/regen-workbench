@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "description": "Byte-identical copy of one committed receipt from a sibling repository, vendored so the worked example runs from this repository alone.",
+  "source_repository": "https://github.com/dylanstechmann/regen-benchmark-kit",
+  "source_path": "examples/nist_ipsc/results/metrics.json",
+  "source_commit_that_added_the_receipt": "b0087c78ac3474aecdb6e5cc276d6ba79921df5d",
+  "copied_from_checkout_head": "e70fb35158e4000f1171c0eb2db043b953bed7d4",
+  "receipt_sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c",
+  "receipt_bytes": 7035,
+  "feature_table_sha256": "e055bf31bc6d08594b9010625a779d027821c2333cb369e7247c011c81158645",
+  "feature_table_location": "regen-benchmark-kit/examples/nist_ipsc/data/features.csv (not copied here)",
+  "upstream_data": {
+    "citation": "Asmar, Anthony J., et al. (2023, version 1.1.0), High-volume, label-free imaging for quantifying single-cell dynamics in iPSC colonies, NIST, doi:10.18434/mds2-2960",
+    "terms": "https://www.nist.gov/open/license",
+    "notice": "SOURCE_NOTICE.md in the parent directory"
+  },
+  "contents": "Aggregate regression metrics, per-group errors and fold group assignments only. No images, masks or per-tile values."
+}

@@ -215,7 +215,49 @@ input hash, comparison metric, per-condition values, missingness and deltas.
   Citations are stored but never fetched. Reviewer
   identity is not authenticated. Dossier exports include the exact revisions
   and their hashes. Source-observation review decisions and binding revisions
-  to submitted runs remain future work.
+  to jobs submitted through the Desk remain future work; the frozen-evaluation
+  records below bind a plan to a sibling receipt instead.
+
+- **Frozen evaluation:** three more append-only record types sit on a saved
+  analysis plan and are never edited or superseded (a changed plan needs a new
+  freeze). A *plan freeze* pins the plan, question and dataset-card revisions
+  by ID and content hash, a method (owner repository, 40-character commit, entry
+  point, preprocessing, parameters) and a split naming its grouping unit,
+  development groups and sealed final-test groups. The Desk hashes the split,
+  stamps its own clock and derives a status: `retrospective` when the person
+  attests that results were inspected first; `confirmatory` only when the plan is
+  marked `proposed_confirmatory`, final-test groups are sealed, every pinned
+  dataset file has a SHA-256, the method has a commit, and the grouping unit is
+  an identified independent-unit level of a pinned dataset card; otherwise
+  `exploratory`, with the blockers listed. A *holdout access* event appends to a
+  SHA-256 hash-chained ledger bound to that freeze (scope development or final
+  test; evaluate, tune, inspect labels or export predictions;
+  `expected_previous_event_sha256` rejects a write that would fork the chain). An
+  *evaluation binding* reads one receipt once (a regular `.json` file of at most
+  4 MiB under `data/`, `studies/` or `projects/`, never through a symlink)
+  through a registered adapter, `regenbench-metrics/1` for regen-benchmark-kit
+  metrics or the generic `regen-workbench/evaluation-receipt/1`, and checks
+  pinned inputs, split agreement, whether a sealed group was in training,
+  producer-reported overlap, the method revision and whether the result postdates
+  the freeze. Its status is `mismatch`, `unverifiable`, `bound_retrospective`,
+  `bound_timing_unverified` or `bound_prospective`. A claim state is recomputed
+  on every read: `holdout_sealed`, `single_final_evaluation_recorded`,
+  `holdout_reused_not_independent`, `holdout_compromised`,
+  `ledger_integrity_failed`, `exploratory_only` or
+  `retrospective_not_confirmatory`, shown beside whether each pinned revision
+  has since been superseded. "The record supports a confirmatory claim" means
+  only that the recorded procedure was followed. The freeze clock, the "results
+  inspected before the freeze" answer, ledger actors and receipts are
+  self-reported or unauthenticated, and access that was never recorded cannot be
+  detected except where a bound receipt reveals it. A binding shows that a
+  receipt agrees with a plan, not that the analysis was correct, the receipt
+  genuine, or a biological claim true. Nothing named in a record is executed,
+  and no model is run. A leave-one-group-out receipt cannot be a confirmatory
+  evaluation of any one group; the committed
+  [worked example](studies/frozen-evaluation-example/) shows that on the NIST
+  iPSC benchmark. Dossier exports include these records, and
+  `tools/verify_dossier.py` re-checks hashes, pins, ledger chains and claim states
+  as the separate `scientific_lineage` status.
 
 Export downloads a ZIP with dossier JSON, immutable research-record JSON, a
 research summary, a discussion draft, run snapshots, manifests and an artifact index. Campaign-linked

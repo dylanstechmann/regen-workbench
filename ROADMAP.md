@@ -30,8 +30,12 @@ campaign/parameter submission snapshots. The Study design view now stores
 content-hashed question, dataset-card and analysis-plan drafts, exact revision
 links and stale-plan detection. Ectogenesis intake can now optionally hash
 local source bytes beneath an explicit root and report matches without copying
-the data. Source-review decisions, rights checks and run-to-revision binding
-remain open. The next
+the data. Plan freezes, a hash-chained holdout-access ledger and evaluation
+bindings to sibling receipts (2026-10-07) record when a plan was pinned and how
+a held-out group was touched. They are self-reported procedural bookkeeping, not
+a review, and they bind a plan to a receipt file rather than to a job submitted
+through the Desk. Source-review decisions, rights checks and binding of
+Desk-submitted jobs to revisions remain open. The next
 integrated milestone is one human-reviewed organoid measurement case carried
 from source images through frozen masks, grouped evaluation and a portable
 ResearchDesk dossier. In parallel, qualify placental/interface and paired
@@ -71,10 +75,18 @@ now carry `reproduction-plan.json` with the workbench revision (explicitly
 `unknown` without git, flagged when the tree was dirty), Python version, declared
 verification and rerun dependencies, commands, hashed inputs and expected
 outputs. The report keeps archive integrity, ancestry resolution, scientific
-review and reproduction as four separate statuses, and `--strict` fails on
+review and reproduction as separate statuses, and `--strict` fails on
 undeclared members and run outputs that did not match their run manifest at
 export time. Relocation and renaming do not change the result. Fifteen negative
 and positive cases plus an end-to-end export check cover it.
+
+A fifth status, `scientific_lineage`, was added later the same day. It re-hashes
+every archived research revision, checks that plan-freeze pins resolve to
+unchanged archived revisions, walks each holdout-access hash chain and
+recomputes the frozen-evaluation claim state outside the Desk. Lineage problems
+fail the overall `verified` flag and the exit code but do not flip
+`bytes_verified`. The lineage checks need `frozen_evaluation.py` beside the
+verifier; without it the status is `not_checked`, never silently passed.
 
 - Remaining: copy each source receipt into the archive when ancestry is claimed
   for a run output, so run-level ancestry resolves the same way linked research

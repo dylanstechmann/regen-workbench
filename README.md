@@ -49,6 +49,24 @@ link exact revisions and require competing predictions and a falsifier. The
 records are included in dossier exports. Their presence does not establish
 source review, data eligibility or a completed analysis.
 
+Three further record types **freeze a plan before it is run**. A *plan freeze*
+pins one plan revision, the question and dataset-card revisions it links, a
+method revision and a development / final-test split. A *holdout-access ledger*
+is a hash-chained list of every recorded touch of those groups. An *evaluation
+binding* checks one sibling-repository receipt (regen-benchmark-kit metrics, or a
+generic receipt format) against the freeze: pinned inputs, the same split,
+whether a sealed group was used in training, producer-reported overlap, the
+method revision and timing. From these the Desk derives a claim state such as
+`holdout_sealed`, `single_final_evaluation_recorded`,
+`holdout_reused_not_independent` or `retrospective_not_confirmatory`. This is
+procedural bookkeeping. The freeze clock, the "results already inspected" answer
+and ledger actors are self-reported; a binding does not show that an analysis was
+correct or that a receipt is genuine; nothing here runs a model. The
+[worked example](studies/frozen-evaluation-example/) applies it to the committed
+NIST iPSC benchmark receipt (a retrospective, development-only record: its
+leave-one-well-out design cannot be a final test of any well) and to one labeled
+synthetic fixture.
+
 ### Verify an exported dossier somewhere else
 
 A dossier export now carries `reproduction-plan.json` beside its inventory: the
@@ -70,13 +88,18 @@ requires the core documents, and checks that each linked experiment manifest and
 model receipt declared in `dossier.json` resolves to the exact bytes archived
 alongside it. Relocating or renaming the archive does not affect the result.
 
-The report keeps three questions apart: `bytes_verified` (archive integrity),
-`ancestry_resolved` (declared sources resolve inside the archive) and
+The report keeps four questions apart: `bytes_verified` (archive integrity),
+`ancestry_resolved` (declared sources resolve inside the archive),
+`scientific_lineage` (the archived research revisions re-hash to their declared
+content hashes; plan-freeze pins resolve to unchanged revisions inside the
+archive; each ledger hash chain is intact; the exported claim state matches a
+recomputation) and
 `scientific_review`, which is always `not_established_by_this_tool`.
 `reproduction` is always `not_attempted` — verifying an archive is not rerunning
-an analysis. `--strict` also fails on members the inventory does not declare and
-on run outputs that did not match their run manifest at export time; without it,
-those are reported as warnings.
+an analysis. Lineage needs `frozen_evaluation.py` beside the verifier and is
+`not_checked` without it. `--strict` also fails on members the inventory does not
+declare and on run outputs that did not match their run manifest at export time;
+without it, those are reported as warnings.
 
 The dated [API and chemistry campaign report](RESEARCH_RUN_2026-09-28.md) is a
 historical snapshot:

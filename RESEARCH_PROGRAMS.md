@@ -238,9 +238,9 @@ validated data eligibility, and run-to-revision bindings.
 | **D1 — Scientific revisions** | Content-addressed question, hypothesis-set, source observation and review revisions; supersession and current pointers | Partial: question revisions and supersession exist; source observations, reviews and run binding remain | Archived runs/dossiers resolve original revisions; source edits mark dependent plans/results stale |
 | **D2 — Dataset cards** | Access/license, exact file inventory, unit hierarchy, units/calibration, groups, age/stage, raw/aggregate status, exclusions | Partial: structured cards exist; sibling ectogenesis intake offers local byte checks; source rights, review and eligibility remain unverified | Invalid pooling and missing identities produce explicit scope restrictions; publication presence does not create a measurement |
 | **D3 — Discriminating plans** | Immutable method-neutral research plan with favored/simple/alternative explanations and opposing measurable predictions | Partial: draft plan structure exists; it is not frozen or bound to a run | Plans specify what would favor each explanation and what remains ambiguous; associations retain observational status |
-| **D4 — Frozen evaluation** | Pin dataset, preprocessing, split and method revisions; registry of bounded sibling receipt adapters | Proposed | Every metric resolves to exact inputs/code; changing the plan yields a new exploratory revision; final-test access is recorded |
-| **D5 — Scientific review** | Append-only supported-within-scope/contradicted/inconclusive/not-testable decisions, rationale and next discriminator | Proposed | Byte integrity, computational reproduction, accepted annotation and scientific review are distinct statuses |
-| **D6 — Portable reproduction** | Common bounded export collector, standalone verifier and reproduction manifest | Proposed | A relocated dossier verifies; eligible public analyses rerun; missing/private inputs and corrupt/escaping files fail explicitly |
+| **D4 — Frozen evaluation** | Pin dataset, preprocessing, split and method revisions; registry of bounded sibling receipt adapters | Partial (2026-10-07): plan freeze, hash-chained holdout ledger and receipt bindings exist with two adapters; jobs submitted through the Desk are not bound, preprocessing is pinned as a description and the freeze clock is self-reported | Every metric resolves to exact inputs/code; changing the plan yields a new exploratory revision; final-test access is recorded |
+| **D5 — Scientific review** | Append-only supported-within-scope/contradicted/inconclusive/not-testable decisions, rationale and next discriminator | Proposed: the verifier already reports separate byte, ancestry, lineage and review statuses (review is always `not_established_by_this_tool`), but no decision records exist | Byte integrity, computational reproduction, accepted annotation and scientific review are distinct statuses |
+| **D6 — Portable reproduction** | Common bounded export collector, standalone verifier and reproduction manifest | Partial: standalone verifier and reproduction plan exist; the common bounded run-snapshot collector (R3) and a rerun harness do not | A relocated dossier verifies; eligible public analyses rerun; missing/private inputs and corrupt/escaping files fail explicitly |
 
 ### Initial Release A implementation (2026-10-06)
 
@@ -260,11 +260,52 @@ Dossier exports preserve the exact structured records and hashes.
 
 This is the first software tranche of D1–D3. It does not yet version source
 observation review decisions, authenticate a reviewer's identity, verify
-download rights or file availability, or bind submitted runs to scientific
-revisions. Plans remain drafts; D4 is required before they can serve as frozen
-evaluation records.
+download rights or file availability, or bind jobs submitted through the Desk
+to scientific revisions. Plans remain drafts until a plan freeze pins them (next
+section).
 
-Further D4 plan fields, to be pinned through the existing run submission and
+### D4 increment: frozen evaluation records (2026-10-07)
+
+Three append-only record types now sit on a saved analysis plan (details in
+[RESEARCH_DESK.md](RESEARCH_DESK.md)):
+
+- a **plan freeze** pins one plan revision, its question and dataset-card
+  revisions by ID and content hash, the method (repository, commit, entry point,
+  preprocessing, parameters), the primary metric and baseline, and a split with
+  development and sealed final-test groups; the status is derived as
+  exploratory, confirmatory or retrospective, with blockers listed;
+- a **holdout access** ledger is a SHA-256 hash chain of every recorded
+  development or final-test touch (evaluate, tune, inspect labels, export
+  predictions);
+- an **evaluation binding** reads one sibling-repository receipt once, through a
+  registered adapter (regen-benchmark-kit metrics or a generic receipt format),
+  and checks pinned inputs, split agreement, sealed groups used in training,
+  producer-reported overlap, method revision and timing.
+
+From these the Desk recomputes a claim state (`holdout_sealed`,
+`single_final_evaluation_recorded`, `holdout_reused_not_independent`,
+`holdout_compromised`, `ledger_integrity_failed`, `exploratory_only`,
+`retrospective_not_confirmatory`). `tools/verify_dossier.py` recomputes the same
+state, re-hashes every archived revision and checks pins and ledger chains
+outside the Desk (`scientific_lineage`).
+
+The worked example in [studies/frozen-evaluation-example/](studies/frozen-evaluation-example/)
+applies this to the committed NIST iPSC benchmark receipt. It is
+retrospective, and the Desk shows that the leave-one-well-out receipt cannot be
+a final-test evaluation of any well because every well was in training. A second,
+labeled-SYNTHETIC path shows the clean prospective case once. This is a negative
+and procedural finding, not a biological result.
+
+Not done, and not implied: bindings for jobs submitted through the Desk; adapters
+for the other sibling tools (organoid agreement audits, ectogenesis receipts);
+authenticated reviewers or external timestamping (the freeze clock, the "results
+inspected" attestation and ledger actors are self-reported); pinning
+preprocessing as code rather than a description; recomputing a receipt's metrics;
+D5 decision records; and any scientific review of a frozen analysis. A clean
+record means only that the recorded procedure was followed.
+
+Remaining D4 plan fields not yet pinned by the freeze beyond what the pinned plan
+revision itself contains, to be pinned through the existing run submission and
 `analysis_specification` artifact mechanisms:
 
 ```text
@@ -281,9 +322,10 @@ required outcome domains, source-review references and limitations
 
 The UI progression is **Question → Alternatives → Data eligibility → Frozen
 plan → Runs → Review**. The Study design view now provides the first three
-draft record types. D4 will add validated selectors, source/quantity
-compatibility and immutable run bindings. Keep browser-supplied shell execution
-out of the Desk and keep sibling methods in their own repositories.
+draft record types, plus plan freezes, holdout-access events and receipt
+bindings. Validated selectors, source/quantity compatibility and bindings for
+jobs submitted through the Desk remain to be added. Keep browser-supplied shell
+execution out of the Desk and keep sibling methods in their own repositories.
 
 ## 5. Sequence releases by evidence gates
 
@@ -301,8 +343,13 @@ reproduction or non-identification report and define the missing input.
 
 **Contributor-sized first tasks:** observation validator; immutable revision
 store; dataset-card schema with invalid examples; accepted-mask review export;
-donor/culture mapping for one GEO study; frozen baseline/split plan; source
-ancestry verifier; prediction/error table with unavailable denominators.
+donor/culture mapping for one GEO study; prediction/error table with
+unavailable denominators; a receipt adapter for another sibling tool (the
+organoid agreement audits are the nearest); a bounded run-snapshot collector
+(R3). Started 2026-10-07: frozen baseline/split plan (plan freeze, ledger and
+binding, see above) and an archive ancestry verifier (`regen verify-dossier`,
+which resolves linked manifests and receipts inside a dossier and does not
+verify external data sources).
 
 ## 6. Open-source innovation and repository decisions
 
