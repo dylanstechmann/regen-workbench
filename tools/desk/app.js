@@ -615,8 +615,11 @@ function renderExperiments(records = experimentRecords) {
     }
     for (const review of study.annotation_reviews || []) {
       const audit = el('div',null,'experiment-evidence');
-      audit.append(el('h4','Manual mask agreement review'));
-      audit.append(el('p',`${review.n_annotated_tasks} tasks annotated · ${review.n_repeat_pairs_scored} concealed repeat pairs scored · ${review.n_repeat_pairs_with_distinct_annotator_ids} pairs used different annotator IDs`));
+      audit.append(el('h4','Manual annotation workflow audit'));
+      audit.append(el('p',`${review.n_annotated_tasks} current mask tasks · ${review.n_dispositioned_tasks ?? 0} current non-mask dispositions · ${review.n_superseded_mask_tasks ?? 0} dispositions superseded a saved mask · ${review.n_disposition_revisions ?? 0} disposition revisions · ${review.n_repeat_pairs_scored} concealed mask-repeat pairs scored · ${review.n_repeat_pairs_with_distinct_annotator_ids} mask-repeat pairs used different annotator IDs`));
+      const dispositionLabels={no_visible_target:'no visible target',ambiguous:'ambiguous boundary',occluded:'occluded',cropped:'cropped',unusable:'unusable image'};
+      const dispositionSummary=Object.entries(review.disposition_counts||{}).filter(([,count])=>count>0).map(([code,count])=>`${dispositionLabels[code]||code}: ${count}`).join(' · ');
+      if(dispositionSummary)audit.append(el('p',`Current dispositions: ${dispositionSummary}. These records remain pending annotation and are excluded from measured-mask counts.`));
       audit.append(el('p','Foreground Dice describes segmentation agreement only. It does not establish mask correctness, tissue function, treatment response, or a biological effect. Manual masks still require review.','boundary'));
       evidence.append(audit);
     }

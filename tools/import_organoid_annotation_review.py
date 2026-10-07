@@ -28,7 +28,10 @@ MAX_TOTAL_BYTES = 10_000_000
 PUBLIC_FILES = {
     "audit_report.json": "Blinded manual polygon-mask workflow and concealed-repeat agreement audit; no biological result.",
     "repeat_agreement.csv": "Foreground Dice across concealed repeat annotations with annotator-independence flags.",
+    "dispositions.csv": "Current and superseded hash-bound non-mask outcomes with rationale, separate from geometry and biological results.",
 }
+LEGACY_PUBLIC_FILES = {name: description for name, description in PUBLIC_FILES.items() if name != "dispositions.csv"}
+DISPOSITION_CODES = {"no_visible_target", "ambiguous", "occluded", "cropped", "unusable"}
 
 
 def _read_csv(raw: bytes) -> tuple[list[str], list[dict[str, str]]]:
@@ -91,11 +94,17 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
     if not isinstance(audit_id, str) or not re.fullmatch(r"[0-9a-f]{16}", audit_id):
         raise ReceiptImportError("annotation audit has an invalid run ID")
     outputs = receipt.get("outputs")
-    if not isinstance(outputs, dict) or set(outputs) != set(PUBLIC_FILES):
+    if not isinstance(outputs, dict):
+        raise ReceiptImportError("annotation audit output index is incomplete or unexpected")
+    if set(outputs) == set(PUBLIC_FILES):
+        selected_files = PUBLIC_FILES
+    elif set(outputs) == set(LEGACY_PUBLIC_FILES):
+        selected_files = LEGACY_PUBLIC_FILES
+    else:
         raise ReceiptImportError("annotation audit output index is incomplete or unexpected")
     copied = {"audit_receipt.json": receipt_bytes}
     total = len(receipt_bytes)
-    for filename in PUBLIC_FILES:
+    for filename in selected_files:
         path = source_root / filename
         if path.is_symlink() or not path.is_file() or path.resolve(strict=True).parent != source_root:
             raise ReceiptImportError(f"annotation audit output is missing or unsafe: {filename}")
@@ -115,21 +124,44 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
             or not re.fullmatch(r"[0-9a-f]{64}", str(receipt.get("study_plan_sha256", "")))):
         raise ReceiptImportError("annotation audit receipt is missing its input bindings")
     masks = receipt.get("annotation_mask_sha256")
+    superseded_masks = receipt.get("superseded_annotation_mask_sha256", {})
     n_annotated = receipt.get("n_annotated_tasks")
+    n_dispositioned = receipt.get("n_dispositioned_tasks", 0)
+    n_disposition_revisions = receipt.get("n_disposition_revisions", 0)
+    n_tasks_with_saved_masks = receipt.get("n_tasks_with_saved_masks", n_annotated)
+    n_superseded_mask_tasks = receipt.get("n_superseded_mask_tasks", 0)
     n_repeat_pairs = receipt.get("n_repeat_pairs_scored")
     n_independent_pairs = receipt.get("n_repeat_pairs_with_distinct_annotator_ids")
     if (isinstance(n_annotated, bool) or not isinstance(n_annotated, int) or not 0 <= n_annotated <= 100_000
+            or isinstance(n_dispositioned, bool) or not isinstance(n_dispositioned, int)
+            or not 0 <= n_dispositioned <= 100_000
+            or isinstance(n_disposition_revisions, bool) or not isinstance(n_disposition_revisions, int)
+            or not n_dispositioned <= n_disposition_revisions <= 100_000
+            or isinstance(n_tasks_with_saved_masks, bool) or not isinstance(n_tasks_with_saved_masks, int)
+            or not 0 <= n_tasks_with_saved_masks <= 100_000
+            or isinstance(n_superseded_mask_tasks, bool) or not isinstance(n_superseded_mask_tasks, int)
+            or not 0 <= n_superseded_mask_tasks <= 100_000
             or isinstance(n_repeat_pairs, bool) or not isinstance(n_repeat_pairs, int) or not 0 <= n_repeat_pairs <= 100_000
             or isinstance(n_independent_pairs, bool) or not isinstance(n_independent_pairs, int)
             or not 0 <= n_independent_pairs <= n_repeat_pairs
             or isinstance(receipt.get("n_total_tasks"), bool)
             or not isinstance(receipt.get("n_total_tasks"), int)
             or not n_annotated <= receipt["n_total_tasks"] <= 100_000
+            or n_annotated + n_dispositioned > receipt["n_total_tasks"]
             or not isinstance(masks, dict) or len(masks) != n_annotated
+            or not isinstance(superseded_masks, dict) or len(superseded_masks) != n_superseded_mask_tasks
+            or n_tasks_with_saved_masks != n_annotated + n_superseded_mask_tasks
+            or n_superseded_mask_tasks > n_dispositioned
             or any(not isinstance(task_id, str) or not re.fullmatch(r"b-[0-9a-f]{16}", task_id)
                    or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)
                    for task_id, digest in masks.items())):
         raise ReceiptImportError("annotation audit receipt has invalid per-task mask hashes")
+    if (set(masks) & set(superseded_masks)
+            or any(not isinstance(task_id, str) or not re.fullmatch(r"b-[0-9a-f]{16}", task_id)
+                   or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)
+                   for task_id, digest in superseded_masks.items())
+            or receipt.get("masks_generated") is not bool(n_tasks_with_saved_masks)):
+        raise ReceiptImportError("annotation audit receipt has invalid superseded-mask hashes or counts")
 
     try:
         report = json.loads(copied["audit_report.json"].decode("utf-8"))
@@ -141,9 +173,28 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
             or report.get("audit_id") != audit_id
             or report.get("session_id") != receipt.get("session_id")
             or report.get("biological_results_generated") is not False
+            or report.get("masks_generated") is not bool(n_tasks_with_saved_masks)
+            or isinstance(report.get("n_tasks_with_saved_masks", n_annotated), bool)
+            or not isinstance(report.get("n_tasks_with_saved_masks", n_annotated), int)
+            or isinstance(report.get("n_total_tasks"), bool)
+            or not isinstance(report.get("n_total_tasks"), int)
+            or report.get("n_total_tasks") != receipt.get("n_total_tasks")
+            or report.get("n_tasks_with_saved_masks", n_annotated) != n_tasks_with_saved_masks
+            or isinstance(report.get("n_superseded_mask_tasks", 0), bool)
+            or not isinstance(report.get("n_superseded_mask_tasks", 0), int)
+            or report.get("n_superseded_mask_tasks", 0) != n_superseded_mask_tasks
             or isinstance(report.get("n_annotated_tasks"), bool)
             or not isinstance(report.get("n_annotated_tasks"), int)
             or report.get("n_annotated_tasks") != n_annotated
+            or isinstance(report.get("n_dispositioned_tasks", 0), bool)
+            or not isinstance(report.get("n_dispositioned_tasks", 0), int)
+            or report.get("n_dispositioned_tasks", 0) != n_dispositioned
+            or isinstance(report.get("disposition_revision_count", 0), bool)
+            or not isinstance(report.get("disposition_revision_count", 0), int)
+            or report.get("disposition_revision_count", 0) != n_disposition_revisions
+            or isinstance(report.get("n_disposition_revision_records", 0), bool)
+            or not isinstance(report.get("n_disposition_revision_records", 0), int)
+            or report.get("n_disposition_revision_records", 0) != n_disposition_revisions
             or isinstance(report.get("n_repeat_pairs_scored"), bool)
             or not isinstance(report.get("n_repeat_pairs_scored"), int)
             or report.get("n_repeat_pairs_scored") != n_repeat_pairs
@@ -188,6 +239,56 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
                 or not math.isclose(reported["foreground_dice"], dice, rel_tol=1e-12, abs_tol=0)):
             raise ReceiptImportError("repeat-agreement table differs from its report rows")
 
+    disposition_rows = []
+    if "dispositions.csv" in copied:
+        disposition_fields, disposition_rows = _read_csv(copied["dispositions.csv"])
+        required_disposition_columns = {
+            "task_id", "frame_id", "biological_unit_id", "disposition", "rationale",
+            "annotator_id", "saved_utc", "revision", "disposition_sha256", "is_current",
+        }
+        if (not required_disposition_columns.issubset(disposition_fields)
+                or len(disposition_rows) != n_disposition_revisions):
+            raise ReceiptImportError("disposition table differs from the audit receipt")
+        seen_revisions = set()
+        current_dispositions = set()
+        for row in disposition_rows:
+            task_id = row.get("task_id") or ""
+            rationale = row.get("rationale") or ""
+            revision = row.get("revision") or ""
+            is_current = (row.get("is_current") or "").strip().lower()
+            if (not re.fullmatch(r"b-[0-9a-f]{16}", task_id)
+                    or not re.fullmatch(r"[0-9a-f]{16}", revision)
+                    or (task_id, revision) in seen_revisions
+                    or row.get("disposition") not in DISPOSITION_CODES
+                    or not 8 <= len(rationale.strip()) <= 500
+                    or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}", row.get("annotator_id", ""))
+                    or not re.fullmatch(r"[0-9a-f]{64}", row.get("disposition_sha256", ""))
+                    or is_current not in {"true", "false"}
+                    or (is_current == "true" and (task_id in current_dispositions or task_id in masks))):
+                raise ReceiptImportError("disposition table contains malformed or overlapping task records")
+            seen_revisions.add((task_id, revision))
+            if is_current == "true":
+                current_dispositions.add(task_id)
+        if len(current_dispositions) != n_dispositioned:
+            raise ReceiptImportError("current disposition rows differ from the audit receipt")
+        if not set(superseded_masks).issubset(current_dispositions):
+            raise ReceiptImportError("superseded masks do not map to current disposition tasks")
+        expected_counts = report.get("disposition_counts")
+        observed_counts = {code: sum(row["disposition"] == code and row["is_current"].strip().lower() == "true"
+                                     for row in disposition_rows)
+                           for code in sorted(DISPOSITION_CODES)}
+        if (not isinstance(expected_counts, dict)
+                or set(expected_counts) != DISPOSITION_CODES
+                or any(isinstance(value, bool) or not isinstance(value, int) or value < 0
+                       for value in expected_counts.values())
+                or any(expected_counts.get(code) != observed_counts[code] for code in observed_counts)
+                or sum(observed_counts.values()) != n_dispositioned):
+            raise ReceiptImportError("disposition table category counts differ from the audit report")
+    elif n_dispositioned != 0 or n_disposition_revisions != 0:
+        raise ReceiptImportError("dispositions are reported but no receipt-bound disposition table exists")
+    elif superseded_masks:
+        raise ReceiptImportError("superseded masks are reported without a receipt-bound disposition table")
+
     study_dir = (repo_root / STUDY_RELATIVE).resolve(strict=True)
     manifest_path = study_dir / "experiment.json"
     document = _read_json(manifest_path)
@@ -219,7 +320,7 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
     artifact_ids = []
     try:
         existing = {item["id"]: item for item in document["artifacts"]}
-        descriptions = {**PUBLIC_FILES, "audit_receipt.json": "Input/output hash receipt for the local annotation agreement audit."}
+        descriptions = {**selected_files, "audit_receipt.json": "Input/output hash receipt for the local annotation agreement audit."}
         for filename, description in descriptions.items():
             artifact_id = f"organoid-review-{Path(filename).stem.replace('_', '-')}-{audit_id}"
             path = bundle_dir / filename
@@ -250,9 +351,12 @@ def register_annotation_review(audit_directory: str | Path, repo_root: str | Pat
             "registered_artifacts": len(artifact_ids), "n_annotated_tasks": report["n_annotated_tasks"],
             "n_repeat_pairs_scored": report["n_repeat_pairs_scored"],
             "n_repeat_pairs_with_distinct_annotator_ids": report["n_repeat_pairs_with_distinct_annotator_ids"],
+            "n_dispositioned_tasks": n_dispositioned,
+            "n_tasks_with_saved_masks": n_tasks_with_saved_masks,
+            "n_superseded_mask_tasks": n_superseded_mask_tasks,
             "biological_results_generated": False,
             "annotated_manifest_imported": False,
-            "interpretation": "The verified artifacts report manual segmentation agreement only; no biological outcome or treatment effect is imported."}
+            "interpretation": "The verified artifacts report manual segmentation and task-routing outcomes only; no biological outcome or treatment effect is imported."}
 
 
 def main(argv: list[str] | None = None) -> int:

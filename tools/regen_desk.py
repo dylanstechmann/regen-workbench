@@ -1748,9 +1748,44 @@ class Desk:
                             or not isinstance(report.get("n_repeat_pairs_with_distinct_annotator_ids"), int)
                             or isinstance(report.get("n_repeat_pairs_with_distinct_annotator_ids"), bool)):
                         continue
+                    n_dispositioned = report.get("n_dispositioned_tasks", 0)
+                    n_disposition_revisions = report.get("disposition_revision_count", 0)
+                    n_total_tasks = report.get("n_total_tasks")
+                    n_superseded_masks = report.get("n_superseded_mask_tasks", 0)
+                    n_saved_masks = report.get("n_tasks_with_saved_masks", report["n_annotated_tasks"])
+                    disposition_counts = report.get("disposition_counts", {
+                        "no_visible_target": 0, "ambiguous": 0, "occluded": 0,
+                        "cropped": 0, "unusable": 0,
+                    })
+                    valid_disposition_codes = {"no_visible_target", "ambiguous", "occluded", "cropped", "unusable"}
+                    if (isinstance(n_dispositioned, bool) or not isinstance(n_dispositioned, int)
+                            or not 0 <= n_dispositioned <= 100_000
+                            or isinstance(n_total_tasks, bool) or not isinstance(n_total_tasks, int)
+                            or not 0 <= report["n_annotated_tasks"] <= n_total_tasks
+                            or report["n_annotated_tasks"] + n_dispositioned > n_total_tasks
+                            or isinstance(n_superseded_masks, bool)
+                            or not isinstance(n_superseded_masks, int)
+                            or not 0 <= n_superseded_masks <= n_dispositioned
+                            or isinstance(n_saved_masks, bool) or not isinstance(n_saved_masks, int)
+                            or n_saved_masks != report["n_annotated_tasks"] + n_superseded_masks
+                            or n_saved_masks > n_total_tasks
+                            or isinstance(n_disposition_revisions, bool)
+                            or not isinstance(n_disposition_revisions, int)
+                            or not n_dispositioned <= n_disposition_revisions <= 100_000
+                            or not isinstance(disposition_counts, dict)
+                            or set(disposition_counts) != valid_disposition_codes
+                            or any(isinstance(value, bool) or not isinstance(value, int) or value < 0
+                                   for value in disposition_counts.values())
+                            or sum(disposition_counts.values()) != n_dispositioned):
+                        continue
                     annotation_reviews.append({
                         "audit_id": audit_id,
                         "n_annotated_tasks": report["n_annotated_tasks"],
+                        "n_dispositioned_tasks": n_dispositioned,
+                        "n_tasks_with_saved_masks": n_saved_masks,
+                        "n_superseded_mask_tasks": n_superseded_masks,
+                        "n_disposition_revisions": n_disposition_revisions,
+                        "disposition_counts": disposition_counts,
                         "n_repeat_pairs_scored": report["n_repeat_pairs_scored"],
                         "n_repeat_pairs_with_distinct_annotator_ids": report[
                             "n_repeat_pairs_with_distinct_annotator_ids"],
