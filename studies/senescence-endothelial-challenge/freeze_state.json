@@ -1,0 +1,17 @@
+{
+  "confirmatory_blockers": [
+    "The split grouping unit is not an identified independent-unit level of any pinned dataset card."
+  ],
+  "dataset_card_revision_id": "f9757870f8ff471f886ba78915957664",
+  "freeze_content_sha256": "4a72d9bb93dd94cd5af67132b808ddc79d163b59dfa8f5137f435ca6d18e2c62",
+  "freeze_revision_id": "61da62f892c745b19ee3521ab04b1885",
+  "freeze_status": "exploratory",
+  "frozen_utc": "2026-10-07T19:54:19.269459+00:00",
+  "method_revision": "caa9eb38853449ffef7553eeda74f4509411ed8f",
+  "plan_revision_id": "2d918321cf72489bb1dedc1a97c247b0",
+  "plan_sha256": "94cc0e228360490f7679d35833d9b44012f7288b132afff146365221e7a9d158",
+  "question_revision_id": "98e1afaf33724d3699314610511ded2d",
+  "schema_version": 1,
+  "split_sha256": "21f4710447477ec35fb90b3e91e986a64128c383c0dfea64a629f43e7f195c6b",
+  "workspace_hint": "desk-endothelial"
+}
