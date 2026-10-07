@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-07T19:13:07.348498+00:00",
+  "python": "3.12.3",
+  "workbench": {
+    "revision": "455ecb685c8944fea8c7f73063ef1dc70092fc95",
+    "uncommitted_changes": false,
+    "detail": "clean working tree at export time"
+  },
+  "part_a_real_nist_development_receipt": {
+    "receipt": {
+      "sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c",
+      "bytes": 7035,
+      "feature_table_sha256": "e055bf31bc6d08594b9010625a779d027821c2333cb369e7247c011c81158645"
+    },
+    "as_run": {
+      "freeze": {
+        "freeze_revision_id": "a07245b841864741a377bf8c1ca69ca1",
+        "freeze_status": "retrospective",
+        "confirmatory_blockers": [
+          "Results were inspected before the freeze, so this plan cannot be confirmatory.",
+          "No final-test groups are sealed."
+        ],
+        "split_sha256": "69f235c9dcc3d11004f498123e7c36f8b5ebbf9760d1eff0149aaefef8c435c9",
+        "pins_resolve": true,
+        "claim_status": "retrospective_not_confirmatory",
+        "record_supports_confirmatory_claim": false,
+        "violations": [],
+        "ledger_events": 0,
+        "bindings": [
+          {
+            "revision_id": "234ad8b51d3c45f3b77e84105bf8cad1",
+            "stage": "development",
+            "binding_status": "bound_retrospective",
+            "receipt_sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c"
+          }
+        ]
+      },
+      "binding_status": "bound_retrospective",
+      "checks": {
+        "inputs_pinned": "pass",
+        "split_matches_freeze": "pass",
+        "final_test_not_in_training": "pass",
+        "producer_reported_overlap": "unavailable",
+        "method_revision_matches": "pass",
+        "primary_metric_present": "pass",
+        "result_postdates_freeze": "unavailable"
+      }
+    },
+    "what_if_sealed_training_high": {
+      "freeze": {
+        "freeze_revision_id": "00e149ee0f8d41c38d2f4fc887147a8a",
+        "freeze_status": "retrospective",
+        "confirmatory_blockers": [
+          "Results were inspected before the freeze, so this plan cannot be confirmatory."
+        ],
+        "split_sha256": "0d262b8afc3fa473182892c2210ef659566e136ee69ef19eb218da83fb7f2ecd",
+        "pins_resolve": true,
+        "claim_status": "holdout_compromised",
+        "record_supports_confirmatory_claim": false,
+        "violations": [
+          "final_test_data_used_in_development_run",
+          "unrecorded_final_test_evaluation"
+        ],
+        "ledger_events": 0,
+        "bindings": [
+          {
+            "revision_id": "503ca7fb8bd5499189e818441cc59419",
+            "stage": "development",
+            "binding_status": "mismatch",
+            "receipt_sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c"
+          },
+          {
+            "revision_id": "876cae1500034329aa32238572bac524",
+            "stage": "final_test",
+            "binding_status": "mismatch",
+            "receipt_sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c"
+          }
+        ]
+      },
+      "bound_as_development_run": {
+        "binding_status": "mismatch",
+        "checks": {
+          "inputs_pinned": "pass",
+          "split_matches_freeze": "fail",
+          "final_test_not_in_training": "fail",
+          "producer_reported_overlap": "unavailable",
+          "method_revision_matches": "pass",
+          "primary_metric_present": "pass",
+          "result_postdates_freeze": "unavailable"
+        },
+        "final_test_groups_in_training": [
+          "training_high"
+        ],
+        "final_test_groups_evaluated": [
+          "training_high"
+        ]
+      },
+      "bound_as_final_test_run": {
+        "binding_status": "mismatch",
+        "checks": {
+          "inputs_pinned": "pass",
+          "split_matches_freeze": "fail",
+          "final_test_not_in_training": "fail",
+          "producer_reported_overlap": "unavailable",
+          "method_revision_matches": "pass",
+          "primary_metric_present": "pass",
+          "result_postdates_freeze": "unavailable"
+        },
+        "detail": [
+          "non-development group(s) used for training: training_high; non-final-test group(s) used as the test set: training_low, training_medium",
+          "Final-test group(s) appear in training folds: training_high"
+        ]
+      }
+    }
+  },
+  "part_b_synthetic_clean_path": {
+    "label": "SYNTHETIC FIXTURE - made-up groups and receipt; demonstrates the procedure, not a result",
+    "freeze": {
+      "freeze_revision_id": "86700d1e29ba4d3189c4abb69ce674b0",
+      "freeze_status": "confirmatory",
+      "confirmatory_blockers": [],
+      "split_sha256": "ca847537ab08618ecb56094a0101b256aa580cdd8a2ff3ffd7bc2fa3bcacd6a5",
+      "pins_resolve": true,
+      "claim_status": "single_final_evaluation_recorded",
+      "record_supports_confirmatory_claim": true,
+      "violations": [],
+      "ledger_events": 2,
+      "bindings": [
+        {
+          "revision_id": "e379da274e8b428380dffd74e1fa2169",
+          "stage": "final_test",
+          "binding_status": "bound_prospective",
+          "receipt_sha256": "9ecb24ff3e0997e894ab51e71e63a775b267a8de68a9deb039c36a5a00e0f64e"
+        }
+      ]
+    },
+    "binding_status": "bound_prospective",
+    "checks": {
+      "inputs_pinned": "pass",
+      "split_matches_freeze": "pass",
+      "final_test_not_in_training": "pass",
+      "producer_reported_overlap": "pass",
+      "method_revision_matches": "pass",
+      "primary_metric_present": "pass",
+      "result_postdates_freeze": "pass"
+    }
+  },
+  "dossier_verification": {
+    "bytes_verified": true,
+    "verified": true,
+    "ancestry_resolved": "no_linked_sources_declared",
+    "scientific_lineage": "resolved",
+    "scientific_review": "not_established_by_this_tool",
+    "reproduction": "not_attempted",
+    "lineage_freezes": [
+      {
+        "revision_id": "86700d1e29ba4d3189c4abb69ce674b0",
+        "pins_resolve": true,
+        "claim_status": "single_final_evaluation_recorded",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true
+      },
+      {
+        "revision_id": "00e149ee0f8d41c38d2f4fc887147a8a",
+        "pins_resolve": true,
+        "claim_status": "holdout_compromised",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true
+      },
+      {
+        "revision_id": "a07245b841864741a377bf8c1ca69ca1",
+        "pins_resolve": true,
+        "claim_status": "retrospective_not_confirmatory",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true
+      }
+    ]
+  },
+  "dossier_members": 6
+}

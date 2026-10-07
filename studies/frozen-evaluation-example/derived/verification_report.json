@@ -1,0 +1,123 @@
+{
+  "ancestry": {
+    "declared": 0,
+    "mismatched": [],
+    "missing": [],
+    "resolved": []
+  },
+  "ancestry_resolved": "no_linked_sources_declared",
+  "archive": "dossier.zip",
+  "bytes_verified": true,
+  "errors": [],
+  "files": {
+    "dossier.json": {
+      "bytes": 65584,
+      "bytes_match": true,
+      "hash_match": true,
+      "present": true,
+      "sha256": "ef1a419731c27d3b10ed8ca30df696c59a51f6130d0df60e2af4fa53d69f35bf"
+    },
+    "public_draft.md": {
+      "bytes": 2070,
+      "bytes_match": true,
+      "hash_match": true,
+      "present": true,
+      "sha256": "4a6a055d894a1569dbb928058096f7da3e4ae0df9db588567f1e84271666c87f"
+    },
+    "reproduction-plan.json": {
+      "bytes": 2035,
+      "bytes_match": true,
+      "hash_match": true,
+      "present": true,
+      "sha256": "2465e665fb70fb5f706643426ff42a723d915a95a7b9c6752aa99a5fadcec87b"
+    },
+    "research_dossier.md": {
+      "bytes": 7199,
+      "bytes_match": true,
+      "hash_match": true,
+      "present": true,
+      "sha256": "cebf2624f3b0cdc5c82839bc59d7341aa8f0f245216fb364ed2545a7511fd571"
+    },
+    "research_records.json": {
+      "bytes": 51603,
+      "bytes_match": true,
+      "hash_match": true,
+      "present": true,
+      "sha256": "778a9312d4b500019ed9b0532edaffb93699ec171fae48b9f9f0375d34120d83"
+    }
+  },
+  "inventory": {
+    "indexed_files": 5,
+    "members": 6,
+    "notes_included": false,
+    "run_outputs_mismatched_at_export": [],
+    "run_outputs_not_in_run_manifest": [],
+    "uncompressed_bytes": 128491,
+    "undeclared_members": []
+  },
+  "limits": [
+    "Matching hashes establish archive integrity only. They do not establish that an analysis was correct, that an annotation was accepted, or that a biological claim is supported.",
+    "Ancestry resolution compares archived bytes with the manifests and receipts carried inside the same archive. It cannot authenticate the original acquisition.",
+    "This command never reruns an analysis. A rerun additionally needs the declared revision, dependencies and any input the archive does not contain."
+  ],
+  "lineage": {
+    "freezes": [
+      {
+        "claim_status": "single_final_evaluation_recorded",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true,
+        "pins_resolve": true,
+        "revision_id": "86700d1e29ba4d3189c4abb69ce674b0"
+      },
+      {
+        "claim_status": "holdout_compromised",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true,
+        "pins_resolve": true,
+        "revision_id": "00e149ee0f8d41c38d2f4fc887147a8a"
+      },
+      {
+        "claim_status": "retrospective_not_confirmatory",
+        "claim_status_matches_export": true,
+        "ledger_chain_valid": true,
+        "pins_resolve": true,
+        "revision_id": "a07245b841864741a377bf8c1ca69ca1"
+      }
+    ],
+    "n_records": 15,
+    "problems": [],
+    "status": "resolved"
+  },
+  "reproduction": "not_attempted",
+  "reproduction_requirements": {
+    "commands": {
+      "rerun_note": "Search and analysis runs are reproduced in the repository that owns each method, using the submission snapshot archived under runs/<run-id>/submission.json.",
+      "validate_linked_experiment": "python tools/validate_experiment_manifest.py <experiment.json>",
+      "verify_archive": "python tools/verify_dossier.py <archive.zip> --strict"
+    },
+    "declared_dependencies": {
+      "rerun": [
+        "python>=3.10",
+        "jsonschema (experiment-manifest validation)",
+        "PyYAML (tool configuration)",
+        "network access and provider credentials for any search run",
+        "the sibling method repositories that produced each linked output"
+      ],
+      "verification": [
+        "python>=3.10 standard library only",
+        "tools/verify_dossier.py with tools/frozen_evaluation.py beside it for research-lineage checks"
+      ]
+    },
+    "plan_present": true,
+    "workbench_revision": {
+      "detail": "clean working tree at export time",
+      "revision": "455ecb685c8944fea8c7f73063ef1dc70092fc95",
+      "uncommitted_changes": false
+    }
+  },
+  "schema_version": 1,
+  "scientific_lineage": "resolved",
+  "scientific_review": "not_established_by_this_tool",
+  "verified": true,
+  "warnings": []
+}
