@@ -272,6 +272,22 @@ function renderModelBench() {
     if (bundle.bundle_kind === 'reviewed_evidence_map') {
       card.append(el('p',`${summary.source_count ?? '—'} sources · ${summary.claim_count ?? '—'} claims · ${summary.requirement_count ?? '—'} requirements`));
       if (summary.reviewed_on) card.append(el('p',`Ledger review date: ${summary.reviewed_on}. Review and update it before relying on a source card.`,'boundary'));
+      const intervalComponents=Array.isArray(summary.interval_components)?summary.interval_components:[];
+      if(intervalComponents.length){
+        const table=el('table',null,'model-bench-verification-table'),head=el('tr');
+        for(const label of ['Claim / source','Axis','Claim bounds'])head.append(el('th',label));
+        table.append(head);
+        for(const component of intervalComponents){
+          const row=el('tr');
+          const label=`${component.claim_id||'claim'} · ${component.source_ids||'source not recorded'}`;
+          const bounds=`${modelNumber(component.minimum)}–${modelNumber(component.maximum)} ${component.unit||'unit not recorded'}`;
+          for(const value of [label,component.axis,bounds])row.append(el('td',String(value??'not reported')));
+          table.append(row);
+        }
+        card.append(table);
+        if(summary.interval_components_truncated)card.append(el('p','Showing the first 100 structured interval components. Open the receipt-verified evidence report for the complete ledger.','boundary'));
+        card.append(el('p','The desk checks that claim bounds stay inside linked source bounds on the same axis and exact unit. This validates curated ledger structure; it does not verify transcription against the publication.','boundary'));
+      }
     } else if (bundle.bundle_kind === 'developmental_observation_intake') {
       card.append(el('p',`${summary.title || summary.dataset_id || 'Dataset'} · source revision ${summary.source_revision_id || 'not recorded'} · source state ${summary.source_review_status || 'not recorded'}`));
       card.append(el('p',`${summary.n_observation_records ?? '—'} records in ${summary.n_exact_comparison_groups ?? '—'} exact-source/unit groups · ${summary.n_transitions ?? '—'} recorded transitions · ${summary.n_continuity_not_reported ?? '—'} with continuity not reported.`));

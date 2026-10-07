@@ -450,6 +450,87 @@ def _validate_observation_source_file_csv(path, summary):
         raise ValueError
 
 
+def _evidence_interval_components(record):
+    components = record.get("interval_components", [])
+    if not isinstance(components, list) or len(components) > 16:
+        raise ValueError
+    parsed = {}
+    for component in components:
+        if not isinstance(component, dict) or set(component) != {"axis", "unit", "minimum", "maximum"}:
+            raise ValueError
+        axis, unit = component["axis"], component["unit"]
+        minimum, maximum = component["minimum"], component["maximum"]
+        if (not isinstance(axis, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", axis)
+                or axis in parsed or not isinstance(unit, str)
+                or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]{0,63}", unit)
+                or isinstance(minimum, bool) or not isinstance(minimum, (int, float))
+                or isinstance(maximum, bool) or not isinstance(maximum, (int, float))):
+            raise ValueError
+        try:
+            if (not math.isfinite(float(minimum)) or not math.isfinite(float(maximum))
+                    or minimum > maximum):
+                raise ValueError
+        except OverflowError as exc:
+            raise ValueError from exc
+        parsed[axis] = {"axis": axis, "unit": unit, "minimum": minimum, "maximum": maximum}
+    return parsed
+
+
+def _reviewed_evidence_interval_rows(detail):
+    sources, claims, requirements = (detail.get("sources"), detail.get("claims"),
+                                     detail.get("requirements"))
+    if any(not isinstance(items, list) or not 1 <= len(items) <= 500
+           for items in (sources, claims, requirements)):
+        raise ValueError
+    identifier_pattern = r"[a-z0-9][a-z0-9_-]{1,95}"
+    requirement_ids = set()
+    for requirement in requirements:
+        if (not isinstance(requirement, dict) or not isinstance(requirement.get("id"), str)
+                or not re.fullmatch(identifier_pattern, requirement["id"])
+                or requirement["id"] in requirement_ids):
+            raise ValueError
+        requirement_ids.add(requirement["id"])
+    source_map = {}
+    source_intervals = {}
+    for source in sources:
+        if (not isinstance(source, dict) or not isinstance(source.get("id"), str)
+                or not re.fullmatch(identifier_pattern, source["id"])
+                or source["id"] in source_map):
+            raise ValueError
+        source_map[source["id"]] = source
+        source_intervals[source["id"]] = _evidence_interval_components(source)
+    rows = []
+    claim_ids = set()
+    for claim in claims:
+        if (not isinstance(claim, dict) or not isinstance(claim.get("id"), str)
+                or not re.fullmatch(identifier_pattern, claim["id"])
+                or claim["id"] in claim_ids
+                or not isinstance(claim.get("text"), str) or len(claim["text"]) > 4_000):
+            raise ValueError
+        claim_ids.add(claim["id"])
+        source_ids = claim.get("source_ids")
+        if (not isinstance(source_ids, list) or len(source_ids) != len(set(source_ids))
+                or any(not isinstance(source_id, str) or source_id not in source_map for source_id in source_ids)):
+            raise ValueError
+        claim_intervals = _evidence_interval_components(claim)
+        if claim_intervals and not source_ids:
+            raise ValueError
+        for source_id in source_ids:
+            known = source_intervals[source_id]
+            if known and not claim_intervals:
+                raise ValueError
+            for axis, interval in claim_intervals.items():
+                source_interval = known.get(axis)
+                if (source_interval is None or interval["unit"] != source_interval["unit"]
+                        or interval["minimum"] < source_interval["minimum"]
+                        or interval["maximum"] > source_interval["maximum"]):
+                    raise ValueError
+        for interval in claim_intervals.values():
+            rows.append({"claim_id": claim["id"], "claim": claim["text"][:300],
+                         "source_ids": ";".join(source_ids), **interval})
+    return rows
+
+
 def ectogenesis_artifact_bundle(path):
     """Summarize a receipt-bound sibling bundle without changing its files."""
     try:
@@ -554,12 +635,17 @@ def ectogenesis_artifact_bundle(path):
         summary["limitations"] = limits
         if kind == "reviewed_evidence_map":
             if (detail.get("report_kind") != kind
-                    or detail.get("biological_assay_performed") is not False):
+                    or detail.get("biological_assay_performed") is not False
+                    or detail.get("complete_human_gestation_demonstrated") is not False):
                 raise ValueError
-            summary.update(source_count=len(detail.get("sources", [])),
-                           claim_count=len(detail.get("claims", [])),
-                           requirement_count=len(detail.get("requirements", [])),
-                           reviewed_on=detail.get("reviewed_on"))
+            interval_rows = _reviewed_evidence_interval_rows(detail)
+            summary.update(source_count=len(detail["sources"]),
+                           claim_count=len(detail["claims"]),
+                           requirement_count=len(detail["requirements"]),
+                           reviewed_on=detail.get("reviewed_on"),
+                           interval_component_count=len(interval_rows),
+                           interval_components=interval_rows[:100],
+                           interval_components_truncated=len(interval_rows) > 100)
         elif kind == "developmental_observation_intake":
             required_outputs = {"observation_intake_report.json", "observation_records.csv",
                                 "interval_groups.csv", "transitions.csv", "REPORT.md"}

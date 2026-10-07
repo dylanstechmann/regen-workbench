@@ -24,6 +24,56 @@ class EctogenesisDeskTests(unittest.TestCase):
         self.desk = desk.Desk(self.root)
         self.addCleanup(lambda: self.desk.executor.shutdown(wait=True))
 
+    def test_evidence_map_displays_only_source_contained_interval_components(self):
+        bundle = self.root / "evidence-map"
+        bundle.mkdir()
+        input_bytes = b'{"schema_version":1}\n'
+        report = {
+            "schema_version": 1,
+            "report_kind": "reviewed_evidence_map",
+            "biological_assay_performed": False,
+            "complete_human_gestation_demonstrated": False,
+            "reviewed_on": "2026-10-06",
+            "limits": [],
+            "sources": [{"id": "source-1", "interval_components": [
+                {"axis": "support_duration", "unit": "day", "minimum": 0, "maximum": 28}]}],
+            "claims": [{"id": "claim-1", "text": "Partial support only.", "source_ids": ["source-1"],
+                        "interval_components": [
+                            {"axis": "support_duration", "unit": "day", "minimum": 0, "maximum": 21}]}],
+            "requirements": [{"id": "requirement-1"}],
+        }
+        report_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+        (bundle / "input_ledger.json").write_bytes(input_bytes)
+        (bundle / "evidence_report.json").write_bytes(report_bytes)
+        receipt = {
+            "schema_version": 1, "bundle_kind": "reviewed_evidence_map",
+            "package_version": "0.4.0", "python_version": "3.x",
+            "input_sha256": hashlib.sha256(input_bytes).hexdigest(),
+            "implementation_sha256": {"src/wombmodels/evidence.py": "a" * 64},
+            "metadata": {},
+            "outputs": {
+                "input_ledger.json": {"sha256": hashlib.sha256(input_bytes).hexdigest(),
+                                      "size_bytes": len(input_bytes)},
+                "evidence_report.json": {"sha256": hashlib.sha256(report_bytes).hexdigest(),
+                                         "size_bytes": len(report_bytes)},
+            },
+        }
+        receipt_path = bundle / "receipt.json"
+        receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
+
+        result = desk.ectogenesis_artifact_bundle(bundle)
+        self.assertTrue(result["verified"], result)
+        self.assertEqual(result["summary"]["interval_component_count"], 1)
+        self.assertEqual(result["summary"]["interval_components"][0]["maximum"], 21)
+
+        report["claims"][0]["interval_components"][0]["maximum"] = 29
+        invalid_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+        (bundle / "evidence_report.json").write_bytes(invalid_bytes)
+        receipt["outputs"]["evidence_report.json"] = {
+            "sha256": hashlib.sha256(invalid_bytes).hexdigest(), "size_bytes": len(invalid_bytes)}
+        receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
+
     def test_starter_campaigns_keep_complete_gestation_unassessed_and_growth_limits_visible(self):
         state = self.desk.state()
         self.assertTrue(any(item["id"] == "ectogenesis" for item in state["blueprints"]))

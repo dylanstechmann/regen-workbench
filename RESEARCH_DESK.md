@@ -44,7 +44,10 @@ service receives only `../artificial-womb-models/artifacts/`, mounted
 read-only. The view checks each bundle's receipt, source binding, output sizes
 and SHA-256 before displaying report/runtime provenance and the report's own
 limitations. It shows reviewed evidence-map bundles, dimensionless exchange
-runs and noise-aware forward identifiability reports. Forecast cards compare
+runs and noise-aware forward identifiability reports. Evidence-map cards show
+structured claim intervals only after checking their axis, exact unit and
+bounds against linked source records; this does not verify publication
+transcription. Forecast cards compare
 later readings with a last-reading baseline; endpoint-based integral-balance
 residuals remain separately labeled as same-run consistency checks. The bounded
 cadence/noise/fault/event-timing sweep filters a compact 3×3 design matrix by
