@@ -130,20 +130,28 @@ class VerifyDossierTests(unittest.TestCase):
         self.assertIn("required document is missing: research_records.json", report["errors"])
 
     def test_escaping_and_absolute_member_paths_are_rejected(self):
-        for unsafe in ("../escape.md", "/etc/passwd", "runs/../../escape.md", "dir\\file.md"):
+        for unsafe in ("../escape.md", "/etc/passwd", "runs/../../escape.md", "dir\\file.md", " leading.md"):
             with self.subTest(unsafe=unsafe):
+                members = minimal_members()
                 buffer = io.BytesIO()
                 with zipfile.ZipFile(buffer, "w") as archive:
-                    for name, blob in minimal_members().items():
+                    for name, blob in members.items():
                         archive.writestr(name, blob)
-                    archive.writestr(unsafe, b"payload")
-                    archive.writestr("archive-index.json", json.dumps({"schema_version": 1, "files": [
-                        {"path": "dossier.json", "sha256": "0" * 64, "bytes": 1}]}).encode())
+                    # Assigning filename after construction keeps the exact bytes a
+                    # foreign archiver could emit: ZipInfo() rewrites os.sep on Windows.
+                    info = zipfile.ZipInfo("placeholder")
+                    info.filename = unsafe
+                    archive.writestr(info, b"payload")
+                    index = [{"path": name, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)}
+                             for name, blob in members.items()]
+                    archive.writestr("archive-index.json",
+                                     json.dumps({"schema_version": 1, "files": index}).encode())
                 with tempfile.TemporaryDirectory() as temp:
                     report = verify_dossier(write_archive(Path(temp), buffer.getvalue()))
                 self.assertFalse(report["bytes_verified"])
-                self.assertTrue(any("unsafe archive member" in error for error in report["errors"]),
-                                report["errors"])
+                # The verifier quotes the raw member name with !r, so compare the same way.
+                self.assertTrue(any("unsafe archive member" in error and repr(unsafe) in error
+                                    for error in report["errors"]), report["errors"])
 
     def test_symlink_member_is_rejected(self):
         buffer = io.BytesIO()
