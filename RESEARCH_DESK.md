@@ -46,8 +46,11 @@ and SHA-256 before displaying report/runtime provenance and the report's own
 limitations. It shows reviewed evidence-map bundles, dimensionless exchange
 runs and noise-aware forward identifiability reports. Evidence-map cards show
 structured claim intervals only after checking their axis, exact unit and
-bounds against linked source records; this does not verify publication
-transcription. Forecast cards compare
+bounds against linked source records. They also show stage-transition edges,
+same-unit continuity state, linked source locators and the observation needed
+to test each gap. The desk checks these curated bindings and source class but
+does not verify publication transcription or infer a complete IVF-to-birth
+path. Forecast cards compare
 later readings with a last-reading baseline; endpoint-based integral-balance
 residuals remain separately labeled as same-run consistency checks. The bounded
 cadence/noise/fault/event-timing sweep filters a compact 3×3 design matrix by

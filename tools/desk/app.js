@@ -288,6 +288,24 @@ function renderModelBench() {
         if(summary.interval_components_truncated)card.append(el('p','Showing the first 100 structured interval components. Open the receipt-verified evidence report for the complete ledger.','boundary'));
         card.append(el('p','The desk checks that claim bounds stay inside linked source bounds on the same axis and exact unit. This validates curated ledger structure; it does not verify transcription against the publication.','boundary'));
       }
+      const transitions=Array.isArray(summary.transitions)?summary.transitions:[];
+      if(transitions.length){
+        card.append(el('h4','Developmental stage transitions'));
+        const table=el('table',null,'model-bench-verification-table'),head=el('tr');
+        for(const label of ['Transition','Species / model','Same-unit continuity','Source unit IDs','Source locator','Evidence needed','Boundary'])head.append(el('th',label));
+        table.append(head);
+        for(const item of transitions){
+          const row=el('tr');
+          const values=[`${item.from_stage||item.from_stage_id} → ${item.to_stage||item.to_stage_id}`,item.species,String(item.continuity_state||'not reported').replaceAll('_',' '),item.unit_ids||'not reported',item.source_locations||item.source_ids||'no source linked',item.required_observation,item.boundary];
+          for(const value of values)row.append(el('td',String(value??'not reported')));
+          table.append(row);
+        }
+        card.append(table);
+        if(summary.transitions_truncated)card.append(el('p','Showing the first 100 transition edges. Open the receipt-verified report for the complete map.','boundary'));
+        card.append(el('p','The desk checks stage, species, source-class, locator, claim and unit-ID bindings. This does not verify source transcription or establish a complete gestation path.','boundary'));
+      }else{
+        card.append(el('p','No explicit stage-transition records were included in this evidence report.','boundary'));
+      }
     } else if (bundle.bundle_kind === 'developmental_observation_intake') {
       card.append(el('p',`${summary.title || summary.dataset_id || 'Dataset'} · source revision ${summary.source_revision_id || 'not recorded'} · source state ${summary.source_review_status || 'not recorded'}`));
       card.append(el('p',`${summary.n_observation_records ?? '—'} records in ${summary.n_exact_comparison_groups ?? '—'} exact-source/unit groups · ${summary.n_transitions ?? '—'} recorded transitions · ${summary.n_continuity_not_reported ?? '—'} with continuity not reported.`));

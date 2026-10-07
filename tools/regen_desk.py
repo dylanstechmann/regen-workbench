@@ -531,6 +531,148 @@ def _reviewed_evidence_interval_rows(detail):
     return rows
 
 
+def _reviewed_evidence_transition_rows(detail):
+    """Check source, stage and same-unit bindings before exposing transition claims."""
+    transitions = detail.get("transitions", [])
+    sources, claims, stages = (detail.get("sources"), detail.get("claims"), detail.get("stages"))
+    if (not isinstance(transitions, list) or len(transitions) > 500
+            or not isinstance(sources, list) or not 1 <= len(sources) <= 500
+            or not isinstance(claims, list) or not 1 <= len(claims) <= 500
+            or not isinstance(stages, list) or not 1 <= len(stages) <= 500):
+        raise ValueError
+    identifier_pattern = r"[a-z0-9][a-z0-9_-]{1,95}"
+    stage_map = {}
+    for stage in stages:
+        if (not isinstance(stage, dict) or not isinstance(stage.get("id"), str)
+                or not re.fullmatch(identifier_pattern, stage["id"])
+                or stage["id"] in stage_map or not isinstance(stage.get("label"), str)
+                or not stage["label"] or len(stage["label"]) > 4_000):
+            raise ValueError
+        stage_map[stage["id"]] = stage
+    source_map = {}
+    for source in sources:
+        if (not isinstance(source, dict) or not isinstance(source.get("id"), str)
+                or not re.fullmatch(identifier_pattern, source["id"])
+                or source["id"] in source_map):
+            raise ValueError
+        source_map[source["id"]] = source
+        if (not isinstance(source.get("species"), str) or not source["species"]
+                or not isinstance(source.get("kind"), str)
+                or not isinstance(source.get("stage_ids"), list)
+                or any(not isinstance(value, str) or value not in stage_map for value in source["stage_ids"])
+                or len(set(source["stage_ids"])) != len(source["stage_ids"])):
+            raise ValueError
+    claim_map = {}
+    for claim in claims:
+        if (not isinstance(claim, dict) or not isinstance(claim.get("id"), str)
+                or not re.fullmatch(identifier_pattern, claim["id"])
+                or claim["id"] in claim_map):
+            raise ValueError
+        claim_map[claim["id"]] = claim
+        if (not isinstance(claim.get("species"), str) or not isinstance(claim.get("status"), str)
+                or not isinstance(claim.get("stage_ids"), list)
+                or any(not isinstance(value, str) or value not in stage_map for value in claim["stage_ids"])
+                or len(set(claim["stage_ids"])) != len(claim["stage_ids"])):
+            raise ValueError
+        linked = claim.get("source_ids")
+        if (not isinstance(linked, list) or any(not isinstance(value, str) or value not in source_map for value in linked)
+                or len(set(linked)) != len(linked)):
+            raise ValueError
+    rows = []
+    transition_ids = set()
+    unit_pattern = r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}"
+    allowed_states = {"demonstrated", "contradicted", "not_reported"}
+    for transition in transitions:
+        if (not isinstance(transition, dict) or not isinstance(transition.get("id"), str)
+                or not re.fullmatch(identifier_pattern, transition["id"])
+                or transition["id"] in transition_ids):
+            raise ValueError
+        transition_ids.add(transition["id"])
+        from_id, to_id = transition.get("from_stage_id"), transition.get("to_stage_id")
+        if (not isinstance(from_id, str) or from_id not in stage_map
+                or not isinstance(to_id, str) or to_id not in stage_map or from_id == to_id):
+            raise ValueError
+        for field in ("species", "required_observation", "boundary"):
+            if not isinstance(transition.get(field), str) or not transition[field] or len(transition[field]) > 4_000:
+                raise ValueError
+        continuity = transition.get("continuity_state")
+        if not isinstance(continuity, str) or continuity not in allowed_states:
+            raise ValueError
+
+        def checked_references(field, allowed):
+            values = transition.get(field)
+            if (not isinstance(values, list) or len(values) > 500
+                    or any(not isinstance(value, str) or value not in allowed for value in values)
+                    or len(set(values)) != len(values)):
+                raise ValueError
+            return values
+
+        source_ids = checked_references("source_ids", source_map)
+        claim_ids = checked_references("claim_ids", claim_map)
+        unit_values = transition.get("unit_ids")
+        if (not isinstance(unit_values, list) or len(unit_values) > 1000
+                or any(not isinstance(value, str) or not re.fullmatch(unit_pattern, value) for value in unit_values)
+                or len(set(unit_values)) != len(unit_values)):
+            raise ValueError
+        locations = transition.get("source_locations")
+        if not isinstance(locations, list) or len(locations) > 50:
+            raise ValueError
+        located = set()
+        location_map = {}
+        for location in locations:
+            if (not isinstance(location, dict) or set(location) != {"source_id", "locator"}
+                    or not isinstance(location.get("source_id"), str)
+                    or location["source_id"] not in source_map or location["source_id"] in located
+                    or not isinstance(location.get("locator"), str) or not location["locator"].strip()
+                    or len(location["locator"]) > 4_000):
+                raise ValueError
+            located.add(location["source_id"])
+            location_map[location["source_id"]] = location["locator"]
+        if located != set(source_ids):
+            raise ValueError
+
+        linked_sources = set()
+        linked_unit_sets = []
+        for claim_id in claim_ids:
+            claim = claim_map[claim_id]
+            if (claim["species"] != transition["species"]
+                    or {from_id, to_id} - set(claim["stage_ids"])):
+                raise ValueError
+            linked_sources.update(claim["source_ids"])
+            claim_units = claim.get("unit_ids", [])
+            if (not isinstance(claim_units, list) or len(claim_units) > 1000
+                    or any(not isinstance(value, str) or not re.fullmatch(unit_pattern, value) for value in claim_units)
+                    or len(set(claim_units)) != len(claim_units)):
+                raise ValueError
+            linked_unit_sets.append(set(claim_units))
+        if linked_sources != set(source_ids):
+            raise ValueError
+        for source_id in source_ids:
+            source = source_map[source_id]
+            if (source["species"] != transition["species"]
+                    or {from_id, to_id} - set(source["stage_ids"])):
+                raise ValueError
+        if unit_values:
+            if not linked_unit_sets or not set(unit_values) <= set.intersection(*linked_unit_sets):
+                raise ValueError
+        elif continuity != "not_reported":
+            raise ValueError
+        if continuity in {"demonstrated", "contradicted"}:
+            if (not source_ids or not claim_ids
+                    or any(source_map[value]["kind"] not in {"peer_reviewed_animal", "peer_reviewed_human_invitro"}
+                           for value in source_ids)
+                    or any(claim_map[value]["status"] != "source_reported" for value in claim_ids)):
+                raise ValueError
+        rows.append({"transition_id": transition["id"],
+                     "from_stage": stage_map[from_id]["label"], "to_stage": stage_map[to_id]["label"],
+                     "species": transition["species"], "continuity_state": continuity,
+                     "unit_ids": ";".join(unit_values), "source_ids": ";".join(source_ids),
+                     "source_locations": "; ".join(f"{key}: {value}" for key, value in location_map.items()),
+                     "required_observation": transition["required_observation"],
+                     "boundary": transition["boundary"]})
+    return rows
+
+
 def ectogenesis_artifact_bundle(path):
     """Summarize a receipt-bound sibling bundle without changing its files."""
     try:
@@ -639,13 +781,17 @@ def ectogenesis_artifact_bundle(path):
                     or detail.get("complete_human_gestation_demonstrated") is not False):
                 raise ValueError
             interval_rows = _reviewed_evidence_interval_rows(detail)
+            transition_rows = _reviewed_evidence_transition_rows(detail)
             summary.update(source_count=len(detail["sources"]),
                            claim_count=len(detail["claims"]),
                            requirement_count=len(detail["requirements"]),
                            reviewed_on=detail.get("reviewed_on"),
                            interval_component_count=len(interval_rows),
                            interval_components=interval_rows[:100],
-                           interval_components_truncated=len(interval_rows) > 100)
+                           interval_components_truncated=len(interval_rows) > 100,
+                           transition_count=len(transition_rows),
+                           transitions=transition_rows[:100],
+                           transitions_truncated=len(transition_rows) > 100)
         elif kind == "developmental_observation_intake":
             required_outputs = {"observation_intake_report.json", "observation_records.csv",
                                 "interval_groups.csv", "transitions.csv", "REPORT.md"}

@@ -35,12 +35,22 @@ class EctogenesisDeskTests(unittest.TestCase):
             "complete_human_gestation_demonstrated": False,
             "reviewed_on": "2026-10-06",
             "limits": [],
-            "sources": [{"id": "source-1", "interval_components": [
+            "stages": [{"id": "stage-a", "label": "Stage A"},
+                       {"id": "stage-b", "label": "Stage B"}],
+            "sources": [{"id": "source-1", "kind": "peer_reviewed_animal", "species": "ovine",
+                         "stage_ids": ["stage-a", "stage-b"], "interval_components": [
                 {"axis": "support_duration", "unit": "day", "minimum": 0, "maximum": 28}]}],
-            "claims": [{"id": "claim-1", "text": "Partial support only.", "source_ids": ["source-1"],
+            "claims": [{"id": "claim-1", "text": "Partial support only.", "status": "source_reported",
+                        "species": "ovine", "stage_ids": ["stage-a", "stage-b"],
+                        "source_ids": ["source-1"],
                         "interval_components": [
                             {"axis": "support_duration", "unit": "day", "minimum": 0, "maximum": 21}]}],
             "requirements": [{"id": "requirement-1"}],
+            "transitions": [{"id": "edge-a-b", "from_stage_id": "stage-a", "to_stage_id": "stage-b",
+                             "species": "human", "continuity_state": "not_reported", "unit_ids": [],
+                             "source_ids": [], "claim_ids": [], "source_locations": [],
+                             "required_observation": "Same-unit record across both stages.",
+                             "boundary": "No human transition is reported in this fixture."}],
         }
         report_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
         (bundle / "input_ledger.json").write_bytes(input_bytes)
@@ -65,6 +75,29 @@ class EctogenesisDeskTests(unittest.TestCase):
         self.assertTrue(result["verified"], result)
         self.assertEqual(result["summary"]["interval_component_count"], 1)
         self.assertEqual(result["summary"]["interval_components"][0]["maximum"], 21)
+        self.assertEqual(result["summary"]["transition_count"], 1)
+        self.assertEqual(result["summary"]["transitions"][0]["continuity_state"], "not_reported")
+
+        report["claims"][0]["unit_ids"] = ["unit-1"]
+        report["transitions"][0].update({
+            "species": "ovine", "continuity_state": "demonstrated", "unit_ids": ["unit-1"],
+            "source_ids": ["source-1"], "claim_ids": ["claim-1"],
+            "source_locations": [{"source_id": "source-1", "locator": "test locator"}],
+        })
+        transition_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+        (bundle / "evidence_report.json").write_bytes(transition_bytes)
+        receipt["outputs"]["evidence_report.json"] = {
+            "sha256": hashlib.sha256(transition_bytes).hexdigest(), "size_bytes": len(transition_bytes)}
+        receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertTrue(desk.ectogenesis_artifact_bundle(bundle)["verified"])
+
+        report["sources"][0]["kind"] = "institution_announcement"
+        announcement_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
+        (bundle / "evidence_report.json").write_bytes(announcement_bytes)
+        receipt["outputs"]["evidence_report.json"] = {
+            "sha256": hashlib.sha256(announcement_bytes).hexdigest(), "size_bytes": len(announcement_bytes)}
+        receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
+        self.assertFalse(desk.ectogenesis_artifact_bundle(bundle)["verified"])
 
         report["claims"][0]["interval_components"][0]["maximum"] = 29
         invalid_bytes = json.dumps(report, sort_keys=True).encode() + b"\n"
