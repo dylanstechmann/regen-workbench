@@ -72,6 +72,29 @@ titles and citation fields. The expected outcome is a `confirmatory` freeze, a
 That demonstrates what a correct procedure looks like in the record. No biology
 is implied.
 
+## Part C — can the Part A receipt be reproduced? (separate from verification)
+
+`reproduction` stays `not_attempted` in dossier verification. As a separate step,
+`tools/rerun_check.py` runs one allowlisted entry point (`regenbench regress`) from the
+producing repository's source **at the pinned commit** (`git archive`, so the checkout is not
+touched), on the feature table whose SHA-256 the receipt names, and compares the new
+`metrics.json` with the vendored receipt, ignoring the `environment` block.
+
+```bash
+python studies/frozen-evaluation-example/rerun_nist.py --kit ../regen-benchmark-kit --out <new report.json>
+```
+
+Result recorded on 2026-10-08 in `derived/nist_rerun_report.json`:
+**`reproduced_within_tolerance`**. 107 numbers compared; 78 are bit-identical and 29
+(all Ridge values) differ in the last digits, at most 2.5e-14 relative, against a tolerance of
+1e-9. The receipt was made with Python 3.12.14, numpy 2.3.5 and scikit-learn 1.8.0; the rerun
+used Python 3.12.3, numpy 1.26.4 and scikit-learn 1.4.1. Both are recorded in the report.
+
+This shows that the pinned code and the hashed table give these numbers again. It is not
+scientific review, not evidence that the method works outside these three wells, and not a
+rerun of anything but this one receipt. A spec cannot name another program: unknown entry
+points, shell-like arguments and unpinned commits are refused before anything runs.
+
 ## What this does not show
 
 - A freeze time is the Desk's clock. It shows when a plan was pinned, not that

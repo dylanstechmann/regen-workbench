@@ -94,7 +94,13 @@ verifier; without it the status is `not_checked`, never silently passed.
 - Include a reproduction plan with exact input locations, commands,
   environment and expected outputs. Verification and rerunning are distinct
   statuses; missing data/dependencies must be reported explicitly. **Implemented
-  for the plan contract above; a rerun harness is not implemented.**
+  for the plan contract above.** A first, narrow rerun harness exists
+  (`tools/rerun_check.py`, 2026-10-08): one allowlisted entry point
+  (`regenbench regress` from a pinned commit), no command read from data, a
+  separate `rerun.status`. It reproduced the vendored NIST receipt within
+  tolerance (`studies/frozen-evaluation-example/derived/nist_rerun_report.json`).
+  Not yet done: reading a rerun spec out of a dossier's `reproduction-plan.json`,
+  more entry points, and surfacing the status in the Desk or the verifier.
 - Copy source receipts when ancestry is claimed, including the simulation
   receipt for observability and pilot/manifest/plan/mask bindings for
   annotation-derived records when licensed and authorized for the archive.

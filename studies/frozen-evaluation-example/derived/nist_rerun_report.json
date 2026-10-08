@@ -1,0 +1,54 @@
+{
+  "arguments": {
+    "group_by": "source_well",
+    "seed": 0,
+    "target": "reference_nuclear_fraction"
+  },
+  "entry_point": "regenbench-regress/1",
+  "environments": {
+    "rerun": {
+      "numpy": "1.26.4",
+      "python": "3.12.3",
+      "regenbench": "0.2.0",
+      "scikit_learn": "1.4.1.post1"
+    },
+    "stored": {
+      "numpy": "2.3.5",
+      "python": "3.12.14",
+      "regenbench": "0.2.0",
+      "scikit_learn": "1.8.0"
+    }
+  },
+  "generated_utc": "2026-10-08T02:18:11+00:00",
+  "input_sha256": "e055bf31bc6d08594b9010625a779d027821c2333cb369e7247c011c81158645",
+  "limits": [
+    "A reproduced number shows that this code and this input give this output again. It is not scientific review, not a validated method and not a statement about biology.",
+    "Only the named entry point can run. Nothing in a dossier, receipt or spec chooses a program.",
+    "Search runs, network-dependent steps and anything outside the allowlist are not attempted.",
+    "Floating-point results can differ in the last digits between numpy / scikit-learn builds; the tolerance is stated and the two environments are recorded."
+  ],
+  "producer": {
+    "commit": "b0087c78ac3474aecdb6e5cc276d6ba79921df5d",
+    "repository": "regen-benchmark-kit"
+  },
+  "receipt_sha256": "7cd440e0ff4c66975966712015c974a6d866e574fba0859506a404f158391f7c",
+  "rerun": {
+    "beyond_tolerance": [],
+    "compared_numbers": 107,
+    "inexact_numbers": 29,
+    "max_abs_deviation": 2.6645352591003757e-15,
+    "max_rel_deviation": 2.5349241812405473e-14,
+    "reason": null,
+    "rerun_metrics_sha256_without_environment": "361da162c9f15b7770a52a23034f81ce9bec14b784154560c6fe2de293b7e520",
+    "status": "reproduced_within_tolerance",
+    "stored_metrics_sha256_without_environment": "ad40c500b7151a44280763736888675df1e048f6ec214a46ceb539fd722f615e",
+    "structural_differences": [],
+    "tolerance": {
+      "absolute": 1e-12,
+      "relative": 1e-09
+    }
+  },
+  "schema_version": 1,
+  "spec_sha256": "9be70d1606b0d94aeb4fdc25ffba3f4759327938617131db5b3de32354a8ff86",
+  "tool": "tools/rerun_check.py"
+}
