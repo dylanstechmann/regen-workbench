@@ -2762,6 +2762,47 @@ class Desk:
                                              "files": archived})
         return {"experiments": linked_experiments, "model_bundles": linked_model_bundles}, files
 
+    def _read_run_records(self):
+        """Read each run.json once, never through a link, within the archive's per-file limit.
+
+        Returns ``(records, excluded)``. A record that is unsafe, oversized, unreadable or whose
+        ``id`` does not match its folder is left out of the dossier and listed in ``excluded`` so the
+        dossier says it is incomplete instead of silently presenting fewer runs.
+        """
+        records, excluded = [], []
+        for entry in sorted(self.runs.iterdir(), key=lambda item: item.name):
+            if entry.is_symlink() or not entry.is_dir():
+                continue
+            target = entry / "run.json"
+            if not target.exists() and not target.is_symlink():
+                continue
+            try:
+                raw = ac.read_regular_file(self.runs, f"{entry.name}/run.json", limit=ac.MAX_MEMBER_BYTES)
+                record = json.loads(raw.decode("utf-8"))
+            except ac.SourceRefused as exc:
+                excluded.append({"run_id": entry.name, "file": "run.json", "kind": exc.kind, "detail": exc.detail})
+                continue
+            except (UnicodeDecodeError, json.JSONDecodeError):
+                excluded.append({"run_id": entry.name, "file": "run.json", "kind": "unreadable_json",
+                                 "detail": "run.json is not UTF-8 JSON"})
+                continue
+            if not isinstance(record, dict) or record.get("id") != entry.name:
+                excluded.append({"run_id": entry.name, "file": "run.json", "kind": "id_mismatch",
+                                 "detail": "run.json is not an object whose id matches its folder"})
+                continue
+            records.append(record)
+        return records, excluded
+
+    def _read_submission(self, run_id):
+        """``None`` when the run has no submission file; otherwise ``(bytes, None)`` or ``(None, problem)``."""
+        path = self.runs / run_id / "submission.json"
+        if not path.exists() and not path.is_symlink():
+            return None
+        try:
+            return ac.read_regular_file(self.runs, f"{run_id}/submission.json", limit=ac.MAX_MEMBER_BYTES), None
+        except ac.SourceRefused as exc:
+            return None, {"kind": exc.kind, "detail": exc.detail}
+
     def export(self, blueprint_id, include_notes=False):
         with self.lock:
             blueprint = next(b for b in self.store["blueprints"] if b["id"] == blueprint_id)
@@ -2769,13 +2810,19 @@ class Desk:
             notes = all_notes if include_notes else []
             campaigns = [c for c in self.store["campaigns"] if c["blueprint_id"] == blueprint_id]
             research_records = self.research_record_state(blueprint_id)
-            runs = [json.loads(p.read_text()) for p in self.runs.glob("*/run.json")]
+            runs, excluded_run_records = self._read_run_records()
             runs = sorted((r for r in runs if r.get("blueprint_id") == blueprint_id), key=lambda r: r["created_utc"])
         for run in runs:
-            submission_path = self.runs / run["id"] / "submission.json"
-            if submission_path.is_file():
-                run["submission"] = json.loads(submission_path.read_text(encoding="utf-8"))
-                run["submission_sha256_valid"] = hashlib.sha256(submission_path.read_bytes()).hexdigest() == run.get("submission_sha256")
+            # One bounded read: the parsed snapshot and the hash that is compared come from the same bytes.
+            submission = self._read_submission(run["id"])
+            if submission is not None:
+                raw, problem = submission
+                if raw is None:
+                    excluded_run_records.append({"run_id": run["id"], "file": "submission.json", **problem})
+                    run["submission_sha256_valid"] = False
+                else:
+                    run["submission"] = json.loads(raw.decode("utf-8"))
+                    run["submission_sha256_valid"] = hashlib.sha256(raw).hexdigest() == run.get("submission_sha256")
         parts = [f"# {blueprint['title']}", "Research hypothesis. Computational outputs, source reports, and demonstrated effects remain distinct."]
         for field in BLUEPRINT_FIELDS[2:]:
             parts.extend([f"## {field.replace('_', ' ').title()}", blueprint.get(field) or "Not specified"])
@@ -2859,6 +2906,7 @@ class Desk:
                 parts.extend(f"  - {file['archive_path']} · SHA-256 {file['sha256']} · {file['bytes']} bytes" for file in bundle["files"])
         return {"blueprint": blueprint, "campaigns": campaigns, "research_records": research_records,
                 "findings": findings, "notes": notes, "notes_excluded": not include_notes, "runs": runs,
+                "run_records_excluded": excluded_run_records,
                 "linked_research": linked_research, "markdown": "\n\n".join(parts),
                 "public_draft": "\n\n".join(public_parts), "exported_utc": regen.now()}
 
@@ -2931,6 +2979,8 @@ class Desk:
         collector.add("research_records.json",
                       json.dumps({"schema_version": 1, "records": dossier["research_records"]},
                                  ensure_ascii=True, indent=2, allow_nan=False).encode("utf-8"))
+        for item in dossier.get("run_records_excluded", []):
+            collector.exclude(f"runs/{item['run_id']}/{item['file']}", item["kind"], item["detail"])
         for run in dossier["runs"]:
             self._collect_run(collector, run)
         for archived_path, source_bytes in sorted(linked_files.items()):

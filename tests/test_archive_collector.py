@@ -397,6 +397,75 @@ class DeskExportCase(unittest.TestCase):
         self.assertFalse(verify_dossier.verify_dossier(path, strict=True)["verified"])
         self.assertTrue(verify_dossier.verify_dossier(path, strict=False)["verified"])
 
+    @unittest.skipUnless(SYMLINKS, "symbolic links are not available here")
+    def test_a_symlinked_run_record_is_excluded_from_the_dossier_and_named_in_the_index(self):
+        other = "d" * 32
+        outside = self.root / "outside-run.json"
+        outside.write_text(json.dumps({"id": other, "kind": "search", "status": "complete",
+                                       "blueprint_id": "tissues", "created_utc": "2026-10-07T00:00:01Z"}),
+                           encoding="utf-8")
+        (self.desk.runs / other).mkdir()
+        os.symlink(outside, self.desk.runs / other / "run.json")
+        dossier = self.desk.export("tissues")
+        self.assertEqual([run["id"] for run in dossier["runs"]], [self.RUN])
+        self.assertEqual([(item["run_id"], item["kind"]) for item in dossier["run_records_excluded"]],
+                         [(other, "symlink")])
+        blob, path = self.export()
+        index = self.index(blob)
+        self.assertFalse(index["complete"])
+        self.assertIn(f"runs/{other}/run.json", [item["path"] for item in index["excluded"]])
+        self.assertNotIn(b"outside-run", blob)
+        self.assertTrue(verify_dossier.verify_dossier(path, strict=False)["verified"])
+        self.assertFalse(verify_dossier.verify_dossier(path, strict=True)["verified"])
+
+    def test_a_run_record_whose_id_does_not_match_its_folder_is_excluded(self):
+        other = "e" * 32
+        (self.desk.runs / other).mkdir()
+        (self.desk.runs / other / "run.json").write_text(
+            json.dumps({"id": self.RUN, "blueprint_id": "tissues", "created_utc": "2026-10-07T00:00:02Z"}),
+            encoding="utf-8")
+        dossier = self.desk.export("tissues")
+        self.assertEqual([run["id"] for run in dossier["runs"]], [self.RUN])
+        self.assertEqual(dossier["run_records_excluded"][0]["kind"], "id_mismatch")
+
+    def test_an_unreadable_run_record_is_excluded_not_fatal(self):
+        other = "f" * 32
+        (self.desk.runs / other).mkdir()
+        (self.desk.runs / other / "run.json").write_bytes(b"\xff\xfe not json")
+        dossier = self.desk.export("tissues")
+        self.assertEqual([run["id"] for run in dossier["runs"]], [self.RUN])
+        self.assertEqual(dossier["run_records_excluded"][0]["kind"], "unreadable_json")
+
+    def test_the_submission_snapshot_is_parsed_and_hashed_from_one_read(self):
+        submission = b'{"query": "x"}'
+        (self.run_dir / "submission.json").write_bytes(submission)
+        run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
+        run["submission_sha256"] = hashlib.sha256(submission).hexdigest()
+        self.desk.save_run(self.run_dir, run)
+        reads = []
+        original = ac.read_regular_file
+
+        def counting(root, relative, **kwargs):
+            reads.append(relative)
+            return original(root, relative, **kwargs)
+
+        with patch.object(ac, "read_regular_file", counting):
+            dossier = self.desk.export("tissues")
+        self.assertEqual(reads.count(f"{self.RUN}/submission.json"), 1)
+        self.assertTrue(dossier["runs"][0]["submission_sha256_valid"])
+        self.assertEqual(dossier["runs"][0]["submission"], {"query": "x"})
+
+    @unittest.skipUnless(SYMLINKS, "symbolic links are not available here")
+    def test_a_symlinked_submission_is_not_followed_and_is_never_marked_valid(self):
+        outside = self.root / "outside-submission.json"
+        outside.write_text('{"secret": "do-not-archive"}', encoding="utf-8")
+        os.symlink(outside, self.run_dir / "submission.json")
+        dossier = self.desk.export("tissues")
+        self.assertNotIn("submission", dossier["runs"][0])
+        self.assertFalse(dossier["runs"][0]["submission_sha256_valid"])
+        self.assertEqual(dossier["run_records_excluded"][0]["file"], "submission.json")
+        self.assertNotIn("do-not-archive", json.dumps(dossier))
+
     def test_temporary_files_and_non_run_folders_are_not_archived(self):
         (self.run_dir / "partial.json.tmp").write_text("in progress", encoding="utf-8")
         blob, _ = self.export()

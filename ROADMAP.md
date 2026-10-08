@@ -126,9 +126,15 @@ excluded and listed in `archive-index.json` (`complete: false`); the verifier
 warns, and fails under `--strict`. Thirty-five tests cover the collector, the
 Desk export and the verifier's handling of a forged index.
 
-- Remaining: the run list read in `export()` and the experiment-manifest
-  validator's own reads are outside the collector. A same-size rewrite on a
-  filesystem with coarse modification times would not be detected.
+- Done 2026-10-08: the run list and each run's `submission.json` in `export()` now
+  go through the collector's single bounded read. A symlinked, oversized, unparsable
+  or id-mismatched `run.json`, or an unsafe `submission.json`, is left out and listed
+  in the dossier's `run_records_excluded` and the archive index (`complete: false`),
+  and the submission's parsed content and its checked hash come from the same bytes
+  (they were two separate reads before). Five tests cover it.
+- Remaining: the experiment-manifest validator's own reads are outside the
+  collector. A same-size rewrite on a filesystem with coarse modification times
+  would not be detected.
 - Remaining: refused-versus-excluded policy is a design choice. A run folder
   with too many files or a total over budget refuses the export, while a single
   unsuitable file is excluded and flagged. Revisit if either proves wrong in use.
