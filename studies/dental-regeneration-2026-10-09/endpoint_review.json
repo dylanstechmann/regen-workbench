@@ -1,0 +1,58 @@
+{
+  "reviewed_on": "2026-10-09",
+  "scope": "AI-assisted focused full-text endpoint review; not a meta-analysis or source authentication",
+  "receipt": "fulltext_receipt.json",
+  "evidence_records": [
+    {
+      "axis_id": "attachment", "source_type": "publication",
+      "source_title": "PDLSC trial 2016: primary radiographic outcome",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/",
+      "license": "Primary source CC BY 4.0; this record is an attributed summary",
+      "species": "Human", "stage_track": "Randomized periodontal trial",
+      "developmental_interval": "Adult periodontal healing", "model_system": "Intrabony defects",
+      "comparator": "Cell group versus control with the shared regenerative treatment",
+      "outcome": "Primary radiographic outcome: no significant between-group difference",
+      "measure": "Bone-defect depth, Table 2; repeated-measures comparison",
+      "value": "Reported between-group p=0.742; both groups improved over time",
+      "unit": "mm; source table labels mean +/- standard error",
+      "independent_unit": "Teeth nested within patients; do not count teeth as independent patients",
+      "sample_size": "48 randomized teeth; 41 treated (20 cell, 21 control); 30 patients in the trial",
+      "follow_up": "Primary radiographs: 3, 6 and 12 months",
+      "status": "source reports no signal", "direction": "unclear", "dataset_sha256": "",
+      "notes": "Full-text Methods and Table 2. Modified per-protocol analysis with last observation carried forward. Nonsignificance does not establish equivalence. Bone fill is a proxy, not functional ligament reconstruction."
+    },
+    {
+      "axis_id": "attachment", "source_type": "publication",
+      "source_title": "PDLSC trial 2016: secondary clinical attachment outcome",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/",
+      "license": "Primary source CC BY 4.0; this record is an attributed summary",
+      "species": "Human", "stage_track": "Randomized periodontal trial",
+      "developmental_interval": "Adult periodontal healing", "model_system": "Intrabony defects",
+      "comparator": "Cell group versus control",
+      "outcome": "Secondary clinical attachment comparison: no significant between-group difference",
+      "measure": "Clinical attachment level, Table 3", "value": "Reported p=0.371",
+      "unit": "mm", "independent_unit": "Teeth nested within patients",
+      "sample_size": "20 cell-group and 21 control-group teeth; not 41 independent patients",
+      "follow_up": "3 months for these clinical indices, not the 12-month radiographic interval",
+      "status": "source reports no signal", "direction": "unclear", "dataset_sha256": "",
+      "notes": "Full-text efficacy assessment and Table 3. Retain this shorter outcome-specific interval. Clinical attachment level is not histologic proof of oriented cementum-ligament-bone attachment."
+    },
+    {
+      "axis_id": "attachment", "source_type": "publication",
+      "source_title": "DPSC 2025: pooled post hoc stage-III attachment contrast",
+      "source_url": "https://www.nature.com/articles/s41392-025-02320-w",
+      "license": "Primary source CC BY 4.0; this record is an attributed summary",
+      "species": "Human", "stage_track": "Post hoc combined dataset from two trials",
+      "developmental_interval": "Adult periodontal healing", "model_system": "Stage-III subgroup, baseline AL >=5 mm",
+      "comparator": "DPSC versus saline in the pooled post hoc subgroup",
+      "outcome": "Attachment-loss change favored DPSC in this subgroup",
+      "measure": "Table 3: day-180 AL change from baseline; DPSC minus saline",
+      "value": "-0.64 mm; source 95% CI -1.23 to -0.05; p=0.0338",
+      "unit": "mm; negative change denotes reduced attachment loss",
+      "independent_unit": "Methods specify tooth-level statistical analysis; patient/site dependence requires review",
+      "sample_size": "Table 3 group n=54 and 40; not asserted to be independently replicated patients",
+      "follow_up": "Day 180", "status": "source reports positive signal", "direction": "supports", "dataset_sha256": "",
+      "notes": "Full-text Clinical outcomes and Table 3. Post hoc pooling across trials is not prespecified overall primary confirmation. Source CI/sign retained; no re-estimation without raw data or covariance. No histologic or mechanical attachment restoration is inferred."
+    }
+  ]
+}

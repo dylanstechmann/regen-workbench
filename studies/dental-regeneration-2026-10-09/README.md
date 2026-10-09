@@ -23,6 +23,14 @@ and the 2016 primary PMC abstract available through the research tools. Source
 abstracts remain abstract-limited; their conclusions do not replace inspection
 of endpoint-specific between-group results.
 
+The subsequent [component and endpoint audit](COMPONENT_GAPS.md) adds a focused
+full-text review of the 2016 PDLSC and 2025 DPSC sources. Their exact retrievals
+are identified in [fulltext_receipt.json](fulltext_receipt.json). Three typed
+observations now load with the controlled-periodontal campaign starter, keeping
+primary/secondary and post hoc comparisons and outcome-specific follow-up apart.
+This follow-up supersedes the abstract-only access descriptions for those two
+entries above; other source-access limits remain as stated.
+
 ## Component roadmap
 
 - **Enamel/dentin:** identity, spatial architecture, interface bonding, hardness

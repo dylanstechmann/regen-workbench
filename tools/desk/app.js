@@ -1159,6 +1159,7 @@ $('#campaign-starter').addEventListener('change',event => {
   for (const name of ['title','target','species','tissue','hypothesis','endpoint','falsifier','evidence_stage','study_design','reference_url','structure_notes']) form.elements[name].value = starter[name] || '';
   form.elements.starter_id.value = starter.id;
   renderEvidenceAxes(null,starter.evidence || []);
+  renderEvidenceRecords(starter.evidence_records || []);
   $('#campaign-starter').value = starter.id;
   updateCampaignLink();
   notice('Reference campaign loaded. Verify its source methods and adapt the hypothesis before saving.');
