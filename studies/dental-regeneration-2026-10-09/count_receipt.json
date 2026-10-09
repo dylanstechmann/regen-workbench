@@ -1,0 +1,7 @@
+{
+  "accession": "GSE307437",
+  "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE307nnn/GSE307437/suppl/GSE307437_gene_raw_counts_matrix.csv.gz",
+  "retrieved_utc": "2026-10-09T22:04:48.112461+00:00",
+  "response_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a",
+  "local_provenance_receipt": "1791583488122324587_dental-organoid-count-intake.json"
+}

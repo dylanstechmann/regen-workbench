@@ -636,23 +636,48 @@
         "species": "Human-derived organoid RNA samples and a mixed fetal/iPSC reference",
         "tissue": "Ameloblast organoid transcriptome; functional enamel remains separate",
         "hypothesis": "Within-background molecular responses may support a maturation hypothesis after sample identity and independent culture provenance are qualified.",
-        "endpoint": "Source-to-count-column alignment, declared contrasts and independent-unit mapping before any expression analysis",
+        "endpoint": "Descriptive source-aligned CPM panel with library omission and pseudocount sensitivity; independent biological-unit qualification before inference",
         "falsifier": "Misaligned samples, unresolved clone or batch confounding, ambiguous tissue labels or a claim of a full factorial interaction without untreated-KO samples",
-        "evidence_stage": "Public metadata and prospective molecular analysis; no tissue function established",
+        "evidence_stage": "Retrieved public counts and computational descriptive comparison; tissue identity/function unqualified",
         "study_design": "Three source conditions with two labeled replicates each; genotype-by-treatment interaction is incomplete",
         "reference_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-        "structure_notes": "GSE307437 metadata declare WTC-11 in all six records: WT untreated, WT treated, KO treated. Donor/clone/culture identities and matrix columns remain unqualified. GSE184749 mixes fetal and iPSC records with pooling and a tissue-label discrepancy. See studies/dental-regeneration-2026-10-09/GEO_QUALIFICATION.md. No RNA values were analyzed.",
+        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md.",
         "evidence": [
           {
             "axis_id": "identity",
             "status": "not assessed",
             "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-            "notes": "Source metadata acquired; sample and lineage qualification remain distinct from tissue identity."
+            "notes": "Source-aligned counts analyzed descriptively; molecular changes do not certify functional tissue identity."
           },
           {
             "axis_id": "function",
             "status": "not assessed",
             "notes": "Expression and source labels cannot supply native enamel mechanical function."
+          }
+        ],
+        "evidence_records": [
+          {
+            "axis_id": "identity",
+            "source_type": "dataset",
+            "source_title": "GSE307437: calculated descriptive CPM marker contrasts",
+            "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+            "license": "Dataset reuse license unqualified in this intake",
+            "species": "Human-derived organoids",
+            "stage_track": "Computational descriptive analysis of deposited bulk RNA counts",
+            "developmental_interval": "Source isAM organoid conditions; no adult tooth function assessed",
+            "model_system": "Six WTC-11 source-labeled libraries",
+            "comparator": "WT treated versus WT untreated; knockout treated versus WT treated",
+            "outcome": "Mixed molecular panel; identity and functional maturation remain unqualified",
+            "measure": "CPM library means and log2(mean+1 CPM) contrast, calculated with the existing expression tool",
+            "value": "WT treatment: DLX3 +1.093, SP6 +1.593, SOX2 -6.668; genotype under treatment: DLX3 -2.837, SP6 -4.070, SOX2 +7.120",
+            "unit": "log2 ratio; pseudocount 1 CPM",
+            "independent_unit": "Library; independent donor/clone/culture identities not established",
+            "sample_size": "Two source-labeled replicate libraries per condition; not six independent donors",
+            "follow_up": "Single source transcriptome comparison, not longitudinal tooth function",
+            "status": "not assessed",
+            "direction": "unclear",
+            "notes": "Values are our descriptive calculation from source counts, not the paper's significance claims. Status refers to unqualified tissue identity. All eleven panel genes are retained in AMELOBLAST_EXPRESSION.md/ameloblast_expression_summary.json. ENAM is zero in both WT groups; low-count MMP20 changes strongly with pseudocount. No p values, batch adjustment or genotype-by-treatment interaction.",
+            "dataset_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a"
           }
         ]
       }
@@ -1250,12 +1275,12 @@
     {
       "blueprint_id": "organoids",
       "priority": 10,
-      "title": "Dental organoid metadata expose replication and comparison limits",
-      "claim": "Exact GEO metadata intake retrieved six source sample records for GSE307437 and nineteen for GSE184749.",
-      "boundary": "Source replicate labels do not establish donor, clone or culture-batch independence. Shared cell-line provenance, pooling and a tissue-label conflict remain visible; no expression or functional analysis was performed.",
-      "design": "Source metadata intake; biological units and reuse rights unqualified",
-      "url": "https://www.nature.com/articles/s41368-026-00429-4",
-      "date": "2026-03-02",
+      "title": "Deposited dental RNA shows mixed, count-sensitive molecular responses",
+      "claim": "Descriptive CPM analysis of 41,129 gene rows in six GSE307437 libraries finds DLX3/SP6 shifts alongside sparse enamel-associated rows and pseudocount-sensitive effects.",
+      "boundary": "Unknown donor/clone/culture independence, composition-sensitive normalization and missing untreated KO prevent causal interaction or donor-heldout claims. Expression does not establish native enamel or tooth function.",
+      "design": "Source-aligned computational descriptive comparison; no significance testing",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+      "date": "2026-10-09",
       "reviewed_on": "2026-10-09"
     }
   ]

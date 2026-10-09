@@ -66,6 +66,13 @@ tissue-label conflict. This supersedes the earlier “not downloaded” descript
 for metadata only; matrices, independent biological units and reuse rights
 remain unqualified. No expression or functional analysis was performed.
 
+The subsequent [deposited-count comparison](AMELOBLAST_EXPRESSION.md) now
+qualifies the six GSE307437 column labels and performs an explicitly descriptive
+CPM comparison using the existing expression tool. It retains low-count and
+pseudocount sensitivity, incomplete factorial design and unknown biological
+independence. This supersedes the earlier unacquired-matrix statement for that
+one table; GSE184749 matrices and functional tooth outcomes remain unassessed.
+
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
 sphere is a reduced model, not a validated dental-organoid geometry.
@@ -84,7 +91,7 @@ provenance stays in ignored `data/provenance/`. The hash identifies the retrieve
 response, not independent validation of an interpretation.
 
 [desk_seeds.json](desk_seeds.json) defines the two new desk areas, eight dental
-and seven organoid assessment axes, four dental starters and two organoid/stem-cell
+and seven organoid assessment axes, four dental starters and three organoid/stem-cell
 starters. Existing blueprint edits and observations are preserved by the desk's
 seed migration. No private notes are published, no experiments are executed and
 no source-review signoff by the owner is claimed.
@@ -98,3 +105,13 @@ doctor` could not execute there. The separate research-desk service was running;
 it was reloaded only after confirming no active runs, and saved blueprint
 content and all five existing notes retained their pre-reload content hash.
 This is software and source-scope verification, not biological validation.
+
+The deposited-count continuation reused `regen expression-contrast` for four
+descriptive runs: two declared comparisons at two pseudocounts. It verified
+the source count and metadata hashes, CPM column totals, study-script hash and
+all four method-manifest hashes. The full workbench regression suite passed in
+Docker `dev`, including four new count-qualification/desk-integration fixtures;
+the new script and tests passed Ruff. The live `/api/experiments` endpoint
+returned two valid cards, and `/api/state` exposed the calculated dataset
+observation. The entire saved workspace and all five notes matched the
+pre-reload snapshot. No owner note or campaign was created by this analysis.
