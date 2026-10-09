@@ -21,6 +21,15 @@ stored as citations, not silently scraped.
 
 ## Working views
 
+**Teeth, gums & periodontal attachment** and **Organoids & stem-cell construct
+function** now add component-specific assessment axes and six starter campaigns.
+The [dental research track](studies/dental-regeneration-2026-10-09/README.md)
+compares whole-tooth mouse results, human ameloblast organoids, controlled
+periodontal trials and gum-coverage evidence. It keeps bone fill, attachment,
+barrier function and complete tooth replacement separate. The organoid area
+links the independent oxygen-profile intake and new base-editing evidence repo;
+no method package or biological execution is added to the desk.
+
 The default order now opens with **Somatic mutations & genome repair**,
 **Engineered tissues & repair**, and **Nanomedicine & tissue delivery**. The
 source-reviewed cards include human cartilage and skin repair trials, an

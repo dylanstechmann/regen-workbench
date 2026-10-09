@@ -1,0 +1,129 @@
+{
+  "retrieved_utc": "2026-10-09T20:24:09.361722+00:00",
+  "scope": "Exact-ID/DOI metadata retrieval, not a systematic search or independent validation",
+  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A19666587+OR+EXT_ID%3A33579703+OR+EXT_ID%3A28620633+OR+EXT_ID%3A41624073+OR+DOI%3A10.1186%2Fs13287-016-0288-1+OR+DOI%3A10.1038%2Fs41368-026-00429-4+OR+DOI%3A10.1038%2Fs41392-025-02320-w+OR+EXT_ID%3A40373211+OR+EXT_ID%3A27096365+OR+EXT_ID%3A29160308+OR+DOI%3A10.1038%2Fs41586-019-1161-z+OR+DOI%3A10.1038%2Fs41586-019-1711-4&format=json&resultType=core&pageSize=20",
+  "response_sha256": "a367d5b7b9b9fc9d5bb581baa89b2cabc5f31df21de333ef330090dafb6e286f",
+  "local_provenance_receipt": "1791577449359909149_dental-genome-metadata.json",
+  "records": [
+    {
+      "id": "41765949",
+      "source": "MED",
+      "pmid": "41765949",
+      "pmcid": "PMC12950815",
+      "doi": "10.1038/s41368-026-00429-4",
+      "title": "Soluble Notch agonist enables human ameloblast maturation and enamel-like tissue formation for tooth regeneration.",
+      "firstPublicationDate": "2026-03-02",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "40739139",
+      "source": "MED",
+      "pmid": "40739139",
+      "pmcid": "PMC12311062",
+      "doi": "10.1038/s41392-025-02320-w",
+      "title": "Impact of allogeneic dental pulp stem cell injection on tissue regeneration in periodontitis: a multicenter randomized clinical trial.",
+      "firstPublicationDate": "2025-07-31",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "41624073",
+      "source": "MED",
+      "pmid": "41624073",
+      "pmcid": "PMC12855574",
+      "doi": "10.1016/j.reth.2026.101062",
+      "title": "Efficacy and safety of autologous adipose-derived stem cells combined with platelet-rich plasma for periodontal regeneration: a multicenter, randomized, open-label, parallel-group comparative trial.",
+      "firstPublicationDate": "2026-01-16",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "40373211",
+      "source": "MED",
+      "pmid": "40373211",
+      "pmcid": "PMC12713542",
+      "doi": "10.1056/nejmoa2504747",
+      "title": "Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease.",
+      "firstPublicationDate": "2025-05-15",
+      "isOpenAccess": "N"
+    },
+    {
+      "id": "31634902",
+      "source": "MED",
+      "pmid": "31634902",
+      "pmcid": "PMC6907074",
+      "doi": "10.1038/s41586-019-1711-4",
+      "title": "Search-and-replace genome editing without double-strand breaks or donor DNA.",
+      "firstPublicationDate": "2019-10-21",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "30995674",
+      "source": "MED",
+      "pmid": "30995674",
+      "pmcid": "PMC6657343",
+      "doi": "10.1038/s41586-019-1161-z",
+      "title": "Transcriptome-wide off-target RNA editing induced by CRISPR-guided DNA base editors.",
+      "firstPublicationDate": "2019-04-17",
+      "isOpenAccess": "N"
+    },
+    {
+      "id": "33579703",
+      "source": "MED",
+      "pmid": "33579703",
+      "pmcid": "PMC7880588",
+      "doi": "10.1126/sciadv.abf1798",
+      "title": "Anti-USAG-1 therapy for tooth regeneration through enhanced BMP signaling.",
+      "firstPublicationDate": "2021-02-12",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "26895633",
+      "source": "MED",
+      "pmid": "26895633",
+      "pmcid": "PMC4761216",
+      "doi": "10.1186/s13287-016-0288-1",
+      "title": "Treatment of periodontal intrabony defects using autologous periodontal ligament stem cells: a randomized clinical trial.",
+      "firstPublicationDate": "2016-02-19",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "29160308",
+      "source": "MED",
+      "pmid": "29160308",
+      "pmcid": "PMC5726555",
+      "doi": "10.1038/nature24644",
+      "title": "Programmable base editing of A\u2022T to G\u2022C in genomic DNA without DNA cleavage.",
+      "firstPublicationDate": "2017-10-25",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "28620633",
+      "source": "MED",
+      "pmid": "28620633",
+      "pmcid": "PMC5463777",
+      "doi": null,
+      "title": "Efficacy of Human Umbilical Stem Cells Cultured on Polylactic/ Polyglycolic Acid Membrane in the Treatment of Multiple Gingival Recession Defects: a Randomized Controlled Clinical Study.",
+      "firstPublicationDate": "2017-06-01",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "27096365",
+      "source": "MED",
+      "pmid": "27096365",
+      "pmcid": "PMC4873371",
+      "doi": "10.1038/nature17946",
+      "title": "Programmable editing of a target base in genomic DNA without double-stranded DNA cleavage.",
+      "firstPublicationDate": "2016-04-20",
+      "isOpenAccess": "Y"
+    },
+    {
+      "id": "19666587",
+      "source": "MED",
+      "pmid": "19666587",
+      "pmcid": "PMC2720406",
+      "doi": "10.1073/pnas.0902944106",
+      "title": "Fully functional bioengineered tooth replacement as an organ replacement therapy.",
+      "firstPublicationDate": "2009-08-03",
+      "isOpenAccess": "N"
+    }
+  ]
+}

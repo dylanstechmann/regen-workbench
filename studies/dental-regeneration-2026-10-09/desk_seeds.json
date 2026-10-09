@@ -1,0 +1,301 @@
+{
+  "blueprints": [
+    {
+      "id": "dental",
+      "title": "Teeth, gums & periodontal attachment",
+      "area": "Regenerative dentistry",
+      "query": "tooth regeneration periodontal ligament gingival stem cells functional comparator",
+      "question": "Which components of a bioidentical tooth and its supporting tissues have direct functional evidence, and what remains missing?",
+      "who": "Keep human trials, human-derived constructs in mice and embryonic mouse tooth-germ studies separate.",
+      "what": "Enamel, dentin, living pulp, cementum, periodontal ligament, alveolar bone and gingival barrier as distinct outcomes.",
+      "where": "Restore the tooth-root/ligament/bone interface and gingival seal; avoid conflating bone fill with attachment.",
+      "when": "Development, eruption, early healing, loading and long-term durability are separate intervals.",
+      "why": "A calcified deposit or improved radiograph does not establish a complete innervated, load-bearing replacement tooth.",
+      "how": "Compare primary sources, intended tissue identity, controlled functional outcomes, adverse healing and donor/site dependence. Retain inconclusive and negative comparisons.",
+      "falsifier": "Mineral deposition without native-like architecture, ankylosis instead of ligament attachment, loss under load, impaired gum barrier or no advantage over the declared comparator.",
+      "desired_changes": "Build a component-level roadmap toward bioidentical tooth and periodontal restoration without upgrading partial endpoints to whole-organ regeneration."
+    },
+    {
+      "id": "organoids",
+      "title": "Organoids & stem-cell construct function",
+      "area": "Organoid and stem-cell research",
+      "query": "organoid stem cell functional maturation oxygen profile independent donor validation",
+      "question": "Does a specified stem-cell construct reproduce a useful tissue function beyond morphology and marker expression?",
+      "who": "Declare species, donor, clone, culture and assay hierarchy; cultured human cells are not treated patients.",
+      "what": "Cell identity, maturation, transport, genome stability and tissue-specific function, measured independently.",
+      "where": "Local oxygen and nutrient transport, host interfaces and spatial organization.",
+      "when": "Formation, maturation, transplantation and persistence remain separate intervals.",
+      "why": "A reproducible image or marker panel does not establish useful organ function or transplant integration.",
+      "how": "Use source-qualified datasets, donor/culture-aware comparators and the independent organoid-oxygen-lab methods. Record model assumptions and measurement gaps.",
+      "falsifier": "Markers improve without function, construct selection explains the apparent effect, or transport/genome stability fails despite morphology.",
+      "desired_changes": "Connect qualified measurements to reproducible analyses while retaining organ-specific function and genome integrity as separate outcomes."
+    }
+  ],
+  "campaign_frameworks": {
+    "dental": [
+      {
+        "id": "identity",
+        "label": "Component identity and architecture",
+        "prompt": "Separate enamel, dentin, pulp, cementum, ligament, bone and gingiva; state the measured component."
+      },
+      {
+        "id": "attachment",
+        "label": "Periodontal attachment",
+        "prompt": "Distinguish clinical attachment gain, bone fill and histological oriented cementum–ligament–bone attachment."
+      },
+      {
+        "id": "barrier",
+        "label": "Gingival barrier and root coverage",
+        "prompt": "Record root coverage, tissue phenotype, seal/barrier measurements and recurrent inflammation separately."
+      },
+      {
+        "id": "function",
+        "label": "Loading, occlusion and sensation",
+        "prompt": "Declare the mechanical or sensory assay; mineralization alone is not mastication."
+      },
+      {
+        "id": "integration",
+        "label": "Pulp, vascular and neural integration",
+        "prompt": "Record living pulp, vascular supply and innervation without inferring these from a mineral image."
+      },
+      {
+        "id": "adverse",
+        "label": "Adverse healing and ectopic outcomes",
+        "prompt": "Retain ankylosis, root resorption, abnormal tooth number/shape, ectopic mineralization and immune findings."
+      },
+      {
+        "id": "durability",
+        "label": "Durability",
+        "prompt": "Record follow-up and performance under repeated loading."
+      },
+      {
+        "id": "control",
+        "label": "Comparator and independent unit",
+        "prompt": "Distinguish patients, teeth, sites, animals and cultures; identify primary versus post hoc outcomes."
+      }
+    ],
+    "organoids": [
+      {
+        "id": "identity",
+        "label": "Cell identity and maturation",
+        "prompt": "Declare the cell composition and maturation assay."
+      },
+      {
+        "id": "transport",
+        "label": "Transport measurements",
+        "prompt": "Separate measured local oxygen from gas settings and illustrative model parameters."
+      },
+      {
+        "id": "function",
+        "label": "Tissue-specific function",
+        "prompt": "Use a declared function beyond markers or morphology."
+      },
+      {
+        "id": "genome",
+        "label": "Genome integrity and clone behavior",
+        "prompt": "Separate intended genetic correction, unwanted products and clonal selection."
+      },
+      {
+        "id": "integration",
+        "label": "Host integration",
+        "prompt": "Track perfusion, innervation and anatomical interface where relevant."
+      },
+      {
+        "id": "durability",
+        "label": "Persistence and adverse outcomes",
+        "prompt": "Record duration, attrition and adverse findings."
+      },
+      {
+        "id": "control",
+        "label": "Source, comparator and independent unit",
+        "prompt": "Preserve donor/clone/culture hierarchy and define the held-out unit."
+      }
+    ]
+  },
+  "campaign_starters": {
+    "dental": [
+      {
+        "id": "whole-tooth-mouse-reference",
+        "title": "Whole-tooth function reference and adult-cell gap",
+        "target": "Bioengineered tooth-germ replacement",
+        "species": "Mouse",
+        "tissue": "Tooth and host jaw interface",
+        "hypothesis": "The mouse organ-germ result supplies a functional reference; adult-human cell sourcing and controlled tooth architecture remain independent gaps.",
+        "endpoint": "Hardness, loading response, sensory response, root/ligament integration and durability.",
+        "falsifier": "Mineralized tissue fails loading or lacks functional host integration.",
+        "evidence_stage": "Animal tooth-organ replacement",
+        "study_design": "Bioengineered embryonic mouse tooth-germ transplantation",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/19666587/",
+        "structure_notes": "Source reports functional mouse tooth replacement. It does not establish an adult-human bioidentical tooth or an available adult-human cell source.",
+        "evidence": [
+          {
+            "axis_id": "function",
+            "status": "source reports positive signal",
+            "value": "Source-reported mechanical and sensory responsiveness",
+            "unit": "qualitative source scope",
+            "comparator": "Native tooth and source-defined assays; verify each assay separately",
+            "timepoint": "Source-defined experimental follow-up",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/19666587/",
+            "notes": "Abstract-reviewed functional precedent; no pooled human inference."
+          }
+        ]
+      },
+      {
+        "id": "ameloblast-2026-component",
+        "title": "Human ameloblast organoid enamel-like material",
+        "target": "Ameloblast maturation and enamel component",
+        "species": "Human-derived cells transplanted in mice",
+        "tissue": "Enamel-like material in a non-dental graft site",
+        "hypothesis": "Mature ameloblast organoids can produce a useful enamel component; native prism architecture, bonding and loading require separate tests.",
+        "endpoint": "Mineral composition/architecture, enamel–dentin interface, hardness and repeated-load behavior.",
+        "falsifier": "Calcified deposits lack appropriate architecture, adhesion or mechanical function.",
+        "evidence_stage": "Human iPSC organoid and mouse graft",
+        "study_design": "Mechanistic organoid study with kidney-capsule grafts",
+        "reference_url": "https://www.nature.com/articles/s41368-026-00429-4",
+        "structure_notes": "The 2026 primary source reports enamel-like calcified material, not an erupted tooth. Its reported GEO accessions are dataset leads, not downloaded or qualified data here.",
+        "evidence": [
+          {
+            "axis_id": "identity",
+            "status": "source reports positive signal",
+            "value": "Ameloblast maturation and enamel-like calcified material",
+            "unit": "component-level source finding",
+            "comparator": "Source-defined organoid conditions",
+            "timepoint": "Source-defined assays; no human replacement follow-up",
+            "source_url": "https://www.nature.com/articles/s41368-026-00429-4",
+            "notes": "Publisher full text accessed; no complete periodontal unit or human benefit inferred."
+          }
+        ]
+      },
+      {
+        "id": "periodontal-controlled-contrasts",
+        "title": "Periodontal bone fill versus attachment benefit",
+        "target": "Periodontal tissue restoration",
+        "species": "Human trial participants",
+        "tissue": "Periodontal intrabony defects",
+        "hypothesis": "A cell-based construct may improve one outcome without an added attachment advantage over an active comparator.",
+        "endpoint": "Between-group clinical attachment, bone height, oriented attachment, mobility, adverse outcomes and follow-up.",
+        "falsifier": "Added cells do not improve the prespecified attachment endpoint or produce adverse integration.",
+        "evidence_stage": "Human randomized trials",
+        "study_design": "Contrast 2016 controlled PDLSC study and 2026 open-label ASC/PRP versus EMD study",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+        "structure_notes": "The 2026 abstract reports a bone-height advantage but no significant between-group attachment-gain difference, with 15 completers out of 21 recruited. The 2016 trial also reported no significant between-group bone-height difference. No claim of equivalence follows from nonsignificance.",
+        "evidence": [
+          {
+            "axis_id": "attachment",
+            "status": "source reports no signal",
+            "value": "No significant between-group clinical attachment-gain difference in the 2026 abstract",
+            "unit": "comparison outcome, not proof of equivalence",
+            "comparator": "Enamel matrix derivative",
+            "timepoint": "Up to 36 weeks",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+            "notes": "Open-label phase II abstract; attrition and patient/tooth units require full-text review before numerical synthesis."
+          }
+        ]
+      },
+      {
+        "id": "gingival-barrier-gap",
+        "title": "Gingival coverage versus restored barrier",
+        "target": "Gum phenotype and functional seal",
+        "species": "Human trial participants",
+        "tissue": "Gingival recession sites",
+        "hypothesis": "A root-coverage signal can motivate further study but cannot establish a restored gingival barrier or complete periodontal unit.",
+        "endpoint": "Root coverage, tissue thickness/phenotype, barrier/seal function, inflammation and recurrence.",
+        "falsifier": "Coverage improves without the intended barrier function or does not persist.",
+        "evidence_stage": "Small human randomized study",
+        "study_design": "2017 stem-cell/membrane versus membrane comparison",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/28620633/",
+        "structure_notes": "The abstract reports 14 cases with multiple sites and a root-coverage signal at six months. Sites must not be counted as independent patients. Whole-tooth or histological ligament regeneration is not established by this endpoint.",
+        "evidence": [
+          {
+            "axis_id": "barrier",
+            "status": "not assessed",
+            "value": "Root coverage reported; functional barrier/seal not established by the reviewed abstract",
+            "unit": "endpoint distinction",
+            "comparator": "Membrane-only group",
+            "timepoint": "6 months",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/28620633/",
+            "notes": "Barrier remains unmeasured in this source scope despite the clinical coverage signal."
+          }
+        ]
+      }
+    ],
+    "organoids": [
+      {
+        "id": "organoid-oxygen-measurements",
+        "title": "Qualified oxygen profiles before transport fitting",
+        "target": "Organoid transport and measurement coverage",
+        "species": "Source-defined future specimens",
+        "tissue": "Declared spherical organoid or construct",
+        "hypothesis": "Measured local oxygen profiles can challenge the reduced sphere model only when geometry, source calibration and independent-unit splits are qualified.",
+        "endpoint": "Measured spatial coverage, held-out units, assay calibration and later model error; no viability threshold inferred.",
+        "falsifier": "Only gas settings, selected images or unlinked averaged profiles are available, or source units cross the validation split.",
+        "evidence_stage": "Measurement-qualification workflow",
+        "study_design": "Source-linked intake; no new biological measurements",
+        "reference_url": "https://github.com/dylanstechmann/organoid-oxygen-lab",
+        "structure_notes": "The sibling solver retains illustrative parameters and independent numerical checks. Intake is not fitting or biological validation.",
+        "evidence": []
+      },
+      {
+        "id": "genome-corrected-construct-function",
+        "title": "Genome correction and construct function stay separate",
+        "target": "Declared causal lesion in a stem-cell construct",
+        "species": "Source-defined cell/construct model",
+        "tissue": "Declared target tissue",
+        "hypothesis": "A source-qualified intended edit may improve a specified construct function, while delivery coverage, unwanted products and clone behavior remain separate outcomes.",
+        "endpoint": "Intended-only products, same-population target-cell coverage, functional comparator and durability.",
+        "falsifier": "Correction is measured without useful function, or altered clone selection explains the apparent benefit.",
+        "evidence_stage": "Research question; no selected edit",
+        "study_design": "Independent evidence and denominator audit",
+        "reference_url": "https://github.com/dylanstechmann/base-editing-evidence",
+        "structure_notes": "The new sibling repo classifies classical conversion chemistry and audits source scope/count denominators. It does not select an editor or predict repair.",
+        "evidence": []
+      }
+    ]
+  },
+  "findings": [
+    {
+      "blueprint_id": "dental",
+      "priority": 10,
+      "title": "Human ameloblast organoids produced an enamel component",
+      "claim": "The 2026 source reports enamel-like calcified material after human-derived ameloblast organoids were grafted under a mouse kidney capsule.",
+      "boundary": "This is component-level evidence, not an erupted human tooth or a functioning periodontal unit.",
+      "design": "Human iPSC organoid / mouse graft; publisher text accessed",
+      "url": "https://www.nature.com/articles/s41368-026-00429-4",
+      "date": "2026-03-02",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "dental",
+      "priority": 20,
+      "title": "Bone-height advantage did not establish added attachment gain",
+      "claim": "The 2026 ASC/PRP trial abstract reports greater bone height than EMD but no significant between-group clinical attachment-gain difference.",
+      "boundary": "Fifteen of 21 recruited patients completed the study. Attrition and endpoint-specific uncertainty need review; nonsignificance is not equivalence.",
+      "design": "Human open-label phase II; abstract reviewed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+      "date": "2026-01-16",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "dental",
+      "priority": 30,
+      "title": "A controlled PDLSC comparison retained a null between-group result",
+      "claim": "The 2016 trial reported bone-height improvement in both groups without a significant between-group difference.",
+      "boundary": "Within-group improvement cannot establish an added-cell effect or complete functional periodontal attachment.",
+      "design": "Human randomized trial; primary abstract reviewed",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/",
+      "date": "2016-02-19",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "organoids",
+      "priority": 10,
+      "title": "Dental organoid data accessions are leads requiring qualification",
+      "claim": "The 2026 ameloblast paper reports GSE307437 and a reused dataset, GSE184749, in its data-availability statement.",
+      "boundary": "No files or biological-unit metadata from those accessions were downloaded or qualified in this release.",
+      "design": "Source dataset lead; no new expression analysis",
+      "url": "https://www.nature.com/articles/s41368-026-00429-4",
+      "date": "2026-03-02",
+      "reviewed_on": "2026-10-09"
+    }
+  ]
+}

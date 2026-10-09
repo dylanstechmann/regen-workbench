@@ -1,115 +1,1164 @@
 {
-  "focus_order": ["reprogramming", "tissues", "nanomedicine", "organs", "ectogenesis", "senescence", "glycation", "appearance", "muscle", "cognition", "exploratory"],
+  "focus_order": [
+    "reprogramming",
+    "tissues",
+    "nanomedicine",
+    "dental",
+    "organoids",
+    "organs",
+    "ectogenesis",
+    "senescence",
+    "glycation",
+    "appearance",
+    "muscle",
+    "cognition",
+    "exploratory"
+  ],
   "campaign_frameworks": {
     "ectogenesis": [
-      {"id":"developmental_scope","label":"Species and observed developmental interval","prompt":"Record the actual entry stage, exit stage, support duration and development that occurred in a uterus. Do not convert animal gestational fractions into human ages."},
-      {"id":"interface_continuity","label":"Continuity between developmental stages","prompt":"Identify evidence for each interface. Separate publications cannot be concatenated into a continuous IVF-to-birth demonstration."},
-      {"id":"exchange_function","label":"Exchange and placental functions","prompt":"Separate measured gas/nutrient/waste exchange from synthetic transport and from endocrine or immune functions."},
-      {"id":"developmental_outcomes","label":"Growth and organ development","prompt":"Retain growth, morphology and organ function alongside appropriate in-utero or other comparators."},
-      {"id":"adverse_outcomes","label":"Adverse developmental and device outcomes","prompt":"Record adverse findings and missing outcomes, including growth restriction, infection and blood-interface complications when assessed."},
-      {"id":"post_support","label":"Transition and post-support follow-up","prompt":"Record the exit transition, survival and duration of measured follow-up; surrogate markers do not establish lifelong outcomes."},
-      {"id":"model_transfer","label":"Applicability across models","prompt":"Keep species, developmental stage, specimen counts, comparator and parameter provenance visible."},
-      {"id":"reliability","label":"Engineering reliability and observability","prompt":"Label simulated power and sensor faults and all artificial thresholds; software fixture metrics are not a device safety rating."},
-      {"id":"complete_gestation","label":"Complete gestation and proposed benefits","prompt":"Assess IVF-to-birth continuity, surrogacy replacement and congenital-anomaly reduction as separate claims requiring direct comparative evidence."}
+      {
+        "id": "developmental_scope",
+        "label": "Species and observed developmental interval",
+        "prompt": "Record the actual entry stage, exit stage, support duration and development that occurred in a uterus. Do not convert animal gestational fractions into human ages."
+      },
+      {
+        "id": "interface_continuity",
+        "label": "Continuity between developmental stages",
+        "prompt": "Identify evidence for each interface. Separate publications cannot be concatenated into a continuous IVF-to-birth demonstration."
+      },
+      {
+        "id": "exchange_function",
+        "label": "Exchange and placental functions",
+        "prompt": "Separate measured gas/nutrient/waste exchange from synthetic transport and from endocrine or immune functions."
+      },
+      {
+        "id": "developmental_outcomes",
+        "label": "Growth and organ development",
+        "prompt": "Retain growth, morphology and organ function alongside appropriate in-utero or other comparators."
+      },
+      {
+        "id": "adverse_outcomes",
+        "label": "Adverse developmental and device outcomes",
+        "prompt": "Record adverse findings and missing outcomes, including growth restriction, infection and blood-interface complications when assessed."
+      },
+      {
+        "id": "post_support",
+        "label": "Transition and post-support follow-up",
+        "prompt": "Record the exit transition, survival and duration of measured follow-up; surrogate markers do not establish lifelong outcomes."
+      },
+      {
+        "id": "model_transfer",
+        "label": "Applicability across models",
+        "prompt": "Keep species, developmental stage, specimen counts, comparator and parameter provenance visible."
+      },
+      {
+        "id": "reliability",
+        "label": "Engineering reliability and observability",
+        "prompt": "Label simulated power and sensor faults and all artificial thresholds; software fixture metrics are not a device safety rating."
+      },
+      {
+        "id": "complete_gestation",
+        "label": "Complete gestation and proposed benefits",
+        "prompt": "Assess IVF-to-birth continuity, surrogacy replacement and congenital-anomaly reduction as separate claims requiring direct comparative evidence."
+      }
     ],
     "reprogramming": [
-      {"id":"lesion_scope","label":"Variant and affected cell population","prompt":"Record exact variant, allele state, assay and cell type."},
-      {"id":"causal_phenotype","label":"Causal link to dysfunction","prompt":"Separate association from a perturbation that changes a relevant phenotype."},
-      {"id":"clone_fitness","label":"Clone competition","prompt":"Track edited and unedited clone growth, persistence and selection."},
-      {"id":"target_coverage","label":"Target cell coverage","prompt":"Record fraction reached and fraction corrected, with denominators."},
-      {"id":"edit_quality","label":"Editing outcomes and genome integrity","prompt":"Include intended edits, bystanders, off-targets and structural outcomes."},
-      {"id":"tissue_function","label":"Tissue-level function","prompt":"Prefer a functional endpoint over a molecular marker alone."},
-      {"id":"durability","label":"Durability","prompt":"Record follow-up interval and whether the effect persists."},
-      {"id":"tumor_surveillance","label":"Tumor and surveillance outcomes","prompt":"Track clonal selection, malignancy signals and impaired repair."}
+      {
+        "id": "lesion_scope",
+        "label": "Variant and affected cell population",
+        "prompt": "Record exact variant, allele state, assay and cell type."
+      },
+      {
+        "id": "causal_phenotype",
+        "label": "Causal link to dysfunction",
+        "prompt": "Separate association from a perturbation that changes a relevant phenotype."
+      },
+      {
+        "id": "clone_fitness",
+        "label": "Clone competition",
+        "prompt": "Track edited and unedited clone growth, persistence and selection."
+      },
+      {
+        "id": "target_coverage",
+        "label": "Target cell coverage",
+        "prompt": "Record fraction reached and fraction corrected, with denominators."
+      },
+      {
+        "id": "edit_quality",
+        "label": "Editing outcomes and genome integrity",
+        "prompt": "Include intended edits, bystanders, off-targets and structural outcomes."
+      },
+      {
+        "id": "tissue_function",
+        "label": "Tissue-level function",
+        "prompt": "Prefer a functional endpoint over a molecular marker alone."
+      },
+      {
+        "id": "durability",
+        "label": "Durability",
+        "prompt": "Record follow-up interval and whether the effect persists."
+      },
+      {
+        "id": "tumor_surveillance",
+        "label": "Tumor and surveillance outcomes",
+        "prompt": "Track clonal selection, malignancy signals and impaired repair."
+      }
     ],
     "tissues": [
-      {"id":"construct_identity","label":"Cell identity and maturation","prompt":"Record cell composition, maturation and construct architecture."},
-      {"id":"perfusion","label":"Perfusion and vascularization","prompt":"Separate vessel patency from oxygen delivery and tissue function."},
-      {"id":"integration","label":"Host integration","prompt":"Record anatomical integration, innervation and interface healing."},
-      {"id":"function","label":"Tissue-specific function","prompt":"Name the primary organ or tissue function and measurement method."},
-      {"id":"donor_cost","label":"Donor-site cost","prompt":"Record donor area, morbidity and coverage gained per donor area."},
-      {"id":"adverse_healing","label":"Adverse healing and immune response","prompt":"Track rejection, thrombosis, infection, scarring and delayed closure."},
-      {"id":"durability","label":"Durability","prompt":"Record duration of function and graft loss or revision."},
-      {"id":"control","label":"Comparator and controls","prompt":"Retain native-tissue, sham, standard-care or active comparators."}
+      {
+        "id": "construct_identity",
+        "label": "Cell identity and maturation",
+        "prompt": "Record cell composition, maturation and construct architecture."
+      },
+      {
+        "id": "perfusion",
+        "label": "Perfusion and vascularization",
+        "prompt": "Separate vessel patency from oxygen delivery and tissue function."
+      },
+      {
+        "id": "integration",
+        "label": "Host integration",
+        "prompt": "Record anatomical integration, innervation and interface healing."
+      },
+      {
+        "id": "function",
+        "label": "Tissue-specific function",
+        "prompt": "Name the primary organ or tissue function and measurement method."
+      },
+      {
+        "id": "donor_cost",
+        "label": "Donor-site cost",
+        "prompt": "Record donor area, morbidity and coverage gained per donor area."
+      },
+      {
+        "id": "adverse_healing",
+        "label": "Adverse healing and immune response",
+        "prompt": "Track rejection, thrombosis, infection, scarring and delayed closure."
+      },
+      {
+        "id": "durability",
+        "label": "Durability",
+        "prompt": "Record duration of function and graft loss or revision."
+      },
+      {
+        "id": "control",
+        "label": "Comparator and controls",
+        "prompt": "Retain native-tissue, sham, standard-care or active comparators."
+      }
     ],
     "nanomedicine": [
-      {"id":"organ_accumulation","label":"Organ accumulation","prompt":"Record carrier and cargo separately, with dose-normalized denominators."},
-      {"id":"cell_uptake","label":"Intended-cell uptake","prompt":"Distinguish target cell uptake from whole-organ signal."},
-      {"id":"cargo_activity","label":"Intracellular cargo activity","prompt":"Measure editing, expression, knockdown or other direct target engagement."},
-      {"id":"coverage","label":"Target-cell coverage","prompt":"Report the fraction of intended cells with verified cargo action."},
-      {"id":"off_target","label":"Off-target tissue exposure","prompt":"Record non-target cell exposure and associated activity."},
-      {"id":"function","label":"Functional benefit","prompt":"Link cargo activity to a prespecified tissue function."},
-      {"id":"durability","label":"Durability","prompt":"Separate carrier persistence from persistent biological action."},
-      {"id":"toxicity","label":"Toxicity and tolerability","prompt":"Track immune effects, organ injury and adverse events by timepoint."}
+      {
+        "id": "organ_accumulation",
+        "label": "Organ accumulation",
+        "prompt": "Record carrier and cargo separately, with dose-normalized denominators."
+      },
+      {
+        "id": "cell_uptake",
+        "label": "Intended-cell uptake",
+        "prompt": "Distinguish target cell uptake from whole-organ signal."
+      },
+      {
+        "id": "cargo_activity",
+        "label": "Intracellular cargo activity",
+        "prompt": "Measure editing, expression, knockdown or other direct target engagement."
+      },
+      {
+        "id": "coverage",
+        "label": "Target-cell coverage",
+        "prompt": "Report the fraction of intended cells with verified cargo action."
+      },
+      {
+        "id": "off_target",
+        "label": "Off-target tissue exposure",
+        "prompt": "Record non-target cell exposure and associated activity."
+      },
+      {
+        "id": "function",
+        "label": "Functional benefit",
+        "prompt": "Link cargo activity to a prespecified tissue function."
+      },
+      {
+        "id": "durability",
+        "label": "Durability",
+        "prompt": "Separate carrier persistence from persistent biological action."
+      },
+      {
+        "id": "toxicity",
+        "label": "Toxicity and tolerability",
+        "prompt": "Track immune effects, organ injury and adverse events by timepoint."
+      }
+    ],
+    "dental": [
+      {
+        "id": "identity",
+        "label": "Component identity and architecture",
+        "prompt": "Separate enamel, dentin, pulp, cementum, ligament, bone and gingiva; state the measured component."
+      },
+      {
+        "id": "attachment",
+        "label": "Periodontal attachment",
+        "prompt": "Distinguish clinical attachment gain, bone fill and histological oriented cementum–ligament–bone attachment."
+      },
+      {
+        "id": "barrier",
+        "label": "Gingival barrier and root coverage",
+        "prompt": "Record root coverage, tissue phenotype, seal/barrier measurements and recurrent inflammation separately."
+      },
+      {
+        "id": "function",
+        "label": "Loading, occlusion and sensation",
+        "prompt": "Declare the mechanical or sensory assay; mineralization alone is not mastication."
+      },
+      {
+        "id": "integration",
+        "label": "Pulp, vascular and neural integration",
+        "prompt": "Record living pulp, vascular supply and innervation without inferring these from a mineral image."
+      },
+      {
+        "id": "adverse",
+        "label": "Adverse healing and ectopic outcomes",
+        "prompt": "Retain ankylosis, root resorption, abnormal tooth number/shape, ectopic mineralization and immune findings."
+      },
+      {
+        "id": "durability",
+        "label": "Durability",
+        "prompt": "Record follow-up and performance under repeated loading."
+      },
+      {
+        "id": "control",
+        "label": "Comparator and independent unit",
+        "prompt": "Distinguish patients, teeth, sites, animals and cultures; identify primary versus post hoc outcomes."
+      }
+    ],
+    "organoids": [
+      {
+        "id": "identity",
+        "label": "Cell identity and maturation",
+        "prompt": "Declare the cell composition and maturation assay."
+      },
+      {
+        "id": "transport",
+        "label": "Transport measurements",
+        "prompt": "Separate measured local oxygen from gas settings and illustrative model parameters."
+      },
+      {
+        "id": "function",
+        "label": "Tissue-specific function",
+        "prompt": "Use a declared function beyond markers or morphology."
+      },
+      {
+        "id": "genome",
+        "label": "Genome integrity and clone behavior",
+        "prompt": "Separate intended genetic correction, unwanted products and clonal selection."
+      },
+      {
+        "id": "integration",
+        "label": "Host integration",
+        "prompt": "Track perfusion, innervation and anatomical interface where relevant."
+      },
+      {
+        "id": "durability",
+        "label": "Persistence and adverse outcomes",
+        "prompt": "Record duration, attrition and adverse findings."
+      },
+      {
+        "id": "control",
+        "label": "Source, comparator and independent unit",
+        "prompt": "Preserve donor/clone/culture hierarchy and define the held-out unit."
+      }
     ]
   },
   "campaign_starters": {
     "ectogenesis": [
-      {"id":"complete-ectogenesis-capability-gaps","title":"Complete ectogenesis capability map","target":"A continuous IVF-to-birth pathway outside a uterus","species":"Theoretical human-system ambition; animal and in-vitro source evidence remain separate","tissue":"Embryonic/fetal development and maternal-placental interfaces","hypothesis":"A stage-resolved evidence map can identify the unresolved interfaces and developmental functions required to assess complete ectogenesis.","endpoint":"Observed developmental intervals, interface continuity, source-supported functions and explicit evidence gaps.","falsifier":"An apparent complete pathway depends on joining incompatible isolated systems, or assumes physiological support establishes normal development.","evidence_stage":"Theoretical systems research","study_design":"Evidence-to-requirement mapping","reference_url":"https://www.fda.gov/media/172441/download","structure_notes":"The reviewed sources do not establish a continuous human IVF-to-birth system. Eliminating surrogacy and reducing birth defects remain proposed benefits. The sibling artificial-womb-models repo supplies an evidence ledger and dimensionless engineering fixtures.","evidence":[{"axis_id":"complete_gestation","status":"not assessed","value":"No continuous human IVF-to-birth demonstration in the reviewed ledger","unit":"claim status","comparator":"Not available","timepoint":"Reviewed 2026-10-06","source_url":"https://www.fda.gov/media/172441/download","notes":"FDA's 2023 discussion concerns partial support of extremely premature infants; it is not a complete-gestation result."}]},
-      {"id":"extrauterine-growth-comparator","title":"Partial support versus normal development","target":"Physiological maintenance and growth during extrauterine fetal support","species":"Published ovine model; no local biological experiment","tissue":"Fetal growth and organ development","hypothesis":"Maintained physiological variables may coexist with impaired growth, so exchange performance and developmental outcomes require independent comparisons.","endpoint":"Source-reported growth and organ outcomes versus in-utero controls, support duration and missing follow-up.","falsifier":"A claimed normal-development result fails against the source's growth comparator or lacks the relevant outcome.","evidence_stage":"Published animal evidence","study_design":"Source evidence comparison","reference_url":"https://doi.org/10.3389/fphys.2023.1219185","structure_notes":"Usuda et al. reported partial support up to 14 days with reduced somatic and organ growth compared with in-utero controls. This does not predict human outcomes.","evidence":[{"axis_id":"developmental_outcomes","status":"source reports mixed signal","value":"Physiological maintenance with reduced somatic and organ growth","unit":"qualitative source summary","comparator":"In-utero controls","timepoint":"Up to 14 days of partial support","source_url":"https://doi.org/10.3389/fphys.2023.1219185","notes":"Source-reported animal evidence, not a local measurement or a continuous gestation demonstration."}]}
+      {
+        "id": "complete-ectogenesis-capability-gaps",
+        "title": "Complete ectogenesis capability map",
+        "target": "A continuous IVF-to-birth pathway outside a uterus",
+        "species": "Theoretical human-system ambition; animal and in-vitro source evidence remain separate",
+        "tissue": "Embryonic/fetal development and maternal-placental interfaces",
+        "hypothesis": "A stage-resolved evidence map can identify the unresolved interfaces and developmental functions required to assess complete ectogenesis.",
+        "endpoint": "Observed developmental intervals, interface continuity, source-supported functions and explicit evidence gaps.",
+        "falsifier": "An apparent complete pathway depends on joining incompatible isolated systems, or assumes physiological support establishes normal development.",
+        "evidence_stage": "Theoretical systems research",
+        "study_design": "Evidence-to-requirement mapping",
+        "reference_url": "https://www.fda.gov/media/172441/download",
+        "structure_notes": "The reviewed sources do not establish a continuous human IVF-to-birth system. Eliminating surrogacy and reducing birth defects remain proposed benefits. The sibling artificial-womb-models repo supplies an evidence ledger and dimensionless engineering fixtures.",
+        "evidence": [
+          {
+            "axis_id": "complete_gestation",
+            "status": "not assessed",
+            "value": "No continuous human IVF-to-birth demonstration in the reviewed ledger",
+            "unit": "claim status",
+            "comparator": "Not available",
+            "timepoint": "Reviewed 2026-10-06",
+            "source_url": "https://www.fda.gov/media/172441/download",
+            "notes": "FDA's 2023 discussion concerns partial support of extremely premature infants; it is not a complete-gestation result."
+          }
+        ]
+      },
+      {
+        "id": "extrauterine-growth-comparator",
+        "title": "Partial support versus normal development",
+        "target": "Physiological maintenance and growth during extrauterine fetal support",
+        "species": "Published ovine model; no local biological experiment",
+        "tissue": "Fetal growth and organ development",
+        "hypothesis": "Maintained physiological variables may coexist with impaired growth, so exchange performance and developmental outcomes require independent comparisons.",
+        "endpoint": "Source-reported growth and organ outcomes versus in-utero controls, support duration and missing follow-up.",
+        "falsifier": "A claimed normal-development result fails against the source's growth comparator or lacks the relevant outcome.",
+        "evidence_stage": "Published animal evidence",
+        "study_design": "Source evidence comparison",
+        "reference_url": "https://doi.org/10.3389/fphys.2023.1219185",
+        "structure_notes": "Usuda et al. reported partial support up to 14 days with reduced somatic and organ growth compared with in-utero controls. This does not predict human outcomes.",
+        "evidence": [
+          {
+            "axis_id": "developmental_outcomes",
+            "status": "source reports mixed signal",
+            "value": "Physiological maintenance with reduced somatic and organ growth",
+            "unit": "qualitative source summary",
+            "comparator": "In-utero controls",
+            "timepoint": "Up to 14 days of partial support",
+            "source_url": "https://doi.org/10.3389/fphys.2023.1219185",
+            "notes": "Source-reported animal evidence, not a local measurement or a continuous gestation demonstration."
+          }
+        ]
+      }
     ],
     "reprogramming": [
-      {"id":"hgps-vessel-control","title":"Engineered vessel mutation-correction positive control","target":"Pathogenic LMNA variant and vascular function","species":"Patient-derived human cell model","tissue":"Engineered vascular construct","hypothesis":"Correction of a known pathogenic LMNA variant can improve function in an engineered HGPS vascular model; this is a monogenic positive control, not a proxy for heterogeneous normal aging.","endpoint":"Vasodilation, smooth-muscle density, perfusion and editing fraction, reported separately.","falsifier":"Sequence correction does not improve the prespecified vessel function, or clonal/genomic outcomes worsen.","evidence_stage":"Human cell-derived engineered-tissue model","study_design":"In-vitro disease-model study","reference_url":"https://pubmed.ncbi.nlm.nih.gov/40027545/","structure_notes":"The published report describes restored vasodilation and smooth-muscle density. Some markers improved in constructs starting with at least 50% edited smooth-muscle cells. Confirm the source methods and exact comparator before quantitative reuse.","evidence":[{"axis_id":"tissue_function","status":"source reports positive signal","value":"Restored vasodilation and smooth-muscle density; several markers improved when starting edited smooth-muscle fraction was at least 50%","unit":"source-reported; verify exact measures","comparator":"See source methods","timepoint":"Engineered tissue model","source_url":"https://pubmed.ncbi.nlm.nih.gov/40027545/","notes":"HGPS monogenic model. Does not establish editing age-acquired variants in ordinary aging."}]},
-      {"id":"clone-to-function","title":"Normal-aging clone-to-function evidence map","target":"Age-associated somatic variants in a defined tissue and cell type","species":"Human tissue datasets; model systems kept separate","tissue":"Specify tissue and cell type before selecting variants","hypothesis":"Only variants with causal, cell-type-specific functional effects and a measurable repair window should advance to correction models.","endpoint":"Variant identity, clone fraction, causal perturbation evidence, cell coverage and tissue-relevant function.","falsifier":"Variant burden or clone size does not predict functional impairment, or correction fails to improve function without harmful selection.","evidence_stage":"Observational and computational triage","study_design":"Evidence synthesis and dataset analysis","reference_url":"https://pubmed.ncbi.nlm.nih.gov/41481786/","structure_notes":"The cited six-person esophagus map is a tissue-specific observational starting point. A clone or mutation is not automatically harmful or a repair target."}
+      {
+        "id": "hgps-vessel-control",
+        "title": "Engineered vessel mutation-correction positive control",
+        "target": "Pathogenic LMNA variant and vascular function",
+        "species": "Patient-derived human cell model",
+        "tissue": "Engineered vascular construct",
+        "hypothesis": "Correction of a known pathogenic LMNA variant can improve function in an engineered HGPS vascular model; this is a monogenic positive control, not a proxy for heterogeneous normal aging.",
+        "endpoint": "Vasodilation, smooth-muscle density, perfusion and editing fraction, reported separately.",
+        "falsifier": "Sequence correction does not improve the prespecified vessel function, or clonal/genomic outcomes worsen.",
+        "evidence_stage": "Human cell-derived engineered-tissue model",
+        "study_design": "In-vitro disease-model study",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/40027545/",
+        "structure_notes": "The published report describes restored vasodilation and smooth-muscle density. Some markers improved in constructs starting with at least 50% edited smooth-muscle cells. Confirm the source methods and exact comparator before quantitative reuse.",
+        "evidence": [
+          {
+            "axis_id": "tissue_function",
+            "status": "source reports positive signal",
+            "value": "Restored vasodilation and smooth-muscle density; several markers improved when starting edited smooth-muscle fraction was at least 50%",
+            "unit": "source-reported; verify exact measures",
+            "comparator": "See source methods",
+            "timepoint": "Engineered tissue model",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/40027545/",
+            "notes": "HGPS monogenic model. Does not establish editing age-acquired variants in ordinary aging."
+          }
+        ]
+      },
+      {
+        "id": "clone-to-function",
+        "title": "Normal-aging clone-to-function evidence map",
+        "target": "Age-associated somatic variants in a defined tissue and cell type",
+        "species": "Human tissue datasets; model systems kept separate",
+        "tissue": "Specify tissue and cell type before selecting variants",
+        "hypothesis": "Only variants with causal, cell-type-specific functional effects and a measurable repair window should advance to correction models.",
+        "endpoint": "Variant identity, clone fraction, causal perturbation evidence, cell coverage and tissue-relevant function.",
+        "falsifier": "Variant burden or clone size does not predict functional impairment, or correction fails to improve function without harmful selection.",
+        "evidence_stage": "Observational and computational triage",
+        "study_design": "Evidence synthesis and dataset analysis",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/41481786/",
+        "structure_notes": "The cited six-person esophagus map is a tissue-specific observational starting point. A clone or mutation is not automatically harmful or a repair target."
+      }
     ],
     "tissues": [
-      {"id":"cartilage-function","title":"Engineered cartilage functional comparator","target":"Mature nasal-chondrocyte engineered cartilage for focal knee defects","species":"Human randomized phase II trial","tissue":"Focal knee cartilage defects","hypothesis":"A mature engineered construct may improve a patient-relevant cartilage outcome relative to an active comparator, while repair speed and durability remain separate endpoints.","endpoint":"KOOS at 24 months, adjusted treatment difference, donor-site cost, graft integration and adverse healing.","falsifier":"No clinically meaningful function difference, unacceptable donor-site morbidity or loss of repair durability.","evidence_stage":"Human randomized phase II","study_design":"Open-label active-comparator trial","reference_url":"https://pubmed.ncbi.nlm.nih.gov/40043142/","structure_notes":"The reported median KOOS was 85 versus 79 at 24 months; adjusted difference 7.27 points. This addresses focal defects, not diffuse osteoarthritis or systemic aging.","evidence":[{"axis_id":"function","status":"source reports positive signal","value":"Median KOOS 85 vs 79; adjusted difference 7.27","unit":"KOOS points","comparator":"Less-mature cell-activated matrix","timepoint":"24 months","source_url":"https://pubmed.ncbi.nlm.nih.gov/40043142/","notes":"Open-label active-comparator phase II trial for focal knee defects. Verify uncertainty interval and methods before reusing the estimate."}]}
+      {
+        "id": "cartilage-function",
+        "title": "Engineered cartilage functional comparator",
+        "target": "Mature nasal-chondrocyte engineered cartilage for focal knee defects",
+        "species": "Human randomized phase II trial",
+        "tissue": "Focal knee cartilage defects",
+        "hypothesis": "A mature engineered construct may improve a patient-relevant cartilage outcome relative to an active comparator, while repair speed and durability remain separate endpoints.",
+        "endpoint": "KOOS at 24 months, adjusted treatment difference, donor-site cost, graft integration and adverse healing.",
+        "falsifier": "No clinically meaningful function difference, unacceptable donor-site morbidity or loss of repair durability.",
+        "evidence_stage": "Human randomized phase II",
+        "study_design": "Open-label active-comparator trial",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/40043142/",
+        "structure_notes": "The reported median KOOS was 85 versus 79 at 24 months; adjusted difference 7.27 points. This addresses focal defects, not diffuse osteoarthritis or systemic aging.",
+        "evidence": [
+          {
+            "axis_id": "function",
+            "status": "source reports positive signal",
+            "value": "Median KOOS 85 vs 79; adjusted difference 7.27",
+            "unit": "KOOS points",
+            "comparator": "Less-mature cell-activated matrix",
+            "timepoint": "24 months",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/40043142/",
+            "notes": "Open-label active-comparator phase II trial for focal knee defects. Verify uncertainty interval and methods before reusing the estimate."
+          }
+        ]
+      }
     ],
     "nanomedicine": [
-      {"id":"lung-editing-cascade","title":"Lung-targeted delivery cascade reference","target":"Lipid nanoparticle delivery of a CFTR base editor to lung basal stem cells","species":"Mouse model plus patient-derived airway cells in vitro","tissue":"Airway epithelium and lung basal stem cells","hypothesis":"Carrier accumulation must lead to intended-cell uptake, verified edit activity and restored airway function; each step needs a separate denominator.","endpoint":"Whole-lung distribution, target-cell editing fraction, allele outcomes, chloride function and persistence measured in matched models.","falsifier":"Organ signal without target-cell editing, or target-cell edits without functional rescue and acceptable off-target outcomes.","evidence_stage":"Preclinical mouse and human-cell experiments","study_design":"Targeted delivery and functional assay study","reference_url":"https://pubmed.ncbi.nlm.nih.gov/38870301/","structure_notes":"The cited report describes about 50% correction among isolated lung basal stem cells and restored chloride function in patient-derived airway cells in vitro; whole-lung editing was much lower. The long-persistence reporter result used a separate model.","evidence":[{"axis_id":"cargo_activity","status":"source reports positive signal","value":"About 50% editing in isolated lung basal stem cells; chloride function restored in patient-derived airway cells in vitro","unit":"percent of isolated target cells; separate in-vitro function assay","comparator":"See source methods","timepoint":"Model-specific; reporter persistence was measured separately","source_url":"https://pubmed.ncbi.nlm.nih.gov/38870301/","notes":"Do not merge target-cell editing, whole-organ editing and persistence across separate models."}]}
+      {
+        "id": "lung-editing-cascade",
+        "title": "Lung-targeted delivery cascade reference",
+        "target": "Lipid nanoparticle delivery of a CFTR base editor to lung basal stem cells",
+        "species": "Mouse model plus patient-derived airway cells in vitro",
+        "tissue": "Airway epithelium and lung basal stem cells",
+        "hypothesis": "Carrier accumulation must lead to intended-cell uptake, verified edit activity and restored airway function; each step needs a separate denominator.",
+        "endpoint": "Whole-lung distribution, target-cell editing fraction, allele outcomes, chloride function and persistence measured in matched models.",
+        "falsifier": "Organ signal without target-cell editing, or target-cell edits without functional rescue and acceptable off-target outcomes.",
+        "evidence_stage": "Preclinical mouse and human-cell experiments",
+        "study_design": "Targeted delivery and functional assay study",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/38870301/",
+        "structure_notes": "The cited report describes about 50% correction among isolated lung basal stem cells and restored chloride function in patient-derived airway cells in vitro; whole-lung editing was much lower. The long-persistence reporter result used a separate model.",
+        "evidence": [
+          {
+            "axis_id": "cargo_activity",
+            "status": "source reports positive signal",
+            "value": "About 50% editing in isolated lung basal stem cells; chloride function restored in patient-derived airway cells in vitro",
+            "unit": "percent of isolated target cells; separate in-vitro function assay",
+            "comparator": "See source methods",
+            "timepoint": "Model-specific; reporter persistence was measured separately",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/38870301/",
+            "notes": "Do not merge target-cell editing, whole-organ editing and persistence across separate models."
+          }
+        ]
+      }
+    ],
+    "dental": [
+      {
+        "id": "whole-tooth-mouse-reference",
+        "title": "Whole-tooth function reference and adult-cell gap",
+        "target": "Bioengineered tooth-germ replacement",
+        "species": "Mouse",
+        "tissue": "Tooth and host jaw interface",
+        "hypothesis": "The mouse organ-germ result supplies a functional reference; adult-human cell sourcing and controlled tooth architecture remain independent gaps.",
+        "endpoint": "Hardness, loading response, sensory response, root/ligament integration and durability.",
+        "falsifier": "Mineralized tissue fails loading or lacks functional host integration.",
+        "evidence_stage": "Animal tooth-organ replacement",
+        "study_design": "Bioengineered embryonic mouse tooth-germ transplantation",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/19666587/",
+        "structure_notes": "Source reports functional mouse tooth replacement. It does not establish an adult-human bioidentical tooth or an available adult-human cell source.",
+        "evidence": [
+          {
+            "axis_id": "function",
+            "status": "source reports positive signal",
+            "value": "Source-reported mechanical and sensory responsiveness",
+            "unit": "qualitative source scope",
+            "comparator": "Native tooth and source-defined assays; verify each assay separately",
+            "timepoint": "Source-defined experimental follow-up",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/19666587/",
+            "notes": "Abstract-reviewed functional precedent; no pooled human inference."
+          }
+        ]
+      },
+      {
+        "id": "ameloblast-2026-component",
+        "title": "Human ameloblast organoid enamel-like material",
+        "target": "Ameloblast maturation and enamel component",
+        "species": "Human-derived cells transplanted in mice",
+        "tissue": "Enamel-like material in a non-dental graft site",
+        "hypothesis": "Mature ameloblast organoids can produce a useful enamel component; native prism architecture, bonding and loading require separate tests.",
+        "endpoint": "Mineral composition/architecture, enamel–dentin interface, hardness and repeated-load behavior.",
+        "falsifier": "Calcified deposits lack appropriate architecture, adhesion or mechanical function.",
+        "evidence_stage": "Human iPSC organoid and mouse graft",
+        "study_design": "Mechanistic organoid study with kidney-capsule grafts",
+        "reference_url": "https://www.nature.com/articles/s41368-026-00429-4",
+        "structure_notes": "The 2026 primary source reports enamel-like calcified material, not an erupted tooth. Its reported GEO accessions are dataset leads, not downloaded or qualified data here.",
+        "evidence": [
+          {
+            "axis_id": "identity",
+            "status": "source reports positive signal",
+            "value": "Ameloblast maturation and enamel-like calcified material",
+            "unit": "component-level source finding",
+            "comparator": "Source-defined organoid conditions",
+            "timepoint": "Source-defined assays; no human replacement follow-up",
+            "source_url": "https://www.nature.com/articles/s41368-026-00429-4",
+            "notes": "Publisher full text accessed; no complete periodontal unit or human benefit inferred."
+          }
+        ]
+      },
+      {
+        "id": "periodontal-controlled-contrasts",
+        "title": "Periodontal bone fill versus attachment benefit",
+        "target": "Periodontal tissue restoration",
+        "species": "Human trial participants",
+        "tissue": "Periodontal intrabony defects",
+        "hypothesis": "A cell-based construct may improve one outcome without an added attachment advantage over an active comparator.",
+        "endpoint": "Between-group clinical attachment, bone height, oriented attachment, mobility, adverse outcomes and follow-up.",
+        "falsifier": "Added cells do not improve the prespecified attachment endpoint or produce adverse integration.",
+        "evidence_stage": "Human randomized trials",
+        "study_design": "Contrast 2016 controlled PDLSC study and 2026 open-label ASC/PRP versus EMD study",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+        "structure_notes": "The 2026 abstract reports a bone-height advantage but no significant between-group attachment-gain difference, with 15 completers out of 21 recruited. The 2016 trial also reported no significant between-group bone-height difference. No claim of equivalence follows from nonsignificance.",
+        "evidence": [
+          {
+            "axis_id": "attachment",
+            "status": "source reports no signal",
+            "value": "No significant between-group clinical attachment-gain difference in the 2026 abstract",
+            "unit": "comparison outcome, not proof of equivalence",
+            "comparator": "Enamel matrix derivative",
+            "timepoint": "Up to 36 weeks",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+            "notes": "Open-label phase II abstract; attrition and patient/tooth units require full-text review before numerical synthesis."
+          }
+        ]
+      },
+      {
+        "id": "gingival-barrier-gap",
+        "title": "Gingival coverage versus restored barrier",
+        "target": "Gum phenotype and functional seal",
+        "species": "Human trial participants",
+        "tissue": "Gingival recession sites",
+        "hypothesis": "A root-coverage signal can motivate further study but cannot establish a restored gingival barrier or complete periodontal unit.",
+        "endpoint": "Root coverage, tissue thickness/phenotype, barrier/seal function, inflammation and recurrence.",
+        "falsifier": "Coverage improves without the intended barrier function or does not persist.",
+        "evidence_stage": "Small human randomized study",
+        "study_design": "2017 stem-cell/membrane versus membrane comparison",
+        "reference_url": "https://pubmed.ncbi.nlm.nih.gov/28620633/",
+        "structure_notes": "The abstract reports 14 cases with multiple sites and a root-coverage signal at six months. Sites must not be counted as independent patients. Whole-tooth or histological ligament regeneration is not established by this endpoint.",
+        "evidence": [
+          {
+            "axis_id": "barrier",
+            "status": "not assessed",
+            "value": "Root coverage reported; functional barrier/seal not established by the reviewed abstract",
+            "unit": "endpoint distinction",
+            "comparator": "Membrane-only group",
+            "timepoint": "6 months",
+            "source_url": "https://pubmed.ncbi.nlm.nih.gov/28620633/",
+            "notes": "Barrier remains unmeasured in this source scope despite the clinical coverage signal."
+          }
+        ]
+      }
+    ],
+    "organoids": [
+      {
+        "id": "organoid-oxygen-measurements",
+        "title": "Qualified oxygen profiles before transport fitting",
+        "target": "Organoid transport and measurement coverage",
+        "species": "Source-defined future specimens",
+        "tissue": "Declared spherical organoid or construct",
+        "hypothesis": "Measured local oxygen profiles can challenge the reduced sphere model only when geometry, source calibration and independent-unit splits are qualified.",
+        "endpoint": "Measured spatial coverage, held-out units, assay calibration and later model error; no viability threshold inferred.",
+        "falsifier": "Only gas settings, selected images or unlinked averaged profiles are available, or source units cross the validation split.",
+        "evidence_stage": "Measurement-qualification workflow",
+        "study_design": "Source-linked intake; no new biological measurements",
+        "reference_url": "https://github.com/dylanstechmann/organoid-oxygen-lab",
+        "structure_notes": "The sibling solver retains illustrative parameters and independent numerical checks. Intake is not fitting or biological validation.",
+        "evidence": []
+      },
+      {
+        "id": "genome-corrected-construct-function",
+        "title": "Genome correction and construct function stay separate",
+        "target": "Declared causal lesion in a stem-cell construct",
+        "species": "Source-defined cell/construct model",
+        "tissue": "Declared target tissue",
+        "hypothesis": "A source-qualified intended edit may improve a specified construct function, while delivery coverage, unwanted products and clone behavior remain separate outcomes.",
+        "endpoint": "Intended-only products, same-population target-cell coverage, functional comparator and durability.",
+        "falsifier": "Correction is measured without useful function, or altered clone selection explains the apparent benefit.",
+        "evidence_stage": "Research question; no selected edit",
+        "study_design": "Independent evidence and denominator audit",
+        "reference_url": "https://github.com/dylanstechmann/base-editing-evidence",
+        "structure_notes": "The new sibling repo classifies classical conversion chemistry and audits source scope/count denominators. It does not select an editor or predict repair.",
+        "evidence": []
+      }
     ]
   },
   "blueprints": [
-    {"id":"ectogenesis","title":"Artificial wombs & ectogenesis","area":"Developmental bioengineering","query":"artificial womb artificial placenta ectogenesis ex utero embryogenesis growth development","question":"Which biological functions and developmental transitions would a complete IVF-to-birth artificial gestation system have to support?","who":"Keep human embryo observations, mouse embryo culture, ovine fetal support and proposed human applications distinct.","what":"Implantation, placental formation, exchange, endocrine/immune interfaces, growth, maturation and transition to birth.","where":"A theoretical externally supported environment; wall power is one resource among exchange materials, monitoring and continuous support.","when":"Preserve each study's observed start/end developmental stages and follow-up instead of inferring a nine-month capability.","why":"Complete ectogenesis could reduce reliance on surrogate pregnancy if demonstrated; reduced congenital anomalies is a separate unproven hypothesis.","how":"Use the sibling artificial-womb-models evidence ledger and dimensionless fault fixtures; search primary sources here, retain contrary findings, and export reviewed campaign dossiers.","falsifier":"Failure at a developmental interface, reduced growth despite stable physiological variables, or unsupported transfer from animal or synthetic results to humans.","desired_changes":"Explore full artificial gestation as a long-term ambition while developing source-traceable models, observable engineering assumptions and independently reviewable software."},
-    {"id":"tissues","title":"Engineered tissues & repair","area":"Tissue engineering","query":"engineered cartilage skin vascular graft functional clinical trial","question":"When does an engineered tissue restore durable function in an aging or damaged body?","who":"Keep human graft trials, perfused constructs and animal implants distinct.","what":"Engineered cartilage, skin, blood vessels and muscle with measurable structure and function.","where":"Vascular supply, extracellular matrix, host interface and immune compatibility.","when":"Early graft survival, healing speed and function months or years later are separate outcomes.","why":"Cell survival and a tissue-like shape do not guarantee mechanical or physiological function.","how":"Compare graft maturation, perfusion, donor-site demand, integration and patient-relevant function from primary trials and experimental tissue datasets.","falsifier":"A graft survives but heals slowly, loses function, scars or fails mechanical integration.","desired_changes":"Improve functional integration and durable repair, including tests of genome-corrected engineered tissue."},
-    {"id":"nanomedicine","title":"Nanomedicine & tissue delivery","area":"Delivery systems","query":"targeted lipid nanoparticle base editing extrahepatic senolytic aged mice","question":"Can a carrier deliver enough active cargo to the intended aging tissue while limiting other-tissue exposure?","who":"Separate cultured human cells, aged animals and treated patients.","what":"Lipid nanoparticles, extracellular vesicles, liposomes and other targeted carriers for editors or damage-modifying cargo.","where":"Distinguish whole-organ accumulation, uptake by the intended cell type and intracellular cargo release.","when":"Measure hours-long distribution, weeks-long function and durable effects separately.","why":"A fluorescent carrier signal does not prove editing, selective senolysis or lasting rejuvenation.","how":"Compare biodistribution, target-cell editing or cargo activity, functional endpoints, dose-response and adverse observations in primary studies.","falsifier":"Target-organ fluorescence without target-cell action, or benefit offset by toxicity or poor coverage.","desired_changes":"Improve tissue and cell targeting with reproducible functional readouts and explicit delivery gaps."},
-    {"id":"glycation","title":"Glycation & tissue resilience","area":"Aging","query":"carnosine glycation randomized trial","question":"Can carbonyl stress be reduced while preserving useful signaling and tissue function?","who":"Compare healthy adults, metabolic disease cohorts, cells and animal models separately.","what":"Carnosine and related histidine-containing dipeptides; carbonyl scavenging and glycation hypotheses.","where":"Circulating markers versus long-lived extracellular matrix; tissue exposure is a separate question.","when":"Distinguish prevention of new damage from reversal of established damage.","why":"Lower circulating glycation markers might not remove existing tissue crosslinks.","how":"Retrieve human and mechanistic studies; resolve carnosine, anserine and homocarnosine; compare structures and conformer sensitivity.","falsifier":"Biomarker changes without measurable improvement in the tissue endpoint, or no exposure at the target tissue.","desired_changes":"Explore stability and polarity hypotheses while keeping carbonyl-reactive chemistry under scrutiny."},
-    {"id":"muscle","title":"Muscle & metabolic tradeoffs","area":"Body composition","query":"metformin resistance training muscle MASTERS","question":"Which metabolic improvements are compatible with preserving muscle mass and training adaptation?","who":"Keep older-adult training trials distinct from healthy young adults and people with diabetes.","what":"Metformin, mTOR/AMPK signaling, incretin therapies and muscle outcomes.","where":"Skeletal muscle, liver and systemic metabolic regulation.","when":"Acute signaling versus adaptation over months; longevity remains a separate endpoint.","why":"An intervention can improve one endpoint while impairing another.","how":"Compare randomized body-composition and training studies, lean mass, strength and physical function; retain null and adverse outcomes.","falsifier":"Improved metabolic markers paired with loss of strength, lean tissue or training responsiveness.","desired_changes":"Separate desired metabolic effects from muscle-growth suppression; no single anti-aging score."},
-    {"id":"cognition","title":"Metabolic aging & brain health","area":"Brain aging","query":"metabolic aging cognitive decline GLP-1 randomized","question":"Do metabolic interventions preserve cognitive function with age, and is the proposed mechanism tested?","who":"People with diabetes or obesity, neurodegenerative disease models, and healthy adults are separate populations.","what":"Metabolic, vascular and inflammatory interventions with objective cognitive and disease endpoints.","where":"Brain exposure, peripheral metabolism and inflammatory signaling.","when":"Transient subjective effects versus durable cognitive performance or disease incidence.","why":"Reduced glucose variability is a mechanism hypothesis, not proof of cognitive enhancement.","how":"Retrieve trials and observational studies; separate test performance from dementia diagnosis; collect anecdotes with cointerventions and identity uncertainty.","falsifier":"Association disappears after confounder control, or no functional benefit despite biomarker change.","desired_changes":"Investigate exposure and selectivity hypotheses; descriptors alone cannot predict brain penetration."},
-    {"id":"senescence","title":"Senescence & immune clearance","area":"Cell therapies","query":"senolytic CAR T uPAR aging","question":"Can harmful senescent cells be cleared while preserving beneficial senescence and tissue repair?","who":"Aged and disease-model animals first; human evidence must be identified independently.","what":"uPAR-directed CAR-T, senolytic small molecules and senomorphic approaches.","where":"Target antigen distribution across tissues and cell states.","when":"Durability, recurrence of senescence and long-term immune consequences.","why":"A shared marker may be present on cells that should be preserved.","how":"Map primary studies, target-expression datasets and functional endpoints; inspect selectivity and adverse observations.","falsifier":"Off-target cell loss, impaired repair, or senescence-marker reduction without functional benefit.","desired_changes":"Improve tissue and cell-state specificity as a research objective; no engineered-cell construction protocol."},
-    {"id":"reprogramming","title":"Somatic mutations & genome repair","area":"Genome integrity","query":"somatic mutation aging tissues base editing functional repair","question":"Which age-acquired DNA changes impair tissue function, and what fraction of affected cells would need correction to recover it?","who":"Compare normal human tissues, disease models and edited patients by age and cell type.","what":"Somatic single-base variants, indels, clone behavior, base-editing evidence and epigenetic state as a parallel variable.","where":"Map mutation classes and clonal burden by tissue and cell type; mitochondrial DNA is a separate target.","when":"Distinguish prevention of new mutations, correction of existing ones and long-term clonal selection.","why":"Epigenetic reprogramming changes cell state but does not itself rewrite a mutated DNA base.","how":"Connect single-cell mutation maps to measured cell phenotypes; compare target coverage, delivery fraction, editing fraction and functional rescue across primary studies.","falsifier":"Sequence correction without functional rescue, or selection and off-target changes that worsen tissue outcomes.","desired_changes":"Prioritize causal lesions and tissue function while tracking genome and epigenome independently."},
-    {"id":"organs","title":"Replacement organs & integration","area":"Tissue engineering","query":"bioprinted kidney liver vascularization functional transplantation","question":"What prevents printed or grown tissue from replacing a full-size functional organ?","who":"Organoids, engineered constructs, animal transplantation and human recipients are distinct stages.","what":"Bioprinting, vascularization, maturation, immune compatibility and transplant integration.","where":"Perfusion, collecting systems, nerves and interfaces with host tissue.","when":"Viability in culture versus months of stable integrated organ function.","why":"Correct geometry and cell survival do not establish complete organ function.","how":"Link primary datasets to the existing oxygen/perfusion tools; model transport with explicit measured or illustrative parameters.","falsifier":"Necrotic regions, incomplete maturation, thrombosis or failure of the organ-specific functional endpoint.","desired_changes":"Improve transport, architecture and integration independently; robotic transplantation remains a separate engineering program."},
-    {"id":"appearance","title":"Skin, hair & structural restoration","area":"Appearance","query":"scar regeneration skin appendages wound healing","question":"Can tissue be restored with normal architecture and appendages rather than only a changed visual appearance?","who":"Human clinical studies, animal wound models and engineered tissues remain separate.","what":"Scar remodeling, skin regeneration, hair follicles, dental structures and aesthetic restoration.","where":"Epidermis, dermis, extracellular matrix, appendages and supporting structures.","when":"Early closure versus mature scarring and long-term durability.","why":"Scarless appearance and complete biological restoration are different endpoints.","how":"Retrieve source-specific images, histology and functional measures; track applicability across injury types and ages.","falsifier":"Improved appearance with impaired barrier function, abnormal architecture or recurrence.","desired_changes":"Compare cosmetic, structural and functional outcomes independently."},
-    {"id":"exploratory","title":"Experimental compound leads","area":"Open exploration","query":"experimental geroprotector epitalon thymalin clinical trial","question":"Which informal claims can be turned into specific, falsifiable research hypotheses?","who":"Record species, population and whether a report is self-described.","what":"Epitalon, thymalin, SARMs and other user-selected experimental leads.","where":"Specify the proposed tissue and measurable endpoint for each claim.","when":"Immediate subjective effects versus persistent objective effects.","why":"Forum and vendor reports can reveal questions while containing selection, commercial and identity biases.","how":"Search literature, registries and public web leads; preserve source type, missing information, cointerventions and contradictory reports.","falsifier":"No objective signal, unverified compound identity, duplicated anecdotes or results limited to a different population.","desired_changes":"Explore structural neighbors and submitted modifications; retain rejected candidates and unknowns."}
+    {
+      "id": "ectogenesis",
+      "title": "Artificial wombs & ectogenesis",
+      "area": "Developmental bioengineering",
+      "query": "artificial womb artificial placenta ectogenesis ex utero embryogenesis growth development",
+      "question": "Which biological functions and developmental transitions would a complete IVF-to-birth artificial gestation system have to support?",
+      "who": "Keep human embryo observations, mouse embryo culture, ovine fetal support and proposed human applications distinct.",
+      "what": "Implantation, placental formation, exchange, endocrine/immune interfaces, growth, maturation and transition to birth.",
+      "where": "A theoretical externally supported environment; wall power is one resource among exchange materials, monitoring and continuous support.",
+      "when": "Preserve each study's observed start/end developmental stages and follow-up instead of inferring a nine-month capability.",
+      "why": "Complete ectogenesis could reduce reliance on surrogate pregnancy if demonstrated; reduced congenital anomalies is a separate unproven hypothesis.",
+      "how": "Use the sibling artificial-womb-models evidence ledger and dimensionless fault fixtures; search primary sources here, retain contrary findings, and export reviewed campaign dossiers.",
+      "falsifier": "Failure at a developmental interface, reduced growth despite stable physiological variables, or unsupported transfer from animal or synthetic results to humans.",
+      "desired_changes": "Explore full artificial gestation as a long-term ambition while developing source-traceable models, observable engineering assumptions and independently reviewable software."
+    },
+    {
+      "id": "tissues",
+      "title": "Engineered tissues & repair",
+      "area": "Tissue engineering",
+      "query": "engineered cartilage skin vascular graft functional clinical trial",
+      "question": "When does an engineered tissue restore durable function in an aging or damaged body?",
+      "who": "Keep human graft trials, perfused constructs and animal implants distinct.",
+      "what": "Engineered cartilage, skin, blood vessels and muscle with measurable structure and function.",
+      "where": "Vascular supply, extracellular matrix, host interface and immune compatibility.",
+      "when": "Early graft survival, healing speed and function months or years later are separate outcomes.",
+      "why": "Cell survival and a tissue-like shape do not guarantee mechanical or physiological function.",
+      "how": "Compare graft maturation, perfusion, donor-site demand, integration and patient-relevant function from primary trials and experimental tissue datasets.",
+      "falsifier": "A graft survives but heals slowly, loses function, scars or fails mechanical integration.",
+      "desired_changes": "Improve functional integration and durable repair, including tests of genome-corrected engineered tissue."
+    },
+    {
+      "id": "nanomedicine",
+      "title": "Nanomedicine & tissue delivery",
+      "area": "Delivery systems",
+      "query": "targeted lipid nanoparticle base editing extrahepatic senolytic aged mice",
+      "question": "Can a carrier deliver enough active cargo to the intended aging tissue while limiting other-tissue exposure?",
+      "who": "Separate cultured human cells, aged animals and treated patients.",
+      "what": "Lipid nanoparticles, extracellular vesicles, liposomes and other targeted carriers for editors or damage-modifying cargo.",
+      "where": "Distinguish whole-organ accumulation, uptake by the intended cell type and intracellular cargo release.",
+      "when": "Measure hours-long distribution, weeks-long function and durable effects separately.",
+      "why": "A fluorescent carrier signal does not prove editing, selective senolysis or lasting rejuvenation.",
+      "how": "Compare biodistribution, target-cell editing or cargo activity, functional endpoints, dose-response and adverse observations in primary studies.",
+      "falsifier": "Target-organ fluorescence without target-cell action, or benefit offset by toxicity or poor coverage.",
+      "desired_changes": "Improve tissue and cell targeting with reproducible functional readouts and explicit delivery gaps."
+    },
+    {
+      "id": "glycation",
+      "title": "Glycation & tissue resilience",
+      "area": "Aging",
+      "query": "carnosine glycation randomized trial",
+      "question": "Can carbonyl stress be reduced while preserving useful signaling and tissue function?",
+      "who": "Compare healthy adults, metabolic disease cohorts, cells and animal models separately.",
+      "what": "Carnosine and related histidine-containing dipeptides; carbonyl scavenging and glycation hypotheses.",
+      "where": "Circulating markers versus long-lived extracellular matrix; tissue exposure is a separate question.",
+      "when": "Distinguish prevention of new damage from reversal of established damage.",
+      "why": "Lower circulating glycation markers might not remove existing tissue crosslinks.",
+      "how": "Retrieve human and mechanistic studies; resolve carnosine, anserine and homocarnosine; compare structures and conformer sensitivity.",
+      "falsifier": "Biomarker changes without measurable improvement in the tissue endpoint, or no exposure at the target tissue.",
+      "desired_changes": "Explore stability and polarity hypotheses while keeping carbonyl-reactive chemistry under scrutiny."
+    },
+    {
+      "id": "muscle",
+      "title": "Muscle & metabolic tradeoffs",
+      "area": "Body composition",
+      "query": "metformin resistance training muscle MASTERS",
+      "question": "Which metabolic improvements are compatible with preserving muscle mass and training adaptation?",
+      "who": "Keep older-adult training trials distinct from healthy young adults and people with diabetes.",
+      "what": "Metformin, mTOR/AMPK signaling, incretin therapies and muscle outcomes.",
+      "where": "Skeletal muscle, liver and systemic metabolic regulation.",
+      "when": "Acute signaling versus adaptation over months; longevity remains a separate endpoint.",
+      "why": "An intervention can improve one endpoint while impairing another.",
+      "how": "Compare randomized body-composition and training studies, lean mass, strength and physical function; retain null and adverse outcomes.",
+      "falsifier": "Improved metabolic markers paired with loss of strength, lean tissue or training responsiveness.",
+      "desired_changes": "Separate desired metabolic effects from muscle-growth suppression; no single anti-aging score."
+    },
+    {
+      "id": "cognition",
+      "title": "Metabolic aging & brain health",
+      "area": "Brain aging",
+      "query": "metabolic aging cognitive decline GLP-1 randomized",
+      "question": "Do metabolic interventions preserve cognitive function with age, and is the proposed mechanism tested?",
+      "who": "People with diabetes or obesity, neurodegenerative disease models, and healthy adults are separate populations.",
+      "what": "Metabolic, vascular and inflammatory interventions with objective cognitive and disease endpoints.",
+      "where": "Brain exposure, peripheral metabolism and inflammatory signaling.",
+      "when": "Transient subjective effects versus durable cognitive performance or disease incidence.",
+      "why": "Reduced glucose variability is a mechanism hypothesis, not proof of cognitive enhancement.",
+      "how": "Retrieve trials and observational studies; separate test performance from dementia diagnosis; collect anecdotes with cointerventions and identity uncertainty.",
+      "falsifier": "Association disappears after confounder control, or no functional benefit despite biomarker change.",
+      "desired_changes": "Investigate exposure and selectivity hypotheses; descriptors alone cannot predict brain penetration."
+    },
+    {
+      "id": "senescence",
+      "title": "Senescence & immune clearance",
+      "area": "Cell therapies",
+      "query": "senolytic CAR T uPAR aging",
+      "question": "Can harmful senescent cells be cleared while preserving beneficial senescence and tissue repair?",
+      "who": "Aged and disease-model animals first; human evidence must be identified independently.",
+      "what": "uPAR-directed CAR-T, senolytic small molecules and senomorphic approaches.",
+      "where": "Target antigen distribution across tissues and cell states.",
+      "when": "Durability, recurrence of senescence and long-term immune consequences.",
+      "why": "A shared marker may be present on cells that should be preserved.",
+      "how": "Map primary studies, target-expression datasets and functional endpoints; inspect selectivity and adverse observations.",
+      "falsifier": "Off-target cell loss, impaired repair, or senescence-marker reduction without functional benefit.",
+      "desired_changes": "Improve tissue and cell-state specificity as a research objective; no engineered-cell construction protocol."
+    },
+    {
+      "id": "reprogramming",
+      "title": "Somatic mutations & genome repair",
+      "area": "Genome integrity",
+      "query": "somatic mutation aging tissues base editing functional repair",
+      "question": "Which age-acquired DNA changes impair tissue function, and what fraction of affected cells would need correction to recover it?",
+      "who": "Compare normal human tissues, disease models and edited patients by age and cell type.",
+      "what": "Somatic single-base variants, indels, clone behavior, base-editing evidence and epigenetic state as a parallel variable.",
+      "where": "Map mutation classes and clonal burden by tissue and cell type; mitochondrial DNA is a separate target.",
+      "when": "Distinguish prevention of new mutations, correction of existing ones and long-term clonal selection.",
+      "why": "Epigenetic reprogramming changes cell state but does not itself rewrite a mutated DNA base.",
+      "how": "Connect single-cell mutation maps to measured cell phenotypes; compare target coverage, delivery fraction, editing fraction and functional rescue across primary studies.",
+      "falsifier": "Sequence correction without functional rescue, or selection and off-target changes that worsen tissue outcomes.",
+      "desired_changes": "Prioritize causal lesions and tissue function while tracking genome and epigenome independently."
+    },
+    {
+      "id": "organs",
+      "title": "Replacement organs & integration",
+      "area": "Tissue engineering",
+      "query": "bioprinted kidney liver vascularization functional transplantation",
+      "question": "What prevents printed or grown tissue from replacing a full-size functional organ?",
+      "who": "Organoids, engineered constructs, animal transplantation and human recipients are distinct stages.",
+      "what": "Bioprinting, vascularization, maturation, immune compatibility and transplant integration.",
+      "where": "Perfusion, collecting systems, nerves and interfaces with host tissue.",
+      "when": "Viability in culture versus months of stable integrated organ function.",
+      "why": "Correct geometry and cell survival do not establish complete organ function.",
+      "how": "Link primary datasets to the existing oxygen/perfusion tools; model transport with explicit measured or illustrative parameters.",
+      "falsifier": "Necrotic regions, incomplete maturation, thrombosis or failure of the organ-specific functional endpoint.",
+      "desired_changes": "Improve transport, architecture and integration independently; robotic transplantation remains a separate engineering program."
+    },
+    {
+      "id": "appearance",
+      "title": "Skin, hair & structural restoration",
+      "area": "Appearance",
+      "query": "scar regeneration skin appendages wound healing",
+      "question": "Can tissue be restored with normal architecture and appendages rather than only a changed visual appearance?",
+      "who": "Human clinical studies, animal wound models and engineered tissues remain separate.",
+      "what": "Scar remodeling, skin regeneration, hair follicles, dental structures and aesthetic restoration.",
+      "where": "Epidermis, dermis, extracellular matrix, appendages and supporting structures.",
+      "when": "Early closure versus mature scarring and long-term durability.",
+      "why": "Scarless appearance and complete biological restoration are different endpoints.",
+      "how": "Retrieve source-specific images, histology and functional measures; track applicability across injury types and ages.",
+      "falsifier": "Improved appearance with impaired barrier function, abnormal architecture or recurrence.",
+      "desired_changes": "Compare cosmetic, structural and functional outcomes independently."
+    },
+    {
+      "id": "exploratory",
+      "title": "Experimental compound leads",
+      "area": "Open exploration",
+      "query": "experimental geroprotector epitalon thymalin clinical trial",
+      "question": "Which informal claims can be turned into specific, falsifiable research hypotheses?",
+      "who": "Record species, population and whether a report is self-described.",
+      "what": "Epitalon, thymalin, SARMs and other user-selected experimental leads.",
+      "where": "Specify the proposed tissue and measurable endpoint for each claim.",
+      "when": "Immediate subjective effects versus persistent objective effects.",
+      "why": "Forum and vendor reports can reveal questions while containing selection, commercial and identity biases.",
+      "how": "Search literature, registries and public web leads; preserve source type, missing information, cointerventions and contradictory reports.",
+      "falsifier": "No objective signal, unverified compound identity, duplicated anecdotes or results limited to a different population.",
+      "desired_changes": "Explore structural neighbors and submitted modifications; retain rejected candidates and unknowns."
+    },
+    {
+      "id": "dental",
+      "title": "Teeth, gums & periodontal attachment",
+      "area": "Regenerative dentistry",
+      "query": "tooth regeneration periodontal ligament gingival stem cells functional comparator",
+      "question": "Which components of a bioidentical tooth and its supporting tissues have direct functional evidence, and what remains missing?",
+      "who": "Keep human trials, human-derived constructs in mice and embryonic mouse tooth-germ studies separate.",
+      "what": "Enamel, dentin, living pulp, cementum, periodontal ligament, alveolar bone and gingival barrier as distinct outcomes.",
+      "where": "Restore the tooth-root/ligament/bone interface and gingival seal; avoid conflating bone fill with attachment.",
+      "when": "Development, eruption, early healing, loading and long-term durability are separate intervals.",
+      "why": "A calcified deposit or improved radiograph does not establish a complete innervated, load-bearing replacement tooth.",
+      "how": "Compare primary sources, intended tissue identity, controlled functional outcomes, adverse healing and donor/site dependence. Retain inconclusive and negative comparisons.",
+      "falsifier": "Mineral deposition without native-like architecture, ankylosis instead of ligament attachment, loss under load, impaired gum barrier or no advantage over the declared comparator.",
+      "desired_changes": "Build a component-level roadmap toward bioidentical tooth and periodontal restoration without upgrading partial endpoints to whole-organ regeneration."
+    },
+    {
+      "id": "organoids",
+      "title": "Organoids & stem-cell construct function",
+      "area": "Organoid and stem-cell research",
+      "query": "organoid stem cell functional maturation oxygen profile independent donor validation",
+      "question": "Does a specified stem-cell construct reproduce a useful tissue function beyond morphology and marker expression?",
+      "who": "Declare species, donor, clone, culture and assay hierarchy; cultured human cells are not treated patients.",
+      "what": "Cell identity, maturation, transport, genome stability and tissue-specific function, measured independently.",
+      "where": "Local oxygen and nutrient transport, host interfaces and spatial organization.",
+      "when": "Formation, maturation, transplantation and persistence remain separate intervals.",
+      "why": "A reproducible image or marker panel does not establish useful organ function or transplant integration.",
+      "how": "Use source-qualified datasets, donor/culture-aware comparators and the independent organoid-oxygen-lab methods. Record model assumptions and measurement gaps.",
+      "falsifier": "Markers improve without function, construct selection explains the apparent effect, or transport/genome stability fails despite morphology.",
+      "desired_changes": "Connect qualified measurements to reproducible analyses while retaining organ-specific function and genome integrity as separate outcomes."
+    }
   ],
   "findings": [
-    {"blueprint_id":"ectogenesis","priority":10,"title":"Fetal lambs received weeks of partial extrauterine support","claim":"Partridge et al. reported support of already-developed fetal lambs for up to 28 days, with growth and organ maturation during the supported interval.","boundary":"Development began in pregnant ewes. This is partial support, not IVF-to-birth gestation or a demonstrated human benefit.","design":"Primary ovine fetal-support study","date":"2017-04-25","reviewed_on":"2026-10-06","url":"https://doi.org/10.1038/ncomms15112"},
-    {"blueprint_id":"ectogenesis","priority":20,"title":"Mouse embryo culture covered an early post-implantation interval","claim":"Aguilera-Castrejon et al. cultured natural mouse post-implantation embryos from E5.5 to E11 for up to six days, spanning pre-gastrulation to advanced organogenesis.","boundary":"No complete gestation or live birth was demonstrated. This early interval cannot be joined to lamb support as evidence of a continuous system.","design":"Primary mouse embryo study","date":"2021-03-17","reviewed_on":"2026-10-06","url":"https://doi.org/10.1038/s41586-021-03416-3"},
-    {"blueprint_id":"ectogenesis","priority":30,"title":"Physiological maintenance coexisted with reduced growth","claim":"Usuda et al. reported partial support of premature ovine fetuses for up to 14 days, with largely maintained physiological variables but reduced somatic and organ growth compared with in-utero controls.","boundary":"Exchange or circulation stability does not by itself establish normal development. These are animal observations, not human predictions.","design":"Primary ovine fetal-support study","date":"2023","reviewed_on":"2026-10-06","url":"https://doi.org/10.3389/fphys.2023.1219185"},
-    {"blueprint_id":"ectogenesis","priority":40,"title":"FDA discussion concerned support for extreme prematurity","claim":"The 2023 FDA advisory discussion addressed devices intended to bridge extremely premature birth to later gestation, including animal-model limits and developmental follow-up.","boundary":"An official development discussion is not clinical trial evidence, regulatory approval, or a complete-gestation demonstration.","design":"Official regulator meeting summary","date":"2023-09-19","reviewed_on":"2026-10-06","url":"https://www.fda.gov/media/172441/download"},
-    {"blueprint_id":"ectogenesis","priority":50,"title":"BCNatal reported a 21-day animal milestone in 2026","claim":"Hospital Clinic's July 2026 fetaLife update reported 21 days of ovine support and follow-up of one sheep beyond one year; a first human study was described as planned for 2028-2029.","boundary":"This is an institutional announcement, not a human result or a newly assessed peer-reviewed dataset. Planned dates remain conditional; complete ectogenesis was not demonstrated.","design":"Official institutional update","date":"2026-07-03","reviewed_on":"2026-10-06","url":"https://www.clinicbarcelona.org/en/news/the-bcnatal-fetalife-project-for-the-most-extremely-premature-babies-achieves-a-survival-of-21-days-in-a-liquid-incubator"},
-    {"blueprint_id":"glycation","title":"Carnosine: a positive biomarker result","claim":"A randomized study in 54 adults with type 2 diabetes reported improvements in circulating carboxymethyl lysine and HbA1c over 12 weeks.","boundary":"No demonstrated reversal of established tissue crosslinks or human aging.","design":"Human randomized trial","date":"2018","url":"https://pubmed.ncbi.nlm.nih.gov/29420997/"},
-    {"blueprint_id":"glycation","title":"Carnosine: a null result in a different population","claim":"A randomized study in 36 autistic children found no significant change in measured plasma AGE or lipoxidation-precursor concentrations.","boundary":"Different population and study conditions; this is not a direct replication of the diabetes study.","design":"Human randomized trial","date":"2019","url":"https://pubmed.ncbi.nlm.nih.gov/30089410/"},
-    {"blueprint_id":"muscle","title":"Metformin can conflict with a muscle endpoint","claim":"The MASTERS trial in 94 adults aged 65 and older found smaller lean and thigh muscle mass gains during resistance training with metformin; strength differences were not significant.","boundary":"This does not establish the effect in younger healthy adults.","design":"Human randomized trial","date":"2019","url":"https://pubmed.ncbi.nlm.nih.gov/31557380/"},
-    {"blueprint_id":"muscle","title":"Tirzepatide: fat loss also included lean tissue","claim":"In the 160-participant SURMOUNT-1 DXA substudy, fat mass fell 33.9% and lean mass 10.9%; about one quarter of lost weight was lean mass.","boundary":"DXA lean tissue includes water and nonmuscle tissues. This is not evidence of muscle anabolism.","design":"Human trial substudy","date":"2025-02-25","url":"https://doi.org/10.1111/dom.16275"},
-    {"blueprint_id":"cognition","title":"A cognition lead, with causal uncertainty","claim":"A retrospective diabetes-cohort analysis reported a lower dementia hazard with tirzepatide than semaglutide: HR 0.69, 95% CI 0.48-0.99.","boundary":"Observational diagnosis data do not establish cognitive enhancement or mediation by glucose variability.","design":"Observational target-trial emulation","date":"2026","url":"https://pubmed.ncbi.nlm.nih.gov/41544899/"},
-    {"blueprint_id":"senescence","title":"Senolytic CAR-T has functional mouse evidence","claim":"uPAR-targeting CAR-T cells improved exercise capacity and glucose tolerance in aged or metabolically stressed mouse models.","boundary":"The study does not demonstrate human rejuvenation or universal target selectivity.","design":"Preclinical mouse study","date":"2024-01-24","url":"https://www.nature.com/articles/s43587-023-00560-5"},
-    {"blueprint_id":"reprogramming","title":"OSK: tissue-specific functional recovery","claim":"Mouse retinal studies reported axon regeneration and recovery of visual function with OSK expression in injury, glaucoma and aging models.","boundary":"Not whole-body reversal and not evidence that accumulated DNA-sequence mutations were repaired.","design":"Preclinical mouse study","date":"2020-12-02","url":"https://www.nature.com/articles/s41586-020-2975-4"},
-    {"blueprint_id":"reprogramming","title":"Transient reprogramming can also produce tumors","claim":"A separate in-vivo mouse reprogramming study produced tumors containing undifferentiated dysplastic cells.","boundary":"Different constructs and experimental conditions from targeted recovery studies; model identity matters.","design":"Preclinical mouse study","date":"2014-02-13","url":"https://pubmed.ncbi.nlm.nih.gov/24529372/"},
-    {"blueprint_id":"exploratory","title":"Epithalamin: a striking but narrow historical clinical signal","claim":"A randomized comparative follow-up of 39 older coronary patients given epithalamin and 40 controls reported lower cardiovascular aging measures and 28% fewer deaths after 12 years.","boundary":"Small, older, disease-specific study from one research program; the abstract does not give enough design detail to evaluate allocation, attrition or independent replication. Epithalamin extract evidence cannot automatically be assigned to synthetic Epitalon or vendor products.","design":"Human randomized comparative follow-up","date":"2006","url":"https://pubmed.ncbi.nlm.nih.gov/17426848/"},
-    {"blueprint_id":"exploratory","title":"Epitalon extends telomeres in cell models, including cancer lines","claim":"A 2025 study reported telomere extension and telomerase changes in normal epithelial and fibroblast lines, and telomere extension associated with ALT activity in two breast cancer cell lines.","boundary":"Cell-culture finding only; no whole-body aging outcome. The journal later corrected Figures 1-3 (PMID 41240216), so the corrected article and methods should be checked before interpreting magnitudes.","design":"In-vitro cell-line study","date":"2025","url":"https://pubmed.ncbi.nlm.nih.gov/40908429/"},
-    {"blueprint_id":"exploratory","title":"Thymalin and Epithalamin: historical mortality claims need design review","claim":"A 2003 report describes clinical observations of thymic and pineal peptide bioregulators in 266 older people and reports lower mortality across treatment groups over 6-8 years.","boundary":"The abstract does not describe randomization or enough methods to assess confounding and attrition; products were peptide bioregulators, not evidence for every modern synthetic or vendor-labeled peptide.","design":"Historical human clinical report","date":"2003","url":"https://pubmed.ncbi.nlm.nih.gov/14523363/"},
-    {"blueprint_id":"exploratory","title":"Enobosarm increased lean mass in a short phase II trial","claim":"A 12-week double-blind phase II trial in 120 healthy men over 60 and postmenopausal women reported dose-dependent lean-mass gains and an improvement in physical function for GTx-024 (enobosarm).","boundary":"One investigational molecule and a short trial in older adults; it does not establish effects in young bodybuilders or the long-term safety of enobosarm or other SARMs. The sponsor employed a study author.","design":"Human randomized phase II trial","date":"2011","url":"https://pubmed.ncbi.nlm.nih.gov/22031847/"},
-    {"blueprint_id":"exploratory","title":"FDA warning covers products marketed as SARMs","claim":"FDA states SARMs are not approved and describes reports of serious or life-threatening events, including liver injury and cardiovascular risks.","boundary":"Regulatory safety information is not a molecule-specific trial; online product identity and purity add uncertainty.","design":"FDA safety communication","date":"current guidance","url":"https://www.fda.gov/consumers/consumer-updates/fda-warns-use-selective-androgen-receptor-modulators-sarms-among-teens-young-adults"},
-    {"blueprint_id":"cognition","title":"Retatrutide has phase III diabetes results","claim":"In a 40-week randomized phase III trial of 537 adults with type 2 diabetes, retatrutide reduced HbA1c and mean bodyweight fell 11.5-15.3% across treatment groups, versus 2.6% with placebo.","boundary":"The population had type 2 diabetes and inadequate control with diet and exercise alone. The trial did not establish muscle anabolism, cognitive enhancement or slower aging.","design":"Human randomized phase III trial","date":"2026-06-13","url":"https://pubmed.ncbi.nlm.nih.gov/42250575/"},
-    {"blueprint_id":"reprogramming","priority":30,"title":"Base editing corrected the causal progeria mutation in mice","claim":"An adenine base editor corrected the LMNA mutation in patient-derived cells and HGPS mice; treatment at postnatal day 14 extended median lifespan in one mouse cohort from 215 to 510 days.","boundary":"This corrects one known, high-effect mutation in a rare accelerated-aging disease model. It does not demonstrate repair of the diverse somatic mutations accumulated in ordinary aging or human rejuvenation.","design":"Preclinical disease-model study","date":"2021-01-06","url":"https://pubmed.ncbi.nlm.nih.gov/33408413/"},
-    {"blueprint_id":"reprogramming","priority":40,"title":"Progeria bone editing showed a narrow timing window","claim":"A September 2026 HGPS mouse study reported partial bone rescue; mutation correction was about 22% after treatment at postnatal day 14, about 10% at one month and below 1% at four months.","boundary":"A monogenic progeria model and AAV9-delivered editor; the timing dependence highlights delivery and disease-stage limits for translation to ordinary aging.","design":"Preclinical mouse study","date":"2026-09-03","url":"https://pubmed.ncbi.nlm.nih.gov/42689491/"},
-    {"blueprint_id":"cognition","title":"NSI-189 phase II: a mixed cognitive signal","claim":"In a 220-participant randomized phase II trial in major depressive disorder, NSI-189 did not significantly improve the primary depression endpoint versus placebo. Some CogScreen secondary measures favored one treatment arm, while Cogstate measures did not show a corresponding signal.","boundary":"This was a depression-treatment study, not a trial of healthy-person cognitive enhancement; secondary test findings need prespecified replication.","design":"Human randomized phase II trial","date":"2019-01-09","url":"https://pubmed.ncbi.nlm.nih.gov/30626911/"},
-    {"blueprint_id":"organs","title":"A kidney scaffold maintained blood perfusion for seven days","claim":"In a small porcine study, re-endothelialized decellularized kidney grafts averaged 87.7%, 80.9% and 68.5% perfusion on days 0, 3 and 7, respectively; native-kidney controls averaged 98.4%. The differences were not statistically significant.","boundary":"This measured vascular patency, not filtration or replacement-kidney function. It does not establish durable graft integration or stable endothelial coverage.","design":"Preclinical porcine transplantation study","date":"2023-06-14","url":"https://pubmed.ncbi.nlm.nih.gov/37388767/"},
-    {"blueprint_id":"organs","title":"Human kidney cells enabled short-term filtration in a pig graft","claim":"Human endothelial cells and podocytes repopulated a decellularized porcine kidney scaffold. In heterotopic pig implants, grafts produced urine with filtration indices; the longest reported observation was five hours in one graft.","boundary":"Acute proof of concept with very small numbers. The constructs lacked tubular epithelial cells, so tubular reabsorption and full kidney function were not tested; the grafts did not replace the animals' native kidneys.","design":"Preclinical large-animal study","date":"2024-12-05","url":"https://pubmed.ncbi.nlm.nih.gov/39639166/"},
-    {"blueprint_id":"appearance","title":"Follicle transplantation remodeled some mature human scars","claim":"A small human pilot found epidermal and dermal remodeling after anagen hair-follicle transplantation in three people with mature scalp scars; a separate split-thickness skin-graft scar was also examined.","boundary":"Very small, localized, non-randomized pilot evidence. It does not establish scarless healing, complete scar removal, or restoration of youthful appearance or function across other scar types.","design":"Human pilot study","date":"2023-01-06","url":"https://www.nature.com/articles/s41536-022-00270-3"},
-    {"blueprint_id":"senescence","title":"uPAR CAR-T also has a distinct preclinical oncology signal","claim":"A 2026 study reported that uPAR-directed CAR-T cells attacked malignant and supportive stromal populations across preclinical solid-tumor models, with activity in humanized-mouse systems.","boundary":"This is preclinical oncology evidence, not a human treatment result and not evidence that broad uPAR targeting is safe for senescent-cell clearance in aging tissues.","design":"Preclinical oncology study","date":"2026-05-14","url":"https://pubmed.ncbi.nlm.nih.gov/41916312/"},
-    {"blueprint_id":"reprogramming","priority":10,"title":"Caloric restriction reduced mutation burden in some mouse tissues","claim":"Duplex sequencing of 36 mice at 19 months found about 29% fewer somatic substitutions in bulk liver, 15% fewer in kidney and 39% fewer in hepatocytes under caloric restriction; the neuron contrast was not significant.","boundary":"This measured mutation prevention or accumulation, not correction of existing variants. The two restricted-feeding schedules differed in reported lifespan but not detectably in substitution burden; mutation reduction alone does not explain longevity.","design":"Preclinical mouse sequencing study","date":"2026-09-09","url":"https://pubmed.ncbi.nlm.nih.gov/42716011/"},
-    {"blueprint_id":"reprogramming","priority":20,"title":"Age-related clones have different cellular phenotypes","claim":"Joint single-cell DNA and RNA profiling of phenotypically normal aged esophagus from six people linked NOTCH1-mutant clones to stunted epithelial differentiation and TP53-mutant clones to increased cycling and altered differentiation.","boundary":"Small, tissue-specific observational map. A mutation or expanding clone is not automatically a damage target; causal tissue-level benefit from editing these clones was not tested.","design":"Human observational single-cell study","date":"2026","url":"https://pubmed.ncbi.nlm.nih.gov/41481786/"},
-    {"blueprint_id":"reprogramming","priority":50,"title":"Clinical base correction: one monogenic case, short follow-up","claim":"A patient-specific lipid-nanoparticle base editor was given to an infant with CPS1 deficiency. Over seven weeks after initial treatment, more dietary protein was tolerated and nitrogen-scavenger medication was halved.","boundary":"One infant with a known inherited mutation, not age-acquired genome damage. No human tissue-editing fraction or long-term rejuvenation outcome was reported.","design":"Human single-patient experimental treatment","date":"2025-05-15","url":"https://pubmed.ncbi.nlm.nih.gov/40373211/"},
-    {"blueprint_id":"reprogramming","priority":60,"title":"Full reprogramming does not erase somatic sequence variants","claim":"Sequencing of human induced-pluripotent-stem-cell clones found substantial somatic variation, including pre-existing mutations and selection of cancer-associated variants during culture.","boundary":"Cultured full reprogramming is not the same as partial in-vivo epigenetic reprogramming. It illustrates why genome sequence and epigenetic state need separate measurements.","design":"Human cell-line genomic study","date":"2022","url":"https://pubmed.ncbi.nlm.nih.gov/35953586/"},
-    {"blueprint_id":"tissues","title":"Mature engineered cartilage improved a two-year knee outcome","claim":"In a randomized phase II trial of focal knee defects, mature nasal-chondrocyte engineered cartilage produced a median KOOS of 85 versus 79 for a less-mature cell-activated matrix at 24 months; the adjusted difference was 7.27 points.","boundary":"An open-label active-comparator trial for focal defects, not reversal of diffuse osteoarthritis or whole-body aging. The patient-reported score does not alone establish lifelong graft durability.","design":"Human randomized phase II trial","date":"2025-03-05","url":"https://pubmed.ncbi.nlm.nih.gov/40043142/"},
-    {"blueprint_id":"tissues","title":"Engineered skin improved scar quality but closed more slowly","claim":"In a 23-person intra-patient randomized phase II trial, bio-engineered autologous skin had a better observer scar score at three months (23.4 versus 27.9) and greater coverage per donor area (8.5 versus 0.9) than split-thickness grafts.","boundary":"Median wound closure took 60.5 versus 22 days, and early graft take was 69.8% versus 85.0%. This is reconstruction of defects, not scar-free or age-reversed skin.","design":"Human randomized intra-patient phase II trial","date":"2026","url":"https://pubmed.ncbi.nlm.nih.gov/41890789/"},
-    {"blueprint_id":"tissues","title":"Corrected progeria cells restored functions in engineered vessels","claim":"Base-edited patient-derived vascular cells yielded perfused tissue-engineered vessels with restored vasodilation and smooth-muscle density; constructs starting with at least 50% edited smooth-muscle cells improved several markers.","boundary":"An in-vitro human tissue model of one monogenic accelerated-aging disorder. It does not show transplantation, correction of normal age-acquired mutations or clinical vascular rejuvenation.","design":"Human cell-derived engineered-tissue study","date":"2025","url":"https://pubmed.ncbi.nlm.nih.gov/40027545/"},
-    {"blueprint_id":"nanomedicine","title":"Lung-targeted nanoparticles delivered base correction to stem cells","claim":"Intravenous lipid nanoparticles corrected a CFTR mutation in about 50% of isolated lung basal stem cells in a mouse model and restored chloride function in patient-derived airway cells in vitro.","boundary":"The whole-lung editing fraction was much lower than the isolated stem-cell fraction. The long 660-day persistence result used a separate reporter model, not demonstrated long-term rescue of mutant CFTR or aging damage.","design":"Preclinical mouse and patient-cell study","date":"2024-06-13","url":"https://pubmed.ncbi.nlm.nih.gov/38870301/"},
-    {"blueprint_id":"nanomedicine","title":"A nanosenolytic improved short-term function in aged mice","claim":"An experimental nanoparticle senolytic lowered senescence-associated signals in liver, lung and kidney and improved treadmill and grip measures in 18-month-old mice over an eight-week experiment.","boundary":"Physical-function groups were small (n=5). Carrier biodistribution signal is not proof of selective intracellular action, and no human or lifespan benefit was shown.","design":"Preclinical aged-mouse study","date":"2025-12","url":"https://www.nature.com/articles/s41467-025-67364-6"},
-    {"blueprint_id":"nanomedicine","title":"Targeted vesicles carried senolytics to aged adipose tissue","claim":"Peptide-functionalized extracellular vesicles carrying dasatinib and quercetin reduced adipose inflammatory signals and produced modest physical-performance improvements in naturally aged mice.","boundary":"Small, short animal study; vesicle localization does not itself establish cargo release or target-cell selectivity. No maximal-speed improvement, human outcome or longevity result was shown.","design":"Preclinical aged-mouse study","date":"2026","url":"https://pubmed.ncbi.nlm.nih.gov/42231423/"},
-    {"blueprint_id":"tissues","title":"Bioengineered retinal implant reached older patients","claim":"A phase I/IIa study implanted a stem-cell-derived retinal-pigment-epithelium monolayer on a scaffold in 15 older adults with advanced geographic atrophy; four treated eyes gained more than five visual-acuity letters at one year.","boundary":"Single-arm safety study with a non-significant fellow-eye comparison, not demonstrated efficacy. Serious ocular events occurred in early recipients; tissue implantation did not restore normal vision.","design":"Human phase I/IIa safety study","date":"2021","url":"https://pubmed.ncbi.nlm.nih.gov/34613357/"},
-    {"blueprint_id":"nanomedicine","title":"Brain-endothelial nanosenolytic changed barrier markers in aged rats","claim":"In naturally aged rats, a navitoclax-loaded senescence-responsive nanoparticle reduced brain-endothelial senescence markers and blood-brain-barrier leakage and improved an exploratory-behavior measure versus vehicle.","boundary":"Small animal groups, a behavioral surrogate rather than proven cognitive recovery, and unresolved local-versus-systemic mechanism. Lower administered payload across different routes does not establish a 250-fold safety gain; no lifespan or human outcome was measured.","design":"Preclinical naturally aged-rat study","date":"2026-09","url":"https://pubmed.ncbi.nlm.nih.gov/42442544/"}
+    {
+      "blueprint_id": "ectogenesis",
+      "priority": 10,
+      "title": "Fetal lambs received weeks of partial extrauterine support",
+      "claim": "Partridge et al. reported support of already-developed fetal lambs for up to 28 days, with growth and organ maturation during the supported interval.",
+      "boundary": "Development began in pregnant ewes. This is partial support, not IVF-to-birth gestation or a demonstrated human benefit.",
+      "design": "Primary ovine fetal-support study",
+      "date": "2017-04-25",
+      "reviewed_on": "2026-10-06",
+      "url": "https://doi.org/10.1038/ncomms15112"
+    },
+    {
+      "blueprint_id": "ectogenesis",
+      "priority": 20,
+      "title": "Mouse embryo culture covered an early post-implantation interval",
+      "claim": "Aguilera-Castrejon et al. cultured natural mouse post-implantation embryos from E5.5 to E11 for up to six days, spanning pre-gastrulation to advanced organogenesis.",
+      "boundary": "No complete gestation or live birth was demonstrated. This early interval cannot be joined to lamb support as evidence of a continuous system.",
+      "design": "Primary mouse embryo study",
+      "date": "2021-03-17",
+      "reviewed_on": "2026-10-06",
+      "url": "https://doi.org/10.1038/s41586-021-03416-3"
+    },
+    {
+      "blueprint_id": "ectogenesis",
+      "priority": 30,
+      "title": "Physiological maintenance coexisted with reduced growth",
+      "claim": "Usuda et al. reported partial support of premature ovine fetuses for up to 14 days, with largely maintained physiological variables but reduced somatic and organ growth compared with in-utero controls.",
+      "boundary": "Exchange or circulation stability does not by itself establish normal development. These are animal observations, not human predictions.",
+      "design": "Primary ovine fetal-support study",
+      "date": "2023",
+      "reviewed_on": "2026-10-06",
+      "url": "https://doi.org/10.3389/fphys.2023.1219185"
+    },
+    {
+      "blueprint_id": "ectogenesis",
+      "priority": 40,
+      "title": "FDA discussion concerned support for extreme prematurity",
+      "claim": "The 2023 FDA advisory discussion addressed devices intended to bridge extremely premature birth to later gestation, including animal-model limits and developmental follow-up.",
+      "boundary": "An official development discussion is not clinical trial evidence, regulatory approval, or a complete-gestation demonstration.",
+      "design": "Official regulator meeting summary",
+      "date": "2023-09-19",
+      "reviewed_on": "2026-10-06",
+      "url": "https://www.fda.gov/media/172441/download"
+    },
+    {
+      "blueprint_id": "ectogenesis",
+      "priority": 50,
+      "title": "BCNatal reported a 21-day animal milestone in 2026",
+      "claim": "Hospital Clinic's July 2026 fetaLife update reported 21 days of ovine support and follow-up of one sheep beyond one year; a first human study was described as planned for 2028-2029.",
+      "boundary": "This is an institutional announcement, not a human result or a newly assessed peer-reviewed dataset. Planned dates remain conditional; complete ectogenesis was not demonstrated.",
+      "design": "Official institutional update",
+      "date": "2026-07-03",
+      "reviewed_on": "2026-10-06",
+      "url": "https://www.clinicbarcelona.org/en/news/the-bcnatal-fetalife-project-for-the-most-extremely-premature-babies-achieves-a-survival-of-21-days-in-a-liquid-incubator"
+    },
+    {
+      "blueprint_id": "glycation",
+      "title": "Carnosine: a positive biomarker result",
+      "claim": "A randomized study in 54 adults with type 2 diabetes reported improvements in circulating carboxymethyl lysine and HbA1c over 12 weeks.",
+      "boundary": "No demonstrated reversal of established tissue crosslinks or human aging.",
+      "design": "Human randomized trial",
+      "date": "2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29420997/"
+    },
+    {
+      "blueprint_id": "glycation",
+      "title": "Carnosine: a null result in a different population",
+      "claim": "A randomized study in 36 autistic children found no significant change in measured plasma AGE or lipoxidation-precursor concentrations.",
+      "boundary": "Different population and study conditions; this is not a direct replication of the diabetes study.",
+      "design": "Human randomized trial",
+      "date": "2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30089410/"
+    },
+    {
+      "blueprint_id": "muscle",
+      "title": "Metformin can conflict with a muscle endpoint",
+      "claim": "The MASTERS trial in 94 adults aged 65 and older found smaller lean and thigh muscle mass gains during resistance training with metformin; strength differences were not significant.",
+      "boundary": "This does not establish the effect in younger healthy adults.",
+      "design": "Human randomized trial",
+      "date": "2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31557380/"
+    },
+    {
+      "blueprint_id": "muscle",
+      "title": "Tirzepatide: fat loss also included lean tissue",
+      "claim": "In the 160-participant SURMOUNT-1 DXA substudy, fat mass fell 33.9% and lean mass 10.9%; about one quarter of lost weight was lean mass.",
+      "boundary": "DXA lean tissue includes water and nonmuscle tissues. This is not evidence of muscle anabolism.",
+      "design": "Human trial substudy",
+      "date": "2025-02-25",
+      "url": "https://doi.org/10.1111/dom.16275"
+    },
+    {
+      "blueprint_id": "cognition",
+      "title": "A cognition lead, with causal uncertainty",
+      "claim": "A retrospective diabetes-cohort analysis reported a lower dementia hazard with tirzepatide than semaglutide: HR 0.69, 95% CI 0.48-0.99.",
+      "boundary": "Observational diagnosis data do not establish cognitive enhancement or mediation by glucose variability.",
+      "design": "Observational target-trial emulation",
+      "date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41544899/"
+    },
+    {
+      "blueprint_id": "senescence",
+      "title": "Senolytic CAR-T has functional mouse evidence",
+      "claim": "uPAR-targeting CAR-T cells improved exercise capacity and glucose tolerance in aged or metabolically stressed mouse models.",
+      "boundary": "The study does not demonstrate human rejuvenation or universal target selectivity.",
+      "design": "Preclinical mouse study",
+      "date": "2024-01-24",
+      "url": "https://www.nature.com/articles/s43587-023-00560-5"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "title": "OSK: tissue-specific functional recovery",
+      "claim": "Mouse retinal studies reported axon regeneration and recovery of visual function with OSK expression in injury, glaucoma and aging models.",
+      "boundary": "Not whole-body reversal and not evidence that accumulated DNA-sequence mutations were repaired.",
+      "design": "Preclinical mouse study",
+      "date": "2020-12-02",
+      "url": "https://www.nature.com/articles/s41586-020-2975-4"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "title": "Transient reprogramming can also produce tumors",
+      "claim": "A separate in-vivo mouse reprogramming study produced tumors containing undifferentiated dysplastic cells.",
+      "boundary": "Different constructs and experimental conditions from targeted recovery studies; model identity matters.",
+      "design": "Preclinical mouse study",
+      "date": "2014-02-13",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24529372/"
+    },
+    {
+      "blueprint_id": "exploratory",
+      "title": "Epithalamin: a striking but narrow historical clinical signal",
+      "claim": "A randomized comparative follow-up of 39 older coronary patients given epithalamin and 40 controls reported lower cardiovascular aging measures and 28% fewer deaths after 12 years.",
+      "boundary": "Small, older, disease-specific study from one research program; the abstract does not give enough design detail to evaluate allocation, attrition or independent replication. Epithalamin extract evidence cannot automatically be assigned to synthetic Epitalon or vendor products.",
+      "design": "Human randomized comparative follow-up",
+      "date": "2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17426848/"
+    },
+    {
+      "blueprint_id": "exploratory",
+      "title": "Epitalon extends telomeres in cell models, including cancer lines",
+      "claim": "A 2025 study reported telomere extension and telomerase changes in normal epithelial and fibroblast lines, and telomere extension associated with ALT activity in two breast cancer cell lines.",
+      "boundary": "Cell-culture finding only; no whole-body aging outcome. The journal later corrected Figures 1-3 (PMID 41240216), so the corrected article and methods should be checked before interpreting magnitudes.",
+      "design": "In-vitro cell-line study",
+      "date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40908429/"
+    },
+    {
+      "blueprint_id": "exploratory",
+      "title": "Thymalin and Epithalamin: historical mortality claims need design review",
+      "claim": "A 2003 report describes clinical observations of thymic and pineal peptide bioregulators in 266 older people and reports lower mortality across treatment groups over 6-8 years.",
+      "boundary": "The abstract does not describe randomization or enough methods to assess confounding and attrition; products were peptide bioregulators, not evidence for every modern synthetic or vendor-labeled peptide.",
+      "design": "Historical human clinical report",
+      "date": "2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14523363/"
+    },
+    {
+      "blueprint_id": "exploratory",
+      "title": "Enobosarm increased lean mass in a short phase II trial",
+      "claim": "A 12-week double-blind phase II trial in 120 healthy men over 60 and postmenopausal women reported dose-dependent lean-mass gains and an improvement in physical function for GTx-024 (enobosarm).",
+      "boundary": "One investigational molecule and a short trial in older adults; it does not establish effects in young bodybuilders or the long-term safety of enobosarm or other SARMs. The sponsor employed a study author.",
+      "design": "Human randomized phase II trial",
+      "date": "2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22031847/"
+    },
+    {
+      "blueprint_id": "exploratory",
+      "title": "FDA warning covers products marketed as SARMs",
+      "claim": "FDA states SARMs are not approved and describes reports of serious or life-threatening events, including liver injury and cardiovascular risks.",
+      "boundary": "Regulatory safety information is not a molecule-specific trial; online product identity and purity add uncertainty.",
+      "design": "FDA safety communication",
+      "date": "current guidance",
+      "url": "https://www.fda.gov/consumers/consumer-updates/fda-warns-use-selective-androgen-receptor-modulators-sarms-among-teens-young-adults"
+    },
+    {
+      "blueprint_id": "cognition",
+      "title": "Retatrutide has phase III diabetes results",
+      "claim": "In a 40-week randomized phase III trial of 537 adults with type 2 diabetes, retatrutide reduced HbA1c and mean bodyweight fell 11.5-15.3% across treatment groups, versus 2.6% with placebo.",
+      "boundary": "The population had type 2 diabetes and inadequate control with diet and exercise alone. The trial did not establish muscle anabolism, cognitive enhancement or slower aging.",
+      "design": "Human randomized phase III trial",
+      "date": "2026-06-13",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42250575/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 30,
+      "title": "Base editing corrected the causal progeria mutation in mice",
+      "claim": "An adenine base editor corrected the LMNA mutation in patient-derived cells and HGPS mice; treatment at postnatal day 14 extended median lifespan in one mouse cohort from 215 to 510 days.",
+      "boundary": "This corrects one known, high-effect mutation in a rare accelerated-aging disease model. It does not demonstrate repair of the diverse somatic mutations accumulated in ordinary aging or human rejuvenation.",
+      "design": "Preclinical disease-model study",
+      "date": "2021-01-06",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33408413/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 40,
+      "title": "Progeria bone editing showed a narrow timing window",
+      "claim": "A September 2026 HGPS mouse study reported partial bone rescue; mutation correction was about 22% after treatment at postnatal day 14, about 10% at one month and below 1% at four months.",
+      "boundary": "A monogenic progeria model and AAV9-delivered editor; the timing dependence highlights delivery and disease-stage limits for translation to ordinary aging.",
+      "design": "Preclinical mouse study",
+      "date": "2026-09-03",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42689491/"
+    },
+    {
+      "blueprint_id": "cognition",
+      "title": "NSI-189 phase II: a mixed cognitive signal",
+      "claim": "In a 220-participant randomized phase II trial in major depressive disorder, NSI-189 did not significantly improve the primary depression endpoint versus placebo. Some CogScreen secondary measures favored one treatment arm, while Cogstate measures did not show a corresponding signal.",
+      "boundary": "This was a depression-treatment study, not a trial of healthy-person cognitive enhancement; secondary test findings need prespecified replication.",
+      "design": "Human randomized phase II trial",
+      "date": "2019-01-09",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30626911/"
+    },
+    {
+      "blueprint_id": "organs",
+      "title": "A kidney scaffold maintained blood perfusion for seven days",
+      "claim": "In a small porcine study, re-endothelialized decellularized kidney grafts averaged 87.7%, 80.9% and 68.5% perfusion on days 0, 3 and 7, respectively; native-kidney controls averaged 98.4%. The differences were not statistically significant.",
+      "boundary": "This measured vascular patency, not filtration or replacement-kidney function. It does not establish durable graft integration or stable endothelial coverage.",
+      "design": "Preclinical porcine transplantation study",
+      "date": "2023-06-14",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37388767/"
+    },
+    {
+      "blueprint_id": "organs",
+      "title": "Human kidney cells enabled short-term filtration in a pig graft",
+      "claim": "Human endothelial cells and podocytes repopulated a decellularized porcine kidney scaffold. In heterotopic pig implants, grafts produced urine with filtration indices; the longest reported observation was five hours in one graft.",
+      "boundary": "Acute proof of concept with very small numbers. The constructs lacked tubular epithelial cells, so tubular reabsorption and full kidney function were not tested; the grafts did not replace the animals' native kidneys.",
+      "design": "Preclinical large-animal study",
+      "date": "2024-12-05",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39639166/"
+    },
+    {
+      "blueprint_id": "appearance",
+      "title": "Follicle transplantation remodeled some mature human scars",
+      "claim": "A small human pilot found epidermal and dermal remodeling after anagen hair-follicle transplantation in three people with mature scalp scars; a separate split-thickness skin-graft scar was also examined.",
+      "boundary": "Very small, localized, non-randomized pilot evidence. It does not establish scarless healing, complete scar removal, or restoration of youthful appearance or function across other scar types.",
+      "design": "Human pilot study",
+      "date": "2023-01-06",
+      "url": "https://www.nature.com/articles/s41536-022-00270-3"
+    },
+    {
+      "blueprint_id": "senescence",
+      "title": "uPAR CAR-T also has a distinct preclinical oncology signal",
+      "claim": "A 2026 study reported that uPAR-directed CAR-T cells attacked malignant and supportive stromal populations across preclinical solid-tumor models, with activity in humanized-mouse systems.",
+      "boundary": "This is preclinical oncology evidence, not a human treatment result and not evidence that broad uPAR targeting is safe for senescent-cell clearance in aging tissues.",
+      "design": "Preclinical oncology study",
+      "date": "2026-05-14",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41916312/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 10,
+      "title": "Caloric restriction reduced mutation burden in some mouse tissues",
+      "claim": "Duplex sequencing of 36 mice at 19 months found about 29% fewer somatic substitutions in bulk liver, 15% fewer in kidney and 39% fewer in hepatocytes under caloric restriction; the neuron contrast was not significant.",
+      "boundary": "This measured mutation prevention or accumulation, not correction of existing variants. The two restricted-feeding schedules differed in reported lifespan but not detectably in substitution burden; mutation reduction alone does not explain longevity.",
+      "design": "Preclinical mouse sequencing study",
+      "date": "2026-09-09",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716011/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 20,
+      "title": "Age-related clones have different cellular phenotypes",
+      "claim": "Joint single-cell DNA and RNA profiling of phenotypically normal aged esophagus from six people linked NOTCH1-mutant clones to stunted epithelial differentiation and TP53-mutant clones to increased cycling and altered differentiation.",
+      "boundary": "Small, tissue-specific observational map. A mutation or expanding clone is not automatically a damage target; causal tissue-level benefit from editing these clones was not tested.",
+      "design": "Human observational single-cell study",
+      "date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41481786/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 50,
+      "title": "Clinical base correction: one monogenic case, short follow-up",
+      "claim": "A patient-specific lipid-nanoparticle base editor was given to an infant with CPS1 deficiency. Over seven weeks after initial treatment, more dietary protein was tolerated and nitrogen-scavenger medication was halved.",
+      "boundary": "One infant with a known inherited mutation, not age-acquired genome damage. No human tissue-editing fraction or long-term rejuvenation outcome was reported.",
+      "design": "Human single-patient experimental treatment",
+      "date": "2025-05-15",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40373211/"
+    },
+    {
+      "blueprint_id": "reprogramming",
+      "priority": 60,
+      "title": "Full reprogramming does not erase somatic sequence variants",
+      "claim": "Sequencing of human induced-pluripotent-stem-cell clones found substantial somatic variation, including pre-existing mutations and selection of cancer-associated variants during culture.",
+      "boundary": "Cultured full reprogramming is not the same as partial in-vivo epigenetic reprogramming. It illustrates why genome sequence and epigenetic state need separate measurements.",
+      "design": "Human cell-line genomic study",
+      "date": "2022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35953586/"
+    },
+    {
+      "blueprint_id": "tissues",
+      "title": "Mature engineered cartilage improved a two-year knee outcome",
+      "claim": "In a randomized phase II trial of focal knee defects, mature nasal-chondrocyte engineered cartilage produced a median KOOS of 85 versus 79 for a less-mature cell-activated matrix at 24 months; the adjusted difference was 7.27 points.",
+      "boundary": "An open-label active-comparator trial for focal defects, not reversal of diffuse osteoarthritis or whole-body aging. The patient-reported score does not alone establish lifelong graft durability.",
+      "design": "Human randomized phase II trial",
+      "date": "2025-03-05",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40043142/"
+    },
+    {
+      "blueprint_id": "tissues",
+      "title": "Engineered skin improved scar quality but closed more slowly",
+      "claim": "In a 23-person intra-patient randomized phase II trial, bio-engineered autologous skin had a better observer scar score at three months (23.4 versus 27.9) and greater coverage per donor area (8.5 versus 0.9) than split-thickness grafts.",
+      "boundary": "Median wound closure took 60.5 versus 22 days, and early graft take was 69.8% versus 85.0%. This is reconstruction of defects, not scar-free or age-reversed skin.",
+      "design": "Human randomized intra-patient phase II trial",
+      "date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41890789/"
+    },
+    {
+      "blueprint_id": "tissues",
+      "title": "Corrected progeria cells restored functions in engineered vessels",
+      "claim": "Base-edited patient-derived vascular cells yielded perfused tissue-engineered vessels with restored vasodilation and smooth-muscle density; constructs starting with at least 50% edited smooth-muscle cells improved several markers.",
+      "boundary": "An in-vitro human tissue model of one monogenic accelerated-aging disorder. It does not show transplantation, correction of normal age-acquired mutations or clinical vascular rejuvenation.",
+      "design": "Human cell-derived engineered-tissue study",
+      "date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40027545/"
+    },
+    {
+      "blueprint_id": "nanomedicine",
+      "title": "Lung-targeted nanoparticles delivered base correction to stem cells",
+      "claim": "Intravenous lipid nanoparticles corrected a CFTR mutation in about 50% of isolated lung basal stem cells in a mouse model and restored chloride function in patient-derived airway cells in vitro.",
+      "boundary": "The whole-lung editing fraction was much lower than the isolated stem-cell fraction. The long 660-day persistence result used a separate reporter model, not demonstrated long-term rescue of mutant CFTR or aging damage.",
+      "design": "Preclinical mouse and patient-cell study",
+      "date": "2024-06-13",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38870301/"
+    },
+    {
+      "blueprint_id": "nanomedicine",
+      "title": "A nanosenolytic improved short-term function in aged mice",
+      "claim": "An experimental nanoparticle senolytic lowered senescence-associated signals in liver, lung and kidney and improved treadmill and grip measures in 18-month-old mice over an eight-week experiment.",
+      "boundary": "Physical-function groups were small (n=5). Carrier biodistribution signal is not proof of selective intracellular action, and no human or lifespan benefit was shown.",
+      "design": "Preclinical aged-mouse study",
+      "date": "2025-12",
+      "url": "https://www.nature.com/articles/s41467-025-67364-6"
+    },
+    {
+      "blueprint_id": "nanomedicine",
+      "title": "Targeted vesicles carried senolytics to aged adipose tissue",
+      "claim": "Peptide-functionalized extracellular vesicles carrying dasatinib and quercetin reduced adipose inflammatory signals and produced modest physical-performance improvements in naturally aged mice.",
+      "boundary": "Small, short animal study; vesicle localization does not itself establish cargo release or target-cell selectivity. No maximal-speed improvement, human outcome or longevity result was shown.",
+      "design": "Preclinical aged-mouse study",
+      "date": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42231423/"
+    },
+    {
+      "blueprint_id": "tissues",
+      "title": "Bioengineered retinal implant reached older patients",
+      "claim": "A phase I/IIa study implanted a stem-cell-derived retinal-pigment-epithelium monolayer on a scaffold in 15 older adults with advanced geographic atrophy; four treated eyes gained more than five visual-acuity letters at one year.",
+      "boundary": "Single-arm safety study with a non-significant fellow-eye comparison, not demonstrated efficacy. Serious ocular events occurred in early recipients; tissue implantation did not restore normal vision.",
+      "design": "Human phase I/IIa safety study",
+      "date": "2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34613357/"
+    },
+    {
+      "blueprint_id": "nanomedicine",
+      "title": "Brain-endothelial nanosenolytic changed barrier markers in aged rats",
+      "claim": "In naturally aged rats, a navitoclax-loaded senescence-responsive nanoparticle reduced brain-endothelial senescence markers and blood-brain-barrier leakage and improved an exploratory-behavior measure versus vehicle.",
+      "boundary": "Small animal groups, a behavioral surrogate rather than proven cognitive recovery, and unresolved local-versus-systemic mechanism. Lower administered payload across different routes does not establish a 250-fold safety gain; no lifespan or human outcome was measured.",
+      "design": "Preclinical naturally aged-rat study",
+      "date": "2026-09",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42442544/"
+    },
+    {
+      "blueprint_id": "dental",
+      "priority": 10,
+      "title": "Human ameloblast organoids produced an enamel component",
+      "claim": "The 2026 source reports enamel-like calcified material after human-derived ameloblast organoids were grafted under a mouse kidney capsule.",
+      "boundary": "This is component-level evidence, not an erupted human tooth or a functioning periodontal unit.",
+      "design": "Human iPSC organoid / mouse graft; publisher text accessed",
+      "url": "https://www.nature.com/articles/s41368-026-00429-4",
+      "date": "2026-03-02",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "dental",
+      "priority": 20,
+      "title": "Bone-height advantage did not establish added attachment gain",
+      "claim": "The 2026 ASC/PRP trial abstract reports greater bone height than EMD but no significant between-group clinical attachment-gain difference.",
+      "boundary": "Fifteen of 21 recruited patients completed the study. Attrition and endpoint-specific uncertainty need review; nonsignificance is not equivalence.",
+      "design": "Human open-label phase II; abstract reviewed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41624073/",
+      "date": "2026-01-16",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "dental",
+      "priority": 30,
+      "title": "A controlled PDLSC comparison retained a null between-group result",
+      "claim": "The 2016 trial reported bone-height improvement in both groups without a significant between-group difference.",
+      "boundary": "Within-group improvement cannot establish an added-cell effect or complete functional periodontal attachment.",
+      "design": "Human randomized trial; primary abstract reviewed",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/",
+      "date": "2016-02-19",
+      "reviewed_on": "2026-10-09"
+    },
+    {
+      "blueprint_id": "organoids",
+      "priority": 10,
+      "title": "Dental organoid data accessions are leads requiring qualification",
+      "claim": "The 2026 ameloblast paper reports GSE307437 and a reused dataset, GSE184749, in its data-availability statement.",
+      "boundary": "No files or biological-unit metadata from those accessions were downloaded or qualified in this release.",
+      "design": "Source dataset lead; no new expression analysis",
+      "url": "https://www.nature.com/articles/s41368-026-00429-4",
+      "date": "2026-03-02",
+      "reviewed_on": "2026-10-09"
+    }
   ]
 }

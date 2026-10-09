@@ -15,6 +15,13 @@ and direct gene-expression and compound-data analysis for aging and
 regeneration. See [Research philosophy and priorities](RESEARCH_PHILOSOPHY.md)
 for the owner's ambitions and approach to scrutinizing evidence and bias.
 
+The [dental-regeneration research track](studies/dental-regeneration-2026-10-09/README.md)
+adds desk areas for teeth/gums/periodontal attachment and organoid/stem-cell
+construct function. It records component-level evidence, conflicting clinical
+endpoints and six starter campaigns. The independent
+[base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
+repo audits genome-editing source scope and cell-count denominators.
+
 The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
 verification, reviewed organoid measurements, portable ResearchDesk dossiers
 and concrete empirical milestones across the companion methods repositories.
