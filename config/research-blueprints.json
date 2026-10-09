@@ -641,7 +641,7 @@
         "evidence_stage": "Retrieved public counts and computational descriptive comparison; tissue identity/function unqualified",
         "study_design": "Three source conditions with two labeled replicates each; genotype-by-treatment interaction is incomplete",
         "reference_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md.",
+        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md. Normalization diagnostics and per-library plots are in RNA_CONTEXT.md. Clone-to-library mapping remains unresolved after selected supplement review; major marker directions persist under two scalings.",
         "evidence": [
           {
             "axis_id": "identity",
@@ -677,6 +677,29 @@
             "status": "not assessed",
             "direction": "unclear",
             "notes": "Values are our descriptive calculation from source counts, not the paper's significance claims. Status refers to unqualified tissue identity. All eleven panel genes are retained in AMELOBLAST_EXPRESSION.md/ameloblast_expression_summary.json. ENAM is zero in both WT groups; low-count MMP20 changes strongly with pseudocount. No p values, batch adjustment or genotype-by-treatment interaction.",
+            "dataset_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a"
+          },
+          {
+            "axis_id": "identity",
+            "source_type": "dataset",
+            "source_title": "GSE307437: normalization-only library diagnostics",
+            "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+            "license": "Dataset reuse license unqualified in this intake",
+            "species": "Human-derived organoids",
+            "stage_track": "Computational total-count versus PyDESeq2 median-ratio normalization; no model tests",
+            "developmental_interval": "Source isAM organoid conditions; no adult tooth function assessed",
+            "model_system": "Six WTC-11 source-labeled libraries",
+            "comparator": "WT treated versus WT untreated; knockout treated versus WT treated",
+            "outcome": "Major panel directions and nearest source-labeled pairings persist under both normalizations",
+            "measure": "Gene-centered log2(normalized count+1) PCA on 20,907 positive-in-all-library genes",
+            "value": "PC1 variance: total-count 73.86%, median-ratio 72.83%; each library's nearest neighbour is its same-condition source-labeled pair",
+            "unit": "Descriptive library distances and explained variance",
+            "independent_unit": "Library; independent donor/clone/culture identities not established",
+            "sample_size": "Two source-labeled replicate libraries per condition; not six independent donors",
+            "follow_up": "Single source transcriptome comparison, not longitudinal tooth function",
+            "status": "not assessed",
+            "direction": "unclear",
+            "notes": "Source manuscript names KO-10 and KO-13 without library mapping here; culture/harvest metadata remain unresolved. Only size factors fitted: no dispersion, Wald or adjusted-p testing. Major marker directions persist but magnitudes change; sparse RNA versus protein assay discrepancies retained. See studies/dental-regeneration-2026-10-09/RNA_CONTEXT.md.",
             "dataset_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a"
           }
         ]
@@ -1275,10 +1298,10 @@
     {
       "blueprint_id": "organoids",
       "priority": 10,
-      "title": "Deposited dental RNA shows mixed, count-sensitive molecular responses",
-      "claim": "Descriptive CPM analysis of 41,129 gene rows in six GSE307437 libraries finds DLX3/SP6 shifts alongside sparse enamel-associated rows and pseudocount-sensitive effects.",
+      "title": "Dental RNA directions persist under two normalization methods",
+      "claim": "Total-count and median-ratio normalization retain major DLX3/SP6/SOX2 directions and within-condition nearest-library pairing; magnitude and sparse-marker discrepancies remain visible.",
       "boundary": "Unknown donor/clone/culture independence, composition-sensitive normalization and missing untreated KO prevent causal interaction or donor-heldout claims. Expression does not establish native enamel or tooth function.",
-      "design": "Source-aligned computational descriptive comparison; no significance testing",
+      "design": "Normalization-only source-library diagnostics; no dispersion model or formal differential testing",
       "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
       "date": "2026-10-09",
       "reviewed_on": "2026-10-09"

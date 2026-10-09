@@ -73,6 +73,13 @@ pseudocount sensitivity, incomplete factorial design and unknown biological
 independence. This supersedes the earlier unacquired-matrix statement for that
 one table; GSE184749 matrices and functional tooth outcomes remain unassessed.
 
+The next [RNA context and normalization follow-up](RNA_CONTEXT.md) reviews the
+actual primary manuscript and selected supplement pages, compares total-count
+and PyDESeq2 median-ratio size factors, and adds per-library PCA and panel plots.
+It retains unresolved clone-to-library/culture mapping and sparse RNA versus
+protein-assay discrepancies. Only normalization is fitted; no dispersion model
+or significance tests are run.
+
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
 sphere is a reduced model, not a validated dental-organoid geometry.

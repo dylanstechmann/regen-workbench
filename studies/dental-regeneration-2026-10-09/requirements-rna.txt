@@ -1,0 +1,3 @@
+# Optional isolated study runtime; not a workbench service dependency.
+pydeseq2==0.5.4
+matplotlib==3.11.2

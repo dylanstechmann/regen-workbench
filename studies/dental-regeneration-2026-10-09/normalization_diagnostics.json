@@ -1,0 +1,800 @@
+{
+  "origin": "retrieved_source_library_diagnostics",
+  "assisted_by": "AI",
+  "count_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a",
+  "metadata_sha256": "56ab6ebb65e367aec6507499c789d3dc5f346b8e03ae3aedca51ee0f8a281a51",
+  "implementation_sha256": "a32004a3991c60fda35ced12e58db6980334b61b03a367408837e63434d99d6b",
+  "versions": {
+    "pydeseq2": "0.5.4",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "matplotlib": "3.11.2"
+  },
+  "samples": [
+    "WT_isAM_1",
+    "WT_isAM_2",
+    "WT_C3DLL4_isAM_1",
+    "WT_C3DLL4_isAM_2",
+    "DLX3KO_C3DLL4_isAM_1",
+    "DLX3KO_C3DLL4_isAM_2"
+  ],
+  "groups": [
+    "WT_untreated",
+    "WT_untreated",
+    "WT_treated",
+    "WT_treated",
+    "KO_treated",
+    "KO_treated"
+  ],
+  "normalization_factor_scale": "Each factor vector has geometric mean 1; factors use all six libraries",
+  "total_count_factors": [
+    0.9010883090623437,
+    0.9579882955066354,
+    1.1216974295293842,
+    1.1153721616272871,
+    1.0288331530224526,
+    0.8999781507886261
+  ],
+  "median_ratio_factors": [
+    0.957852130049976,
+    1.0133324593659383,
+    0.9023149234560973,
+    0.8978912915700102,
+    1.2054019195293602,
+    1.0549595256039586
+  ],
+  "normalization_only": true,
+  "wald_tests_performed": false,
+  "dispersion_model_fitted": false,
+  "independent_biological_units_qualified": false,
+  "methods": {
+    "total_count": {
+      "panel": [
+        {
+          "gene": "AMELX",
+          "library_normalized_counts": [
+            5.548845712139923,
+            2.087708179088235,
+            0.0,
+            0.0,
+            0.0,
+            2.2222761722020197
+          ],
+          "group_means": [
+            3.818276945614079,
+            0.0,
+            1.1111380861010098
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -2.2685173193923167,
+            "leave_one_library_out_min": -2.711240642203831,
+            "leave_one_library_out_max": -1.626536409187446
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 1.0780209461023116,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 1.6880801486663144
+          }
+        },
+        {
+          "gene": "AMBN",
+          "library_normalized_counts": [
+            0.0,
+            0.0,
+            0.0,
+            3.5862469385681517,
+            0.0,
+            0.0
+          ],
+          "group_means": [
+            0.0,
+            1.7931234692840758,
+            0.0
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 1.4818793489800965,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 2.1973140364399626
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -1.4818793489800965,
+            "leave_one_library_out_min": -2.1973140364399626,
+            "leave_one_library_out_max": 0.0
+          }
+        },
+        {
+          "gene": "ENAM",
+          "library_normalized_counts": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.887899596012247,
+            0.0
+          ],
+          "group_means": [
+            0.0,
+            0.0,
+            1.9439497980061236
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 0.0,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 0.0
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 1.5577530699054107,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 2.289214650577482
+          }
+        },
+        {
+          "gene": "MMP20",
+          "library_normalized_counts": [
+            0.0,
+            2.087708179088235,
+            67.75445677172169,
+            60.96619795565858,
+            3.887899596012247,
+            2.2222761722020197
+          ],
+          "group_means": [
+            1.0438540895441175,
+            64.36032736369013,
+            3.0550878841071336
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 4.999051098114698,
+            "leave_one_library_out_min": 4.403806895082987,
+            "leave_one_library_out_max": 6.030343304270432
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -4.01061012260431,
+            "leave_one_library_out_min": -4.342263155604118,
+            "leave_one_library_out_max": -3.7411286536929502
+          }
+        },
+        {
+          "gene": "KLK4",
+          "library_normalized_counts": [
+            0.0,
+            4.17541635817647,
+            11.589578132005025,
+            11.655302550346493,
+            0.0,
+            13.333657033212118
+          ],
+          "group_means": [
+            2.087708179088235,
+            11.622440341175759,
+            6.666828516606059
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 2.031382544337239,
+            "leave_one_library_out_min": 1.2862440225622396,
+            "leave_one_library_out_max": 3.657918953524685
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -0.7192890419748799,
+            "leave_one_library_out_min": -3.657918953524685,
+            "leave_one_library_out_max": 0.18341588149834775
+          }
+        },
+        {
+          "gene": "DLX3",
+          "library_normalized_counts": [
+            723.569480863046,
+            697.2945318154706,
+            1596.6872641862308,
+            1629.949233579225,
+            120.52488747637966,
+            183.3377842066666
+          ],
+          "group_means": [
+            710.4320063392584,
+            1613.3182488827279,
+            151.93133584152315
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 1.1821272356843444,
+            "leave_one_library_out_min": 1.155729076175744,
+            "leave_one_library_out_max": 1.2090174410411318
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -3.399969069202217,
+            "leave_one_library_out_min": -3.7316013181015837,
+            "leave_one_library_out_max": -3.130501302068226
+          }
+        },
+        {
+          "gene": "SP6",
+          "library_normalized_counts": [
+            1215.1972109586432,
+            1206.695327513,
+            3934.216022810629,
+            3720.731198764457,
+            164.26375793151743,
+            130.00315607381816
+          ],
+          "group_means": [
+            1210.9462692358215,
+            3827.4736107875433,
+            147.1334570026678
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 1.6594435736346878,
+            "leave_one_library_out_min": 1.6186481214366069,
+            "leave_one_library_out_max": 1.699117094946791
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -4.691799887464619,
+            "leave_one_library_out_min": -4.869095838912828,
+            "leave_one_library_out_max": -4.5339270292238
+          }
+        },
+        {
+          "gene": "ALPL",
+          "library_normalized_counts": [
+            8887.0312925633,
+            9032.46943682525,
+            66.86295076156746,
+            84.27680305635157,
+            4539.122778344298,
+            4453.4414490928475
+          ],
+          "group_means": [
+            8959.750364694275,
+            75.56987690895951,
+            4496.282113718573
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -6.870698798938173,
+            "leave_one_library_out_min": -7.044851575519939,
+            "leave_one_library_out_max": -6.715322383133938
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 5.876132638541758,
+            "leave_one_library_out_min": 5.720756222737523,
+            "leave_one_library_out_max": 6.050285415123524
+          }
+        },
+        {
+          "gene": "KRT14",
+          "library_normalized_counts": [
+            59.92753369111117,
+            33.40333086541176,
+            64.18843273110475,
+            43.03496326281782,
+            0.9719748990030618,
+            0.0
+          ],
+          "group_means": [
+            46.66543227826146,
+            53.61169799696128,
+            0.4859874495015309
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 0.1962666337692891,
+            "leave_one_library_out_min": -0.1578843280848563,
+            "leave_one_library_out_max": 0.666661763354992
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -5.199716177863763,
+            "leave_one_library_out_min": -5.771138108936528,
+            "leave_one_library_out_max": -4.791496920970338
+          }
+        },
+        {
+          "gene": "KRT19",
+          "library_normalized_counts": [
+            58808.88639554376,
+            61360.874945671865,
+            263757.4021401907,
+            268628.72349518206,
+            9400.941223157613,
+            8916.883140960605
+          ],
+          "group_means": [
+            60084.88067060782,
+            266193.06281768635,
+            9158.91218205911
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 2.147380470782574,
+            "leave_one_library_out_min": 2.117063922829466,
+            "leave_one_library_out_max": 2.178347785066144
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -4.861000816589948,
+            "leave_one_library_out_min": -4.89963328872205,
+            "leave_one_library_out_max": -4.823375922109044
+          }
+        },
+        {
+          "gene": "SOX2",
+          "library_normalized_counts": [
+            30919.27807718608,
+            30552.565346866777,
+            217.5274664776328,
+            216.96793978337317,
+            42278.96415683518,
+            41889.90584600807
+          ],
+          "group_means": [
+            30735.92171202643,
+            217.247703130503,
+            42084.435001421625
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -7.137862406012037,
+            "leave_one_library_out_min": -7.146443012962159,
+            "leave_one_library_out_max": -7.129230459340663
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 7.591210748293195,
+            "leave_one_library_out_min": 7.584526800243514,
+            "leave_one_library_out_max": 7.597863872630757
+          }
+        }
+      ],
+      "pca": {
+        "feature_rule": "Gene count >0 in every library; log2(normalized count+1), gene-centered, not variance-scaled",
+        "genes": 20907,
+        "scores": [
+          [
+            -85.5557819338454,
+            -96.67470049210456
+          ],
+          [
+            -84.84386696487621,
+            -96.16868287974826
+          ],
+          [
+            194.78388116953315,
+            8.279693140208101
+          ],
+          [
+            195.87327202714832,
+            7.459494169499362
+          ],
+          [
+            -110.10953507719289,
+            88.42947330429969
+          ],
+          [
+            -110.14796922076751,
+            88.67472275784604
+          ]
+        ],
+        "variance_fraction": [
+          0.738575850575327,
+          0.22078318122644042
+        ]
+      },
+      "pairwise_log_rms_distance": [
+        [
+          0.0,
+          0.44761279569134105,
+          2.0959580374388267,
+          2.1007350362622814,
+          1.326650597785553,
+          1.3298392445906633
+        ],
+        [
+          0.44761279569134105,
+          0.0,
+          2.090113537456984,
+          2.0953667648366596,
+          1.3257308707260096,
+          1.325687868194282
+        ],
+        [
+          2.0959580374388267,
+          2.090113537456984,
+          0.0,
+          0.4769845633238329,
+          2.2036828569375526,
+          2.2040544618978317
+        ],
+        [
+          2.1007350362622814,
+          2.0953667648366596,
+          0.4769845633238329,
+          0.0,
+          2.2117937317270333,
+          2.212730987498366
+        ],
+        [
+          1.326650597785553,
+          1.3257308707260096,
+          2.2036828569375526,
+          2.2117937317270333,
+          0.0,
+          0.4219383732553944
+        ],
+        [
+          1.3298392445906633,
+          1.325687868194282,
+          2.2040544618978317,
+          2.212730987498366,
+          0.4219383732553944,
+          0.0
+        ]
+      ]
+    },
+    "median_ratio": {
+      "panel": [
+        {
+          "gene": "AMELX",
+          "library_normalized_counts": [
+            5.220012403938721,
+            1.9736859127669104,
+            0.0,
+            0.0,
+            0.0,
+            1.8958073285844885
+          ],
+          "group_means": [
+            3.596849158352816,
+            0.0,
+            0.9479036642922443
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -2.2006453261358363,
+            "leave_one_library_out_min": -2.6369174573788743,
+            "leave_one_library_out_max": -1.5722522748203434
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 0.9619223291222251,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 1.533965616460256
+          }
+        },
+        {
+          "gene": "AMBN",
+          "library_normalized_counts": [
+            0.0,
+            0.0,
+            0.0,
+            4.45488227534292,
+            0.0,
+            0.0
+          ],
+          "group_means": [
+            0.0,
+            2.22744113767146,
+            0.0
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 1.6903907837853342,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 2.4475480613313465
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -1.6903907837853342,
+            "leave_one_library_out_min": -2.4475480613313465,
+            "leave_one_library_out_max": 0.0
+          }
+        },
+        {
+          "gene": "ENAM",
+          "library_normalized_counts": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.3183952465927455,
+            0.0
+          ],
+          "group_means": [
+            0.0,
+            0.0,
+            1.6591976232963728
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 0.0,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 0.0
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 1.410990997787957,
+            "leave_one_library_out_min": 0.0,
+            "leave_one_library_out_max": 2.1104952938938637
+          }
+        },
+        {
+          "gene": "MMP20",
+          "library_normalized_counts": [
+            0.0,
+            1.9736859127669104,
+            84.22779899162094,
+            75.73299868082964,
+            3.3183952465927455,
+            1.8958073285844885
+          ],
+          "group_means": [
+            0.9868429563834552,
+            79.98039883622529,
+            2.607101287588617
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 5.349022999429777,
+            "leave_one_library_out_min": 4.767248568510229,
+            "leave_one_library_out_max": 6.339500843330572
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -4.488660908685778,
+            "leave_one_library_out_min": -4.805535226870315,
+            "leave_one_library_out_max": -4.2290055494367085
+          }
+        },
+        {
+          "gene": "KLK4",
+          "library_normalized_counts": [
+            0.0,
+            3.947371825533821,
+            14.407386669619372,
+            14.478367394864488,
+            0.0,
+            11.37484397150693
+          ],
+          "group_means": [
+            1.9736859127669104,
+            14.442877032241931,
+            5.687421985753465
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 2.376617374064514,
+            "leave_one_library_out_min": 1.6422073178752483,
+            "leave_one_library_out_max": 3.948869648884857
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -1.2074194926030506,
+            "leave_one_library_out_min": -3.948869648884857,
+            "leave_one_library_out_max": -0.3195312189428057
+          }
+        },
+        {
+          "gene": "DLX3",
+          "library_normalized_counts": [
+            680.6896174736092,
+            659.2110948641481,
+            1984.8945788683304,
+            2024.743994143357,
+            102.87025264437511,
+            156.4041046082203
+          ],
+          "group_means": [
+            669.9503561688787,
+            2004.8192865058436,
+            129.63717862629773
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 1.5799137027464916,
+            "leave_one_library_out_min": 1.55700471752181,
+            "leave_one_library_out_max": 1.603192344363201
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -3.9405541892183393,
+            "leave_one_library_out_min": -4.271337187052434,
+            "leave_one_library_out_max": -3.671646565330133
+          }
+        },
+        {
+          "gene": "SP6",
+          "library_normalized_counts": [
+            1143.18271646258,
+            1140.790457579274,
+            4890.753644079253,
+            4621.940360668279,
+            140.2021991685435,
+            110.90472872219257
+          ],
+          "group_means": [
+            1141.986587020927,
+            4756.347002373766,
+            125.55346394536804
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 2.057348786178771,
+            "leave_one_library_out_min": 2.0160022772808013,
+            "leave_one_library_out_max": 2.097543275861236
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -5.232338358081063,
+            "leave_one_library_out_min": -5.409814353548289,
+            "leave_one_library_out_max": -5.074322796461684
+          }
+        },
+        {
+          "gene": "ALPL",
+          "library_normalized_counts": [
+            8360.371866148256,
+            8539.152101586038,
+            83.11953847857329,
+            104.68973347055861,
+            3874.2264503970305,
+            3799.197886483315
+          ],
+          "group_means": [
+            8449.761983867147,
+            93.90463597456595,
+            3836.7121684401727
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -6.47645905835975,
+            "leave_one_library_out_min": -6.650496686450853,
+            "leave_one_library_out_max": -6.3211742838475
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 5.337624139210916,
+            "leave_one_library_out_min": 5.182339364698666,
+            "leave_one_library_out_max": 5.5116617673020185
+          }
+        },
+        {
+          "gene": "KRT14",
+          "library_normalized_counts": [
+            56.37613396253819,
+            31.578974604270567,
+            79.79475693943037,
+            53.458587304115035,
+            0.8295988116481864,
+            0.0
+          ],
+          "group_means": [
+            43.97755428340438,
+            66.6266721217727,
+            0.4147994058240932
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 0.5883871464168156,
+            "leave_one_library_out_min": 0.2371415993853141,
+            "leave_one_library_out_max": 1.0536511641619724
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -5.57892293775823,
+            "leave_one_library_out_min": -6.079520456018538,
+            "leave_one_library_out_max": -5.207993122208034
+          }
+        },
+        {
+          "gene": "KRT19",
+          "library_normalized_counts": [
+            55323.779461904145,
+            58009.58950508865,
+            327885.5223482238,
+            333694.0705551302,
+            8023.879706261259,
+            7606.92690594526
+          ],
+          "group_means": [
+            56666.6844834964,
+            330789.796451677,
+            7815.40330610326
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": 2.5453209368175838,
+            "leave_one_library_out_min": 2.511530909940676,
+            "leave_one_library_out_max": 2.5799213949401203
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": -5.403270376387381,
+            "leave_one_library_out_min": -5.4422718995277535,
+            "leave_one_library_out_max": -5.36529551867412
+          }
+        },
+        {
+          "gene": "SOX2",
+          "library_normalized_counts": [
+            29086.953117227342,
+            28883.906490387348,
+            270.4155651836251,
+            269.5203776582466,
+            36085.889109072814,
+            35735.96814381761
+          ],
+          "group_means": [
+            28985.429803807347,
+            269.9679714209359,
+            35910.92862644521
+          ],
+          "treatment_in_WT": {
+            "log2_mean_ratio_pc1": -6.741111506246993,
+            "leave_one_library_out_min": -6.746155634919335,
+            "leave_one_library_out_max": -6.736049679773366
+          },
+          "genotype_under_treatment": {
+            "log2_mean_ratio_pc1": 7.050196989618568,
+            "leave_one_library_out_min": 7.043151099626398,
+            "leave_one_library_out_max": 7.057208635793485
+          }
+        }
+      ],
+      "pca": {
+        "feature_rule": "Gene count >0 in every library; log2(normalized count+1), gene-centered, not variance-scaled",
+        "genes": 20907,
+        "scores": [
+          [
+            -86.38465485552227,
+            -94.94950927162692
+          ],
+          [
+            -86.0182671125207,
+            -94.34079084915629
+          ],
+          [
+            188.89253776340774,
+            5.893515514276984
+          ],
+          [
+            189.88844063417312,
+            5.097982363289229
+          ],
+          [
+            -103.11887424927262,
+            89.00100002835444
+          ],
+          [
+            -103.25918218026544,
+            89.29780221486247
+          ]
+        ],
+        "variance_fraction": [
+          0.7283249434618414,
+          0.2286429318813886
+        ]
+      },
+      "pairwise_log_rms_distance": [
+        [
+          0.0,
+          0.44442316969857726,
+          2.0544624310810726,
+          2.0587474534601315,
+          1.3121731864669994,
+          1.315708361836104
+        ],
+        [
+          0.44442316969857726,
+          0.0,
+          2.0505855257621164,
+          2.055348906312929,
+          1.3101470134508848,
+          1.3105309694065714
+        ],
+        [
+          2.0544624310810726,
+          2.0505855257621164,
+          0.0,
+          0.4912011977711902,
+          2.124450650462174,
+          2.1255950101396266
+        ],
+        [
+          2.0587474534601315,
+          2.055348906312929,
+          0.4912011977711902,
+          0.0,
+          2.1319388832659327,
+          2.1336605699917417
+        ],
+        [
+          1.3121731864669994,
+          1.3101470134508848,
+          2.124450650462174,
+          2.1319388832659327,
+          0.0,
+          0.4136928319750936
+        ],
+        [
+          1.315708361836104,
+          1.3105309694065714,
+          2.1255950101396266,
+          2.1336605699917417,
+          0.4136928319750936,
+          0.0
+        ]
+      ]
+    }
+  }
+}
