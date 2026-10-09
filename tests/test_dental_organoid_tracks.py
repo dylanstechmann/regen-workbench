@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import regen_desk as desk
@@ -65,6 +66,21 @@ class DentalOrganoidTracks(unittest.TestCase):
             self.assertTrue(all(not r["dataset_sha256"] for r in records))
             saved = instance.campaign({**saved, "title": "Edited research question"})
             self.assertEqual([r["record_id"] for r in saved["evidence_records"]], [r["record_id"] for r in records])
+
+    def test_missing_manifest_dependency_returns_an_invalid_card_without_thread_exit(self):
+        validator = desk.experiment_manifest_tools()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            instance = desk.Desk(root / "state")
+            self.addCleanup(lambda: instance.executor.shutdown(wait=True))
+            folder = root / "studies" / "constructed-fixture"
+            folder.mkdir(parents=True)
+            (folder / "experiment.json").write_text("{}", encoding="utf-8")
+            with patch.object(desk, "HOME", root), patch.object(desk, "experiment_manifest_tools", return_value=validator), patch.object(validator, "jsonschema", None):
+                result = instance.experiments()
+            self.assertEqual(len(result["experiments"]), 1)
+            self.assertEqual(result["experiments"][0]["validation_status"], "invalid")
+            self.assertIn("jsonschema is required", result["experiments"][0]["validation_error"])
 
 
 if __name__ == "__main__":

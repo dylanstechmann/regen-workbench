@@ -49,3 +49,12 @@ records with their source titles and follow-up fields; the live API returned
 the same starter. Existing saved workspace content and all five notes were
 unchanged after the research service reload. No campaign was saved by the
 browser preview. This validates software behavior, not tissue regeneration.
+
+The live check additionally exposed a missing `jsonschema` dependency in the
+research image: the CLI validator exited the HTTP request worker. The Dockerfile
+now includes that dependency, and the desk turns such a validator exit into an
+explicit invalid card instead of disconnecting. Twenty-two manifest tests and
+four desk-track tests passed after this repair. The Experiments endpoint returned
+HTTP 200 on the repaired local image. Docker Hub prevented the full clean rebuild
+with authorization-service errors; the local repair added the dependency to the
+existing image. Saved workspace content and notes were preserved.

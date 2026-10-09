@@ -2318,7 +2318,9 @@ class Desk:
                     "manifest_path": manifest_path.relative_to(HOME).as_posix(),
                     "validation_status": "valid",
                 })
-            except Exception as exc:
+            except (Exception, SystemExit) as exc:
+                # The CLI validator exits when a dependency is missing. Keep the
+                # HTTP worker alive and retain a visibly invalid source card.
                 fallback = {}
                 try:
                     fallback = json.loads(path.read_text(encoding="utf-8"))

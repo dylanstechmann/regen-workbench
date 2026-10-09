@@ -8,7 +8,7 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
       | tar -xvj -C /usr/local/bin --strip-components=1 bin/micromamba \
     && micromamba create -y -p /opt/conda -c conda-forge python=3.11 pip numpy openpyxl \
     && micromamba clean -a -y
-RUN pip install --no-cache-dir rdkit==2026.3.6
+RUN pip install --no-cache-dir rdkit==2026.3.6 'jsonschema>=4,<5'
 WORKDIR /lab
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 REGEN_ROOT=/lab REGEN_DATA=/lab/data
 RUN python -c "import rdkit; print('RDKit', rdkit.__version__)" && vina --version
