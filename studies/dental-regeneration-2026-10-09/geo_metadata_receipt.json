@@ -1,0 +1,117 @@
+{
+  "scope": "Exact-accession metadata intake, not RNA analysis or dataset eligibility",
+  "records": [
+    {
+      "accession": "GSE307437",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE307nnn/GSE307437/soft/GSE307437_family.soft.gz",
+      "retrieved_utc": "2026-10-09T21:34:33.608877+00:00",
+      "status": "metadata_retrieved",
+      "response_sha256": "c19264fa3b485bdad8ab62d723e6ab8aba9bfc259a4a89c04509e49c07d0798f",
+      "parsed_metadata_sha256": "56ab6ebb65e367aec6507499c789d3dc5f346b8e03ae3aedca51ee0f8a281a51",
+      "sample_accessions": [
+        "GSM9224208",
+        "GSM9224209",
+        "GSM9224210",
+        "GSM9224211",
+        "GSM9224212",
+        "GSM9224213"
+      ],
+      "series_fields": {
+        "Series_geo_accession": [
+          "GSE307437"
+        ],
+        "Series_status": [
+          "Public on Mar 11 2026"
+        ],
+        "Series_type": [
+          "Expression profiling by high throughput sequencing"
+        ],
+        "Series_pubmed_id": [
+          "41765949"
+        ],
+        "Series_sample_id": [
+          "GSM9224208",
+          "GSM9224209",
+          "GSM9224210",
+          "GSM9224211",
+          "GSM9224212",
+          "GSM9224213"
+        ]
+      },
+      "local_provenance_receipt": "1791581673606916960_dental-geo-metadata.json",
+      "expression_values_parsed": false,
+      "independent_donors_qualified": false,
+      "reuse_license_qualified": false
+    },
+    {
+      "accession": "GSE184749",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE184nnn/GSE184749/soft/GSE184749_family.soft.gz",
+      "retrieved_utc": "2026-10-09T21:34:33.805342+00:00",
+      "status": "metadata_retrieved",
+      "response_sha256": "4a53754ed868f73445c8488e2013ea2ab6b9ecb5ae70e6f6a3d5945b57bb7ef2",
+      "parsed_metadata_sha256": "6308717893e7ec03c319a1d48f9f3c13aba6c3259bc8587c6bb29ba85c2fe870",
+      "sample_accessions": [
+        "GSM5596818",
+        "GSM5596819",
+        "GSM5596820",
+        "GSM5596821",
+        "GSM5596822",
+        "GSM5596823",
+        "GSM5596824",
+        "GSM5596825",
+        "GSM5596826",
+        "GSM5596827",
+        "GSM5596828",
+        "GSM5596829",
+        "GSM5596830",
+        "GSM5596831",
+        "GSM5596832",
+        "GSM5596833",
+        "GSM5596834",
+        "GSM5596835",
+        "GSM5596836"
+      ],
+      "series_fields": {
+        "Series_geo_accession": [
+          "GSE184749"
+        ],
+        "Series_status": [
+          "Public on Jan 11 2023"
+        ],
+        "Series_type": [
+          "Expression profiling by high throughput sequencing"
+        ],
+        "Series_pubmed_id": [
+          "36540608",
+          "38259324",
+          "41765949"
+        ],
+        "Series_sample_id": [
+          "GSM5596818",
+          "GSM5596819",
+          "GSM5596820",
+          "GSM5596821",
+          "GSM5596822",
+          "GSM5596823",
+          "GSM5596824",
+          "GSM5596825",
+          "GSM5596826",
+          "GSM5596827",
+          "GSM5596828",
+          "GSM5596829",
+          "GSM5596830",
+          "GSM5596831",
+          "GSM5596832",
+          "GSM5596833",
+          "GSM5596834",
+          "GSM5596835",
+          "GSM5596836"
+        ]
+      },
+      "local_provenance_receipt": "1791581673803137397_dental-geo-metadata.json",
+      "expression_values_parsed": false,
+      "independent_donors_qualified": false,
+      "reuse_license_qualified": false
+    }
+  ]
+}

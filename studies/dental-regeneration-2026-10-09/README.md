@@ -59,6 +59,13 @@ A later expression analysis needs sample, clone, batch and biological-unit
 metadata before a held-out test can be defined. Marker expression and mineral
 images remain distinct from functional tooth performance.
 
+The follow-up [GEO metadata intake](GEO_QUALIFICATION.md) has now acquired those
+two metadata families, with six and nineteen source sample records. It retains
+an incomplete factorial comparison, shared cell-line labels, pooling and a
+tissue-label conflict. This supersedes the earlier “not downloaded” description
+for metadata only; matrices, independent biological units and reuse rights
+remain unqualified. No expression or functional analysis was performed.
+
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
 sphere is a reduced model, not a validated dental-organoid geometry.

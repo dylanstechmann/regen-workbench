@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "origin": "retrieved_source_metadata",
+  "assisted_by": "AI",
+  "datasets": [
+    {
+      "accession": "GSE307437",
+      "n_source_sample_records": 6,
+      "samples": [
+        {
+          "sample_accession": "GSM9224208",
+          "source_titles": [
+            "WT isAM organoids, untreated, biol rep 1"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "WT"
+            ],
+            "treatment": [
+              "None"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM9224209",
+          "source_titles": [
+            "WT isAM organoids, untreated, biol rep 2"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "WT"
+            ],
+            "treatment": [
+              "None"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM9224210",
+          "source_titles": [
+            "WT isAM organoids, C3-DLL4 treated, biol rep 1"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "WT"
+            ],
+            "treatment": [
+              "C3-DLL4"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM9224211",
+          "source_titles": [
+            "WT isAM organoids, C3-DLL4 treated, biol rep 2"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "WT"
+            ],
+            "treatment": [
+              "C3-DLL4"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM9224212",
+          "source_titles": [
+            "DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 1"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "DLX3 knockout"
+            ],
+            "treatment": [
+              "C3-DLL4"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM9224213",
+          "source_titles": [
+            "DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 2"
+          ],
+          "declared_characteristics": {
+            "cell line": [
+              "WTC-11"
+            ],
+            "cell type": [
+              "induced secretory ameloblast organoids (isAM)"
+            ],
+            "genotype": [
+              "DLX3 knockout"
+            ],
+            "treatment": [
+              "C3-DLL4"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        }
+      ],
+      "source_annotation_conflicts": [],
+      "declared_cell_line_labels": [
+        "WTC-11"
+      ],
+      "declared_experiment_types": [],
+      "expression_values_parsed": false,
+      "matrix_columns_qualified": false,
+      "independent_donors_qualified": false,
+      "reuse_license_qualified": false,
+      "eligible_for_donor_heldout_claim": false,
+      "limits": "Unknown identity fields are gaps in this intake, not proof the source never recorded them. Replicate labels and cell counts do not establish independent donors. Metadata conflicts require source review.",
+      "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE307nnn/GSE307437/soft/GSE307437_family.soft.gz",
+      "metadata_response_sha256": "c19264fa3b485bdad8ab62d723e6ab8aba9bfc259a4a89c04509e49c07d0798f"
+    },
+    {
+      "accession": "GSE184749",
+      "n_source_sample_records": 19,
+      "samples": [
+        {
+          "sample_accession": "GSM5596818",
+          "source_titles": [
+            "Anterior_jaw_9_11w_rep1"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal jaw"
+            ],
+            "age group": [
+              "9-11w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596819",
+          "source_titles": [
+            "Anterior_jaw_9_11w_rep2"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal jaw"
+            ],
+            "age group": [
+              "9-11w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596820",
+          "source_titles": [
+            "Posterior_jaw_9_11w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal jaw"
+            ],
+            "age group": [
+              "9-11w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596821",
+          "source_titles": [
+            "Incisors_12_13w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal incisor tooth germ"
+            ],
+            "age group": [
+              "12-13w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596822",
+          "source_titles": [
+            "Incisors_Molars_14_16w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal incisor and molar tooth germ"
+            ],
+            "age group": [
+              "14-16w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596823",
+          "source_titles": [
+            "Incisors_17_19w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal incisor tooth germ"
+            ],
+            "age group": [
+              "17-19w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596824",
+          "source_titles": [
+            "Incisors_20_22w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal molar tooth germ"
+            ],
+            "age group": [
+              "20-22w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596825",
+          "source_titles": [
+            "Molars_12_13w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal molar tooth germ"
+            ],
+            "age group": [
+              "12-13w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596826",
+          "source_titles": [
+            "Molars_17_19w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal molar tooth germ"
+            ],
+            "age group": [
+              "17-19w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596827",
+          "source_titles": [
+            "Molars_20_22w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal molar tooth germ"
+            ],
+            "age group": [
+              "20-22w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596828",
+          "source_titles": [
+            "SMSG_12_13w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal submandibular salivary gland"
+            ],
+            "age group": [
+              "12-13w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596829",
+          "source_titles": [
+            "SMSG_14_16w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal submandibular salivary gland"
+            ],
+            "age group": [
+              "14-16w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596830",
+          "source_titles": [
+            "SMSG_17_19w"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Fetal submandibular salivary gland"
+            ],
+            "age group": [
+              "17-19w"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596831",
+          "source_titles": [
+            "Day10_OE_diff"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day10"
+            ],
+            "treatment": [
+              "Ameloblast differentation protocol"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596832",
+          "source_titles": [
+            "Day16_AM_diff"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day16"
+            ],
+            "treatment": [
+              "Ameloblast differentation protocol"
+            ],
+            "experiment type": [
+              "sci-RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596833",
+          "source_titles": [
+            "Day0_undifferentiated_iPSCs_bulk_RNAseq_rep1"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day0"
+            ],
+            "treatment": [
+              "No treatment"
+            ],
+            "experiment type": [
+              "bulk RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596834",
+          "source_titles": [
+            "Day0_undifferentiated_iPSCs_bulk_RNAseq_rep2"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day0"
+            ],
+            "treatment": [
+              "No treatment"
+            ],
+            "experiment type": [
+              "bulk RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596835",
+          "source_titles": [
+            "Day16_AM_diff_bulk_RNAseq_rep1"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day16"
+            ],
+            "treatment": [
+              "Ameloblast differentation protocol"
+            ],
+            "experiment type": [
+              "bulk RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        },
+        {
+          "sample_accession": "GSM5596836",
+          "source_titles": [
+            "Day16_AM_diff_bulk_RNAseq_rep2"
+          ],
+          "declared_characteristics": {
+            "tissue": [
+              "Induced pluripotent stem cell"
+            ],
+            "cell line": [
+              "WTC-11 (GM25256)"
+            ],
+            "age group": [
+              "day16"
+            ],
+            "treatment": [
+              "Ameloblast differentation protocol"
+            ],
+            "experiment type": [
+              "bulk RNA-seq"
+            ]
+          },
+          "independent_donor_id": null,
+          "clone_id": null,
+          "culture_batch_id": null
+        }
+      ],
+      "source_annotation_conflicts": [
+        {
+          "sample_accession": "GSM5596824",
+          "issue": "Incisor title versus molar tissue characteristic",
+          "resolution": "unresolved; neither field overrides the other"
+        }
+      ],
+      "declared_cell_line_labels": [
+        "WTC-11 (GM25256)"
+      ],
+      "declared_experiment_types": [
+        "bulk RNA-seq",
+        "sci-RNA-seq"
+      ],
+      "expression_values_parsed": false,
+      "matrix_columns_qualified": false,
+      "independent_donors_qualified": false,
+      "reuse_license_qualified": false,
+      "eligible_for_donor_heldout_claim": false,
+      "limits": "Unknown identity fields are gaps in this intake, not proof the source never recorded them. Replicate labels and cell counts do not establish independent donors. Metadata conflicts require source review.",
+      "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE184nnn/GSE184749/soft/GSE184749_family.soft.gz",
+      "metadata_response_sha256": "4a53754ed868f73445c8488e2013ea2ab6b9ecb5ae70e6f6a3d5945b57bb7ef2"
+    }
+  ]
+}

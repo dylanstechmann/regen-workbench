@@ -628,6 +628,33 @@
         "reference_url": "https://github.com/dylanstechmann/base-editing-evidence",
         "structure_notes": "The new sibling repo classifies classical conversion chemistry and audits source scope/count denominators. It does not select an editor or predict repair.",
         "evidence": []
+      },
+      {
+        "id": "ameloblast-rna-contrast",
+        "title": "Ameloblast RNA comparisons and biological-unit gaps",
+        "target": "Source-qualified molecular maturation contrasts",
+        "species": "Human-derived organoid RNA samples and a mixed fetal/iPSC reference",
+        "tissue": "Ameloblast organoid transcriptome; functional enamel remains separate",
+        "hypothesis": "Within-background molecular responses may support a maturation hypothesis after sample identity and independent culture provenance are qualified.",
+        "endpoint": "Source-to-count-column alignment, declared contrasts and independent-unit mapping before any expression analysis",
+        "falsifier": "Misaligned samples, unresolved clone or batch confounding, ambiguous tissue labels or a claim of a full factorial interaction without untreated-KO samples",
+        "evidence_stage": "Public metadata and prospective molecular analysis; no tissue function established",
+        "study_design": "Three source conditions with two labeled replicates each; genotype-by-treatment interaction is incomplete",
+        "reference_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+        "structure_notes": "GSE307437 metadata declare WTC-11 in all six records: WT untreated, WT treated, KO treated. Donor/clone/culture identities and matrix columns remain unqualified. GSE184749 mixes fetal and iPSC records with pooling and a tissue-label discrepancy. See studies/dental-regeneration-2026-10-09/GEO_QUALIFICATION.md. No RNA values were analyzed.",
+        "evidence": [
+          {
+            "axis_id": "identity",
+            "status": "not assessed",
+            "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+            "notes": "Source metadata acquired; sample and lineage qualification remain distinct from tissue identity."
+          },
+          {
+            "axis_id": "function",
+            "status": "not assessed",
+            "notes": "Expression and source labels cannot supply native enamel mechanical function."
+          }
+        ]
       }
     ]
   },
@@ -1223,10 +1250,10 @@
     {
       "blueprint_id": "organoids",
       "priority": 10,
-      "title": "Dental organoid data accessions are leads requiring qualification",
-      "claim": "The 2026 ameloblast paper reports GSE307437 and a reused dataset, GSE184749, in its data-availability statement.",
-      "boundary": "No files or biological-unit metadata from those accessions were downloaded or qualified in this release.",
-      "design": "Source dataset lead; no new expression analysis",
+      "title": "Dental organoid metadata expose replication and comparison limits",
+      "claim": "Exact GEO metadata intake retrieved six source sample records for GSE307437 and nineteen for GSE184749.",
+      "boundary": "Source replicate labels do not establish donor, clone or culture-batch independence. Shared cell-line provenance, pooling and a tissue-label conflict remain visible; no expression or functional analysis was performed.",
+      "design": "Source metadata intake; biological units and reuse rights unqualified",
       "url": "https://www.nature.com/articles/s41368-026-00429-4",
       "date": "2026-03-02",
       "reviewed_on": "2026-10-09"

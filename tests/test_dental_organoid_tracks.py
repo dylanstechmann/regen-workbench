@@ -31,7 +31,7 @@ class DentalOrganoidTracks(unittest.TestCase):
 
     def test_campaign_evidence_axes_and_scopes_are_explicit(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
-        for key, count in [("dental",4),("organoids",2)]:
+        for key, count in [("dental",4),("organoids",3)]:
             axes = {axis["id"] for axis in seeds["campaign_frameworks"][key]}
             starters = seeds["campaign_starters"][key]
             self.assertEqual(len(starters),count)
