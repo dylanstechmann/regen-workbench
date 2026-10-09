@@ -5,17 +5,25 @@
       "pmcid": "PMC4761216",
       "doi": "10.1186/s13287-016-0288-1",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4761216/fullTextXML",
-      "retrieved_utc": "2026-10-09T21:03:34.788987+00:00",
+      "retrieved_utc": "2026-10-09T23:11:42.547657+00:00",
       "response_sha256": "3ec899856e7386e4e72b6500915edd924e55252f48059fe418b03b8c46f9da74",
-      "local_provenance_receipt": "1791579814786311114_dental-primary-fulltext.json"
+      "local_provenance_receipt": "1791587502545462300_dental-primary-fulltext.json"
     },
     {
       "pmcid": "PMC12311062",
       "doi": "10.1038/s41392-025-02320-w",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12311062/fullTextXML",
-      "retrieved_utc": "2026-10-09T21:03:37.158079+00:00",
+      "retrieved_utc": "2026-10-09T23:11:43.403746+00:00",
       "response_sha256": "cfae2a7c4f4954bc7b2b7b800313aca558ddd7097503c20fdf310e25d1d517e0",
-      "local_provenance_receipt": "1791579817155843989_dental-primary-fulltext.json"
+      "local_provenance_receipt": "1791587503401752728_dental-primary-fulltext.json"
+    },
+    {
+      "pmcid": "PMC12855574",
+      "doi": "10.1016/j.reth.2026.101062",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12855574/fullTextXML",
+      "retrieved_utc": "2026-10-09T23:11:44.269200+00:00",
+      "response_sha256": "57c61b59dc7259ac83fd5e6bd6a6875417500a0d67c91c180a9194b5ce0d1c38",
+      "local_provenance_receipt": "1791587504267215350_dental-primary-fulltext.json"
     }
   ]
 }

@@ -13,23 +13,37 @@ restoration of attachment and gum coverage are separate questions.
 | [Anti-USAG-1 2021](https://pubmed.ncbi.nlm.nih.gov/33579703/) | Animal tooth-regeneration signaling precedent | No adult-human acquired-tooth-loss efficacy inferred; tooth number is not full periodontal function |
 | [Human ameloblast organoids 2026](https://www.nature.com/articles/s41368-026-00429-4) | Human iPSC organoid maturation and enamel-like material in mouse kidney-capsule grafts | Prismatic architecture, tooth-site bonding, loading and complete organ/attachment integration |
 | [PDLSC trial 2016](https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/) | Controlled intrabony-defect trial; bone height improved in both groups without significant between-group difference | Added-cell benefit and functional oriented attachment not established by that comparison |
-| [ASC/PRP trial 2026](https://pubmed.ncbi.nlm.nih.gov/41624073/) | Bone-height advantage over EMD; no significant between-group attachment-gain difference in the abstract; 15 completers of 21 recruited | Attrition, outcome hierarchy and uncertainty require full-text review; nonsignificance is not equivalence |
+| [ASC/PRP trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC12855574/) | Full text: 36-week radiographic bone-height difference 1.905 mm (95% CI 0.383–3.427; p=.0184) vs EMD; no between-group CAL or probing-depth signal | Only 15 treated (9 vs 6), primary endpoint n=8 vs 6; no histology or proof of oriented PDL attachment; clinical attachment is a separate endpoint |
 | [DPSC trial 2025](https://www.nature.com/articles/s41392-025-02320-w) | Abstract reports a bone-defect-depth signal and a post hoc attachment signal in a stage-III subgroup | Subgroup findings are not an overall primary-endpoint confirmation or proof of complete periodontal regeneration |
 | [Gingival-recession study 2017](https://pubmed.ncbi.nlm.nih.gov/28620633/) | Small study with 14 cases, multiple sites and a six-month root-coverage signal | Sites are not independent patients; seal/barrier, ligament and whole-tooth outcomes remain separate |
 
 The table is a focused source review, not a meta-analysis. The 2026 ameloblast
-paper's publisher full text was accessed. Other entries use indexed abstracts
-and the 2016 primary PMC abstract available through the research tools. Source
-abstracts remain abstract-limited; their conclusions do not replace inspection
-of endpoint-specific between-group results.
+paper's publisher full text and primary articles for the 2016 PDLSC, 2025 DPSC,
+and 2026 ASC+PRP trials were accessed. Other entries remain abstract-limited;
+their conclusions do not replace inspection of endpoint-specific between-group
+results.
 
-The subsequent [component and endpoint audit](COMPONENT_GAPS.md) adds a focused
-full-text review of the 2016 PDLSC and 2025 DPSC sources. Their exact retrievals
-are identified in [fulltext_receipt.json](fulltext_receipt.json). Three typed
-observations now load with the controlled-periodontal campaign starter, keeping
-primary/secondary and post hoc comparisons and outcome-specific follow-up apart.
-This follow-up supersedes the abstract-only access descriptions for those two
-entries above; other source-access limits remain as stated.
+The subsequent [component and endpoint audit](COMPONENT_GAPS.md) adds focused
+full-text review of the 2016 PDLSC, 2025 DPSC and 2026 ASC+PRP sources. Their
+retrievals are identified in [fulltext_receipt.json](fulltext_receipt.json);
+the official enrollment-flow cross-check is recorded in
+[trial_registry_receipt.json](trial_registry_receipt.json). Six typed
+observations load with the controlled-periodontal campaign starter, keeping
+primary/secondary and post hoc comparisons, clinical attachment, bone height,
+safety and outcome-specific follow-up apart.
+
+For the ASC+PRP trial, the official registry reports 16 consented, one withdrew
+before treatment, and 15 treated (9 ASC+PRP; 6 EMD). The primary radiographic
+analysis includes 8 and 6 at 36 weeks. The article reports no significant
+between-group clinical attachment or probing-depth difference at 12, 24 or 36
+weeks. It uses the term “therapeutic equivalence,” but the retrieved Methods do
+not state an equivalence margin or formal equivalence test. One AE and one SAE
+were reported in different ASC+PRP participants; the authors judged both
+unrelated to the procedure. The numeric supplement tables were unavailable to
+this review, so exact CAL contrasts are not reconstructed. This trial used
+expanded adipose-derived cells plus PRP, not PDLSCs, and did not test a whole
+tooth or histologic PDL architecture. See [the trial review](ASC_PRP_TRIAL_REVIEW.md)
+for the scope and remaining caveats.
 
 ## Component roadmap
 
@@ -104,20 +118,17 @@ seed migration. No private notes are published, no experiments are executed and
 no source-review signoff by the owner is claimed.
 
 Four source-scoped starting cards are also visible in the dental/organoid desk
-areas. The existing 368-test regression suite completed in Docker `dev` with
-four optional tests skipped; two new campaign/migration tests passed. The
-existing source-card validation passed against the new cards. The long-lived
-`workbench` service was not running, so `docker compose exec workbench regen
-doctor` could not execute there. The separate research-desk service was running;
-it was reloaded only after confirming no active runs, and saved blueprint
-content and all five existing notes retained their pre-reload content hash.
-This is software and source-scope verification, not biological validation.
+areas. The latest one-off Docker workbench-image run passed 383 unit tests, with
+six optional tests skipped; all four dental/organoid track tests passed. This
+checks seed parity and editable endpoint-record round-tripping. This update did
+not reload the live research desk or change saved user campaigns or notes. It is
+software and source-scope verification, not biological validation.
 
 The deposited-count continuation reused `regen expression-contrast` for four
 descriptive runs: two declared comparisons at two pseudocounts. It verified
 the source count and metadata hashes, CPM column totals, study-script hash and
-all four method-manifest hashes. The full workbench regression suite passed in
-Docker `dev`, including four new count-qualification/desk-integration fixtures;
+all four method-manifest hashes. The full workbench regression suite passed,
+including four new count-qualification/desk-integration fixtures;
 the new script and tests passed Ruff. The live `/api/experiments` endpoint
 returned two valid cards, and `/api/state` exposed the calculated dataset
 observation. The entire saved workspace and all five notes matched the

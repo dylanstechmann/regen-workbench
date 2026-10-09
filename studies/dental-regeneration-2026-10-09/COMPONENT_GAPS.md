@@ -27,28 +27,43 @@ analysis. The sign, subgroup and pooling must remain attached to the estimate;
 it cannot become overall primary confirmation or independent patient replication.
 [Clinical outcomes and Table 3](https://www.nature.com/articles/s41392-025-02320-w).
 
+The 2026 ASC+PRP trial's primary radiographic endpoint favored ASC+PRP over EMD
+at 36 weeks: 4.010 versus 2.105 mm, difference 1.905 mm (95% CI 0.383–3.427;
+p=.0184; analysis n=8 vs 6). The full text reports no between-group CAL or
+probing-depth difference at 12, 24 or 36 weeks; a within-arm CAL change does not
+establish added benefit. The official registry clarifies flow as 16 consented,
+one pre-treatment withdrawal and 15 treated (9 vs 6). See the
+[source-scoped ASC+PRP review](ASC_PRP_TRIAL_REVIEW.md) and
+[official registry](https://jrct.mhlw.go.jp/latest-detail/jRCTb030190173).
+The trial calls its design therapeutic equivalence, but the retrieved Methods
+state ordinary t-tests and no equivalence margin. No histology was obtained, so
+the radiographic signal does not show oriented cementum–PDL–bone attachment.
+Reported AE and SAE were in two different ASC+PRP participants and judged
+unrelated by the authors; the small sample cannot establish rare-event safety.
+
 The next useful computational work is source-data qualification: donor/clone/
 batch metadata for organoid datasets, and participant-to-tooth mappings and
 outcome-specific follow-up for clinical data. Public figures and summary means
 cannot supply those mappings or a covariance matrix. No new confidence interval,
 pooled effect or ranking is calculated here.
 
-[endpoint_review.json](endpoint_review.json) preserves three observations in the
+[endpoint_review.json](endpoint_review.json) preserves six observations in the
 desk's existing source-record format. The controlled-periodontal starter loads
 these as editable records, requiring source review before saving. Existing saved
 campaigns and notes are not replaced. [Full-text receipts](fulltext_receipt.json)
-identify two actual exact-article retrievals; full texts remain private ignored
-literature files, and their hashes are not placed in the dataset-hash field.
+identify three actual exact-article retrievals, and
+[trial_registry_receipt.json](trial_registry_receipt.json) identifies the
+official registry fetch. Source files remain private ignored literature files;
+retrieval hashes are not placed in the dataset-hash field.
 
 ## Software verification
 
-Docker `dev` completed 371 unit tests with four optional tests skipped. The
-new campaign round-trip check preserves distinct endpoint intervals, subgroup
-scope and stable observation IDs when edited. The browser loaded all three
-records with their source titles and follow-up fields; the live API returned
-the same starter. Existing saved workspace content and all five notes were
-unchanged after the research service reload. No campaign was saved by the
-browser preview. This validates software behavior, not tissue regeneration.
+The latest one-off Docker workbench-image run completed 383 unit tests with six
+optional tests skipped. All four dental/organoid track tests passed, including
+seed parity, distinct endpoint intervals, the mixed-signal attachment summary,
+registry denominator, and stable editable record IDs. The live desk was not
+reloaded and saved user campaigns or notes were not changed by this update.
+This validates software behavior, not tissue regeneration.
 
 The live check additionally exposed a missing `jsonschema` dependency in the
 research image: the CLI validator exited the HTTP request worker. The Dockerfile

@@ -1,4 +1,4 @@
-"""Retrieve two exact primary full texts privately and record real response hashes."""
+"""Retrieve three exact primary full texts privately and record response hashes."""
 
 import json
 import sys
@@ -13,7 +13,7 @@ import regen
 def main():
     regen.ensure_dirs()
     rows = []
-    for pmcid in ("PMC4761216", "PMC12311062"):
+    for pmcid in ("PMC4761216", "PMC12311062", "PMC12855574"):
         url = f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML"
         raw = regen.http_bytes(url)
         root = ET.fromstring(raw)
@@ -26,7 +26,7 @@ def main():
         rows.append({"pmcid": pmcid, "doi": ids.get("doi"), "url": url,
                      "retrieved_utc": regen.now(), "response_sha256": regen.sha256_file(target),
                      "local_provenance_receipt": receipt.name})
-    public = {"scope": "Two exact primary articles; private full texts, public retrieval receipts. Not a systematic review.", "records": rows}
+    public = {"scope": "Three exact primary articles; private full texts, public retrieval receipts. Not a systematic review.", "records": rows}
     (Path(__file__).parent / "fulltext_receipt.json").write_text(json.dumps(public, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"retrieved_articles": len(rows)}))
 

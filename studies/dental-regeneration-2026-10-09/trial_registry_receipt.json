@@ -1,0 +1,8 @@
+{
+  "registry_id": "jRCTb030190173",
+  "url": "https://jrct.mhlw.go.jp/latest-detail/jRCTb030190173",
+  "retrieved_utc": "2026-10-09T23:18:03.246858+00:00",
+  "response_sha256": "4f2bd4cb6c789d202ae8b36f3ba5e73502a74dbafc1a35e79349104b7af3007f",
+  "local_provenance_receipt": "1791587883244855213_dental-trial-registry.json",
+  "scope": "Official registry result and participant-flow summary; this receipt authenticates retrieved bytes, not interpretation."
+}
