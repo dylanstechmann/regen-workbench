@@ -139,14 +139,21 @@ class DentalOrganoidTracks(unittest.TestCase):
             self.assertEqual(saved_records, records)
             self.assertEqual(len({record["record_id"] for record in saved["evidence_records"]}), 5)
 
-    def test_ameloblast_supplement_audit_is_editable_control_metadata(self):
+    def test_ameloblast_source_audits_are_editable_metadata(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
         source_seeds = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/desk_seeds.json").read_text(encoding="utf-8"))
         starter = next(s for s in seeds["campaign_starters"]["organoids"] if s["id"] == "ameloblast-rna-contrast")
         source_starter = next(s for s in source_seeds["campaign_starters"]["organoids"] if s["id"] == starter["id"])
         self.assertEqual(starter["evidence_records"], source_starter["evidence_records"])
-        self.assertEqual(len(starter["evidence_records"]), 3)
-        record = starter["evidence_records"][2]
+        self.assertEqual(len(starter["evidence_records"]), 4)
+        provenance = starter["evidence_records"][2]
+        self.assertEqual(provenance["source_title"], "GSE307437: sample-to-archive provenance links")
+        self.assertIn("6 GEO samples", provenance["value"])
+        self.assertIn("6 BioSample links", provenance["value"])
+        self.assertIn("6 SRA experiment links", provenance["value"])
+        self.assertIn("KO-10 and KO-13", provenance["notes"])
+        self.assertFalse(provenance["dataset_sha256"])
+        record = starter["evidence_records"][3]
         self.assertEqual(record["axis_id"], "control")
         self.assertIn("7 sheets", record["value"])
         self.assertIn("178 nonempty cells", record["value"])
@@ -155,6 +162,7 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("2 biological replicates per condition", record["sample_size"])
         self.assertFalse(record["dataset_sha256"])
         self.assertIn("no sample or graft-outcome identifiers", starter["structure_notes"])
+        self.assertIn("linked BioSample and SRA experiment records", starter["structure_notes"])
         with tempfile.TemporaryDirectory() as directory:
             instance = desk.Desk(Path(directory))
             self.addCleanup(lambda: instance.executor.shutdown(wait=True))
@@ -162,7 +170,7 @@ class DentalOrganoidTracks(unittest.TestCase):
             saved_records = [{key: value for key, value in item.items() if key != "record_id"}
                              for item in saved["evidence_records"]]
             self.assertEqual(saved_records, starter["evidence_records"])
-            self.assertEqual(len({item["record_id"] for item in saved["evidence_records"]}), 3)
+            self.assertEqual(len({item["record_id"] for item in saved["evidence_records"]}), 4)
 
     def test_missing_manifest_dependency_returns_an_invalid_card_without_thread_exit(self):
         validator = desk.experiment_manifest_tools()

@@ -2,19 +2,23 @@
 
 This AI-assisted follow-up acquired the actual primary manuscript XML and its
 supplementary archive. [Retrieval receipts](primary_context_receipt.json) retain
-both response hashes. The supplementary PDF's relevant pages were extracted
-and visually inspected; the spreadsheet was acquired in the archive but not
-reviewed. Source files and PDF renderings remain in ignored private storage.
+both response hashes. Relevant supplementary PDF pages were visually reviewed,
+and the companion workbook was inventoried and reviewed; its seven figure-summary
+sheets contain no library-level expression or graft-outcome records. Source files
+and PDF renderings remain in ignored private storage.
 
 ## What is qualified, and what remains unresolved
 
 The [primary article](https://pmc.ncbi.nlm.nih.gov/articles/PMC12950815/) reports
-six organoid RNA samples, two biological replicates per condition, and names
-two independent knockout clones, KO-10 and KO-13. Those clone names are not
-assigned to individual deposited RNA libraries by this intake. The general
-timeline in supplementary Fig. S2 ends at day 31. The Results also describe a
-14-day maturation interval for transcriptomic analysis. These contextual
-descriptions do not certify each GSM's harvest day or independent culture batch.
+six organoid RNA samples and two independent knockout clones, KO-10 and KO-13.
+GEO labels the six samples as two biological replicates in each of three
+conditions, all from the WTC-11 background, and links every GSM to BioSample and
+SRA experiment accessions; see the sample map in [GEO_QUALIFICATION.md](GEO_QUALIFICATION.md).
+The GEO labels do not identify which KO clone supplied either KO RNA library or
+name independent differentiation batches. The general timeline in supplementary
+Fig. S2 ends at day 31. The Results also describe a 14-day maturation interval
+for transcriptomic analysis. These contextual descriptions do not certify each
+GSM's harvest day or independent culture batch.
 
 Protein, fluorescence and transcriptome observations have different scopes.
 The paper's Figs. 3b and 6c use gene-wise z-score heatmaps; Figs. 3c–f and 6d–i

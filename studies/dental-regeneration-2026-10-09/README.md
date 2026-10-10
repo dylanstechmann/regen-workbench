@@ -128,8 +128,14 @@ The follow-up [GEO metadata intake](GEO_QUALIFICATION.md) has now acquired those
 two metadata families, with six and nineteen source sample records. It retains
 an incomplete factorial comparison, shared cell-line labels, pooling and a
 tissue-label conflict. This supersedes the earlier “not downloaded” description
-for metadata only; matrices, independent biological units and reuse rights
-remain unqualified. No expression or functional analysis was performed.
+for metadata only. The separate count-table retrieval and descriptive analysis
+are recorded below; FASTQ data, donor-independent replication and reuse rights
+remain unqualified, and no functional test was performed.
+
+The GSE307437 intake now also retains each GEO sample's linked BioSample and SRA
+experiment identifiers. This makes the six library records traceable through the
+archive; the two DLX3 knockout clones still are not assigned to individual RNA
+libraries, and independent differentiation batches remain unnamed.
 
 The subsequent [deposited-count comparison](AMELOBLAST_EXPRESSION.md) now
 qualifies the six GSE307437 column labels and performs an explicitly descriptive
@@ -145,10 +151,11 @@ It retains unresolved clone-to-library/culture mapping and sparse RNA versus
 protein-assay discrepancies. Only normalization is fitted; no dispersion model
 or significance tests are run.
 
-The `ameloblast-rna-contrast` desk starter now carries a typed control-axis
-record for the seven-sheet supplementary workbook audit. It labels workbook
-inventory counts separately from biological sample sizes and retains the
-unresolved clone, culture-batch and graft-outcome mappings.
+The `ameloblast-rna-contrast` desk starter now carries a typed archive-provenance
+record for the six GEO-to-BioSample/SRA sample links and a control-axis record
+for the seven-sheet supplementary workbook audit. Both keep archive or workbook
+inventory separate from biological sample size and retain the unresolved clone,
+culture-batch and graft-outcome mappings.
 
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
@@ -174,9 +181,9 @@ seed migration. No private notes are published, no experiments are executed and
 no source-review signoff by the owner is claimed.
 
 Source-scoped starting cards are available in the dental/organoid desk
-areas. The latest one-off Docker workbench-image run passed 386 unit tests, with
-nine optional tests skipped; all seven dental/organoid track tests passed.
-This checks seed parity and editable endpoint-record round-tripping. The live
+areas. The latest local full workbench suite passed 388 tests, with 29
+platform/optional tests skipped on Windows. This checks seed parity and editable
+endpoint-record round-tripping. The live
 desk was restarted with no active runs and exposes seven dental starters,
 including the root-preseeding record. It retains one saved campaign and five
 notes, and the workspace SHA-256 is unchanged from before reload

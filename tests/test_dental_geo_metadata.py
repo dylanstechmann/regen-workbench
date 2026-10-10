@@ -18,6 +18,8 @@ class GeoMetadataTests(unittest.TestCase):
         self.fixture = (
             "^SERIES = GSE0\n!Series_sample_id = GSM0\n^SAMPLE = GSM0\n"
             "!Sample_title = Incisors_20_22w\n!Sample_characteristics_ch1 = tissue: Fetal molar tooth germ\n"
+            "!Sample_relation = BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN000\n"
+            "!Sample_relation = SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX000\n"
             "!sample_table_begin\ngene\tvalue\nENAM\t100\n!sample_table_end"
         )
 
@@ -28,6 +30,10 @@ class GeoMetadataTests(unittest.TestCase):
         self.assertFalse(report["expression_values_parsed"])
         self.assertEqual(len(report["source_annotation_conflicts"]), 1)
         self.assertIsNone(report["samples"][0]["independent_donor_id"])
+        self.assertEqual(report["samples"][0]["source_relations"], [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN000",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX000",
+        ])
         self.assertNotIn("ENAM", json.dumps(report))
 
     def test_wrong_accession_duplicate_samples_and_incomplete_family_fail(self):
@@ -44,6 +50,15 @@ class GeoMetadataTests(unittest.TestCase):
         self.assertEqual(datasets["GSE307437"]["n_source_sample_records"], 6)
         self.assertEqual(datasets["GSE184749"]["n_source_sample_records"], 19)
         self.assertEqual(datasets["GSE307437"]["declared_cell_line_labels"], ["WTC-11"])
+        first_sample = datasets["GSE307437"]["samples"][0]
+        self.assertEqual(first_sample["sample_accession"], "GSM9224208")
+        self.assertEqual(first_sample["source_relations"], [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222985",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400796",
+        ])
+        for sample in datasets["GSE307437"]["samples"]:
+            self.assertEqual(len([item for item in sample["source_relations"] if item.startswith("BioSample: ")]), 1)
+            self.assertEqual(len([item for item in sample["source_relations"] if item.startswith("SRA: ")]), 1)
         for dataset in datasets.values():
             self.assertFalse(dataset["eligible_for_donor_heldout_claim"])
             self.assertFalse(dataset["reuse_license_qualified"])

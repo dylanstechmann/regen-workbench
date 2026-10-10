@@ -735,13 +735,13 @@
         "evidence_stage": "Retrieved public counts and computational descriptive comparison; tissue identity/function unqualified",
         "study_design": "Three source conditions with two labeled replicates each; genotype-by-treatment interaction is incomplete",
         "reference_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md. Normalization diagnostics and per-library plots are in RNA_CONTEXT.md. Clone-to-library mapping remains unresolved after selected supplement review; major marker directions persist under two scalings. The companion workbook is figure-summary only (7 static sheets, 178 populated cells) and has no sample or graft-outcome identifiers; see the source record and AMELOBLAST_ORGANOID_REVIEW.md.",
+        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md. Normalization diagnostics and per-library plots are in RNA_CONTEXT.md. Clone-to-library mapping remains unresolved after selected supplement review; major marker directions persist under two scalings. The companion workbook is figure-summary only (7 static sheets, 178 populated cells) and has no sample or graft-outcome identifiers; see the source record and AMELOBLAST_ORGANOID_REVIEW.md. All six GEO samples now have linked BioSample and SRA experiment records, but clone-to-library and differentiation-batch mapping remain unresolved; see GEO_QUALIFICATION.md.",
         "evidence": [
           {
             "axis_id": "identity",
             "status": "not assessed",
             "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-            "notes": "Source-aligned counts analyzed descriptively; molecular changes do not certify functional tissue identity."
+            "notes": "The six source-labeled RNA libraries link to BioSample and SRA experiment records, but independent donor, edited-clone, culture-batch and functional tissue identities remain unqualified."
           },
           {
             "axis_id": "function",
@@ -801,6 +801,29 @@
             "direction": "unclear",
             "notes": "Source manuscript names KO-10 and KO-13 without library mapping here; culture/harvest metadata remain unresolved. Only size factors fitted: no dispersion, Wald or adjusted-p testing. Major marker directions persist but magnitudes change; sparse RNA versus protein assay discrepancies retained. See studies/dental-regeneration-2026-10-09/RNA_CONTEXT.md.",
             "dataset_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a"
+          },
+          {
+            "axis_id": "identity",
+            "source_type": "dataset",
+            "source_title": "GSE307437: sample-to-archive provenance links",
+            "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
+            "license": "Dataset reuse license remains unqualified.",
+            "species": "Human-derived ameloblast organoids; WTC-11 source-cell background",
+            "stage_track": "Source metadata inventory linking GEO sample records to BioSample and SRA experiments",
+            "developmental_interval": "iAM organoid conditions; sample-specific harvest day and differentiation batch are not assigned",
+            "model_system": "Six WTC-11 source-labeled GEO RNA samples with BioSample and SRA experiment links",
+            "comparator": "WT untreated; WT C3-DLL4; DLX3-KO C3-DLL4",
+            "outcome": "Each GEO sample links to one BioSample and one SRA experiment; clone-to-library and differentiation-batch mappings remain unresolved",
+            "measure": "Inventory of GEO sample records and source-declared archive relations",
+            "value": "6 GEO samples; 6 BioSample links; 6 SRA experiment links; two source-labeled biological replicates per condition",
+            "unit": "Archive records and relations, not biological outcomes",
+            "independent_unit": "Not qualified; the shared WTC-11 background and replicate labels do not identify edited clone or differentiation batch.",
+            "sample_size": "Six source records across three conditions; two source-labeled biological replicates per condition, not six donor lines.",
+            "follow_up": "Metadata-link audit only; no FASTQ analysis or functional assay",
+            "status": "not assessed",
+            "direction": "unclear",
+            "notes": "The GSM, BioSample and SRA identifiers are listed in GEO_QUALIFICATION.md and geo_qualification.json. The article names KO-10 and KO-13, but the deposited KO sample records do not assign either clone to a library. Archive links do not establish donor independence or dataset reuse rights.",
+            "dataset_sha256": ""
           },
           {
             "axis_id": "control",

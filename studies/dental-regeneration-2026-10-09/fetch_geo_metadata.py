@@ -55,7 +55,9 @@ def summarize_metadata(metadata):
         if any(t.startswith("Incisors_") and "Molars" not in t for t in titles) and any("molar" in t.lower() for t in traits.get("tissue", [])):
             conflicts.append({"sample_accession": sample["accession"], "issue": "Incisor title versus molar tissue characteristic", "resolution": "unresolved; neither field overrides the other"})
         rows.append({"sample_accession": sample["accession"], "source_titles": titles,
-                     "declared_characteristics": traits, "independent_donor_id": None,
+                     "declared_characteristics": traits,
+                     "source_relations": fields.get("Sample_relation", []),
+                     "independent_donor_id": None,
                      "clone_id": None, "culture_batch_id": None})
     return {"accession": metadata["series"]["accession"], "n_source_sample_records": len(rows), "samples": rows,
             "source_annotation_conflicts": conflicts,

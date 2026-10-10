@@ -26,6 +26,10 @@
               "None"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222985",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400796"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -49,6 +53,10 @@
               "None"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222984",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400797"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -72,6 +80,10 @@
               "C3-DLL4"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222983",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400798"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -95,6 +107,10 @@
               "C3-DLL4"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222982",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400799"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -118,6 +134,10 @@
               "C3-DLL4"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222981",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400800"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -141,6 +161,10 @@
               "C3-DLL4"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN51222980",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30400801"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -180,6 +204,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21610955",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340605"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -200,6 +228,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21610956",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340606"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -220,6 +252,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21610957",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340607"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -240,6 +276,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21610958",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340608"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -260,6 +300,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21610959",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340609"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -280,6 +324,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21609838",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340610"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -300,6 +348,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21609839",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340611"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -320,6 +372,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21609840",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340612"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -340,6 +396,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21609841",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340613"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -360,6 +420,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611958",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340614"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -380,6 +444,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21614171",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340615"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -400,6 +468,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21614172",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340616"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -420,6 +492,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21614174",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340618"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -446,6 +522,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21614176",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340619"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -472,6 +552,10 @@
               "sci-RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611944",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340620"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -498,6 +582,10 @@
               "bulk RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611945",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340621"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -524,6 +612,10 @@
               "bulk RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611947",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340622"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -550,6 +642,10 @@
               "bulk RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611950",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340623"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
@@ -576,6 +672,10 @@
               "bulk RNA-seq"
             ]
           },
+          "source_relations": [
+            "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN21611952",
+            "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX12340624"
+          ],
           "independent_donor_id": null,
           "clone_id": null,
           "culture_batch_id": null
