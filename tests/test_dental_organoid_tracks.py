@@ -31,7 +31,7 @@ class DentalOrganoidTracks(unittest.TestCase):
 
     def test_campaign_evidence_axes_and_scopes_are_explicit(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
-        for key, count in [("dental",4),("organoids",3)]:
+        for key, count in [("dental",5),("organoids",3)]:
             axes = {axis["id"] for axis in seeds["campaign_frameworks"][key]}
             starters = seeds["campaign_starters"][key]
             self.assertEqual(len(starters),count)
@@ -49,6 +49,20 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("1.905 mm", attachment_summary["value"])
         self.assertIn("no significant between-group CAL", attachment_summary["value"])
         self.assertIn("no significant",periodontal["structure_notes"])
+
+    def test_ips_pdl_starter_preserves_iPSC_line_and_batch_scope(self):
+        seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
+        starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "ips-pdl-cell-function")
+        self.assertEqual(len(starter["evidence_records"]), 1)
+        source_record = starter["evidence_records"][0]
+        self.assertIn("same iPSC line", source_record["independent_unit"])
+        self.assertIn("batch #1", starter["structure_notes"])
+        with tempfile.TemporaryDirectory() as directory:
+            instance = desk.Desk(Path(directory))
+            self.addCleanup(lambda: instance.executor.shutdown(wait=True))
+            saved = instance.campaign({**starter, "starter_id": starter["id"], "blueprint_id": "dental", "id": ""})
+            self.assertEqual(saved["evidence_records"][0]["independent_unit"], source_record["independent_unit"])
+            self.assertIn("One iPSC line", saved["evidence_records"][0]["sample_size"])
 
     def test_fulltext_observations_roundtrip_with_outcome_specific_intervals(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))

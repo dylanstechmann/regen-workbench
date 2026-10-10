@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 6440)
+Total output lines: 403
+
 # Research desk
 
 This interface implements the expanded [research direction](RESEARCH_PHILOSOPHY.md).
@@ -22,11 +25,12 @@ stored as citations, not silently scraped.
 ## Working views
 
 **Teeth, gums & periodontal attachment** and **Organoids & stem-cell construct
-function** now add component-specific assessment axes and six starter campaigns.
+function** now add component-specific assessment axes and eight starter campaigns.
 The [dental research track](studies/dental-regeneration-2026-10-09/README.md)
 compares whole-tooth mouse results, human ameloblast organoids, controlled
-periodontal trials and gum-coverage evidence. It keeps bone fill, attachment,
-barrier function and complete tooth replacement separate. The organoid area
+periodontal trials, gum-coverage evidence and iPS-derived PDL-like cell assays.
+It keeps bone fill, attachment, cell identity, barrier function and complete
+tooth replacement separate. The organoid area
 links the independent oxygen-profile intake and new base-editing evidence repo;
 no method package or biological execution is added to the desk.
 
@@ -145,98 +149,7 @@ input hash, comparison metric, per-condition values, missingness and deltas.
   context and immutable analysis-run history with one current pointer per kind.
   Re-importing a receipt appends a run and keeps earlier output records. A passed donor-validation status now also
   requires a linked held-out analysis result, a linked analysis specification,
-  and a stated success criterion under manifest schema 1.2. Schema 1.3 adds
-  measured/planned/unavailable assay status; measured assays require a linked
-  data artifact, while an unavailable endpoint can be represented without a
-  fabricated raw-data link. The kidney tubuloid cyst-induction card preserves
-  its 280-image inventory, zero-mask receipt and treatment-concealed annotation
-  worklist as distinct runs. Morphology remains unavailable until masks and
-  object identities are reviewed. These links make
-  evidence inspectable; the validator does not infer that an analysis or
-  scientific criterion is sound.
-
-  To register a run from the sibling `organoid-phenotyping` package, call
-  `python tools/import_organoid_phenotyping.py --output PATH --manifest PATH
-  --plan PATH` with the exact package output and the exact acquisition manifest
-  and study plan used for that run. The adapter checks all three input hashes,
-  the output hashes and split receipt, then copies only bounded CSV/JSON/Markdown
-  outputs into the study folder. It does not copy raw images or overlays and
-  does not mark a cyst assay as measured merely because mask geometry exists.
-
-  The sibling package can also prepare a treatment-concealed 24-hour annotation
-  worklist with one image per available development kidney × culture × treatment
-  stratum and five hidden repeat assignments. To register its public queues,
-  provisional protocol, plan, and low-resolution contact sheet, run from this
-  repository:
-
-  ```powershell
-  python tools/import_organoid_annotation_pilot.py `
-    --output ..\organoid-phenotyping\artifacts\annotation-pilot-bonn-cyst-24h-v1 `
-    --manifest ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\acquisitions.csv `
-    --plan ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\study-plan.json
-  ```
-
-  The import verifies the source frame hashes, private key, queue fields, and
-  frozen final-test exclusion. It copies only those five public artifacts; the
-  full-resolution source images and the unblinding key stay in the sibling
-  package. ResearchDesk describes this as a worklist, not a completed mask
-  assay or biological result. Visible morphology may still reveal treatment.
-
-  The sibling package's `annotate` command opens a loopback-only polygon workbench
-  for human mask creation. It preserves blinded task IDs, image hashes, protocol
-  version, and pseudonymous annotator IDs. Once reviewers finish, run
-  `organoid-phenotyping audit-annotations --session SESSION_PATH`; the local
-  audit computes foreground Dice only for concealed repeats and writes a new
-  annotated acquisition manifest only when every primary task has a mask.
-  Register the audit summary in ResearchDesk with:
-
-  ```powershell
-  python tools/import_organoid_annotation_review.py `
-    --audit ..\organoid-phenotyping\artifacts\bonn-kidney-cyst-induction\annotation-session-v1\audits\AUDIT_ID
-  ```
-
-  This import verifies receipt hashes and appends report, agreement table and
-  receipt as an `annotation_review` run; it does not import masks, treatment
-  labels, or biological outcomes. To calculate image geometry after mask
-  review, run the package's `measure` command against the newly written
-  `acquisitions-annotated-*.csv` and register that separate package receipt.
-  Agreement, geometry, and treatment response remain distinct evidence stages.
-
-  Imported organoid outputs under `studies/organoid/**/derived/` retain their
-  exact receipt-bound bytes through Git checkout; their original line endings
-  must not be reformatted. Editable source and documentation use the repository's
-  normal LF policy.
-
-- **Study design:** save immutable JSON revisions for a research question with
-  competing hypotheses, a source-scoped dataset card, and an analysis plan
-  linked to exact question/card revision IDs. Each revision records a canonical
-  SHA-256; edits append a new revision, and plans show when linked inputs have
-  since changed. Dataset cards capture access and license claims, file names
-  and optional declared hashes, species/model and interval, data granularity, unit
-  hierarchy, measured endpoints and units, calibration state, groups,
-  missingness and exclusions. A generated gap list describes absent metadata;
-  it does not certify eligibility. Plans require alternatives, a primary
-  outcome, comparator, independent unit, baseline, split, uncertainty,
-  confounding, falsification and ambiguity rules. Plans remain drafts and do not
-  run analyses. Hashes on Study design dataset-card drafts remain user-supplied
-  metadata; this view does not check them against external file bytes. The
-  sibling observation-intake command has a separate optional local-byte check.
-  Citations are stored but never fetched. Reviewer
-  identity is not authenticated. Dossier exports include the exact revisions
-  and their hashes. Source-observation review decisions and binding revisions
-  to jobs submitted through the Desk remain future work; the frozen-evaluation
-  records below bind a plan to a sibling receipt instead.
-
-- **Frozen evaluation:** three more append-only record types sit on a saved
-  analysis plan and are never edited or superseded (a changed plan needs a new
-  freeze). A *plan freeze* pins the plan, question and dataset-card revisions
-  by ID and content hash, a method (owner repository, 40-character commit, entry
-  point, preprocessing, parameters) and a split naming its grouping unit,
-  development groups and sealed final-test groups. The Desk hashes the split,
-  stamps its own clock and derives a status: `retrospective` when the person
-  attests that results were inspected first; `confirmatory` only when the plan is
-  marked `proposed_confirmatory`, final-test groups are sealed, every pinned
-  dataset file has a SHA-256, the method has a commit, and the grouping unit is
+  and a stated success criterion under manifest schem…1440 tokens truncated…thod has a commit, and the grouping unit is
   an identified independent-unit level of a pinned dataset card; otherwise
   `exploratory`, with the blockers listed. A *holdout access* event appends to a
   SHA-256 hash-chained ledger bound to that freeze (scope development or final

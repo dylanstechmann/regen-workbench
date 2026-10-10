@@ -8,7 +8,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 |---|---|---|
 | Enamel identity and architecture | Human ameloblast organoids, 2026; ectopic enamel-like material | Native-like architecture, tooth-site interface and repeated-load behavior in the relevant model |
 | Dentin–pulp unit | Whole-tooth mouse reference, 2009 | Separate adult-human source, living pulp transport and functional interface observations |
-| Cementum–ligament–bone attachment | Human periodontal clinical comparisons | Oriented attachment and load transfer; clinical attachment gain and bone fill remain separate proxies |
+| Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells with selected in-vitro responses | Oriented insertion, donor/line reproducibility and load transfer; cell identity, clinical attachment and bone fill remain separate |
 | Gingival coverage and barrier | Small 2017 recession study | Barrier/seal and inflammatory recurrence outcomes with patient/site hierarchy retained |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
@@ -41,11 +41,24 @@ the radiographic signal does not show oriented cementum–PDL–bone attachment.
 Reported AE and SAE were in two different ASC+PRP participants and judged
 unrelated by the authors; the small sample cannot establish rare-event safety.
 
-The next useful computational work is source-data qualification: donor/clone/
-batch metadata for organoid datasets, and participant-to-tooth mappings and
-outcome-specific follow-up for clinical data. Public figures and summary means
-cannot supply those mappings or a covariance matrix. No new confidence interval,
-pooled effect or ranking is calculated here.
+## iPSC-derived PDL-like cell source
+
+Li et al. (2026) reported selected in-vitro PDL-like properties, including
+osteogenic/matrix responses and transcriptional response to compression. Their
+three differentiation batches came from one iPSC line; one batch was similar to
+skin fibroblasts for several PDL-associated markers, while the other two showed
+higher values. The study did not test a 3D periodontal construct, tissue
+insertion, transplantation, or mechanical load transfer. See the separate
+[iPS-PDL functional review](IPS_PDL_FUNCTION_REVIEW.md) and its
+[retrieval receipt](ipspdl_receipt.json). This supports continued cell-source
+qualification, not an integrated or clinically effective ligament claim.
+
+The next useful work is source and biological-unit qualification: independent
+iPSC-line versus differentiation-batch identities for the PDL-like cell source,
+donor/clone/batch metadata for organoid datasets, and participant-to-tooth
+mappings and outcome-specific follow-up for clinical data. Public figures and
+summary means cannot supply those mappings or a covariance matrix. No new
+confidence interval, pooled effect or ranking is calculated here.
 
 [endpoint_review.json](endpoint_review.json) preserves six observations in the
 desk's existing source-record format. The controlled-periodontal starter loads
@@ -58,12 +71,15 @@ retrieval hashes are not placed in the dataset-hash field.
 
 ## Software verification
 
-The latest one-off Docker workbench-image run completed 383 unit tests with six
-optional tests skipped. All four dental/organoid track tests passed, including
+The latest one-off Docker workbench-image run completed 384 unit tests with six
+optional tests skipped. All five dental/organoid track tests passed, including
 seed parity, distinct endpoint intervals, the mixed-signal attachment summary,
-registry denominator, and stable editable record IDs. The live desk was not
-reloaded and saved user campaigns or notes were not changed by this update.
-This validates software behavior, not tissue regeneration.
+registry denominator, and stable editable record IDs. The live desk was
+restarted after confirming no active runs and now exposes the new starter. Its
+API reports the same saved-campaign and note counts as before (one campaign,
+five notes); a pre-reload content-hash request timed out, so byte-for-byte
+parity was not verified. This validates software behavior, not tissue
+regeneration.
 
 The live check additionally exposed a missing `jsonschema` dependency in the
 research image: the CLI validator exited the HTTP request worker. The Dockerfile
