@@ -53,6 +53,15 @@ insertion, transplantation, or mechanical load transfer. See the separate
 [retrieval receipt](ipspdl_receipt.json). This supports continued cell-source
 qualification, not an integrated or clinically effective ligament claim.
 
+A complementary 2024 feeder-free iPDLSC study reports osteocalcin-positive
+bone/cementum-like tissue and collagen-I-positive PDL-like fibers eight weeks
+after β-tricalcium-phosphate grafting into dorsal subcutaneous tissue of
+immunodeficient mice. The abstract does not state graft n or identify the iPSC
+line. This improves the evidence stage beyond in-vitro characterization, but
+the ectopic site does not test root-to-alveolar-bone insertion or load transfer;
+the publisher page retrieved for this review provides only the abstract
+(https://doi.org/10.1089/scd.2024.0122).
+
 The next useful work is source and biological-unit qualification: independent
 iPSC-line versus differentiation-batch identities for the PDL-like cell source,
 donor/clone/batch metadata for organoid datasets, and participant-to-tooth

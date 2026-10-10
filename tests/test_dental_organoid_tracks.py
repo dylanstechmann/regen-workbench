@@ -53,10 +53,14 @@ class DentalOrganoidTracks(unittest.TestCase):
     def test_ips_pdl_starter_preserves_iPSC_line_and_batch_scope(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
         starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "ips-pdl-cell-function")
-        self.assertEqual(len(starter["evidence_records"]), 1)
+        self.assertEqual(len(starter["evidence_records"]), 2)
         source_record = starter["evidence_records"][0]
         self.assertIn("same iPSC line", source_record["independent_unit"])
         self.assertIn("batch #1", starter["structure_notes"])
+        graft_record = starter["evidence_records"][1]
+        self.assertIn("subcutaneous", graft_record["model_system"])
+        self.assertIn("not stated", graft_record["sample_size"].lower())
+        self.assertIn("load transfer", graft_record["notes"].lower())
         with tempfile.TemporaryDirectory() as directory:
             instance = desk.Desk(Path(directory))
             self.addCleanup(lambda: instance.executor.shutdown(wait=True))

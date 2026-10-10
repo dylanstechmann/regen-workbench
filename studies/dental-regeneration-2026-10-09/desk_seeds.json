@@ -178,7 +178,7 @@
         "evidence_stage": "In-vitro human iPSC-derived cell characterization",
         "study_design": "Compare iPS-PDL evidence with primary PDL donor cells; nest batches within their iPSC donor and technical replicates within batch. Require 3D interface and in-vivo evidence before efficacy claims.",
         "reference_url": "https://www.jstage.jst.go.jp/article/dmj/advpub/0/advpub_2025-235/_pdf",
-        "structure_notes": "The 2026 study functionally characterized iPS-PDL cells from one iPSC line (HPS0381), using PDL-conditioned media from three preparations to generate three differentiation batches. Batches #2/#3 expressed more Asporin, TN-C and ALP than dermal fibroblasts; batch #1 was fibroblast-like for those markers. In-vitro osteogenic, matrix and compression responses were reported. No 3D construct, oriented insertion, transplantation or load transfer was tested. See studies/dental-regeneration-2026-10-09/IPS_PDL_FUNCTION_REVIEW.md.",
+        "structure_notes": "The 2026 study functionally characterized iPS-PDL cells from one iPSC line (HPS0381), using PDL-conditioned media from three preparations to generate three differentiation batches. Batches #2/#3 expressed more Asporin, TN-C and ALP than dermal fibroblasts; batch #1 was fibroblast-like for those markers. In-vitro osteogenic, matrix and compression responses were reported. No 3D construct, oriented insertion, transplantation or load transfer was tested. See studies/dental-regeneration-2026-10-09/IPS_PDL_FUNCTION_REVIEW.md. A complementary 2024 feeder-free iPDLSC study reported marker-positive bone/cementum-like tissue and collagen-I-positive PDL-like fibers after an 8-week ectopic subcutaneous mouse graft; its abstract omits graft n and iPSC-line identity, and it does not test tooth-site insertion or load transfer. See IPS_PDL_FUNCTION_REVIEW.md.",
         "evidence": [
           {
             "axis_id": "identity",
@@ -189,6 +189,16 @@
             "timepoint": "In-vitro; early passage",
             "source_url": "https://www.jstage.jst.go.jp/article/dmj/advpub/0/advpub_2025-235/_pdf",
             "notes": "Supports a cell-source hypothesis, not a functional periodontal construct. Batch reproducibility and independent iPSC lines remain open."
+          },
+          {
+            "axis_id": "integration",
+            "status": "source reports positive signal",
+            "value": "An 8-week ectopic graft reportedly contained osteocalcin-positive bone/cementum-like tissue and collagen-I-positive PDL-like fibers.",
+            "unit": "Ectopic mouse graft",
+            "comparator": "On-feeder iPDLSCs for in-vitro marker context; no in-vivo comparator stated in abstract",
+            "timepoint": "8 weeks after transplant",
+            "source_url": "https://doi.org/10.1089/scd.2024.0122",
+            "notes": "Subcutaneous location does not test tooth-site insertion or load transfer; graft denominator and iPSC-line identity are not stated in the retrieved abstract."
           }
         ],
         "evidence_records": [
@@ -214,6 +224,29 @@
             "direction": "unclear",
             "dataset_sha256": "",
             "notes": "Cell-characterization study only: no 3D ligament construct, oriented cementum/PDL/bone insertion, in-vivo integration, or load-transfer outcome. Authors note one iPSC line, batch variation, early passage, no comprehensive side-by-side primary-PDL validation, and need for genomic-stability, tumorigenicity and xeno-free safety assessment."
+          },
+          {
+            "axis_id": "integration",
+            "source_type": "publication",
+            "source_title": "Feeder-free iPDLSC study 2024: ectopic mouse graft",
+            "source_url": "https://doi.org/10.1089/scd.2024.0122",
+            "license": "Publisher abstract accessed; full text restricted in retrieved view; no full-text license claim made",
+            "species": "Human iPSC-derived cells transplanted into immunodeficient mice",
+            "stage_track": "Feeder-free iPSC-derived PDL-like cells and ectopic xenograft",
+            "developmental_interval": "In-vitro induction followed by 8-week graft",
+            "model_system": "Feeder-free iPSCs differentiated through neural-crest-like cells to PDL stem-cell-like cells; subcutaneous dorsal graft with β-tricalcium phosphate scaffold in immunodeficient mice",
+            "comparator": "In-vitro marker expression compared with on-feeder iPDLSCs; no in-vivo comparator arm stated in the abstract",
+            "outcome": "Marker-positive bone/cementum-like tissue and PDL-like fibers were reported in an ectopic graft",
+            "measure": "Osteocalcin-positive tissue and collagen-I-positive fibers at 8 weeks",
+            "value": "At 8 weeks, the abstract reports osteocalcin-positive bone/cementum-like tissues and collagen-I-positive PDL-like fibers",
+            "unit": "Mouse ectopic graft; denominator not stated in the retrieved abstract",
+            "independent_unit": "Animal/graft; denominator not stated in the retrieved abstract",
+            "sample_size": "Not stated in the retrieved abstract; quantitative comparison awaits full-text assessment",
+            "follow_up": "8 weeks post-transplant",
+            "status": "source reports positive signal",
+            "direction": "supports",
+            "dataset_sha256": "",
+            "notes": "The graft was dorsal subcutaneous tissue, not a tooth socket. Marker-positive collagen fibers do not establish oriented insertion onto root cementum and alveolar bone, periodontal-space organization, physiologic mobility, or load transfer. The abstract does not identify the iPSC line or state the animal/graft denominator; do not infer donor-independent replication. Full text was restricted in the retrieved publisher view."
           }
         ]
       },

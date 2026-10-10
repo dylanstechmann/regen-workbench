@@ -47,15 +47,33 @@ observation. It does not by itself demonstrate better repair or safer scaling;
 proliferation, lineage identity, genomic stability and construct function are
 separate endpoints.
 
+## Complementary feeder-free differentiation and ectopic graft evidence
+
+Yamashita et al. (2024) describe feeder-free iPSC-derived PDL stem-cell-like
+cells. The indexed abstract reports an eight-week subcutaneous graft with
+β-tricalcium-phosphate scaffold in immunodeficient mice, where osteocalcin-positive
+bone/cementum-like tissue and collagen-I-positive PDL-like fibers were observed.
+This is an in-vivo histology signal, but the site was dorsal subcutaneous tissue,
+not a tooth socket. It does not test fiber insertion onto root cementum and
+alveolar bone, periodontal-space organization, tooth mobility, or load transfer.
+
+The retrieved publisher page exposes the abstract but restricts the full text;
+the abstract does not state the animal/graft denominator or identify the iPSC
+line. This is complementary protocol-level evidence, not proof of independent
+donor replication or a functionally integrated periodontal ligament. The source
+is [Yamashita et al., 2024](https://doi.org/10.1089/scd.2024.0122), PMID 39504137.
+
 ## Next discriminating evidence
 
 The next evidence step is independent-line and independent-batch qualification
-with donor identity retained as the biological unit. A later construct study
-would need to distinguish cementum-side and alveolar-bone-side attachment,
-oriented collagen-fiber insertion, physiological movement and mechanical
-response under sustained loading. It should include an explicit primary-PDL
-comparator and assess long-term stability and residual pluripotency. These are
-proposed evidence requirements, not a laboratory protocol.
+with donor identity retained as the biological unit, followed by tooth-site
+testing that separates ectopic mineralized graft formation from periodontal
+integration. A construct study would need to distinguish cementum-side and
+alveolar-bone-side attachment, oriented collagen-fiber insertion, physiological
+movement and mechanical response under sustained loading. It should include an
+explicit primary-PDL comparator and assess long-term stability and residual
+pluripotency. These are proposed evidence requirements, not a laboratory
+protocol.
 
 The dental ResearchDesk contains this as its own iPS-PDL starter so that an
 in-vitro cell-source result is not merged into the human periodontal-trial
