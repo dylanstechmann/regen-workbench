@@ -13,6 +13,12 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
 
+The ameloblast paper's supplementary XLSX has now been inspected. Its seven
+figure-value sheets add no donor/clone/batch identities and no graft-level
+outcomes; see the [workbook audit](AMELOBLAST_ORGANOID_REVIEW.md#supplementary-workbook-audit).
+The unresolved comparison remains independent iPSC lines and differentiation
+batches, with sample-to-clone mapping and explicit graft-level denominators.
+
 ## What the full-text follow-up changed
 
 The 2016 primary radiographic analysis reports p=0.742; clinical attachment is a

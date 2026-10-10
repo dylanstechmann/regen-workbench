@@ -62,9 +62,10 @@ It separates orthotopic animal outcomes from ectopic graft and in-vitro evidence
 including the 2018 ankylosis signal and missing mechanical-function endpoints.
 
 The [2026 ameloblast-organoid review](AMELOBLAST_ORGANOID_REVIEW.md) records
-the six-mouse, three-week ectopic-graft context and supplement review. It
-distinguishes mineral-bearing epithelial graft evidence from enamel performance
-and whole-tooth integration.
+the six-mouse, three-week ectopic-graft context and audits the figure-value
+workbook supplied with the article. It distinguishes mineral-bearing epithelial
+graft evidence from independent replication, enamel performance and whole-tooth
+integration.
 
 The [2011 PDL-progenitor root-preseeding review](PDL_PROGENITOR_ROOT_PRESEED_REVIEW.md)
 adds an anatomically relevant comparison: four progenitor-preseeded and four

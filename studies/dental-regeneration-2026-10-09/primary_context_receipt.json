@@ -19,7 +19,15 @@
         8,
         10
       ],
-      "spreadsheet_reviewed": false
+      "spreadsheet_reviewed": true,
+      "spreadsheet_reviewed_on": "2026-10-10",
+      "spreadsheet_filename": "41368_2026_429_MOESM2_ESM.xlsx",
+      "spreadsheet_sha256": "b4f678d1756aea947ee56dc208c5d364ecde1eae2d45ccf168b4f6ea1b90159e",
+      "spreadsheet_bytes": 15577,
+      "spreadsheet_sheets": 7,
+      "spreadsheet_nonempty_cells": 178,
+      "spreadsheet_formula_cells": 0,
+      "spreadsheet_scope": "Figure-labelled heatmap and aggregate values; no sample-level identity or graft-outcome records"
     }
   ],
   "source_manuscript_license": "CC BY-NC-ND 4.0; full text and supplementary files remain private"
