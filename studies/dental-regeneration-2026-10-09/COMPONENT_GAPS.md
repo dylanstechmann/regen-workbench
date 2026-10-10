@@ -9,7 +9,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 | Enamel identity and architecture | Human ameloblast organoids, 2026; ectopic enamel-like material | Native-like architecture, tooth-site interface and repeated-load behavior in the relevant model |
 | Dentin–pulp unit | Whole-tooth mouse reference, 2009 | Separate adult-human source, living pulp transport and functional interface observations |
 | Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells in vitro; rat iPSC+BMP-6 orthotopic defect histology | Oriented insertion and load transfer remain unproven; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
-| Gingival coverage and barrier | 2017 cell-seeded membrane study plus a 2026 10-participant split-mouth fibroblast/matrix trial; both report six-month clinical coverage | The 2017 defect totals conflict across sections; the 2026 study reports selected clinical differences but no histology, epithelial-seal assay or recurrence endpoint. Longer follow-up and patient/site-level reporting remain necessary |
+| Gingival coverage and barrier | 2017 and 2026 human recession studies; 2021 rabbit augmentation histology; 2022 canine recession histology; 12-year human graft follow-up | Cell adjunct studies show early clinical or histologic signals in limited models, but no predictable cell-added long-term effect or direct functional seal test. The graft follow-up measures durability without histology; see the [histology/durability review](GINGIVAL_HISTOLOGY_DURABILITY_REVIEW.md) |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
 
@@ -54,6 +54,16 @@ The source also contains abstract/table and baseline-reporting discrepancies,
 and the 2017 article's site counts differ between sections. These source issues
 and full-text retrievals are itemized in the review and its
 [provenance receipt](gingival_trial_receipt.json).
+
+The separate [histology and durability review](GINGIVAL_HISTOLOGY_DURABILITY_REVIEW.md)
+compares early rabbit epithelialization, six-week canine recession histology
+and a 12-year human graft follow-up. It preserves long-junctional-epithelium
+repair as distinct from new cementum/bone/connective attachment, and retains
+the long human follow-up as a coverage-stability benchmark rather than evidence
+for a cell product. Exact fetches for the open-access animal full texts are in
+[gingival_histology_receipt.json](gingival_histology_receipt.json). None of
+these studies directly tests the functional barrier's resistance to microbial
+penetration.
 
 ## iPSC-derived PDL-like cell source
 

@@ -19,6 +19,7 @@ restoration of attachment and gum coverage are separate questions.
 | [ASC/PRP trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC12855574/) | Full text: 36-week radiographic bone-height difference 1.905 mm (95% CI 0.383–3.427; p=.0184) vs EMD; no between-group CAL or probing-depth signal | Only 15 treated (9 vs 6), primary endpoint n=8 vs 6; no histology or proof of oriented PDL attachment; clinical attachment is a separate endpoint |
 | [DPSC trial 2025](https://www.nature.com/articles/s41392-025-02320-w) | Abstract reports a bone-defect-depth signal and a post hoc attachment signal in a stage-III subgroup | Subgroup findings are not an overall primary-endpoint confirmation or proof of complete periodontal regeneration |
 | [Gingival-recession study 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC5463777/); [fibroblast-matrix trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13293744/) | Full-text review of an umbilical-cord-derived cell/membrane study and a 10-participant split-mouth autologous-fibroblast/collagen-matrix trial; both report six-month coverage outcomes | The 2017 paper has inconsistent site totals; the 2026 study is small, all-male and short-term. Neither measures epithelial seal, long-term recurrence, oriented ligament insertion or whole-tooth restoration |
+| Gingival histology and durability: [rabbit augmentation, 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8469508/), [canine recession histology, 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC8950013/), and [12-year coverage follow-up, 2019](https://pubmed.ncbi.nlm.nih.gov/31446625/) | Rabbit histology reports an early epithelialization/vascularization signal; canine recession histology reports both connective/cementum/bone repair and long-junctional-epithelium patterns; the human follow-up measures clinical relapse | The short animal studies do not show durable attachment or a functional seal; the human follow-up measures coverage stability, not cell efficacy or epithelial-seal function |
 
 The table is a focused source review, not a meta-analysis. The 2026 ameloblast
 paper's publisher full text and primary articles for the 2016 PDLSC, 2025 DPSC,
@@ -80,6 +81,14 @@ results table. Both papers assess short-term clinical coverage, not epithelial
 seal integrity, durable recurrence prevention or periodontal ligament
 restoration. Exact full-text fetches are listed in
 [gingival_trial_receipt.json](gingival_trial_receipt.json).
+
+The follow-up [gingival histology and durability review](GINGIVAL_HISTOLOGY_DURABILITY_REVIEW.md)
+adds a seven-dog recession-histology study, a seven-day rabbit augmentation
+study and a 12-year human graft follow-up. It finds early epithelialization,
+microscopic attachment and years-long root coverage in different models, but
+no direct functional seal test or long-term cell-therapy result. Exact full-text
+fetches for the two animal articles are listed in
+[gingival_histology_receipt.json](gingival_histology_receipt.json).
 
 ## Component roadmap
 

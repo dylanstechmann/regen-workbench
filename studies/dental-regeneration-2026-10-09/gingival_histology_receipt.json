@@ -1,0 +1,21 @@
+{
+  "scope": "Exact primary full-text retrievals for focused gingival histology and epithelialization reviews. Private XML remains under ignored literature storage.",
+  "records": [
+    {
+      "pmcid": "PMC8950013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8950013/fullTextXML",
+      "retrieved_utc": "2026-10-10T04:08:51.992375+00:00",
+      "response_sha256": "22115be3b986102acfcf44f04d53462902120f48bd585af33cb07636ac893095",
+      "bytes": 130317,
+      "local_provenance_receipt": "1791605331992375200_dental-primary-fulltext.json"
+    },
+    {
+      "pmcid": "PMC8469508",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8469508/fullTextXML",
+      "retrieved_utc": "2026-10-10T04:08:52.900740+00:00",
+      "response_sha256": "880749b3c6a3bf65beafebc23766bb288daccff0a2a5a5ae3930ebd38e70d2c7",
+      "bytes": 82240,
+      "local_provenance_receipt": "1791605332899730800_dental-primary-fulltext.json"
+    }
+  ]
+}
