@@ -31,6 +31,16 @@ records do not map either clone to GSM9224212 or GSM9224213, nor name separate
 differentiation batches. Thus the sample/SRA chain is traceable, while clone and
 culture independence remain unresolved.
 
+The two KO BioSample records and their linked SRA experiment records were then
+retrieved and parsed individually through `regen.http_bytes`;
+[the archive audit](geo_archive_metadata_audit.json) preserves all four
+accessions, selected metadata, response hashes and local provenance receipt
+names. The BioSamples repeat WTC-11, DLX3 knockout, C3-DLL4 and biological
+replicate labels; the SRA records identify GEO sample IDs, SRA sample IDs and
+NextSeq 2000 library metadata. Neither archive record supplies a KO-10/KO-13
+assignment or a named differentiation batch. This confirms what is absent from
+these public archive fields, not what the investigators may hold elsewhere.
+
 For GSE307437, WT treated versus WT untreated is a candidate within-background
 molecular contrast. KO treated versus WT treated is a candidate genotype contrast
 under that condition, with clone effects unresolved. A complete genotype-by-
@@ -58,6 +68,7 @@ Reproduce metadata retrieval or recheck its cached snapshot:
 ```sh
 python studies/dental-regeneration-2026-10-09/fetch_geo_metadata.py
 python studies/dental-regeneration-2026-10-09/fetch_geo_metadata.py --summarize-cached
+python studies/dental-regeneration-2026-10-09/fetch_geo_archive_metadata.py
 ```
 
 The cache path checks both response and parsed-metadata hashes and reparses the
@@ -66,10 +77,11 @@ it is an editable research hypothesis, not a performed expression analysis.
 
 The metadata tests check series/sample identity, duplicate refusal, preservation
 of BioSample/SRA relations, exclusion of table values, unresolved source
-conflicts and independence limits. The latest full local suite passed 388 tests;
+conflicts and independence limits. The latest full local suite passed 390 tests;
 29 platform/optional tests were skipped on Windows. The live API exposes three
 organoid starters, including this comparison, and its Experiments endpoint
-remains healthy. All saved workspace content and five notes were unchanged after
-reload. The separate long-lived `workbench` service was not running, so its
-`regen doctor` command could not execute; no doctor-pass or biological-validation
-claim is made.
+remains healthy. All saved workspace content, including one campaign and five
+notes, was unchanged after desk restart. The separate `workbench` service's
+`regen doctor` check passed for available binaries and Python packages; GPU
+access was unavailable in its container. This is a runtime check, not biological
+validation.

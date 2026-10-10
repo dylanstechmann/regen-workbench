@@ -1,0 +1,210 @@
+{
+  "scope": "Two DLX3-KO sample records only; archive metadata check, not FASTQ analysis",
+  "retrieved_utc": "2026-10-10T14:25:57.542871+00:00",
+  "records": [
+    {
+      "record": {
+        "database": "biosample",
+        "accession": "SAMN51222981",
+        "geo_sample": "GSM9224212",
+        "title": "DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 1",
+        "organism": "Homo sapiens",
+        "attributes": [
+          {
+            "name": "source_name",
+            "harmonized_name": "source_name",
+            "value": "WTC-11"
+          },
+          {
+            "name": "cell line",
+            "harmonized_name": "cell_line",
+            "value": "WTC-11"
+          },
+          {
+            "name": "cell type",
+            "harmonized_name": "cell_type",
+            "value": "induced secretory ameloblast organoids (isAM)"
+          },
+          {
+            "name": "genotype",
+            "harmonized_name": "genotype",
+            "value": "DLX3 knockout"
+          },
+          {
+            "name": "treatment",
+            "harmonized_name": "treatment",
+            "value": "C3-DLL4"
+          },
+          {
+            "name": "geo_loc_name",
+            "harmonized_name": "geo_loc_name",
+            "value": "missing"
+          },
+          {
+            "name": "collection_date",
+            "harmonized_name": "collection_date",
+            "value": "missing"
+          }
+        ],
+        "identifiers": [
+          {
+            "db": "BioSample",
+            "id": "SAMN51222981"
+          },
+          {
+            "db": "SRA",
+            "id": "SRS26437414"
+          },
+          {
+            "db": "GEO",
+            "id": "GSM9224212"
+          }
+        ],
+        "links": [
+          {
+            "target": null,
+            "label": "GEO Sample GSM9224212",
+            "url_or_id": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9224212"
+          },
+          {
+            "target": "bioproject",
+            "label": "PRJNA1321696",
+            "url_or_id": "1321696"
+          }
+        ]
+      },
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=biosample&id=SAMN51222981&retmode=xml",
+      "response_sha256": "ebd7c49f3aa5264a86a1575be59b371f19ed5356c3ecdf3b3fa8bf93fb8f13fc",
+      "local_provenance_receipt": "1791642356504195726_dental-geo-archive-metadata.json"
+    },
+    {
+      "record": {
+        "database": "biosample",
+        "accession": "SAMN51222980",
+        "geo_sample": "GSM9224213",
+        "title": "DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 2",
+        "organism": "Homo sapiens",
+        "attributes": [
+          {
+            "name": "source_name",
+            "harmonized_name": "source_name",
+            "value": "WTC-11"
+          },
+          {
+            "name": "cell line",
+            "harmonized_name": "cell_line",
+            "value": "WTC-11"
+          },
+          {
+            "name": "cell type",
+            "harmonized_name": "cell_type",
+            "value": "induced secretory ameloblast organoids (isAM)"
+          },
+          {
+            "name": "genotype",
+            "harmonized_name": "genotype",
+            "value": "DLX3 knockout"
+          },
+          {
+            "name": "treatment",
+            "harmonized_name": "treatment",
+            "value": "C3-DLL4"
+          },
+          {
+            "name": "geo_loc_name",
+            "harmonized_name": "geo_loc_name",
+            "value": "missing"
+          },
+          {
+            "name": "collection_date",
+            "harmonized_name": "collection_date",
+            "value": "missing"
+          }
+        ],
+        "identifiers": [
+          {
+            "db": "BioSample",
+            "id": "SAMN51222980"
+          },
+          {
+            "db": "SRA",
+            "id": "SRS26437415"
+          },
+          {
+            "db": "GEO",
+            "id": "GSM9224213"
+          }
+        ],
+        "links": [
+          {
+            "target": null,
+            "label": "GEO Sample GSM9224213",
+            "url_or_id": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9224213"
+          },
+          {
+            "target": "bioproject",
+            "label": "PRJNA1321696",
+            "url_or_id": "1321696"
+          }
+        ]
+      },
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=biosample&id=SAMN51222980&retmode=xml",
+      "response_sha256": "728bb08287f300c4206cfad9d21c9735f11701ed5b26efdf5adab7f3adf67240",
+      "local_provenance_receipt": "1791642356874908287_dental-geo-archive-metadata.json"
+    },
+    {
+      "record": {
+        "database": "sra",
+        "accession": "SRX30400800",
+        "geo_sample": "GSM9224212",
+        "title": "GSM9224212: DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 1; Homo sapiens; RNA-Seq",
+        "description": null,
+        "sra_sample_accession": "SRS26437414",
+        "geo_sample_identifier": "GSM9224212",
+        "library_descriptor": {
+          "LIBRARY_NAME": "GSM9224212",
+          "LIBRARY_STRATEGY": "RNA-Seq",
+          "LIBRARY_SOURCE": "TRANSCRIPTOMIC",
+          "LIBRARY_SELECTION": "cDNA",
+          "LIBRARY_CONSTRUCTION_PROTOCOL": "Total RNA was extracted using TRIzol reagent (Thermo Fisher Scientific) following the manufacturer's instructions. RNA was treated with Turbo DNase (Thermo Fisher) to remove genomic DNA and quantified using the Qubit RNA HS Assay Kit and Agilent High Sensitivity D5000 ScreenTape. RNA-seq libraries were prepared using the Illumina Stranded mRNA Prep, Ligation Kit (Illumina #20040532), according to the manufacturer's instructions. Libraries were size-selected using AMPure XP beads (Beckman Coulter #A63880), quality checked on the Agilent D5000 ScreenTape system, and indexed with Illumina adapters. Sequencing was performed on the Illumina NextSeq 2000 platform (paired-end, 100 bp)."
+        },
+        "instrument_model": "NextSeq 2000"
+      },
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id=SRX30400800&retmode=xml",
+      "response_sha256": "c300543065c4f77bfe593adacd4d7b00bf3ad8c03981209edb3bfc5828b3b06d",
+      "local_provenance_receipt": "1791642357193942304_dental-geo-archive-metadata.json"
+    },
+    {
+      "record": {
+        "database": "sra",
+        "accession": "SRX30400801",
+        "geo_sample": "GSM9224213",
+        "title": "GSM9224213: DLX3-KO isAM organoids, C3-DLL4 treated, biol rep 2; Homo sapiens; RNA-Seq",
+        "description": null,
+        "sra_sample_accession": "SRS26437415",
+        "geo_sample_identifier": "GSM9224213",
+        "library_descriptor": {
+          "LIBRARY_NAME": "GSM9224213",
+          "LIBRARY_STRATEGY": "RNA-Seq",
+          "LIBRARY_SOURCE": "TRANSCRIPTOMIC",
+          "LIBRARY_SELECTION": "cDNA",
+          "LIBRARY_CONSTRUCTION_PROTOCOL": "Total RNA was extracted using TRIzol reagent (Thermo Fisher Scientific) following the manufacturer's instructions. RNA was treated with Turbo DNase (Thermo Fisher) to remove genomic DNA and quantified using the Qubit RNA HS Assay Kit and Agilent High Sensitivity D5000 ScreenTape. RNA-seq libraries were prepared using the Illumina Stranded mRNA Prep, Ligation Kit (Illumina #20040532), according to the manufacturer's instructions. Libraries were size-selected using AMPure XP beads (Beckman Coulter #A63880), quality checked on the Agilent D5000 ScreenTape system, and indexed with Illumina adapters. Sequencing was performed on the Illumina NextSeq 2000 platform (paired-end, 100 bp)."
+        },
+        "instrument_model": "NextSeq 2000"
+      },
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id=SRX30400801&retmode=xml",
+      "response_sha256": "df07fd6a6c8e9e53a9373f8b4f4197bf1803f8893ec6f619eaadd28951557740",
+      "local_provenance_receipt": "1791642357539368233_dental-geo-archive-metadata.json"
+    }
+  ],
+  "qualification": {
+    "geo_samples": [
+      "GSM9224212",
+      "GSM9224213"
+    ],
+    "clone_to_sample_mapping_found": false,
+    "differentiation_batch_mapping_found": false,
+    "interpretation": "The linked public BioSample and SRA XML records were checked for a KO-10/KO-13-to-library mapping and named independent differentiation batches. No such mapping was present. This is an archive-field result, not proof the investigators lack these records elsewhere."
+  },
+  "raw_xml": "Ignored under data/literature; each retrieval has a Regen SHA-256 receipt."
+}

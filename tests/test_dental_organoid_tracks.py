@@ -31,7 +31,7 @@ class DentalOrganoidTracks(unittest.TestCase):
 
     def test_campaign_evidence_axes_and_scopes_are_explicit(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
-        for key, count in [("dental",7),("organoids",3)]:
+        for key, count in [("dental",8),("organoids",3)]:
             axes = {axis["id"] for axis in seeds["campaign_frameworks"][key]}
             starters = seeds["campaign_starters"][key]
             self.assertEqual(len(starters),count)
@@ -87,6 +87,60 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("six weeks", record["follow_up"].lower())
         self.assertIn("no direct mobility", record["notes"].lower())
         self.assertEqual(record["status"], "source reports positive signal")
+
+    def test_usag1_starter_keeps_animal_adverse_signals_and_human_trial_boundary(self):
+        seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
+        source_seeds = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/desk_seeds.json").read_text(encoding="utf-8"))
+        dossier = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/usag1_translation_review.json").read_text(encoding="utf-8"))
+        starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "usag1-developmental-tooth-activation")
+        source_starter = next(s for s in source_seeds["campaign_starters"]["dental"] if s["id"] == starter["id"])
+        self.assertEqual(starter["evidence_records"], dossier["evidence_records"])
+        self.assertEqual(source_starter["evidence_records"], dossier["evidence_records"])
+        self.assertEqual(len(starter["evidence_records"]), 4)
+        axes = [item["axis_id"] for item in starter["evidence"]]
+        self.assertEqual(len(axes), len(set(axes)))
+        control = next(item for item in starter["evidence"] if item["axis_id"] == "control")
+        self.assertEqual(control["status"], "not assessed")
+        self.assertIn("recruitment as Complete", control["value"])
+        receipt = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/usag1_translation_receipt.json").read_text(encoding="utf-8"))
+        self.assertEqual({row["id"] for row in receipt["records"]}, {"PMC7880588", "TRG035-Phase-IIa-2026-08-17", "TRG035-news-index-2026-10-10", "jRCT2051240154", "PMID42218011"})
+        self.assertTrue(all(row["status"] == "retrieved_and_identity_checked" for row in receipt["records"]))
+        animal = starter["evidence_records"][0]
+        self.assertIn("not TRG035", animal["model_system"])
+        self.assertIn("immunosuppression", animal["value"])
+        self.assertEqual(animal["status"], "source reports mixed signal")
+        phase_one = starter["evidence_records"][1]
+        self.assertIn("Complete", phase_one["value"])
+        self.assertIn("no trial results are posted", phase_one["value"])
+        self.assertIn("no tooth-formation endpoint", phase_one["measure"])
+        self.assertIn("legacy", phase_one["notes"])
+        phase_two = starter["evidence_records"][2]
+        self.assertIn("Target n=24", phase_two["sample_size"])
+        self.assertIn("planned after review by the trial-site IRB", phase_two["notes"])
+        imaging = starter["evidence_records"][3]
+        self.assertIn("0-25 days", imaging["developmental_interval"])
+        self.assertIn("human surrogate", imaging["notes"])
+        with tempfile.TemporaryDirectory() as directory:
+            instance = desk.Desk(Path(directory))
+            self.addCleanup(lambda: instance.executor.shutdown(wait=True))
+            saved = instance.campaign({**starter, "starter_id": starter["id"], "blueprint_id": "dental", "id": ""})
+            saved_records = [{key: value for key, value in record.items() if key != "record_id"}
+                             for record in saved["evidence_records"]]
+            self.assertEqual(saved_records, dossier["evidence_records"])
+            self.assertEqual(len({record["record_id"] for record in saved["evidence_records"]}), 4)
+
+    def test_ko_archive_audit_traces_sra_samples_without_assigning_clones(self):
+        audit = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/geo_archive_metadata_audit.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(audit["records"]), 4)
+        self.assertFalse(audit["qualification"]["clone_to_sample_mapping_found"])
+        self.assertFalse(audit["qualification"]["differentiation_batch_mapping_found"])
+        records = {item["record"]["accession"]: item["record"] for item in audit["records"]}
+        self.assertEqual(records["SRX30400800"]["geo_sample_identifier"], "GSM9224212")
+        self.assertEqual(records["SRX30400800"]["sra_sample_accession"], "SRS26437414")
+        self.assertEqual(records["SRX30400800"]["instrument_model"], "NextSeq 2000")
+        attributes = {item["name"]: item["value"] for item in records["SAMN51222981"]["attributes"]}
+        self.assertEqual(attributes["genotype"], "DLX3 knockout")
+        self.assertEqual(attributes["treatment"], "C3-DLL4")
 
     def test_fulltext_observations_roundtrip_with_outcome_specific_intervals(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))

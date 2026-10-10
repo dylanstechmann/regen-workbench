@@ -1,0 +1,86 @@
+{
+  "scope": "Source retrieval for USAG-1 mechanism and current TRG035 clinical-stage qualification; not clinical outcome analysis",
+  "retrieved_utc": "2026-10-10T14:40:43.886085+00:00",
+  "records": [
+    {
+      "id": "PMC7880588",
+      "kind": "primary_article_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7880588/fullTextXML",
+      "status": "retrieved_and_identity_checked",
+      "retrieved_utc": "2026-10-10T14:40:39.581217+00:00",
+      "response_sha256": "ad25e58acf3dccc3d17fd467a74f433bb65387e0a124aafffca5576962dffb36",
+      "response_bytes": 98064,
+      "local_provenance_receipt": "1791643239581217100_dental-usag1-translation-source.json",
+      "parsed_summary": {
+        "pmcid": "PMC7880588",
+        "doi": "10.1126/sciadv.abf1798",
+        "title": "Anti–USAG-1 therapy for tooth regeneration through enhanced BMP signaling"
+      }
+    },
+    {
+      "id": "TRG035-Phase-IIa-2026-08-17",
+      "kind": "sponsor_phase_IIa_press_release_pdf",
+      "url": "https://toregem.co.jp/next2025/wp-content/uploads/2026/08/%E3%83%88%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%A0%E3%83%90%E3%82%A4%E3%82%AA%E3%83%95%E3%82%A1%E3%83%BC%E3%83%9E%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-%E3%83%96%E3%83%AC%E3%82%B9%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9_%E6%B2%BB%E9%A8%93%E8%A8%88%E7%94%BB%E5%B1%8APMDA%E8%AA%BF%E6%9F%BB%E5%AE%8C%E4%BA%86.pdf",
+      "status": "retrieved_and_identity_checked",
+      "retrieved_utc": "2026-10-10T14:40:40.690977+00:00",
+      "response_sha256": "9fde9297929bbb2147de1811e4ac8168b0d46c772af51d44f50d344561cada1f",
+      "response_bytes": 204831,
+      "local_provenance_receipt": "1791643240689967000_dental-usag1-translation-source.json",
+      "parsed_summary": {
+        "format": "PDF; source text checked separately in the publisher browser view"
+      }
+    },
+    {
+      "id": "TRG035-news-index-2026-10-10",
+      "kind": "sponsor_news_index_status_check",
+      "url": "https://toregem.co.jp/en/archives/category/news",
+      "status": "retrieved_and_identity_checked",
+      "retrieved_utc": "2026-10-10T14:40:41.820776+00:00",
+      "response_sha256": "57fc9fee7b35fd9224e8c627bbc2bd446bae824c2a27e84cc225af0540852255",
+      "response_bytes": 55236,
+      "local_provenance_receipt": "1791643241819775900_dental-usag1-translation-source.json",
+      "parsed_summary": {
+        "format": "HTML",
+        "latest_listing_date": "October 6, 2026",
+        "phase_IIa_notice_date": "August 17, 2026",
+        "no_later_trial_specific_notice_found": true
+      }
+    },
+    {
+      "id": "jRCT2051240154",
+      "kind": "phase_I_registry_record",
+      "url": "https://jrct.mhlw.go.jp/en-latest-detail/jRCT2051240154",
+      "status": "retrieved_and_identity_checked",
+      "retrieved_utc": "2026-10-10T14:40:43.375596+00:00",
+      "response_sha256": "a5e712612f0afb22621308a3f1d3e8d840818dd85ed8411159652ea6a8a0fbc6",
+      "response_bytes": 32796,
+      "local_provenance_receipt": "1791643243375596200_dental-usag1-translation-source.json",
+      "parsed_summary": {
+        "format": "HTML",
+        "contains_TRG035": true,
+        "recruitment_status": "Complete",
+        "last_modified": "Oct. 03, 2025",
+        "results_posted": false
+      }
+    },
+    {
+      "id": "PMID42218011",
+      "kind": "imaging_biomarker_article_metadata",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A42218011&format=json&resultType=core",
+      "status": "retrieved_and_identity_checked",
+      "retrieved_utc": "2026-10-10T14:40:43.886085+00:00",
+      "response_sha256": "09799214910e53f78232a62ffd6ebc6e3d1188f7276d1b6ad841629fbea20b58",
+      "response_bytes": 7623,
+      "local_provenance_receipt": "1791643243885443200_dental-usag1-translation-source.json",
+      "parsed_summary": {
+        "pmid": "42218011",
+        "pmcid": null,
+        "doi": "10.1016/j.job.2026.100775",
+        "title": "Imaging biomarkers as surrogate endpoints for clinical trials on permanent tooth regeneration in congenital tooth agenesis.",
+        "first_publication_date": "2026-03-28",
+        "open_access": "N"
+      }
+    }
+  ],
+  "limits": "The latest Phase I registry record lists recruitment complete and no results posted. Sponsor disclosures identify company-reported development status. The Phase I registry's primary outcome is safety, with pharmacokinetics and anti-TRG035 antibodies secondary; no human tooth-regeneration efficacy is inferred from recruitment completion or Phase IIa review."
+}

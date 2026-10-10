@@ -136,6 +136,10 @@ The GSE307437 intake now also retains each GEO sample's linked BioSample and SRA
 experiment identifiers. This makes the six library records traceable through the
 archive; the two DLX3 knockout clones still are not assigned to individual RNA
 libraries, and independent differentiation batches remain unnamed.
+The subsequent [BioSample/SRA audit](GEO_QUALIFICATION.md) checked the two KO
+archive records directly and confirms that neither names KO-10/KO-13 or a
+differentiation batch; raw XML and SHA-256 receipts remain private under
+`data/`.
 
 The subsequent [deposited-count comparison](AMELOBLAST_EXPRESSION.md) now
 qualifies the six GSE307437 column labels and performs an explicitly descriptive
@@ -157,6 +161,19 @@ for the seven-sheet supplementary workbook audit. Both keep archive or workbook
 inventory separate from biological sample size and retain the unresolved clone,
 culture-batch and graft-outcome mappings.
 
+The [USAG-1 translation review](USAG1_TRANSLATION_REVIEW.md) separates animal
+tooth-germ activation from human evidence. It records the sponsor-reported
+completion of the safety-first Phase I and the current official registry's
+“Complete” recruitment status, with no results posted. An earlier legacy
+registry route returned “Pending”; the canonical latest-record URL resolves
+that discrepancy. The latest trial-specific Phase IIa notice, from August
+2026, says enrollment and dosing are planned after site IRB review; a later
+trial-specific enrollment status was not found in official company updates
+through October 10. The proposed Phase IIa population is children with severe
+congenital partial anodontia; this does not establish adult acquired-tooth-loss
+efficacy. Exact retrievals and hashes are listed in
+[usag1_translation_receipt.json](usag1_translation_receipt.json).
+
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
 sphere is a reduced model, not a validated dental-organoid geometry.
@@ -175,19 +192,20 @@ provenance stays in ignored `data/provenance/`. The hash identifies the retrieve
 response, not independent validation of an interpretation.
 
 [desk_seeds.json](desk_seeds.json) defines the two new desk areas, eight dental
-and seven organoid assessment axes, seven dental starters and three organoid/stem-cell
+and seven organoid assessment axes, eight dental starters and three organoid/stem-cell
 starters. Existing blueprint edits and observations are preserved by the desk's
 seed migration. No private notes are published, no experiments are executed and
 no source-review signoff by the owner is claimed.
 
 Source-scoped starting cards are available in the dental/organoid desk
-areas. The latest local full workbench suite passed 388 tests, with 29
+areas. The latest local full workbench suite passed 390 tests, with 29
 platform/optional tests skipped on Windows. This checks seed parity and editable
-endpoint-record round-tripping. The live
-desk was restarted with no active runs and exposes seven dental starters,
-including the root-preseeding record. It retains one saved campaign and five
-notes, and the workspace SHA-256 is unchanged from before reload
-(`44B914656778EA4B281017CF4E8919BD65CF4F1865534B763F9742915F61D03F`). This is
+endpoint-record round-tripping; all eleven dental/organoid track tests also
+pass. The live desk was restarted with no active runs and now exposes eight
+dental starters, including the USAG-1 developmental-activation track. It retains
+one saved campaign and five notes, and the persistent workspace hash matched
+before and after restart
+(`1ED27BB099D9D39C6F64402480C4CA8CACE7FFE7BC2C82B6F3DE06B4E0FD856A`). This is
 software and source-scope verification, not biological validation.
 
 The deposited-count continuation reused `regen expression-contrast` for four

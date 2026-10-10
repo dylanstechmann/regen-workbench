@@ -11,6 +11,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 | Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells in vitro; rat iPSC+BMP-6 orthotopic defect histology | Oriented insertion and load transfer remain unproven; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
 | Gingival coverage and barrier | 2017 and 2026 human recession studies; 2021 rabbit augmentation histology; 2022 canine recession histology; 12-year human graft follow-up | Cell adjunct studies show early clinical or histologic signals in limited models, but no predictable cell-added long-term effect or direct functional seal test. The graft follow-up measures durability without histology; see the [histology/durability review](GINGIVAL_HISTOLOGY_DURABILITY_REVIEW.md) |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
+| Developmental tooth activation | USAG-1 antibody studies in congenital mouse models and ferret; the current Phase I registry lists recruitment Complete but no results; latest Phase IIa notice (August 2026) plans enrollment after site IRB review | Reported tooth-germ eligibility, participant-level efficacy results and safe control of tooth number/shape; Phase IIa enrollment status after August and acquired adult tooth loss need separate evidence |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
 
 The ameloblast paper's supplementary XLSX has now been inspected. Its seven
@@ -18,6 +19,18 @@ figure-value sheets add no donor/clone/batch identities and no graft-level
 outcomes; see the [workbook audit](AMELOBLAST_ORGANOID_REVIEW.md#supplementary-workbook-audit).
 The unresolved comparison remains independent iPSC lines and differentiation
 batches, with sample-to-clone mapping and explicit graft-level denominators.
+
+The [USAG-1 translation review](USAG1_TRANSLATION_REVIEW.md) adds a separate
+developmental-activation route. It preserves adverse tooth-number and survival
+signals from the animal antibody series, distinguishes the published antibodies
+from humanized TRG035, and reports the current official jRCT Phase I recruitment
+status as Complete with no results posted. An earlier fetch through a legacy
+registry route said Pending; the canonical latest-record page resolves that
+route discrepancy. The Phase IIa notice says enrollment and dosing are planned
+after site IRB review, but no later trial-specific enrollment status was found
+in official sponsor updates through October 10, 2026. Phase IIa targets
+congenital tooth agenesis; it does not establish acquired adult tooth-loss
+efficacy or functional whole-tooth integration.
 
 ## What the full-text follow-up changed
 
@@ -130,15 +143,14 @@ retrieval hashes are not placed in the dataset-hash field.
 
 ## Software verification
 
-The latest one-off Docker workbench-image run completed 386 unit tests with
-nine optional tests skipped. All seven dental/organoid track tests passed,
-including seed parity, distinct endpoint intervals, the mixed-signal
-attachment summary, registry denominator, stable editable record IDs, and
-denominator/timing checks for the two orthotopic rat tracks. The live desk was
-restarted with no active runs and now exposes the seventh dental starter. Its
-saved campaign and note counts remain one and five, and its workspace SHA-256
-matches the pre-reload value exactly. This validates software behavior, not
-tissue regeneration.
+The latest full local workbench suite passed 390 tests, with 29 platform or
+optional tests skipped on Windows. All eleven dental/organoid track tests pass,
+including USAG-1 source qualification, archive identity and starter round-trip
+checks. The live desk restarted with no active runs and exposes eight dental
+starters. Its one saved campaign and five notes were unchanged, and the
+persistent workspace hash matched before and after restart
+(`1ED27BB099D9D39C6F64402480C4CA8CACE7FFE7BC2C82B6F3DE06B4E0FD856A`). This
+validates software behavior, not tissue regeneration.
 
 The live check additionally exposed a missing `jsonschema` dependency in the
 research image: the CLI validator exited the HTTP request worker. The Dockerfile
