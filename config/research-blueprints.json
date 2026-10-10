@@ -810,6 +810,57 @@
             "notes": "Rat fibroblast-derived iPSCs plus BMP-6 hydrogel; not a human iPS-PDL cell transplant. The paper reports ankylosis in both BMP-6-containing arms, so mineralized tissue does not establish a functional ligament space. No iPSCs-only arm, direct load/mobility test, or long-term safety follow-up. One blinded micro-CT assessor is reported; group randomization is not described in retrieved Methods. Authors reported no tumor or ectopic tissue during this short experiment, which does not establish long-term safety."
           }
         ]
+      },
+      {
+        "id": "pdl-progenitor-root-preseed-replant",
+        "title": "PDL progenitor root preseeding: oriented reattachment signal",
+        "target": "Periodontal-ligament reattachment on denuded natural tooth roots",
+        "species": "Mouse PDL progenitors and athymic nude rats",
+        "tissue": "Natural molar root surface and periodontal ligament after tooth replantation",
+        "hypothesis": "Preseeding a denuded natural root surface with PDL progenitors can support oriented PDL formation and tooth retention after replantation, while resorption and ankylosis remain competing outcomes.",
+        "endpoint": "Root-level PDL histology and fiber orientation, tooth retention, resorption and ankylosis; directly measured mobility/load transfer must remain separate.",
+        "falsifier": "Preseeded teeth fail to sustain PDL and retention, or independent replication does not reproduce oriented insertion without increased resorption or ankylosis.",
+        "evidence_stage": "Small cross-species rat tooth-replantation study",
+        "study_design": "Four athymic nude rats and eight replanted molars (four progenitor-preseeded, four cell-free); the source states six months in the abstract/Methods but six weeks in one Results sentence.",
+        "reference_url": "https://doi.org/10.1089/scd.2010.0431",
+        "structure_notes": "Dangaria et al. (2011) report mouse PDL progenitors preseeded onto denuded rat molars before replantation. Histology describes polarized, parallel-oriented new PDL fibers; all four preseeded teeth reportedly retained physiological occlusion without root resorption, while two of four cell-free controls were lost and the remaining two resorbed/ankylosed. Follow-up timing conflicts within the paper (six months in abstract/Methods; six weeks in Results). Teeth are nested in only four athymic rats; there is no direct mobility or load-transfer assay. This is not iPSC-derived, chronic periodontal-defect or human evidence. See PDL_PROGENITOR_ROOT_PRESEED_REVIEW.md.",
+        "evidence": [
+          {
+            "axis_id": "integration",
+            "status": "source reports positive signal",
+            "value": "Four progenitor-preseeded replanted molars reportedly formed a new PDL with oriented fibers and retained physiological occlusion without observed resorption; two of four cell-free controls were lost and the remaining two resorbed/ankylosed.",
+            "unit": "Tooth-level outcomes nested within four athymic rats",
+            "comparator": "Four cell-free replanted molars",
+            "timepoint": "Follow-up conflict: abstract/Methods say six months; one Results sentence says six weeks",
+            "source_url": "https://doi.org/10.1089/scd.2010.0431",
+            "notes": "Cross-species mouse PDL progenitors on rat natural roots; replantation model, not iPSC construct or periodontal-disease defect. Occlusion was described, but direct mobility, bite-force and load-transfer measurements were not reported."
+          }
+        ],
+        "evidence_records": [
+          {
+            "axis_id": "integration",
+            "source_type": "publication",
+            "source_title": "Dangaria et al. 2011: periodontal progenitor preseeding on natural tooth roots",
+            "source_url": "https://doi.org/10.1089/scd.2010.0431",
+            "license": "Attributed summary; source reuse license not asserted",
+            "species": "Mouse PDL progenitors; athymic nude rats as replantation hosts",
+            "stage_track": "Cross-species natural-root tooth-replantation animal study",
+            "developmental_interval": "Abstract/Methods: six months; one Results sentence: six weeks",
+            "model_system": "Denuded rat first maxillary molars preseeded with mouse PDL progenitors or left cell-free, then replanted into rat sockets",
+            "comparator": "Four cell-free replanted molars; eight total molars across four rats",
+            "outcome": "Preseeded roots reportedly formed new PDL with polarized, parallel-oriented fibers and retained physiological occlusion without observed resorption; two controls were lost and two had resorption/ankylosis",
+            "measure": "Histology and fiber orientation; reported tooth retention, physiological occlusion, root resorption and ankylosis",
+            "value": "Four of four preseeded teeth reportedly retained physiological occlusion without observed resorption; among four cell-free controls, two were lost and two showed resorption/ankylosis",
+            "unit": "Tooth-level observations nested within four animal hosts",
+            "independent_unit": "Rat; eight replanted molars are nested within four animals",
+            "sample_size": "Four athymic nude rats total; eight molars, four preseeded and four cell-free",
+            "follow_up": "Inconsistent in source: abstract/Methods say six months; Results text says six weeks",
+            "status": "source reports positive signal",
+            "direction": "supports",
+            "dataset_sha256": "",
+            "notes": "Small cross-species model; do not treat eight teeth as eight independent animals. The paper describes physiological occlusion but gives no direct mobility, bite-force or load-transfer test. This is a replantation model, not human disease repair or whole-tooth regeneration."
+          }
+        ]
       }
     ],
     "organoids": [

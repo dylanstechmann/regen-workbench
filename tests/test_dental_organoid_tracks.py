@@ -31,7 +31,7 @@ class DentalOrganoidTracks(unittest.TestCase):
 
     def test_campaign_evidence_axes_and_scopes_are_explicit(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
-        for key, count in [("dental",6),("organoids",3)]:
+        for key, count in [("dental",7),("organoids",3)]:
             axes = {axis["id"] for axis in seeds["campaign_frameworks"][key]}
             starters = seeds["campaign_starters"][key]
             self.assertEqual(len(starters),count)
@@ -76,6 +76,17 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("ankylosis", record["notes"].lower())
         self.assertIn("iPSCs-only", record["comparator"])
         self.assertEqual(record["status"], "source reports mixed signal")
+
+    def test_root_preseeding_starter_keeps_timing_conflict_and_nested_denominator(self):
+        seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
+        starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "pdl-progenitor-root-preseed-replant")
+        record = starter["evidence_records"][0]
+        self.assertIn("four athymic nude rats", record["sample_size"].lower())
+        self.assertIn("eight molars", record["sample_size"].lower())
+        self.assertIn("six months", record["follow_up"].lower())
+        self.assertIn("six weeks", record["follow_up"].lower())
+        self.assertIn("no direct mobility", record["notes"].lower())
+        self.assertEqual(record["status"], "source reports positive signal")
 
     def test_fulltext_observations_roundtrip_with_outcome_specific_intervals(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))

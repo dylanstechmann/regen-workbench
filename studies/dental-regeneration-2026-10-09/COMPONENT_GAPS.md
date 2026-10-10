@@ -69,6 +69,14 @@ BMP-6-containing arms. This short, four-animal-per-arm signal supports a
 separate test of interface quality; it does not establish load-bearing function
 or long-term safety.
 
+A distinct [2011 root-preseeding study review](PDL_PROGENITOR_ROOT_PRESEED_REVIEW.md)
+reports oriented new PDL and retention of four progenitor-preseeded replanted
+molars, while two of four cell-free controls were lost and the other two showed
+resorption/ankylosis. The experiment used mouse PDL progenitors in only four
+athymic rat hosts. The abstract and Methods say six months, while a Results
+sentence says six weeks; the discrepancy is retained. Reported physiological
+occlusion is not a direct test of mobility or load transfer.
+
 The next useful work is source and biological-unit qualification: independent
 iPSC-line versus differentiation-batch identities for the PDL-like cell source,
 donor/clone/batch metadata for organoid datasets, and participant-to-tooth
@@ -87,12 +95,12 @@ retrieval hashes are not placed in the dataset-hash field.
 
 ## Software verification
 
-The latest one-off Docker workbench-image run completed 385 unit tests with
-nine optional tests skipped. All six dental/organoid track tests passed,
+The latest one-off Docker workbench-image run completed 386 unit tests with
+nine optional tests skipped. All seven dental/organoid track tests passed,
 including seed parity, distinct endpoint intervals, the mixed-signal
-attachment summary, registry denominator, stable editable record IDs, and the
-orthotopic rat track's animal denominator and ankylosis signal. The live desk
-was restarted with no active runs and now exposes the sixth dental starter. Its
+attachment summary, registry denominator, stable editable record IDs, and
+denominator/timing checks for the two orthotopic rat tracks. The live desk was
+restarted with no active runs and now exposes the seventh dental starter. Its
 saved campaign and note counts remain one and five, and its workspace SHA-256
 matches the pre-reload value exactly. This validates software behavior, not
 tissue regeneration.
