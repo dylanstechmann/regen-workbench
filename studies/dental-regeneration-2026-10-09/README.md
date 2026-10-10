@@ -12,7 +12,7 @@ restoration of attachment and gum coverage are separate questions.
 | [Ikeda 2009](https://pubmed.ncbi.nlm.nih.gov/19666587/) | Functional bioengineered mouse tooth replacement | Adult-human cell source, controlled shape/number and human tooth integration |
 | [Anti-USAG-1 2021](https://pubmed.ncbi.nlm.nih.gov/33579703/) | Animal tooth-regeneration signaling precedent | No adult-human acquired-tooth-loss efficacy inferred; tooth number is not full periodontal function |
 | [Human ameloblast organoids 2026](https://www.nature.com/articles/s41368-026-00429-4) | C3-DLL4 maturation and enamel-like mineral in a 3-week kidney-capsule graft (six male NOD-SCID recipients reported) | Mature enamel architecture, tooth-site bonding/loading and complete organ/attachment integration |
-| [iPS-PDL functional study 2026](https://doi.org/10.4012/dmj.2025-235); [feeder-free iPDLSC study 2024](https://doi.org/10.1089/scd.2024.0122) | One study reports selected human iPSC-derived in-vitro responses; another reports marker-positive tissue in an eight-week ectopic mouse graft | One 2026 iPSC line with batch variation; the 2024 abstract omits cell-line and graft denominators; ectopic tissue does not establish oriented tooth-site insertion or load transfer |
+| [iPS-PDL transplant 2025/2026](https://pubmed.ncbi.nlm.nih.gov/41182261/); [cell-function study 2026](https://doi.org/10.4012/dmj.2025-235); [EV study 2026](https://doi.org/10.3389/fcell.2026.1821829); [feeder-free iPDLSC study 2024](https://doi.org/10.1089/scd.2024.0122) | Abstract reports human iPS-PDL transplantation in rat periodontal defects; separate papers report selected in-vitro cell and EV responses and an eight-week ectopic mouse graft | The rat abstract omits animal/defect denominator and mechanical outcomes; the EV study is in vitro only and candidate miRNA causality is incomplete; other limitations include batch variation, missing donor/line mappings and no demonstrated load transfer |
 | [iPSC+BMP-6 rat defect study 2018](https://doi.org/10.1038/s41598-017-18415-6) | Rat maxillary-molar defect study: six-week micro-CT bone signal and histologic new cementum/PDL in the iPSC+BMP-6 hydrogel arm | n=4/group; ankylosis reported in both BMP-6 arms; no load-bearing function or long-term safety established |
 | [PDL progenitor root-preseeding study 2011](https://doi.org/10.1089/scd.2010.0431) | Mouse PDL progenitors on denuded rat molar roots: oriented new PDL and reported tooth retention after replantation | Four rats/eight molars; timeline conflicts within the paper; no direct mobility or load-transfer measurement; not human or iPSC evidence |
 | [PDLSC trial 2016](https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/) | Controlled intrabony-defect trial; bone height improved in both groups without significant between-group difference | Added-cell benefit and functional oriented attachment not established by that comparison |
@@ -23,7 +23,7 @@ restoration of attachment and gum coverage are separate questions.
 
 The table is a focused source review, not a meta-analysis. The 2026 ameloblast
 paper's publisher full text and primary articles for the 2016 PDLSC, 2025 DPSC,
-2026 ASC+PRP trial, 2026 iPS-PDL cell-function study and both gingival
+2026 ASC+PRP trial, 2026 iPS-PDL cell-function and EV studies, and both gingival
 recession comparisons were accessed. Other entries remain abstract-limited;
 their conclusions do not replace inspection of endpoint-specific between-group
 results.
@@ -50,16 +50,16 @@ expanded adipose-derived cells plus PRP, not PDLSCs, and did not test a whole
 tooth or histologic PDL architecture. See [the trial review](ASC_PRP_TRIAL_REVIEW.md)
 for the scope and remaining caveats.
 
-The separate [iPS-PDL functional review](IPS_PDL_FUNCTION_REVIEW.md) compares
-the 2026 one-line/three-batch in-vitro study with a 2024 feeder-free protocol
-and ectopic graft result. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
-keeps six-week orthotopic defect histology and its ankylosis signal distinct
-from human cell-source evidence, clinical periodontal comparisons and the
-ameloblast-organoid component study.
-
-The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) puts the 2011, 2018, 2024 and 2026 cell-source studies side by side.
-It separates orthotopic animal outcomes from ectopic graft and in-vitro evidence,
-including the 2018 ankylosis signal and missing mechanical-function endpoints.
+The updated [iPS-PDL functional review](IPS_PDL_FUNCTION_REVIEW.md) compares
+the 2026 one-line/three-batch in-vitro study with the 2024 feeder-free ectopic
+graft and the 2025/2026 rat defect transplant abstract. A separate
+[iPS-PDL EV review](IPSPDL_EV_REVIEW.md) checks a 2026 in-vitro cell-free
+paracrine study, including its dose normalization and candidate-miRNA limits.
+The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) keeps all evidence
+stages and denominators distinct. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
+retains its six-week ankylosis signal separately from the newer human iPS-PDL
+transplant report, clinical periodontal comparisons and the ameloblast-organoid
+component study.
 
 The [2026 ameloblast-organoid review](AMELOBLAST_ORGANOID_REVIEW.md) records
 the six-mouse, three-week ectopic-graft context and audits the figure-value

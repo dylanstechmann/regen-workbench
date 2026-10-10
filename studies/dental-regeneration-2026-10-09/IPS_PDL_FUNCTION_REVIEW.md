@@ -28,7 +28,7 @@ primary PDL donor lines in the growth comparison.
 This is evidence for selected PDL-like in-vitro behaviors and a possible
 renewable cell source. It is not a 3D periodontal-ligament organoid, an
 oriented cementum–PDL–bone construct, or evidence of successful transplantation.
-The study did not measure fiber alignment and insertion across tissue
+Li et al.'s study did not measure fiber alignment and insertion across tissue
 interfaces, tooth mobility, load transfer, or long-term function in vivo.
 
 ## Replication and translation limits
@@ -63,17 +63,47 @@ line. This is complementary protocol-level evidence, not proof of independent
 donor replication or a functionally integrated periodontal ligament. The source
 is [Yamashita et al., 2024](https://doi.org/10.1089/scd.2024.0122), PMID 39504137.
 
+## Subsequent orthotopic human iPS-PDL transplant report
+
+Wu et al. (2025 online; 2026 print) add a more anatomically relevant result:
+their PubMed abstract reports that transplanted iPS-PDL cells increased the
+height of new bone and enhanced periodontal tissue regeneration in male
+F344/NJcl-rnu/rnu rat periodontal defects after four weeks. The abstract does
+not state the animal/defect denominator, allocation details, exact iPSC line,
+or a direct mechanical-function result. The publisher full text was not
+available in the retrieved record. This is an abstract-limited orthotopic
+preclinical signal; it does not establish independent donor replication,
+oriented load-bearing insertion, durable mobility, or long-term safety. The
+2026 EV study comes from an overlapping research group and is not an
+independent replication of this transplant result. Source: [Wu et al.,
+2025/2026](https://pubmed.ncbi.nlm.nih.gov/41182261/).
+
+## Cell-free iPS-PDL extracellular vesicles
+
+Taniguchi et al. (2026) report that EVs from three independently differentiated
+iPS-PDL batches increased WST-8 proliferation readouts and Transwell migration
+counts in cultured human PDL cells. Primary PDL-derived EVs also increased
+migration, while the iPS-PDL-EV group was higher at two of three protein-based
+concentrations. Candidate miRNA mimics supported a possible role for
+miR-181a-2-3p, let-7i-5p and let-7g-5p, but candidate cargo was not depleted
+from EVs to establish necessity. The EVs were not tested in animals, at a root
+interface or under load; particle-normalized potency, periodontal attachment,
+biodistribution, safety and durability remain open. See the detailed
+[iPS-PDL EV review](IPSPDL_EV_REVIEW.md), the [primary article]
+(https://doi.org/10.3389/fcell.2026.1821829), and its
+[retrieval receipt](ipspdl_ev_receipt.json).
+
 ## Next discriminating evidence
 
 The next evidence step is independent-line and independent-batch qualification
 with donor identity retained as the biological unit, followed by tooth-site
-testing that separates ectopic mineralized graft formation from periodontal
-integration. A construct study would need to distinguish cementum-side and
-alveolar-bone-side attachment, oriented collagen-fiber insertion, physiological
-movement and mechanical response under sustained loading. It should include an
-explicit primary-PDL comparator and assess long-term stability and residual
-pluripotency. These are proposed evidence requirements, not a laboratory
-protocol.
+testing that separates new bone and histologic tissue formation from periodontal
+integration. A construct or EV study would need to distinguish cementum-side
+and alveolar-bone-side attachment, oriented collagen-fiber insertion,
+physiological movement and mechanical response under sustained loading. It
+should include an explicit primary-PDL comparator and assess long-term stability
+and residual pluripotency. These are proposed evidence requirements, not a
+laboratory protocol.
 
 The dental ResearchDesk contains this as its own iPS-PDL starter so that an
 in-vitro cell-source result is not merged into the human periodontal-trial

@@ -8,7 +8,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 |---|---|---|
 | Enamel identity and architecture | Human ameloblast organoids, 2026; ectopic enamel-like material | Native-like architecture, tooth-site interface and repeated-load behavior in the relevant model |
 | Dentin–pulp unit | Whole-tooth mouse reference, 2009 | Separate adult-human source, living pulp transport and functional interface observations |
-| Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells in vitro; rat iPSC+BMP-6 orthotopic defect histology | Oriented insertion and load transfer remain unproven; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
+| Cementum–ligament–bone attachment | Human periodontal clinical comparisons; a 2025/2026 abstract reports human iPS-PDL transplantation in rat defects; 2026 iPSC-derived PDL-EVs act on cultured PDL cells; 2018 rat iPSC+BMP-6 defect histology | Oriented insertion and load transfer remain unproven; the 2025 abstract omits denominator and mechanics; EV efficacy is in vitro only; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
 | Gingival coverage and barrier | 2017 and 2026 human recession studies; 2021 rabbit augmentation histology; 2022 canine recession histology; 12-year human graft follow-up | Cell adjunct studies show early clinical or histologic signals in limited models, but no predictable cell-added long-term effect or direct functional seal test. The graft follow-up measures durability without histology; see the [histology/durability review](GINGIVAL_HISTOLOGY_DURABILITY_REVIEW.md) |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Developmental tooth activation | USAG-1 antibody studies in congenital mouse models and ferret; the current Phase I registry lists recruitment Complete but no results; latest Phase IIa notice (August 2026) plans enrollment after site IRB review | Reported tooth-germ eligibility, participant-level efficacy results and safe control of tooth number/shape; Phase IIa enrollment status after August and acquired adult tooth loss need separate evidence |
@@ -110,12 +110,38 @@ the ectopic site does not test root-to-alveolar-bone insertion or load transfer;
 the publisher page retrieved for this review provides only the abstract
 (https://doi.org/10.1089/scd.2024.0122).
 
-The more anatomically relevant [2018 rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
+Wu et al. (2025 online; 2026 print) add an orthotopic human-cell signal: the
+PubMed abstract reports increased new-bone height and periodontal-tissue
+regeneration four weeks after iPS-PDL transplantation into rat periodontal
+defects. The abstract gives no animal/defect denominator, iPSC-line identity,
+allocation details or direct mechanical endpoint. It upgrades the evidence stage
+from ectopic grafts and in-vitro cell characterization to a tooth-site animal
+transplant report, but its effect size, reproducibility and load-bearing
+attachment cannot be assessed from the abstract. See [the PubMed record]
+(https://pubmed.ncbi.nlm.nih.gov/41182261/) and the updated
+[iPS-PDL review](IPS_PDL_FUNCTION_REVIEW.md).
+
+Taniguchi et al. (2026) report a separate cell-free route: EVs from
+iPS-PDL batches increased WST-8 proliferation readouts and Transwell migration
+counts in cultured human PDL cells, and candidate miRNA mimics reproduced
+some of these cell-level responses. The study did not test EVs in a periodontal
+defect. Protein-normalized dosing does not establish activity per particle;
+candidate miRNA transfection does not show that those miRNAs are necessary for
+the whole-EV effect. The migration count may include a contribution from cell
+division because the assay runs 24 hours and the methods do not describe a
+proliferation-blocking control. No tooth-site insertion, ligament-space,
+mobility, biodistribution or durability endpoint was measured. See the
+[source-scoped EV review](IPSPDL_EV_REVIEW.md) and its
+[retrieval receipt](ipspdl_ev_receipt.json).
+
+The [2018 rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
 records new cementum/PDL histology and increased micro-CT bone measures at six
 weeks in a maxillary-molar defect. The same article reports ankylosis in both
 BMP-6-containing arms. This short, four-animal-per-arm signal supports a
 separate test of interface quality; it does not establish load-bearing function
-or long-term safety.
+or long-term safety. The newer 2025/2026 iPS-PDL transplant abstract adds a
+four-week rat defect report but not denominators or direct function. These
+studies remain separate cell sources and designs, not pooled confirmation.
 
 A distinct [2011 root-preseeding study review](PDL_PROGENITOR_ROOT_PRESEED_REVIEW.md)
 reports oriented new PDL and retention of four progenitor-preseeded replanted

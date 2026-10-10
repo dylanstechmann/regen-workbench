@@ -53,7 +53,7 @@ class DentalOrganoidTracks(unittest.TestCase):
     def test_ips_pdl_starter_preserves_iPSC_line_and_batch_scope(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
         starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "ips-pdl-cell-function")
-        self.assertEqual(len(starter["evidence_records"]), 2)
+        self.assertEqual(len(starter["evidence_records"]), 4)
         source_record = starter["evidence_records"][0]
         self.assertIn("same iPSC line", source_record["independent_unit"])
         self.assertIn("batch #1", starter["structure_notes"])
@@ -61,12 +61,22 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("subcutaneous", graft_record["model_system"])
         self.assertIn("not stated", graft_record["sample_size"].lower())
         self.assertIn("load transfer", graft_record["notes"].lower())
+        orthotopic_record = starter["evidence_records"][2]
+        self.assertIn("4 weeks", orthotopic_record["follow_up"])
+        self.assertIn("not stated", orthotopic_record["sample_size"].lower())
+        self.assertIn("load-bearing function", orthotopic_record["notes"].lower())
+        ev_record = starter["evidence_records"][3]
+        self.assertIn("protein", ev_record["unit"].lower())
+        self.assertIn("cargo", ev_record["notes"].lower())
+        self.assertIn("biological replicate", ev_record["independent_unit"])
         with tempfile.TemporaryDirectory() as directory:
             instance = desk.Desk(Path(directory))
             self.addCleanup(lambda: instance.executor.shutdown(wait=True))
             saved = instance.campaign({**starter, "starter_id": starter["id"], "blueprint_id": "dental", "id": ""})
             self.assertEqual(saved["evidence_records"][0]["independent_unit"], source_record["independent_unit"])
             self.assertIn("One iPSC line", saved["evidence_records"][0]["sample_size"])
+            self.assertEqual(len(saved["evidence_records"]), 4)
+            self.assertEqual(saved["evidence_records"][3]["source_title"], ev_record["source_title"])
 
     def test_orthotopic_rat_starter_keeps_ankylosis_and_animal_denominator(self):
         seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
