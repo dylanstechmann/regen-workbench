@@ -1,0 +1,22 @@
+{
+  "scope": "Exact primary full-text retrievals for a focused gingival-recession evidence review. Private XML remains under ignored literature storage.",
+  "records": [
+    {
+      "pmcid": "PMC13293744",
+      "doi": "10.1016/j.jobcr.2026.101481",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13293744/fullTextXML",
+      "retrieved_utc": "2026-10-10T03:56:42.089373+00:00",
+      "response_sha256": "f9318d994982f872f79b589954678bd09d765c79dc9fdd119525d235405498d6",
+      "bytes": 93982,
+      "local_provenance_receipt": "1791604602088376600_dental-primary-fulltext.json"
+    },
+    {
+      "pmcid": "PMC5463777",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5463777/fullTextXML",
+      "retrieved_utc": "2026-10-10T03:57:56.514315+00:00",
+      "response_sha256": "5853b42afc016e96ce91c09b431de49c7fe4c86abe6f849babfa4a7e47588095",
+      "bytes": 86808,
+      "local_provenance_receipt": "1791604676513313700_dental-primary-fulltext.json"
+    }
+  ]
+}

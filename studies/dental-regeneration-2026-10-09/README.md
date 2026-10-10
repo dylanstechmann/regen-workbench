@@ -18,12 +18,12 @@ restoration of attachment and gum coverage are separate questions.
 | [PDLSC trial 2016](https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/) | Controlled intrabony-defect trial; bone height improved in both groups without significant between-group difference | Added-cell benefit and functional oriented attachment not established by that comparison |
 | [ASC/PRP trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC12855574/) | Full text: 36-week radiographic bone-height difference 1.905 mm (95% CI 0.383–3.427; p=.0184) vs EMD; no between-group CAL or probing-depth signal | Only 15 treated (9 vs 6), primary endpoint n=8 vs 6; no histology or proof of oriented PDL attachment; clinical attachment is a separate endpoint |
 | [DPSC trial 2025](https://www.nature.com/articles/s41392-025-02320-w) | Abstract reports a bone-defect-depth signal and a post hoc attachment signal in a stage-III subgroup | Subgroup findings are not an overall primary-endpoint confirmation or proof of complete periodontal regeneration |
-| [Gingival-recession study 2017](https://pubmed.ncbi.nlm.nih.gov/28620633/) | Small study with 14 cases, multiple sites and a six-month root-coverage signal | Sites are not independent patients; seal/barrier, ligament and whole-tooth outcomes remain separate |
+| [Gingival-recession study 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC5463777/); [fibroblast-matrix trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13293744/) | Full-text review of an umbilical-cord-derived cell/membrane study and a 10-participant split-mouth autologous-fibroblast/collagen-matrix trial; both report six-month coverage outcomes | The 2017 paper has inconsistent site totals; the 2026 study is small, all-male and short-term. Neither measures epithelial seal, long-term recurrence, oriented ligament insertion or whole-tooth restoration |
 
 The table is a focused source review, not a meta-analysis. The 2026 ameloblast
 paper's publisher full text and primary articles for the 2016 PDLSC, 2025 DPSC,
-2026 ASC+PRP trial and 2026 iPS-PDL cell-function study were accessed. Other
-entries remain abstract-limited;
+2026 ASC+PRP trial, 2026 iPS-PDL cell-function study and both gingival
+recession comparisons were accessed. Other entries remain abstract-limited;
 their conclusions do not replace inspection of endpoint-specific between-group
 results.
 
@@ -71,6 +71,15 @@ cell-free replanted molars in four athymic rats. It reports oriented PDL and
 tooth retention in the seeded group, but the source conflicts on whether the
 endpoint was six weeks or six months. The animals and teeth are not independent
 replicates, and physiological occlusion was not a direct mechanical test.
+
+The [gingival recession review](GINGIVAL_RECESSION_REVIEW.md) compares the
+2017 cell-seeded polymer-membrane study with a 2026 split-mouth trial of
+autologous gingival fibroblasts on collagen matrix. It retains inconsistent
+2017 defect totals and discrepancies between the 2026 abstract, narrative and
+results table. Both papers assess short-term clinical coverage, not epithelial
+seal integrity, durable recurrence prevention or periodontal ligament
+restoration. Exact full-text fetches are listed in
+[gingival_trial_receipt.json](gingival_trial_receipt.json).
 
 ## Component roadmap
 

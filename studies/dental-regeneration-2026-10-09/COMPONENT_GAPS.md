@@ -9,7 +9,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 | Enamel identity and architecture | Human ameloblast organoids, 2026; ectopic enamel-like material | Native-like architecture, tooth-site interface and repeated-load behavior in the relevant model |
 | Dentin–pulp unit | Whole-tooth mouse reference, 2009 | Separate adult-human source, living pulp transport and functional interface observations |
 | Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells in vitro; rat iPSC+BMP-6 orthotopic defect histology | Oriented insertion and load transfer remain unproven; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
-| Gingival coverage and barrier | Small 2017 recession study | Barrier/seal and inflammatory recurrence outcomes with patient/site hierarchy retained |
+| Gingival coverage and barrier | 2017 cell-seeded membrane study plus a 2026 10-participant split-mouth fibroblast/matrix trial; both report six-month clinical coverage | The 2017 defect totals conflict across sections; the 2026 study reports selected clinical differences but no histology, epithelial-seal assay or recurrence endpoint. Longer follow-up and patient/site-level reporting remain necessary |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
 
@@ -40,6 +40,20 @@ state ordinary t-tests and no equivalence margin. No histology was obtained, so
 the radiographic signal does not show oriented cementum–PDL–bone attachment.
 Reported AE and SAE were in two different ASC+PRP participants and judged
 unrelated by the authors; the small sample cannot establish rare-event safety.
+
+## Gingival coverage and barrier
+
+The [full-text gingival comparison](GINGIVAL_RECESSION_REVIEW.md) covers the
+2017 umbilical-cord-derived-cell/polymer-membrane study and the 2026 trial of
+autologous fibroblasts seeded on a collagen matrix. The newer split-mouth study
+included 10 men and 20 sites and reported lower six-month recession depth,
+width and clinical attachment level on the fibroblast side. These are
+preliminary clinical coverage measurements from a small, selected sample;
+they do not establish an epithelial seal or durable recurrence prevention.
+The source also contains abstract/table and baseline-reporting discrepancies,
+and the 2017 article's site counts differ between sections. These source issues
+and full-text retrievals are itemized in the review and its
+[provenance receipt](gingival_trial_receipt.json).
 
 ## iPSC-derived PDL-like cell source
 
