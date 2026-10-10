@@ -1,0 +1,454 @@
+{
+  "project": "PRJDB39888",
+  "project_title": "RNA-Seq Profiling of iPS, iPS-PDL, and PDL Cells",
+  "project_description": "The study goal of this project is to analyze and compare the gene expression profiles of iPS cells, primary periodontal ligament (PDL) cells, and iPS-PDL cells using RNA-seq. Three independent samples from each cell type were examined. This dataset provides transcriptomic information relevant to understanding iPS-to-PDL differentiation and supports research on periodontal tissue regeneration.",
+  "source_api": "https://ddbj.nig.ac.jp/search/api/entries",
+  "retrieved_utc": "2026-10-10T15:09:33.439839+00:00",
+  "record_count": 37,
+  "run_count": 9,
+  "manifest": "ipspdl_rnaseq_manifest.tsv",
+  "biosample_index": "ipspdl_rnaseq_biosample_index.tsv",
+  "fastq_inventory": "ipspdl_rnaseq_fastq_inventory.tsv",
+  "fastq_file_count": 17,
+  "compressed_fastq_bytes": 15976782817,
+  "fastq_files": [
+    {
+      "run": "DRR913328",
+      "filename": "DRR913328_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891089/DRR913328_1.fastq.bz2",
+      "bytes": "1026242048",
+      "last_modified": "Thu, 05 Mar 2026 23:56:19 GMT"
+    },
+    {
+      "run": "DRR913328",
+      "filename": "DRR913328_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891089/DRR913328_2.fastq.bz2",
+      "bytes": "1049611031",
+      "last_modified": "Thu, 05 Mar 2026 23:56:55 GMT"
+    },
+    {
+      "run": "DRR913329",
+      "filename": "DRR913329_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891090/DRR913329_1.fastq.bz2",
+      "bytes": "1019443791",
+      "last_modified": "Thu, 05 Mar 2026 23:56:17 GMT"
+    },
+    {
+      "run": "DRR913329",
+      "filename": "DRR913329_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891090/DRR913329_2.fastq.bz2",
+      "bytes": "1042344549",
+      "last_modified": "Thu, 05 Mar 2026 23:56:53 GMT"
+    },
+    {
+      "run": "DRR913330",
+      "filename": "DRR913330_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891091/DRR913330_1.fastq.bz2",
+      "bytes": "1032090002",
+      "last_modified": "Thu, 05 Mar 2026 23:56:58 GMT"
+    },
+    {
+      "run": "DRR913330",
+      "filename": "DRR913330_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891091/DRR913330_2.fastq.bz2",
+      "bytes": "1044804420",
+      "last_modified": "Thu, 05 Mar 2026 23:56:20 GMT"
+    },
+    {
+      "run": "DRR913331",
+      "filename": "DRR913331_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891092/DRR913331_1.fastq.bz2",
+      "bytes": "915964842",
+      "last_modified": "Thu, 05 Mar 2026 23:56:38 GMT"
+    },
+    {
+      "run": "DRR913331",
+      "filename": "DRR913331_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891092/DRR913331_2.fastq.bz2",
+      "bytes": "927410883",
+      "last_modified": "Thu, 05 Mar 2026 23:56:05 GMT"
+    },
+    {
+      "run": "DRR913332",
+      "filename": "DRR913332_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891093/DRR913332_1.fastq.bz2",
+      "bytes": "842523912",
+      "last_modified": "Thu, 05 Mar 2026 23:55:56 GMT"
+    },
+    {
+      "run": "DRR913332",
+      "filename": "DRR913332_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891093/DRR913332_2.fastq.bz2",
+      "bytes": "848687866",
+      "last_modified": "Thu, 05 Mar 2026 23:56:27 GMT"
+    },
+    {
+      "run": "DRR913333",
+      "filename": "DRR913333_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891094/DRR913333_1.fastq.bz2",
+      "bytes": "875471942",
+      "last_modified": "Thu, 05 Mar 2026 23:55:59 GMT"
+    },
+    {
+      "run": "DRR913333",
+      "filename": "DRR913333_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891094/DRR913333_2.fastq.bz2",
+      "bytes": "893879631",
+      "last_modified": "Thu, 05 Mar 2026 23:56:30 GMT"
+    },
+    {
+      "run": "DRR913334",
+      "filename": "DRR913334_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891095/DRR913334_1.fastq.bz2",
+      "bytes": "784044472",
+      "last_modified": "Thu, 05 Mar 2026 23:56:21 GMT"
+    },
+    {
+      "run": "DRR913334",
+      "filename": "DRR913334_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891095/DRR913334_2.fastq.bz2",
+      "bytes": "793651105",
+      "last_modified": "Thu, 05 Mar 2026 23:55:53 GMT"
+    },
+    {
+      "run": "DRR913335",
+      "filename": "DRR913335_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891096/DRR913335_1.fastq.bz2",
+      "bytes": "957402123",
+      "last_modified": "Thu, 05 Mar 2026 23:56:44 GMT"
+    },
+    {
+      "run": "DRR913335",
+      "filename": "DRR913335_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891096/DRR913335_2.fastq.bz2",
+      "bytes": "972744319",
+      "last_modified": "Thu, 05 Mar 2026 23:56:10 GMT"
+    },
+    {
+      "run": "DRR913336",
+      "filename": "DRR913336.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891097/DRR913336.fastq.bz2",
+      "bytes": "950465881",
+      "last_modified": "Thu, 05 Mar 2026 23:55:42 GMT"
+    }
+  ],
+  "project_biosample_count": 18,
+  "duplicate_sample_profile_pairs": [
+    {
+      "sample_name": "PDL1",
+      "biosamples": [
+        "SAMD01787988",
+        "SAMD01828850"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "PDL2",
+      "biosamples": [
+        "SAMD01787989",
+        "SAMD01828851"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "PDL3",
+      "biosamples": [
+        "SAMD01787990",
+        "SAMD01828852"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS1",
+      "biosamples": [
+        "SAMD01787985",
+        "SAMD01828847"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS2",
+      "biosamples": [
+        "SAMD01787986",
+        "SAMD01828848"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS3",
+      "biosamples": [
+        "SAMD01787987",
+        "SAMD01828849"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": true,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS_PDL1",
+      "biosamples": [
+        "SAMD01787982",
+        "SAMD01828844"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": false,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS_PDL2",
+      "biosamples": [
+        "SAMD01787983",
+        "SAMD01828845"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": false,
+      "only_one_has_a_cited_run": true
+    },
+    {
+      "sample_name": "iPS_PDL3",
+      "biosamples": [
+        "SAMD01787984",
+        "SAMD01828846"
+      ],
+      "same_owner_model_attributes": true,
+      "same_description": false,
+      "only_one_has_a_cited_run": true
+    }
+  ],
+  "local_provenance_receipt": "1791644973438845400_dental-ipspdl-rnaseq-metadata-audit.json",
+  "raw_read_files_downloaded": false,
+  "record_hashes": [
+    {
+      "record_type": "bioproject",
+      "accession": "PRJDB39888",
+      "sha256": "a340808f0013ea33c9324f7bea6726c972ebb4a8c63b0ed9fde5d1f9b24fb644",
+      "bytes": 7806
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787982",
+      "sha256": "dd5a7ff45b9e6903e3939bb8238e6800de312b1af38e64a3d5b0e33af694c1f6",
+      "bytes": 3107
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787983",
+      "sha256": "64833ddcc86a20fe3116c2978db21e38f182d8803971fc73a15196e006ace356",
+      "bytes": 3107
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787984",
+      "sha256": "06f0b45d1948e879c93fad1049f272745066ec375cb578dd0fdfe7136430e454",
+      "bytes": 3107
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787985",
+      "sha256": "5daa9996772c6c68257d0383a94011b9d6829b2c32de54db1da18e7d44397961",
+      "bytes": 2984
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787986",
+      "sha256": "b24bae6de00c866c812477aa9236c07e48dbd6ca1c987279aa9cc6e71f64ae86",
+      "bytes": 2984
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787987",
+      "sha256": "3c0531f0978ce8f5c0cda9b4ff0be1c4d818cdf52359e669c60cafc1a932298a",
+      "bytes": 2984
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787988",
+      "sha256": "cf964717914bfcf12d488185581fd42c380d497926edd3118a4f97077a1b9f01",
+      "bytes": 3007
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787989",
+      "sha256": "1842e6c8b541ac6faf18e7e1eae32841fe166770dc274edb18cf331ddd8ce2d5",
+      "bytes": 3009
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01787990",
+      "sha256": "52f034f015a99955b68fb3299c9290bbcea3207f76cefe63656cd4b93ed81767",
+      "bytes": 3009
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828844",
+      "sha256": "1609f230960bd93852ea35f44805bbb123fa0b06dcfda1428a7710f75df0e86c",
+      "bytes": 3491
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828845",
+      "sha256": "305dee41fec14e19f40c2bac782a1d7343f4dd910246b182fe6412678162a07c",
+      "bytes": 3491
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828846",
+      "sha256": "b2a1d77a9479a06f4767ae78999a79289194f29a61444912f969e1c86bcc3a0f",
+      "bytes": 3491
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828847",
+      "sha256": "1c487bcde67a011b5b733886dcc21efb731913cefe18ea224a3d902f39d1fdf0",
+      "bytes": 3368
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828848",
+      "sha256": "905355838f67e5794d50348d557284df0e9d85a54a02eecf22cf56be7e837f9a",
+      "bytes": 3368
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828849",
+      "sha256": "9914605538054db366bfc377bb6211fab7a0d59e604969bd3e515c4f2aa55cd1",
+      "bytes": 3368
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828850",
+      "sha256": "9fe48067dae5b42a42a8a3ffc4dc2be491f07734475547e71dd782c992f63353",
+      "bytes": 3391
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828851",
+      "sha256": "c39c595f71ff160406d1d507a66dc1dff6fe62c7eea417173a5b8ded7b3a3b47",
+      "bytes": 3393
+    },
+    {
+      "record_type": "biosample",
+      "accession": "SAMD01828852",
+      "sha256": "f974e74157e5ac3cd502fa1a21409bc1f3b8d507e1cf0431be64f8cead77ec0b",
+      "bytes": 3393
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891089",
+      "sha256": "f6b63740a50a38cdf00505c58e1ea5cc02e4c2e9e94c283131da6a8772e078b7",
+      "bytes": 3561
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891090",
+      "sha256": "2d5d55a65a4bf636def63ea54a31fed2297d71494dea9680d7a4344381002ff2",
+      "bytes": 3561
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891091",
+      "sha256": "effa0a46dee52d3eb1c2cef986d3a69f80187d54c77784aba06d1cd3e95666d1",
+      "bytes": 3561
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891092",
+      "sha256": "9fbe18d1debaad3c65d74c2c2094ad4ff21bdd050b65162e0f8f3045934f83e1",
+      "bytes": 3545
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891093",
+      "sha256": "491227d3f3fc079f3792ee76deb13e4147d2c38a75bd00bcc224905aa02dc191",
+      "bytes": 3545
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891094",
+      "sha256": "8d4186568fa63ff683135496e5add9a35bdc3cabb3733ee006d6197c5dd646af",
+      "bytes": 3545
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891095",
+      "sha256": "c2bd7297aaba785a8bafd7b894fc9986344de26735f081e9c83f2bcac14d8919",
+      "bytes": 3545
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891096",
+      "sha256": "448ca612471d7b3ccd58dbcfa83a46893093086a1cba06318074d795d1f267b3",
+      "bytes": 3545
+    },
+    {
+      "record_type": "sra-experiment",
+      "accession": "DRX891097",
+      "sha256": "833300cd6cbc8300e9189b7881a6bec0825a533c67c4c9f92e08a744a6ebaa23",
+      "bytes": 3481
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913328",
+      "sha256": "b426fce1108c50c3d4a22679b27d5a90b29e7ce6d3bf3b2c94caf1cb09a829c9",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913329",
+      "sha256": "6083409bd8d19578ef35aed7de7c3e1706abe1830ff5a5ef88c03bdcc049a422",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913330",
+      "sha256": "13a61d8a30a4dc490281f44b68c9753b6508a19ea3826f848e1c3cebb9687172",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913331",
+      "sha256": "57de3833c95e07b5a3e86fd06f1c70be111d300463d506f21ae0bdc1175df879",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913332",
+      "sha256": "210dba99335b6143158d9046b1477b9f2fbbbb8b2eadf211e29b0fe21b619896",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913333",
+      "sha256": "cc7bb9a0c85095cf0b262c3bddb8ef88685698e04bda738d95cf79ea0c0b3225",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913334",
+      "sha256": "800733d75ecc718bbd8a7cf3e9dafc15fe3a811c26216188ce668be84ef4fcb3",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913335",
+      "sha256": "5d45106324c8953de2ce8499b665f5100045fc5ae8152250ad6043020e4219e2",
+      "bytes": 2664
+    },
+    {
+      "record_type": "sra-run",
+      "accession": "DRR913336",
+      "sha256": "460973e63742e96611fc96dfddf78bf7c697ae57d2297640a3b7a367fedde683",
+      "bytes": 2620
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "release": "GENCODE human 50",
+  "assembly": "GRCh38.p14",
+  "index_scope": "Transcriptome-only; no genomic decoy sequence included",
+  "retrieved_utc": "2026-10-10T15:31:11.090993+00:00",
+  "local_provenance_receipt": "1791646271090993600_dental-ipspdl-rnaseq-gencode-v50-reference.json",
+  "files": [
+    {
+      "filename": "gencode.v50.transcripts.fa.gz",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/gencode.v50.transcripts.fa.gz",
+      "bytes": 183554921,
+      "sha256": "5a320f524d73b5793518eb19b118829033713443d0f42af20a67bb31cc06cf56",
+      "uncompressed_bytes": 1575713375,
+      "reused_existing_file": true
+    },
+    {
+      "filename": "gencode.v50.annotation.gtf.gz",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/gencode.v50.annotation.gtf.gz",
+      "bytes": 124527720,
+      "sha256": "83fba3e9b03f0b8c958f3595c6c350adc55f468abf8b0e47b6d5284cfe13a453",
+      "uncompressed_bytes": 4685327139,
+      "reused_existing_file": true
+    }
+  ]
+}

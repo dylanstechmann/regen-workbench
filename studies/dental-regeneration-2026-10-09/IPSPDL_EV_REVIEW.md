@@ -61,10 +61,14 @@ insertion, periodontal-space preservation, ankylosis or resorption assessment,
 tooth mobility, or load transfer for the EV intervention.
 
 The earlier Li et al. (2026) cell-function study remains relevant: it uses one
-named iPSC line (HPS0381), three conditioned-medium batches and reports that
-one batch resembles dermal fibroblasts for several markers. The EV paper's
-three independently differentiated batches should not be treated as proof of
-independent parental iPSC donor replication without a line-to-batch map.
+named iPSC line (HPS0381) and media from three different PDL sources to produce
+iPS-PDL#1–3; one product resembles dermal fibroblasts for several markers.
+Taniguchi et al. describe three independently differentiated iPS-PDL lines,
+but the DDBJ run records do not map each expression sample to a PDL donor or
+conditioned-medium source. Read together, the publications support a
+three-product, one-parental-line design, not replication across independent
+iPSC donors. The precise crosswalk between the functional, EV and archived
+RNA-seq sample labels remains unreported.
 
 ## Most discriminating next evidence
 
@@ -86,6 +90,15 @@ cell transplant and EV arms should remain separate. These are evidence
 requirements, not a laboratory protocol or a clinical recommendation.
 
 The underlying-cell RNA-seq data cited by the 2026 EV paper are in DDBJ BioProject
-PRJDB39888 (runs DRR913328–DRR913336). That archive is a potential next
-computational audit of parent-cell identity and expression contrasts; no raw
-reads or derived expression estimates are analyzed in this review.
+PRJDB39888 (runs DRR913328–DRR913336). The [metadata audit](IPSPDL_RNASEQ_METADATA_AUDIT.md)
+retrieved 37 linked records and found 18 BioSample entries for the nine run-linked
+sample labels. The older nine profiles duplicate the newer records' Owner, Model
+and Attribute fields but are not linked to these runs. Publication methods
+describe three iPS-PDL products from one HPS0381 parental line and three PDL
+conditioned-medium sources; the run archive does not provide the run-to-source
+crosswalk. The [manifest](ipspdl_rnaseq_manifest.tsv) preserves run-to-sample
+joins and library layout. The completed descriptive RNA-seq analysis shows
+label-group separation in PCA and an iPS-PDL matrix-associated profile, while
+SCX and TNMD remain low at the group medians. It does not test independent
+parental-line replication or establish mature PDL function; see
+[the exploratory results](IPSPDL_RNASEQ_EXPLORATORY_RESULTS.md).

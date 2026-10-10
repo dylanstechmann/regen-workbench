@@ -1,0 +1,162 @@
+{
+  "project": "PRJDB39888",
+  "retrieved_utc": "2026-10-10T15:31:38.768685+00:00",
+  "file_count": 17,
+  "compressed_bytes": 15976782817,
+  "local_provenance_receipt": "1791646298768178200_dental-ipspdl-rnaseq-fastq-download.json",
+  "files": [
+    {
+      "run": "DRR913328",
+      "filename": "DRR913328_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891089/DRR913328_1.fastq.bz2",
+      "bytes": "1026242048",
+      "last_modified": "Thu, 05 Mar 2026 23:56:19 GMT",
+      "sha256": "4b111a103aabff2eb6490aaf8db0064829e80c9e237bc0d71d8b7c81c157d60b",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913328",
+      "filename": "DRR913328_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891089/DRR913328_2.fastq.bz2",
+      "bytes": "1049611031",
+      "last_modified": "Thu, 05 Mar 2026 23:56:55 GMT",
+      "sha256": "b6b810b4206ab14037aeb464c670dc7a1ed76bad9091c906d9bb4e435f279528",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913329",
+      "filename": "DRR913329_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891090/DRR913329_1.fastq.bz2",
+      "bytes": "1019443791",
+      "last_modified": "Thu, 05 Mar 2026 23:56:17 GMT",
+      "sha256": "07b4e080f8959d1e49a7b5f3bc304b657f786674861a6b156c89e98470b9fa8f",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913329",
+      "filename": "DRR913329_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891090/DRR913329_2.fastq.bz2",
+      "bytes": "1042344549",
+      "last_modified": "Thu, 05 Mar 2026 23:56:53 GMT",
+      "sha256": "6113d2f3d81cd0466058003bc95ea2a32c7c266bf4ddb3b523a9c440e0785898",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913330",
+      "filename": "DRR913330_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891091/DRR913330_1.fastq.bz2",
+      "bytes": "1032090002",
+      "last_modified": "Thu, 05 Mar 2026 23:56:58 GMT",
+      "sha256": "8b48a851dad3a69e67c3cb120d2c35817cbefe215fdf5bcd1843866ac955f81e",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913330",
+      "filename": "DRR913330_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891091/DRR913330_2.fastq.bz2",
+      "bytes": "1044804420",
+      "last_modified": "Thu, 05 Mar 2026 23:56:20 GMT",
+      "sha256": "ae34ce81ccad3cd95295eafb238c19ee5ca597088599fbe22835796bcf3eaf9f",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913331",
+      "filename": "DRR913331_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891092/DRR913331_1.fastq.bz2",
+      "bytes": "915964842",
+      "last_modified": "Thu, 05 Mar 2026 23:56:38 GMT",
+      "sha256": "1253b148befdf3651cb097949be7c2451b89ed5bc0490aa5edc26ed3f736d2e6",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913331",
+      "filename": "DRR913331_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891092/DRR913331_2.fastq.bz2",
+      "bytes": "927410883",
+      "last_modified": "Thu, 05 Mar 2026 23:56:05 GMT",
+      "sha256": "1a6f60926f8fd1d47b9f9116e43583a290e7cf3c4a5785d4cefd018ef68e52d0",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913332",
+      "filename": "DRR913332_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891093/DRR913332_1.fastq.bz2",
+      "bytes": "842523912",
+      "last_modified": "Thu, 05 Mar 2026 23:55:56 GMT",
+      "sha256": "5336258f4c38c4fc716ef27cd79e4d84aeef803570542d91cf86402c0139ad1e",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913332",
+      "filename": "DRR913332_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891093/DRR913332_2.fastq.bz2",
+      "bytes": "848687866",
+      "last_modified": "Thu, 05 Mar 2026 23:56:27 GMT",
+      "sha256": "1947b18d6975119f85e39866fa2397088575b776a99927d844d8dc95e7684749",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913333",
+      "filename": "DRR913333_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891094/DRR913333_1.fastq.bz2",
+      "bytes": "875471942",
+      "last_modified": "Thu, 05 Mar 2026 23:55:59 GMT",
+      "sha256": "2abb1cb3782bda0413d89e12afb4f5a83113792c3ac32b5acc2a74e30b47f548",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913333",
+      "filename": "DRR913333_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891094/DRR913333_2.fastq.bz2",
+      "bytes": "893879631",
+      "last_modified": "Thu, 05 Mar 2026 23:56:30 GMT",
+      "sha256": "5bdf75e63977c788d2db348d91b40bb92eb639c51ea0c0df0f655ae0edf5ae6f",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913334",
+      "filename": "DRR913334_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891095/DRR913334_1.fastq.bz2",
+      "bytes": "784044472",
+      "last_modified": "Thu, 05 Mar 2026 23:56:21 GMT",
+      "sha256": "ff41a1b97509b4e0a3157beb70cc5ae09654d2e01824b7402b4c601d9c23f7d6",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913334",
+      "filename": "DRR913334_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891095/DRR913334_2.fastq.bz2",
+      "bytes": "793651105",
+      "last_modified": "Thu, 05 Mar 2026 23:55:53 GMT",
+      "sha256": "f5347c667a5c2c5ece9bc10be6307f49facbab7741ac1a7d48da8370e49b7fb0",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913335",
+      "filename": "DRR913335_1.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891096/DRR913335_1.fastq.bz2",
+      "bytes": "957402123",
+      "last_modified": "Thu, 05 Mar 2026 23:56:44 GMT",
+      "sha256": "8e57102fd9acec8e90b6dbb0f8e86363cd0f5b00794d845efc4cb524378302d8",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913335",
+      "filename": "DRR913335_2.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891096/DRR913335_2.fastq.bz2",
+      "bytes": "972744319",
+      "last_modified": "Thu, 05 Mar 2026 23:56:10 GMT",
+      "sha256": "e49345ce923d0b8607caacc2ab2591c3e628b4d218090f8297d901e63911ce56",
+      "status": "already complete"
+    },
+    {
+      "run": "DRR913336",
+      "filename": "DRR913336.fastq.bz2",
+      "url": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/DRA026/DRA026487/DRX891097/DRR913336.fastq.bz2",
+      "bytes": "950465881",
+      "last_modified": "Thu, 05 Mar 2026 23:55:42 GMT",
+      "sha256": "751a349387695046ea50ab944c65f925c41176ea43e5289064c1650254818328",
+      "status": "already complete"
+    }
+  ]
+}

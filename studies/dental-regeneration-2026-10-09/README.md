@@ -55,6 +55,16 @@ the 2026 one-line/three-batch in-vitro study with the 2024 feeder-free ectopic
 graft and the 2025/2026 rat defect transplant abstract. A separate
 [iPS-PDL EV review](IPSPDL_EV_REVIEW.md) checks a 2026 in-vitro cell-free
 paracrine study, including its dose normalization and candidate-miRNA limits.
+The [RNA-seq metadata audit](IPSPDL_RNASEQ_METADATA_AUDIT.md) resolves the nine
+run-to-sample joins and duplicate BioSample entries. Published methods describe
+three iPS-PDL products from one HPS0381 parental line and three PDL-conditioned
+media sources; the [archive manifest](ipspdl_rnaseq_manifest.tsv) lacks a
+run-to-source crosswalk and records one single/layout-unspecified run. The
+All 17 FASTQ files (15.98 GB compressed) were downloaded and hash-checked; all
+nine runs have converged local Salmon quantifications. The strictly descriptive
+expression and PCA results are summarized in
+[the exploratory results](IPSPDL_RNASEQ_EXPLORATORY_RESULTS.md). Raw reads and
+generated matrices remain local and are not part of the repository.
 The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) keeps all evidence
 stages and denominators distinct. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
 retains its six-week ankylosis signal separately from the newer human iPS-PDL

@@ -1,5 +1,6 @@
 """New default-area migration and typed campaign scopes; no biological tests."""
 
+import csv
 import json
 import sys
 import tempfile
@@ -12,6 +13,20 @@ import regen_desk as desk
 
 
 class DentalOrganoidTracks(unittest.TestCase):
+    def test_ipspdl_rnaseq_manifest_retains_run_and_duplicate_biosample_scope(self):
+        study = Path(__file__).resolve().parents[1] / "studies/dental-regeneration-2026-10-09"
+        with (study / "ipspdl_rnaseq_manifest.tsv").open(encoding="utf-8", newline="") as handle:
+            manifest = list(csv.DictReader(handle, delimiter="\t"))
+        with (study / "ipspdl_rnaseq_biosample_index.tsv").open(encoding="utf-8", newline="") as handle:
+            biosamples = list(csv.DictReader(handle, delimiter="\t"))
+        self.assertEqual(len(manifest), 9)
+        self.assertEqual({group: sum(row["group"] == group for row in manifest) for group in {r["group"] for r in manifest}},
+                         {"iPS-PDL": 3, "iPS": 3, "primary PDL": 3})
+        self.assertEqual(len(biosamples), 18)
+        self.assertEqual(sum(row["run_link_status"] == "linked to cited run" for row in biosamples), 9)
+        self.assertEqual(sum(row["run_link_status"] == "project BioSample link; no cited run" for row in biosamples), 9)
+        self.assertEqual([row["run"] for row in manifest if row["layout"] == "single/unspecified"], ["DRR913336"])
+
     def test_seed_migration_preserves_saved_question_and_notes(self):
         with tempfile.TemporaryDirectory() as directory:
             first = desk.Desk(Path(directory))
@@ -69,6 +84,8 @@ class DentalOrganoidTracks(unittest.TestCase):
         self.assertIn("protein", ev_record["unit"].lower())
         self.assertIn("cargo", ev_record["notes"].lower())
         self.assertIn("biological replicate", ev_record["independent_unit"])
+        self.assertIn("18 BioSample links", ev_record["notes"])
+        self.assertIn("parental-line and batch mapping", ev_record["notes"])
         with tempfile.TemporaryDirectory() as directory:
             instance = desk.Desk(Path(directory))
             self.addCleanup(lambda: instance.executor.shutdown(wait=True))

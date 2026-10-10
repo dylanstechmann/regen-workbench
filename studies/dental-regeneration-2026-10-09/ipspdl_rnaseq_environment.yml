@@ -1,0 +1,14 @@
+name: base
+channels:
+  - conda-forge
+  - bioconda
+channel_priority: strict
+dependencies:
+  - python=3.12
+  - salmon=2.7.0
+  - fastqc=0.12.1
+  - multiqc=1.35
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn

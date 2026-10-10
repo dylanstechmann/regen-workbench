@@ -620,7 +620,7 @@
             "status": "source reports mixed signal",
             "direction": "unclear",
             "dataset_sha256": "",
-            "notes": "Protein normalization does not establish potency per particle. Transwell cell counts after 24 hours may include cell division; the methods do not describe a proliferation-blocking control. Candidate miRNA mimics support sufficiency in that assay but no EV-cargo depletion establishes necessity. No tooth-site efficacy, periodontal insertion, ligament-space, mobility, biodistribution or safety outcome was tested. The underlying-cell RNA-seq cited in the article is PRJDB39888 (DRR913328-DRR913336); no raw reads or expression estimates are analyzed here."
+            "notes": "Protein normalization does not establish potency per particle. Transwell cell counts after 24 hours may include cell division; the methods do not describe a proliferation-blocking control. Candidate miRNA mimics support sufficiency in that assay but no EV-cargo depletion establishes necessity. No tooth-site efficacy, periodontal insertion, ligament-space, mobility, biodistribution or safety outcome was tested. DDBJ metadata audit of PRJDB39888 found nine run-linked samples but 18 BioSample links, including nine matched old records without cited runs. iPS/iPS-PDL records lack parental-line and batch mapping; the three primary PDL samples list ages 18, 24 and 44. Karyotype is reported as not tested; run DRR913336 is single/layout-unspecified. All nine deposited runs now have converged descriptive quantifications; gene summaries and PCA are not inferential DE or functional evidence. Raw reads and derived matrices remain local; see IPSPDL_RNASEQ_METADATA_AUDIT.md and IPSPDL_RNASEQ_EXPLORATORY_RESULTS.md."
           }
         ]
       },
