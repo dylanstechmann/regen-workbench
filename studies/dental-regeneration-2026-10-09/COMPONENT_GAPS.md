@@ -65,6 +65,11 @@ for a cell product. Exact fetches for the open-access animal full texts are in
 these studies directly tests the functional barrier's resistance to microbial
 penetration.
 
+The desk's editable `gingival-barrier-gap` starter carries five typed
+source-scoped records in
+[gingival_endpoint_review.json](gingival_endpoint_review.json); these preserve
+patient, site and animal denominators with their endpoint-specific limits.
+
 ## iPSC-derived PDL-like cell source
 
 Li et al. (2026) reported selected in-vitro PDL-like properties, including

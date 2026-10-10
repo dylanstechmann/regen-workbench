@@ -67,4 +67,7 @@ The primary full-text retrievals and hashes are recorded in
 [gingival_trial_receipt.json](gingival_trial_receipt.json). The XML and the
 original `regen` provenance records remain in ignored private data storage;
 the receipt identifies those fetches, not independent validation of the
-interpretation.
+interpretation. The research desk's gingival starter uses the five typed
+records in [gingival_endpoint_review.json](gingival_endpoint_review.json),
+which preserves the individual study denominators and six-month endpoint
+limits.

@@ -89,6 +89,11 @@ microscopic attachment and years-long root coverage in different models, but
 no direct functional seal test or long-term cell-therapy result. Exact full-text
 fetches for the two animal articles are listed in
 [gingival_histology_receipt.json](gingival_histology_receipt.json).
+The editable `gingival-barrier-gap` research-desk starter now carries five
+source-scoped records in
+[gingival_endpoint_review.json](gingival_endpoint_review.json), keeping patient,
+site and animal counts with their distinct barrier, histology and durability
+endpoints.
 
 ## Component roadmap
 

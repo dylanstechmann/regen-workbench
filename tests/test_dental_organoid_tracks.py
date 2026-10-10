@@ -114,6 +114,31 @@ class DentalOrganoidTracks(unittest.TestCase):
             saved = instance.campaign({**saved, "title": "Edited research question"})
             self.assertEqual([r["record_id"] for r in saved["evidence_records"]], [r["record_id"] for r in records])
 
+    def test_gingival_starter_keeps_clinical_histology_and_durability_endpoints_separate(self):
+        seeds = json.loads((desk.HOME / "config/research-blueprints.json").read_text(encoding="utf-8"))
+        authored = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/gingival_endpoint_review.json").read_text(encoding="utf-8"))
+        source_seeds = json.loads((desk.HOME / "studies/dental-regeneration-2026-10-09/desk_seeds.json").read_text(encoding="utf-8"))
+        starter = next(s for s in seeds["campaign_starters"]["dental"] if s["id"] == "gingival-barrier-gap")
+        source_starter = next(s for s in source_seeds["campaign_starters"]["dental"] if s["id"] == "gingival-barrier-gap")
+        records = authored["evidence_records"]
+        self.assertEqual(len(records), 5)
+        self.assertEqual(starter["evidence_records"], records)
+        self.assertEqual(source_starter["evidence_records"], records)
+        self.assertEqual({record["species"] for record in records}, {"Human", "Canine", "Rabbit"})
+        self.assertIn("16 test and 14 control sites", records[0]["sample_size"])
+        self.assertIn("10 men", records[1]["sample_size"])
+        self.assertIn("nested", records[2]["independent_unit"])
+        self.assertIn("Seven days", records[3]["follow_up"])
+        self.assertIn("43 sites", records[4]["sample_size"])
+        with tempfile.TemporaryDirectory() as directory:
+            instance = desk.Desk(Path(directory))
+            self.addCleanup(lambda: instance.executor.shutdown(wait=True))
+            saved = instance.campaign({**starter, "starter_id": starter["id"], "blueprint_id": "dental", "id": ""})
+            saved_records = [{key: value for key, value in record.items() if key != "record_id"}
+                             for record in saved["evidence_records"]]
+            self.assertEqual(saved_records, records)
+            self.assertEqual(len({record["record_id"] for record in saved["evidence_records"]}), 5)
+
     def test_missing_manifest_dependency_returns_an_invalid_card_without_thread_exit(self):
         validator = desk.experiment_manifest_tools()
         with tempfile.TemporaryDirectory() as directory:

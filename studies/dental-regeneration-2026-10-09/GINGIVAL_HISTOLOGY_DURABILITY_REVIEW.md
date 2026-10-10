@@ -56,5 +56,7 @@ Europe PMC full-text fetches for the canine and rabbit studies are listed in
 [gingival_histology_receipt.json](gingival_histology_receipt.json); their XML
 and `regen` provenance records remain in ignored private data storage. The
 12-year study is linked to its PubMed record and is not part of those full-text
-fetches. Findings remain attached to their respective animal or human models
-and follow-up periods.
+fetches. The research desk's gingival starter exposes these findings as
+editable typed observations in
+[gingival_endpoint_review.json](gingival_endpoint_review.json). Findings remain
+attached to their respective animal or human models and follow-up periods.
