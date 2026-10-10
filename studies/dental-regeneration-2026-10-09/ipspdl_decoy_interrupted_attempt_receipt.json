@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-10T20:52:33.130437+00:00",
+  "salmon_version": "salmon 2.7.0",
+  "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+  "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+  "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+  "index_command": [
+    "salmon",
+    "index",
+    "--transcripts",
+    "/data/structures/ipspdl-rnaseq/decoy-reference/gentrome.fa.gz",
+    "--decoys",
+    "/data/structures/ipspdl-rnaseq/decoy-reference/decoys.txt",
+    "--index",
+    "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+    "--threads",
+    "8",
+    "--ramLimit",
+    "4",
+    "--keepDuplicates"
+  ],
+  "index_info": {
+    "k": 31,
+    "m": 19,
+    "canonical": true,
+    "has_ec_table": true,
+    "num_refs": 671376,
+    "first_decoy_index": 670605,
+    "num_decoys": 706,
+    "index_version": 2,
+    "sshash_format_version": 5,
+    "keep_duplicates": true,
+    "salmon_version": "2.7.0",
+    "seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+    "name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+    "seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+    "name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+    "decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+    "decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33"
+  },
+  "index_validation": {
+    "gentrome_target_counts": {
+      "transcript_records": 670670,
+      "decoy_records": 706,
+      "short_transcript_records": 65
+    },
+    "expected_first_decoy_index": 670605
+  },
+  "index_log_sha256": "2606dba7f199508d18884c2ba2bf31d0e28db0fcddd4561169e99e1d8482b29e",
+  "index_binding_sha256": "45f761e50979ff067e7bbeaf3b51beba44a800683323185eb111e4e834f00f60",
+  "threads_per_run": 8,
+  "max_parallel": 2,
+  "runs": [
+    {
+      "run": "DRR913328",
+      "sample": "iPS_PDL1",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913328",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913328_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913328_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913328_1.fastq.gz",
+            "bytes": 1582776936,
+            "sha256": "15b0eb27b4671cb45f046e4ad5e8fa517508e1441dc6c12cd087295e53cb1ebf"
+          },
+          {
+            "filename": "DRR913328_2.fastq.gz",
+            "bytes": 1624639191,
+            "sha256": "d0ffd6a2e927c4c9c51ae2f8d7f229c18d18de96a2269d98d74559616ace18b9"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T20:52:52.428183+00:00",
+      "exit_code": 0,
+      "quant_sha256": "0c30d191430d829d3723a76f315334caa53a6cbf39f69f46e566fac4ecc2bd48",
+      "metadata_sha256": "b7a0975b77f37a1448db9554af0acdc76bfce2152b560d57434c2e1810f25bc4",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 243.18812071163467,
+        "frag_length_sd": 62.25138600217543,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 565790,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 17638797,
+        "num_mapped": 16107716,
+        "num_dovetail_fragments": 328397,
+        "num_fragments_filtered_vm": 352170,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 62234089,
+        "percent_mapped": 91.31981052902871,
+        "num_decoy_fragments": 1163700,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 581631,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 3343,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 773.152564673,
+        "peak_rss_kb": 11895680,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5103); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 20:52:52 2026",
+        "end_time": "Sat Oct 10 21:05:46 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:05:47.884264+00:00"
+    },
+    {
+      "run": "DRR913329",
+      "sample": "iPS_PDL2",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913329",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913329_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913329_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913329_1.fastq.gz",
+            "bytes": 1586336144,
+            "sha256": "ed549daa4869e31090de920c941bee1506e4f0f847a5058d426de966a5024842"
+          },
+          {
+            "filename": "DRR913329_2.fastq.gz",
+            "bytes": 1628842546,
+            "sha256": "ad62763befd35ff3e80be6c74f50239e998372c4c19dc2c03d51c31753730e89"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T20:52:52.467937+00:00",
+      "exit_code": -15,
+      "status": "failed",
+      "finished_utc": "2026-10-10T20:55:41.467291+00:00"
+    },
+    {
+      "run": "DRR913330",
+      "sample": "iPS_PDL3",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913330",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913330_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913330_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913330_1.fastq.gz",
+            "bytes": 1628192350,
+            "sha256": "a07a7aa5dac423272ed6b8be64973b2cb30495ebf2d7ffc7661f3d902b7e2118"
+          },
+          {
+            "filename": "DRR913330_2.fastq.gz",
+            "bytes": 1656808747,
+            "sha256": "f70e4ad39171567cccc92918422fabbdf33e5da2210143bf4ad03917ef908b56"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T20:56:06.941133+00:00",
+      "exit_code": -15,
+      "status": "failed",
+      "finished_utc": "2026-10-10T20:57:50.623918+00:00"
+    },
+    {
+      "run": "DRR913331",
+      "status": "failed",
+      "error": ""
+    },
+    {
+      "run": "DRR913332",
+      "status": "failed",
+      "error": ""
+    },
+    {
+      "run": "DRR913333",
+      "status": "failed",
+      "error": ""
+    },
+    {
+      "run": "DRR913334",
+      "status": "failed",
+      "error": ""
+    },
+    {
+      "run": "DRR913335",
+      "status": "failed",
+      "error": ""
+    },
+    {
+      "run": "DRR913336",
+      "status": "failed",
+      "error": ""
+    }
+  ],
+  "status": "failed",
+  "finished_utc": "2026-10-10T21:05:47.894193+00:00"
+}

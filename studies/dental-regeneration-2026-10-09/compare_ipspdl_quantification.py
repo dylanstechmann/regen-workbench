@@ -250,6 +250,20 @@ def expression_agreement(left: dict[str, float], right: dict[str, float], minimu
     }
 
 
+def largest_gene_changes(left: dict[str, float], right: dict[str, float], minimum_tpm: float, maximum_genes: int = 50) -> list[dict]:
+    """Expose reference-sensitive outliers; this ranking is not a significance test."""
+    rows = []
+    for gene in sorted(set(left) | set(right)):
+        baseline, candidate = left.get(gene, 0.0), right.get(gene, 0.0)
+        if max(baseline, candidate) < minimum_tpm:
+            continue
+        change = math.log2((candidate+1.0)/(baseline+1.0))
+        rows.append({"gene_id": gene, "baseline_TPM": baseline, "candidate_TPM": candidate,
+                     "TPM_change": candidate-baseline, "log2_TPM_plus_1_change": change,
+                     "absolute_log2_TPM_plus_1_change": abs(change)})
+    return sorted(rows, key=lambda row: (-row["absolute_log2_TPM_plus_1_change"], row["gene_id"]))[:maximum_genes]
+
+
 def marker_tables(samples: list[dict], matrices: dict, symbols: dict, markers: list[str]) -> tuple:
     import numpy as np
     by_symbol: dict[str, list[str]] = defaultdict(list)
@@ -361,14 +375,20 @@ def compute_pca(samples: list[dict], matrices: dict, out: Path, minimum_tpm: flo
                       "PC1": float(point[0]), "PC2": float(point[1]), "aligned_to_baseline_PC1": float(alignment[0]), "aligned_to_baseline_PC2": float(alignment[1])}
                       for sample, point, alignment in zip(subset, result["coordinates"], aligned, strict=True)])
             (out / f"pca_{scope}_{name}_genes.txt").write_text("\n".join(result["genes"])+"\n", encoding="utf-8")
+            # PC signs are arbitrary. Match the display to the baseline within each
+            # scope while preserving raw and orthogonally aligned exported coordinates.
+            plot_coordinates = result["coordinates"].copy()
+            for component in range(2):
+                if np.dot(plot_coordinates[:, component], baseline["coordinates"][:, component]) < 0:
+                    plot_coordinates[:, component] *= -1
             ax = axes[row_index, column_index]
             for group in dict.fromkeys(sample["group"] for sample in subset):
                 indices = [i for i, sample in enumerate(subset) if sample["group"] == group]
-                points = result["coordinates"][indices]
+                points = plot_coordinates[indices]
                 ax.scatter(points[:, 0], points[:, 1], s=45, label=group)
-                ordered = sorted(indices, key=lambda index: result["coordinates"][index, 1])
+                ordered = sorted(indices, key=lambda index: plot_coordinates[index, 1])
                 for rank, index in enumerate(ordered):
-                    point = result["coordinates"][index]
+                    point = plot_coordinates[index]
                     offset = 4+10*(rank-(len(ordered)-1)/2)
                     ax.annotate(subset[index]["sample_name"], point, xytext=(5, offset),
                                 textcoords="offset points", fontsize=7,
@@ -378,7 +398,7 @@ def compute_pca(samples: list[dict], matrices: dict, out: Path, minimum_tpm: flo
             ax.set_xlabel(f"PC1 ({result['explained'][0]*100:.1f}% selected-gene variance)")
             ax.set_ylabel(f"PC2 ({result['explained'][1]*100:.1f}% selected-gene variance)")
             ax.legend(frameon=False, fontsize=8)
-    figure.suptitle("Descriptive reference sensitivity: log2(gene TPM + 1)")
+    figure.suptitle("Descriptive reference sensitivity: log2(gene TPM + 1)\nDisplayed PC signs matched to baseline within each sample scope")
     figure.tight_layout()
     figure.savefig(out / "pca_reference_sensitivity.png", dpi=180)
     plt.close(figure)
@@ -430,6 +450,17 @@ def compare(args: argparse.Namespace) -> dict:
     validate_index_consistency(metadata)
     args.out_dir.mkdir(parents=True, exist_ok=True)
     symbols = gene_symbols(args.gtf)
+    import pandas as pd
+    gene_ids = sorted(set().union(*(set(values) for version in matrices.values() for values in version.values())))
+    for version, values in matrices.items():
+        table = pd.DataFrame({sample["run"]: [values[sample["run"]].get(gene, 0.0) for gene in gene_ids] for sample in samples}, index=gene_ids)
+        table.index.name = "gene_id"
+        table.insert(0, "gene_symbol", [symbols.get(gene, "") for gene in gene_ids])
+        table.to_csv(args.out_dir/f"gene_TPM_{version}.tsv", sep="\t")
+    change_rows = [{"run": sample["run"], "sample": sample["sample_name"], "group": sample["group"],
+                    "gene_symbol": symbols.get(row["gene_id"], ""), **row}
+                   for sample in samples for row in largest_gene_changes(matrices["baseline"][sample["run"]], matrices["candidate"][sample["run"]], args.minimum_tpm)]
+    write_tsv(args.out_dir/"largest_gene_tpm_changes.tsv", change_rows)
     markers, groups, patterns = marker_tables(samples, matrices, symbols, MARKERS)
     write_tsv(args.out_dir/"marker_by_sample.tsv", markers)
     write_tsv(args.out_dir/"marker_group_summary.tsv", groups)
@@ -466,6 +497,8 @@ def compare(args: argparse.Namespace) -> dict:
         "index_hashes_by_run": {run: {version: {key: item["metadata"].get(key) for key in INDEX_HASHES} for version, item in pair.items()} for run, pair in metadata.items()},
         "index_hash_changes_by_run": {run: [key for key in INDEX_HASHES if pair["baseline"]["metadata"].get(key) != pair["candidate"]["metadata"].get(key)] for run, pair in metadata.items()},
         "expression_agreement": agreements,
+        "largest_gene_change_table": {"filename": "largest_gene_tpm_changes.tsv", "maximum_genes_per_run": 50,
+                                      "ranking": "absolute log2(TPM+1) change among genes expressed in either estimate; descriptive, not significance", "rows": len(change_rows)},
         "correlation_method": f"Per-run genes with TPM >= {args.minimum_tpm:g} in either estimate; Pearson on log2(TPM+1), Spearman on TPM. Common low/zero genes are excluded.",
         "markers_missing_from_annotation": [marker for marker in MARKERS if marker not in set(symbols.values())],
         "marker_group_order_changes": [row for row in patterns if not row["median_order_retained"]],

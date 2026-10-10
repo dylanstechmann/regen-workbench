@@ -1,0 +1,1113 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-10T21:07:27.129623+00:00",
+  "salmon_version": "salmon 2.7.0",
+  "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+  "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+  "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+  "index_command": [
+    "salmon",
+    "index",
+    "--transcripts",
+    "/data/structures/ipspdl-rnaseq/decoy-reference/gentrome.fa.gz",
+    "--decoys",
+    "/data/structures/ipspdl-rnaseq/decoy-reference/decoys.txt",
+    "--index",
+    "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+    "--threads",
+    "8",
+    "--ramLimit",
+    "4",
+    "--keepDuplicates"
+  ],
+  "index_info": {
+    "k": 31,
+    "m": 19,
+    "canonical": true,
+    "has_ec_table": true,
+    "num_refs": 671376,
+    "first_decoy_index": 670605,
+    "num_decoys": 706,
+    "index_version": 2,
+    "sshash_format_version": 5,
+    "keep_duplicates": true,
+    "salmon_version": "2.7.0",
+    "seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+    "name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+    "seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+    "name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+    "decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+    "decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33"
+  },
+  "index_validation": {
+    "gentrome_target_counts": {
+      "transcript_records": 670670,
+      "decoy_records": 706,
+      "short_transcript_records": 65
+    },
+    "expected_first_decoy_index": 670605
+  },
+  "index_log_sha256": "2606dba7f199508d18884c2ba2bf31d0e28db0fcddd4561169e99e1d8482b29e",
+  "index_binding_sha256": "45f761e50979ff067e7bbeaf3b51beba44a800683323185eb111e4e834f00f60",
+  "threads_per_run": 8,
+  "max_parallel": 1,
+  "runs": [
+    {
+      "run": "DRR913328",
+      "sample": "iPS_PDL1",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913328",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913328_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913328_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913328_1.fastq.gz",
+            "bytes": 1582776936,
+            "sha256": "15b0eb27b4671cb45f046e4ad5e8fa517508e1441dc6c12cd087295e53cb1ebf"
+          },
+          {
+            "filename": "DRR913328_2.fastq.gz",
+            "bytes": 1624639191,
+            "sha256": "d0ffd6a2e927c4c9c51ae2f8d7f229c18d18de96a2269d98d74559616ace18b9"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T20:52:52.428183+00:00",
+      "exit_code": 0,
+      "quant_sha256": "0c30d191430d829d3723a76f315334caa53a6cbf39f69f46e566fac4ecc2bd48",
+      "metadata_sha256": "b7a0975b77f37a1448db9554af0acdc76bfce2152b560d57434c2e1810f25bc4",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 243.18812071163467,
+        "frag_length_sd": 62.25138600217543,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 565790,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 17638797,
+        "num_mapped": 16107716,
+        "num_dovetail_fragments": 328397,
+        "num_fragments_filtered_vm": 352170,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 62234089,
+        "percent_mapped": 91.31981052902871,
+        "num_decoy_fragments": 1163700,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 581631,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 3343,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 773.152564673,
+        "peak_rss_kb": 11895680,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5103); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 20:52:52 2026",
+        "end_time": "Sat Oct 10 21:05:46 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:05:47.884264+00:00"
+    },
+    {
+      "run": "DRR913329",
+      "sample": "iPS_PDL2",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913329",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913329_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913329_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913329_1.fastq.gz",
+            "bytes": 1586336144,
+            "sha256": "ed549daa4869e31090de920c941bee1506e4f0f847a5058d426de966a5024842"
+          },
+          {
+            "filename": "DRR913329_2.fastq.gz",
+            "bytes": 1628842546,
+            "sha256": "ad62763befd35ff3e80be6c74f50239e998372c4c19dc2c03d51c31753730e89"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T21:07:59.795513+00:00",
+      "exit_code": 0,
+      "quant_sha256": "bdd05175cb0317ee7bc008e963a041e741810d6931df8090a085af84996c5211",
+      "metadata_sha256": "bb1bd582b2ac0cbb7535a27e82a1dc1a65b28c339ac56a9d88edcac3026b557e",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 270.60434651579646,
+        "frag_length_sd": 59.413923421279044,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 540958,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 17585315,
+        "num_mapped": 16464714,
+        "num_dovetail_fragments": 90516,
+        "num_fragments_filtered_vm": 100413,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 66857150,
+        "percent_mapped": 93.6276319190188,
+        "num_decoy_fragments": 1004681,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 413124,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 2950,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 646.66204244,
+        "peak_rss_kb": 11958892,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5118); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 21:07:59 2026",
+        "end_time": "Sat Oct 10 21:18:47 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:18:48.506960+00:00"
+    },
+    {
+      "run": "DRR913330",
+      "sample": "iPS_PDL3",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913330",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913330_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913330_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913330_1.fastq.gz",
+            "bytes": 1628192350,
+            "sha256": "a07a7aa5dac423272ed6b8be64973b2cb30495ebf2d7ffc7661f3d902b7e2118"
+          },
+          {
+            "filename": "DRR913330_2.fastq.gz",
+            "bytes": 1656808747,
+            "sha256": "f70e4ad39171567cccc92918422fabbdf33e5da2210143bf4ad03917ef908b56"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T21:19:08.878955+00:00",
+      "exit_code": 0,
+      "quant_sha256": "c253aab9c6166f999bbf6efe65858d539388e29d864a11261ccaeffa232a9061",
+      "metadata_sha256": "3015d4f41d963f6e1fd106f564247d60cfa110106c8afb74a8a7fadf6cc547fd",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 261.28588376816896,
+        "frag_length_sd": 59.719682617151776,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 558446,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 17985621,
+        "num_mapped": 15517529,
+        "num_dovetail_fragments": 222334,
+        "num_fragments_filtered_vm": 330719,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 63071210,
+        "percent_mapped": 86.27741572003546,
+        "num_decoy_fragments": 2130572,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 610439,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 2472,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 629.21045392,
+        "peak_rss_kb": 12039352,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5131); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 21:19:08 2026",
+        "end_time": "Sat Oct 10 21:29:39 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:29:40.343830+00:00"
+    },
+    {
+      "run": "DRR913331",
+      "sample": "iPS1",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913331",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913331_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913331_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913331_1.fastq.gz",
+            "bytes": 1417117195,
+            "sha256": "c43aed62ea0cf7936a815fb9c8ada0568b931357cc0ea71319555b584cfeeced"
+          },
+          {
+            "filename": "DRR913331_2.fastq.gz",
+            "bytes": 1439651658,
+            "sha256": "45f55d8665caaab7ae5d12b8eec88a9f7781bd532810da813f4aee05d4c493e9"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T21:29:58.546532+00:00",
+      "exit_code": 0,
+      "quant_sha256": "6ff97488cf0b5cd5b38dac8f421961eb3caaba22f583a632cdb702aa1ded1c17",
+      "metadata_sha256": "642391132dcabbc6daa7c500bdbae546309e5a97b9a63eaa9ae178658f52d40c",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 251.97472158537212,
+        "frag_length_sd": 59.84312949356506,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 602502,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 15656256,
+        "num_mapped": 14100573,
+        "num_dovetail_fragments": 179416,
+        "num_fragments_filtered_vm": 185166,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 68862443,
+        "percent_mapped": 90.06350560440504,
+        "num_decoy_fragments": 1338048,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 443202,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 3199,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 729.643739246,
+        "peak_rss_kb": 12033932,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5100); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 21:29:58 2026",
+        "end_time": "Sat Oct 10 21:42:09 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:42:10.420234+00:00"
+    },
+    {
+      "run": "DRR913332",
+      "sample": "iPS2",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913332",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913332_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913332_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913332_1.fastq.gz",
+            "bytes": 1303414597,
+            "sha256": "a9bf65737e6fb89ab812c5e26fa76c8a2c55b099ad5c0523541b36293acd2058"
+          },
+          {
+            "filename": "DRR913332_2.fastq.gz",
+            "bytes": 1316632333,
+            "sha256": "fabfbc6ab03cc4bba09bd5f2314d6653ce2ca98cd5434fcc1da97ae63495724f"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T21:42:26.589913+00:00",
+      "exit_code": 0,
+      "quant_sha256": "da0a97623c3c0c859c9cef0dea0b5ba653a80d878e7a593d29b684ed8a0933f7",
+      "metadata_sha256": "f34e3bd0ec4d77ac442d9be87bafefed1e870ca67a37db6cf9e753f16d04b75a",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 245.88361159697885,
+        "frag_length_sd": 59.74296672028136,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 589914,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 14383864,
+        "num_mapped": 12900841,
+        "num_dovetail_fragments": 220853,
+        "num_fragments_filtered_vm": 244866,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 64883212,
+        "percent_mapped": 89.68967587568959,
+        "num_decoy_fragments": 1213390,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 446473,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 3010,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 679.132519119,
+        "peak_rss_kb": 11986224,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5107); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 21:42:26 2026",
+        "end_time": "Sat Oct 10 21:53:46 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T21:53:47.741261+00:00"
+    },
+    {
+      "run": "DRR913333",
+      "sample": "iPS3",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913333",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913333_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913333_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913333_1.fastq.gz",
+            "bytes": 1340760174,
+            "sha256": "b0addb5e3c7516743ad83276e182e60d4ab187d302010a43d7e25ddd7933496b"
+          },
+          {
+            "filename": "DRR913333_2.fastq.gz",
+            "bytes": 1374940698,
+            "sha256": "17b4e23c2c3b43915f8243e57a345ab236752b7902b0d2480f16fe7f94e0feee"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T21:54:04.651588+00:00",
+      "exit_code": 0,
+      "quant_sha256": "cd696dfcd287d95beef87c8bf56a5687f8ac81da8bed88cae7dea7e644b5cd14",
+      "metadata_sha256": "a135dd98462ece48053510079fdaf6a584e0501ee8002a390111df4e080c10ab",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 250.9054431903383,
+        "frag_length_sd": 58.94324709958548,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 602804,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 14844585,
+        "num_mapped": 13134670,
+        "num_dovetail_fragments": 163588,
+        "num_fragments_filtered_vm": 173645,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 65301950,
+        "percent_mapped": 88.48122059323316,
+        "num_decoy_fragments": 1510805,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 420751,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 3577,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 751.7089241030001,
+        "peak_rss_kb": 11994396,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5106); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 21:54:04 2026",
+        "end_time": "Sat Oct 10 22:06:37 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T22:06:38.738038+00:00"
+    },
+    {
+      "run": "DRR913334",
+      "sample": "PDL1",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913334",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913334_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913334_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913334_1.fastq.gz",
+            "bytes": 1218246676,
+            "sha256": "69e402b9d9f48693e8dd9938165110d3e245b2090dd2532f451a4f257872a5c5"
+          },
+          {
+            "filename": "DRR913334_2.fastq.gz",
+            "bytes": 1237126016,
+            "sha256": "4b8954d444b58b56cf4aa3d9ec6bd8fb0e3cb46122bb4aa5ae5382c1d1070777"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T22:06:54.750951+00:00",
+      "exit_code": 0,
+      "quant_sha256": "94a49eb0f097468da40cba68454cbe813dde4ca62a7aa66743affc5fa72419d8",
+      "metadata_sha256": "deb2baf4611ebb7e2b9728367f4ae91ddc48427cb5807c3fc63e8579769f4f58",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 260.35865983096136,
+        "frag_length_sd": 59.85580016550966,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 487002,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 13462016,
+        "num_mapped": 12418870,
+        "num_dovetail_fragments": 84484,
+        "num_fragments_filtered_vm": 94832,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 48889122,
+        "percent_mapped": 92.25119031206025,
+        "num_decoy_fragments": 934596,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 320124,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 2897,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 562.903963451,
+        "peak_rss_kb": 11808168,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5112); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 22:06:54 2026",
+        "end_time": "Sat Oct 10 22:16:18 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T22:16:19.797904+00:00"
+    },
+    {
+      "run": "DRR913335",
+      "sample": "PDL2",
+      "layout": "paired",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913335",
+          "--mates1",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913335_1.fastq.gz",
+          "--mates2",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913335_2.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913335_1.fastq.gz",
+            "bytes": 1488987528,
+            "sha256": "1a70ad7500ea217bee7045ca8740a59bb17d8ec248621b2d0c839b951123dd2a"
+          },
+          {
+            "filename": "DRR913335_2.fastq.gz",
+            "bytes": 1518225147,
+            "sha256": "8c40cae17e2da8ebc13f82b2e93e4845d809440bab0937dfb5741ac698e7052b"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T22:16:40.723692+00:00",
+      "exit_code": 0,
+      "quant_sha256": "78b2e20024bbaa15adbd454f44ff8fe89f68414256adb093aa2ef6b70cc3370e",
+      "metadata_sha256": "d5337eef96e74c5c4e7a30ca828a0e7fc130e4ef3f6e504cb14963981fbb2d6d",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "IU"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 257.29799334521084,
+        "frag_length_sd": 59.077054390631126,
+        "frag_length_source": "reads",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 525092,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 16474981,
+        "num_mapped": 15335333,
+        "num_dovetail_fragments": 121805,
+        "num_fragments_filtered_vm": 138673,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 60341705,
+        "percent_mapped": 93.08255347912086,
+        "num_decoy_fragments": 976141,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 416231,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 2943,
+        "em_converged": true,
+        "detected_library_type": "IU",
+        "inference_path": "deterministic",
+        "total_time_seconds": 618.619126509,
+        "peak_rss_kb": 11895888,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5110); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 22:16:40 2026",
+        "end_time": "Sat Oct 10 22:27:00 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T22:27:01.631301+00:00"
+    },
+    {
+      "run": "DRR913336",
+      "sample": "PDL3",
+      "layout": "single/unspecified",
+      "binding": {
+        "salmon_version": "salmon 2.7.0",
+        "driver_sha256": "aaf68402114b67d47610806a2d558c5c3f2f0263c7c0e868da5254e315e1d593",
+        "manifest_sha256": "55f4236378edb08246dfbb3dcbf8ca2a0e40b6986e400fbaa127206bd0d3b6ba",
+        "reference_receipt_sha256": "3eb07caba431b39a70ac84ac445a54a8afc1234669cb5ae3a070bbf301794f97",
+        "command": [
+          "salmon",
+          "quant",
+          "--index",
+          "/data/structures/ipspdl-rnaseq/gencode-v50-full-genome-decoy",
+          "--libType",
+          "A",
+          "--threads",
+          "8",
+          "--seqBias",
+          "--gcBias",
+          "--output",
+          "/data/structures/ipspdl-rnaseq/quant-decoy/DRR913336",
+          "--unmatedReads",
+          "/data/structures/ipspdl-rnaseq/gzip-inputs/DRR913336.fastq.gz"
+        ],
+        "inputs": [
+          {
+            "filename": "DRR913336.fastq.gz",
+            "bytes": 1471531569,
+            "sha256": "185cc5f654e715d492b2ac583e543d7895ef3f96bd4aa73b28b8d568d93ae2ce"
+          }
+        ]
+      },
+      "started_utc": "2026-10-10T22:27:10.673779+00:00",
+      "exit_code": 0,
+      "quant_sha256": "e1f34b71a033eb0607c330c32029166fc0aa03367c88948b0f86ba64ac062be4",
+      "metadata_sha256": "3033ff62acb717e7a0042ec4ee26e2a0efc340085e0c71f9b91510ac349f1973",
+      "metadata": {
+        "salmon_version": "2.7.0",
+        "samp_type": "none",
+        "opt_type": "vb",
+        "quant_errors": [],
+        "num_libraries": 1,
+        "library_types": [
+          "U"
+        ],
+        "frag_dist_length": 1001,
+        "frag_length_mean": 249.9999999999999,
+        "frag_length_sd": 25.00166661148391,
+        "frag_length_source": "prior",
+        "seq_bias_correct": true,
+        "gc_bias_correct": true,
+        "pos_bias_correct": false,
+        "num_bias_bins": 0,
+        "seq_bias_context_length": 9,
+        "gc_bias_bins": 75,
+        "mapping_type": "mapping",
+        "keep_duplicates": true,
+        "index_seq_hash": "fdc2052586bf9745a10f34b80dab148855afbeb716b17c381e16be35a81ddf90",
+        "index_name_hash": "1bacfddf7940f4b114a51b1e53e9d57aa46c73df1652dc58a2df891d8d751f52",
+        "index_seq_hash512": "2475886611a09622b75d9ba9976a9204abce99d948c66dbee31714c7c99c26d5456936a66691a3de5a9534754cd3fc608b347e53d1045aa39888afb5886f8de5",
+        "index_name_hash512": "1aee4e9d69f550d3a12d35236f5068a3b8717367d37da485f13951ffdb7d9606cd266106b98b348da9022aefa5ae281afee17e10f1f5625f673bcd7d9a93a194",
+        "index_decoy_seq_hash": "cf7acfef63672e3ead34e14cde9cb5952d895d4456d4a1f56d7d4e721b10abeb",
+        "index_decoy_name_hash": "18591ba1ac82be3c1e4708683c066854337ddd4435e3f6531faea03ad6270f33",
+        "num_valid_targets": 670670,
+        "num_decoy_targets": 706,
+        "num_eq_classes": 386521,
+        "serialized_eq_classes": false,
+        "eq_class_properties": [
+          "range_factorized",
+          "gzipped"
+        ],
+        "length_classes": [
+          629,
+          1085,
+          1992,
+          3455,
+          248946422
+        ],
+        "num_processed": 16359273,
+        "num_mapped": 15104518,
+        "num_dovetail_fragments": 0,
+        "num_fragments_filtered_vm": 262925,
+        "num_alignments_below_threshold_for_mapped_fragments_vm": 47995097,
+        "percent_mapped": 92.33000757429747,
+        "num_decoy_fragments": 945630,
+        "inference_truncated_mass": 0.0,
+        "num_bootstraps": 0,
+        "num_orphan": 0,
+        "range_factorization_bins": 4,
+        "meta_info_complete": true,
+        "num_em_iterations": 1624,
+        "em_converged": true,
+        "detected_library_type": "U",
+        "inference_path": "deterministic",
+        "total_time_seconds": 308.67113205199996,
+        "peak_rss_kb": 11222688,
+        "diagnostics": [
+          {
+            "code": "strand_bias_unstranded",
+            "severity": "warning",
+            "message": "detected a *potential* strand bias > 1% in an unstranded protocol (strand_mapping_bias = 0.5106); see lib_format_counts.json for details"
+          }
+        ],
+        "call": "quant",
+        "start_time": "Sat Oct 10 22:27:10 2026",
+        "end_time": "Sat Oct 10 22:32:20 2026"
+      },
+      "status": "completed",
+      "finished_utc": "2026-10-10T22:32:21.529190+00:00"
+    }
+  ],
+  "status": "completed",
+  "finished_utc": "2026-10-10T22:32:21.536157+00:00"
+}

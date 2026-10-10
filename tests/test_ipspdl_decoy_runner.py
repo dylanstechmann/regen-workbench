@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import gzip
 import importlib.util
 import json
 import tempfile
@@ -38,6 +39,25 @@ class LayoutAndCompletion(unittest.TestCase):
         self.assertNotIn("--mates1", single)
         self.assertNotIn("--mates2", single)
         self.assertEqual(single[single.index("--output")+1], str(Path("fixture/quant/DRR913336")))
+
+    def test_short_transcripts_are_counted_before_salmon_moves_decoy_boundary(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            gentrome = root / "gentrome.fa.gz"
+            decoys = root / "decoys.txt"
+            decoys.write_text("chr1\nchr2\n", encoding="utf-8")
+            with gzip.open(gentrome, "wt", encoding="utf-8") as fasta:
+                fasta.write(">ENST1|ENSG1 description\n" + "A" * 31 + "\n")
+                fasta.write(">ENST2|ENSG2\nACGT\n")
+                fasta.write(">ENST3|ENSG3\n" + "C" * 35 + "\n")
+                fasta.write(">chr1\n" + "G" * 40 + "\n")
+                fasta.write(">chr2\n" + "T" * 50 + "\n")
+
+            counts = driver.transcript_target_counts(gentrome, decoys, 31)
+
+        self.assertEqual(counts, {"transcript_records": 3, "decoy_records": 2,
+                                  "short_transcript_records": 1})
+        self.assertEqual(counts["transcript_records"] - counts["short_transcript_records"], 2)
 
     def test_unsupported_library_layout_is_rejected(self):
         for layout in ("", "single", "unknown", "paired-end"):

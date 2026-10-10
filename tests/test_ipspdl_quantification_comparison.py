@@ -43,6 +43,14 @@ def record(layout: str = "paired") -> dict:
 
 
 class InputIntegrity(unittest.TestCase):
+    def test_large_reference_sensitive_gene_changes_are_exposed_without_common_zeros(self):
+        rows = comparison.largest_gene_changes({"lost": 1000., "stable": 20., "zero": 0.},
+                                               {"lost": 0., "stable": 20., "zero": 0., "gained": 100.}, 1., 2)
+        self.assertEqual([row["gene_id"] for row in rows], ["lost", "gained"])
+        self.assertEqual(rows[0]["TPM_change"], -1000.)
+        self.assertLess(rows[0]["log2_TPM_plus_1_change"], -9.)
+        self.assertGreater(rows[1]["log2_TPM_plus_1_change"], 6.)
+
     def test_one_run_using_a_different_index_is_rejected(self):
         metadata = {"R1": {"baseline": record(), "candidate": record()},
                     "R2": {"baseline": record(), "candidate": record()}}
@@ -213,6 +221,8 @@ class DescriptiveSensitivity(unittest.TestCase):
             self.assertEqual(persisted["file"]["sha256"], comparison.sha256_file(receipts["candidate"]))
             self.assertEqual(persisted["receipt"], {"scope": "candidate", "fixture": True})
             self.assertTrue((args.out_dir/"pca_reference_sensitivity.png").is_file())
+            self.assertTrue((args.out_dir/"gene_TPM_candidate.tsv").is_file())
+            self.assertEqual(result["largest_gene_change_table"]["rows"], 9*6)
             self.assertTrue(any("No assigned donor pairing" in item for item in result["limitations"]))
             # A later failed/incomplete library must stop the comparison rather than silently
             # converting it into an unbalanced reference comparison.

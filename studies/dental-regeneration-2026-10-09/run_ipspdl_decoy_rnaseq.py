@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import json
 import os
@@ -22,6 +23,35 @@ def sha(path: Path) -> str:
         while chunk := stream.read(1 << 20):
             h.update(chunk)
     return h.hexdigest()
+
+
+def transcript_target_counts(gentrome: Path, decoys_path: Path, k: int) -> dict[str, int]:
+    """Count transcript/decoy records and short transcript records in a Salmon gentrome FASTA."""
+    decoy_ids = {line.strip() for line in decoys_path.read_text(encoding="utf-8").splitlines() if line.strip()}
+    counts = {"transcript_records": 0, "decoy_records": 0, "short_transcript_records": 0}
+    current_id: str | None = None
+    current_length = 0
+
+    def finish_record() -> None:
+        if current_id is None:
+            return
+        if current_id in decoy_ids:
+            counts["decoy_records"] += 1
+        else:
+            counts["transcript_records"] += 1
+            if current_length < k:
+                counts["short_transcript_records"] += 1
+
+    with gzip.open(gentrome, "rt", encoding="utf-8") as fasta:
+        for line in fasta:
+            if line.startswith(">"):
+                finish_record()
+                current_id = line[1:].split(None, 1)[0]
+                current_length = 0
+            else:
+                current_length += len(line.strip())
+    finish_record()
+    return counts
 
 
 def now() -> str:
@@ -126,15 +156,21 @@ def main() -> None:
             subprocess.run(index_command, stdout=log, stderr=subprocess.STDOUT, check=True)
         index_binding.write_text(json.dumps(binding, indent=2) + "\n")
     info = json.loads((INDEX / "info.json").read_text())
+    target_counts = transcript_target_counts(gentrome, decoys, info["k"])
+    expected_first_decoy = target_counts["transcript_records"] - target_counts["short_transcript_records"]
     if (info["num_decoys"] != reference["reference"]["decoy_records"]
             or info["num_refs"] != reference["reference"]["transcript_records"] + reference["reference"]["decoy_records"]
-            or info["first_decoy_index"] != reference["reference"]["transcript_records"]
+            or target_counts["transcript_records"] != reference["reference"]["transcript_records"]
+            or target_counts["decoy_records"] != reference["reference"]["decoy_records"]
+            or info["first_decoy_index"] != expected_first_decoy
             or not info.get("keep_duplicates")):
-        raise ValueError("Index does not preserve requested decoys and duplicate transcript targets")
+        raise ValueError("Index does not preserve requested decoys, transcript targets, and Salmon short-target ordering")
     receipt = {"schema_version": 1, "started_utc": now(), "salmon_version": version,
                "driver_sha256": sha(Path(__file__)), "manifest_sha256": sha(manifest),
                "reference_receipt_sha256": sha(reference_path), "index_command": index_command,
-               "index_info": info, "index_log_sha256": sha(DATA / "decoy_index.log"),
+               "index_info": info, "index_validation": {"gentrome_target_counts": target_counts,
+                                                            "expected_first_decoy_index": expected_first_decoy},
+               "index_log_sha256": sha(DATA / "decoy_index.log"),
                "index_binding_sha256": sha(index_binding), "threads_per_run": threads, "max_parallel": parallel,
                "runs": [], "status": "running"}
     receipt_path = HERE / "ipspdl_decoy_run_receipt.json"
