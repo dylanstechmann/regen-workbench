@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "accession": "GSE306722",
+  "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE306nnn/GSE306722/soft/GSE306722_family.soft.gz",
+  "retrieved_utc": "2026-10-10T18:59:20.977552+00:00",
+  "raw_response_sha256": "bcbd5f88ec4f7200db0cf2f5b4bf2f5f57c518b74afe1196f8b7a0aecee6cabe",
+  "raw_response_bytes": 3996,
+  "local_provenance_receipt": "1791658760975540295_dental-pdls-maturity-metadata.json",
+  "series": {
+    "Series_title": [
+      "Diminished osteogenic capacity in mature periodontal ligament stem cells via RELB downregulation"
+    ],
+    "Series_status": [
+      "Public on Sep 04 2025"
+    ],
+    "Series_type": [
+      "Expression profiling by high throughput sequencing"
+    ],
+    "Series_summary": [
+      "Although periodontal ligament stem cells (PDLSCs) are pivotal for periodontal tissue regeneration, their regenerative capacity diminishes with the PDL maturity. This study aims to elucidate the mechanisms underlying this phenomenon.Single-cell RNA sequencing (scRNA-seq) was conducted on immature and mature human PDL tissues to characterize the heterogeneity and predict critical regulators affecting osteogenic capacity of PDLSCs. Subsequently, the predicted role of RELB was experimentally validated both in vitro and in vivo using small interfering RNA.Our scRNA-seq analysis revealed significant heterogeneity within the PDLSC population. Notably, PDLSC-5 subtype, which exhibited osteogenic potential and positioned at the terminus of the pseudotime trajectory, was markedly reduced in mature PDL tissues. RELB was specifically overexpressed in PDLSC_5 and identified as a key transcription factor (TF) for this subcluster. Knockdown of RELB significantly inhibited the osteogenic differentiation capacity of PDLSCs in vitro and bone formation potential in vivo at both developmental stages. This inhibitory effect appears to be mediated, at least in part, through the downregulation of its target gene, superoxide dismutase 2 (SOD2).This study demonstrates that the proportion of PDLSCs with osteogenic ability significantly declines with maturity, accounting for the diminished regeneration capacity of mature periodontal tissue. Furthermore, RELB was identified as a crucial TF for maintaining the osteogenic potential of PDLSCs. These findings provide a theoretical basis for strategies aimed at optimizing the bone regeneration capacity of PDLSCs."
+    ],
+    "Series_overall_design": [
+      "For orthodontic reasons, human premolars without endodontic or periodontal disease were extracted at the Stomatology Hospital of Xi’an Jiaotong University and used for PDL isolation. All donors signed informed consent forms. According to the root developmental stage and donor age, the obtained teeth were divided into 2 groups, one group with 1/2-2/3 root development was called immature group, and the other group with complete root development was named mature group. PDL tissues from the root surface were collected for PDLSCs culture and scRNA-seq.After enzymatic digestion and lysis of red blood cells, the cell suspension of PDL tissues were filtered and counted. Libraries were constructed using Single-Cell 3′ Reagent Kit v3.1 (10× Genomics) according to the manufacturer’s protocol. Indexed libraries were pooled and sequenced on an Illumina sequencer using paired-end 26×98 bp read length.After non-linear dimensional reduction using uniform manifold approximation and projection (UMAP), clustering was run using the FindNeighbors and FindClusters functions with the SLM algorithm and 27 interactions. Clustering was performed at varying resolution values with a value of 1.5 used as the initial stage. Clusters were assigned preliminary identities based on the expression of combinations of known marker genes for major cell classes and types. Subclustering was performed on each major cell type data subset to resolve additional cell types and subtypes."
+    ],
+    "Series_pubmed_id": [],
+    "Series_sample_id": [
+      "GSM9206804",
+      "GSM9206805"
+    ]
+  },
+  "n_geo_sample_records": 2,
+  "sample_records_by_stage_label": {
+    "immature": 1,
+    "mature": 1,
+    "unclassified": 0
+  },
+  "samples": [
+    {
+      "geo_sample": "GSM9206804",
+      "stage_label_from_source_fields": "immature",
+      "title": [
+        "Periodontal ligament, immature"
+      ],
+      "source_name": [
+        "periodontal ligament"
+      ],
+      "organism": [
+        "Homo sapiens"
+      ],
+      "characteristics": [
+        "tissue: periodontal ligament",
+        "cell line: no",
+        "cell type: Periodontal ligament cells",
+        "genotype: WT",
+        "developmental stage: Immature"
+      ],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN50846038",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30275527"
+      ],
+      "supplementary_files": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_matrix.mtx.gz"
+      ],
+      "data_processing": [
+        "Raw gene expression matrices were generated for each sample by the Cell Ranger (Version 6.1.2) Pipeline coupled with human reference version GRCh38-2020-A. The output filtered gene expression matrices were analyzed by R software (Version 4.3.1) with the Seurat package (Version 4.4.0). A custom R script was used to combine the expression data and metadata from all libraries corresponding to a single batch, and ceslls with fewer 200 Features were removed. The expression data matrix was loaded into a Seurat object along with the library metadata for downstream processing. The precentage of mitochondrial transcripts for each cell (percent.mito) was calculated and added as metadata to the Seurat object. Cells were further filtered before dimensionality reduction(nGene-min. 200; percent.mito-max. 10%). Expression values were then scaled to 10,000 transcripts per cells and Log-transformed. Effects of variable (percent.mito) was estimated and regressed out using a GLM(ScaleData function, model.use=”linear”), and the scaled and centred residuals were used for dimensionality reduciton and clustering.",
+        "Assembly: Human GRCh38",
+        "Supplementary files format and content: Tab-separated values files and matrix files"
+      ],
+      "donor_id": null,
+      "individual_tooth_id": null
+    },
+    {
+      "geo_sample": "GSM9206805",
+      "stage_label_from_source_fields": "mature",
+      "title": [
+        "Periodontal ligament, mature"
+      ],
+      "source_name": [
+        "periodontal ligament"
+      ],
+      "organism": [
+        "Homo sapiens"
+      ],
+      "characteristics": [
+        "tissue: periodontal ligament",
+        "cell line: no",
+        "cell type: Periodontal ligament cells",
+        "genotype: WT",
+        "developmental stage: Mature"
+      ],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN50846037",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX30275528"
+      ],
+      "supplementary_files": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_matrix.mtx.gz"
+      ],
+      "data_processing": [
+        "Raw gene expression matrices were generated for each sample by the Cell Ranger (Version 6.1.2) Pipeline coupled with human reference version GRCh38-2020-A. The output filtered gene expression matrices were analyzed by R software (Version 4.3.1) with the Seurat package (Version 4.4.0). A custom R script was used to combine the expression data and metadata from all libraries corresponding to a single batch, and ceslls with fewer 200 Features were removed. The expression data matrix was loaded into a Seurat object along with the library metadata for downstream processing. The precentage of mitochondrial transcripts for each cell (percent.mito) was calculated and added as metadata to the Seurat object. Cells were further filtered before dimensionality reduction(nGene-min. 200; percent.mito-max. 10%). Expression values were then scaled to 10,000 transcripts per cells and Log-transformed. Effects of variable (percent.mito) was estimated and regressed out using a GLM(ScaleData function, model.use=”linear”), and the scaled and centred residuals were used for dimensionality reduciton and clustering.",
+        "Assembly: Human GRCh38",
+        "Supplementary files format and content: Tab-separated values files and matrix files"
+      ],
+      "donor_id": null,
+      "individual_tooth_id": null
+    }
+  ],
+  "qualification": {
+    "expression_values_parsed": false,
+    "individual_donor_ids_found_in_geo_metadata": false,
+    "individual_tooth_ids_found_in_geo_metadata": false,
+    "biological_replicates_qualified": false,
+    "donor_held_out_comparison_eligible": false,
+    "recommended_use": "Source-scoped cell-state and marker-pattern description only, after expression-matrix provenance review.",
+    "limits": "GEO sample records are archive records, not proof of independent donors. The publication reports 20 immature and 20 mature teeth, but the retrieved GEO family metadata exposes group-level sample records without tooth-to-donor or cell-to-donor mapping. Cells must not be treated as biological replicates. Developmental root maturity is not an aging comparison."
+  }
+}

@@ -65,6 +65,10 @@ nine runs have converged local Salmon quantifications. The strictly descriptive
 expression and PCA results are summarized in
 [the exploratory results](IPSPDL_RNASEQ_EXPLORATORY_RESULTS.md). Raw reads and
 generated matrices remain local and are not part of the repository.
+The follow-up [native PDL maturity dataset qualification](PDLSC_MATURITY_DATASET_QUALIFICATION.md)
+checks GSE306722 as a candidate cell-state reference. Its GEO metadata exposes
+two group-level sample records despite the publication's report of 20 teeth per
+stage, so donor-level inference and an aging claim remain ineligible.
 The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) keeps all evidence
 stages and denominators distinct. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
 retains its six-week ankylosis signal separately from the newer human iPS-PDL
