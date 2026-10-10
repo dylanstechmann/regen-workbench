@@ -145,6 +145,11 @@ It retains unresolved clone-to-library/culture mapping and sparse RNA versus
 protein-assay discrepancies. Only normalization is fitted; no dispersion model
 or significance tests are run.
 
+The `ameloblast-rna-contrast` desk starter now carries a typed control-axis
+record for the seven-sheet supplementary workbook audit. It labels workbook
+inventory counts separately from biological sample sizes and retains the
+unresolved clone, culture-batch and graft-outcome mappings.
+
 [organoid-oxygen-lab](https://github.com/dylanstechmann/organoid-oxygen-lab)
 owns numerical transport and source-linked measurement intake. Its homogeneous
 sphere is a reduced model, not a validated dental-organoid geometry.

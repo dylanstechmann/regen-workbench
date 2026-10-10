@@ -735,7 +735,7 @@
         "evidence_stage": "Retrieved public counts and computational descriptive comparison; tissue identity/function unqualified",
         "study_design": "Three source conditions with two labeled replicates each; genotype-by-treatment interaction is incomplete",
         "reference_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE307437",
-        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md. Normalization diagnostics and per-library plots are in RNA_CONTEXT.md. Clone-to-library mapping remains unresolved after selected supplement review; major marker directions persist under two scalings.",
+        "structure_notes": "GSE307437 supplies 41,129 unique gene rows in six source-aligned libraries. Descriptive CPM comparisons retain sparse enamel-associated rows and mixed molecular responses. Donor/clone/culture identities and reuse rights remain unqualified. Untreated KO is missing, so no full factorial interaction is estimated. GSE184749 pooling/tissue-label issues remain. See studies/dental-regeneration-2026-10-09/AMELOBLAST_EXPRESSION.md. Normalization diagnostics and per-library plots are in RNA_CONTEXT.md. Clone-to-library mapping remains unresolved after selected supplement review; major marker directions persist under two scalings. The companion workbook is figure-summary only (7 static sheets, 178 populated cells) and has no sample or graft-outcome identifiers; see the source record and AMELOBLAST_ORGANOID_REVIEW.md.",
         "evidence": [
           {
             "axis_id": "identity",
@@ -747,6 +747,12 @@
             "axis_id": "function",
             "status": "not assessed",
             "notes": "Expression and source labels cannot supply native enamel mechanical function."
+          },
+          {
+            "axis_id": "control",
+            "status": "not assessed",
+            "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12950815/",
+            "notes": "The seven-sheet companion workbook contains figure summaries only, without sample identities or graft-level outcomes; see the linked source record and review."
           }
         ],
         "evidence_records": [
@@ -795,6 +801,29 @@
             "direction": "unclear",
             "notes": "Source manuscript names KO-10 and KO-13 without library mapping here; culture/harvest metadata remain unresolved. Only size factors fitted: no dispersion, Wald or adjusted-p testing. Major marker directions persist but magnitudes change; sparse RNA versus protein assay discrepancies retained. See studies/dental-regeneration-2026-10-09/RNA_CONTEXT.md.",
             "dataset_sha256": "b559328b188938bb1d32f7c1adeb07daf78c487e659cd0a5faf58b740254c32a"
+          },
+          {
+            "axis_id": "control",
+            "source_type": "publication",
+            "source_title": "Patni et al. 2026: supplemental ameloblast heatmap workbook audit",
+            "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12950815/",
+            "license": "Article CC BY-NC-ND 4.0; no workbook values redistributed.",
+            "species": "Human and mouse figure values; human fetal tissue and human iPSC-derived ameloblast organoids",
+            "stage_track": "Supplementary figure-value audit; not a new biological experiment",
+            "developmental_interval": "20–22 gestational weeks for human fetal heatmaps per article; separate iAM organoid bulk RNA samples",
+            "model_system": "Seven-sheet static figure workbook supplied with the 2026 article",
+            "comparator": "Figure-specific cell-type and marker summaries; sample-level group rows are absent",
+            "outcome": "No donor, clone, culture-batch, library, or graft-outcome mappings added",
+            "measure": "Workbook sheet, populated-cell, formula, and sample-field inventory",
+            "value": "7 sheets; 178 nonempty cells; 0 formulas; no sample-level or graft-outcome records",
+            "unit": "Workbook-inventory counts, not biological observations",
+            "independent_unit": "None for workbook summaries; RNA libraries lack clone/batch mapping in public labels; graft outcomes are not itemized per mouse.",
+            "sample_size": "Workbook has no biological n. Article Methods report 6 iAM RNA samples (2 biological replicates per condition) and 6 graft recipient mice; allocations and outcome denominators remain unresolved.",
+            "follow_up": "Single static supplement review; no longitudinal tissue-function endpoint",
+            "status": "not assessed",
+            "direction": "unclear",
+            "notes": "Article describes human Fig. 1c and Fig. 5b as cluster-average expression at 20–22 gestational weeks. The workbook does not contain individual donor observations or units/normalization metadata independent of the figure captions and article text. It does not resolve GSE307437 clone-to-library mapping or graft success allocation. Workbook SHA-256: b4f678d1756aea947ee56dc208c5d364ecde1eae2d45ccf168b4f6ea1b90159e; see primary_context_receipt.json.",
+            "dataset_sha256": ""
           }
         ]
       }
