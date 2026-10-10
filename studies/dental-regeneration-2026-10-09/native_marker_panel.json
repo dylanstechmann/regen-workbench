@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "panel_id": "native-pdl-descriptive-45-v1",
+  "frozen_date": "2026-10-10",
+  "purpose": "Prespecified expression contexts; no cell-type classifier, identity score or biological-age score.",
+  "bulk_existing": [
+    "POSTN", "COL1A1", "COL1A2", "COL3A1", "COL12A1", "COL14A1", "ASPN",
+    "SCX", "TNMD", "MKX", "CILP", "DCN", "LUM", "BGN", "THY1", "PDGFRA",
+    "ITGA11", "VCAM1", "FAP", "ALPL", "RUNX2", "SP7", "IBSP", "BGLAP",
+    "POU5F1", "SOX2", "NANOG", "LIN28A", "AMELX", "ENAM", "AMBN", "DSPP", "MMP20"
+  ],
+  "control_contexts": [
+    {"context": "T-cell-associated", "symbols": ["CD3D", "CD3E"]},
+    {"context": "myeloid-associated", "symbols": ["LYZ", "CSF1R"]},
+    {"context": "endothelial-associated", "symbols": ["PECAM1", "CDH5"]},
+    {"context": "epithelial-associated", "symbols": ["KRT14", "ODAM"]},
+    {"context": "glial/Schwann-associated", "symbols": ["PLP1", "SOX10"]},
+    {"context": "perivascular-associated", "symbols": ["RGS5", "KCNJ8"]}
+  ],
+  "control_source": {
+    "doi": "10.3389/fcell.2022.1021459",
+    "pmcid": "PMC9590651",
+    "location": "Table 6",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9590651/"
+  },
+  "sensitivity_screen": {
+    "minimum_detected_gene_expression_features": 200,
+    "maximum_mitochondrial_entry_fraction": 0.1,
+    "mitochondrial_gene_symbol_prefix": "MT-",
+    "zero_total_barcodes": "excluded from sensitivity screen; undefined abundance retained in all-barcode accounting",
+    "scope": "Implemented sensitivity screen based on source-described cutoffs; not reproduced source QC or doublet removal."
+  }
+}

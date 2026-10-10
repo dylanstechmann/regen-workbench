@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "accession": "GSE306722",
+  "run_utc": "2026-10-10T19:55:59.780611+00:00",
+  "binding": {
+    "matrix_audit_sha256": "1bf91fc46d885afb678f5b8590b15ef7dec487cadfc3605198164d943966040f",
+    "panel_sha256": "9994a0e3d401eac99ed3a1a6f743e1a62f8242d8bb594dfb6517dd659b66a2f2",
+    "analysis_script_sha256": "30095440d3dd66da810a16297342f2b57c79bfc51d040647f574289d97e3854a",
+    "source_linkage_audit_sha256": "ff39eec989005ad92a977a6177718fd02b6d38c2ae5f1af222a9c238f5e54b66",
+    "code_revision_at_run": "1f66902db01a6579945803671170373849329b8f",
+    "inputs": [
+      {
+        "geo_sample": "GSM9206804",
+        "files_sha256": {
+          "features": "bb3b92f1e134e6943cb764c24867a0940790694ad0bd866b8c4324c851ac8db7",
+          "barcodes": "12defd4c508a6156d61bd86f24c9919316474b3796372d91730cec2cf5f6270b",
+          "matrix": "4600bf429b9737c6f252f08f19e2dbddc6bc4a26ebfe36f5e3a875c4a19b2e9c"
+        }
+      },
+      {
+        "geo_sample": "GSM9206805",
+        "files_sha256": {
+          "features": "8303f9573a056d7970ff21a815fed0ef2280ab458801a98db52d62f269ed964f",
+          "barcodes": "4e5a7dff2d412391e63d678b6de38089b25ac188ede0a17312bd0c36394a26be",
+          "matrix": "dbcf209988cf6d7255b4986b8ab948515f8fbc9d51912ce6f41208dbc25c40f1"
+        }
+      }
+    ]
+  },
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  },
+  "panel_id": "native-pdl-descriptive-45-v1",
+  "panel_symbols_in_order": [
+    "POSTN",
+    "COL1A1",
+    "COL1A2",
+    "COL3A1",
+    "COL12A1",
+    "COL14A1",
+    "ASPN",
+    "SCX",
+    "TNMD",
+    "MKX",
+    "CILP",
+    "DCN",
+    "LUM",
+    "BGN",
+    "THY1",
+    "PDGFRA",
+    "ITGA11",
+    "VCAM1",
+    "FAP",
+    "ALPL",
+    "RUNX2",
+    "SP7",
+    "IBSP",
+    "BGLAP",
+    "POU5F1",
+    "SOX2",
+    "NANOG",
+    "LIN28A",
+    "AMELX",
+    "ENAM",
+    "AMBN",
+    "DSPP",
+    "MMP20",
+    "CD3D",
+    "CD3E",
+    "LYZ",
+    "CSF1R",
+    "PECAM1",
+    "CDH5",
+    "KRT14",
+    "ODAM",
+    "PLP1",
+    "SOX10",
+    "RGS5",
+    "KCNJ8"
+  ],
+  "samples": [
+    {
+      "geo_sample": "GSM9206804",
+      "stage_label_from_source_fields": "immature",
+      "feature_type_distribution": {
+        "Gene Expression": 36601
+      },
+      "screen_accounting": {
+        "all_barcodes": 12769,
+        "source_rule_sensitivity_retained": 11852,
+        "excluded_union": 917,
+        "fewer_than_200_detected_features": 127,
+        "mitochondrial_fraction_above_10_percent": 907,
+        "both_low_features_and_high_mito": 117,
+        "zero_gene_expression_total": 0,
+        "gene_expression_feature_count": 36601,
+        "mitochondrial_feature_count": 13
+      },
+      "marker_feature_status": {
+        "unique_gene_expression_feature": 45
+      }
+    },
+    {
+      "geo_sample": "GSM9206805",
+      "stage_label_from_source_fields": "mature",
+      "feature_type_distribution": {
+        "Gene Expression": 36601
+      },
+      "screen_accounting": {
+        "all_barcodes": 12993,
+        "source_rule_sensitivity_retained": 11819,
+        "excluded_union": 1174,
+        "fewer_than_200_detected_features": 75,
+        "mitochondrial_fraction_above_10_percent": 1148,
+        "both_low_features_and_high_mito": 49,
+        "zero_gene_expression_total": 0,
+        "gene_expression_feature_count": 36601,
+        "mitochondrial_feature_count": 13
+      },
+      "marker_feature_status": {
+        "unique_gene_expression_feature": 45
+      }
+    }
+  ],
+  "screens": [
+    "all_barcodes",
+    "source_rule_sensitivity"
+  ],
+  "local_provenance_receipt": "1791662159828692018_dental-pdls-native-marker-summary.json",
+  "normalization": {
+    "base": "natural logarithm",
+    "formula": "ln(1 + 10000 * feature entry / barcode Gene Expression entry sum)",
+    "detected": "deposited entry > 0",
+    "prevalence_denominator": "all selected barcodes",
+    "abundance_denominator": "selected barcodes with positive Gene Expression entry total",
+    "zero_total_abundance": "undefined; not converted to zero",
+    "missing_or_ambiguous_feature_abundance": "undefined; not converted to zero",
+    "numeric_zero": "present uniquely mapped feature with zero entries remains measured zero"
+  },
+  "raw_umi_preprocessing_lineage_qualified": false,
+  "independent_donor_inference_eligible": false,
+  "cell_type_annotations_assigned": false,
+  "source_rule_screen_is_doublet_detection": false,
+  "outputs": [
+    {
+      "filename": "native_marker_summary.tsv",
+      "sha256": "580699412160ed96cbc7d8336db37688dc00366b9c63f97dce9ccc727372e22b",
+      "bytes": 35609
+    },
+    {
+      "filename": "native_barcode_screen.tsv",
+      "sha256": "8fc4550349c7982aeb9ad1dfb71440e6ef60291ddf17f473eb7392844c129a41",
+      "bytes": 2501454
+    },
+    {
+      "filename": "native_marker_contexts.png",
+      "sha256": "3c22d0699ded2fc6ee4de117320b19651f2cdce68da0bda31c6359e35ced2ea0",
+      "bytes": 133172
+    },
+    {
+      "filename": "native_marker_panel.json",
+      "sha256": "9994a0e3d401eac99ed3a1a6f743e1a62f8242d8bb594dfb6517dd659b66a2f2",
+      "bytes": 1612
+    },
+    {
+      "filename": "PDLSC_NATIVE_MARKER_SCREEN.md",
+      "sha256": "e8b303cba144e9f1d4274ba6524f15c35154bf15c7b4187d55daf24bb79a9488",
+      "bytes": 12121
+    }
+  ]
+}

@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "accession_under_review": "GSE306722",
+  "retrieved_utc": "2026-10-10T19:47:06.302670+00:00",
+  "sources": [
+    {
+      "source_id": "conference-crossref",
+      "url": "https://api.crossref.org/works/10.1016/j.identj.2025.104622",
+      "attempted_utc": "2026-10-10T19:39:32.611868+00:00",
+      "retrieved": true,
+      "response_bytes": 3527,
+      "response_sha256": "55b9b905add4539cb2fabcc9028101a3dcada263b53f4ea569712f308a2d16d5",
+      "local_provenance_receipt": "1791661172934158800_dental-pdls-source-linkage.json",
+      "metadata": {
+        "DOI": "10.1016/j.identj.2025.104622",
+        "title": [
+          "Single-Cell Atlas Of Human Periodontal Ligament Stem Cells"
+        ],
+        "container-title": [
+          "International Dental Journal"
+        ],
+        "volume": "75",
+        "issue": null,
+        "article-number": "104622",
+        "type": "journal-article",
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              10
+            ]
+          ]
+        },
+        "author": [
+          {
+            "given": "Xin",
+            "family": "Shao",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Liying",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Kun",
+            "family": "Qi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "link": [
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S002065392503905X?httpAccept=text/xml",
+            "content-type": "text/xml",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          },
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S002065392503905X?httpAccept=text/plain",
+            "content-type": "text/plain",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          }
+        ],
+        "relation": {},
+        "special_numbering": "S1",
+        "assertion": [
+          {
+            "value": "Elsevier",
+            "name": "publisher",
+            "label": "This article is maintained by"
+          },
+          {
+            "value": "Single-Cell Atlas Of Human Periodontal Ligament Stem Cells",
+            "name": "articletitle",
+            "label": "Article Title"
+          },
+          {
+            "value": "International Dental Journal",
+            "name": "journaltitle",
+            "label": "Journal Title"
+          },
+          {
+            "value": "https://doi.org/10.1016/j.identj.2025.104622",
+            "name": "articlelink",
+            "label": "CrossRef DOI link to publisher maintained version"
+          },
+          {
+            "value": "simple-article",
+            "name": "content_type",
+            "label": "Content Type"
+          },
+          {
+            "value": "Copyright © 2025 Published by Elsevier Inc.",
+            "name": "copyright",
+            "label": "Copyright"
+          }
+        ],
+        "license": [
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2025,
+                  10,
+                  1
+                ]
+              ],
+              "date-time": "2025-10-01T00:00:00Z",
+              "timestamp": 1759276800000
+            },
+            "content-version": "tdm",
+            "delay-in-days": 0,
+            "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+          },
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2025,
+                  10,
+                  1
+                ]
+              ],
+              "date-time": "2025-10-01T00:00:00Z",
+              "timestamp": 1759276800000
+            },
+            "content-version": "tdm",
+            "delay-in-days": 0,
+            "URL": "https://www.elsevier.com/legal/tdmrep-license"
+          },
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2025,
+                  11,
+                  3
+                ]
+              ],
+              "date-time": "2025-11-03T00:00:00Z",
+              "timestamp": 1762128000000
+            },
+            "content-version": "vor",
+            "delay-in-days": 33,
+            "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "full-article-crossref",
+      "url": "https://api.crossref.org/works/10.1016/j.stemcr.2026.103088",
+      "attempted_utc": "2026-10-10T19:39:32.934690+00:00",
+      "retrieved": true,
+      "response_bytes": 16314,
+      "response_sha256": "e61166c6fdefcefeadc031b3eca96e67b30e29ac64f66140c9903db427abc689",
+      "local_provenance_receipt": "1791661173420549700_dental-pdls-source-linkage.json",
+      "metadata": {
+        "DOI": "10.1016/j.stemcr.2026.103088",
+        "title": [
+          "Diminished RELB impairs osteogenesis in mature periodontal ligament stem cells"
+        ],
+        "container-title": [
+          "Stem Cell Reports"
+        ],
+        "volume": null,
+        "issue": null,
+        "article-number": "103088",
+        "type": "journal-article",
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              9
+            ]
+          ]
+        },
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0009-0004-6146-8405",
+            "authenticated-orcid": false,
+            "given": "Xin",
+            "family": "Shao",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Fan",
+            "family": "Wu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yang",
+            "family": "Song",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Peng",
+            "family": "Gao",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kun",
+            "family": "Qi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Liying",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "link": [
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S2213671126002997?httpAccept=text/xml",
+            "content-type": "text/xml",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          },
+          {
+            "URL": "https://api.elsevier.com/content/article/PII:S2213671126002997?httpAccept=text/plain",
+            "content-type": "text/plain",
+            "content-version": "vor",
+            "intended-application": "text-mining"
+          }
+        ],
+        "relation": {},
+        "special_numbering": null,
+        "assertion": [
+          {
+            "value": "Elsevier",
+            "name": "publisher",
+            "label": "This article is maintained by"
+          },
+          {
+            "value": "Diminished RELB impairs osteogenesis in mature periodontal ligament stem cells",
+            "name": "articletitle",
+            "label": "Article Title"
+          },
+          {
+            "value": "Stem Cell Reports",
+            "name": "journaltitle",
+            "label": "Journal Title"
+          },
+          {
+            "value": "https://doi.org/10.1016/j.stemcr.2026.103088",
+            "name": "articlelink",
+            "label": "CrossRef DOI link to publisher maintained version"
+          },
+          {
+            "value": "article",
+            "name": "content_type",
+            "label": "Content Type"
+          },
+          {
+            "value": "© 2026 The Authors. Published by Elsevier Inc. on behalf of International Society for Stem Cell Research.",
+            "name": "copyright",
+            "label": "Copyright"
+          }
+        ],
+        "license": [
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2026,
+                  9,
+                  1
+                ]
+              ],
+              "date-time": "2026-09-01T00:00:00Z",
+              "timestamp": 1788220800000
+            },
+            "content-version": "tdm",
+            "delay-in-days": 0,
+            "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+          },
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2026,
+                  9,
+                  1
+                ]
+              ],
+              "date-time": "2026-09-01T00:00:00Z",
+              "timestamp": 1788220800000
+            },
+            "content-version": "tdm",
+            "delay-in-days": 0,
+            "URL": "https://www.elsevier.com/legal/tdmrep-license"
+          },
+          {
+            "start": {
+              "date-parts": [
+                [
+                  2026,
+                  8,
+                  27
+                ]
+              ],
+              "date-time": "2026-08-27T00:00:00Z",
+              "timestamp": 1787788800000
+            },
+            "content-version": "vor",
+            "delay-in-days": 0,
+            "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "full-article-europepmc",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:42785307%20AND%20SRC:MED&format=json&resultType=core",
+      "attempted_utc": "2026-10-10T19:39:33.421554+00:00",
+      "retrieved": true,
+      "response_bytes": 6775,
+      "response_sha256": "320b689f8e5f4aa5ac14d1b3dbf4e07dc58884e0fdc074800db5a1dfb2af5373",
+      "local_provenance_receipt": "1791661174189975900_dental-pdls-source-linkage.json",
+      "metadata": {
+        "result_count": 1,
+        "records": [
+          {
+            "id": "42785307",
+            "source": "MED",
+            "pmid": "42785307",
+            "pmcid": null,
+            "doi": "10.1016/j.stemcr.2026.103088",
+            "title": "Diminished RELB impairs osteogenesis in mature periodontal ligament stem cells.",
+            "authorString": "Shao X, Wu F, Song Y, Gao P, Qi K, Wang L.",
+            "firstPublicationDate": "2026-09-24",
+            "pubTypeList": {
+              "pubType": [
+                "Journal Article"
+              ]
+            },
+            "fullTextUrlList": {
+              "fullTextUrl": [
+                {
+                  "availability": "Subscription required",
+                  "availabilityCode": "S",
+                  "documentStyle": "doi",
+                  "site": "DOI",
+                  "url": "https://doi.org/10.1016/j.stemcr.2026.103088"
+                }
+              ]
+            },
+            "inPMC": "N",
+            "isOpenAccess": "N"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "conference-publisher",
+      "url": "https://www.sciencedirect.com/science/article/pii/S002065392503905X",
+      "attempted_utc": "2026-10-10T19:39:34.191043+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 403
+    },
+    {
+      "source_id": "full-article-publisher",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2213671126002997",
+      "attempted_utc": "2026-10-10T19:39:34.344339+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 403
+    },
+    {
+      "source_id": "full-article-cell",
+      "url": "https://www.cell.com/stem-cell-reports/fulltext/S2213-6711(26)00299-7",
+      "attempted_utc": "2026-10-10T19:39:34.544000+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 403
+    },
+    {
+      "source_id": "conference-publisher-api",
+      "url": "https://api.elsevier.com/content/article/PII:S002065392503905X?httpAccept=text/xml",
+      "attempted_utc": "2026-10-10T19:39:34.650485+00:00",
+      "retrieved": true,
+      "response_bytes": 1934,
+      "response_sha256": "c1ec683f4aa3ebd0c25c01bf174d36cfcf2c84e9e8d2b53265ec43329a8082cf",
+      "local_provenance_receipt": "1791661178143699500_dental-pdls-source-linkage.json",
+      "metadata": {
+        "doi": "10.1016/j.identj.2025.104622",
+        "title": "Single-Cell Atlas Of Human Periodontal Ligament Stem Cells ",
+        "cover_date": "2025-10-31",
+        "open_access": "true",
+        "license_url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "full_text_body_retrieved": false,
+        "contains_accession_literal": false
+      }
+    },
+    {
+      "source_id": "full-article-publisher-api",
+      "url": "https://api.elsevier.com/content/article/PII:S2213671126002997?httpAccept=text/xml",
+      "attempted_utc": "2026-10-10T19:39:38.144717+00:00",
+      "retrieved": true,
+      "response_bytes": 1965,
+      "response_sha256": "c98fd03e08d353972baa3a4e1adfeb275cade512765c769a6b25bcdb253ced8c",
+      "local_provenance_receipt": "1791661178398384600_dental-pdls-source-linkage.json",
+      "metadata": {
+        "doi": "10.1016/j.stemcr.2026.103088",
+        "title": "Diminished RELB impairs osteogenesis in mature periodontal ligament stem cells ",
+        "cover_date": "2026-09-24",
+        "open_access": "true",
+        "license_url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "full_text_body_retrieved": false,
+        "contains_accession_literal": false
+      }
+    },
+    {
+      "source_id": "full-article-publisher-fullview",
+      "url": "https://api.elsevier.com/content/article/PII:S2213671126002997?httpAccept=text/xml&view=FULL",
+      "attempted_utc": "2026-10-10T19:39:38.398384+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 429
+    },
+    {
+      "source_id": "control-markers-human-teeth",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9590651/fullTextXML",
+      "attempted_utc": "2026-10-10T19:39:45.865139+00:00",
+      "retrieved": true,
+      "response_bytes": 203377,
+      "response_sha256": "39f8a27a0894cea7012e348b83d71846d99a919865fff23e4dfb20ef6bd9b6d7",
+      "local_provenance_receipt": "1791661186893497800_dental-pdls-source-linkage.json",
+      "metadata": {
+        "structured_metadata_extracted": false,
+        "contains_accession_literal": false,
+        "manual_inspection_required": true
+      }
+    },
+    {
+      "source_id": "control-markers-human-oral-mucosa",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8359928/fullTextXML",
+      "attempted_utc": "2026-10-10T19:39:46.894536+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 500
+    },
+    {
+      "source_id": "full-article-cell-pdf",
+      "url": "https://www.cell.com/stem-cell-reports/pdf/S2213-6711(26)00299-7.pdf",
+      "attempted_utc": "2026-10-10T19:47:06.236143+00:00",
+      "retrieved": false,
+      "failure_class": "HTTPError",
+      "http_status": 403
+    }
+  ],
+  "scope": "Primary metadata/source linkage; no expression analysis and no donor crosswalk inference."
+}

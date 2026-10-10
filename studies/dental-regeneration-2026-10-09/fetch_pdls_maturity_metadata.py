@@ -115,7 +115,8 @@ def summarize(metadata: dict, raw: bytes, provenance_name: str, retrieved: str) 
             "recommended_use": "Source-scoped cell-state and marker-pattern description only, after expression-matrix provenance review.",
             "limits": (
                 "GEO sample records are archive records, not proof of independent donors. "
-                "The publication reports 20 immature and 20 mature teeth, but the retrieved "
+                "A matching conference abstract reports 20 immature and 20 mature teeth; its "
+                "explicit linkage to the deposited libraries is unverified. The retrieved "
                 "GEO family metadata exposes group-level sample records without tooth-to-donor "
                 "or cell-to-donor mapping. Cells must not be treated as biological replicates. "
                 "Developmental root maturity is not an aging comparison."

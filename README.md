@@ -24,6 +24,11 @@ tracks. The independent
 [base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
 repo audits genome-editing source scope and cell-count denominators.
 
+The [native PDL matrix audit](studies/dental-regeneration-2026-10-09/PDLSC_MATURITY_MATRIX_AUDIT.md)
+and [fixed-marker screen](studies/dental-regeneration-2026-10-09/PDLSC_NATIVE_MARKER_SCREEN.md)
+now describe two public tissue records with explicit barcode-screen sensitivity.
+Source linkage and unknown donor mappings remain visible in the reports.
+
 The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
 verification, reviewed organoid measurements, portable ResearchDesk dossiers
 and concrete empirical milestones across the companion methods repositories.

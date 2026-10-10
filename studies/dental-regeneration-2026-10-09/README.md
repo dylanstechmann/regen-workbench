@@ -59,7 +59,7 @@ The [RNA-seq metadata audit](IPSPDL_RNASEQ_METADATA_AUDIT.md) resolves the nine
 run-to-sample joins and duplicate BioSample entries. Published methods describe
 three iPS-PDL products from one HPS0381 parental line and three PDL-conditioned
 media sources; the [archive manifest](ipspdl_rnaseq_manifest.tsv) lacks a
-run-to-source crosswalk and records one single/layout-unspecified run. The
+run-to-source crosswalk and records one single/layout-unspecified run.
 All 17 FASTQ files (15.98 GB compressed) were downloaded and hash-checked; all
 nine runs have converged local Salmon quantifications. The strictly descriptive
 expression and PCA results are summarized in
@@ -67,8 +67,21 @@ expression and PCA results are summarized in
 generated matrices remain local and are not part of the repository.
 The follow-up [native PDL maturity dataset qualification](PDLSC_MATURITY_DATASET_QUALIFICATION.md)
 checks GSE306722 as a candidate cell-state reference. Its GEO metadata exposes
-two group-level sample records despite the publication's report of 20 teeth per
-stage, so donor-level inference and an aging claim remain ineligible.
+two group-level sample records. A matching conference abstract reports 20 teeth
+per stage, but its library linkage is unverified; the [source audit](PDLSC_SOURCE_LINKAGE_AUDIT.md)
+also identifies a closely matching 2026 journal article. The [six-file matrix audit](PDLSC_MATURITY_MATRIX_AUDIT.md)
+now qualifies count-like descriptive loading while retaining unknown donor maps
+and preprocessing provenance. Donor-level inference and an aging claim remain
+ineligible.
+The [fixed 45-marker native screen](PDLSC_NATIVE_MARKER_SCREEN.md) describes
+both archive records with all-barcode and source-rule sensitivity denominators.
+It retains 11,852/12,769 and 11,819/12,993 barcodes under the implemented screen.
+Sparse SCX/TNMD detection in these tissue mixtures cautions against treating low
+cultured-product expression alone as a PDL identity threshold. These native
+cp10k summaries and bulk TPM panels retain separate measurement units; neither
+qualifies a biological-age score or functional attachment.
+The compact [native analysis receipt](pdls_native_marker_receipt.json) records
+the code, panel, source and output hashes; full tables and figures stay local.
 The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) keeps all evidence
 stages and denominators distinct. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
 retains its six-week ankylosis signal separately from the newer human iPS-PDL

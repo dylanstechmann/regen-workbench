@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "accession": "GSE306722",
+  "audited_utc": "2026-10-10T19:41:15.774654+00:00",
+  "metadata_receipt_sha256": "e544629a9c7b1d0eb9aef3b79a9542bc4772772a6d6885b0de917299922eec01",
+  "script_sha256": "f59602aa3b43bc4bbe51fea8e9daee6de1b65ff19be8898f1e1d6e56b2a40ae1",
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  },
+  "compressed_file_limit_bytes": 268435456,
+  "expanded_file_limit_bytes": 2147483648,
+  "samples": [
+    {
+      "geo_sample": "GSM9206804",
+      "stage_label_from_source_fields": "immature",
+      "files": {
+        "barcodes": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_barcodes.tsv.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_barcodes.tsv.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_barcodes.tsv.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206804_Immature_barcodes.tsv.gz",
+          "retrieved_utc": "2026-10-10T19:39:49.577229+00:00",
+          "compressed_bytes": 63889,
+          "sha256": "12defd4c508a6156d61bd86f24c9919316474b3796372d91730cec2cf5f6270b",
+          "content_length_header_bytes": 63889,
+          "local_provenance_receipt": "1791661189575235109_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 242611,
+          "expanded_sha256": "d6ff5cde1d1a79d9dc8ef7de099b506ce639392abda0fb0e45380da566e50651"
+        },
+        "features": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_features.tsv.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_features.tsv.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_features.tsv.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206804_Immature_features.tsv.gz",
+          "retrieved_utc": "2026-10-10T19:39:49.997964+00:00",
+          "compressed_bytes": 333437,
+          "sha256": "bb3b92f1e134e6943cb764c24867a0940790694ad0bd866b8c4324c851ac8db7",
+          "content_length_header_bytes": 333437,
+          "local_provenance_receipt": "1791661189996086768_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 1479171,
+          "expanded_sha256": "28fa7d6a0994e5fe6c1d2a39a3363ee1655916481e3ee240efd6cc8a361959c9"
+        },
+        "matrix": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_matrix.mtx.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_matrix.mtx.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206804/suppl/GSM9206804_Immature_matrix.mtx.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206804_Immature_matrix.mtx.gz",
+          "retrieved_utc": "2026-10-10T19:39:58.572711+00:00",
+          "compressed_bytes": 98444596,
+          "sha256": "4600bf429b9737c6f252f08f19e2dbddc6bc4a26ebfe36f5e3a875c4a19b2e9c",
+          "content_length_header_bytes": 98444596,
+          "local_provenance_receipt": "1791661198570769357_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 333107074,
+          "expanded_sha256": "ae98f89d2b4aa274291d910bbdb43e92bbd6b85fa7d48c86ef0b8fff7a43b1a3"
+        }
+      },
+      "features": {
+        "rows": 36601,
+        "column_count_distribution": {
+          "3": 36601
+        },
+        "unique_identifiers": 36601,
+        "repeated_identifier_rows": 0,
+        "identifiers_in_order_sha256": "3a5b3f31ab21773f83f8c2c52b9f543bc56dcbd1b9ff68db3afc99616b492193",
+        "unique_gene_names": 36591,
+        "repeated_gene_name_rows": 10,
+        "feature_type_distribution": {
+          "Gene Expression": 36601
+        }
+      },
+      "barcodes": {
+        "rows": 12769,
+        "column_count_distribution": {
+          "1": 12769
+        },
+        "unique_identifiers": 12769,
+        "repeated_identifier_rows": 0,
+        "identifiers_in_order_sha256": "0483776952ff3cae457c168b193f8f70d1a168993267d1334fd2589fab94e4bd"
+      },
+      "matrix": {
+        "header": "%%MatrixMarket matrix coordinate integer general",
+        "declared_field": "integer",
+        "declared_symmetry": "general",
+        "declared_rows": 36601,
+        "declared_columns": 12769,
+        "declared_entries": 25909721,
+        "orientation_from_label_dimensions": "features_by_barcodes",
+        "parsed_dtype": "int64",
+        "actual_stored_entries": 25909721,
+        "declared_entry_count_matches_actual": true,
+        "sparse_indices_valid": true,
+        "unique_coordinates": 25909721,
+        "duplicate_coordinate_groups": 0,
+        "repeated_coordinate_entries": 0,
+        "explicit_zero_entries": 0,
+        "negative_entries": 0,
+        "nonfinite_entries": 0,
+        "fractional_finite_entries": 0,
+        "minimum_finite_value": 1.0,
+        "maximum_finite_value": 25225.0,
+        "all_finite_values_are_integers": true,
+        "nonnegative_integer_numeric_form": true,
+        "stored_coordinate_density": 0.055438682189804626,
+        "zero_total_barcodes": 0,
+        "features_with_no_positive_entries": 8942,
+        "per_barcode_entry_sum": {
+          "min": 500.0,
+          "q25": 2588.0,
+          "median": 4172.0,
+          "q75": 7630.0,
+          "max": 63030.0
+        },
+        "per_barcode_positive_feature_count": {
+          "min": 27.0,
+          "q25": 1215.0,
+          "median": 1781.0,
+          "q75": 2677.0,
+          "max": 8315.0
+        },
+        "barcodes_with_fewer_than_200_positive_features": 127,
+        "structural_quality_passed": true
+      },
+      "source_data_processing_statements": [
+        "Raw gene expression matrices were generated for each sample by the Cell Ranger (Version 6.1.2) Pipeline coupled with human reference version GRCh38-2020-A. The output filtered gene expression matrices were analyzed by R software (Version 4.3.1) with the Seurat package (Version 4.4.0). A custom R script was used to combine the expression data and metadata from all libraries corresponding to a single batch, and ceslls with fewer 200 Features were removed. The expression data matrix was loaded into a Seurat object along with the library metadata for downstream processing. The precentage of mitochondrial transcripts for each cell (percent.mito) was calculated and added as metadata to the Seurat object. Cells were further filtered before dimensionality reduction(nGene-min. 200; percent.mito-max. 10%). Expression values were then scaled to 10,000 transcripts per cells and Log-transformed. Effects of variable (percent.mito) was estimated and regressed out using a GLM(ScaleData function, model.use=”linear”), and the scaled and centred residuals were used for dimensionality reduciton and clustering.",
+        "Assembly: Human GRCh38",
+        "Supplementary files format and content: Tab-separated values files and matrix files"
+      ],
+      "preprocessing_lineage": {
+        "deposited_values_are_verified_raw_umi_counts": false,
+        "exact_deposited_matrix_processing_stage": "unknown",
+        "library_to_cell_mapping_available": false,
+        "cell_to_tooth_or_donor_mapping_available": false,
+        "reason": "Metadata describes Cell Ranger filtered matrices, library merging, cell filtering, normalization/log transformation and regression. It does not identify which stage generated these deposited files. Integer-valued entries do not establish raw UMI lineage."
+      }
+    },
+    {
+      "geo_sample": "GSM9206805",
+      "stage_label_from_source_fields": "mature",
+      "files": {
+        "barcodes": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_barcodes.tsv.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_barcodes.tsv.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_barcodes.tsv.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206805_Mature_barcodes.tsv.gz",
+          "retrieved_utc": "2026-10-10T19:40:13.059300+00:00",
+          "compressed_bytes": 65047,
+          "sha256": "4e5a7dff2d412391e63d678b6de38089b25ac188ede0a17312bd0c36394a26be",
+          "content_length_header_bytes": 65047,
+          "local_provenance_receipt": "1791661213057319232_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 246867,
+          "expanded_sha256": "841385130001dc732fdd4afe180f9ea9e67303be441093d7c2480e25c749400e"
+        },
+        "features": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_features.tsv.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_features.tsv.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_features.tsv.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206805_Mature_features.tsv.gz",
+          "retrieved_utc": "2026-10-10T19:40:13.845153+00:00",
+          "compressed_bytes": 333437,
+          "sha256": "8303f9573a056d7970ff21a815fed0ef2280ab458801a98db52d62f269ed964f",
+          "content_length_header_bytes": 333437,
+          "local_provenance_receipt": "1791661213842195526_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 1479171,
+          "expanded_sha256": "28fa7d6a0994e5fe6c1d2a39a3363ee1655916481e3ee240efd6cc8a361959c9"
+        },
+        "matrix": {
+          "source_url": "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_matrix.mtx.gz",
+          "download_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_matrix.mtx.gz",
+          "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9206nnn/GSM9206805/suppl/GSM9206805_Mature_matrix.mtx.gz",
+          "local_path_relative_to_data": "literature/GSE306722-matrices/GSM9206805_Mature_matrix.mtx.gz",
+          "retrieved_utc": "2026-10-10T19:40:20.658105+00:00",
+          "compressed_bytes": 87417734,
+          "sha256": "dbcf209988cf6d7255b4986b8ab948515f8fbc9d51912ce6f41208dbc25c40f1",
+          "content_length_header_bytes": 87417734,
+          "local_provenance_receipt": "1791661220655586377_dental-pdls-maturity-matrix-fetch.json",
+          "cache_reused_this_run": true,
+          "gzip_integrity_passed": true,
+          "expanded_bytes": 295100071,
+          "expanded_sha256": "d7cdfb86c7808d4bafb89f29624a8e9f45f6d7384a6a1e28e87151b7599b7432"
+        }
+      },
+      "features": {
+        "rows": 36601,
+        "column_count_distribution": {
+          "3": 36601
+        },
+        "unique_identifiers": 36601,
+        "repeated_identifier_rows": 0,
+        "identifiers_in_order_sha256": "3a5b3f31ab21773f83f8c2c52b9f543bc56dcbd1b9ff68db3afc99616b492193",
+        "unique_gene_names": 36591,
+        "repeated_gene_name_rows": 10,
+        "feature_type_distribution": {
+          "Gene Expression": 36601
+        }
+      },
+      "barcodes": {
+        "rows": 12993,
+        "column_count_distribution": {
+          "1": 12993
+        },
+        "unique_identifiers": 12993,
+        "repeated_identifier_rows": 0,
+        "identifiers_in_order_sha256": "d9c740b22ccc2adadab05b2b92a5391f6dcc40ccdde2a21c96d6849de1d37dae"
+      },
+      "matrix": {
+        "header": "%%MatrixMarket matrix coordinate integer general",
+        "declared_field": "integer",
+        "declared_symmetry": "general",
+        "declared_rows": 36601,
+        "declared_columns": 12993,
+        "declared_entries": 22945968,
+        "orientation_from_label_dimensions": "features_by_barcodes",
+        "parsed_dtype": "int64",
+        "actual_stored_entries": 22945968,
+        "declared_entry_count_matches_actual": true,
+        "sparse_indices_valid": true,
+        "unique_coordinates": 22945968,
+        "duplicate_coordinate_groups": 0,
+        "repeated_coordinate_entries": 0,
+        "explicit_zero_entries": 0,
+        "negative_entries": 0,
+        "nonfinite_entries": 0,
+        "fractional_finite_entries": 0,
+        "minimum_finite_value": 1.0,
+        "maximum_finite_value": 22544.0,
+        "all_finite_values_are_integers": true,
+        "nonnegative_integer_numeric_form": true,
+        "stored_coordinate_density": 0.04825074173632927,
+        "zero_total_barcodes": 0,
+        "features_with_no_positive_entries": 9046,
+        "per_barcode_entry_sum": {
+          "min": 500.0,
+          "q25": 2069.0,
+          "median": 3379.0,
+          "q75": 5906.0,
+          "max": 51360.0
+        },
+        "per_barcode_positive_feature_count": {
+          "min": 15.0,
+          "q25": 1056.0,
+          "median": 1578.0,
+          "q75": 2304.0,
+          "max": 6402.0
+        },
+        "barcodes_with_fewer_than_200_positive_features": 75,
+        "structural_quality_passed": true
+      },
+      "source_data_processing_statements": [
+        "Raw gene expression matrices were generated for each sample by the Cell Ranger (Version 6.1.2) Pipeline coupled with human reference version GRCh38-2020-A. The output filtered gene expression matrices were analyzed by R software (Version 4.3.1) with the Seurat package (Version 4.4.0). A custom R script was used to combine the expression data and metadata from all libraries corresponding to a single batch, and ceslls with fewer 200 Features were removed. The expression data matrix was loaded into a Seurat object along with the library metadata for downstream processing. The precentage of mitochondrial transcripts for each cell (percent.mito) was calculated and added as metadata to the Seurat object. Cells were further filtered before dimensionality reduction(nGene-min. 200; percent.mito-max. 10%). Expression values were then scaled to 10,000 transcripts per cells and Log-transformed. Effects of variable (percent.mito) was estimated and regressed out using a GLM(ScaleData function, model.use=”linear”), and the scaled and centred residuals were used for dimensionality reduciton and clustering.",
+        "Assembly: Human GRCh38",
+        "Supplementary files format and content: Tab-separated values files and matrix files"
+      ],
+      "preprocessing_lineage": {
+        "deposited_values_are_verified_raw_umi_counts": false,
+        "exact_deposited_matrix_processing_stage": "unknown",
+        "library_to_cell_mapping_available": false,
+        "cell_to_tooth_or_donor_mapping_available": false,
+        "reason": "Metadata describes Cell Ranger filtered matrices, library merging, cell filtering, normalization/log transformation and regression. It does not identify which stage generated these deposited files. Integer-valued entries do not establish raw UMI lineage."
+      }
+    }
+  ],
+  "cross_sample_labels": {
+    "feature_id_order_identical": true,
+    "shared_feature_identifiers": 36601,
+    "shared_barcode_strings": 59,
+    "barcode_strings_are_not_cross_sample_cell_identifiers": true
+  },
+  "qualification": {
+    "descriptive_sparse_matrix_loading_eligible": true,
+    "raw_umi_provenance_qualified": false,
+    "independent_donor_inference_eligible": false,
+    "recommended_next_step": "Freeze native-PDL marker panels and a cell-inclusion rule; perform source-scoped descriptive cell-state analysis with sample-prefixed barcodes, retaining unresolved preprocessing and donor lineage."
+  }
+}
