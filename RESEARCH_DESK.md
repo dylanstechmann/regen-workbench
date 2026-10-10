@@ -22,7 +22,7 @@ stored as citations, not silently scraped.
 ## Working views
 
 **Teeth, gums & periodontal attachment** and **Organoids & stem-cell construct
-function** now add component-specific assessment axes and eight starter campaigns.
+function** now add component-specific assessment axes and nine starter campaigns.
 The [dental research track](studies/dental-regeneration-2026-10-09/README.md)
 compares whole-tooth mouse results, human ameloblast organoids, controlled
 periodontal trials, gum-coverage evidence and iPS-derived PDL-like cell assays.

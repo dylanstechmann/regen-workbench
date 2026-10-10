@@ -8,7 +8,7 @@ literature lacks the result. No clinical or fabrication protocol is supplied.
 |---|---|---|
 | Enamel identity and architecture | Human ameloblast organoids, 2026; ectopic enamel-like material | Native-like architecture, tooth-site interface and repeated-load behavior in the relevant model |
 | Dentin–pulp unit | Whole-tooth mouse reference, 2009 | Separate adult-human source, living pulp transport and functional interface observations |
-| Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells with selected in-vitro responses | Oriented insertion, donor/line reproducibility and load transfer; cell identity, clinical attachment and bone fill remain separate |
+| Cementum–ligament–bone attachment | Human periodontal clinical comparisons; iPSC-derived PDL-like cells in vitro; rat iPSC+BMP-6 orthotopic defect histology | Oriented insertion and load transfer remain unproven; rat ankylosis, donor/line reproducibility, cell identity, clinical attachment and bone fill stay separate |
 | Gingival coverage and barrier | Small 2017 recession study | Barrier/seal and inflammatory recurrence outcomes with patient/site hierarchy retained |
 | Whole-tooth shape, sensation and integration | Functional embryonic-mouse tooth reference | Adult-human construct evidence, occlusal function, host integration and durability |
 | Genome-corrected stem-cell construct | Base-editing evidence interface | Declared lesion correction plus independently measured construct function; no inherited whole-tooth efficacy |
@@ -62,6 +62,13 @@ the ectopic site does not test root-to-alveolar-bone insertion or load transfer;
 the publisher page retrieved for this review provides only the abstract
 (https://doi.org/10.1089/scd.2024.0122).
 
+The more anatomically relevant [2018 rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
+records new cementum/PDL histology and increased micro-CT bone measures at six
+weeks in a maxillary-molar defect. The same article reports ankylosis in both
+BMP-6-containing arms. This short, four-animal-per-arm signal supports a
+separate test of interface quality; it does not establish load-bearing function
+or long-term safety.
+
 The next useful work is source and biological-unit qualification: independent
 iPSC-line versus differentiation-batch identities for the PDL-like cell source,
 donor/clone/batch metadata for organoid datasets, and participant-to-tooth
@@ -80,15 +87,15 @@ retrieval hashes are not placed in the dataset-hash field.
 
 ## Software verification
 
-The latest one-off Docker workbench-image run completed 384 unit tests with six
-optional tests skipped. All five dental/organoid track tests passed, including
-seed parity, distinct endpoint intervals, the mixed-signal attachment summary,
-registry denominator, and stable editable record IDs. The live desk was
-restarted after confirming no active runs and now exposes the new starter. Its
-API reports the same saved-campaign and note counts as before (one campaign,
-five notes); a pre-reload content-hash request timed out, so byte-for-byte
-parity was not verified. This validates software behavior, not tissue
-regeneration.
+The latest one-off Docker workbench-image run completed 385 unit tests with
+nine optional tests skipped. All six dental/organoid track tests passed,
+including seed parity, distinct endpoint intervals, the mixed-signal
+attachment summary, registry denominator, stable editable record IDs, and the
+orthotopic rat track's animal denominator and ankylosis signal. The live desk
+was restarted with no active runs and now exposes the sixth dental starter. Its
+saved campaign and note counts remain one and five, and its workspace SHA-256
+matches the pre-reload value exactly. This validates software behavior, not
+tissue regeneration.
 
 The live check additionally exposed a missing `jsonschema` dependency in the
 research image: the CLI validator exited the HTTP request worker. The Dockerfile

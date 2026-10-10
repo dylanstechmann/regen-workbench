@@ -451,6 +451,57 @@
             "notes": "Barrier remains unmeasured in this source scope despite the clinical coverage signal."
           }
         ]
+      },
+      {
+        "id": "ips-bmp6-rat-periodontal-defect",
+        "title": "Rat iPSC–BMP-6 hydrogel: defect signal with ankylosis tradeoff",
+        "target": "Orthotopic periodontal defect repair in a rat maxillary molar",
+        "species": "Male Sprague-Dawley rats and rat-fibroblast-derived iPSCs",
+        "tissue": "Maxillary-molar root-surface periodontal defect",
+        "hypothesis": "Local iPSC+BMP-6 hydrogel treatment can improve bone and histologic cementum/PDL formation in a rat defect, while ankylosis can coexist and functional attachment must be assessed separately.",
+        "endpoint": "Animal-level micro-CT bone measures, histologic cementum/PDL and ankylosis, and separately assessed oriented insertion, mobility, load transfer and durability.",
+        "falsifier": "Bone/mineral gain lacks a preserved ligament space, is accompanied by ankylosis, or fails to produce independent functional evidence on replication.",
+        "evidence_stage": "Small orthotopic animal study",
+        "study_design": "Four-arm six-week rat defect study with animal as the independent unit; distinguish cell, BMP-6 and hydrogel effects and retain ankylosis as a competing outcome.",
+        "reference_url": "https://doi.org/10.1038/s41598-017-18415-6",
+        "structure_notes": "Chien et al. (2018) report 16 male Sprague-Dawley rats in four groups (n=4/group), with rat-fibroblast-derived iPSCs plus BMP-6 hydrogel tested in a maxillary-molar defect. At six weeks the combination arm had the strongest reported bone micro-CT measures and new cementum/PDL histology. The paper also reports ankylosis in both BMP-6 arms. There was no iPSCs-only arm or direct load/mobility test; the six-week no-tumor observation does not establish long-term safety. This is not whole-tooth regeneration or human evidence. See IPSC_BMP6_RAT_DEFECT_REVIEW.md.",
+        "evidence": [
+          {
+            "axis_id": "integration",
+            "status": "source reports mixed signal",
+            "value": "The rat iPSC+BMP-6 hydrogel arm showed new cementum/PDL histology and the strongest reported micro-CT bone measures at six weeks, while both BMP-6 arms could lead to ankylosis.",
+            "unit": "Animal-level, 6-week rat defect study",
+            "comparator": "Control, hydrogel-only and BMP-6 hydrogel; no iPSCs-only arm",
+            "timepoint": "42 days (six weeks)",
+            "source_url": "https://doi.org/10.1038/s41598-017-18415-6",
+            "notes": "Small animal study (n=4/group). Ankylosis and mineralized tissue are opposing outcomes for functional PDL restoration; no direct load-transfer or mobility endpoint was reported."
+          }
+        ],
+        "evidence_records": [
+          {
+            "axis_id": "integration",
+            "source_type": "publication",
+            "source_title": "Chien et al. 2018: rat iPSC+BMP-6 hydrogel periodontal defect study",
+            "source_url": "https://doi.org/10.1038/s41598-017-18415-6",
+            "license": "Primary source CC BY 4.0; attributed summary",
+            "species": "Male Sprague-Dawley rats; rat-fibroblast-derived iPSCs",
+            "stage_track": "Orthotopic surgical periodontal-defect animal study",
+            "developmental_interval": "42 days (six weeks) after defect treatment",
+            "model_system": "Maxillary-molar root-surface defect; four-arm comparison of control, hydrogel only, BMP-6 hydrogel, and iPSCs+BMP-6 hydrogel",
+            "comparator": "Control, hydrogel-only, and BMP-6-hydrogel arms; no iPSCs-only arm",
+            "outcome": "The combination arm had the highest reported micro-CT bone metrics and histology reported new cementum and PDL; the article also reports ankylosis in both BMP-6-containing arms",
+            "measure": "Micro-CT bone-volume fraction, trabecular number/thickness; histology for cementum, PDL, and ankylosis",
+            "value": "At six weeks the iPSC+BMP-6 hydrogel arm showed the strongest reported bone measures and new cementum/PDL histology, while both BMP-6-containing groups could lead to ankylosis",
+            "unit": "Animal-level rat study; one six-week endpoint",
+            "independent_unit": "Animal; defects/sites within an animal are not additional independent animals",
+            "sample_size": "16 male Sprague-Dawley rats total; four groups, n=4/group",
+            "follow_up": "42 days (six weeks)",
+            "status": "source reports mixed signal",
+            "direction": "unclear",
+            "dataset_sha256": "",
+            "notes": "Rat fibroblast-derived iPSCs plus BMP-6 hydrogel; not a human iPS-PDL cell transplant. The paper reports ankylosis in both BMP-6-containing arms, so mineralized tissue does not establish a functional ligament space. No iPSCs-only arm, direct load/mobility test, or long-term safety follow-up. One blinded micro-CT assessor is reported; group randomization is not described in retrieved Methods. Authors reported no tumor or ectopic tissue during this short experiment, which does not establish long-term safety."
+          }
+        ]
       }
     ],
     "organoids": [

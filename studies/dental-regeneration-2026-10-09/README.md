@@ -13,6 +13,7 @@ restoration of attachment and gum coverage are separate questions.
 | [Anti-USAG-1 2021](https://pubmed.ncbi.nlm.nih.gov/33579703/) | Animal tooth-regeneration signaling precedent | No adult-human acquired-tooth-loss efficacy inferred; tooth number is not full periodontal function |
 | [Human ameloblast organoids 2026](https://www.nature.com/articles/s41368-026-00429-4) | Human iPSC organoid maturation and enamel-like material in mouse kidney-capsule grafts | Prismatic architecture, tooth-site bonding, loading and complete organ/attachment integration |
 | [iPS-PDL functional study 2026](https://doi.org/10.4012/dmj.2025-235); [feeder-free iPDLSC study 2024](https://doi.org/10.1089/scd.2024.0122) | One study reports selected human iPSC-derived in-vitro responses; another reports marker-positive tissue in an eight-week ectopic mouse graft | One 2026 iPSC line with batch variation; the 2024 abstract omits cell-line and graft denominators; ectopic tissue does not establish oriented tooth-site insertion or load transfer |
+| [iPSC+BMP-6 rat defect study 2018](https://doi.org/10.1038/s41598-017-18415-6) | Rat maxillary-molar defect study: six-week micro-CT bone signal and histologic new cementum/PDL in the iPSC+BMP-6 hydrogel arm | n=4/group; ankylosis reported in both BMP-6 arms; no load-bearing function or long-term safety established |
 | [PDLSC trial 2016](https://pmc.ncbi.nlm.nih.gov/articles/PMC4761216/) | Controlled intrabony-defect trial; bone height improved in both groups without significant between-group difference | Added-cell benefit and functional oriented attachment not established by that comparison |
 | [ASC/PRP trial 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC12855574/) | Full text: 36-week radiographic bone-height difference 1.905 mm (95% CI 0.383–3.427; p=.0184) vs EMD; no between-group CAL or probing-depth signal | Only 15 treated (9 vs 6), primary endpoint n=8 vs 6; no histology or proof of oriented PDL attachment; clinical attachment is a separate endpoint |
 | [DPSC trial 2025](https://www.nature.com/articles/s41392-025-02320-w) | Abstract reports a bone-defect-depth signal and a post hoc attachment signal in a stage-III subgroup | Subgroup findings are not an overall primary-endpoint confirmation or proof of complete periodontal regeneration |
@@ -49,8 +50,9 @@ for the scope and remaining caveats.
 
 The separate [iPS-PDL functional review](IPS_PDL_FUNCTION_REVIEW.md) compares
 the 2026 one-line/three-batch in-vitro study with a 2024 feeder-free protocol
-and ectopic graft result. A fifth dental starter keeps the cell-source and
-ectopic-graft evidence distinct from clinical periodontal comparisons and the
+and ectopic graft result. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
+keeps six-week orthotopic defect histology and its ankylosis signal distinct
+from human cell-source evidence, clinical periodontal comparisons and the
 ameloblast-organoid component study.
 
 ## Component roadmap
@@ -120,20 +122,20 @@ provenance stays in ignored `data/provenance/`. The hash identifies the retrieve
 response, not independent validation of an interpretation.
 
 [desk_seeds.json](desk_seeds.json) defines the two new desk areas, eight dental
-and seven organoid assessment axes, five dental starters and three organoid/stem-cell
+and seven organoid assessment axes, six dental starters and three organoid/stem-cell
 starters. Existing blueprint edits and observations are preserved by the desk's
 seed migration. No private notes are published, no experiments are executed and
 no source-review signoff by the owner is claimed.
 
 Source-scoped starting cards are available in the dental/organoid desk
-areas. The latest one-off Docker workbench-image run passed 384 unit tests, with
-six optional tests skipped; all five dental/organoid track tests passed. This
+areas. The latest one-off Docker workbench-image run passed 385 unit tests, with
+nine optional tests skipped; all six dental/organoid track tests passed. This
 checks seed parity and editable endpoint-record round-tripping. The live desk
-was restarted after confirming no active runs and now exposes five dental
-starters. Its API reports the same saved-campaign and note counts as before
-(one campaign, five notes); a pre-reload content-hash request timed out, so exact
-saved-content parity was not verified. This is software and source-scope
-verification, not biological validation.
+was restarted with no active runs and now exposes six dental starters,
+including the separate rat iPSC–BMP-6 defect track. It retains one saved
+campaign and five notes, and the workspace SHA-256 is unchanged from before
+reload (`44B914656778EA4B281017CF4E8919BD65CF4F1865534B763F9742915F61D03F`).
+This is software and source-scope verification, not biological validation.
 
 The deposited-count continuation reused `regen expression-contrast` for four
 descriptive runs: two declared comparisons at two pseudocounts. It verified

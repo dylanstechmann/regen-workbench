@@ -18,8 +18,8 @@ for the owner's ambitions and approach to scrutinizing evidence and bias.
 The [dental-regeneration research track](studies/dental-regeneration-2026-10-09/README.md)
 adds desk areas for teeth/gums/periodontal attachment and organoid/stem-cell
 construct function. It records component-level evidence, conflicting clinical
-endpoints and eight starter campaigns, including a separate iPS-derived
-periodontal-ligament-like cell-function track. The independent
+endpoints and nine starter campaigns, including separate iPS-derived
+periodontal-ligament-like cell and orthotopic rat-defect tracks. The independent
 [base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
 repo audits genome-editing source scope and cell-count denominators.
 
