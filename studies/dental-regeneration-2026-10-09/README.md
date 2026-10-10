@@ -11,7 +11,7 @@ restoration of attachment and gum coverage are separate questions.
 |---|---|---|
 | [Ikeda 2009](https://pubmed.ncbi.nlm.nih.gov/19666587/) | Functional bioengineered mouse tooth replacement | Adult-human cell source, controlled shape/number and human tooth integration |
 | [Anti-USAG-1 2021](https://pubmed.ncbi.nlm.nih.gov/33579703/) | Animal tooth-regeneration signaling precedent | No adult-human acquired-tooth-loss efficacy inferred; tooth number is not full periodontal function |
-| [Human ameloblast organoids 2026](https://www.nature.com/articles/s41368-026-00429-4) | Human iPSC organoid maturation and enamel-like material in mouse kidney-capsule grafts | Prismatic architecture, tooth-site bonding, loading and complete organ/attachment integration |
+| [Human ameloblast organoids 2026](https://www.nature.com/articles/s41368-026-00429-4) | C3-DLL4 maturation and enamel-like mineral in a 3-week kidney-capsule graft (six male NOD-SCID recipients reported) | Mature enamel architecture, tooth-site bonding/loading and complete organ/attachment integration |
 | [iPS-PDL functional study 2026](https://doi.org/10.4012/dmj.2025-235); [feeder-free iPDLSC study 2024](https://doi.org/10.1089/scd.2024.0122) | One study reports selected human iPSC-derived in-vitro responses; another reports marker-positive tissue in an eight-week ectopic mouse graft | One 2026 iPSC line with batch variation; the 2024 abstract omits cell-line and graft denominators; ectopic tissue does not establish oriented tooth-site insertion or load transfer |
 | [iPSC+BMP-6 rat defect study 2018](https://doi.org/10.1038/s41598-017-18415-6) | Rat maxillary-molar defect study: six-week micro-CT bone signal and histologic new cementum/PDL in the iPSC+BMP-6 hydrogel arm | n=4/group; ankylosis reported in both BMP-6 arms; no load-bearing function or long-term safety established |
 | [PDL progenitor root-preseeding study 2011](https://doi.org/10.1089/scd.2010.0431) | Mouse PDL progenitors on denuded rat molar roots: oriented new PDL and reported tooth retention after replantation | Four rats/eight molars; timeline conflicts within the paper; no direct mobility or load-transfer measurement; not human or iPSC evidence |
@@ -55,6 +55,15 @@ and ectopic graft result. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEF
 keeps six-week orthotopic defect histology and its ankylosis signal distinct
 from human cell-source evidence, clinical periodontal comparisons and the
 ameloblast-organoid component study.
+
+The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) puts the 2011, 2018, 2024 and 2026 cell-source studies side by side.
+It separates orthotopic animal outcomes from ectopic graft and in-vitro evidence,
+including the 2018 ankylosis signal and missing mechanical-function endpoints.
+
+The [2026 ameloblast-organoid review](AMELOBLAST_ORGANOID_REVIEW.md) records
+the six-mouse, three-week ectopic-graft context and supplement review. It
+distinguishes mineral-bearing epithelial graft evidence from enamel performance
+and whole-tooth integration.
 
 The [2011 PDL-progenitor root-preseeding review](PDL_PROGENITOR_ROOT_PRESEED_REVIEW.md)
 adds an anatomically relevant comparison: four progenitor-preseeded and four

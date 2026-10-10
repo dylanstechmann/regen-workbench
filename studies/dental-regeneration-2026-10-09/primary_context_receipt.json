@@ -14,7 +14,11 @@
       "retrieved_utc": "2026-10-09T22:33:37.267168+00:00",
       "response_sha256": "498be94147ec4563fe89939b1a1ff96d8c7dfab554af7c9f83cee1b000d0dc9c",
       "local_provenance_receipt": "1791585217180013740_dental-organoid-supplementary.json",
-      "reviewed_pdf_pages": [4, 10],
+      "reviewed_pdf_pages": [
+        4,
+        8,
+        10
+      ],
       "spreadsheet_reviewed": false
     }
   ],
