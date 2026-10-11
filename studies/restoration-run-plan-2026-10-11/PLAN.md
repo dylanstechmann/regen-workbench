@@ -308,3 +308,31 @@ bone-facing insertion, orthotopic load-bearing repair, or positional recovery.
 The assay design uses this as a benchmark, not as proof of functional PDL
 regeneration. Numeric thresholds stay open until measurement repeatability and
 matched-reference data exist.
+
+## Cell-resolved oral-state checkpoint — 2026-10-11
+
+Completed a donor-aware fixed-panel challenge using the curated CELLxGENE
+GSE164241 gingival data. The original 21 gingival libraries contain 86,138
+curated cells; after aggregating repeated disease biopsies to inferred sample-
+code donor groups, the comparison is 13 healthy and 5 periodontitis donors.
+The analysis verifies integer raw counts, audits all annotated cell sets,
+records the inferred donor map and includes a Cell Ranger v3.0.1-only
+sensitivity.
+
+Within healthy fibroblasts, the frozen structural-ECM score trends upward by
+about 0.17 mean-log1p(CPM) units per decade; matrix-degradation and
+matrix-inhibitor age slopes are near zero with broad donor-bootstrap ranges.
+Periodontitis raises the fibroblast inflammation, matrix-degradation and
+matrix-inhibitor panels, while the structural-ECM score is approximately flat.
+Inflammation also rises across epithelial, endothelial, dendritic and
+perivascular groups. These exploratory expression patterns do not establish
+protein activity, fiber insertion, epithelial seal, mechanics or regeneration.
+The within-fibroblast age direction differs from the small bulk GSE83382
+comparison; their designs and expression scales cannot be combined. Keep age
+and inflammatory disease as separate assay challenges, and prioritize
+donor-resolved adult PDL/gingival data plus functional attachment endpoints.
+
+The [cell-resolved report](../aging-state-2026-10-11/GINGIVAL_CELL_RESOLVED_CHALLENGE_REPORT.md)
+contains the contrast table and limits. Reproducible intake and analysis are
+`fetch_periodontal_meta_atlas.py` and `analyze_gingival_cell_atlas.py`; compact
+outputs are in the generated `derived/gingival-cell-atlas-GSE164241/` tables.

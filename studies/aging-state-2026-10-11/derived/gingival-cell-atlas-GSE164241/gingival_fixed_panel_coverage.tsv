@@ -1,0 +1,7 @@
+panel	specified_genes	present_gene_symbols	missing_gene_symbols	symbols_with_multiple_feature_rows	included_gene_symbols	cell_groups
+matrix_degradation	8	8			MMP1;MMP2;MMP3;MMP8;MMP9;MMP12;MMP13;MMP27	fibroblast_1;fibroblast_2;fibroblasts_all
+matrix_inhibitors	3	3			TIMP1;TIMP2;TIMP3	fibroblast_1;fibroblast_2;fibroblasts_all
+structural_ecm	8	8			COL1A1;COL1A2;COL3A1;COL5A1;COL6A1;FN1;DCN;LUM	fibroblast_1;fibroblast_2;fibroblasts_all
+inflammation	9	9			IL1A;IL1B;IL6;TNF;CXCL8;CCL2;PTGS2;NFKBIA;ICAM1	b_cells;dendritic_cells_all;endothelium_all;epithelium_all;epithelium_lining;epithelium_masticatory;epithelium_sulcus_junction;epithelium_suprabasal;fibroblast_1;fibroblast_2;fibroblasts_all;lymphoid_all;macrophages_monocytes;mast_cells;neutrophils;perivascular_support;plasma_cells;t_cytotoxic_cells;t_helper_cells
+epithelial_barrier_identity	9	9			KRT5;KRT14;KRT13;KRT19;EPCAM;CDH1;CLDN1;SFN;IVL	epithelium_all;epithelium_lining;epithelium_masticatory;epithelium_sulcus_junction;epithelium_suprabasal
+fibroblast_stromal_identity	9	9			COL1A1;COL1A2;COL3A1;DCN;LUM;PDGFRA;PDGFRB;THY1;COL6A1	fibroblast_1;fibroblast_2;fibroblasts_all

@@ -1,0 +1,364 @@
+{
+  "accession": "GSE164241",
+  "curated_source": "CZ CELLxGENE integrated Human Periodontal Atlas v1",
+  "curated_source_url": "https://cellxgene.cziscience.com/collections/71f4bccf-53d4-4c12-9e80-e73bfb89e398",
+  "original_study": "Williams et al., 2021, PMID 34129837",
+  "h5ad_sha256": "7dc13de46fd2702dbfaf8d69bec933b79b05196ebce7d516e59cea471aa83c4e",
+  "h5ad_bytes": 705007195,
+  "h5ad_cell_count_all_studies": 105918,
+  "gse164241_gingiva_cells": 86138,
+  "libraries": 21,
+  "library_counts_by_condition": {
+    "periodontitis": 8,
+    "healthy": 13
+  },
+  "inferred_donor_counts": {
+    "periodontitis": 5,
+    "healthy": 13
+  },
+  "source_cellranger_version_libraries": {
+    "3.0.1": 16,
+    "2.0.0": 5
+  },
+  "source_cellranger_version_donors": {
+    "3.0.1": 13,
+    "2.0.0": 5
+  },
+  "cell_group_counts": {
+    "b_cells": 2488,
+    "dendritic_cells_all": 2087,
+    "endothelium_all": 22858,
+    "epithelium_all": 5071,
+    "epithelium_lining": 2082,
+    "epithelium_masticatory": 1422,
+    "epithelium_sulcus_junction": 701,
+    "epithelium_suprabasal": 866,
+    "fibroblast_1": 8197,
+    "fibroblast_2": 8094,
+    "fibroblasts_all": 16291,
+    "lymphoid_all": 28886,
+    "macrophages_monocytes": 1504,
+    "mast_cells": 2460,
+    "neutrophils": 1301,
+    "perivascular_support": 5294,
+    "plasma_cells": 9124,
+    "t_cytotoxic_cells": 5173,
+    "t_helper_cells": 6840
+  },
+  "annotated_cellset_coverage": {
+    "Arterial VECs": {
+      "n_cells": 2911,
+      "mapped_to_groups": [
+        "endothelium_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "B.Cells": {
+      "n_cells": 2488,
+      "mapped_to_groups": [
+        "b_cells",
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Capillary VECs": {
+      "n_cells": 3754,
+      "mapped_to_groups": [
+        "endothelium_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Cells in the cell cycle (mixed cells)": {
+      "n_cells": 222,
+      "mapped_to_groups": [],
+      "exclusion_reason": "Mixed-lineage label; excluded from lineage-specific contrasts."
+    },
+    "Conventional dendritic cells": {
+      "n_cells": 1542,
+      "mapped_to_groups": [
+        "dendritic_cells_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Fibroblast 1": {
+      "n_cells": 8197,
+      "mapped_to_groups": [
+        "fibroblast_1",
+        "fibroblasts_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Fibroblast 2": {
+      "n_cells": 8094,
+      "mapped_to_groups": [
+        "fibroblast_2",
+        "fibroblasts_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Gamma delta-T cells": {
+      "n_cells": 907,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Langerhans cells": {
+      "n_cells": 100,
+      "mapped_to_groups": [
+        "dendritic_cells_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Lining mucosal keratinocyte": {
+      "n_cells": 2082,
+      "mapped_to_groups": [
+        "epithelium_all",
+        "epithelium_lining"
+      ],
+      "exclusion_reason": ""
+    },
+    "Lymphatic endothelial cell 1": {
+      "n_cells": 1316,
+      "mapped_to_groups": [
+        "endothelium_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Lymphatic endothelial cell 2": {
+      "n_cells": 120,
+      "mapped_to_groups": [
+        "endothelium_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Macrophages/Monocytes": {
+      "n_cells": 1504,
+      "mapped_to_groups": [
+        "macrophages_monocytes"
+      ],
+      "exclusion_reason": ""
+    },
+    "Mast cells": {
+      "n_cells": 2460,
+      "mapped_to_groups": [
+        "mast_cells"
+      ],
+      "exclusion_reason": ""
+    },
+    "Masticatory mucosal keratinocyte": {
+      "n_cells": 1422,
+      "mapped_to_groups": [
+        "epithelium_all",
+        "epithelium_masticatory"
+      ],
+      "exclusion_reason": ""
+    },
+    "Melanocytes": {
+      "n_cells": 119,
+      "mapped_to_groups": [],
+      "exclusion_reason": "Outside the prespecified oral repair panels in this focused analysis."
+    },
+    "Merkel Cells": {
+      "n_cells": 19,
+      "mapped_to_groups": [],
+      "exclusion_reason": "Sparse group (19 cells) and outside the prespecified oral repair panels."
+    },
+    "Mucosal-associated invariant T cells": {
+      "n_cells": 1249,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "NK cells": {
+      "n_cells": 891,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "NKT cells": {
+      "n_cells": 851,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Neutrophils": {
+      "n_cells": 1301,
+      "mapped_to_groups": [
+        "neutrophils"
+      ],
+      "exclusion_reason": ""
+    },
+    "Pericytes": {
+      "n_cells": 2821,
+      "mapped_to_groups": [
+        "perivascular_support"
+      ],
+      "exclusion_reason": ""
+    },
+    "Plasma cells": {
+      "n_cells": 9124,
+      "mapped_to_groups": [
+        "lymphoid_all",
+        "plasma_cells"
+      ],
+      "exclusion_reason": ""
+    },
+    "Plasmacytoid dendritic cells": {
+      "n_cells": 445,
+      "mapped_to_groups": [
+        "dendritic_cells_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Post-capillary venule VECs": {
+      "n_cells": 14757,
+      "mapped_to_groups": [
+        "endothelium_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Schwann cells": {
+      "n_cells": 26,
+      "mapped_to_groups": [],
+      "exclusion_reason": "Sparse group (26 cells) and outside the prespecified oral repair panels."
+    },
+    "Sulcus/junction epithelial keratinocytes": {
+      "n_cells": 701,
+      "mapped_to_groups": [
+        "epithelium_all",
+        "epithelium_sulcus_junction"
+      ],
+      "exclusion_reason": ""
+    },
+    "Suprabasal keratinocytes": {
+      "n_cells": 866,
+      "mapped_to_groups": [
+        "epithelium_all",
+        "epithelium_suprabasal"
+      ],
+      "exclusion_reason": ""
+    },
+    "Tc cells": {
+      "n_cells": 5173,
+      "mapped_to_groups": [
+        "lymphoid_all",
+        "t_cytotoxic_cells"
+      ],
+      "exclusion_reason": ""
+    },
+    "Th cells": {
+      "n_cells": 6840,
+      "mapped_to_groups": [
+        "lymphoid_all",
+        "t_helper_cells"
+      ],
+      "exclusion_reason": ""
+    },
+    "Th17 cells": {
+      "n_cells": 519,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Treg cells": {
+      "n_cells": 844,
+      "mapped_to_groups": [
+        "lymphoid_all"
+      ],
+      "exclusion_reason": ""
+    },
+    "Vascular smooth muscle cells": {
+      "n_cells": 2473,
+      "mapped_to_groups": [
+        "perivascular_support"
+      ],
+      "exclusion_reason": ""
+    }
+  },
+  "raw_count_matrix": "AnnData .raw/X; integer-valued counts verified in streamed chunks",
+  "fixed_panels": {
+    "matrix_degradation": [
+      "MMP1",
+      "MMP2",
+      "MMP3",
+      "MMP8",
+      "MMP9",
+      "MMP12",
+      "MMP13",
+      "MMP27"
+    ],
+    "matrix_inhibitors": [
+      "TIMP1",
+      "TIMP2",
+      "TIMP3"
+    ],
+    "structural_ecm": [
+      "COL1A1",
+      "COL1A2",
+      "COL3A1",
+      "COL5A1",
+      "COL6A1",
+      "FN1",
+      "DCN",
+      "LUM"
+    ],
+    "inflammation": [
+      "IL1A",
+      "IL1B",
+      "IL6",
+      "TNF",
+      "CXCL8",
+      "CCL2",
+      "PTGS2",
+      "NFKBIA",
+      "ICAM1"
+    ],
+    "epithelial_barrier_identity": [
+      "KRT5",
+      "KRT14",
+      "KRT13",
+      "KRT19",
+      "EPCAM",
+      "CDH1",
+      "CLDN1",
+      "SFN",
+      "IVL"
+    ],
+    "fibroblast_stromal_identity": [
+      "COL1A1",
+      "COL1A2",
+      "COL3A1",
+      "DCN",
+      "LUM",
+      "PDGFRA",
+      "PDGFRB",
+      "THY1",
+      "COL6A1"
+    ]
+  },
+  "unit_of_analysis": "Inferred donor group for age and disease contrasts; sample biopsies and cells are nested observations. Donor groups are inferred from shared sample-code roots and matching Table S1 age/sex/race, not an explicit donor identifier.",
+  "analysis_limits": [
+    "Only the 13 healthy gingival and 8 periodontitis gingival libraries from the original series are analyzed; buccal samples and later ID080UST are excluded.",
+    "Repeated PD161 and PD164 biopsies are summed within their inferred donors; no biopsy is counted as an independent person.",
+    "Healthy-age analyses are exploratory with 13 donors spanning 21–61 years, not an adult age clock and not a claim about rejuvenation.",
+    "Disease contrasts include five inferred periodontitis donors; they are used to challenge age-associated axes as inflammatory alternatives, not to estimate treatment effects.",
+    "Cellranger version sensitivity is descriptive; processing and clinical groups are not fully randomized across versions.",
+    "CellxGene integrated cell annotations are used as supplied; they are not a blinded reannotation of the source data.",
+    "The percentile ranges are exploratory bootstrap summaries and do not substitute for independent validation or confirmatory p-values."
+  ],
+  "outputs": [
+    "oral_atlas_sample_crosswalk.tsv",
+    "gingival_cellset_donor_counts.tsv",
+    "gingival_cellset_pseudobulk_fixed_genes.tsv",
+    "gingival_fixed_panel_coverage.tsv",
+    "gingival_fixed_panel_donor_scores.tsv",
+    "gingival_healthy_age_slopes.tsv",
+    "gingival_periodontitis_challenge.tsv",
+    "gingival_age_disease_direction_challenge.tsv"
+  ]
+}

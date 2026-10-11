@@ -85,10 +85,15 @@ The donor/library qualification for the oral-cell atlas is now recorded in the
 [GSE164241 audit](ORAL_ATLAS_DONOR_QUALIFICATION.md). It identifies repeated
 periodontitis sample-code groups and a post-publication GEO addition, so any
 follow-up must aggregate at the apparent donor level and separate tissue site
-and pipeline version. The next analysis is a cell-resolved disease-state
-challenge for these fixed panels, with age and cell-composition alternatives
-reported separately. Any regenerative claim still needs barrier, matrix,
-vascular, immune, and tooth-support function measured together.
+and pipeline version. The donor-aware cell-resolved analysis is now available
+in the [GSE164241 challenge report](GINGIVAL_CELL_RESOLVED_CHALLENGE_REPORT.md).
+It shows why age and inflammatory disease need separate challenge arms: within
+healthy fibroblasts, structural-ECM transcripts trend upward with age in this
+cohort, while periodontitis raises inflammation and matrix turnover and leaves
+the structural-ECM panel roughly flat. The small cohorts and cell-resolved vs
+bulk directional difference prevent treating either result as a gum-age
+signature. Any regenerative claim still needs barrier, matrix, vascular,
+immune, and tooth-support function measured together.
 
 ## Reproduction
 

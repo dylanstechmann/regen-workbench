@@ -1,0 +1,37 @@
+cell_group	panel	healthy_age_slope_per_10y	age_adjusted_periodontitis_difference	direction_relation	interpretation_limit
+b_cells	inflammation			not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+dendritic_cells_all	inflammation	-0.03795390106442697	1.0088687905025309	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+endothelium_all	inflammation	-0.03942099461861326	0.8056964030077985	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_all	epithelial_barrier_identity	-0.050385885288158135	-0.0970996180679177	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_all	inflammation	0.08929414191345282	1.1024985681964519	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_lining	epithelial_barrier_identity	-0.08757730409066988	0.10644773280763543	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_lining	inflammation	0.10494589057120883	1.501177201448222	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_masticatory	epithelial_barrier_identity	-0.007008745394648046		not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_masticatory	inflammation	-0.12056624538879444		not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_sulcus_junction	epithelial_barrier_identity			not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_sulcus_junction	inflammation			not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_suprabasal	epithelial_barrier_identity	-0.22620469960805323		not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+epithelium_suprabasal	inflammation	-0.13758238129466016		not_comparable	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_1	fibroblast_stromal_identity	0.12249842693943397	0.18603718638687083	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_1	inflammation	-0.01210703644919285	1.1474786152370002	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_1	matrix_degradation	0.015152272843433137	0.444841484062213	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_1	matrix_inhibitors	-0.03350811922522827	0.24949073893066812	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_1	structural_ecm	0.1615017209045549	0.0935339704117121	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_2	fibroblast_stromal_identity	0.11522743843023825	0.04162246070980809	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_2	inflammation	0.10063935648214033	0.9022517688094274	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_2	matrix_degradation	-0.04967275564406859	1.0936099489744375	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_2	matrix_inhibitors	0.044410881066175405	0.5766767605291152	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblast_2	structural_ecm	0.1844658431268079	-0.08209093936946334	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblasts_all	fibroblast_stromal_identity	0.11842484937316987	0.10890585472163426	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblasts_all	inflammation	0.08784802990571862	0.9486804492881746	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblasts_all	matrix_degradation	-0.03293322631884697	1.0559253957138168	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblasts_all	matrix_inhibitors	-0.02428061171417847	0.3909890372801814	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+fibroblasts_all	structural_ecm	0.17243198235705265	-0.004129767131692173	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+lymphoid_all	inflammation	0.06728059381836124	0.11342768308834106	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+macrophages_monocytes	inflammation	-0.011657456159307172	1.0411513639641634	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+mast_cells	inflammation	-0.03398184012581324	1.121036182342056	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+neutrophils	inflammation	-0.11053270936055634	1.3527573312187344	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+perivascular_support	inflammation	-0.13488186409891803	1.0010278725447659	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+plasma_cells	inflammation	-0.021846109631214417	0.31907681726634196	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+t_cytotoxic_cells	inflammation	0.07580314368642105	0.5868737134980251	same_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
+t_helper_cells	inflammation	-0.08953397488885284	0.4642238634132066	opposite_direction	Direction comparison only; age and disease are distinct cross-sectional contrasts with small donor counts.
