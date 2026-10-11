@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "scope": "Two primary studies selected for a periodontal-attachment mechanics comparison. Full text is retained for successfully retrieved records only; endpoint failures are listed separately.",
+  "records": [
+    {
+      "pmcid": "PMC8881622",
+      "doi": "10.1038/s41598-022-06865-6",
+      "title": "Platelet-derived growth factor-BB regenerates functional periodontal ligament in the tooth replantation",
+      "license_text": "https://creativecommons.org/licenses/by/4.0/ Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/ .",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8881622/fullTextXML",
+      "retrieved_utc": "2026-10-11T16:03:38.396696+00:00",
+      "bytes": 110269,
+      "sha256": "6dd225affcea8e6c6638d51cea394c25219139504d92d397040a8b78e8f2eebf",
+      "local_fulltext_path": "data/literature/dental-attachment-mechanics/PMC8881622-fulltext.xml",
+      "table_count": 1,
+      "tables": [
+        {
+          "label": "Table 1",
+          "caption": "Numbers of fractures of tooth roots and/or alveolar bones during mechanical testing of extracting the replanted or non-replanted teeth from their own sockets.",
+          "rows": [
+            [
+              "Days after replantation",
+              "Groups"
+            ],
+            [
+              "NC (40)",
+              "PBS (27)",
+              "AC (28)",
+              "PDGF-BB (30*)"
+            ],
+            [
+              "0",
+              "1 (10)",
+              "–",
+              "–",
+              "–"
+            ],
+            [
+              "7",
+              "0 (10)",
+              "0 (9)",
+              "0 (9)",
+              "0 (8)"
+            ],
+            [
+              "14",
+              "1 (10)",
+              "3 (9)",
+              "7 (9) a,b",
+              "1 (9)"
+            ],
+            [
+              "21",
+              "0 (10)",
+              "8 (9) a",
+              "10 (10) a",
+              "3 (10)"
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "label": "Figure 1",
+          "caption": "( A–D ) PDGF-BB effectively suppresses ankylosis and restores well-organized PDL structure after replantation. Haematoxylin and eosin staining of sagittal sections of replanted rat maxillary first molars in the four groups. ( A ) PBS-pretreated, ( B ) atelocollagen-pretreated (AC), ( C ) PDGF-BB-pretreated tooth (PDGF-BB) at 21 days. ( D ) A non-replanted normal tooth (NC). Arrowheads and arrows indicate bony attachments of root surfaces and root resorption lacunae, respectively. Black asterisks indicate bone-like structures in the dental pulp. m mesial root, d distal root. ( (A)a, (B)a ) Magnified views of ankylosed roots (dotted squares (a) in ( A,B )) in sagittal sections of PBS- ( (A)a ) and AC- ( (B)a ) pretreated teeth 21 days after replantation. Asterisks indicate bone-like ankylotic tissues. ( (A)b–(D)b ) Magnified views of the periodontal ligament (solid squares (b) in ( A–D )) in sagittal sections of PBS- ( (A)b ), AC- ( (B)b ) and PDGF- ( (C)b ) pretreated teeth 21 days after replantation, and a normal control tooth ( (D)b ). HE-stained images (HE, upper images) and images under polarized light (POL, lower images). Arrowheads indicate insertions of birefringent collagen fibre bundles into alveolar bones. B alveolar bone, C cementum, D dentine, bv blood vessel, PDL periodontal ligament."
+        },
+        {
+          "label": "Figure 2",
+          "caption": "PDGF-BB effectively restores the mechanical properties of PDL after replantation. ( a–c ) Mean load-deformation curves for the healing periodontal ligament of the maxillary first molars at 7, 14 and 21 days after tooth replantation in the PBS, AC, and PDGF-BB groups. The load-deformation curves were obtained by extracting the replanted teeth from their sockets. Data from the NC (non-replanted teeth) group are also presented. Each point represents the mean of 6–10 rats. Vertical bars at the averaged peak value represent ± 1 SD. ( d–g ) Changes in the maximum load ( d ), maximum deformation ( e ), tangent modulus ( f ), and failure energy ( g ) for the healing PDL of the maxillary first molars at 7, 14, and 21 days after tooth replantation in the PBS, AC, and PDGF-BB groups. Data from the NC group are also presented. Each column and bar represents the mean and 1 SD of 6–10 rats. Significant differences from the respective NC group, *p < 0.05, **p < 0.01, ***p < 0.001 (Scheffé method)."
+        },
+        {
+          "label": "Figure 3",
+          "caption": "PDGF-BB increases PDGF-Rβ positive cells in PDL tissues. Magnified views of the repairing periodontal ligament (PDL) showing typical repair process from day 1 ( a,b,n,i ), day 3 ( c,d,j,k ) to day 7 ( e,f,l,m,g,n ) after tooth replantation in the AC, PDGF-BB, and NC groups. Sections were stained with haematoxylin and eosin ( a–f,m ), or immunostained with anti-PDGF-Rβ antibody and treated with secondary peroxidase-conjugated antibody ( g–l,n ). B alveolar bone, D dentine."
+        },
+        {
+          "label": "Figure 4",
+          "caption": "PDGF-BB maintains cell survival and increases the BrdU-positive cells in the PDL. Immunohistochemistry of BrdU-positive cells of sagittal sections of the replanted teeth in the AC, and PDGF-BB groups. The rats were injected with BrdU 1 day after tooth replantation, and the maxillae were isolated 2 h after injection. ( a ) A representative sagittal section showing three regions (squared areas), that is, the periodontal ligaments (PDLs) of furcation, and apical region and middle level of the distal root. ( b ) Magnified views showing the three squared regions in ( a ). ( c ) Ratios of BrdU-positive cells in the PDLs of the three regions ( b ). m mesial root, d distal root, B bone, D dentine. Significant differences between the AC and PDGF-BB groups, *p < 0.05, ***p < 0.01 ( t -test)."
+        },
+        {
+          "label": "Figure 5",
+          "caption": "PDGF-BB decreases osteocalcin-positive cells and β-catenin accumulation in nucleus in vivo. ( A ) Representative images of sections immunostained for osteocalcin (OCN). Sections were immunostained with primary anti-OCN antibody and peroxidase-conjugated secondary antibody, and the immune complex was visualized with DAB substrate. The sections were then counterstained with haematoxilin. Pictures were taken of periodontal ligament (PDL) of the mesial root of the replanted teeth in the AC (a) and PDGF-BB (b) groups 3 days after tooth replantation. ( B ) Representative images of sections immunostained for β-catenin. Sections were incubated with primary anti-β-catenin antibody and secondary Alexa 488-conjugated antibody, and then counterstained with DAPI. DAPI (Ba and Bd), ß-catenin (Bb and Be), and overlay (Bc and Bf) images of the periodontal tissues. Pictures were taken of PDL of the mesial root of the replanted teeth day 3 in the AC (a-c) and PDGF-BB (d-f) groups. White arrows indicate nuclear b-catenin positive cells. B bone, Cm cementum, D dentine."
+        },
+        {
+          "label": "Figure 6",
+          "caption": "PDGF-BB increases cell proliferation in vitro. ( A ) Effect of PDGF-BB on BrdU incorporation. DMEM contained with 0.3% FBS and BrdU. Subconfluent human PDL fibroblasts were cultured under DMEM only (0.3% FBS, (a)), PDGF-BB (5 ng/mL, (b)), Wnt3a (25 ng/mL, (c)), or their combination (P&W, (d)) for 24 h. Scales, 200 µm. (e) BrdU positive cell ratio. Mean ± 1 SD are shown. Significant differences between two groups, *p < 0.05 (Fisher PLSD method). ( B ) Effect of PDGF-BB on gene expressions of CCNB2, CCND1, CDKN1A, and CDKN2A. Mean ± 1 SD are shown. Significant differences between two groups, *p < 0.05, **p < 0.01, ***p < 0.01 (Fisher PLSD method)."
+        },
+        {
+          "label": "Figure 7",
+          "caption": "PDGF-BB increases cell migration in vitro. Effect of PDGF-BB on wound scratch assay. Confluent human PDL fibroblasts were subjected to injury by scratching with a plastic pipette tip. The cells were then cultured under 0.3% FBS (solvent, ( a–c )), PDGF-BB (5 ng/mL, ( d–f )), Wnt3a (25 ng/mL, ( g–i )), or their combination (P&W, ( j–l )). Pictures were taken at 0 h (T 0 ; ( a,d,j,g )), 24 h (T 24 ; ( b,e,h,k )), and 48 h (T 48 ; ( c,f,i,l )). ( e ) Ratios (T 24 /T 0 ) and (T 48 /T 0 ) of wound area at T 24 and that at T 48 to original wound area at T 0 . Mean ± 1 SD are shown. Significant differences between two groups, *p < 0.05, **p < 0.01, ***p < 0.01 (Fisher PLSD method)."
+        },
+        {
+          "label": "Figure 8",
+          "caption": "PDGF-BB attenuates effects of canonical Wnt signaling on PDL fibroblasts in vitro. ( A ) Gene expressions of CTNNB1 (a), AXIN2 (b), RUNX2 (c), COL1A1 (d), and ALP (e) in human PDL fibroblasts treated with 0.3% FBS, PDGF-BB (5 ng/mL), Wnt3a (25 ng/mL), or their combination (P&W) for 4 days. Significant differences between two groups, *p < 0.05, **p < 0.01, ***p < 0.001 (Fisher PLSD method). ( B ) (a) Protein level of active form of β-catenin were measured by western blotting. Lysate was generated from human PDL cells at 24 h after each treatment. Tubulin was used as a loading control. Original blots are presented in Supplementary Fig. S6 . (b) The densities of the active β-catenin protein bands were normalized relative to Tubulin protein bands."
+        }
+      ],
+      "local_provenance_receipt": "1791734618393454623_dental-mechanics-primary-fulltext.json"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "pmcid": "PMC3029000",
+      "doi": "10.1089/ten.TEA.2010.0264",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3029000/fullTextXML",
+      "status": 500,
+      "error_type": "HTTPError",
+      "retrieved_utc": "2026-10-11T16:04:01.491972+00:00"
+    }
+  ],
+  "limitations": [
+    "Primary article data may be reported only in plots or group summaries; this receipt does not turn graphical values into specimen-level observations.",
+    "The two studies use different species, injuries and mechanical loading protocols and are not pooled.",
+    "A failed full-text endpoint request records a retrieval limitation, not evidence that the article or its findings are invalid."
+  ]
+}

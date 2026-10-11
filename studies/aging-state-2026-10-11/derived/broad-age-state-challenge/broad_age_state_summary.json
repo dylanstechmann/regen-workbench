@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "accession": "GSE113957",
+    "source_sha256": "999c9d720ff7f0dfe59675f347803d3a0181231313aace2f8406f08528aa123d",
+    "input_filename": "GSE113957_fpkm.txt.gz",
+    "adult_n": 111,
+    "unique_cell_ids": 111,
+    "age_min": 19.0,
+    "age_max": 96.0,
+    "gene_count_after_exact_annotation_aggregation": 27142,
+    "aggregation": "sum transcript-row FPKM sharing the first exact annotation symbol; log2(sum+0.1)"
+  },
+  "target": {
+    "accession": "GSE165177",
+    "source_hashes": {
+      "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz": "e6f055a491900a8f8563a339d1f18d99a92690af53d8ff44d7cc9a164b66209c",
+      "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz": "fca65676b19599491e139c583971a88f6bf2d177592d49558e57689e18e067e8"
+    },
+    "gene_symbol_rows": 35718,
+    "metadata_samples": 95,
+    "aggregation": "mean processed log2-RPM among exact Type=gene rows sharing exact symbol"
+  },
+  "age_signature_training": {
+    "method": "Repeated 5-fold cross-validation stratified across chronological-age rank; within each training fold select top 100 positive and top 100 negative Spearman genes and score held-out samples from training-standardized expression.",
+    "repeats": 20,
+    "folds": 5,
+    "features_each_direction": 100,
+    "oof_age_score_spearman_median": 0.5708987657531778,
+    "oof_age_score_spearman_10th_percentile": 0.5349005183570948,
+    "oof_age_score_spearman_90th_percentile": 0.5918306231638858,
+    "oof_35_to_60_spearman_median": 0.19811051150254966,
+    "oof_35_to_60_spearman_10th_percentile": 0.1219527413553183,
+    "oof_35_to_60_spearman_90th_percentile": 0.27033307772120063,
+    "random_panel_oof_spearman_median": -0.013694723016567984,
+    "random_panel_oof_spearman_10th_percentile": -0.10912104536967573,
+    "random_panel_oof_spearman_90th_percentile": 0.1985230063957837,
+    "adult_35_to_60_n": 25,
+    "limitation": "This is a direction-score benchmark within one processed skin-fibroblast cohort; it is not an externally validated clock, and the age training data come from a different study/platform than target intervention data."
+  },
+  "target_contrast_scoring": {
+    "matching_unit": "donor-coded line × day × experiment block; experiment blocks averaged within donor before cohort summary",
+    "age_direction_score": "negative(reference Spearman age direction) × paired treatment-minus-control log2-RPM change, averaged equally across mapped signature genes; positive means change opposite the adult reference age association.",
+    "ecm_exclusion": [
+      "COL1A1",
+      "COL1A2",
+      "COL3A1",
+      "COL4A1",
+      "COL4A2",
+      "COL6A1",
+      "COL6A2",
+      "COL6A3",
+      "DCN",
+      "ELN",
+      "FBN1",
+      "FN1",
+      "LOX",
+      "LOXL1",
+      "LUM",
+      "MMP14",
+      "MMP2",
+      "MMP3",
+      "POSTN",
+      "TIMP1",
+      "TIMP2",
+      "VCAN"
+    ],
+    "alternative_axes": {
+      "collagen_core": [
+        "COL1A1",
+        "COL1A2",
+        "COL4A1",
+        "COL4A2"
+      ],
+      "fibroblast_lineage_matrix": [
+        "COL1A1",
+        "COL1A2",
+        "COL3A1",
+        "DCN",
+        "LUM",
+        "PDGFRA",
+        "THY1",
+        "COL6A1"
+      ],
+      "pluripotency_dedifferentiation": [
+        "POU5F1",
+        "NANOG",
+        "SOX2",
+        "LIN28A",
+        "DPPA4",
+        "TDGF1",
+        "SALL4",
+        "ZFP42"
+      ],
+      "cell_cycle": [
+        "MKI67",
+        "TOP2A",
+        "PCNA",
+        "CCNB1",
+        "MCM2",
+        "MCM5",
+        "CDK1",
+        "CDC20"
+      ],
+      "p53_DNA_damage_response": [
+        "CDKN1A",
+        "GADD45A",
+        "GADD45B",
+        "DDB2",
+        "MDM2",
+        "BBC3",
+        "BAX",
+        "CDKN2A"
+      ],
+      "acute_stress_response": [
+        "FOS",
+        "JUN",
+        "JUNB",
+        "EGR1",
+        "ATF3",
+        "HMOX1",
+        "NQO1",
+        "HSPA1A",
+        "DDIT3",
+        "XBP1"
+      ],
+      "inflammatory_response": [
+        "IL6",
+        "CXCL8",
+        "CCL2",
+        "NFKBIA",
+        "PTGS2",
+        "ISG15",
+        "IFIT1",
+        "OAS1",
+        "STAT1"
+      ]
+    },
+    "alternative_axes_limit": "Prespecified compact marker panels; transcript changes do not independently prove identity, senescence, stress, safety, or rejuvenation.",
+    "no_years_younger_estimate": true,
+    "small_target_n_warning": "Day-13 successful post-withdrawal endpoint has only two donor-coded lines; cell lines and repeated experiments do not replace donor replication."
+  },
+  "generated_utc": "2026-10-11T16:11:46.051898+00:00",
+  "inputs_sha256": {
+    "aging_reference_intake_receipt.json": "d5352d3ce070d74aad824e622259d99adbc9dd660484df6fcd79d0ddec5b08a3",
+    "geo_intake_receipt.json": "1ce091bef40eb2900607d22bff12b28f4d14e74e951ac5cb15f6a91c1608f1b2",
+    "GSE113957_fpkm.txt.gz": "999c9d720ff7f0dfe59675f347803d3a0181231313aace2f8406f08528aa123d",
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz": "e6f055a491900a8f8563a339d1f18d99a92690af53d8ff44d7cc9a164b66209c",
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz": "fca65676b19599491e139c583971a88f6bf2d177592d49558e57689e18e067e8"
+  },
+  "figure_created": true
+}

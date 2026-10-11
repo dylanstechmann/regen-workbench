@@ -1,0 +1,39 @@
+# Broad age-state challenge for transiently reprogrammed fibroblasts
+
+The question here is narrower than “eternal youth”: do the collagen changes in transiently reprogrammed fibroblasts align with a broad, independently trained adult-age direction, and do they occur without obvious movement toward other cell states?
+
+This is an AI-assisted computational re-analysis of public GEO expression data. The original experiments were performed by the cited study authors; this analysis does not claim new wet-lab validation.
+
+## Method
+
+I used the 111 unique healthy adult fibroblast samples in the GEO GSE113957 processed FPKM reference (ages 18–96) to select genes associated with chronological age. The analysis aggregated transcript-row FPKM by exact annotation symbol, then used log2(sum FPKM + 0.1). In 20 repeats of age-stratified five-fold cross-validation, each training fold selected its own 100 age-associated-higher and 100 age-associated-lower genes. Held-out samples were scored after standardizing each gene from that fold’s training samples. This keeps age labels in the held-out fold out of feature selection. A same-sized random gene panel served as a reference null for age-score construction.
+
+The selected age directions were frozen from the full reference and transferred by sign only to matched GSE165177 processed log2-RPM contrasts. For each treatment/control pair, the score averages `−sign(age association) × Δexpression`; a positive value means movement opposite that adult reference age association. This is not an age-in-years estimate. All samples were matched by donor-coded line, induction day, and experiment block; repeated experiments were averaged within each line before summaries. I also excluded a prespecified set of structural-matrix genes and recorded compact, prespecified marker panels for collagen, fibroblast-lineage matrix, pluripotency/dedifferentiation, cell cycle, p53/DNA-damage response, acute stress, and inflammation. These marker panels are exploratory transcript readouts, not validated state or safety scores.
+
+## Results
+
+The fold-specific broad age-direction score had a median held-out Spearman correlation of **0.571** with age across repeats (10th–90th percentile 0.535–0.592). Within the 35–60-year subset (n=25), the held-out median was only **0.198** (10th–90th percentile 0.122–0.270). Random panels had a median correlation of **−0.014** (10th–90th percentile −0.109–0.199). This indicates the reference contains broad age-associated expression direction, but it is still internal cross-validation in one processed skin-fibroblast cohort, and the score is much less informative in the sampled middle-age interval. It does not make the resulting panel an externally validated biological clock.
+
+At the 13-day post-withdrawal successful endpoint, only two donor-coded lines were available. Their four-gene collagen panel rose by a median **1.65 log₂-RPM units**, consistent with the earlier paired re-analysis of the same samples. The broad age-opposing score was only **+0.096 log₂-RPM units** across 183 mapped age-signature genes, and only **51.4%** of genes moved opposite their age association. Excluding the prespecified matrix genes produced the same summary direction and magnitude at this endpoint. The broad signal is therefore weak and close to an even split, not a coordinated transcriptomic age reversal.
+
+The alternative marker axes reinforce the need to qualify the result. Across those same two lines, the compact pluripotency/dedifferentiation panel increased by a median **1.76 log₂-RPM units**, driven mainly by POU5F1 and SOX2. The processed bulk data do not distinguish expression from an introduced construct from endogenous transcription, so this is an interpretation axis rather than evidence of residual pluripotency or unsafe behavior. The fibroblast-lineage matrix panel changed by **−0.11**. The cell-cycle panel decreased by **−1.05**, the p53/DNA-damage panel increased by **+0.38**, and the acute-stress panel decreased by **−0.47**. The inflammatory-panel median was **+0.45**, but its donor-level values were about +1.00 and −0.10. These are descriptive averages over small gene panels and two lines; the [individual paired gene changes](derived/broad-age-state-challenge/alternative_axis_gene_deltas.tsv.gz) show which genes drive each axis.
+
+Failed post-withdrawal endpoints provide a useful internal state control. Their median broad age-opposing score was near zero at day 10 (+0.008), day 13 (approximately zero), and modestly positive at day 17 (+0.090). Successful endpoint values were +0.292 at day 10 (three lines), +0.096 at day 13 (two lines), and +0.184 at day 17 (three lines). The pattern is not a consistent, progressively stronger age reversal, and the study’s “successful” label is not an independent measure of restored organismal function.
+
+The point-level transfer plot is available as a [vector figure](derived/broad-age-state-challenge/broad_age_direction_transfer.svg).
+
+## Interpretation
+
+This result separates matrix remodeling from broad age state. The existing collagen response is reproducible within the deposited samples, but the new reference-derived challenge does not show a strong genome-wide direction toward younger adult fibroblast expression. Increased pluripotency-associated transcripts also deserve direct monitoring during reprogramming, while lower cell-cycle and acute-stress panels cannot by themselves establish safety or preserved identity. There are only two successful day-13 donor lines, the reference and intervention data use different studies and processing pipelines, and the analysis does not test protein function, organ behavior, durability, or healthspan.
+
+For “eternal youth” research, one transferable score is not enough. The next evidence layer should build tissue-specific references for periodontal ligament, gingiva, pulp, skin, muscle, kidney, and other target organs; freeze age and lineage panels before testing interventions; and require paired molecular, histologic, mechanical, and organ-function outcomes. Reprogramming or stem-cell-derived organoids should be assessed for retained tissue identity, genomic integrity, vascular support, inflammatory response, and organ-specific function alongside any age-associated expression shift. Organoid output must be treated as a model of selected tissue functions, not a stand-in for a rejuvenated person.
+
+The immediate next analysis is to qualify human oral-cell references and map donor/sample relationships, then test whether PDL and gingival age programs are separable from general skin-fibroblast aging. Only after that should we use the same locked challenge in periodontal constructs or organoids. A later organoid engineering phase can connect the age/state panels to measured matrix mechanics, oxygenation, and load-bearing function. This maintains the project’s focus on complete restoration: the target is normal tissue identity and function, not an isolated younger-looking marker.
+
+## Reproduction
+
+```bash
+python /lab/workbench/studies/aging-state-2026-10-11/analyze_broad_age_state.py
+```
+
+The `derived/broad-age-state-challenge/` folder contains the fold-level validation summary, frozen age-direction genes, matched-pair and donor-line scores, losslessly compressed individual gene changes for each alternative axis (`alternative_axis_gene_deltas.tsv.gz`), the summary JSON, and figures. Input checksums and a `regen.record` provenance receipt are generated with the outputs. Large GEO matrices remain in the local ignored data cache.

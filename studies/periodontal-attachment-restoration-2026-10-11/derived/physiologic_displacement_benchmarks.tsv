@@ -1,0 +1,6 @@
+source_doi	load_N	group	mean_displacement_um	SD_um	interpretation
+10.1089/ten.TEA.2010.0264	10	WT_control	141	23	reported mean ± SD; rat tooth displacement test, not human in-situ repositioning
+10.1089/ten.TEA.2010.0264	10	progenitor_replant	156	19	reported mean ± SD; rat tooth displacement test, not human in-situ repositioning
+10.1089/ten.TEA.2010.0264	15	WT_control	297	34	reported mean ± SD; rat tooth displacement test, not human in-situ repositioning
+10.1089/ten.TEA.2010.0264	15	progenitor_replant	300	26	reported mean ± SD; rat tooth displacement test, not human in-situ repositioning
+10.1089/ten.TEA.2010.0264	1	loose_untreated_replant	626	31	reported mean ± SD; rat tooth displacement test, not human in-situ repositioning

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "objective": "Restore the tooth, periodontal attachment and surrounding gum to the individual's intended geometry, viable adult tissue identity and durable physiologic function.",
+  "explicit_constraints": [
+    "Do not count a tooth held at the wrong position as full restoration.",
+    "Do not count ankylotic fusion or a rigid scaffold as a functional periodontal ligament.",
+    "Do not infer whole-organism age reversal from a local marker change.",
+    "Temporary positioning or healing support is a measured transition variable; long-term stability must be evaluated after removal."
+  ],
+  "restoration_domains": [
+    {"domain": "position_and_occlusion", "measurements": ["3D tooth position and rotation vs declared target", "occlusal contact", "stability after support removal"], "failure_modes": ["healing in shifted position", "recurrent drift", "malocclusion"]},
+    {"domain": "cementum_PDL_bone_attachment", "measurements": ["continuous physiologic ligament space", "fiber orientation and insertion into both cementum and alveolar bone", "cementum and socket integrity", "absence of ankylosis and root resorption"], "failure_modes": ["scar or disconnected fibers", "bone bridge", "replacement resorption", "root-surface loss"]},
+    {"domain": "mechanical_function", "measurements": ["mobility under controlled force series", "force-displacement curve", "stiffness", "failure load", "failure energy", "creep/recovery and cyclic fatigue"], "failure_modes": ["excess looseness", "over-stiff attachment", "brittle failure", "fatigue or creep"]},
+    {"domain": "gingiva_and_barrier", "measurements": ["margin and papilla geometry", "tissue volume and phenotype", "epithelial seal", "perfusion", "inflammation and recurrence"], "failure_modes": ["coverage without healthy attachment", "recession", "pocketing", "chronic inflammation"]},
+    {"domain": "pulp_vitality_and_sensation", "measurements": ["pulp perfusion and viability", "sensory response", "continued host integration"], "failure_modes": ["necrosis", "pulpal calcification", "loss of sensation"]},
+    {"domain": "durability_and_identity", "measurements": ["adult lineage markers and morphology", "genomic integrity", "proliferation control", "function after intervention withdrawal", "longitudinal positional stability"], "failure_modes": ["dedifferentiation", "uncontrolled proliferation", "loss of function", "relapse"]}
+  ],
+  "unit_of_analysis": "Declare species, individual, tooth, socket, sample, donor and repeated-measure hierarchy for every result. Do not convert group means to specimen-level data.",
+  "minimum_gate": "Convergent geometry, living attachment histology, physiologic mobility, load-bearing function, absence of ankylosis/resorption, and stability after temporary support is removed. A single molecular marker or stiffness result is insufficient.",
+  "current_evidence_boundary": "Available evidence here is preclinical and does not establish a human method to reverse a trauma-displaced in-situ tooth without orthodontic repositioning or short-term stabilization."
+}

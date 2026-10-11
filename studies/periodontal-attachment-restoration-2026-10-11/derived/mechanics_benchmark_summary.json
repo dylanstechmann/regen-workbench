@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "primary_quantitative_study": "10.1038/s41598-022-06865-6",
+  "additional_functional_attachment_study": "10.1089/ten.TEA.2010.0264",
+  "source_retrieval_receipt": "../dental-attachment-mechanics-2026-10-11/source_extraction_receipt.json",
+  "key_findings": {
+    "day21_PDGF_BB_failure_load_fraction": 0.54,
+    "day21_PDGF_BB_extension_fraction": 0.68,
+    "day21_PDGF_BB_toughness_fraction": 0.44,
+    "day21_PDGF_BB_stiffness": "qualitatively almost control; exact ratio is not stated in the text",
+    "area_standardized_strength_conflict": "The paper calls 2.45/3.39 N/mm^2 approximately 76%; direct division of the rounded values is 72.27%. Keep both statements visible pending source-data clarification.",
+    "day21_fractures": {
+      "NC": "0/10",
+      "PBS": "8/9",
+      "AC": "10/10",
+      "PDGF-BB": "3/10"
+    },
+    "progenitor_replant_displacement": "At 10 N, 156±19 μm in treated replants vs 141±23 μm WT; at 15 N, 300±26 μm vs 297±34 μm, in one rat replantation study."
+  },
+  "interpretation": [
+    "Strength, extensibility, toughness, physiologic mobility, fiber insertion and absence of ankylosis are separate restoration outcomes.",
+    "An apparent stiffness match is insufficient: parallel PDL and bone-bridge load paths can produce the same initial stiffness while differing in mobility, dissipation and tissue identity.",
+    "The evidence demonstrates animal proof-of-concept for complete progenitor-driven periodontal reattachment after replantation, not a therapy for crooked in-situ human teeth after blunt trauma.",
+    "An in-situ tooth displaced by trauma may heal in a shifted position; restoration research must measure position, socket/cementum/PDL insertion, occlusion, mobility, toughness and relapse after temporary stabilization is removed."
+  ],
+  "model_scope": {
+    "name": "parallel-load-path identifiability demonstration",
+    "equation": "K_apparent = K_functional_PDL + K_bone_bridge",
+    "units": "dimensionless fractions of a hypothetical control tangent stiffness",
+    "status": "illustrative algebra only; not fitted to these studies and not a finite-element or tissue constitutive model",
+    "purpose": "Show why recovered apparent stiffness alone cannot distinguish a functional shock-absorbing ligament from a stiff ankylotic bridge. Independent mobility, toughness, attachment histology and bridge measurements are needed."
+  },
+  "generated_utc": "2026-10-11T16:10:50.247018+00:00",
+  "figure_created": true
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "purpose": "Source-traced, dimensionless functional benchmarks for periodontal attachment restoration; not clinical treatment recommendations.",
+  "sources": [
+    {
+      "doi": "10.1038/s41598-022-06865-6",
+      "pmcid": "PMC8881622",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8881622/",
+      "species_and_model": "Rat maxillary first-molar replantation; local PDGF-BB pretreatment; day-21 comparison with non-replanted controls.",
+      "sample_basis": "Mean mechanical outcomes from groups of 6–10 rats as stated in Figure 2 caption; fracture counts reported by group and time in Table 1.",
+      "reported_day21_mechanics": [
+        {"metric": "maximum_load", "value": 0.54, "unit": "fraction_of_NC_mean", "source_wording": "mean failure load recovered to 54% of control"},
+        {"metric": "maximum_deformation", "value": 0.68, "unit": "fraction_of_NC_mean", "source_wording": "mean extensibility recovered to 68% of control"},
+        {"metric": "tangent_modulus", "value": null, "unit": "qualitative", "source_wording": "mean stiffness recovered almost to the level of NC"},
+        {"metric": "failure_energy", "value": 0.44, "unit": "fraction_of_NC_mean", "source_wording": "mean toughness recovered to 44% of NC"},
+        {"metric": "area_standardized_maximum_load", "value": 0.76, "unit": "fraction_of_control_as_reported", "source_wording": "paper says 2.45 N/mm^2 in PDGF-BB was approximately 76% of 3.39 N/mm^2 control"},
+        {"metric": "area_standardized_maximum_load_quotient", "value": 0.7227138643, "unit": "fraction_of_control_calculated_from_rounded_values", "source_wording": "2.45 divided by 3.39; does not equal the paper's stated approximately 76%"}
+      ],
+      "day21_fractures": {"NC": {"fractures": 0, "n": 10}, "PBS": {"fractures": 8, "n": 9}, "AC": {"fractures": 10, "n": 10}, "PDGF-BB": {"fractures": 3, "n": 10}},
+      "ankylosis_at_day21": {"PBS": {"teeth": 4, "n": 4}, "AC": {"teeth": 4, "n": 4}, "PDGF-BB": {"teeth": 1, "n": 4}, "NC": {"teeth": 0, "n": 4}},
+      "important_limit": "The extraction test is not normal chewing; endpoint ratios are group means, not specimen-level data. Ankylosis imaging used a separate n=4 group. Replantation also left abnormal bone-like structures in the pulp in most treated replanted teeth."
+    },
+    {
+      "doi": "10.1089/ten.TEA.2010.0264",
+      "pmcid": "PMC3029000",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3029000/",
+      "species_and_model": "Mouse periodontal-ligament progenitors seeded onto denuded rat molar roots and replanted into rat sockets; 8- and 16-week outcomes.",
+      "source_access": "Primary article abstract/full-text page reviewed; Europe PMC fullTextXML endpoint returned HTTP 500 during local retrieval, so this study is not represented as a locally downloaded specimen-level dataset.",
+      "reported_functional_displacement": [
+        {"load_N": 10, "WT_mean_um": 141, "WT_SD_um": 23, "progenitor_replant_mean_um": 156, "progenitor_replant_SD_um": 19},
+        {"load_N": 15, "WT_mean_um": 297, "WT_SD_um": 34, "progenitor_replant_mean_um": 300, "progenitor_replant_SD_um": 26},
+        {"load_N": 1, "loose_untreated_replant_mean_um": 626, "loose_untreated_replant_SD_um": 31}
+      ],
+      "reported_attachment": "All 22 progenitor-treated replanted molars were firmly attached at 8 and 16 weeks; at 16 weeks the paper reports a physiologic periodontal apparatus and displacement similar to wild-type controls.",
+      "important_limit": "This is an invasive replantation study in rats using mouse progenitor cells; it does not establish a method for repositioning an in-situ, trauma-displaced human tooth or avoiding all short-term stabilization."
+    }
+  ],
+  "reduced_model": {
+    "name": "parallel-load-path identifiability demonstration",
+    "equation": "K_apparent = K_functional_PDL + K_bone_bridge",
+    "units": "dimensionless fractions of a hypothetical control tangent stiffness",
+    "status": "illustrative algebra only; not fitted to these studies and not a finite-element or tissue constitutive model",
+    "purpose": "Show why recovered apparent stiffness alone cannot distinguish a functional shock-absorbing ligament from a stiff ankylotic bridge. Independent mobility, toughness, attachment histology and bridge measurements are needed."
+  }
+}
