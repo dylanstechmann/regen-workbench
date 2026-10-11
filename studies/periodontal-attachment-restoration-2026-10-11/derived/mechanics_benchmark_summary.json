@@ -8,7 +8,8 @@
     "day21_PDGF_BB_extension_fraction": 0.68,
     "day21_PDGF_BB_toughness_fraction": 0.44,
     "day21_PDGF_BB_stiffness": "qualitatively almost control; exact ratio is not stated in the text",
-    "area_standardized_strength_conflict": "The paper calls 2.45/3.39 N/mm^2 approximately 76%; direct division of the rounded values is 72.27%. Keep both statements visible pending source-data clarification.",
+    "area_standardized_strength_conflict": "The paper reports approximately 76%, but official Supplementary Table S3 confirms 2.45 and 3.39 N/mm^2, whose quotient is 72.27%. Reconstructing from group mean loads divided by one representative tooth area per group gives 72.39%. The discrepancy is unreconciled; the article says supporting data are available upon reasonable request.",
+    "area_normalized_strength_audit": "derived/area_normalized_strength_audit.json",
     "day21_fractures": {
       "NC": "0/10",
       "PBS": "8/9",
@@ -30,6 +31,6 @@
     "status": "illustrative algebra only; not fitted to these studies and not a finite-element or tissue constitutive model",
     "purpose": "Show why recovered apparent stiffness alone cannot distinguish a functional shock-absorbing ligament from a stiff ankylotic bridge. Independent mobility, toughness, attachment histology and bridge measurements are needed."
   },
-  "generated_utc": "2026-10-11T16:10:50.247018+00:00",
-  "figure_created": true
+  "generated_utc": "2026-10-11T16:37:47.420394+00:00",
+  "figure_created": false
 }

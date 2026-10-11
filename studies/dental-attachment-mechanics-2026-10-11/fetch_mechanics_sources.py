@@ -18,6 +18,15 @@ SOURCES = {
     "PMC8881622": "10.1038/s41598-022-06865-6",
     "PMC3029000": "10.1089/ten.TEA.2010.0264",
 }
+SUPPLEMENTS = {
+    "PMC8881622": {
+        "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41598-022-06865-6/MediaObjects/41598_2022_6865_MOESM1_ESM.pdf",
+        "filename": "41598_2022_6865_MOESM1_ESM.pdf",
+        "md5": "1c3c2d21a96406cdef8fe243d5fa1924",
+        "table": "Supplementary Table S3",
+        "page": 6,
+    }
+}
 
 
 def text(element: ET.Element | None) -> str:
@@ -94,20 +103,47 @@ def main() -> None:
         record = parse_article(pmcid, root, raw)
         record["local_provenance_receipt"] = provenance.name if provenance else None
         records.append(record)
+    supplements = []
+    for pmcid, source in SUPPLEMENTS.items():
+        try:
+            raw = regen.http_bytes(source["url"])
+        except urllib.error.URLError as exc:
+            failures.append({"pmcid": pmcid, "doi": SOURCES[pmcid], "url": source["url"],
+                             "status": getattr(exc, "code", None),
+                             "error_type": type(exc).__name__, "retrieved_utc": regen.now(),
+                             "kind": "supplementary_file"})
+            continue
+        md5 = hashlib.md5(raw).hexdigest()
+        if md5 != source["md5"]:
+            raise ValueError(f"Supplement checksum mismatch for {pmcid}: {md5}")
+        target = output_dir / source["filename"]
+        target.write_bytes(raw)
+        provenance = regen.record("dental-mechanics-primary-supplement",
+                                  {"pmcid": pmcid, "doi": SOURCES[pmcid],
+                                   "url": source["url"], "md5": md5}, [target])
+        supplements.append({"pmcid": pmcid, "doi": SOURCES[pmcid],
+                            "source_url": source["url"], "retrieved_utc": regen.now(),
+                            "bytes": len(raw), "md5": md5,
+                            "sha256": hashlib.sha256(raw).hexdigest(),
+                            "local_path": f"data/literature/dental-attachment-mechanics/{source['filename']}",
+                            "table": source["table"], "page": source["page"],
+                            "local_provenance_receipt": provenance.name if provenance else None})
     receipt = {
         "schema_version": 1,
-        "scope": "Two primary studies selected for a periodontal-attachment mechanics comparison. Full text is retained for successfully retrieved records only; endpoint failures are listed separately.",
+        "scope": "Two primary studies selected for a periodontal-attachment mechanics comparison, plus the official supplementary PDF for the PDGF-BB study. Full text and supplement are retained for successfully retrieved records only; endpoint failures are listed separately.",
         "records": records,
+        "supplementary_files": supplements,
         "retrieval_failures": failures,
         "limitations": [
             "Primary article data may be reported only in plots or group summaries; this receipt does not turn graphical values into specimen-level observations.",
             "The two studies use different species, injuries and mechanical loading protocols and are not pooled.",
+            "Supplementary Table S3 reports group mean maximum loads with surface areas from one representative CT-measured tooth per group; public per-tooth mechanics records were not located.",
             "A failed full-text endpoint request records a retrieval limitation, not evidence that the article or its findings are invalid.",
         ],
     }
     path = HERE / "source_extraction_receipt.json"
     path.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({"sources": [{"pmcid": row["pmcid"], "title": row["title"], "tables": row["table_count"], "bytes": row["bytes"], "sha256": row["sha256"], "provenance": row["local_provenance_receipt"]} for row in records]}))
+    print(json.dumps({"sources": [{"pmcid": row["pmcid"], "title": row["title"], "tables": row["table_count"], "bytes": row["bytes"], "sha256": row["sha256"], "provenance": row["local_provenance_receipt"]} for row in records], "supplements": supplements}))
 
 
 if __name__ == "__main__":

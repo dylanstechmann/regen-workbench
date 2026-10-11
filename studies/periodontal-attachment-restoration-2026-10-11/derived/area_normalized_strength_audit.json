@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "purpose": "Source-level arithmetic audit; not a reanalysis of animal-level data.",
+  "primary_article_doi": "10.1038/s41598-022-06865-6",
+  "supplement_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41598-022-06865-6/MediaObjects/41598_2022_6865_MOESM1_ESM.pdf",
+  "supplement_sha256": "b0928f98e6069a81e84598cd572f8700db85de38cd9ea7b6ad429e7b8847f555",
+  "supplement_md5": "1c3c2d21a96406cdef8fe243d5fa1924",
+  "source_table": "Supplementary Table S3, page 6",
+  "table_reconstruction": {
+    "NC": {
+      "representative_tooth_id": "#5545",
+      "root_surface_areas_mm2": [
+        3.72,
+        2.23,
+        1.88,
+        2.23
+      ],
+      "total_root_surface_area_mm2": "10.06",
+      "root_surface_area_sum_check": "10.06",
+      "group_mean_maximum_load_N": "34.1",
+      "reconstructed_strength_N_per_mm2": "3.38966203",
+      "table_strength_N_per_mm2": "3.39"
+    },
+    "PDGF_BB": {
+      "representative_tooth_id": "#5430",
+      "root_surface_areas_mm2": [
+        2.75,
+        1.57,
+        1.51,
+        1.75
+      ],
+      "total_root_surface_area_mm2": "7.58",
+      "root_surface_area_sum_check": "7.58",
+      "group_mean_maximum_load_N": "18.6",
+      "reconstructed_strength_N_per_mm2": "2.45382586",
+      "table_strength_N_per_mm2": "2.45"
+    }
+  },
+  "ratio_comparisons": {
+    "published_text_fraction": "0.76",
+    "published_table_strength_quotient": "0.7227138643",
+    "published_table_strength_quotient_percent": "72.2714",
+    "ratio_reconstructed_from_group_mean_load_and_representative_area": "0.7239146081",
+    "ratio_reconstructed_percent": "72.3915",
+    "rounded_table_strength_quotient_range_percent": {
+      "lower": "72.0177",
+      "upper": "72.5258",
+      "assumption": "Each printed strength is rounded to the nearest 0.01 N/mm^2."
+    },
+    "treatment_strength_needed_for_76_percent_at_reported_control": "2.576400 N/mm^2",
+    "control_strength_needed_for_76_percent_at_reported_treatment": "3.223684 N/mm^2",
+    "gap_between_published_claim_and_rounded_quotient_percentage_points": "3.7286"
+  },
+  "finding": "The official supplement reproduces the displayed 2.45 and 3.39 N/mm^2 values, but their quotient is 72.27%; using the Table S3 loads and representative-tooth areas gives 72.39%. Rounding the displayed strengths cannot produce 76%. The discrepancy remains unresolved without the underlying records or calculation worksheet.",
+  "unit_of_analysis_limit": "Table S3 combines group mean maximum load from Figure 2d with root surface area measured on one representative tooth per group. This is a source-level ratio audit, not a per-animal area-normalized effect estimate; the paper says supporting data are available on reasonable request."
+}

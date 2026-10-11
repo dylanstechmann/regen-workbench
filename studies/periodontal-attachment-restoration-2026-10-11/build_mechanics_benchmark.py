@@ -97,7 +97,8 @@ def main() -> None:
             "day21_PDGF_BB_extension_fraction": 0.68,
             "day21_PDGF_BB_toughness_fraction": 0.44,
             "day21_PDGF_BB_stiffness": "qualitatively almost control; exact ratio is not stated in the text",
-            "area_standardized_strength_conflict": "The paper calls 2.45/3.39 N/mm^2 approximately 76%; direct division of the rounded values is 72.27%. Keep both statements visible pending source-data clarification.",
+            "area_standardized_strength_conflict": "The paper reports approximately 76%, but official Supplementary Table S3 confirms 2.45 and 3.39 N/mm^2, whose quotient is 72.27%. Reconstructing from group mean loads divided by one representative tooth area per group gives 72.39%. The discrepancy is unreconciled; the article says supporting data are available upon reasonable request.",
+            "area_normalized_strength_audit": "derived/area_normalized_strength_audit.json",
             "day21_fractures": {"NC": "0/10", "PBS": "8/9", "AC": "10/10", "PDGF-BB": "3/10"},
             "progenitor_replant_displacement": "At 10 N, 156±19 μm in treated replants vs 141±23 μm WT; at 15 N, 300±26 μm vs 297±34 μm, in one rat replantation study."
         },
@@ -117,7 +118,7 @@ def main() -> None:
     try:
         import matplotlib.pyplot as plt
         fig, axes = plt.subplots(1, 2, figsize=(12, 5), constrained_layout=True)
-        labels = ["Failure\nload", "Extension", "Toughness", "Strength\n(paper: ~76%)", "Strength\n(quotient: 72.3%)"]
+        labels = ["Failure\nload", "Extension", "Toughness", "Strength\n(paper: ~76%)", "Strength\n(table: 72.3%)"]
         values = [0.54, 0.68, 0.44, 0.76, 2.45/3.39]
         colors = ["#0072B2", "#56B4E9", "#D55E00", "#009E73", "#CC79A7"]
         axes[0].bar(range(len(values)), values, color=colors)
@@ -125,7 +126,7 @@ def main() -> None:
         axes[0].set_ylim(0, 1.08)
         axes[0].set_ylabel("Fraction of uninjured-control mean")
         axes[0].set_xticks(range(len(values)), labels, fontsize=8)
-        axes[0].set_title("Day-21 rat outcomes\nPaper: 76%; rounded values: 72.3%")
+        axes[0].set_title("Day-21 rat outcomes\nSupplementary Table S3 checked")
 
         pdl = [float(row["hypothetical_functional_PDL_stiffness_fraction"]) for row in aliases]
         bridge = [float(row["hypothetical_bone_bridge_stiffness_fraction"]) for row in aliases]

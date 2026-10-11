@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Two primary studies selected for a periodontal-attachment mechanics comparison. Full text is retained for successfully retrieved records only; endpoint failures are listed separately.",
+  "scope": "Two primary studies selected for a periodontal-attachment mechanics comparison, plus the official supplementary PDF for the PDGF-BB study. Full text and supplement are retained for successfully retrieved records only; endpoint failures are listed separately.",
   "records": [
     {
       "pmcid": "PMC8881622",
@@ -8,7 +8,7 @@
       "title": "Platelet-derived growth factor-BB regenerates functional periodontal ligament in the tooth replantation",
       "license_text": "https://creativecommons.org/licenses/by/4.0/ Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/ .",
       "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8881622/fullTextXML",
-      "retrieved_utc": "2026-10-11T16:03:38.396696+00:00",
+      "retrieved_utc": "2026-10-11T16:37:32.639128+00:00",
       "bytes": 110269,
       "sha256": "6dd225affcea8e6c6638d51cea394c25219139504d92d397040a8b78e8f2eebf",
       "local_fulltext_path": "data/literature/dental-attachment-mechanics/PMC8881622-fulltext.xml",
@@ -93,7 +93,22 @@
           "caption": "PDGF-BB attenuates effects of canonical Wnt signaling on PDL fibroblasts in vitro. ( A ) Gene expressions of CTNNB1 (a), AXIN2 (b), RUNX2 (c), COL1A1 (d), and ALP (e) in human PDL fibroblasts treated with 0.3% FBS, PDGF-BB (5 ng/mL), Wnt3a (25 ng/mL), or their combination (P&W) for 4 days. Significant differences between two groups, *p < 0.05, **p < 0.01, ***p < 0.001 (Fisher PLSD method). ( B ) (a) Protein level of active form of β-catenin were measured by western blotting. Lysate was generated from human PDL cells at 24 h after each treatment. Tubulin was used as a loading control. Original blots are presented in Supplementary Fig. S6 . (b) The densities of the active β-catenin protein bands were normalized relative to Tubulin protein bands."
         }
       ],
-      "local_provenance_receipt": "1791734618393454623_dental-mechanics-primary-fulltext.json"
+      "local_provenance_receipt": "1791736652637090100_dental-mechanics-primary-fulltext.json"
+    }
+  ],
+  "supplementary_files": [
+    {
+      "pmcid": "PMC8881622",
+      "doi": "10.1038/s41598-022-06865-6",
+      "source_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41598-022-06865-6/MediaObjects/41598_2022_6865_MOESM1_ESM.pdf",
+      "retrieved_utc": "2026-10-11T16:37:43.773314+00:00",
+      "bytes": 1251121,
+      "md5": "1c3c2d21a96406cdef8fe243d5fa1924",
+      "sha256": "b0928f98e6069a81e84598cd572f8700db85de38cd9ea7b6ad429e7b8847f555",
+      "local_path": "data/literature/dental-attachment-mechanics/41598_2022_6865_MOESM1_ESM.pdf",
+      "table": "Supplementary Table S3",
+      "page": 6,
+      "local_provenance_receipt": "1791736663772315000_dental-mechanics-primary-supplement.json"
     }
   ],
   "retrieval_failures": [
@@ -103,12 +118,13 @@
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3029000/fullTextXML",
       "status": 500,
       "error_type": "HTTPError",
-      "retrieved_utc": "2026-10-11T16:04:01.491972+00:00"
+      "retrieved_utc": "2026-10-11T16:37:42.571123+00:00"
     }
   ],
   "limitations": [
     "Primary article data may be reported only in plots or group summaries; this receipt does not turn graphical values into specimen-level observations.",
     "The two studies use different species, injuries and mechanical loading protocols and are not pooled.",
+    "Supplementary Table S3 reports group mean maximum loads with surface areas from one representative CT-measured tooth per group; public per-tooth mechanics records were not located.",
     "A failed full-text endpoint request records a retrieval limitation, not evidence that the article or its findings are invalid."
   ]
 }
