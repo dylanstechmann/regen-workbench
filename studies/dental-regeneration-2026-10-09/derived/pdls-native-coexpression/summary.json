@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "accession": "GSE306722",
+  "run_utc": "2026-10-11T06:26:01.850344+00:00",
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  },
+  "binding": {
+    "matrix_audit_sha256": "1bf91fc46d885afb678f5b8590b15ef7dec487cadfc3605198164d943966040f",
+    "panel_sha256": "9994a0e3d401eac99ed3a1a6f743e1a62f8242d8bb594dfb6517dd659b66a2f2",
+    "source_linkage_audit_sha256": "ff39eec989005ad92a977a6177718fd02b6d38c2ae5f1af222a9c238f5e54b66",
+    "analysis_script_sha256": "26b8c6ab7bb667634511869f705c30dc9ebb930b89ac325d2e827e549ca45493",
+    "code_revision_at_run": "e009ad245fffa8507e838b7f5fe85614a04f7587",
+    "inputs": [
+      {
+        "geo_sample": "GSM9206804",
+        "files_sha256": {
+          "features": "bb3b92f1e134e6943cb764c24867a0940790694ad0bd866b8c4324c851ac8db7",
+          "barcodes": "12defd4c508a6156d61bd86f24c9919316474b3796372d91730cec2cf5f6270b",
+          "matrix": "4600bf429b9737c6f252f08f19e2dbddc6bc4a26ebfe36f5e3a875c4a19b2e9c"
+        }
+      },
+      {
+        "geo_sample": "GSM9206805",
+        "files_sha256": {
+          "features": "8303f9573a056d7970ff21a815fed0ef2280ab458801a98db52d62f269ed964f",
+          "barcodes": "4e5a7dff2d412391e63d678b6de38089b25ac188ede0a17312bd0c36394a26be",
+          "matrix": "dbcf209988cf6d7255b4986b8ab948515f8fbc9d51912ce6f41208dbc25c40f1"
+        }
+      }
+    ]
+  },
+  "matrix_genes": [
+    "POSTN",
+    "COL1A1",
+    "DCN",
+    "COL12A1"
+  ],
+  "ligament_associated_genes": [
+    "SCX",
+    "TNMD",
+    "MKX",
+    "CILP",
+    "ITGA11"
+  ],
+  "competing_contexts": {
+    "endothelial_any": [
+      "PECAM1",
+      "CDH5"
+    ],
+    "perivascular_any": [
+      "RGS5",
+      "KCNJ8"
+    ],
+    "immune_any": [
+      "CD3D",
+      "CD3E",
+      "LYZ",
+      "CSF1R"
+    ]
+  },
+  "entry_positive_thresholds": [
+    1,
+    2
+  ],
+  "screens": [
+    "all_barcodes",
+    "source_rule_sensitivity"
+  ],
+  "samples": [
+    {
+      "geo_sample": "GSM9206804",
+      "stage_label_from_source_fields": "immature",
+      "barcodes": 12769,
+      "screen_counts": {
+        "all_barcodes": 12769,
+        "source_rule_sensitivity": 11852
+      },
+      "matrix_genes": [
+        "POSTN",
+        "COL1A1",
+        "DCN",
+        "COL12A1"
+      ],
+      "ligament_associated_genes": [
+        "SCX",
+        "TNMD",
+        "MKX",
+        "CILP",
+        "ITGA11"
+      ],
+      "entry_positive_thresholds": [
+        1,
+        2
+      ],
+      "anchor_rules": {
+        "at_least_2_of_4": 2,
+        "at_least_3_of_4": 3
+      },
+      "context_positive_counts_all_barcodes_threshold_1": {
+        "endothelial_any": 3363,
+        "perivascular_any": 1910,
+        "immune_any": 3653
+      }
+    },
+    {
+      "geo_sample": "GSM9206805",
+      "stage_label_from_source_fields": "mature",
+      "barcodes": 12993,
+      "screen_counts": {
+        "all_barcodes": 12993,
+        "source_rule_sensitivity": 11819
+      },
+      "matrix_genes": [
+        "POSTN",
+        "COL1A1",
+        "DCN",
+        "COL12A1"
+      ],
+      "ligament_associated_genes": [
+        "SCX",
+        "TNMD",
+        "MKX",
+        "CILP",
+        "ITGA11"
+      ],
+      "entry_positive_thresholds": [
+        1,
+        2
+      ],
+      "anchor_rules": {
+        "at_least_2_of_4": 2,
+        "at_least_3_of_4": 3
+      },
+      "context_positive_counts_all_barcodes_threshold_1": {
+        "endothelial_any": 2980,
+        "perivascular_any": 2760,
+        "immune_any": 2097
+      }
+    }
+  ],
+  "claim_limits": {
+    "raw_umi_lineage_qualified": false,
+    "donor_inference_eligible": false,
+    "cell_type_annotations_assigned": false,
+    "functional_attachment_measured": false
+  },
+  "local_provenance_receipt": "1791699961898458509_dental-pdls-native-coexpression.json",
+  "outputs": [
+    {
+      "filename": "pdls_native_coexpression.tsv",
+      "sha256": "345b035d42ed093d39573c2d8ad4286a7b16f597f010a0ec1e20e5ff74b69066",
+      "bytes": 13175
+    },
+    {
+      "filename": "pdls_native_pairwise_coexpression.tsv",
+      "sha256": "a97d36350471397a6187f2fcf29b6696075296ed7d8549f5fc27a5b4e6ce37d8",
+      "bytes": 20342
+    },
+    {
+      "filename": "pdls_native_coexpression_contexts.tsv",
+      "sha256": "a29d42ae64f5ef648562a8168bc3942a6b6c8bc2bb02422e5d4c5c82b2b7c8f9",
+      "bytes": 12591
+    },
+    {
+      "filename": "pdls_native_coexpression_burdens.tsv",
+      "sha256": "10c8e12cda240aa31f8c9b3297158114c75607040f6f502a2f440e0c5dd9925d",
+      "bytes": 1788
+    },
+    {
+      "filename": "pdls_native_coexpression.png",
+      "sha256": "a908c6936253004dab3834734441fa64a6e09d8a37879bc7c349e029b0923ddb",
+      "bytes": 138043
+    },
+    {
+      "filename": "PDLSC_NATIVE_COEXPRESSION.md",
+      "sha256": "65305d82cc522b6f9a0dd168962af996882fb45f71597e37c21f79e77559cdb6",
+      "bytes": 5987
+    }
+  ]
+}

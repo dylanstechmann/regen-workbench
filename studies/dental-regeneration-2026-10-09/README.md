@@ -82,6 +82,16 @@ cp10k summaries and bulk TPM panels retain separate measurement units; neither
 qualifies a biological-age score or functional attachment.
 The compact [native analysis receipt](pdls_native_marker_receipt.json) records
 the code, panel, source and output hashes; full tables and figures stay local.
+The follow-up [within-record co-detection analysis](PDLSC_NATIVE_COEXPRESSION.md)
+asks whether ligament-associated signals occur together with a fixed
+multi-marker matrix pattern. At the ≥1 deposited-entry threshold, 4,099 immature
+and 7,228 mature-record barcodes meet the two-of-four matrix-marker rule;
+SCX/TNMD/MKX are all detected together in zero and three of those barcodes,
+respectively. These source labels describe root-development maturity, and the
+records have no donor map; sparse co-detection is descriptive and does not
+establish ligament identity or function. Its compact count tables, sensitivity
+results and figure are in
+[`derived/pdls-native-coexpression/`](derived/pdls-native-coexpression/).
 The [cross-study PDL comparison](PDL_MODEL_COMPARISON.md) keeps all evidence
 stages and denominators distinct. The [rat iPSC–BMP-6 defect review](IPSC_BMP6_RAT_DEFECT_REVIEW.md)
 retains its six-week ankylosis signal separately from the newer human iPS-PDL

@@ -1,0 +1,17 @@
+geo_sample	stage_label_from_source_fields	screen	entry_positive_threshold	matrix_anchor_rule	n_selected_barcodes	matrix_anchor_barcodes	anchor_with_at_least_1_of_5_ligament_genes	anchor_with_at_least_2_of_5_ligament_genes	anchor_with_at_least_3_of_5_ligament_genes	anchor_with_SCX_TNMD_MKX_triad	anchor_with_all_5_ligament_genes	triad_fraction_within_anchor
+GSM9206804	immature	all_barcodes	1	at_least_2_of_4	12769	4099	1125	247	24	0	0	0.0
+GSM9206804	immature	all_barcodes	1	at_least_3_of_4	12769	3029	1052	245	24	0	0	0.0
+GSM9206804	immature	all_barcodes	2	at_least_2_of_4	12769	3390	396	40	1	0	0	0.0
+GSM9206804	immature	all_barcodes	2	at_least_3_of_4	12769	2609	379	40	1	0	0	0.0
+GSM9206804	immature	source_rule_sensitivity	1	at_least_2_of_4	11852	4007	1113	247	24	0	0	0.0
+GSM9206804	immature	source_rule_sensitivity	1	at_least_3_of_4	11852	2976	1043	245	24	0	0	0.0
+GSM9206804	immature	source_rule_sensitivity	2	at_least_2_of_4	11852	3339	394	40	1	0	0	0.0
+GSM9206804	immature	source_rule_sensitivity	2	at_least_3_of_4	11852	2576	377	40	1	0	0	0.0
+GSM9206805	mature	all_barcodes	1	at_least_2_of_4	12993	7228	1326	195	17	3	0	0.00041505257332595465
+GSM9206805	mature	all_barcodes	1	at_least_3_of_4	12993	5603	1286	193	17	3	0	0.0005354274495805819
+GSM9206805	mature	all_barcodes	2	at_least_2_of_4	12993	6155	234	5	0	0	0	0.0
+GSM9206805	mature	all_barcodes	2	at_least_3_of_4	12993	4940	228	5	0	0	0	0.0
+GSM9206805	mature	source_rule_sensitivity	1	at_least_2_of_4	11819	6833	1281	189	16	3	0	0.00043904580711254205
+GSM9206805	mature	source_rule_sensitivity	1	at_least_3_of_4	11819	5358	1247	187	16	3	0	0.0005599104143337066
+GSM9206805	mature	source_rule_sensitivity	2	at_least_2_of_4	11819	5896	227	5	0	0	0	0.0
+GSM9206805	mature	source_rule_sensitivity	2	at_least_3_of_4	11819	4758	221	5	0	0	0	0.0
