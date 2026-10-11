@@ -90,6 +90,42 @@ does not re-evaluate the paper's protein assay or wound-migration assay.
 
 ![Matched four-collagen expression differences by donor line](derived/reprogramming-paired-analysis/paired_collagen_effects.png)
 
+## Check against a separate age-reference cohort
+
+To ask whether these four genes carry the same age direction in another
+fibroblast cohort, I also qualified the 143-sample [GSE113957](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE113957)
+FPKM table and kept the 133 GEO records marked `disease: Normal`; the ten HGPS
+records were excluded. The linked [Fleischer et al. paper](https://doi.org/10.1186/s13059-018-1599-6)
+uses this cohort to study age prediction, but this analysis does not use or
+rebuild its clock. I summed transcript-row FPKM values sharing the exact
+gene-symbol annotation and calculated descriptive Spearman correlations.
+
+Among 111 healthy adults aged 19–96, the age correlations were −0.408 for
+COL1A1, −0.086 for COL1A2, −0.317 for COL4A1 and −0.409 for COL4A2. These
+directions are opposite the positive day-13 post-withdrawal changes for all
+four genes. However, in the narrower 35–60-year subset (25 people), the same
+correlations were −0.093, +0.028, −0.022 and −0.063 (the sampled people were
+37–60 years old). That near-zero pattern means this four-gene panel does not
+establish a clear age-associated gradient in the age range of the MPTR donors.
+The transcript changes may reflect a specific matrix program rather than a
+general shift in biological age.
+
+The negative adult trends for COL1A1, COL4A1 and COL4A2 also remained in the
+adult male-only (n=82), female-only (n=29) and arm-skin (n=89) subsets; COL1A2
+remained weak or near-zero. These are unadjusted sensitivity summaries, not
+tests of sex-independent or site-independent aging. GEO metadata report one
+normal donor (AG04059; [GSM3124624](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM3124624))
+as age 96, while the 2018 article text describes the cohort range as 1–94.
+The calculations retain the GEO sample age and record the difference
+explicitly.
+
+Only the sign is compared across the two studies. GSE113957 FPKM and GSE165177
+log2 RPM have different processing and units, and the panel was preselected
+from the MPTR paper. This cannot validate an age clock or convert the observed
+changes into years younger.
+
+![Collagen marker expression across healthy adult donor ages](derived/reprogramming-paired-analysis/aging_reference_marker_age_trends.png)
+
 ## Interpretation and limits
 
 This is a reproducible, donor-matched consistency check on a paper's deposited
@@ -115,23 +151,24 @@ From the repository's running `workbench` container:
 ```bash
 python /lab/workbench/studies/aging-state-2026-10-11/fetch_reprogramming_inputs.py
 python /lab/workbench/studies/aging-state-2026-10-11/analyze_reprogramming_endpoints.py
+python /lab/workbench/studies/aging-state-2026-10-11/fetch_aging_reference.py
+python /lab/workbench/studies/aging-state-2026-10-11/analyze_fibroblast_age_reference.py
 ```
 
 The input receipt records the GEO file hashes, parsing limits and sample-title
-crosswalk. The derived outputs are in
+crosswalks for both datasets. The derived outputs are in
 [`derived/reprogramming-paired-analysis/`](derived/reprogramming-paired-analysis/):
 full 95-sample manifest, per-pair gene values, per-experiment panel effects,
-donor-line aggregates, gene-level summaries, panel summaries, figure and JSON
-analysis receipt. Large downloaded matrices remain in the local ignored data
-cache.
+donor-line aggregates, gene-level summaries, the separate 143-sample age
+reference values and correlation tables, figures and JSON analysis receipt.
+Large downloaded matrices remain in the local ignored data cache.
 
 ## Next evidence step
 
-The best follow-up is to compare the reported age-associated transcript
-direction against a separate human dermal-fibroblast aging reference (the
-source article cites GSE113957), keeping the rejuvenation samples and aging
-reference separate until gene IDs, processing and sample covariates are
-qualified. A collagen response alone cannot establish a younger overall cell
-state. The parallel regenerative-medicine track should continue to evaluate
-native periodontal attachment, tooth-forming organoids and functional
-stem-cell products against their own structural endpoints.
+The next aging step should compare a broader, prespecified age-associated
+transcript set and, separately, a published cross-cohort clock after auditing
+its training features and batch-correction requirements. The present four-gene
+response is too narrow to establish a younger overall cell state. The parallel
+regenerative-medicine track should continue to evaluate native periodontal
+attachment, tooth-forming organoids and functional stem-cell products against
+their own structural endpoints.

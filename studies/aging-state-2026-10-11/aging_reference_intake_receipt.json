@@ -1,0 +1,1063 @@
+{
+  "schema_version": 1,
+  "accession": "GSE113957",
+  "source": "NCBI GEO official FTP",
+  "retrieved_or_cache_checked_utc": "2026-10-11T07:00:29.338149+00:00",
+  "files": {
+    "series_metadata": {
+      "filename": "GSE113957_family.soft.gz",
+      "sha256": "041e5adfd00beb232d0e73503bfd8f51a0b5018e3849b7a5143e608aac6a86f4",
+      "compressed_bytes": 12751,
+      "sample_count": 143,
+      "metadata_json_sha256": "2dc569a7d8f9d613d9952452ec308a7779f236d02043cbcdf645dda49b9b2784",
+      "expanded_bytes": 554194,
+      "local_provenance_receipt": "reused_verified_cache"
+    },
+    "fpkm_matrix": {
+      "filename": "GSE113957_fpkm.txt.gz",
+      "sha256": "999c9d720ff7f0dfe59675f347803d3a0181231313aace2f8406f08528aa123d",
+      "compressed_bytes": 7532882,
+      "header": [
+        "Transcript ID",
+        "chr",
+        "start",
+        "end",
+        "strand",
+        "Length",
+        "Copies",
+        "Annotation/Divergence",
+        "101_19yr_Female_Caucasian",
+        "102_19yr_Male_Caucasian",
+        "103_19yr_Male_Caucasian",
+        "104_19yr_Male_Caucasian",
+        "105_20yr_Male_Caucasian",
+        "106_20yr_Female_Caucasian",
+        "107_31yr_Female_Caucasian",
+        "108_31_female_Caucasian",
+        "109_32_male_Unknown",
+        "110_32_female_BlackPuertoRican",
+        "111_33yr_Male_Caucasian",
+        "112_33yr_Male_Caucasian",
+        "114_37yr_Female_Unknown",
+        "115_37yr_Female_Unknown",
+        "117_37yr_Male_Caucasian",
+        "118_39yr_Male_Caucasian",
+        "120_51yr_Male_Caucasian",
+        "121_52yr_Male_Caucasian",
+        "122_55yr_Male_Caucasian",
+        "123_57_male_Caucasian",
+        "124_60yr_Male_Caucasian",
+        "125_71yr_Female_Caucasian",
+        "126_75_male_Caucasian",
+        "127_78yr_Male_Caucasian",
+        "128_80yr_Female_Caucasian",
+        "129_94_Male_Caucasian",
+        "130_89_Male_Caucasian",
+        "131_87_Male_Caucasian",
+        "132_90_Male_Caucasian",
+        "133_89_Male_Caucasian",
+        "134_86_Male_Caucasian",
+        "135_92_Male_Caucasian",
+        "136_87_Male_Caucasian",
+        "139_8_Female-HGPS_Caucasian",
+        "141_8_Male-HGPS_Unknown",
+        "14_1yr_Male_Asian",
+        "15_12yr_Male_Caucasian",
+        "155_22yr_Male_Caucasian",
+        "156_25yr_Female_Caucasian",
+        "157_29yr_Male_Unknown",
+        "158_24YR_Male_Caucasian",
+        "159_23YR_Male_AmericanIndian",
+        "160_26yr_Female_Asian",
+        "162_21YR_Male_Caucasian",
+        "16_24YR_Female_Caucasian",
+        "163_67YR_Female_Black",
+        "164_67YR_Female_Filipino",
+        "165_68YR_Male_Unknown",
+        "166_82yr_Female_Caucasian",
+        "167_66yr_Male_Black",
+        "168_68YR_Male_Caucasian",
+        "169_70yr_Male_Caucasian",
+        "170_69yr_Male_Caucasian",
+        "17_25YR_Male_caucasian",
+        "18_25YR_Female_caucasian",
+        "19_26YR_Male_Caucasian",
+        "197_2yr3mos_F_Unknown",
+        "198_3yr9mos_F_Unknown",
+        "199_4yr8mos_F_Unknown",
+        "200_8yr6mos_M_Unknown",
+        "201_6ys11mos_F_Unknown",
+        "202_5yr0mos_F_Unknown",
+        "20_26YR_Female_Caucasian",
+        "203_8yr10mos_M_Unknown",
+        "204_3yr0mos_F_Unknown",
+        "21_28YR_Male_Caucasian",
+        "22_29YR_Male_Caucasian",
+        "23_29YR_Male_Caucasian",
+        "24_30YR_Male_Caucasian",
+        "25_30YR_Female_Caucasian",
+        "26_30YR_Male_Caucasian",
+        "27_30YR_Male_Caucasian",
+        "28_43yr_Female_Caucasian",
+        "29_44yr_Male_Caucasian",
+        "30_41yr_Male_Caucasian",
+        "31_47yr_Male_Caucasian",
+        "32_50yr_Female_Caucasian",
+        "33_46yr_Male_Caucasian",
+        "34_50yr_Male_Caucasian",
+        "35_42yr_Female_Caucasian",
+        "36_47yr_Male_Caucasian",
+        "37_41yr_Female_Caucasian",
+        "38_43yr_Male_Caucasian",
+        "39_44yr_Male_Caucasian",
+        "40_45yr_Male_Caucasian",
+        "41_46yr_Male_Caucasian",
+        "42_46yr_Male_Caucasian",
+        "43_47yr_Male_Caucasian",
+        "44_61YR_Male_Caucasian",
+        "45_62YR_Female_Caucasian",
+        "46_62YR_Female_Caucasian",
+        "47_63YR_Male_Caucasian",
+        "48_64YR_Male_Caucasian",
+        "49_66YR_Male_Caucasian",
+        "50_67YR_Male_Caucasian",
+        "51_67YR_Male_Caucasian",
+        "52_68YR_Male_Caucasian",
+        "53_68YR_Male_Caucasian",
+        "54_69YR_Male_Caucasian",
+        "55_69YR_Female_Caucasian",
+        "56_83_Male_Caucasian",
+        "57_83_Male_Caucasian",
+        "58_83_Male_Caucasian",
+        "59_84_Female_Caucasian",
+        "60_84_Male_Caucasian",
+        "61_84_Female_Caucasian",
+        "62_84_Male_Caucasian",
+        "63_84_Male_Caucasian",
+        "64_84_Male_Caucasian",
+        "65_84_Male_Caucasian",
+        "66_86_Male_CaucasianSardinian",
+        "67_86_Male_caucasian",
+        "68_86_Male_caucasian",
+        "69_87_Female_caucasian",
+        "70_87_Male_caucasian",
+        "71_87_Male_caucasian",
+        "72_87_Male_Black",
+        "73_88_Male_Caucasian",
+        "74_89_Male_Caucasian",
+        "75_90_Male_Caucasian",
+        "76_91_Male_Caucasian",
+        "77_92_Female_Caucasian",
+        "78_96_Male_Caucasian",
+        "79_1_male_Caucasian",
+        "80_2_female_Caucasian",
+        "81_3_male_LatinoHispanic",
+        "82_3_male_Unknown",
+        "83_5yr_Male_Black",
+        "84_6yr_Male_Black",
+        "85_7yr_Male_Black",
+        "86_7yr_Male_Caucasian",
+        "87_8yr_Male_Caucasian",
+        "88_8yr_Male_Caucasian",
+        "89_9yr_Female_Black",
+        "90_10yr_Male_Black",
+        "91_10yr_Male_Caucasian",
+        "92_11_female_Caucasian",
+        "93_11_female_Caucasian",
+        "94_12_male_Caucasian",
+        "95_13yr_Male_WhiTEEASTINDIAN",
+        "97_16yr_Female_Unknown",
+        "98_17yr_Male_Caucasian",
+        "99_17yr_Male_Caucasian"
+      ],
+      "line_count_including_header": 27143,
+      "data_row_count": 27142,
+      "column_count": 151,
+      "expanded_bytes": 20290213,
+      "first_feature_row": [
+        "NM_173803",
+        "chr16",
+        "15489611",
+        "15503543",
+        "+",
+        "2233",
+        "1",
+        "MPV17L|M-LPH|MLPH1|MLPH2|MPV17L1|-|16p13.11|protein-coding",
+        "0.133",
+        "0.213",
+        "0.054",
+        "0.066",
+        "0.156",
+        "0.196",
+        "0.193",
+        "0.149",
+        "0.059",
+        "0.025",
+        "0.15",
+        "0.069",
+        "0.022",
+        "0.079",
+        "0.098",
+        "0",
+        "0.314",
+        "0.102",
+        "0.083",
+        "0.104",
+        "0.115",
+        "0.14",
+        "0.122",
+        "0.179",
+        "0.203",
+        "0.107",
+        "0.039",
+        "0.299",
+        "0.047",
+        "0.094",
+        "0.162",
+        "0.074",
+        "0.038",
+        "0.277",
+        "0.068",
+        "0.209",
+        "0.023",
+        "0.246",
+        "0.139",
+        "0.096",
+        "0.148",
+        "0.173",
+        "0.117",
+        "0.152",
+        "0.171",
+        "0.076",
+        "0.178",
+        "0.235",
+        "0.163",
+        "0.246",
+        "0.149",
+        "0.121",
+        "0.314",
+        "0.048",
+        "0.149",
+        "0.079",
+        "0.164",
+        "0.204",
+        "0.107",
+        "0.147",
+        "0.18",
+        "0.068",
+        "0.113",
+        "0.08",
+        "0.067",
+        "0.139",
+        "0.083",
+        "0.089",
+        "0.095",
+        "0.141",
+        "0.12",
+        "0.033",
+        "0.104",
+        "0.108",
+        "0.081",
+        "0.025",
+        "0.144",
+        "0.115",
+        "0.315",
+        "0.062",
+        "0",
+        "0.083",
+        "0.265",
+        "0.052",
+        "0",
+        "0.067",
+        "0.077",
+        "0.078",
+        "0.159",
+        "0.186",
+        "0.187",
+        "0.103",
+        "0.03",
+        "0.067",
+        "0.226",
+        "0.088",
+        "0.048",
+        "0.175",
+        "0.12",
+        "0.28",
+        "0.077",
+        "0.095",
+        "0.113",
+        "0.147",
+        "0.029",
+        "0.167",
+        "0.12",
+        "0.026",
+        "0.223",
+        "0.095",
+        "0.057",
+        "0.115",
+        "0.105",
+        "0.058",
+        "0.074",
+        "0.09",
+        "0.16",
+        "0.117",
+        "0.134",
+        "0.108",
+        "0.062",
+        "0.037",
+        "0.289",
+        "0.093",
+        "0.158",
+        "0.055",
+        "0",
+        "0.085",
+        "0.103",
+        "0.19",
+        "0.257",
+        "0.358",
+        "0.389",
+        "0.056",
+        "0.062",
+        "0.218",
+        "0.072",
+        "0.151",
+        "0.214",
+        "0.041",
+        "0.204",
+        "0.177",
+        "0"
+      ],
+      "local_provenance_receipt": "reused_verified_cache"
+    }
+  },
+  "sample_mapping_check": {
+    "metadata_sample_count": 143,
+    "matrix_sample_columns": 143,
+    "unique_GSMs_mapped": 143,
+    "all_samples_mapped_one_to_one": true,
+    "unmatched_expression_headers": [],
+    "metadata_samples_missing_from_matrix": [],
+    "expression_header_to_GSM": [
+      {
+        "expression_header": "101_19yr_Female_Caucasian",
+        "GSM": "GSM3124645",
+        "GEO_sample_title": "101_19yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "102_19yr_Male_Caucasian",
+        "GSM": "GSM3124646",
+        "GEO_sample_title": "102_19yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "103_19yr_Male_Caucasian",
+        "GSM": "GSM3124647",
+        "GEO_sample_title": "103_19yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "104_19yr_Male_Caucasian",
+        "GSM": "GSM3124648",
+        "GEO_sample_title": "104_19yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "105_20yr_Male_Caucasian",
+        "GSM": "GSM3124649",
+        "GEO_sample_title": "105_20yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "106_20yr_Female_Caucasian",
+        "GSM": "GSM3124650",
+        "GEO_sample_title": "106_20yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "107_31yr_Female_Caucasian",
+        "GSM": "GSM3124651",
+        "GEO_sample_title": "107_31yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "108_31_female_Caucasian",
+        "GSM": "GSM3124652",
+        "GEO_sample_title": "108_31_female_Caucasian"
+      },
+      {
+        "expression_header": "109_32_male_Unknown",
+        "GSM": "GSM3124653",
+        "GEO_sample_title": "109_32_male_Unknown"
+      },
+      {
+        "expression_header": "110_32_female_BlackPuertoRican",
+        "GSM": "GSM3124654",
+        "GEO_sample_title": "110_32_female_BlackPuertoRican"
+      },
+      {
+        "expression_header": "111_33yr_Male_Caucasian",
+        "GSM": "GSM3124655",
+        "GEO_sample_title": "111_33yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "112_33yr_Male_Caucasian",
+        "GSM": "GSM3124656",
+        "GEO_sample_title": "112_33yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "114_37yr_Female_Unknown",
+        "GSM": "GSM3124657",
+        "GEO_sample_title": "114_37yr_Female_Unknown"
+      },
+      {
+        "expression_header": "115_37yr_Female_Unknown",
+        "GSM": "GSM3124658",
+        "GEO_sample_title": "115_37yr_Female_Unknown"
+      },
+      {
+        "expression_header": "117_37yr_Male_Caucasian",
+        "GSM": "GSM3124659",
+        "GEO_sample_title": "117_37yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "118_39yr_Male_Caucasian",
+        "GSM": "GSM3124660",
+        "GEO_sample_title": "118_39yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "120_51yr_Male_Caucasian",
+        "GSM": "GSM3124661",
+        "GEO_sample_title": "120_51yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "121_52yr_Male_Caucasian",
+        "GSM": "GSM3124662",
+        "GEO_sample_title": "121_52yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "122_55yr_Male_Caucasian",
+        "GSM": "GSM3124663",
+        "GEO_sample_title": "122_55yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "123_57_male_Caucasian",
+        "GSM": "GSM3124664",
+        "GEO_sample_title": "123_57_male_Caucasian"
+      },
+      {
+        "expression_header": "124_60yr_Male_Caucasian",
+        "GSM": "GSM3124665",
+        "GEO_sample_title": "124_60yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "125_71yr_Female_Caucasian",
+        "GSM": "GSM3124666",
+        "GEO_sample_title": "125_71yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "126_75_male_Caucasian",
+        "GSM": "GSM3124667",
+        "GEO_sample_title": "126_75_male_Caucasian"
+      },
+      {
+        "expression_header": "127_78yr_Male_Caucasian",
+        "GSM": "GSM3124668",
+        "GEO_sample_title": "127_78yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "128_80yr_Female_Caucasian",
+        "GSM": "GSM3124669",
+        "GEO_sample_title": "128_80yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "129_94_Male_Caucasian",
+        "GSM": "GSM3124670",
+        "GEO_sample_title": "129_94_Male_Caucasian"
+      },
+      {
+        "expression_header": "130_89_Male_Caucasian",
+        "GSM": "GSM3124671",
+        "GEO_sample_title": "130_89_Male_Caucasian"
+      },
+      {
+        "expression_header": "131_87_Male_Caucasian",
+        "GSM": "GSM3124672",
+        "GEO_sample_title": "131_87_Male_Caucasian"
+      },
+      {
+        "expression_header": "132_90_Male_Caucasian",
+        "GSM": "GSM3124673",
+        "GEO_sample_title": "132_90_Male_Caucasian"
+      },
+      {
+        "expression_header": "133_89_Male_Caucasian",
+        "GSM": "GSM3124674",
+        "GEO_sample_title": "133_89_Male_Caucasian"
+      },
+      {
+        "expression_header": "134_86_Male_Caucasian",
+        "GSM": "GSM3124675",
+        "GEO_sample_title": "134_86_Male_Caucasian"
+      },
+      {
+        "expression_header": "135_92_Male_Caucasian",
+        "GSM": "GSM3124676",
+        "GEO_sample_title": "135_92_Male_Caucasian"
+      },
+      {
+        "expression_header": "136_87_Male_Caucasian",
+        "GSM": "GSM3124677",
+        "GEO_sample_title": "136_87_Male_Caucasian"
+      },
+      {
+        "expression_header": "139_8_Female-HGPS_Caucasian",
+        "GSM": "GSM3124693",
+        "GEO_sample_title": "139_8_Female-HGPS_Caucasian"
+      },
+      {
+        "expression_header": "141_8_Male-HGPS_Unknown",
+        "GSM": "GSM3124694",
+        "GEO_sample_title": "141_8_Male-HGPS_Unknown"
+      },
+      {
+        "expression_header": "14_1yr_Male_Asian",
+        "GSM": "GSM3124560",
+        "GEO_sample_title": "14_1yr_Male_Asian"
+      },
+      {
+        "expression_header": "15_12yr_Male_Caucasian",
+        "GSM": "GSM3124561",
+        "GEO_sample_title": "15_12yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "155_22yr_Male_Caucasian",
+        "GSM": "GSM3124678",
+        "GEO_sample_title": "155_22yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "156_25yr_Female_Caucasian",
+        "GSM": "GSM3124679",
+        "GEO_sample_title": "156_25yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "157_29yr_Male_Unknown",
+        "GSM": "GSM3124680",
+        "GEO_sample_title": "157_29yr_Male_Unknown"
+      },
+      {
+        "expression_header": "158_24YR_Male_Caucasian",
+        "GSM": "GSM3124681",
+        "GEO_sample_title": "158_24YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "159_23YR_Male_AmericanIndian",
+        "GSM": "GSM3124682",
+        "GEO_sample_title": "159_23YR_Male_AmericanIndian"
+      },
+      {
+        "expression_header": "160_26yr_Female_Asian",
+        "GSM": "GSM3124683",
+        "GEO_sample_title": "160_26yr_Female_Asian"
+      },
+      {
+        "expression_header": "162_21YR_Male_Caucasian",
+        "GSM": "GSM3124684",
+        "GEO_sample_title": "162_21YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "16_24YR_Female_Caucasian",
+        "GSM": "GSM3124562",
+        "GEO_sample_title": "16_24YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "163_67YR_Female_Black",
+        "GSM": "GSM3124685",
+        "GEO_sample_title": "163_67YR_Female_Black"
+      },
+      {
+        "expression_header": "164_67YR_Female_Filipino",
+        "GSM": "GSM3124686",
+        "GEO_sample_title": "164_67YR_Female_Filipino"
+      },
+      {
+        "expression_header": "165_68YR_Male_Unknown",
+        "GSM": "GSM3124687",
+        "GEO_sample_title": "165_68YR_Male_Unknown"
+      },
+      {
+        "expression_header": "166_82yr_Female_Caucasian",
+        "GSM": "GSM3124688",
+        "GEO_sample_title": "166_82yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "167_66yr_Male_Black",
+        "GSM": "GSM3124689",
+        "GEO_sample_title": "167_66yr_Male_Black"
+      },
+      {
+        "expression_header": "168_68YR_Male_Caucasian",
+        "GSM": "GSM3124690",
+        "GEO_sample_title": "168_68YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "169_70yr_Male_Caucasian",
+        "GSM": "GSM3124691",
+        "GEO_sample_title": "169_70yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "170_69yr_Male_Caucasian",
+        "GSM": "GSM3124692",
+        "GEO_sample_title": "170_69yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "17_25YR_Male_caucasian",
+        "GSM": "GSM3124563",
+        "GEO_sample_title": "17_25YR_Male_caucasian"
+      },
+      {
+        "expression_header": "18_25YR_Female_caucasian",
+        "GSM": "GSM3124564",
+        "GEO_sample_title": "18_25YR_Female_caucasian"
+      },
+      {
+        "expression_header": "19_26YR_Male_Caucasian",
+        "GSM": "GSM3124565",
+        "GEO_sample_title": "19_26YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "197_2yr3mos_F_Unknown",
+        "GSM": "GSM3124695",
+        "GEO_sample_title": "197_2yr3mos_F_Unknown"
+      },
+      {
+        "expression_header": "198_3yr9mos_F_Unknown",
+        "GSM": "GSM3124696",
+        "GEO_sample_title": "198_3yr9mos_F_Unknown"
+      },
+      {
+        "expression_header": "199_4yr8mos_F_Unknown",
+        "GSM": "GSM3124697",
+        "GEO_sample_title": "199_4yr8mos_F_Unknown"
+      },
+      {
+        "expression_header": "200_8yr6mos_M_Unknown",
+        "GSM": "GSM3124698",
+        "GEO_sample_title": "200_8yr6mos_M_Unknown"
+      },
+      {
+        "expression_header": "201_6ys11mos_F_Unknown",
+        "GSM": "GSM3124699",
+        "GEO_sample_title": "201_6ys11mos_F_Unknown"
+      },
+      {
+        "expression_header": "202_5yr0mos_F_Unknown",
+        "GSM": "GSM3124700",
+        "GEO_sample_title": "202_5yr0mos_F_Unknown"
+      },
+      {
+        "expression_header": "20_26YR_Female_Caucasian",
+        "GSM": "GSM3124566",
+        "GEO_sample_title": "20_26YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "203_8yr10mos_M_Unknown",
+        "GSM": "GSM3124701",
+        "GEO_sample_title": "203_8yr10mos_M_Unknown"
+      },
+      {
+        "expression_header": "204_3yr0mos_F_Unknown",
+        "GSM": "GSM3124702",
+        "GEO_sample_title": "204_3yr0mos_F_Unknown"
+      },
+      {
+        "expression_header": "21_28YR_Male_Caucasian",
+        "GSM": "GSM3124567",
+        "GEO_sample_title": "21_28YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "22_29YR_Male_Caucasian",
+        "GSM": "GSM3124568",
+        "GEO_sample_title": "22_29YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "23_29YR_Male_Caucasian",
+        "GSM": "GSM3124569",
+        "GEO_sample_title": "23_29YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "24_30YR_Male_Caucasian",
+        "GSM": "GSM3124570",
+        "GEO_sample_title": "24_30YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "25_30YR_Female_Caucasian",
+        "GSM": "GSM3124571",
+        "GEO_sample_title": "25_30YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "26_30YR_Male_Caucasian",
+        "GSM": "GSM3124572",
+        "GEO_sample_title": "26_30YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "27_30YR_Male_Caucasian",
+        "GSM": "GSM3124573",
+        "GEO_sample_title": "27_30YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "28_43yr_Female_Caucasian",
+        "GSM": "GSM3124574",
+        "GEO_sample_title": "28_43yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "29_44yr_Male_Caucasian",
+        "GSM": "GSM3124575",
+        "GEO_sample_title": "29_44yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "30_41yr_Male_Caucasian",
+        "GSM": "GSM3124576",
+        "GEO_sample_title": "30_41yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "31_47yr_Male_Caucasian",
+        "GSM": "GSM3124577",
+        "GEO_sample_title": "31_47yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "32_50yr_Female_Caucasian",
+        "GSM": "GSM3124578",
+        "GEO_sample_title": "32_50yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "33_46yr_Male_Caucasian",
+        "GSM": "GSM3124579",
+        "GEO_sample_title": "33_46yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "34_50yr_Male_Caucasian",
+        "GSM": "GSM3124580",
+        "GEO_sample_title": "34_50yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "35_42yr_Female_Caucasian",
+        "GSM": "GSM3124581",
+        "GEO_sample_title": "35_42yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "36_47yr_Male_Caucasian",
+        "GSM": "GSM3124582",
+        "GEO_sample_title": "36_47yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "37_41yr_Female_Caucasian",
+        "GSM": "GSM3124583",
+        "GEO_sample_title": "37_41yr_Female_Caucasian"
+      },
+      {
+        "expression_header": "38_43yr_Male_Caucasian",
+        "GSM": "GSM3124584",
+        "GEO_sample_title": "38_43yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "39_44yr_Male_Caucasian",
+        "GSM": "GSM3124585",
+        "GEO_sample_title": "39_44yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "40_45yr_Male_Caucasian",
+        "GSM": "GSM3124586",
+        "GEO_sample_title": "40_45yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "41_46yr_Male_Caucasian",
+        "GSM": "GSM3124587",
+        "GEO_sample_title": "41_46yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "42_46yr_Male_Caucasian",
+        "GSM": "GSM3124588",
+        "GEO_sample_title": "42_46yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "43_47yr_Male_Caucasian",
+        "GSM": "GSM3124589",
+        "GEO_sample_title": "43_47yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "44_61YR_Male_Caucasian",
+        "GSM": "GSM3124590",
+        "GEO_sample_title": "44_61YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "45_62YR_Female_Caucasian",
+        "GSM": "GSM3124591",
+        "GEO_sample_title": "45_62YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "46_62YR_Female_Caucasian",
+        "GSM": "GSM3124592",
+        "GEO_sample_title": "46_62YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "47_63YR_Male_Caucasian",
+        "GSM": "GSM3124593",
+        "GEO_sample_title": "47_63YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "48_64YR_Male_Caucasian",
+        "GSM": "GSM3124594",
+        "GEO_sample_title": "48_64YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "49_66YR_Male_Caucasian",
+        "GSM": "GSM3124595",
+        "GEO_sample_title": "49_66YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "50_67YR_Male_Caucasian",
+        "GSM": "GSM3124596",
+        "GEO_sample_title": "50_67YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "51_67YR_Male_Caucasian",
+        "GSM": "GSM3124597",
+        "GEO_sample_title": "51_67YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "52_68YR_Male_Caucasian",
+        "GSM": "GSM3124598",
+        "GEO_sample_title": "52_68YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "53_68YR_Male_Caucasian",
+        "GSM": "GSM3124599",
+        "GEO_sample_title": "53_68YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "54_69YR_Male_Caucasian",
+        "GSM": "GSM3124600",
+        "GEO_sample_title": "54_69YR_Male_Caucasian"
+      },
+      {
+        "expression_header": "55_69YR_Female_Caucasian",
+        "GSM": "GSM3124601",
+        "GEO_sample_title": "55_69YR_Female_Caucasian"
+      },
+      {
+        "expression_header": "56_83_Male_Caucasian",
+        "GSM": "GSM3124602",
+        "GEO_sample_title": "56_83_Male_Caucasian"
+      },
+      {
+        "expression_header": "57_83_Male_Caucasian",
+        "GSM": "GSM3124603",
+        "GEO_sample_title": "57_83_Male_Caucasian"
+      },
+      {
+        "expression_header": "58_83_Male_Caucasian",
+        "GSM": "GSM3124604",
+        "GEO_sample_title": "58_83_Male_Caucasian"
+      },
+      {
+        "expression_header": "59_84_Female_Caucasian",
+        "GSM": "GSM3124605",
+        "GEO_sample_title": "59_84_Female_Caucasian"
+      },
+      {
+        "expression_header": "60_84_Male_Caucasian",
+        "GSM": "GSM3124606",
+        "GEO_sample_title": "60_84_Male_Caucasian"
+      },
+      {
+        "expression_header": "61_84_Female_Caucasian",
+        "GSM": "GSM3124607",
+        "GEO_sample_title": "61_84_Female_Caucasian"
+      },
+      {
+        "expression_header": "62_84_Male_Caucasian",
+        "GSM": "GSM3124608",
+        "GEO_sample_title": "62_84_Male_Caucasian"
+      },
+      {
+        "expression_header": "63_84_Male_Caucasian",
+        "GSM": "GSM3124609",
+        "GEO_sample_title": "63_84_Male_Caucasian"
+      },
+      {
+        "expression_header": "64_84_Male_Caucasian",
+        "GSM": "GSM3124610",
+        "GEO_sample_title": "64_84_Male_Caucasian"
+      },
+      {
+        "expression_header": "65_84_Male_Caucasian",
+        "GSM": "GSM3124611",
+        "GEO_sample_title": "65_84_Male_Caucasian"
+      },
+      {
+        "expression_header": "66_86_Male_CaucasianSardinian",
+        "GSM": "GSM3124612",
+        "GEO_sample_title": "66_86_Male_CaucasianSardinian"
+      },
+      {
+        "expression_header": "67_86_Male_caucasian",
+        "GSM": "GSM3124613",
+        "GEO_sample_title": "67_86_Male_caucasian"
+      },
+      {
+        "expression_header": "68_86_Male_caucasian",
+        "GSM": "GSM3124614",
+        "GEO_sample_title": "68_86_Male_caucasian"
+      },
+      {
+        "expression_header": "69_87_Female_caucasian",
+        "GSM": "GSM3124615",
+        "GEO_sample_title": "69_87_Female_caucasian"
+      },
+      {
+        "expression_header": "70_87_Male_caucasian",
+        "GSM": "GSM3124616",
+        "GEO_sample_title": "70_87_Male_caucasian"
+      },
+      {
+        "expression_header": "71_87_Male_caucasian",
+        "GSM": "GSM3124617",
+        "GEO_sample_title": "71_87_Male_caucasian"
+      },
+      {
+        "expression_header": "72_87_Male_Black",
+        "GSM": "GSM3124618",
+        "GEO_sample_title": "72_87_Male_Black"
+      },
+      {
+        "expression_header": "73_88_Male_Caucasian",
+        "GSM": "GSM3124619",
+        "GEO_sample_title": "73_88_Male_Caucasian"
+      },
+      {
+        "expression_header": "74_89_Male_Caucasian",
+        "GSM": "GSM3124620",
+        "GEO_sample_title": "74_89_Male_Caucasian"
+      },
+      {
+        "expression_header": "75_90_Male_Caucasian",
+        "GSM": "GSM3124621",
+        "GEO_sample_title": "75_90_Male_Caucasian"
+      },
+      {
+        "expression_header": "76_91_Male_Caucasian",
+        "GSM": "GSM3124622",
+        "GEO_sample_title": "76_91_Male_Caucasian"
+      },
+      {
+        "expression_header": "77_92_Female_Caucasian",
+        "GSM": "GSM3124623",
+        "GEO_sample_title": "77_92_Female_Caucasian"
+      },
+      {
+        "expression_header": "78_96_Male_Caucasian",
+        "GSM": "GSM3124624",
+        "GEO_sample_title": "78_96_Male_Caucasian"
+      },
+      {
+        "expression_header": "79_1_male_Caucasian",
+        "GSM": "GSM3124625",
+        "GEO_sample_title": "79_1_male_Caucasian"
+      },
+      {
+        "expression_header": "80_2_female_Caucasian",
+        "GSM": "GSM3124626",
+        "GEO_sample_title": "80_2_female_Caucasian"
+      },
+      {
+        "expression_header": "81_3_male_LatinoHispanic",
+        "GSM": "GSM3124627",
+        "GEO_sample_title": "81_3_male_LatinoHispanic"
+      },
+      {
+        "expression_header": "82_3_male_Unknown",
+        "GSM": "GSM3124628",
+        "GEO_sample_title": "82_3_male_Unknown"
+      },
+      {
+        "expression_header": "83_5yr_Male_Black",
+        "GSM": "GSM3124629",
+        "GEO_sample_title": "83_5yr_Male_Black"
+      },
+      {
+        "expression_header": "84_6yr_Male_Black",
+        "GSM": "GSM3124630",
+        "GEO_sample_title": "84_6yr_Male_Black"
+      },
+      {
+        "expression_header": "85_7yr_Male_Black",
+        "GSM": "GSM3124631",
+        "GEO_sample_title": "85_7yr_Male_Black"
+      },
+      {
+        "expression_header": "86_7yr_Male_Caucasian",
+        "GSM": "GSM3124632",
+        "GEO_sample_title": "86_7yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "87_8yr_Male_Caucasian",
+        "GSM": "GSM3124633",
+        "GEO_sample_title": "87_8yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "88_8yr_Male_Caucasian",
+        "GSM": "GSM3124634",
+        "GEO_sample_title": "88_8yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "89_9yr_Female_Black",
+        "GSM": "GSM3124635",
+        "GEO_sample_title": "89_9yr_Female_Black"
+      },
+      {
+        "expression_header": "90_10yr_Male_Black",
+        "GSM": "GSM3124636",
+        "GEO_sample_title": "90_10yr_Male_Black"
+      },
+      {
+        "expression_header": "91_10yr_Male_Caucasian",
+        "GSM": "GSM3124637",
+        "GEO_sample_title": "91_10yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "92_11_female_Caucasian",
+        "GSM": "GSM3124638",
+        "GEO_sample_title": "92_11_female_Caucasian"
+      },
+      {
+        "expression_header": "93_11_female_Caucasian",
+        "GSM": "GSM3124639",
+        "GEO_sample_title": "93_11_female_Caucasian"
+      },
+      {
+        "expression_header": "94_12_male_Caucasian",
+        "GSM": "GSM3124640",
+        "GEO_sample_title": "94_12_male_Caucasian"
+      },
+      {
+        "expression_header": "95_13yr_Male_WhiTEEASTINDIAN",
+        "GSM": "GSM3124641",
+        "GEO_sample_title": "95_13yr_Male_WhiTEEASTINDIAN"
+      },
+      {
+        "expression_header": "97_16yr_Female_Unknown",
+        "GSM": "GSM3124642",
+        "GEO_sample_title": "97_16yr_Female_Unknown"
+      },
+      {
+        "expression_header": "98_17yr_Male_Caucasian",
+        "GSM": "GSM3124643",
+        "GEO_sample_title": "98_17yr_Male_Caucasian"
+      },
+      {
+        "expression_header": "99_17yr_Male_Caucasian",
+        "GSM": "GSM3124644",
+        "GEO_sample_title": "99_17yr_Male_Caucasian"
+      }
+    ]
+  },
+  "limits": {
+    "FPKM_is_processed_expression_not_raw_counts": true,
+    "GEO_sample_records_are_not_assumed_to_be_independent_donors": true,
+    "age_associations_are_not_causal_or_healthspan_effects": true
+  }
+}

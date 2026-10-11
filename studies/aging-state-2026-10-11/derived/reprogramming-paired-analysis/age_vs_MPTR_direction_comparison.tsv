@@ -1,0 +1,5 @@
+gene	age_reference_cohort	age_reference_n_people	age_reference_spearman_rho	MPTR_contrast	MPTR_n_donor_lines	MPTR_median_donor_delta_log2_RPM	direction_vs_age_association	interpretation_limit
+COL1A1	healthy_adult_18_plus	111	-0.407708	13-day successful post-withdrawal vs matched negative control	2	1.01756119	opposite	Direction only; cohorts, assays and expression scales differ; not an age-clock estimate.
+COL1A2	healthy_adult_18_plus	111	-0.085930	13-day successful post-withdrawal vs matched negative control	2	0.39338214	opposite	Direction only; cohorts, assays and expression scales differ; not an age-clock estimate.
+COL4A1	healthy_adult_18_plus	111	-0.317186	13-day successful post-withdrawal vs matched negative control	2	2.78423439	opposite	Direction only; cohorts, assays and expression scales differ; not an age-clock estimate.
+COL4A2	healthy_adult_18_plus	111	-0.409196	13-day successful post-withdrawal vs matched negative control	2	2.39513448	opposite	Direction only; cohorts, assays and expression scales differ; not an age-clock estimate.

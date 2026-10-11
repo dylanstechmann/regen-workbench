@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "accession": "GSE113957",
+  "source": "NCBI GEO processed FPKM matrix and sample metadata",
+  "healthy_sample_count": 133,
+  "hgps_sample_count": 10,
+  "healthy_unique_cell_id_count": 133,
+  "healthy_age_range_years": [
+    1.0,
+    96.0
+  ],
+  "age_range_metadata_note": {
+    "geo_metadata_range_years": [
+      1.0,
+      96.0
+    ],
+    "article_text_range_years": [
+      1,
+      94
+    ],
+    "record_above_article_text_maximum": {
+      "GSM": "GSM3124624",
+      "cell_id": "AG04059",
+      "GEO_age_years": 96
+    },
+    "handling": "retain GEO sample-level age; record the article-versus-GEO discrepancy"
+  },
+  "healthy_sex_counts": {
+    "male": 99,
+    "female": 34
+  },
+  "healthy_sample_source_counts": {
+    "Skin; Foreskin": 1,
+    "Skin; Unspecified": 21,
+    "Skin; Arm": 83,
+    "skin; Arm": 6,
+    "skin; chet": 1,
+    "skin; Inguinal area": 1,
+    "Skin; Umbilical Cord Area": 1,
+    "Skin; inguinal area": 2,
+    "Skin; Inguinal area": 1,
+    "Skin; unspecified": 1,
+    "skin; arm": 4,
+    "Skin; Leg": 2,
+    "skin; Unspecified": 4,
+    "Skin/Blood": 1,
+    "Skin; Abdomen": 1,
+    "Skin; Buttock": 1,
+    "Skin;Neck": 1,
+    "Skin; Thigh": 1
+  },
+  "selected_genes": [
+    "COL1A1",
+    "COL1A2",
+    "COL4A1",
+    "COL4A2"
+  ],
+  "transcript_rows_summed_by_gene": {
+    "COL1A1": 1,
+    "COL1A2": 1,
+    "COL4A1": 1,
+    "COL4A2": 1
+  },
+  "figure_created": true,
+  "aggregation": "sum transcript-row FPKM values sharing the exact first annotation symbol; record transcript row counts",
+  "age_cohorts": {
+    "healthy_all_ages": {
+      "n": 133,
+      "min_age_years": 1.0,
+      "max_age_years": 96.0
+    },
+    "healthy_adult_18_plus": {
+      "n": 111,
+      "min_age_years": 19.0,
+      "max_age_years": 96.0
+    },
+    "healthy_age_35_to_60": {
+      "n": 25,
+      "min_age_years": 37.0,
+      "max_age_years": 60.0
+    },
+    "healthy_adult_male_18_plus": {
+      "n": 82,
+      "min_age_years": 19.0,
+      "max_age_years": 96.0
+    },
+    "healthy_adult_female_18_plus": {
+      "n": 29,
+      "min_age_years": 19.0,
+      "max_age_years": 92.0
+    },
+    "healthy_adult_arm_site_18_plus": {
+      "n": 89,
+      "min_age_years": 19.0,
+      "max_age_years": 96.0
+    }
+  },
+  "limitations": [
+    "Four collagen genes were selected from the MPTR paper before this age-reference analysis; this is not genome-wide replication.",
+    "Spearman correlations and expression slopes are descriptive and unadjusted for sex, ethnicity, skin sampling site, culture or batch.",
+    "FPKM transcript rows are summed by gene symbol; this is a transcript-level aggregation, not read-count re-quantification.",
+    "This analysis does not train or apply the published age clock and does not convert molecular expression into years of rejuvenation.",
+    "The age-reference and reprogramming cohorts use different datasets and expression units; only direction is compared."
+  ],
+  "inputs_sha256": {
+    "GSE113957_family.soft.gz": "041e5adfd00beb232d0e73503bfd8f51a0b5018e3849b7a5143e608aac6a86f4",
+    "GSE113957_fpkm.txt.gz": "999c9d720ff7f0dfe59675f347803d3a0181231313aace2f8406f08528aa123d"
+  },
+  "generated_utc": "2026-10-11T07:02:58.504018+00:00"
+}

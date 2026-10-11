@@ -1,0 +1,573 @@
+GSM	sample_title	cell_id	disease	age_years	sex	ethnicity	skin_source	gene	transcript_rows_summed	sum_transcript_FPKM
+GSM3124560	14_1yr_Male_Asian	AG08498	normal	1.0	male	Asian	Skin; Foreskin	COL1A1	1	1819.05700000
+GSM3124561	15_12yr_Male_Caucasian	AG16409	normal	12.0	male	Caucasian	Skin; Unspecified	COL1A1	1	3688.42100000
+GSM3124562	16_24YR_Female_Caucasian	AG11732	normal	24.0	female	Caucasian	Skin; Arm	COL1A1	1	2451.95100000
+GSM3124563	17_25YR_Male_caucasian	AG09975	normal	25.0	male	caucasian	Skin; Arm	COL1A1	1	1860.92200000
+GSM3124564	18_25YR_Female_caucasian	AG11735	normal	25.0	female	caucasian	Skin; Arm	COL1A1	1	2787.55900000
+GSM3124565	19_26YR_Male_Caucasian	AG09860	normal	26.0	male	Caucasian	Skin; Arm	COL1A1	1	3433.63100000
+GSM3124566	20_26YR_Female_Caucasian	AG07124	normal	26.0	female	Caucasian	Skin; Arm	COL1A1	1	1637.33000000
+GSM3124567	21_28YR_Male_Caucasian	AG09559	normal	28.0	male	Caucasian	Skin; Arm	COL1A1	1	1694.05300000
+GSM3124568	22_29YR_Male_Caucasian	AG04054	normal	29.0	male	Caucasian	Skin; Arm	COL1A1	1	2463.89900000
+GSM3124569	23_29YR_Male_Caucasian	AG07478	normal	29.0	male	Caucasian	Skin; Arm	COL1A1	1	3006.47500000
+GSM3124570	24_30YR_Male_Caucasian	AG13153	normal	30.0	male	Caucasian	Skin; Arm	COL1A1	1	1761.38700000
+GSM3124571	25_30YR_Female_Caucasian	AG09599	normal	30.0	female	Caucasian	Skin; Arm	COL1A1	1	2989.87200000
+GSM3124572	26_30YR_Male_Caucasian	AG13234	normal	30.0	male	Caucasian	Skin; Arm	COL1A1	1	1677.20600000
+GSM3124573	27_30YR_Male_Caucasian	AG09605	normal	30.0	male	Caucasian	Skin; Arm	COL1A1	1	1897.57100000
+GSM3124574	28_43yr_Female_Caucasian	AG11745	normal	43.0	female	Caucasian	Skin; Arm	COL1A1	1	2867.18500000
+GSM3124575	29_44yr_Male_Caucasian	AG13244	normal	44.0	male	Caucasian	Skin; Arm	COL1A1	1	1906.29300000
+GSM3124576	30_41yr_Male_Caucasian	AG13967	normal	41.0	male	Caucasian	Skin; Arm	COL1A1	1	3092.51100000
+GSM3124577	31_47yr_Male_Caucasian	AG12989	normal	47.0	male	Caucasian	Skin; Arm	COL1A1	1	1890.05800000
+GSM3124578	32_50yr_Female_Caucasian	AG12493	normal	50.0	female	Caucasian	Skin; Arm	COL1A1	1	4573.23900000
+GSM3124579	33_46yr_Male_Caucasian	AG11556	normal	46.0	male	Caucasian	Skin; Arm	COL1A1	1	2339.34600000
+GSM3124580	34_50yr_Male_Caucasian	AG12602	normal	50.0	male	Caucasian	Skin; Arm	COL1A1	1	2344.56000000
+GSM3124581	35_42yr_Female_Caucasian	AG13066	normal	42.0	female	Caucasian	Skin; Arm	COL1A1	1	2582.51300000
+GSM3124582	36_47yr_Male_Caucasian	AG13962	normal	47.0	male	Caucasian	Skin; Arm	COL1A1	1	1500.48500000
+GSM3124583	37_41yr_Female_Caucasian	AG16358	normal	41.0	female	Caucasian	Skin; Arm	COL1A1	1	4842.12600000
+GSM3124584	38_43yr_Male_Caucasian	AG04063	normal	43.0	male	Caucasian	Skin; Arm	COL1A1	1	2643.70100000
+GSM3124585	39_44yr_Male_Caucasian	AG11698	normal	44.0	male	Caucasian	Skin; Arm	COL1A1	1	2084.86900000
+GSM3124586	40_45yr_Male_Caucasian	AG11484	normal	45.0	male	Caucasian	Skin; Arm	COL1A1	1	1672.68900000
+GSM3124587	41_46yr_Male_Caucasian	AG11162	normal	46.0	male	Caucasian	skin; Arm	COL1A1	1	1698.98200000
+GSM3124588	42_46yr_Male_Caucasian	AG12954	normal	46.0	male	Caucasian	Skin; Arm	COL1A1	1	1827.05500000
+GSM3124589	43_47yr_Male_Caucasian	AG11154	normal	47.0	male	Caucasian	Skin; Arm	COL1A1	1	2751.88700000
+GSM3124590	44_61YR_Male_Caucasian	AG13225	normal	61.0	male	Caucasian	Skin; Arm	COL1A1	1	2962.20800000
+GSM3124591	45_62YR_Female_Caucasian	AG12597	normal	62.0	female	Caucasian	Skin; Arm	COL1A1	1	1337.17000000
+GSM3124592	46_62YR_Female_Caucasian	AG11357	normal	62.0	female	Caucasian	Skin; Arm	COL1A1	1	2030.43500000
+GSM3124593	47_63YR_Male_Caucasian	AG12588	normal	63.0	male	Caucasian	Skin; Arm	COL1A1	1	1781.57500000
+GSM3124594	48_64YR_Male_Caucasian	AG13065	normal	64.0	male	Caucasian	Skin; Arm	COL1A1	1	3556.56700000
+GSM3124595	49_66YR_Male_Caucasian	AG04461	normal	66.0	male	Caucasian	Skin; Arm	COL1A1	1	2550.52400000
+GSM3124596	50_67YR_Male_Caucasian	AG12599	normal	67.0	male	Caucasian	Skin; Arm	COL1A1	1	1672.71500000
+GSM3124597	51_67YR_Male_Caucasian	AG13018	normal	67.0	male	Caucasian	Skin; Arm	COL1A1	1	3190.68300000
+GSM3124598	52_68YR_Male_Caucasian	AG14251	normal	68.0	male	Caucasian	Skin; Arm	COL1A1	1	1398.80500000
+GSM3124599	53_68YR_Male_Caucasian	AG12850	normal	68.0	male	Caucasian	Skin; Arm	COL1A1	1	2373.56700000
+GSM3124600	54_69YR_Male_Caucasian	AG12587	normal	69.0	male	Caucasian	Skin; Arm	COL1A1	1	2239.97600000
+GSM3124601	55_69YR_Female_Caucasian	AG13144	normal	69.0	female	Caucasian	Skin; Arm	COL1A1	1	2939.40900000
+GSM3124602	56_83_Male_Caucasian	AG04386	normal	83.0	male	Caucasian	Skin; Arm	COL1A1	1	1932.78900000
+GSM3124603	57_83_Male_Caucasian	AG05413	normal	83.0	male	Caucasian	Skin; Arm	COL1A1	1	1552.79600000
+GSM3124604	58_83_Male_Caucasian	AG04457	normal	83.0	male	Caucasian	Skin; Arm	COL1A1	1	1997.92400000
+GSM3124605	59_84_Female_Caucasian	AG11725	normal	84.0	female	Caucasian	Skin; Arm	COL1A1	1	1758.14900000
+GSM3124606	60_84_Male_Caucasian	AG06276	normal	84.0	male	Caucasian	Skin; Arm	COL1A1	1	2877.51700000
+GSM3124607	61_84_Female_Caucasian	AG11744	normal	84.0	female	Caucasian	Skin; Arm	COL1A1	1	1088.20800000
+GSM3124608	62_84_Male_Caucasian	AG12947	normal	84.0	male	Caucasian	Skin; Arm	COL1A1	1	2427.34500000
+GSM3124609	63_84_Male_Caucasian	AG05274	normal	84.0	male	Caucasian	Skin; Arm	COL1A1	1	2241.14400000
+GSM3124610	64_84_Male_Caucasian	AG11730	normal	84.0	male	Caucasian	Skin; Arm	COL1A1	1	4811.68500000
+GSM3124611	65_84_Male_Caucasian	AG04661	normal	84.0	male	Caucasian	Skin; Arm	COL1A1	1	2263.46300000
+GSM3124612	66_86_Male_CaucasianSardinian	AG11748	normal	86.0	male	Caucasian/Sardinian	Skin; Arm	COL1A1	1	1540.01800000
+GSM3124613	67_86_Male_caucasian	AG04143	normal	86.0	male	caucasian	Skin; Arm	COL1A1	1	768.96800000
+GSM3124614	68_86_Male_caucasian	AG13349	normal	86.0	male	caucasian	Skin; Arm	COL1A1	1	747.60500000
+GSM3124615	69_87_Female_caucasian	AG05247	normal	87.0	female	caucasian	Skin; Arm	COL1A1	1	1980.46900000
+GSM3124616	70_87_Male_caucasian	AG10884	normal	87.0	male	caucasian	Skin; Arm	COL1A1	1	2244.01200000
+GSM3124617	71_87_Male_caucasian	AG05248	normal	87.0	male	caucasian	Skin; Arm	COL1A1	1	1650.62200000
+GSM3124618	72_87_Male_Black	AG11017	normal	87.0	male	Black	Skin; Arm	COL1A1	1	741.12300000
+GSM3124619	73_88_Male_Caucasian	AG04065	normal	88.0	male	Caucasian	Skin; Arm	COL1A1	1	5231.03300000
+GSM3124620	74_89_Male_Caucasian	AG13129	normal	89.0	male	Caucasian	Skin; Arm	COL1A1	1	1514.52900000
+GSM3124621	75_90_Male_Caucasian	AG12788	normal	90.0	male	Caucasian	Skin; Arm	COL1A1	1	570.30200000
+GSM3124622	76_91_Male_Caucasian	AG07725	normal	91.0	male	Caucasian	Skin; Arm	COL1A1	1	1477.80200000
+GSM3124623	77_92_Female_Caucasian	AG09602	normal	92.0	female	Caucasian	Skin; Arm	COL1A1	1	904.96100000
+GSM3124624	78_96_Male_Caucasian	AG04059	normal	96.0	male	Caucasian	Skin; Arm	COL1A1	1	3201.24100000
+GSM3124625	79_1_male_Caucasian	GM05659	normal	1.0	male	Caucasian	skin; chet	COL1A1	1	1223.25600000
+GSM3124626	80_2_female_Caucasian	GM00969	normal	2.0	female	Caucasian	Skin; Unspecified	COL1A1	1	3299.68300000
+GSM3124627	81_3_male_LatinoHispanic	GM05565	normal	3.0	male	Latino/Hispanic	skin; Inguinal area	COL1A1	1	1981.65300000
+GSM3124628	82_3_male_Unknown	GM00498	normal	3.0	male	Unknown	Skin; Unspecified	COL1A1	1	4423.49600000
+GSM3124629	83_5yr_Male_Black	GM05381	normal	5.0	male	Black	Skin; Umbilical Cord Area	COL1A1	1	3961.65800000
+GSM3124630	84_6yr_Male_Black	GM05400	normal	6.0	male	Black	Skin; inguinal area	COL1A1	1	3785.81900000
+GSM3124631	85_7yr_Male_Black	GM05757	normal	7.0	male	Black	Skin; inguinal area	COL1A1	1	2457.34700000
+GSM3124632	86_7yr_Male_Caucasian	GM00409	normal	7.0	male	Caucasian	Skin; Unspecified	COL1A1	1	5196.93500000
+GSM3124633	87_8yr_Male_Caucasian	GM00499	normal	8.0	male	Caucasian	Skin; Unspecified	COL1A1	1	5601.68300000
+GSM3124634	88_8yr_Male_Caucasian	GM08398	normal	8.0	male	Caucasian	Skin; Inguinal area	COL1A1	1	5136.70300000
+GSM3124635	89_9yr_Female_Black	GM00038	normal	9.0	female	Black	Skin; unspecified	COL1A1	1	2152.64500000
+GSM3124636	90_10yr_Male_Black	GM03349	normal	10.0	male	Black	Skin; Unspecified	COL1A1	1	4469.04100000
+GSM3124637	91_10yr_Male_Caucasian	GM00500	normal	10.0	male	Caucasian	Skin; Unspecified	COL1A1	1	4189.77300000
+GSM3124638	92_11_female_Caucasian	GM01652	normal	11.0	female	Caucasian	skin; arm	COL1A1	1	6658.98500000
+GSM3124639	93_11_female_Caucasian	GM01582	normal	11.0	female	Caucasian	skin; arm	COL1A1	1	3225.19000000
+GSM3124640	94_12_male_Caucasian	GM00316	normal	12.0	male	Caucasian	skin; arm	COL1A1	1	4607.55900000
+GSM3124641	95_13yr_Male_WhiTEEASTINDIAN	GM02037	normal	13.0	male	WhiTE/EAST INDIAN	Skin; Arm	COL1A1	1	3384.64700000
+GSM3124642	97_16yr_Female_Unknown	GM07532	normal	16.0	female	Unknown	Skin; Unspecified	COL1A1	1	3926.85000000
+GSM3124643	98_17yr_Male_Caucasian	GM07753	normal	17.0	male	Caucasian	Skin; Unspecified	COL1A1	1	1472.53900000
+GSM3124644	99_17yr_Male_Caucasian	GM07492	normal	17.0	male	Caucasian	Skin; Unspecified	COL1A1	1	2856.17300000
+GSM3124645	101_19yr_Female_Caucasian	GM08399	normal	19.0	female	Caucasian	Skin; Unspecified	COL1A1	1	2957.41000000
+GSM3124646	102_19yr_Male_Caucasian	GM04501	normal	19.0	male	Caucasian	Skin; Unspecified	COL1A1	1	3250.89600000
+GSM3124647	103_19yr_Male_Caucasian	GM23973	normal	19.0	male	Caucasian	Skin; Unspecified	COL1A1	1	3528.72100000
+GSM3124648	104_19yr_Male_Caucasian	GM03377	normal	19.0	male	Caucasian	Skin; Arm	COL1A1	1	4408.17500000
+GSM3124649	105_20yr_Male_Caucasian	GM03440	normal	20.0	male	Caucasian	Skin; Leg	COL1A1	1	5406.22900000
+GSM3124650	106_20yr_Female_Caucasian	GM04505	normal	20.0	female	Caucasian	skin; arm	COL1A1	1	2282.01900000
+GSM3124651	107_31yr_Female_Caucasian	GM04503	normal	31.0	female	Caucasian	skin; Unspecified	COL1A1	1	3331.71400000
+GSM3124652	108_31_female_Caucasian	GM04504	normal	31.0	female	Caucasian	Skin; Unspecified	COL1A1	1	2771.93600000
+GSM3124653	109_32_male_Unknown	GM08402	normal	32.0	male	Unknown	Skin; Unspecified	COL1A1	1	2776.79200000
+GSM3124654	110_32_female_BlackPuertoRican	GM00043	normal	32.0	female	Black/Puerto Rican	Skin; Unspecified	COL1A1	1	4155.69900000
+GSM3124655	111_33yr_Male_Caucasian	GM02673	normal	33.0	male	Caucasian	skin; Unspecified	COL1A1	1	4913.73900000
+GSM3124656	112_33yr_Male_Caucasian	GM23971	normal	33.0	male	Caucasian	Skin; Unspecified	COL1A1	1	5900.49900000
+GSM3124657	114_37yr_Female_Unknown	GM08400	normal	37.0	female	Unknown	Skin/Blood	COL1A1	1	3629.96000000
+GSM3124658	115_37yr_Female_Unknown	GM01650	normal	37.0	female	Unknown	Skin; Arm	COL1A1	1	4671.82500000
+GSM3124659	117_37yr_Male_Caucasian	GM01653	normal	37.0	male	Caucasian	skin; Arm	COL1A1	1	2785.18800000
+GSM3124660	118_39yr_Male_Caucasian	GM01717	normal	39.0	male	Caucasian	skin; Arm	COL1A1	1	4144.92200000
+GSM3124661	120_51yr_Male_Caucasian	GM00967	normal	51.0	male	Caucasian	skin; Arm	COL1A1	1	1742.48800000
+GSM3124662	121_52yr_Male_Caucasian	GM23967	normal	52.0	male	Caucasian	skin; Unspecified	COL1A1	1	5867.72700000
+GSM3124663	122_55yr_Male_Caucasian	GM23248	normal	55.0	male	Caucasian	Skin; Arm	COL1A1	1	3755.51500000
+GSM3124664	123_57_male_Caucasian	GM13335	normal	57.0	male	Caucasian	Skin; Unspecified	COL1A1	1	3741.81000000
+GSM3124665	124_60yr_Male_Caucasian	GM04260	normal	60.0	male	Caucasian	skin; Unspecified	COL1A1	1	3839.03400000
+GSM3124666	125_71yr_Female_Caucasian	GM01680	normal	71.0	female	Caucasian	Skin; Arm	COL1A1	1	3489.00200000
+GSM3124667	126_75_male_Caucasian	GM08401	normal	75.0	male	Caucasian	Skin; Unspecified	COL1A1	1	3235.11600000
+GSM3124668	127_78yr_Male_Caucasian	GM09918	normal	78.0	male	Caucasian	Skin; Unspecified	COL1A1	1	4476.66700000
+GSM3124669	128_80yr_Female_Caucasian	GM03525	normal	80.0	female	Caucasian	Skin; Abdomen	COL1A1	1	2524.88500000
+GSM3124670	129_94_Male_Caucasian	AG08433	normal	94.0	male	Caucasian	skin; Arm	COL1A1	1	1771.60900000
+GSM3124671	130_89_Male_Caucasian	AG13208	normal	89.0	male	Caucasian	skin; Arm	COL1A1	1	1738.49000000
+GSM3124672	131_87_Male_Caucasian	AG04662	normal	87.0	male	Caucasian	Skin; Arm	COL1A1	1	1523.76200000
+GSM3124673	132_90_Male_Caucasian	AG06291	normal	90.0	male	Caucasian	Skin; Arm	COL1A1	1	3017.02100000
+GSM3124674	133_89_Male_Caucasian	AG06308	normal	89.0	male	Caucasian	Skin; Arm	COL1A1	1	1030.90700000
+GSM3124675	134_86_Male_Caucasian	AG09843	normal	86.0	male	Caucasian	Skin; Arm	COL1A1	1	1368.43300000
+GSM3124676	135_92_Male_Caucasian	AG04064	normal	92.0	male	Caucasian	Skin; Arm	COL1A1	1	1346.29800000
+GSM3124677	136_87_Male_Caucasian	AG11808	normal	87.0	male	Caucasian	Skin; Arm	COL1A1	1	2003.49600000
+GSM3124678	155_22yr_Male_Caucasian	GM23815	normal	22.0	male	Caucasian	Skin; Unspecified	COL1A1	1	4529.47200000
+GSM3124679	156_25yr_Female_Caucasian	GM03651	normal	25.0	female	Caucasian	Skin; Arm	COL1A1	1	2835.49300000
+GSM3124680	157_29yr_Male_Unknown	GM00495	normal	29.0	male	Unknown	Skin; Buttock	COL1A1	1	5217.96700000
+GSM3124681	158_24YR_Male_Caucasian	GM03652	normal	24.0	male	Caucasian	Skin; Arm	COL1A1	1	3341.05300000
+GSM3124682	159_23YR_Male_AmericanIndian	GM03234	normal	23.0	male	American Indian	Skin; Arm	COL1A1	1	5400.52100000
+GSM3124683	160_26yr_Female_Asian	GM00726	normal	26.0	female	Asian	Skin; Arm	COL1A1	1	2610.92200000
+GSM3124684	162_21YR_Male_Caucasian	GM03523	normal	21.0	male	Caucasian	Skin;Neck	COL1A1	1	3377.96400000
+GSM3124685	163_67YR_Female_Black	GM03524	normal	67.0	female	Black	Skin; Leg	COL1A1	1	6949.93000000
+GSM3124686	164_67YR_Female_Filipino	AG16086	normal	67.0	female	Filipino	Skin; Arm	COL1A1	1	3309.22700000
+GSM3124687	165_68YR_Male_Unknown	AG12207	normal	68.0	male	Unknown	Skin; Arm	COL1A1	1	2557.10500000
+GSM3124688	166_82yr_Female_Caucasian	GM01706	normal	82.0	female	Caucasian	Skin; Arm	COL1A1	1	5312.83000000
+GSM3124689	167_66yr_Male_Black	GM03529	normal	66.0	male	Black	Skin; Thigh	COL1A1	1	3556.41400000
+GSM3124690	168_68YR_Male_Caucasian	GM03658	normal	68.0	male	Caucasian	Skin; Arm	COL1A1	1	5394.18700000
+GSM3124691	169_70yr_Male_Caucasian	GM01681	normal	70.0	male	Caucasian	Skin; Arm	COL1A1	1	3528.06900000
+GSM3124692	170_69yr_Male_Caucasian	AG16102	normal	69.0	male	Caucasian	Skin; Arm	COL1A1	1	2203.59300000
+GSM3124693	139_8_Female-HGPS_Caucasian	AG11513	hgps	8.0	female	Caucasian	Skin; Leg	COL1A1	1	1926.72600000
+GSM3124694	141_8_Male-HGPS_Unknown	PRF167	hgps	8.0	male	Unknown	Unknown	COL1A1	1	2222.21800000
+GSM3124695	197_2yr3mos_F_Unknown	HGADFN188	hgps	2.25	female	Unknown	Unknown	COL1A1	1	1936.58800000
+GSM3124696	198_3yr9mos_F_Unknown	HGADFN127	hgps	3.75	female	Unknown	Unknown	COL1A1	1	3187.84000000
+GSM3124697	199_4yr8mos_F_Unknown	HGADFN164	hgps	4.666666666666667	female	Unknown	Unknown	COL1A1	1	2449.28600000
+GSM3124698	200_8yr6mos_M_Unknown	HGADFN169	hgps	8.5	male	Unknown	Unknown	COL1A1	1	3002.58900000
+GSM3124699	201_6ys11mos_F_Unknown	HGADFN178	hgps	6.916666666666667	female	Unknown	Unknown	COL1A1	1	1765.31400000
+GSM3124700	202_5yr0mos_F_Unknown	HGADFN122	hgps	5.0	female	Unknown	Unknown	COL1A1	1	3127.14400000
+GSM3124701	203_8yr10mos_M_Unknown	HGADFN143	hgps	8.833333333333334	male	Unknown	Unknown	COL1A1	1	2735.07400000
+GSM3124702	204_3yr0mos_F_Unknown	HGADFN367	hgps	3.0	female	Unknown	Unknown	COL1A1	1	4234.35300000
+GSM3124560	14_1yr_Male_Asian	AG08498	normal	1.0	male	Asian	Skin; Foreskin	COL1A2	1	2306.02300000
+GSM3124561	15_12yr_Male_Caucasian	AG16409	normal	12.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4530.84600000
+GSM3124562	16_24YR_Female_Caucasian	AG11732	normal	24.0	female	Caucasian	Skin; Arm	COL1A2	1	2958.93300000
+GSM3124563	17_25YR_Male_caucasian	AG09975	normal	25.0	male	caucasian	Skin; Arm	COL1A2	1	2384.63300000
+GSM3124564	18_25YR_Female_caucasian	AG11735	normal	25.0	female	caucasian	Skin; Arm	COL1A2	1	3041.24000000
+GSM3124565	19_26YR_Male_Caucasian	AG09860	normal	26.0	male	Caucasian	Skin; Arm	COL1A2	1	3790.60400000
+GSM3124566	20_26YR_Female_Caucasian	AG07124	normal	26.0	female	Caucasian	Skin; Arm	COL1A2	1	2502.61600000
+GSM3124567	21_28YR_Male_Caucasian	AG09559	normal	28.0	male	Caucasian	Skin; Arm	COL1A2	1	2515.82800000
+GSM3124568	22_29YR_Male_Caucasian	AG04054	normal	29.0	male	Caucasian	Skin; Arm	COL1A2	1	2660.20600000
+GSM3124569	23_29YR_Male_Caucasian	AG07478	normal	29.0	male	Caucasian	Skin; Arm	COL1A2	1	2780.41700000
+GSM3124570	24_30YR_Male_Caucasian	AG13153	normal	30.0	male	Caucasian	Skin; Arm	COL1A2	1	2366.96800000
+GSM3124571	25_30YR_Female_Caucasian	AG09599	normal	30.0	female	Caucasian	Skin; Arm	COL1A2	1	3512.90900000
+GSM3124572	26_30YR_Male_Caucasian	AG13234	normal	30.0	male	Caucasian	Skin; Arm	COL1A2	1	2735.42200000
+GSM3124573	27_30YR_Male_Caucasian	AG09605	normal	30.0	male	Caucasian	Skin; Arm	COL1A2	1	2802.19700000
+GSM3124574	28_43yr_Female_Caucasian	AG11745	normal	43.0	female	Caucasian	Skin; Arm	COL1A2	1	3617.22900000
+GSM3124575	29_44yr_Male_Caucasian	AG13244	normal	44.0	male	Caucasian	Skin; Arm	COL1A2	1	2988.54000000
+GSM3124576	30_41yr_Male_Caucasian	AG13967	normal	41.0	male	Caucasian	Skin; Arm	COL1A2	1	4658.65200000
+GSM3124577	31_47yr_Male_Caucasian	AG12989	normal	47.0	male	Caucasian	Skin; Arm	COL1A2	1	2730.80100000
+GSM3124578	32_50yr_Female_Caucasian	AG12493	normal	50.0	female	Caucasian	Skin; Arm	COL1A2	1	4248.45600000
+GSM3124579	33_46yr_Male_Caucasian	AG11556	normal	46.0	male	Caucasian	Skin; Arm	COL1A2	1	3251.64800000
+GSM3124580	34_50yr_Male_Caucasian	AG12602	normal	50.0	male	Caucasian	Skin; Arm	COL1A2	1	2865.77300000
+GSM3124581	35_42yr_Female_Caucasian	AG13066	normal	42.0	female	Caucasian	Skin; Arm	COL1A2	1	2707.99600000
+GSM3124582	36_47yr_Male_Caucasian	AG13962	normal	47.0	male	Caucasian	Skin; Arm	COL1A2	1	2591.22600000
+GSM3124583	37_41yr_Female_Caucasian	AG16358	normal	41.0	female	Caucasian	Skin; Arm	COL1A2	1	4183.94100000
+GSM3124584	38_43yr_Male_Caucasian	AG04063	normal	43.0	male	Caucasian	Skin; Arm	COL1A2	1	2995.53900000
+GSM3124585	39_44yr_Male_Caucasian	AG11698	normal	44.0	male	Caucasian	Skin; Arm	COL1A2	1	2121.13400000
+GSM3124586	40_45yr_Male_Caucasian	AG11484	normal	45.0	male	Caucasian	Skin; Arm	COL1A2	1	2552.98000000
+GSM3124587	41_46yr_Male_Caucasian	AG11162	normal	46.0	male	Caucasian	skin; Arm	COL1A2	1	2908.58300000
+GSM3124588	42_46yr_Male_Caucasian	AG12954	normal	46.0	male	Caucasian	Skin; Arm	COL1A2	1	2661.45500000
+GSM3124589	43_47yr_Male_Caucasian	AG11154	normal	47.0	male	Caucasian	Skin; Arm	COL1A2	1	3066.94700000
+GSM3124590	44_61YR_Male_Caucasian	AG13225	normal	61.0	male	Caucasian	Skin; Arm	COL1A2	1	3856.20600000
+GSM3124591	45_62YR_Female_Caucasian	AG12597	normal	62.0	female	Caucasian	Skin; Arm	COL1A2	1	1515.29200000
+GSM3124592	46_62YR_Female_Caucasian	AG11357	normal	62.0	female	Caucasian	Skin; Arm	COL1A2	1	2768.11600000
+GSM3124593	47_63YR_Male_Caucasian	AG12588	normal	63.0	male	Caucasian	Skin; Arm	COL1A2	1	1949.64000000
+GSM3124594	48_64YR_Male_Caucasian	AG13065	normal	64.0	male	Caucasian	Skin; Arm	COL1A2	1	4020.02600000
+GSM3124595	49_66YR_Male_Caucasian	AG04461	normal	66.0	male	Caucasian	Skin; Arm	COL1A2	1	3423.24600000
+GSM3124596	50_67YR_Male_Caucasian	AG12599	normal	67.0	male	Caucasian	Skin; Arm	COL1A2	1	2333.66400000
+GSM3124597	51_67YR_Male_Caucasian	AG13018	normal	67.0	male	Caucasian	Skin; Arm	COL1A2	1	3260.61300000
+GSM3124598	52_68YR_Male_Caucasian	AG14251	normal	68.0	male	Caucasian	Skin; Arm	COL1A2	1	2109.89200000
+GSM3124599	53_68YR_Male_Caucasian	AG12850	normal	68.0	male	Caucasian	Skin; Arm	COL1A2	1	3055.65300000
+GSM3124600	54_69YR_Male_Caucasian	AG12587	normal	69.0	male	Caucasian	Skin; Arm	COL1A2	1	3121.08900000
+GSM3124601	55_69YR_Female_Caucasian	AG13144	normal	69.0	female	Caucasian	Skin; Arm	COL1A2	1	2556.52200000
+GSM3124602	56_83_Male_Caucasian	AG04386	normal	83.0	male	Caucasian	Skin; Arm	COL1A2	1	2385.86400000
+GSM3124603	57_83_Male_Caucasian	AG05413	normal	83.0	male	Caucasian	Skin; Arm	COL1A2	1	2288.25000000
+GSM3124604	58_83_Male_Caucasian	AG04457	normal	83.0	male	Caucasian	Skin; Arm	COL1A2	1	2366.18500000
+GSM3124605	59_84_Female_Caucasian	AG11725	normal	84.0	female	Caucasian	Skin; Arm	COL1A2	1	2456.38700000
+GSM3124606	60_84_Male_Caucasian	AG06276	normal	84.0	male	Caucasian	Skin; Arm	COL1A2	1	3129.89100000
+GSM3124607	61_84_Female_Caucasian	AG11744	normal	84.0	female	Caucasian	Skin; Arm	COL1A2	1	1981.64400000
+GSM3124608	62_84_Male_Caucasian	AG12947	normal	84.0	male	Caucasian	Skin; Arm	COL1A2	1	3259.11300000
+GSM3124609	63_84_Male_Caucasian	AG05274	normal	84.0	male	Caucasian	Skin; Arm	COL1A2	1	2646.54900000
+GSM3124610	64_84_Male_Caucasian	AG11730	normal	84.0	male	Caucasian	Skin; Arm	COL1A2	1	4539.47100000
+GSM3124611	65_84_Male_Caucasian	AG04661	normal	84.0	male	Caucasian	Skin; Arm	COL1A2	1	2610.55100000
+GSM3124612	66_86_Male_CaucasianSardinian	AG11748	normal	86.0	male	Caucasian/Sardinian	Skin; Arm	COL1A2	1	3921.29000000
+GSM3124613	67_86_Male_caucasian	AG04143	normal	86.0	male	caucasian	Skin; Arm	COL1A2	1	2595.20200000
+GSM3124614	68_86_Male_caucasian	AG13349	normal	86.0	male	caucasian	Skin; Arm	COL1A2	1	3090.35300000
+GSM3124615	69_87_Female_caucasian	AG05247	normal	87.0	female	caucasian	Skin; Arm	COL1A2	1	4356.25600000
+GSM3124616	70_87_Male_caucasian	AG10884	normal	87.0	male	caucasian	Skin; Arm	COL1A2	1	4933.30300000
+GSM3124617	71_87_Male_caucasian	AG05248	normal	87.0	male	caucasian	Skin; Arm	COL1A2	1	3555.84100000
+GSM3124618	72_87_Male_Black	AG11017	normal	87.0	male	Black	Skin; Arm	COL1A2	1	2749.72800000
+GSM3124619	73_88_Male_Caucasian	AG04065	normal	88.0	male	Caucasian	Skin; Arm	COL1A2	1	4734.67900000
+GSM3124620	74_89_Male_Caucasian	AG13129	normal	89.0	male	Caucasian	Skin; Arm	COL1A2	1	4206.51300000
+GSM3124621	75_90_Male_Caucasian	AG12788	normal	90.0	male	Caucasian	Skin; Arm	COL1A2	1	2587.30600000
+GSM3124622	76_91_Male_Caucasian	AG07725	normal	91.0	male	Caucasian	Skin; Arm	COL1A2	1	3921.84600000
+GSM3124623	77_92_Female_Caucasian	AG09602	normal	92.0	female	Caucasian	Skin; Arm	COL1A2	1	3947.55600000
+GSM3124624	78_96_Male_Caucasian	AG04059	normal	96.0	male	Caucasian	Skin; Arm	COL1A2	1	5591.93800000
+GSM3124625	79_1_male_Caucasian	GM05659	normal	1.0	male	Caucasian	skin; chet	COL1A2	1	1609.72600000
+GSM3124626	80_2_female_Caucasian	GM00969	normal	2.0	female	Caucasian	Skin; Unspecified	COL1A2	1	3231.29400000
+GSM3124627	81_3_male_LatinoHispanic	GM05565	normal	3.0	male	Latino/Hispanic	skin; Inguinal area	COL1A2	1	2149.75700000
+GSM3124628	82_3_male_Unknown	GM00498	normal	3.0	male	Unknown	Skin; Unspecified	COL1A2	1	4786.63500000
+GSM3124629	83_5yr_Male_Black	GM05381	normal	5.0	male	Black	Skin; Umbilical Cord Area	COL1A2	1	3669.69000000
+GSM3124630	84_6yr_Male_Black	GM05400	normal	6.0	male	Black	Skin; inguinal area	COL1A2	1	4032.75900000
+GSM3124631	85_7yr_Male_Black	GM05757	normal	7.0	male	Black	Skin; inguinal area	COL1A2	1	3102.87400000
+GSM3124632	86_7yr_Male_Caucasian	GM00409	normal	7.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4401.10500000
+GSM3124633	87_8yr_Male_Caucasian	GM00499	normal	8.0	male	Caucasian	Skin; Unspecified	COL1A2	1	5698.26100000
+GSM3124634	88_8yr_Male_Caucasian	GM08398	normal	8.0	male	Caucasian	Skin; Inguinal area	COL1A2	1	4301.26700000
+GSM3124635	89_9yr_Female_Black	GM00038	normal	9.0	female	Black	Skin; unspecified	COL1A2	1	2958.46900000
+GSM3124636	90_10yr_Male_Black	GM03349	normal	10.0	male	Black	Skin; Unspecified	COL1A2	1	4131.11800000
+GSM3124637	91_10yr_Male_Caucasian	GM00500	normal	10.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4196.51300000
+GSM3124638	92_11_female_Caucasian	GM01652	normal	11.0	female	Caucasian	skin; arm	COL1A2	1	5621.67400000
+GSM3124639	93_11_female_Caucasian	GM01582	normal	11.0	female	Caucasian	skin; arm	COL1A2	1	4058.63600000
+GSM3124640	94_12_male_Caucasian	GM00316	normal	12.0	male	Caucasian	skin; arm	COL1A2	1	4855.86400000
+GSM3124641	95_13yr_Male_WhiTEEASTINDIAN	GM02037	normal	13.0	male	WhiTE/EAST INDIAN	Skin; Arm	COL1A2	1	3837.97800000
+GSM3124642	97_16yr_Female_Unknown	GM07532	normal	16.0	female	Unknown	Skin; Unspecified	COL1A2	1	4216.84600000
+GSM3124643	98_17yr_Male_Caucasian	GM07753	normal	17.0	male	Caucasian	Skin; Unspecified	COL1A2	1	1847.36100000
+GSM3124644	99_17yr_Male_Caucasian	GM07492	normal	17.0	male	Caucasian	Skin; Unspecified	COL1A2	1	2822.23300000
+GSM3124645	101_19yr_Female_Caucasian	GM08399	normal	19.0	female	Caucasian	Skin; Unspecified	COL1A2	1	3363.05800000
+GSM3124646	102_19yr_Male_Caucasian	GM04501	normal	19.0	male	Caucasian	Skin; Unspecified	COL1A2	1	5352.65800000
+GSM3124647	103_19yr_Male_Caucasian	GM23973	normal	19.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4597.37800000
+GSM3124648	104_19yr_Male_Caucasian	GM03377	normal	19.0	male	Caucasian	Skin; Arm	COL1A2	1	4948.75600000
+GSM3124649	105_20yr_Male_Caucasian	GM03440	normal	20.0	male	Caucasian	Skin; Leg	COL1A2	1	5244.04100000
+GSM3124650	106_20yr_Female_Caucasian	GM04505	normal	20.0	female	Caucasian	skin; arm	COL1A2	1	2570.91300000
+GSM3124651	107_31yr_Female_Caucasian	GM04503	normal	31.0	female	Caucasian	skin; Unspecified	COL1A2	1	4246.09900000
+GSM3124652	108_31_female_Caucasian	GM04504	normal	31.0	female	Caucasian	Skin; Unspecified	COL1A2	1	3644.98400000
+GSM3124653	109_32_male_Unknown	GM08402	normal	32.0	male	Unknown	Skin; Unspecified	COL1A2	1	3640.53500000
+GSM3124654	110_32_female_BlackPuertoRican	GM00043	normal	32.0	female	Black/Puerto Rican	Skin; Unspecified	COL1A2	1	3787.05000000
+GSM3124655	111_33yr_Male_Caucasian	GM02673	normal	33.0	male	Caucasian	skin; Unspecified	COL1A2	1	5857.44400000
+GSM3124656	112_33yr_Male_Caucasian	GM23971	normal	33.0	male	Caucasian	Skin; Unspecified	COL1A2	1	5098.96700000
+GSM3124657	114_37yr_Female_Unknown	GM08400	normal	37.0	female	Unknown	Skin/Blood	COL1A2	1	3446.83100000
+GSM3124658	115_37yr_Female_Unknown	GM01650	normal	37.0	female	Unknown	Skin; Arm	COL1A2	1	4488.91900000
+GSM3124659	117_37yr_Male_Caucasian	GM01653	normal	37.0	male	Caucasian	skin; Arm	COL1A2	1	3814.33400000
+GSM3124660	118_39yr_Male_Caucasian	GM01717	normal	39.0	male	Caucasian	skin; Arm	COL1A2	1	3656.33600000
+GSM3124661	120_51yr_Male_Caucasian	GM00967	normal	51.0	male	Caucasian	skin; Arm	COL1A2	1	3180.92300000
+GSM3124662	121_52yr_Male_Caucasian	GM23967	normal	52.0	male	Caucasian	skin; Unspecified	COL1A2	1	5381.22500000
+GSM3124663	122_55yr_Male_Caucasian	GM23248	normal	55.0	male	Caucasian	Skin; Arm	COL1A2	1	3836.37400000
+GSM3124664	123_57_male_Caucasian	GM13335	normal	57.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4206.88900000
+GSM3124665	124_60yr_Male_Caucasian	GM04260	normal	60.0	male	Caucasian	skin; Unspecified	COL1A2	1	4243.69900000
+GSM3124666	125_71yr_Female_Caucasian	GM01680	normal	71.0	female	Caucasian	Skin; Arm	COL1A2	1	5135.87400000
+GSM3124667	126_75_male_Caucasian	GM08401	normal	75.0	male	Caucasian	Skin; Unspecified	COL1A2	1	3298.41700000
+GSM3124668	127_78yr_Male_Caucasian	GM09918	normal	78.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4878.09100000
+GSM3124669	128_80yr_Female_Caucasian	GM03525	normal	80.0	female	Caucasian	Skin; Abdomen	COL1A2	1	3516.03400000
+GSM3124670	129_94_Male_Caucasian	AG08433	normal	94.0	male	Caucasian	skin; Arm	COL1A2	1	3169.75300000
+GSM3124671	130_89_Male_Caucasian	AG13208	normal	89.0	male	Caucasian	skin; Arm	COL1A2	1	3098.05300000
+GSM3124672	131_87_Male_Caucasian	AG04662	normal	87.0	male	Caucasian	Skin; Arm	COL1A2	1	3523.89700000
+GSM3124673	132_90_Male_Caucasian	AG06291	normal	90.0	male	Caucasian	Skin; Arm	COL1A2	1	4193.28900000
+GSM3124674	133_89_Male_Caucasian	AG06308	normal	89.0	male	Caucasian	Skin; Arm	COL1A2	1	2643.26900000
+GSM3124675	134_86_Male_Caucasian	AG09843	normal	86.0	male	Caucasian	Skin; Arm	COL1A2	1	2799.43500000
+GSM3124676	135_92_Male_Caucasian	AG04064	normal	92.0	male	Caucasian	Skin; Arm	COL1A2	1	2662.36600000
+GSM3124677	136_87_Male_Caucasian	AG11808	normal	87.0	male	Caucasian	Skin; Arm	COL1A2	1	3962.64800000
+GSM3124678	155_22yr_Male_Caucasian	GM23815	normal	22.0	male	Caucasian	Skin; Unspecified	COL1A2	1	4500.14300000
+GSM3124679	156_25yr_Female_Caucasian	GM03651	normal	25.0	female	Caucasian	Skin; Arm	COL1A2	1	3689.27500000
+GSM3124680	157_29yr_Male_Unknown	GM00495	normal	29.0	male	Unknown	Skin; Buttock	COL1A2	1	6785.11300000
+GSM3124681	158_24YR_Male_Caucasian	GM03652	normal	24.0	male	Caucasian	Skin; Arm	COL1A2	1	4899.85000000
+GSM3124682	159_23YR_Male_AmericanIndian	GM03234	normal	23.0	male	American Indian	Skin; Arm	COL1A2	1	5903.81000000
+GSM3124683	160_26yr_Female_Asian	GM00726	normal	26.0	female	Asian	Skin; Arm	COL1A2	1	2806.71300000
+GSM3124684	162_21YR_Male_Caucasian	GM03523	normal	21.0	male	Caucasian	Skin;Neck	COL1A2	1	3448.10800000
+GSM3124685	163_67YR_Female_Black	GM03524	normal	67.0	female	Black	Skin; Leg	COL1A2	1	5015.57100000
+GSM3124686	164_67YR_Female_Filipino	AG16086	normal	67.0	female	Filipino	Skin; Arm	COL1A2	1	2633.03100000
+GSM3124687	165_68YR_Male_Unknown	AG12207	normal	68.0	male	Unknown	Skin; Arm	COL1A2	1	2925.48800000
+GSM3124688	166_82yr_Female_Caucasian	GM01706	normal	82.0	female	Caucasian	Skin; Arm	COL1A2	1	4859.68400000
+GSM3124689	167_66yr_Male_Black	GM03529	normal	66.0	male	Black	Skin; Thigh	COL1A2	1	5271.27200000
+GSM3124690	168_68YR_Male_Caucasian	GM03658	normal	68.0	male	Caucasian	Skin; Arm	COL1A2	1	4596.45000000
+GSM3124691	169_70yr_Male_Caucasian	GM01681	normal	70.0	male	Caucasian	Skin; Arm	COL1A2	1	3880.98100000
+GSM3124692	170_69yr_Male_Caucasian	AG16102	normal	69.0	male	Caucasian	Skin; Arm	COL1A2	1	2964.13000000
+GSM3124693	139_8_Female-HGPS_Caucasian	AG11513	hgps	8.0	female	Caucasian	Skin; Leg	COL1A2	1	2177.42000000
+GSM3124694	141_8_Male-HGPS_Unknown	PRF167	hgps	8.0	male	Unknown	Unknown	COL1A2	1	3255.74300000
+GSM3124695	197_2yr3mos_F_Unknown	HGADFN188	hgps	2.25	female	Unknown	Unknown	COL1A2	1	2602.57600000
+GSM3124696	198_3yr9mos_F_Unknown	HGADFN127	hgps	3.75	female	Unknown	Unknown	COL1A2	1	4134.67000000
+GSM3124697	199_4yr8mos_F_Unknown	HGADFN164	hgps	4.666666666666667	female	Unknown	Unknown	COL1A2	1	2976.88700000
+GSM3124698	200_8yr6mos_M_Unknown	HGADFN169	hgps	8.5	male	Unknown	Unknown	COL1A2	1	3044.58000000
+GSM3124699	201_6ys11mos_F_Unknown	HGADFN178	hgps	6.916666666666667	female	Unknown	Unknown	COL1A2	1	2500.19800000
+GSM3124700	202_5yr0mos_F_Unknown	HGADFN122	hgps	5.0	female	Unknown	Unknown	COL1A2	1	4380.51500000
+GSM3124701	203_8yr10mos_M_Unknown	HGADFN143	hgps	8.833333333333334	male	Unknown	Unknown	COL1A2	1	4247.11400000
+GSM3124702	204_3yr0mos_F_Unknown	HGADFN367	hgps	3.0	female	Unknown	Unknown	COL1A2	1	3775.86800000
+GSM3124560	14_1yr_Male_Asian	AG08498	normal	1.0	male	Asian	Skin; Foreskin	COL4A1	1	47.66700000
+GSM3124561	15_12yr_Male_Caucasian	AG16409	normal	12.0	male	Caucasian	Skin; Unspecified	COL4A1	1	71.03500000
+GSM3124562	16_24YR_Female_Caucasian	AG11732	normal	24.0	female	Caucasian	Skin; Arm	COL4A1	1	33.52500000
+GSM3124563	17_25YR_Male_caucasian	AG09975	normal	25.0	male	caucasian	Skin; Arm	COL4A1	1	89.17300000
+GSM3124564	18_25YR_Female_caucasian	AG11735	normal	25.0	female	caucasian	Skin; Arm	COL4A1	1	31.52200000
+GSM3124565	19_26YR_Male_Caucasian	AG09860	normal	26.0	male	Caucasian	Skin; Arm	COL4A1	1	30.30000000
+GSM3124566	20_26YR_Female_Caucasian	AG07124	normal	26.0	female	Caucasian	Skin; Arm	COL4A1	1	21.29700000
+GSM3124567	21_28YR_Male_Caucasian	AG09559	normal	28.0	male	Caucasian	Skin; Arm	COL4A1	1	9.67500000
+GSM3124568	22_29YR_Male_Caucasian	AG04054	normal	29.0	male	Caucasian	Skin; Arm	COL4A1	1	30.61500000
+GSM3124569	23_29YR_Male_Caucasian	AG07478	normal	29.0	male	Caucasian	Skin; Arm	COL4A1	1	530.67600000
+GSM3124570	24_30YR_Male_Caucasian	AG13153	normal	30.0	male	Caucasian	Skin; Arm	COL4A1	1	17.99300000
+GSM3124571	25_30YR_Female_Caucasian	AG09599	normal	30.0	female	Caucasian	Skin; Arm	COL4A1	1	34.39500000
+GSM3124572	26_30YR_Male_Caucasian	AG13234	normal	30.0	male	Caucasian	Skin; Arm	COL4A1	1	18.56400000
+GSM3124573	27_30YR_Male_Caucasian	AG09605	normal	30.0	male	Caucasian	Skin; Arm	COL4A1	1	7.43800000
+GSM3124574	28_43yr_Female_Caucasian	AG11745	normal	43.0	female	Caucasian	Skin; Arm	COL4A1	1	12.68500000
+GSM3124575	29_44yr_Male_Caucasian	AG13244	normal	44.0	male	Caucasian	Skin; Arm	COL4A1	1	16.30600000
+GSM3124576	30_41yr_Male_Caucasian	AG13967	normal	41.0	male	Caucasian	Skin; Arm	COL4A1	1	12.27300000
+GSM3124577	31_47yr_Male_Caucasian	AG12989	normal	47.0	male	Caucasian	Skin; Arm	COL4A1	1	29.33900000
+GSM3124578	32_50yr_Female_Caucasian	AG12493	normal	50.0	female	Caucasian	Skin; Arm	COL4A1	1	94.72500000
+GSM3124579	33_46yr_Male_Caucasian	AG11556	normal	46.0	male	Caucasian	Skin; Arm	COL4A1	1	20.87300000
+GSM3124580	34_50yr_Male_Caucasian	AG12602	normal	50.0	male	Caucasian	Skin; Arm	COL4A1	1	25.64500000
+GSM3124581	35_42yr_Female_Caucasian	AG13066	normal	42.0	female	Caucasian	Skin; Arm	COL4A1	1	45.24700000
+GSM3124582	36_47yr_Male_Caucasian	AG13962	normal	47.0	male	Caucasian	Skin; Arm	COL4A1	1	17.02400000
+GSM3124583	37_41yr_Female_Caucasian	AG16358	normal	41.0	female	Caucasian	Skin; Arm	COL4A1	1	251.41000000
+GSM3124584	38_43yr_Male_Caucasian	AG04063	normal	43.0	male	Caucasian	Skin; Arm	COL4A1	1	10.50900000
+GSM3124585	39_44yr_Male_Caucasian	AG11698	normal	44.0	male	Caucasian	Skin; Arm	COL4A1	1	45.15600000
+GSM3124586	40_45yr_Male_Caucasian	AG11484	normal	45.0	male	Caucasian	Skin; Arm	COL4A1	1	18.84100000
+GSM3124587	41_46yr_Male_Caucasian	AG11162	normal	46.0	male	Caucasian	skin; Arm	COL4A1	1	33.08200000
+GSM3124588	42_46yr_Male_Caucasian	AG12954	normal	46.0	male	Caucasian	Skin; Arm	COL4A1	1	11.64500000
+GSM3124589	43_47yr_Male_Caucasian	AG11154	normal	47.0	male	Caucasian	Skin; Arm	COL4A1	1	31.24600000
+GSM3124590	44_61YR_Male_Caucasian	AG13225	normal	61.0	male	Caucasian	Skin; Arm	COL4A1	1	18.69800000
+GSM3124591	45_62YR_Female_Caucasian	AG12597	normal	62.0	female	Caucasian	Skin; Arm	COL4A1	1	137.49600000
+GSM3124592	46_62YR_Female_Caucasian	AG11357	normal	62.0	female	Caucasian	Skin; Arm	COL4A1	1	25.00900000
+GSM3124593	47_63YR_Male_Caucasian	AG12588	normal	63.0	male	Caucasian	Skin; Arm	COL4A1	1	30.75500000
+GSM3124594	48_64YR_Male_Caucasian	AG13065	normal	64.0	male	Caucasian	Skin; Arm	COL4A1	1	45.06500000
+GSM3124595	49_66YR_Male_Caucasian	AG04461	normal	66.0	male	Caucasian	Skin; Arm	COL4A1	1	32.09900000
+GSM3124596	50_67YR_Male_Caucasian	AG12599	normal	67.0	male	Caucasian	Skin; Arm	COL4A1	1	28.38900000
+GSM3124597	51_67YR_Male_Caucasian	AG13018	normal	67.0	male	Caucasian	Skin; Arm	COL4A1	1	35.09100000
+GSM3124598	52_68YR_Male_Caucasian	AG14251	normal	68.0	male	Caucasian	Skin; Arm	COL4A1	1	22.12400000
+GSM3124599	53_68YR_Male_Caucasian	AG12850	normal	68.0	male	Caucasian	Skin; Arm	COL4A1	1	33.10900000
+GSM3124600	54_69YR_Male_Caucasian	AG12587	normal	69.0	male	Caucasian	Skin; Arm	COL4A1	1	34.98900000
+GSM3124601	55_69YR_Female_Caucasian	AG13144	normal	69.0	female	Caucasian	Skin; Arm	COL4A1	1	120.86600000
+GSM3124602	56_83_Male_Caucasian	AG04386	normal	83.0	male	Caucasian	Skin; Arm	COL4A1	1	28.75700000
+GSM3124603	57_83_Male_Caucasian	AG05413	normal	83.0	male	Caucasian	Skin; Arm	COL4A1	1	22.04400000
+GSM3124604	58_83_Male_Caucasian	AG04457	normal	83.0	male	Caucasian	Skin; Arm	COL4A1	1	33.59300000
+GSM3124605	59_84_Female_Caucasian	AG11725	normal	84.0	female	Caucasian	Skin; Arm	COL4A1	1	15.74500000
+GSM3124606	60_84_Male_Caucasian	AG06276	normal	84.0	male	Caucasian	Skin; Arm	COL4A1	1	67.26100000
+GSM3124607	61_84_Female_Caucasian	AG11744	normal	84.0	female	Caucasian	Skin; Arm	COL4A1	1	3.26700000
+GSM3124608	62_84_Male_Caucasian	AG12947	normal	84.0	male	Caucasian	Skin; Arm	COL4A1	1	17.34100000
+GSM3124609	63_84_Male_Caucasian	AG05274	normal	84.0	male	Caucasian	Skin; Arm	COL4A1	1	20.99700000
+GSM3124610	64_84_Male_Caucasian	AG11730	normal	84.0	male	Caucasian	Skin; Arm	COL4A1	1	34.90300000
+GSM3124611	65_84_Male_Caucasian	AG04661	normal	84.0	male	Caucasian	Skin; Arm	COL4A1	1	44.47200000
+GSM3124612	66_86_Male_CaucasianSardinian	AG11748	normal	86.0	male	Caucasian/Sardinian	Skin; Arm	COL4A1	1	23.84400000
+GSM3124613	67_86_Male_caucasian	AG04143	normal	86.0	male	caucasian	Skin; Arm	COL4A1	1	17.58300000
+GSM3124614	68_86_Male_caucasian	AG13349	normal	86.0	male	caucasian	Skin; Arm	COL4A1	1	19.30100000
+GSM3124615	69_87_Female_caucasian	AG05247	normal	87.0	female	caucasian	Skin; Arm	COL4A1	1	18.86200000
+GSM3124616	70_87_Male_caucasian	AG10884	normal	87.0	male	caucasian	Skin; Arm	COL4A1	1	8.26200000
+GSM3124617	71_87_Male_caucasian	AG05248	normal	87.0	male	caucasian	Skin; Arm	COL4A1	1	10.66300000
+GSM3124618	72_87_Male_Black	AG11017	normal	87.0	male	Black	Skin; Arm	COL4A1	1	7.08500000
+GSM3124619	73_88_Male_Caucasian	AG04065	normal	88.0	male	Caucasian	Skin; Arm	COL4A1	1	58.71400000
+GSM3124620	74_89_Male_Caucasian	AG13129	normal	89.0	male	Caucasian	Skin; Arm	COL4A1	1	11.17700000
+GSM3124621	75_90_Male_Caucasian	AG12788	normal	90.0	male	Caucasian	Skin; Arm	COL4A1	1	31.74400000
+GSM3124622	76_91_Male_Caucasian	AG07725	normal	91.0	male	Caucasian	Skin; Arm	COL4A1	1	17.83200000
+GSM3124623	77_92_Female_Caucasian	AG09602	normal	92.0	female	Caucasian	Skin; Arm	COL4A1	1	11.51400000
+GSM3124624	78_96_Male_Caucasian	AG04059	normal	96.0	male	Caucasian	Skin; Arm	COL4A1	1	44.72200000
+GSM3124625	79_1_male_Caucasian	GM05659	normal	1.0	male	Caucasian	skin; chet	COL4A1	1	22.25100000
+GSM3124626	80_2_female_Caucasian	GM00969	normal	2.0	female	Caucasian	Skin; Unspecified	COL4A1	1	76.41100000
+GSM3124627	81_3_male_LatinoHispanic	GM05565	normal	3.0	male	Latino/Hispanic	skin; Inguinal area	COL4A1	1	56.23500000
+GSM3124628	82_3_male_Unknown	GM00498	normal	3.0	male	Unknown	Skin; Unspecified	COL4A1	1	54.70700000
+GSM3124629	83_5yr_Male_Black	GM05381	normal	5.0	male	Black	Skin; Umbilical Cord Area	COL4A1	1	1087.47200000
+GSM3124630	84_6yr_Male_Black	GM05400	normal	6.0	male	Black	Skin; inguinal area	COL4A1	1	124.19200000
+GSM3124631	85_7yr_Male_Black	GM05757	normal	7.0	male	Black	Skin; inguinal area	COL4A1	1	79.31800000
+GSM3124632	86_7yr_Male_Caucasian	GM00409	normal	7.0	male	Caucasian	Skin; Unspecified	COL4A1	1	119.26100000
+GSM3124633	87_8yr_Male_Caucasian	GM00499	normal	8.0	male	Caucasian	Skin; Unspecified	COL4A1	1	44.33400000
+GSM3124634	88_8yr_Male_Caucasian	GM08398	normal	8.0	male	Caucasian	Skin; Inguinal area	COL4A1	1	144.07900000
+GSM3124635	89_9yr_Female_Black	GM00038	normal	9.0	female	Black	Skin; unspecified	COL4A1	1	15.22000000
+GSM3124636	90_10yr_Male_Black	GM03349	normal	10.0	male	Black	Skin; Unspecified	COL4A1	1	212.47200000
+GSM3124637	91_10yr_Male_Caucasian	GM00500	normal	10.0	male	Caucasian	Skin; Unspecified	COL4A1	1	75.32600000
+GSM3124638	92_11_female_Caucasian	GM01652	normal	11.0	female	Caucasian	skin; arm	COL4A1	1	40.84700000
+GSM3124639	93_11_female_Caucasian	GM01582	normal	11.0	female	Caucasian	skin; arm	COL4A1	1	16.59200000
+GSM3124640	94_12_male_Caucasian	GM00316	normal	12.0	male	Caucasian	skin; arm	COL4A1	1	65.31300000
+GSM3124641	95_13yr_Male_WhiTEEASTINDIAN	GM02037	normal	13.0	male	WhiTE/EAST INDIAN	Skin; Arm	COL4A1	1	61.63600000
+GSM3124642	97_16yr_Female_Unknown	GM07532	normal	16.0	female	Unknown	Skin; Unspecified	COL4A1	1	103.45000000
+GSM3124643	98_17yr_Male_Caucasian	GM07753	normal	17.0	male	Caucasian	Skin; Unspecified	COL4A1	1	42.73400000
+GSM3124644	99_17yr_Male_Caucasian	GM07492	normal	17.0	male	Caucasian	Skin; Unspecified	COL4A1	1	62.16500000
+GSM3124645	101_19yr_Female_Caucasian	GM08399	normal	19.0	female	Caucasian	Skin; Unspecified	COL4A1	1	63.30200000
+GSM3124646	102_19yr_Male_Caucasian	GM04501	normal	19.0	male	Caucasian	Skin; Unspecified	COL4A1	1	35.10700000
+GSM3124647	103_19yr_Male_Caucasian	GM23973	normal	19.0	male	Caucasian	Skin; Unspecified	COL4A1	1	21.24400000
+GSM3124648	104_19yr_Male_Caucasian	GM03377	normal	19.0	male	Caucasian	Skin; Arm	COL4A1	1	96.62100000
+GSM3124649	105_20yr_Male_Caucasian	GM03440	normal	20.0	male	Caucasian	Skin; Leg	COL4A1	1	174.04200000
+GSM3124650	106_20yr_Female_Caucasian	GM04505	normal	20.0	female	Caucasian	skin; arm	COL4A1	1	27.55300000
+GSM3124651	107_31yr_Female_Caucasian	GM04503	normal	31.0	female	Caucasian	skin; Unspecified	COL4A1	1	48.25000000
+GSM3124652	108_31_female_Caucasian	GM04504	normal	31.0	female	Caucasian	Skin; Unspecified	COL4A1	1	94.09100000
+GSM3124653	109_32_male_Unknown	GM08402	normal	32.0	male	Unknown	Skin; Unspecified	COL4A1	1	87.77800000
+GSM3124654	110_32_female_BlackPuertoRican	GM00043	normal	32.0	female	Black/Puerto Rican	Skin; Unspecified	COL4A1	1	41.26500000
+GSM3124655	111_33yr_Male_Caucasian	GM02673	normal	33.0	male	Caucasian	skin; Unspecified	COL4A1	1	57.57800000
+GSM3124656	112_33yr_Male_Caucasian	GM23971	normal	33.0	male	Caucasian	Skin; Unspecified	COL4A1	1	74.48600000
+GSM3124657	114_37yr_Female_Unknown	GM08400	normal	37.0	female	Unknown	Skin/Blood	COL4A1	1	120.71400000
+GSM3124658	115_37yr_Female_Unknown	GM01650	normal	37.0	female	Unknown	Skin; Arm	COL4A1	1	53.01500000
+GSM3124659	117_37yr_Male_Caucasian	GM01653	normal	37.0	male	Caucasian	skin; Arm	COL4A1	1	24.37200000
+GSM3124660	118_39yr_Male_Caucasian	GM01717	normal	39.0	male	Caucasian	skin; Arm	COL4A1	1	134.68700000
+GSM3124661	120_51yr_Male_Caucasian	GM00967	normal	51.0	male	Caucasian	skin; Arm	COL4A1	1	10.36900000
+GSM3124662	121_52yr_Male_Caucasian	GM23967	normal	52.0	male	Caucasian	skin; Unspecified	COL4A1	1	113.70400000
+GSM3124663	122_55yr_Male_Caucasian	GM23248	normal	55.0	male	Caucasian	Skin; Arm	COL4A1	1	72.00000000
+GSM3124664	123_57_male_Caucasian	GM13335	normal	57.0	male	Caucasian	Skin; Unspecified	COL4A1	1	38.27700000
+GSM3124665	124_60yr_Male_Caucasian	GM04260	normal	60.0	male	Caucasian	skin; Unspecified	COL4A1	1	80.45700000
+GSM3124666	125_71yr_Female_Caucasian	GM01680	normal	71.0	female	Caucasian	Skin; Arm	COL4A1	1	18.54300000
+GSM3124667	126_75_male_Caucasian	GM08401	normal	75.0	male	Caucasian	Skin; Unspecified	COL4A1	1	132.10200000
+GSM3124668	127_78yr_Male_Caucasian	GM09918	normal	78.0	male	Caucasian	Skin; Unspecified	COL4A1	1	36.81600000
+GSM3124669	128_80yr_Female_Caucasian	GM03525	normal	80.0	female	Caucasian	Skin; Abdomen	COL4A1	1	45.21400000
+GSM3124670	129_94_Male_Caucasian	AG08433	normal	94.0	male	Caucasian	skin; Arm	COL4A1	1	11.87200000
+GSM3124671	130_89_Male_Caucasian	AG13208	normal	89.0	male	Caucasian	skin; Arm	COL4A1	1	7.54400000
+GSM3124672	131_87_Male_Caucasian	AG04662	normal	87.0	male	Caucasian	Skin; Arm	COL4A1	1	24.13800000
+GSM3124673	132_90_Male_Caucasian	AG06291	normal	90.0	male	Caucasian	Skin; Arm	COL4A1	1	62.83100000
+GSM3124674	133_89_Male_Caucasian	AG06308	normal	89.0	male	Caucasian	Skin; Arm	COL4A1	1	22.34000000
+GSM3124675	134_86_Male_Caucasian	AG09843	normal	86.0	male	Caucasian	Skin; Arm	COL4A1	1	13.14000000
+GSM3124676	135_92_Male_Caucasian	AG04064	normal	92.0	male	Caucasian	Skin; Arm	COL4A1	1	18.33300000
+GSM3124677	136_87_Male_Caucasian	AG11808	normal	87.0	male	Caucasian	Skin; Arm	COL4A1	1	52.93500000
+GSM3124678	155_22yr_Male_Caucasian	GM23815	normal	22.0	male	Caucasian	Skin; Unspecified	COL4A1	1	161.59600000
+GSM3124679	156_25yr_Female_Caucasian	GM03651	normal	25.0	female	Caucasian	Skin; Arm	COL4A1	1	50.86200000
+GSM3124680	157_29yr_Male_Unknown	GM00495	normal	29.0	male	Unknown	Skin; Buttock	COL4A1	1	37.16800000
+GSM3124681	158_24YR_Male_Caucasian	GM03652	normal	24.0	male	Caucasian	Skin; Arm	COL4A1	1	39.57000000
+GSM3124682	159_23YR_Male_AmericanIndian	GM03234	normal	23.0	male	American Indian	Skin; Arm	COL4A1	1	203.20000000
+GSM3124683	160_26yr_Female_Asian	GM00726	normal	26.0	female	Asian	Skin; Arm	COL4A1	1	71.41000000
+GSM3124684	162_21YR_Male_Caucasian	GM03523	normal	21.0	male	Caucasian	Skin;Neck	COL4A1	1	206.00900000
+GSM3124685	163_67YR_Female_Black	GM03524	normal	67.0	female	Black	Skin; Leg	COL4A1	1	1649.32800000
+GSM3124686	164_67YR_Female_Filipino	AG16086	normal	67.0	female	Filipino	Skin; Arm	COL4A1	1	318.01000000
+GSM3124687	165_68YR_Male_Unknown	AG12207	normal	68.0	male	Unknown	Skin; Arm	COL4A1	1	127.85000000
+GSM3124688	166_82yr_Female_Caucasian	GM01706	normal	82.0	female	Caucasian	Skin; Arm	COL4A1	1	36.47600000
+GSM3124689	167_66yr_Male_Black	GM03529	normal	66.0	male	Black	Skin; Thigh	COL4A1	1	33.36300000
+GSM3124690	168_68YR_Male_Caucasian	GM03658	normal	68.0	male	Caucasian	Skin; Arm	COL4A1	1	498.05600000
+GSM3124691	169_70yr_Male_Caucasian	GM01681	normal	70.0	male	Caucasian	Skin; Arm	COL4A1	1	82.19100000
+GSM3124692	170_69yr_Male_Caucasian	AG16102	normal	69.0	male	Caucasian	Skin; Arm	COL4A1	1	33.46900000
+GSM3124693	139_8_Female-HGPS_Caucasian	AG11513	hgps	8.0	female	Caucasian	Skin; Leg	COL4A1	1	127.78800000
+GSM3124694	141_8_Male-HGPS_Unknown	PRF167	hgps	8.0	male	Unknown	Unknown	COL4A1	1	102.87100000
+GSM3124695	197_2yr3mos_F_Unknown	HGADFN188	hgps	2.25	female	Unknown	Unknown	COL4A1	1	60.11800000
+GSM3124696	198_3yr9mos_F_Unknown	HGADFN127	hgps	3.75	female	Unknown	Unknown	COL4A1	1	114.58900000
+GSM3124697	199_4yr8mos_F_Unknown	HGADFN164	hgps	4.666666666666667	female	Unknown	Unknown	COL4A1	1	90.53700000
+GSM3124698	200_8yr6mos_M_Unknown	HGADFN169	hgps	8.5	male	Unknown	Unknown	COL4A1	1	156.98900000
+GSM3124699	201_6ys11mos_F_Unknown	HGADFN178	hgps	6.916666666666667	female	Unknown	Unknown	COL4A1	1	121.05500000
+GSM3124700	202_5yr0mos_F_Unknown	HGADFN122	hgps	5.0	female	Unknown	Unknown	COL4A1	1	198.87100000
+GSM3124701	203_8yr10mos_M_Unknown	HGADFN143	hgps	8.833333333333334	male	Unknown	Unknown	COL4A1	1	392.34900000
+GSM3124702	204_3yr0mos_F_Unknown	HGADFN367	hgps	3.0	female	Unknown	Unknown	COL4A1	1	518.06900000
+GSM3124560	14_1yr_Male_Asian	AG08498	normal	1.0	male	Asian	Skin; Foreskin	COL4A2	1	113.99900000
+GSM3124561	15_12yr_Male_Caucasian	AG16409	normal	12.0	male	Caucasian	Skin; Unspecified	COL4A2	1	122.25500000
+GSM3124562	16_24YR_Female_Caucasian	AG11732	normal	24.0	female	Caucasian	Skin; Arm	COL4A2	1	67.77000000
+GSM3124563	17_25YR_Male_caucasian	AG09975	normal	25.0	male	caucasian	Skin; Arm	COL4A2	1	94.80500000
+GSM3124564	18_25YR_Female_caucasian	AG11735	normal	25.0	female	caucasian	Skin; Arm	COL4A2	1	49.95500000
+GSM3124565	19_26YR_Male_Caucasian	AG09860	normal	26.0	male	Caucasian	Skin; Arm	COL4A2	1	57.89400000
+GSM3124566	20_26YR_Female_Caucasian	AG07124	normal	26.0	female	Caucasian	Skin; Arm	COL4A2	1	44.52400000
+GSM3124567	21_28YR_Male_Caucasian	AG09559	normal	28.0	male	Caucasian	Skin; Arm	COL4A2	1	22.72500000
+GSM3124568	22_29YR_Male_Caucasian	AG04054	normal	29.0	male	Caucasian	Skin; Arm	COL4A2	1	55.99300000
+GSM3124569	23_29YR_Male_Caucasian	AG07478	normal	29.0	male	Caucasian	Skin; Arm	COL4A2	1	390.28600000
+GSM3124570	24_30YR_Male_Caucasian	AG13153	normal	30.0	male	Caucasian	Skin; Arm	COL4A2	1	40.03000000
+GSM3124571	25_30YR_Female_Caucasian	AG09599	normal	30.0	female	Caucasian	Skin; Arm	COL4A2	1	50.13600000
+GSM3124572	26_30YR_Male_Caucasian	AG13234	normal	30.0	male	Caucasian	Skin; Arm	COL4A2	1	34.27800000
+GSM3124573	27_30YR_Male_Caucasian	AG09605	normal	30.0	male	Caucasian	Skin; Arm	COL4A2	1	22.49400000
+GSM3124574	28_43yr_Female_Caucasian	AG11745	normal	43.0	female	Caucasian	Skin; Arm	COL4A2	1	29.43000000
+GSM3124575	29_44yr_Male_Caucasian	AG13244	normal	44.0	male	Caucasian	Skin; Arm	COL4A2	1	34.87100000
+GSM3124576	30_41yr_Male_Caucasian	AG13967	normal	41.0	male	Caucasian	Skin; Arm	COL4A2	1	28.82700000
+GSM3124577	31_47yr_Male_Caucasian	AG12989	normal	47.0	male	Caucasian	Skin; Arm	COL4A2	1	51.34800000
+GSM3124578	32_50yr_Female_Caucasian	AG12493	normal	50.0	female	Caucasian	Skin; Arm	COL4A2	1	109.66700000
+GSM3124579	33_46yr_Male_Caucasian	AG11556	normal	46.0	male	Caucasian	Skin; Arm	COL4A2	1	49.81500000
+GSM3124580	34_50yr_Male_Caucasian	AG12602	normal	50.0	male	Caucasian	Skin; Arm	COL4A2	1	44.51300000
+GSM3124581	35_42yr_Female_Caucasian	AG13066	normal	42.0	female	Caucasian	Skin; Arm	COL4A2	1	66.05400000
+GSM3124582	36_47yr_Male_Caucasian	AG13962	normal	47.0	male	Caucasian	Skin; Arm	COL4A2	1	36.98900000
+GSM3124583	37_41yr_Female_Caucasian	AG16358	normal	41.0	female	Caucasian	Skin; Arm	COL4A2	1	205.17000000
+GSM3124584	38_43yr_Male_Caucasian	AG04063	normal	43.0	male	Caucasian	Skin; Arm	COL4A2	1	25.44800000
+GSM3124585	39_44yr_Male_Caucasian	AG11698	normal	44.0	male	Caucasian	Skin; Arm	COL4A2	1	81.97400000
+GSM3124586	40_45yr_Male_Caucasian	AG11484	normal	45.0	male	Caucasian	Skin; Arm	COL4A2	1	37.69700000
+GSM3124587	41_46yr_Male_Caucasian	AG11162	normal	46.0	male	Caucasian	skin; Arm	COL4A2	1	56.94600000
+GSM3124588	42_46yr_Male_Caucasian	AG12954	normal	46.0	male	Caucasian	Skin; Arm	COL4A2	1	26.05300000
+GSM3124589	43_47yr_Male_Caucasian	AG11154	normal	47.0	male	Caucasian	Skin; Arm	COL4A2	1	48.25900000
+GSM3124590	44_61YR_Male_Caucasian	AG13225	normal	61.0	male	Caucasian	Skin; Arm	COL4A2	1	36.36700000
+GSM3124591	45_62YR_Female_Caucasian	AG12597	normal	62.0	female	Caucasian	Skin; Arm	COL4A2	1	166.15300000
+GSM3124592	46_62YR_Female_Caucasian	AG11357	normal	62.0	female	Caucasian	Skin; Arm	COL4A2	1	49.69200000
+GSM3124593	47_63YR_Male_Caucasian	AG12588	normal	63.0	male	Caucasian	Skin; Arm	COL4A2	1	36.28800000
+GSM3124594	48_64YR_Male_Caucasian	AG13065	normal	64.0	male	Caucasian	Skin; Arm	COL4A2	1	62.85700000
+GSM3124595	49_66YR_Male_Caucasian	AG04461	normal	66.0	male	Caucasian	Skin; Arm	COL4A2	1	51.47900000
+GSM3124596	50_67YR_Male_Caucasian	AG12599	normal	67.0	male	Caucasian	Skin; Arm	COL4A2	1	45.55900000
+GSM3124597	51_67YR_Male_Caucasian	AG13018	normal	67.0	male	Caucasian	Skin; Arm	COL4A2	1	58.85000000
+GSM3124598	52_68YR_Male_Caucasian	AG14251	normal	68.0	male	Caucasian	Skin; Arm	COL4A2	1	44.50200000
+GSM3124599	53_68YR_Male_Caucasian	AG12850	normal	68.0	male	Caucasian	Skin; Arm	COL4A2	1	52.11600000
+GSM3124600	54_69YR_Male_Caucasian	AG12587	normal	69.0	male	Caucasian	Skin; Arm	COL4A2	1	45.69800000
+GSM3124601	55_69YR_Female_Caucasian	AG13144	normal	69.0	female	Caucasian	Skin; Arm	COL4A2	1	137.95400000
+GSM3124602	56_83_Male_Caucasian	AG04386	normal	83.0	male	Caucasian	Skin; Arm	COL4A2	1	60.06100000
+GSM3124603	57_83_Male_Caucasian	AG05413	normal	83.0	male	Caucasian	Skin; Arm	COL4A2	1	47.14500000
+GSM3124604	58_83_Male_Caucasian	AG04457	normal	83.0	male	Caucasian	Skin; Arm	COL4A2	1	68.49300000
+GSM3124605	59_84_Female_Caucasian	AG11725	normal	84.0	female	Caucasian	Skin; Arm	COL4A2	1	45.22600000
+GSM3124606	60_84_Male_Caucasian	AG06276	normal	84.0	male	Caucasian	Skin; Arm	COL4A2	1	85.67300000
+GSM3124607	61_84_Female_Caucasian	AG11744	normal	84.0	female	Caucasian	Skin; Arm	COL4A2	1	11.14100000
+GSM3124608	62_84_Male_Caucasian	AG12947	normal	84.0	male	Caucasian	Skin; Arm	COL4A2	1	46.14700000
+GSM3124609	63_84_Male_Caucasian	AG05274	normal	84.0	male	Caucasian	Skin; Arm	COL4A2	1	66.09700000
+GSM3124610	64_84_Male_Caucasian	AG11730	normal	84.0	male	Caucasian	Skin; Arm	COL4A2	1	64.62100000
+GSM3124611	65_84_Male_Caucasian	AG04661	normal	84.0	male	Caucasian	Skin; Arm	COL4A2	1	81.92000000
+GSM3124612	66_86_Male_CaucasianSardinian	AG11748	normal	86.0	male	Caucasian/Sardinian	Skin; Arm	COL4A2	1	35.15900000
+GSM3124613	67_86_Male_caucasian	AG04143	normal	86.0	male	caucasian	Skin; Arm	COL4A2	1	16.86100000
+GSM3124614	68_86_Male_caucasian	AG13349	normal	86.0	male	caucasian	Skin; Arm	COL4A2	1	19.52400000
+GSM3124615	69_87_Female_caucasian	AG05247	normal	87.0	female	caucasian	Skin; Arm	COL4A2	1	42.71900000
+GSM3124616	70_87_Male_caucasian	AG10884	normal	87.0	male	caucasian	Skin; Arm	COL4A2	1	23.56200000
+GSM3124617	71_87_Male_caucasian	AG05248	normal	87.0	male	caucasian	Skin; Arm	COL4A2	1	23.17300000
+GSM3124618	72_87_Male_Black	AG11017	normal	87.0	male	Black	Skin; Arm	COL4A2	1	9.82600000
+GSM3124619	73_88_Male_Caucasian	AG04065	normal	88.0	male	Caucasian	Skin; Arm	COL4A2	1	80.65700000
+GSM3124620	74_89_Male_Caucasian	AG13129	normal	89.0	male	Caucasian	Skin; Arm	COL4A2	1	13.34900000
+GSM3124621	75_90_Male_Caucasian	AG12788	normal	90.0	male	Caucasian	Skin; Arm	COL4A2	1	23.22300000
+GSM3124622	76_91_Male_Caucasian	AG07725	normal	91.0	male	Caucasian	Skin; Arm	COL4A2	1	35.21500000
+GSM3124623	77_92_Female_Caucasian	AG09602	normal	92.0	female	Caucasian	Skin; Arm	COL4A2	1	18.84500000
+GSM3124624	78_96_Male_Caucasian	AG04059	normal	96.0	male	Caucasian	Skin; Arm	COL4A2	1	34.17600000
+GSM3124625	79_1_male_Caucasian	GM05659	normal	1.0	male	Caucasian	skin; chet	COL4A2	1	53.96900000
+GSM3124626	80_2_female_Caucasian	GM00969	normal	2.0	female	Caucasian	Skin; Unspecified	COL4A2	1	99.59500000
+GSM3124627	81_3_male_LatinoHispanic	GM05565	normal	3.0	male	Latino/Hispanic	skin; Inguinal area	COL4A2	1	90.09400000
+GSM3124628	82_3_male_Unknown	GM00498	normal	3.0	male	Unknown	Skin; Unspecified	COL4A2	1	88.13600000
+GSM3124629	83_5yr_Male_Black	GM05381	normal	5.0	male	Black	Skin; Umbilical Cord Area	COL4A2	1	806.72800000
+GSM3124630	84_6yr_Male_Black	GM05400	normal	6.0	male	Black	Skin; inguinal area	COL4A2	1	109.43900000
+GSM3124631	85_7yr_Male_Black	GM05757	normal	7.0	male	Black	Skin; inguinal area	COL4A2	1	84.58200000
+GSM3124632	86_7yr_Male_Caucasian	GM00409	normal	7.0	male	Caucasian	Skin; Unspecified	COL4A2	1	119.64700000
+GSM3124633	87_8yr_Male_Caucasian	GM00499	normal	8.0	male	Caucasian	Skin; Unspecified	COL4A2	1	68.57100000
+GSM3124634	88_8yr_Male_Caucasian	GM08398	normal	8.0	male	Caucasian	Skin; Inguinal area	COL4A2	1	143.42600000
+GSM3124635	89_9yr_Female_Black	GM00038	normal	9.0	female	Black	Skin; unspecified	COL4A2	1	42.62000000
+GSM3124636	90_10yr_Male_Black	GM03349	normal	10.0	male	Black	Skin; Unspecified	COL4A2	1	199.54900000
+GSM3124637	91_10yr_Male_Caucasian	GM00500	normal	10.0	male	Caucasian	Skin; Unspecified	COL4A2	1	97.27200000
+GSM3124638	92_11_female_Caucasian	GM01652	normal	11.0	female	Caucasian	skin; arm	COL4A2	1	65.09600000
+GSM3124639	93_11_female_Caucasian	GM01582	normal	11.0	female	Caucasian	skin; arm	COL4A2	1	30.78500000
+GSM3124640	94_12_male_Caucasian	GM00316	normal	12.0	male	Caucasian	skin; arm	COL4A2	1	90.17100000
+GSM3124641	95_13yr_Male_WhiTEEASTINDIAN	GM02037	normal	13.0	male	WhiTE/EAST INDIAN	Skin; Arm	COL4A2	1	69.57200000
+GSM3124642	97_16yr_Female_Unknown	GM07532	normal	16.0	female	Unknown	Skin; Unspecified	COL4A2	1	100.78100000
+GSM3124643	98_17yr_Male_Caucasian	GM07753	normal	17.0	male	Caucasian	Skin; Unspecified	COL4A2	1	82.59200000
+GSM3124644	99_17yr_Male_Caucasian	GM07492	normal	17.0	male	Caucasian	Skin; Unspecified	COL4A2	1	93.72100000
+GSM3124645	101_19yr_Female_Caucasian	GM08399	normal	19.0	female	Caucasian	Skin; Unspecified	COL4A2	1	81.79300000
+GSM3124646	102_19yr_Male_Caucasian	GM04501	normal	19.0	male	Caucasian	Skin; Unspecified	COL4A2	1	58.93700000
+GSM3124647	103_19yr_Male_Caucasian	GM23973	normal	19.0	male	Caucasian	Skin; Unspecified	COL4A2	1	35.45300000
+GSM3124648	104_19yr_Male_Caucasian	GM03377	normal	19.0	male	Caucasian	Skin; Arm	COL4A2	1	143.10500000
+GSM3124649	105_20yr_Male_Caucasian	GM03440	normal	20.0	male	Caucasian	Skin; Leg	COL4A2	1	166.61000000
+GSM3124650	106_20yr_Female_Caucasian	GM04505	normal	20.0	female	Caucasian	skin; arm	COL4A2	1	65.62300000
+GSM3124651	107_31yr_Female_Caucasian	GM04503	normal	31.0	female	Caucasian	skin; Unspecified	COL4A2	1	66.16800000
+GSM3124652	108_31_female_Caucasian	GM04504	normal	31.0	female	Caucasian	Skin; Unspecified	COL4A2	1	97.76500000
+GSM3124653	109_32_male_Unknown	GM08402	normal	32.0	male	Unknown	Skin; Unspecified	COL4A2	1	98.84200000
+GSM3124654	110_32_female_BlackPuertoRican	GM00043	normal	32.0	female	Black/Puerto Rican	Skin; Unspecified	COL4A2	1	67.73700000
+GSM3124655	111_33yr_Male_Caucasian	GM02673	normal	33.0	male	Caucasian	skin; Unspecified	COL4A2	1	89.99200000
+GSM3124656	112_33yr_Male_Caucasian	GM23971	normal	33.0	male	Caucasian	Skin; Unspecified	COL4A2	1	84.33700000
+GSM3124657	114_37yr_Female_Unknown	GM08400	normal	37.0	female	Unknown	Skin/Blood	COL4A2	1	126.26300000
+GSM3124658	115_37yr_Female_Unknown	GM01650	normal	37.0	female	Unknown	Skin; Arm	COL4A2	1	55.58400000
+GSM3124659	117_37yr_Male_Caucasian	GM01653	normal	37.0	male	Caucasian	skin; Arm	COL4A2	1	50.48800000
+GSM3124660	118_39yr_Male_Caucasian	GM01717	normal	39.0	male	Caucasian	skin; Arm	COL4A2	1	140.72400000
+GSM3124661	120_51yr_Male_Caucasian	GM00967	normal	51.0	male	Caucasian	skin; Arm	COL4A2	1	21.73600000
+GSM3124662	121_52yr_Male_Caucasian	GM23967	normal	52.0	male	Caucasian	skin; Unspecified	COL4A2	1	107.24900000
+GSM3124663	122_55yr_Male_Caucasian	GM23248	normal	55.0	male	Caucasian	Skin; Arm	COL4A2	1	94.38100000
+GSM3124664	123_57_male_Caucasian	GM13335	normal	57.0	male	Caucasian	Skin; Unspecified	COL4A2	1	50.10100000
+GSM3124665	124_60yr_Male_Caucasian	GM04260	normal	60.0	male	Caucasian	skin; Unspecified	COL4A2	1	99.32800000
+GSM3124666	125_71yr_Female_Caucasian	GM01680	normal	71.0	female	Caucasian	Skin; Arm	COL4A2	1	45.99900000
+GSM3124667	126_75_male_Caucasian	GM08401	normal	75.0	male	Caucasian	Skin; Unspecified	COL4A2	1	132.45000000
+GSM3124668	127_78yr_Male_Caucasian	GM09918	normal	78.0	male	Caucasian	Skin; Unspecified	COL4A2	1	54.00100000
+GSM3124669	128_80yr_Female_Caucasian	GM03525	normal	80.0	female	Caucasian	Skin; Abdomen	COL4A2	1	71.67300000
+GSM3124670	129_94_Male_Caucasian	AG08433	normal	94.0	male	Caucasian	skin; Arm	COL4A2	1	20.62600000
+GSM3124671	130_89_Male_Caucasian	AG13208	normal	89.0	male	Caucasian	skin; Arm	COL4A2	1	11.33700000
+GSM3124672	131_87_Male_Caucasian	AG04662	normal	87.0	male	Caucasian	Skin; Arm	COL4A2	1	26.63600000
+GSM3124673	132_90_Male_Caucasian	AG06291	normal	90.0	male	Caucasian	Skin; Arm	COL4A2	1	65.79100000
+GSM3124674	133_89_Male_Caucasian	AG06308	normal	89.0	male	Caucasian	Skin; Arm	COL4A2	1	29.45400000
+GSM3124675	134_86_Male_Caucasian	AG09843	normal	86.0	male	Caucasian	Skin; Arm	COL4A2	1	18.26500000
+GSM3124676	135_92_Male_Caucasian	AG04064	normal	92.0	male	Caucasian	Skin; Arm	COL4A2	1	27.16300000
+GSM3124677	136_87_Male_Caucasian	AG11808	normal	87.0	male	Caucasian	Skin; Arm	COL4A2	1	46.19000000
+GSM3124678	155_22yr_Male_Caucasian	GM23815	normal	22.0	male	Caucasian	Skin; Unspecified	COL4A2	1	178.44900000
+GSM3124679	156_25yr_Female_Caucasian	GM03651	normal	25.0	female	Caucasian	Skin; Arm	COL4A2	1	76.55000000
+GSM3124680	157_29yr_Male_Unknown	GM00495	normal	29.0	male	Unknown	Skin; Buttock	COL4A2	1	71.16000000
+GSM3124681	158_24YR_Male_Caucasian	GM03652	normal	24.0	male	Caucasian	Skin; Arm	COL4A2	1	65.82600000
+GSM3124682	159_23YR_Male_AmericanIndian	GM03234	normal	23.0	male	American Indian	Skin; Arm	COL4A2	1	191.46000000
+GSM3124683	160_26yr_Female_Asian	GM00726	normal	26.0	female	Asian	Skin; Arm	COL4A2	1	84.23500000
+GSM3124684	162_21YR_Male_Caucasian	GM03523	normal	21.0	male	Caucasian	Skin;Neck	COL4A2	1	223.68100000
+GSM3124685	163_67YR_Female_Black	GM03524	normal	67.0	female	Black	Skin; Leg	COL4A2	1	1207.93400000
+GSM3124686	164_67YR_Female_Filipino	AG16086	normal	67.0	female	Filipino	Skin; Arm	COL4A2	1	298.78900000
+GSM3124687	165_68YR_Male_Unknown	AG12207	normal	68.0	male	Unknown	Skin; Arm	COL4A2	1	147.33000000
+GSM3124688	166_82yr_Female_Caucasian	GM01706	normal	82.0	female	Caucasian	Skin; Arm	COL4A2	1	63.36100000
+GSM3124689	167_66yr_Male_Black	GM03529	normal	66.0	male	Black	Skin; Thigh	COL4A2	1	61.11800000
+GSM3124690	168_68YR_Male_Caucasian	GM03658	normal	68.0	male	Caucasian	Skin; Arm	COL4A2	1	423.30600000
+GSM3124691	169_70yr_Male_Caucasian	GM01681	normal	70.0	male	Caucasian	Skin; Arm	COL4A2	1	99.78200000
+GSM3124692	170_69yr_Male_Caucasian	AG16102	normal	69.0	male	Caucasian	Skin; Arm	COL4A2	1	53.72500000
+GSM3124693	139_8_Female-HGPS_Caucasian	AG11513	hgps	8.0	female	Caucasian	Skin; Leg	COL4A2	1	104.98200000
+GSM3124694	141_8_Male-HGPS_Unknown	PRF167	hgps	8.0	male	Unknown	Unknown	COL4A2	1	130.57500000
+GSM3124695	197_2yr3mos_F_Unknown	HGADFN188	hgps	2.25	female	Unknown	Unknown	COL4A2	1	92.95100000
+GSM3124696	198_3yr9mos_F_Unknown	HGADFN127	hgps	3.75	female	Unknown	Unknown	COL4A2	1	154.38900000
+GSM3124697	199_4yr8mos_F_Unknown	HGADFN164	hgps	4.666666666666667	female	Unknown	Unknown	COL4A2	1	119.12100000
+GSM3124698	200_8yr6mos_M_Unknown	HGADFN169	hgps	8.5	male	Unknown	Unknown	COL4A2	1	185.64900000
+GSM3124699	201_6ys11mos_F_Unknown	HGADFN178	hgps	6.916666666666667	female	Unknown	Unknown	COL4A2	1	178.54300000
+GSM3124700	202_5yr0mos_F_Unknown	HGADFN122	hgps	5.0	female	Unknown	Unknown	COL4A2	1	210.27800000
+GSM3124701	203_8yr10mos_M_Unknown	HGADFN143	hgps	8.833333333333334	male	Unknown	Unknown	COL4A2	1	274.59700000
+GSM3124702	204_3yr0mos_F_Unknown	HGADFN367	hgps	3.0	female	Unknown	Unknown	COL4A2	1	403.30900000

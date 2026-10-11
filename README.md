@@ -34,8 +34,10 @@ maps all 95 GSE165177 RNA-seq columns to GEO sample records, then compares a
 four-collagen transcript panel within donor, experiment and induction duration.
 It separates during-induction intermediates from post-withdrawal fibroblast
 endpoints and keeps repeated experiment blocks out of the donor count. The
-result is a limited in-vitro expression analysis, not an age-clock or
-organism-level rejuvenation claim.
+follow-up checks those four genes in 133 healthy GSE113957 fibroblast records:
+three show negative adult age correlations, but all four are near-flat in the
+sampled ages 37–60. This is a limited, marker-only expression analysis, not an
+age-clock or organism-level rejuvenation claim.
 
 The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
 verification, reviewed organoid measurements, portable ResearchDesk dossiers
