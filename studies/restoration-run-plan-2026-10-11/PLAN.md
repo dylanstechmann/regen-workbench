@@ -336,3 +336,15 @@ The [cell-resolved report](../aging-state-2026-10-11/GINGIVAL_CELL_RESOLVED_CHAL
 contains the contrast table and limits. Reproducible intake and analysis are
 `fetch_periodontal_meta_atlas.py` and `analyze_gingival_cell_atlas.py`; compact
 outputs are in the generated `derived/gingival-cell-atlas-GSE164241/` tables.
+
+## Inflammatory assay extension — 2026-10-11
+
+Translated that challenge into the staged PDL interface dossier: once the
+two-sided fiber-insertion gate passes, compare a duration-matched control with
+a separately qualified, literature-bounded periodontal inflammatory challenge
+and washout. Record MMP and TIMP response together with cell survival, both
+interfaces and mechanics. No stimulus, concentration or exposure duration is
+selected without a measurement pilot. A gingival epithelial barrier remains a
+separate module, and the inflammatory condition is not treated as an aging or
+rejuvenation model. See the [assay dossier](../organoid/periodontal-ligament-interface/README.md)
+and its condition and endpoint tables.

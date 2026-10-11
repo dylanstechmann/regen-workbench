@@ -23,11 +23,11 @@ cannot show that a tooth returns to or remains in its intended position.
 ## What this assay can decide
 
 It can rank architectures for cell survival, interface continuity, fiber
-orientation and insertion, compartment-specific mineralization, and low-amplitude
-mechanical response. It cannot establish durable tooth repositioning, human
-benefit, adult tissue rejuvenation, or lifetime stability. Do not call an
-aligned cell layer a ligament, or a high stiffness value a successful
-attachment.
+orientation and insertion, compartment-specific mineralization, low-amplitude
+mechanical response, and recovery after a defined inflammatory challenge. It
+cannot establish durable tooth repositioning, human benefit, adult tissue
+rejuvenation, or lifetime stability. Do not call an aligned cell layer a
+ligament, or a high stiffness value a successful attachment.
 
 The experimental unit is an independently sourced human donor/cell preparation
 within a manufacturing batch. Constructs, images, sections, and repeated loads
@@ -49,7 +49,17 @@ track donor and clone identity and retain a matched fibroblast identity check.
    holding cell source and compartment layout fixed. Score bundle orientation
    and continuous insertion independently at the root-facing and bone-facing
    surfaces.
-4. **Flow and load:** add perfusion only after the static two-interface
+4. **Inflammatory challenge:** after G2 passes, compare the same qualified
+   architecture and donor preparation under a duration-matched control and a
+   literature-bounded oral-disease inflammatory challenge, followed by a
+   defined washout/recovery period. Lock the stimulus, delivered activity and
+   exposure only after a measurement pilot. Keep donor age and periodontal
+   health as source covariates; a disease challenge is not an aging model.
+   Track inflammation and MMP/TIMP response together with viability, both
+   interfaces, fiber insertion and mechanics. Add a gingival epithelial barrier
+   module separately if seal function is a target; a PDL-only construct cannot
+   stand in for a gum barrier.
+5. **Flow and load:** add perfusion only after the static two-interface
    construct is reproducible. Add defined cyclic loading only after the
    mechanical platform is calibrated, then assess recovery after unloading.
    This is still not an in-socket trauma model.
@@ -77,7 +87,12 @@ than an explicitly unresolved threshold.
   fusion/bone-bridge control. Compare with ex-vivo healthy reference tissue
   under the same geometry and fixture; do not compare unmatched raw force
   values.
-- **G4, transfer:** only after G0–G3 pass should a separate orthotopic retained-
+- **G4, challenge recovery:** the challenge produces the qualified response
+  without hiding cell loss or attachment failure, and the construct moves
+  toward its matched pre-challenge state after washout. Persistence of a
+  transcript-panel shift alone is not a functional failure or success; pair it
+  with interface, barrier-module where present, and mechanical outcomes.
+- **G5, transfer:** only after G0–G4 pass should a separate orthotopic retained-
   tooth injury model assess position, pulp, gingiva, resorption, and stability
   after temporary support removal.
 
@@ -95,6 +110,10 @@ than an explicitly unresolved threshold.
 - Fiber-guiding scaffolds have encouraging short-term periodontal-defect
   results in rats, but those are not blunt-impact repair in an intact socket.
   [Primary study](https://pmc.ncbi.nlm.nih.gov/articles/PMC4074763/).
+- The donor-aware GSE164241 challenge identified a stronger disease-associated
+  inflammatory/matrix-turnover signal than a shared within-fibroblast adult
+  age direction. Use it to keep inflammatory disease and aging as separate
+  assay challenges, not to set a rejuvenation target. [Analysis and limits](../../aging-state-2026-10-11/GINGIVAL_CELL_RESOLVED_CHALLENGE_REPORT.md).
 
 No wet-lab work is represented by this design dossier. No human treatment
 protocol or efficacy claim follows from the proposed assay.
