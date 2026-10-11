@@ -139,12 +139,19 @@ ground truth.
 
 Qualify PDL age evidence separately. The 1999 human report links COL1A1 mRNA
 and selected promoter methylation sites with age, but no donor-level public
-matrix was identified. GSE227731 supplies a young-adult cell-identity reference;
-GSE306722 contrasts root maturity and osteogenic capacity, not chronological
-aging. See the [PDL reference qualification](../aging-state-2026-10-11/PDL_AGE_REFERENCE_QUALIFICATION.md).
-The focused source check found only the indexed abstract and no accessible
-donor-level values or full methods; the sample count and donor covariates
-remain unknown.
+tissue-age matrix was identified. Functional donor studies report age-related
+PDLSC changes in proliferation, migration, lineage output and cell-sheet
+matrix; a 2009 study reports improved aged-cell assays after young-donor
+conditioned medium, while a 2012 ectopic-transplant study did not identify
+cementum/PDL-like tissue in the two age groups included in its in-vivo
+comparison. These are cell-source and niche hypotheses, not human attachment
+repair. GSE227731 supplies a young-adult cell-identity reference; GSE306722
+contrasts root maturity and osteogenic capacity, not chronological aging. See
+the [PDL reference qualification](../aging-state-2026-10-11/PDL_AGE_REFERENCE_QUALIFICATION.md)
+and [functional evidence table](../aging-state-2026-10-11/pdl_age_functional_evidence.tsv).
+The focused source check found only the indexed abstract for Takatsu et al. and
+no donor-level values or full methods; that study's sample count and donor
+covariates remain unknown.
 
 Do not repeat completed Salmon quantification merely to generate more tables.
 Existing iPS-PDL libraries have one parental iPSC background and unresolved
@@ -290,7 +297,7 @@ The first execution checkpoint is complete and saved in the workbench:
 - **A1 broad age challenge:** trained age-direction panels inside repeated, age-stratified folds on GSE113957; transferred signs to matched GSE165177 samples; compared collagen, matrix, pluripotency, cell-cycle, p53/damage, acute-stress and inflammation axes by donor-coded line. The broad direction result is weak at the successful 13-day endpoint and based on two lines.
 - **D3 oral aging input:** qualified GSE83382's processed gingiva matrix and GEO donor metadata, preserving the unresolved expression-alias-to-GSM mapping. Fixed matrix-turnover, matrix-inhibitor, structural ECM, inflammatory, epithelial, and stromal panels produce mixed group-level shifts in this three-versus-three, all-female bulk cohort. This is an exploratory input, not a gum-age clock; the donor-linked health/periodontitis comparison remains pending.
 - **D3 comparator qualification:** linked 29 original GSE164241 single-cell libraries to the article's Table S1, separated the later 2023 `ID080UST` addition, and identified the paired healthy buccal/gingival samples plus repeated `PD161`/`PD164` disease biopsy codes. The 8 disease libraries represent five apparent donor-code groups; Cell Ranger versions differ across samples. This is an intake audit only; no cell-level pseudobulk or disease expression test has been run.
-- **PDL age-reference qualification:** the direct human age report found to date assays COL1A1 and selected promoter sites, while public candidates either capture young-adult cell identity, disease, or root/dentition maturity. No donor-resolved adult human PDL transcriptome age series passed the qualification gate.
+- **PDL age-reference qualification:** no donor-resolved adult human PDL tissue-age transcriptome passed the qualification gate. The literature does contain donor-derived PDLSC functional aging studies and a small young-conditioned-medium rescue report; one 2012 ectopic-transplant study did not identify cementum/PDL-like tissue in the two age groups used in its in-vivo comparison. These sources motivate an age-source-by-niche crossover, but no human in-socket restoration or tooth-position result follows from them. The [evidence table](../aging-state-2026-10-11/pdl_age_functional_evidence.tsv) keeps cell assays, graft outcomes, and mechanistic challenges separate.
 - **D4 retained-tooth repair blueprint:** compared cell sheets, local cell-homing cues, multiphasic fiber-guiding scaffolds, layered factor carriers, a human PDL–bone microtissue, and the 2024 PDLSC-collagen root-surface construct. The 2024 study adds root-facing cell alignment and 4/10-week ectopic root-fragment observations, but no alveolar socket or physiological tooth loading; its in-vitro root-surface experiment did not observe new cementum. In-socket subluxation and intrusive-luxation injury models exist, but the reviewed regenerative attachment treatments were tested mainly in replantation/root-fragment or surgically created-defect settings. Human cohorts set a strong natural-healing comparator for mild subluxation and show different, root-maturity-dependent risks for displaced injuries. The [blueprint and evidence matrix](../periodontal-attachment-restoration-2026-10-11/IN_SITU_TRAUMA_REPAIR_BLUEPRINT.md) separate these tracks and identify baseline-registered position, load-bearing mechanics, and follow-up after temporary fixation withdrawal as the key combined gap.
 - **Integration:** added the dental restoration contract and ranked experimental hypotheses, including explicit tooth position and post-support-removal stability.
 
@@ -348,3 +355,26 @@ selected without a measurement pilot. A gingival epithelial barrier remains a
 separate module, and the inflammatory condition is not treated as an aging or
 rejuvenation model. See the [assay dossier](../organoid/periodontal-ligament-interface/README.md)
 and its condition and endpoint tables.
+
+## PDL age-by-niche experiment update — 2026-10-11
+
+The functional-source audit found donor-derived human PDLSC studies of age-
+associated proliferation, migration, lineage and cell-sheet matrix changes,
+plus a 2009 young-cell-conditioned-medium rescue result. A 2012 ectopic
+transplant comparison is an important counterexample: its two in-vivo age
+groups did not produce identified cementum/PDL-like tissue. The literature
+therefore supports testing a reversible cell-source-age × niche-source-age
+effect, not assuming age-associated cell assays transfer to a repaired
+attachment.
+
+Added a six-condition donor-crossed design to the PDL assay dossier: younger-
+and older-adult PDL cells in matched unconditioned medium, plus both cell-age
+strata exposed to independently sourced younger- or older-adult donor
+conditioned medium. The assay retains exact age, root maturity, health,
+extraction indication, sex, passage and batch, uses each donor as the
+biological unit, and checks cell identity, bilateral fiber insertion and
+mechanics after washout. The conditioned-medium exposure is an undefined
+historical benchmark, not a therapeutic candidate; fixed donor cutoffs and
+exposure settings await cohort and assay qualification. See
+[`age_by_niche_test.tsv`](../organoid/periodontal-ligament-interface/age_by_niche_test.tsv)
+and the [functional-source audit](../aging-state-2026-10-11/pdl_age_functional_evidence.tsv).
