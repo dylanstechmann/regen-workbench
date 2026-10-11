@@ -26,6 +26,9 @@ analysis runner for determining whether an injured tooth stays near its
 declared baseline after temporary support is removed, plus a randomized
 known-pose acquisition schedule, a post-measurement key join, and file-hash
 receipt for a future phantom study. The independent
+[in-situ trauma-repair blueprint](studies/periodontal-attachment-restoration-2026-10-11/IN_SITU_TRAUMA_REPAIR_BLUEPRINT.md)
+separates tooth-position restoration from attachment regeneration and records
+the remaining post-support durability gap. The independent
 [base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
 repo audits genome-editing source scope and cell-count denominators.
 
