@@ -119,4 +119,3 @@ institutional approvals. This document does not authorize that work.
 
 - Drolshagen M, et al. *Development of a novel intraoral measurement device to determine the biomechanical characteristics of the human periodontal ligament.* Journal of Biomechanics. 2011. [PubMed](https://pubmed.ncbi.nlm.nih.gov/21679952/) · [DOI](https://doi.org/10.1016/j.jbiomech.2011.05.025).
 - Keilig L, et al. *In vivo measurements and numerical analysis of the biomechanical characteristics of the human periodontal ligament.* Annals of Anatomy. 2016. [PubMed](https://pubmed.ncbi.nlm.nih.gov/26395824/) · [DOI](https://doi.org/10.1016/j.aanat.2015.08.004).
-

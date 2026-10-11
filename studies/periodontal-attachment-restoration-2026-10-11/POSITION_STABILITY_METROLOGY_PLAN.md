@@ -193,4 +193,3 @@ Start with a rigid known-motion phantom and blinded repeat registration using th
 - Immature-rat lateral luxation studies establish a horizontal-displacement injury precedent; a later study used 3D micro-CT but reported root fracture and resorption, not validated baseline-to-follow-up pose restoration. [1991 study](https://pubmed.ncbi.nlm.nih.gov/1915123/) · [2017 study](https://doi.org/10.1016/j.pdj.2017.08.001).
 - Adult-rat force calibration for experimental subluxation; 900 cN was reported compatible with subluxation, but groups were n=3 and the endpoint was immediate histology. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/20089060/).
 - Experimental immature-rat intrusive-luxation model with micro-CT and histology through 90 days. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/32771418/).
-

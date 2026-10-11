@@ -60,4 +60,3 @@ python /lab/workbench/studies/periodontal-attachment-restoration-2026-10-11/buil
 ```
 
 The source extraction receipt distinguishes retrieved full text, checksum-verified supplement files, and endpoint failures. The derived folder contains normalized endpoint ratios, the source-audited strength ratio, the full fracture table, the displacement comparison, a stiffness non-identifiability sweep, a figure, and provenance records. The second article’s official PMC page was reviewed, but its Europe PMC full-text XML endpoint returned HTTP 500; it is not represented as a locally downloaded specimen-level dataset.
-
