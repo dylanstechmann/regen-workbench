@@ -24,8 +24,8 @@ tracks. The [tooth-position durability plan](studies/periodontal-attachment-rest
 now specifies a repeatability-first measurement gate and a small known-pose
 analysis runner for determining whether an injured tooth stays near its
 declared baseline after temporary support is removed, plus a randomized
-known-pose acquisition schedule and separately stored analysis key for a
-future phantom study. The independent
+known-pose acquisition schedule, a post-measurement key join, and file-hash
+receipt for a future phantom study. The independent
 [base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
 repo audits genome-editing source scope and cell-count denominators.
 

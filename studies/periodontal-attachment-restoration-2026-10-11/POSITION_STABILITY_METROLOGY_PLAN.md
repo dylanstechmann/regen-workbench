@@ -99,6 +99,22 @@ python studies/periodontal-attachment-restoration-2026-10-11/make_pose_acquisiti
 
 The counts and metadata above are demonstration settings, not a proposed acquisition design. Keep real analysis keys restricted and do not publish them with operator schedules.
 
+After an operator records the six measured pose components for every run, [`assemble_position_metrology_input.py`](assemble_position_metrology_input.py) joins that finalized file to the restricted key by `run_code`. The blind measurements TSV contains `run_code` and `measured_tx_mm`, `measured_ty_mm`, `measured_tz_mm`, `measured_rx_deg`, `measured_ry_deg`, and `measured_rz_deg`; it should contain no known-pose columns. The assembler rejects duplicate, missing, or unknown run codes, non-finite values, inconsistent truth poses, and mixed modalities or pipelines. It writes the exact input schema accepted by the analyzer and can write an optional hash receipt for the three files. Hashes provide file-integrity checks after creation; they do not establish when measurements were finalized or prove that the key was inaccessible to the operator. Failed or unmeasurable scans need a documented study-level disposition rather than silent deletion; this minimal assembler requires one valid measurement row for each scheduled run.
+
+Once measurements are finalized and the authorized analyst is ready to unblind, run:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/assemble_position_metrology_input.py `
+  --analysis-key path/to/restricted/analysis_key.tsv `
+  --measurements path/to/finalized_blind_measurements.tsv `
+  --out path/to/analysis/position_metrology_input.tsv `
+  --receipt path/to/analysis/assembly_receipt.json
+
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_position_metrology.py `
+  --input path/to/analysis/position_metrology_input.tsv `
+  --outdir path/to/analysis/results
+```
+
 Run the included [synthetic fixture example](examples/synthetic_pose_measurements.tsv) with:
 
 ```powershell
