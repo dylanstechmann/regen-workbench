@@ -142,9 +142,11 @@ external force to hold alignment has not met the requested restoration target.
 
 ## Next concrete work items
 
-1. Specify imaging registration and tooth-position error bounds using the
-   repository's CT/displacement model; keep measurement error separate from
-   biological drift.
+1. Qualify same-modality tooth-pose measurement against a known-motion
+   ex-vivo fixture, including root and crown pose, and estimate error before
+   interpreting any post-support positional drift. The detailed plan and
+   machine-readable schema are in
+   [`POSITION_STABILITY_METROLOGY_PLAN.md`](POSITION_STABILITY_METROLOGY_PLAN.md).
 2. The staged human PDL-interface assay contract and architecture matrix are
    now in the organoid track. Next, qualify image/mechanics measurement
    repeatability, biological-unit metadata, and donor-matched healthy reference

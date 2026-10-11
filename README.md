@@ -20,7 +20,10 @@ adds desk areas for teeth/gums/periodontal attachment and organoid/stem-cell
 construct function. It records component-level evidence, conflicting clinical
 endpoints and ten starter campaigns, including separate iPS-derived
 periodontal-ligament-like cell, rat-defect and root-preseeded reattachment
-tracks. The independent
+tracks. The [tooth-position durability plan](studies/periodontal-attachment-restoration-2026-10-11/POSITION_STABILITY_METROLOGY_PLAN.md)
+now specifies a repeatability-first measurement gate for determining whether
+an injured tooth stays near its declared baseline after temporary support is
+removed. The independent
 [base-editing-evidence](https://github.com/dylanstechmann/base-editing-evidence)
 repo audits genome-editing source scope and cell-count denominators.
 

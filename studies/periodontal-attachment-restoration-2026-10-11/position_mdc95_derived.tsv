@@ -1,0 +1,15 @@
+source_id	modality	tooth	measure_axis	reported_SEM	approx_MDC95	unit	derivation_scope
+KUBOTA_2024	digital_dental_model	central_incisor	X_displacement	0.06	0.166	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	central_incisor	Y_displacement	0.08	0.222	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	central_incisor	Z_displacement	0.09	0.250	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	central_incisor	angular_change	0.43	1.192	degrees	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	first_molar	X_displacement	0.11	0.305	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	first_molar	Y_displacement	0.15	0.416	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	digital_dental_model	first_molar	Z_displacement	0.14	0.388	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	central_incisor	X_displacement	0.17	0.471	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	central_incisor	Y_displacement	0.12	0.333	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	central_incisor	Z_displacement	0.19	0.527	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	central_incisor	angular_change	0.75	2.079	degrees	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	first_molar	X_displacement	0.14	0.388	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	first_molar	Y_displacement	0.14	0.388	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only
+KUBOTA_2024	CT	first_molar	Z_displacement	0.20	0.554	mm	1.96*sqrt(2)*SEM; same-rater remeasurement of existing scans only

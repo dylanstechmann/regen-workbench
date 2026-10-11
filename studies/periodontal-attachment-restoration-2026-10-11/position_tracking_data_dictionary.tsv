@@ -1,0 +1,35 @@
+field	required	unit_or_allowed_values	definition
+record_id	yes	string	Unique de-identified observation row
+subject_or_animal_id	yes	string	Biological subject identifier; never use acquisition as biological unit
+tooth_id	yes	string	Tooth identifier within subject
+injury_class	yes	concussion|subluxation|extrusion|lateral_luxation|intrusion|avulsion_replantation|root_fracture|alveolar_fracture|combined|other	Prespecified injury class; combined injuries preserve component labels
+root_maturity	yes	open_apex|closed_apex|unknown	Root development at injury
+baseline_source	yes	measured_preinjury|prior_clinical_record|contralateral_anatomic_proxy|model_defined_baseline|missing	Origin and validity of intended position target
+timepoint	yes	string	Protocol-defined timepoint label
+days_since_injury	yes	days	Elapsed time from injury to acquisition
+support_state	yes	none|temporary_support_on|support_removed|unknown	Positional-support state at acquisition
+days_since_support_removal	conditional	days|not_applicable	Elapsed time since removal; retain missingness explicitly
+modality	yes	string	Imaging modality and acquisition protocol identifier
+acquisition_id	yes	string	Unique scan/acquisition identifier; repeat scans remain nested within subject and tooth
+registration_roi_id	yes	string	Versioned unaffected jaw reference mask; injured tooth excluded
+pose_target_source_uncertainty	yes	string	Source-specific uncertainty and rationale for baseline position target
+root_translation_x_mm	conditional	mm	Root-pose translation in declared jaw coordinates; unavailable if modality cannot resolve root
+root_translation_y_mm	conditional	mm	Root-pose translation in declared jaw coordinates; unavailable if modality cannot resolve root
+root_translation_z_mm	conditional	mm	Root-pose translation in declared jaw coordinates; unavailable if modality cannot resolve root
+root_rotation_x_deg	conditional	degrees	Root-pose rotation in declared jaw coordinates; unavailable if modality cannot resolve root
+root_rotation_y_deg	conditional	degrees	Root-pose rotation in declared jaw coordinates; unavailable if modality cannot resolve root
+root_rotation_z_deg	conditional	degrees	Root-pose rotation in declared jaw coordinates; unavailable if modality cannot resolve root
+crown_translation_x_mm	conditional	mm	Crown-pose translation in declared jaw coordinates; separate from root pose
+crown_translation_y_mm	conditional	mm	Crown-pose translation in declared jaw coordinates; separate from root pose
+crown_translation_z_mm	conditional	mm	Crown-pose translation in declared jaw coordinates; separate from root pose
+crown_rotation_x_deg	conditional	degrees	Crown-pose rotation in declared jaw coordinates; separate from root pose
+crown_rotation_y_deg	conditional	degrees	Crown-pose rotation in declared jaw coordinates; separate from root pose
+crown_rotation_z_deg	conditional	degrees	Crown-pose rotation in declared jaw coordinates; separate from root pose
+segmentation_operator_id	yes	coded string	Blinded operator or pipeline version for tooth and socket segmentation
+registration_error_metric	yes	mm plus metric name	Registration residual in the fixed ROI; not a substitute for external accuracy validation
+repeatability_uncertainty_id	yes	string	Reference to same-method empirical error estimate and its validation dataset
+image_quality_or_artifact	yes	string	Motion, splint, metal, truncation, resorption, or other quality issue
+exclusion_status	yes	included|excluded|invalid_registration|missing_baseline|other	Prespecified status; retain reason and counts
+exclusion_reason	conditional	string|not_applicable	Reason row was excluded from pose analysis
+analysis_version	yes	string	Code/method revision that produced the pose estimate
+source_image_hash_or_governed_link	yes	string	Integrity hash or governed location; do not store protected human images in a public repo
