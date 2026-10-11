@@ -1,0 +1,7 @@
+fixture_id	repeat_group_id	replicate_id	modality	pipeline_id	truth_tx_mm	truth_ty_mm	truth_tz_mm	truth_rx_deg	truth_ry_deg	truth_rz_deg	measured_tx_mm	measured_ty_mm	measured_tz_mm	measured_rx_deg	measured_ry_deg	measured_rz_deg
+fixture_A	zero_pose	acq_01	optical_surface	prototype_pipeline_v0	0	0	0	0	0	0	-0.10	-0.10	-0.10	-0.10	-0.10	-0.10
+fixture_A	zero_pose	acq_02	optical_surface	prototype_pipeline_v0	0	0	0	0	0	0	0	0	0	0	0	0
+fixture_A	zero_pose	acq_03	optical_surface	prototype_pipeline_v0	0	0	0	0	0	0	0.10	0.10	0.10	0.10	0.10	0.10
+fixture_A	translated_rotated_pose	acq_01	optical_surface	prototype_pipeline_v0	1	-2	0.5	3	-2	5	0.95	-2.05	0.45	2.95	-2.05	4.95
+fixture_A	translated_rotated_pose	acq_02	optical_surface	prototype_pipeline_v0	1	-2	0.5	3	-2	5	1	-2	0.5	3	-2	5
+fixture_A	translated_rotated_pose	acq_03	optical_surface	prototype_pipeline_v0	1	-2	0.5	3	-2	5	1.05	-1.95	0.55	3.05	-1.95	5.05

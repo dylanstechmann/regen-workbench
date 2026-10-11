@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "analysis": "known-pose accuracy and within-repeat-group precision by component",
+  "criteria_id": null,
+  "locked_before_outcome_review": null,
+  "overall_status": "not_assessed",
+  "axis_results": {
+    "tx_mm": {
+      "unit": "mm",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 0.0,
+      "pooled_within_group_sd": 0.0790569415042095,
+      "repeatability_coefficient_95": 0.21913466179497942,
+      "rmse": 0.06454972243679029,
+      "max_abs_group_bias": 0.0,
+      "status": "not_assessed"
+    },
+    "ty_mm": {
+      "unit": "mm",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 3.700743415417188e-17,
+      "pooled_within_group_sd": 0.07905694150420947,
+      "repeatability_coefficient_95": 0.21913466179497934,
+      "rmse": 0.06454972243679027,
+      "max_abs_group_bias": 7.401486830834377e-17,
+      "status": "not_assessed"
+    },
+    "tz_mm": {
+      "unit": "mm",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 9.25185853854297e-18,
+      "pooled_within_group_sd": 0.0790569415042095,
+      "repeatability_coefficient_95": 0.21913466179497942,
+      "rmse": 0.06454972243679029,
+      "max_abs_group_bias": 1.850371707708594e-17,
+      "status": "not_assessed"
+    },
+    "rx_deg": {
+      "unit": "degrees",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 0.0,
+      "pooled_within_group_sd": 0.07905694150420949,
+      "repeatability_coefficient_95": 0.2191346617949794,
+      "rmse": 0.06454972243679027,
+      "max_abs_group_bias": 0.0,
+      "status": "not_assessed"
+    },
+    "ry_deg": {
+      "unit": "degrees",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 0.0,
+      "pooled_within_group_sd": 0.07905694150420949,
+      "repeatability_coefficient_95": 0.2191346617949794,
+      "rmse": 0.06454972243679027,
+      "max_abs_group_bias": 0.0,
+      "status": "not_assessed"
+    },
+    "rz_deg": {
+      "unit": "degrees",
+      "n_acquisitions": 6,
+      "n_repeat_groups": 2,
+      "mean_bias": 0.0,
+      "pooled_within_group_sd": 0.07905694150420949,
+      "repeatability_coefficient_95": 0.2191346617949794,
+      "rmse": 0.06454972243679027,
+      "max_abs_group_bias": 0.0,
+      "status": "not_assessed"
+    }
+  },
+  "assumptions_and_limits": [
+    "A repeat_group_id represents independent acquisitions of the same known fixture pose under one modality and one pipeline; repeated exports of one scan do not count as independent acquisitions.",
+    "Component-wise angle differences are wrapped to [-180, 180); this does not replace a validated joint rotation-matrix or quaternion pose-error analysis.",
+    "Repeatability coefficient is 1.96*sqrt(2)*pooled within-group SD and assumes approximately independent, homoscedastic, normally distributed errors within the tested pose range.",
+    "The estimated repeatability SD has no confidence interval in this minimal analysis; small replicate counts make it unstable, so design the number of independent acquisitions before collecting data.",
+    "The summary covers only the fixture poses, acquisition conditions, raters, modality, and pipeline present in the input; passing does not validate a trauma model or biological outcome.",
+    "The six rotation inputs are component-wise angles under a convention that must be fixed externally; this script does not validate a joint six-dimensional pose error or guarantee coverage of the intended motion range.",
+    "Criteria are self-reported as frozen before outcome review; this script cannot verify when they were chosen."
+  ]
+}

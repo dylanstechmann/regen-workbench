@@ -63,6 +63,37 @@ Do not set numeric acceptance margins from the orthodontic paper. Its repeated-m
 
 The companion [`position_tracking_data_dictionary.tsv`](position_tracking_data_dictionary.tsv) defines the minimum row-level record for a future dataset. It is a schema, not fabricated observations. The literature-derived uncertainty anchors and their limits are in [`position_error_budget.tsv`](position_error_budget.tsv).
 
+The analysis runner [`analyze_position_metrology.py`](analyze_position_metrology.py) takes one row per independently acquired scan with a known fixture pose and measured pose. The input header is demonstrated in the [synthetic fixture example](examples/synthetic_pose_measurements.tsv): `fixture_id`, `repeat_group_id`, `replicate_id`, `modality`, `pipeline_id`, then `truth_` and `measured_` values for `tx_mm`, `ty_mm`, `tz_mm`, `rx_deg`, `ry_deg`, and `rz_deg`. A repeat group means repeated independent acquisitions of one unchanged, known pose; repeated exports of the same image are not repeats. A run must use one modality and one pipeline. The declared rotation-axis convention must be fixed outside this component-wise analyzer.
+
+The runner checks that each repeat group has a constant truth pose, then reports component bias, RMSE, within-group SD, and the `1.96 × sqrt(2) × SD` repeatability coefficient. It will only return `pass` or `fail` when given a criteria JSON that declares a nonblank `criteria_id`, `locked_before_outcome_review: true`, and for each pose component `max_abs_group_bias` and `max_repeatability_coefficient_95` limits. Those limits are study-specific and intentionally not supplied here. Without them, the status is `not_assessed`. For example, a criteria file has this shape, with numeric values frozen by the study team before outcomes are inspected:
+
+```json
+{
+  "criteria_id": "protocol-version-and-date",
+  "locked_before_outcome_review": true,
+  "axes": {
+    "tx_mm": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null},
+    "ty_mm": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null},
+    "tz_mm": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null},
+    "rx_deg": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null},
+    "ry_deg": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null},
+    "rz_deg": {"max_abs_group_bias": null, "max_repeatability_coefficient_95": null}
+  }
+}
+```
+
+The `null` values are placeholders, not usable limits; the script rejects them until study-specific numeric values are supplied. It does not certify criteria timing or physical scanner performance.
+
+Run the included [synthetic fixture example](examples/synthetic_pose_measurements.tsv) with:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_position_metrology.py `
+  --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_pose_measurements.tsv `
+  --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_pose_metrology
+```
+
+The example output is in [`derived/synthetic_pose_metrology/`](derived/synthetic_pose_metrology/). It is synthetic software QA, not scanner calibration or biological evidence. Do not interpret its reported numbers as empirical precision.
+
 ## Next execution gate
 
 Start with an ex-vivo known-motion phantom and blinded repeat registration using the same image modality end-to-end. If the achieved limits cannot resolve the prespecified movement margin, improve the acquisition/registration pipeline before advancing to intervention biology. Once qualified, use the direct retained-tooth impact model for subluxation/stretch and a separate validated luxation model for actual displacement; neither is a human treatment recommendation. Include a long post-support observation because short-term alignment cannot establish durable restoration.

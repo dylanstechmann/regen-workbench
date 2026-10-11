@@ -1,0 +1,19 @@
+row_type	fixture_id	repeat_group_id	modality	pipeline_id	axis	unit	n_acquisitions	mean_bias	repeatability_sd_within_group	repeatability_coefficient_95	rmse	max_abs_group_bias	criteria_id	status
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	tx_mm	mm	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	tx_mm	mm	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	tx_mm	mm	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	ty_mm	mm	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	ty_mm	mm	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	ty_mm	mm	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	tz_mm	mm	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	tz_mm	mm	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	tz_mm	mm	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	rx_deg	degrees	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	rx_deg	degrees	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	rx_deg	degrees	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	ry_deg	degrees	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	ry_deg	degrees	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	ry_deg	degrees	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
+repeat_group	fixture_A	translated_rotated_pose	optical_surface	prototype_pipeline_v0	rz_deg	degrees	3	0.000000	0.050000	0.138593	0.040825	0.000000		not_assessed
+repeat_group	fixture_A	zero_pose	optical_surface	prototype_pipeline_v0	rz_deg	degrees	3	0.000000	0.100000	0.277186	0.081650	0.000000		not_assessed
+all_pose_groups	all	all	single modality/pipeline required per analysis	single modality/pipeline required per analysis	rz_deg	degrees	6	0.000000	0.079057	0.219135	0.064550	0.000000		not_assessed
