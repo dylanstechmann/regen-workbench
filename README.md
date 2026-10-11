@@ -29,6 +29,14 @@ and [fixed-marker screen](studies/dental-regeneration-2026-10-09/PDLSC_NATIVE_MA
 now describe two public tissue records with explicit barcode-screen sensitivity.
 Source linkage and unknown donor mappings remain visible in the reports.
 
+The [paired transient-reprogramming analysis](studies/aging-state-2026-10-11/AGING_REPROGRAMMING_PAIRED_ANALYSIS.md)
+maps all 95 GSE165177 RNA-seq columns to GEO sample records, then compares a
+four-collagen transcript panel within donor, experiment and induction duration.
+It separates during-induction intermediates from post-withdrawal fibroblast
+endpoints and keeps repeated experiment blocks out of the donor count. The
+result is a limited in-vitro expression analysis, not an age-clock or
+organism-level rejuvenation claim.
+
 The [biomedical development roadmap](ROADMAP.md) prioritizes ectogenesis model
 verification, reviewed organoid measurements, portable ResearchDesk dossiers
 and concrete empirical milestones across the companion methods repositories.

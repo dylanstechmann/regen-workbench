@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "accession": "GSE165177",
+  "processed_expression_scale": "GEO log2 RPM; no raw counts or re-normalization",
+  "source_paper_donor_lines": {
+    "O1": 53,
+    "O2": 53,
+    "O3": 38
+  },
+  "target_panel": [
+    "COL1A1",
+    "COL1A2",
+    "COL4A1",
+    "COL4A2"
+  ],
+  "panel_rationale": "Four collagen genes plotted in the source paper's transcript results and linked to its separate collagen protein assay.",
+  "matching_feature_rows_by_input_file_and_gene": {
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz:COL1A1": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz:COL1A2": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz:COL4A1": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz:COL4A2": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz:COL1A1": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz:COL1A2": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz:COL4A1": 1,
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz:COL4A2": 1
+  },
+  "unit_of_summary": "donor-coded line; experiment blocks for the same line are averaged before group summaries",
+  "pair_count_by_phase_comparison_day": [
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "failing_intermediate_vs_negative_intermediate",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_failing_intermediate",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_negative_intermediate",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "failing_intermediate_vs_negative_intermediate",
+      "induction_days": 13,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_failing_intermediate",
+      "induction_days": 13,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_negative_intermediate",
+      "induction_days": 13,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "failing_intermediate_vs_negative_intermediate",
+      "induction_days": 15,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_failing_intermediate",
+      "induction_days": 15,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_negative_intermediate",
+      "induction_days": 15,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "failing_intermediate_vs_negative_intermediate",
+      "induction_days": 17,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_failing_intermediate",
+      "induction_days": 17,
+      "n_sample_pairs": 2,
+      "donor_lines": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "phase": "during_induction_intermediate",
+      "comparison": "successful_intermediate_vs_negative_intermediate",
+      "induction_days": 17,
+      "n_sample_pairs": 2,
+      "donor_lines": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "failed_endpoint_vs_negative_endpoint",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_failed_endpoint",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_negative_endpoint",
+      "induction_days": 10,
+      "n_sample_pairs": 3,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "failed_endpoint_vs_negative_endpoint",
+      "induction_days": 13,
+      "n_sample_pairs": 6,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_failed_endpoint",
+      "induction_days": 13,
+      "n_sample_pairs": 4,
+      "donor_lines": [
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_negative_endpoint",
+      "induction_days": 13,
+      "n_sample_pairs": 4,
+      "donor_lines": [
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "failed_endpoint_vs_negative_endpoint",
+      "induction_days": 15,
+      "n_sample_pairs": 6,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_failed_endpoint",
+      "induction_days": 15,
+      "n_sample_pairs": 2,
+      "donor_lines": [
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_negative_endpoint",
+      "induction_days": 15,
+      "n_sample_pairs": 2,
+      "donor_lines": [
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "failed_endpoint_vs_negative_endpoint",
+      "induction_days": 17,
+      "n_sample_pairs": 6,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_failed_endpoint",
+      "induction_days": 17,
+      "n_sample_pairs": 4,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "phase": "endpoint_after_withdrawal",
+      "comparison": "successful_endpoint_vs_negative_endpoint",
+      "induction_days": 17,
+      "n_sample_pairs": 4,
+      "donor_lines": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    }
+  ],
+  "conclusions_limits": [
+    "Differences are descriptive matched log2-RPM contrasts, not inferential tests.",
+    "Experiment repeats from the same donor-coded line are not counted as independent donors.",
+    "The four-gene collagen panel is not a validated biological-age clock.",
+    "In-vitro fibroblast expression cannot establish organism-level age reversal, lasting health benefit, or safe human treatment.",
+    "The source paper measured collagen proteins and migration separately; this re-analysis only evaluates deposited transcript values."
+  ],
+  "inputs_sha256": {
+    "GSE165177_family.soft.gz": "0451174910e9bbc970a4a289dd65960ba85b84d388670f7045087391ae84188e",
+    "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz": "e6f055a491900a8f8563a339d1f18d99a92690af53d8ff44d7cc9a164b66209c",
+    "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz": "fca65676b19599491e139c583971a88f6bf2d177592d49558e57689e18e067e8"
+  },
+  "generated_utc": "2026-10-11T06:41:58.391824+00:00",
+  "figure_created": true
+}

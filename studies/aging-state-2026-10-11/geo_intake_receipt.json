@@ -1,0 +1,663 @@
+{
+  "schema_version": 1,
+  "accession": "GSE165177",
+  "source": "NCBI GEO official FTP",
+  "retrieved_or_cache_checked_utc": "2026-10-11T06:34:40.768457+00:00",
+  "files": {
+    "series_metadata": {
+      "filename": "GSE165177_family.soft.gz",
+      "sha256": "0451174910e9bbc970a4a289dd65960ba85b84d388670f7045087391ae84188e",
+      "compressed_bytes": 7995,
+      "metadata_json_sha256": "a0127629e6b7d552567fd6876f5da52fb81d3cd1ff7088bed06a2a2546be76f6",
+      "sample_record_count": 95,
+      "expanded_bytes": 326662,
+      "local_provenance_receipt": "reused_verified_cache"
+    },
+    "expression_part_1": {
+      "filename": "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz",
+      "sha256": "e6f055a491900a8f8563a339d1f18d99a92690af53d8ff44d7cc9a164b66209c",
+      "compressed_bytes": 3341131,
+      "expanded_bytes": 13430832,
+      "line_count_including_header": 35806,
+      "data_row_count": 35805,
+      "column_count": 36,
+      "header": [
+        "Probe",
+        "Chromosome",
+        "Start",
+        "End",
+        "Probe Strand",
+        "Feature",
+        "ID",
+        "Description",
+        "Feature Strand",
+        "Type",
+        "Feature Orientation",
+        "Distance",
+        "O1_failed_to_transiently_reprogram_13days_exp1",
+        "O1_failed_to_transiently_reprogram_15days_exp1",
+        "O1_failed_to_transiently_reprogram_17days_exp1",
+        "O1_negative_control_13days_exp1",
+        "O1_negative_control_15days_exp1",
+        "O1_negative_control_17days_exp1",
+        "O1_transiently_reprogrammed_17days_exp1",
+        "O2_failed_to_transiently_reprogram_13days_exp1",
+        "O2_failed_to_transiently_reprogram_15days_exp1",
+        "O2_failed_to_transiently_reprogram_17days_exp1",
+        "O2_negative_control_13days_exp1",
+        "O2_negative_control_15days_exp1",
+        "O2_negative_control_17days_exp1",
+        "O2_transiently_reprogrammed_13days_exp1",
+        "O2_transiently_reprogrammed_17days_exp1",
+        "O3_failed_to_transiently_reprogram_13days_exp1",
+        "O3_failed_to_transiently_reprogram_15days_exp1",
+        "O3_failed_to_transiently_reprogram_17days_exp1",
+        "O3_negative_control_13days_exp1",
+        "O3_negative_control_15days_exp1",
+        "O3_negative_control_17days_exp1",
+        "O3_transiently_reprogrammed_13days_exp1",
+        "O3_transiently_reprogrammed_15days_exp1",
+        "O3_transiently_reprogrammed_17days_exp1"
+      ],
+      "first_feature_labels": [
+        "MIR1302-11",
+        "FAM138A"
+      ],
+      "local_provenance_receipt": "reused_verified_cache"
+    },
+    "expression_part_2": {
+      "filename": "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz",
+      "sha256": "fca65676b19599491e139c583971a88f6bf2d177592d49558e57689e18e067e8",
+      "compressed_bytes": 12711125,
+      "expanded_bytes": 49162446,
+      "line_count_including_header": 35806,
+      "data_row_count": 35805,
+      "column_count": 83,
+      "header": [
+        "Probe",
+        "Chromosome",
+        "Start",
+        "End",
+        "Probe Strand",
+        "Feature",
+        "ID",
+        "Description",
+        "Feature Strand",
+        "Type",
+        "Feature Orientation",
+        "Distance",
+        "O1_negative_control_intermediate_10days_exp2",
+        "O1_negative_control_intermediate_13days_exp2",
+        "O1_negative_control_intermediate_15days_exp2",
+        "O1_negative_control_intermediate_17days_exp2",
+        "O1_failing_to_transiently_reprogram_intermediate_10days_exp2",
+        "O1_failing_to_transiently_reprogram_intermediate_13days_exp2",
+        "O1_failing_to_transiently_reprogram_intermediate_15days_exp2",
+        "O1_failing_to_transiently_reprogram_intermediate_17days_exp2",
+        "O1_transient_reprogramming_intermediate_10days_exp2",
+        "O1_transient_reprogramming_intermediate_13days_exp2",
+        "O1_transient_reprogramming_intermediate_15days_exp2",
+        "O1_transient_reprogramming_intermediate_17days_exp2",
+        "O2_negative_control_intermediate_10days_exp2",
+        "O2_negative_control_intermediate_13days_exp2",
+        "O2_negative_control_intermediate_15days_exp2",
+        "O2_negative_control_intermediate_17days_exp2",
+        "O2_failing_to_transiently_reprogram_intermediate_10days_exp2",
+        "O2_failing_to_transiently_reprogram_intermediate_13days_exp2",
+        "O2_failing_to_transiently_reprogram_intermediate_15days_exp2",
+        "O2_failing_to_transiently_reprogram_intermediate_17days_exp2",
+        "O2_transient_reprogramming_intermediate_10days_exp2",
+        "O2_transient_reprogramming_intermediate_13days_exp2",
+        "O2_transient_reprogramming_intermediate_15days_exp2",
+        "O2_transient_reprogramming_intermediate_17days_exp2",
+        "O3_negative_control_intermediate_10days_exp2",
+        "O3_negative_control_intermediate_13days_exp2",
+        "O3_negative_control_intermediate_15days_exp2",
+        "O3_negative_control_intermediate_17days_exp2",
+        "O3_failing_to_transiently_reprogram_intermediate_10days_exp2",
+        "O3_failing_to_transiently_reprogram_intermediate_13days_exp2",
+        "O3_failing_to_transiently_reprogram_intermediate_15days_exp2",
+        "O3_failing_to_transiently_reprogram_intermediate_17days_exp2",
+        "O3_transient_reprogramming_intermediate_10days_exp2",
+        "O3_transient_reprogramming_intermediate_13days_exp2",
+        "O3_transient_reprogramming_intermediate_15days_exp2",
+        "O1 Fib",
+        "O1_negative_control_10days_exp2",
+        "O1_negative_control_13days_exp2",
+        "O1_negative_control_15days_exp2",
+        "O1_failed_to_transiently_reprogram_13days_exp2",
+        "O1_failed_to_transiently_reprogram_15days_exp2",
+        "O1_failed_to_transiently_reprogram_17days_exp2",
+        "O1_transiently_reprogrammed_10days_exp2",
+        "O2_negative_control_10days_exp2",
+        "O2_negative_control_13days_exp2",
+        "O2_negative_control_15days_exp2",
+        "O2_negative_control_17days_exp2",
+        "O2_failed_to_transiently_reprogram_10days_exp2",
+        "O2_failed_to_transiently_reprogram_13days_exp2",
+        "O2_failed_to_transiently_reprogram_17days_exp2",
+        "O2_transiently_reprogrammed_10days_exp2",
+        "O2_transiently_reprogrammed_13days_exp2",
+        "O3 Fib",
+        "O3_negative_control_13days_exp2",
+        "O3_negative_control_15days_exp2",
+        "O3_negative_control_17days_exp2",
+        "O3_failed_to_transiently_reprogram_10days_exp2",
+        "O3_failed_to_transiently_reprogram_13days_exp2",
+        "O3_failed_to_transiently_reprogram_17days_exp2",
+        "O3_transiently_reprogrammed_10days_exp2",
+        "O3_transiently_reprogrammed_13days_exp2",
+        "O3_transiently_reprogrammed_15days_exp2",
+        "O3_transiently_reprogrammed_17days_exp2",
+        "iPSC 13",
+        "iPSC 21",
+        "O1_negative_control_17days_exp2",
+        "O1_failed_to_transiently_reprogram_10days_exp2",
+        "O2 Fib",
+        "O2_failed_to_transiently_reprogram_15days_exp2",
+        "O3_negative_control_10days_exp2",
+        "O3_failed_to_transiently_reprogram_15days_exp2"
+      ],
+      "first_feature_labels": [
+        "MIR1302-11",
+        "FAM138A"
+      ],
+      "local_provenance_receipt": "reused_verified_cache"
+    }
+  },
+  "sample_mapping_check": {
+    "metadata_sample_count": 95,
+    "expression_sample_columns": 95,
+    "unique_GSMs_after_exact_title_join": 95,
+    "all_headers_match_metadata_samples": true,
+    "headers_missing_from_metadata": [],
+    "metadata_samples_missing_from_headers": [],
+    "expression_header_to_GSM": {
+      "GSE165177_Log2_RPM_Transient_reprogramming.txt.gz": [
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_13days_exp1",
+          "GSM": "GSM5027631",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_13days_exp1"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_15days_exp1",
+          "GSM": "GSM5027632",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_15days_exp1"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_17days_exp1",
+          "GSM": "GSM5027633",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_17days_exp1"
+        },
+        {
+          "expression_header": "O1_negative_control_13days_exp1",
+          "GSM": "GSM5027634",
+          "GEO_sample_title": "O1_negative_control_13days_exp1"
+        },
+        {
+          "expression_header": "O1_negative_control_15days_exp1",
+          "GSM": "GSM5027635",
+          "GEO_sample_title": "O1_negative_control_15days_exp1"
+        },
+        {
+          "expression_header": "O1_negative_control_17days_exp1",
+          "GSM": "GSM5027636",
+          "GEO_sample_title": "O1_negative_control_17days_exp1"
+        },
+        {
+          "expression_header": "O1_transiently_reprogrammed_17days_exp1",
+          "GSM": "GSM5027637",
+          "GEO_sample_title": "O1_transiently_reprogrammed_17days_exp1"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_13days_exp1",
+          "GSM": "GSM5027638",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_13days_exp1"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_15days_exp1",
+          "GSM": "GSM5027639",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_15days_exp1"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_17days_exp1",
+          "GSM": "GSM5027640",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_17days_exp1"
+        },
+        {
+          "expression_header": "O2_negative_control_13days_exp1",
+          "GSM": "GSM5027641",
+          "GEO_sample_title": "O2_negative_control_13days_exp1"
+        },
+        {
+          "expression_header": "O2_negative_control_15days_exp1",
+          "GSM": "GSM5027642",
+          "GEO_sample_title": "O2_negative_control_15days_exp1"
+        },
+        {
+          "expression_header": "O2_negative_control_17days_exp1",
+          "GSM": "GSM5027643",
+          "GEO_sample_title": "O2_negative_control_17days_exp1"
+        },
+        {
+          "expression_header": "O2_transiently_reprogrammed_13days_exp1",
+          "GSM": "GSM5027644",
+          "GEO_sample_title": "O2_transiently_reprogrammed_13days_exp1"
+        },
+        {
+          "expression_header": "O2_transiently_reprogrammed_17days_exp1",
+          "GSM": "GSM5027645",
+          "GEO_sample_title": "O2_transiently_reprogrammed_17days_exp1"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_13days_exp1",
+          "GSM": "GSM5027646",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_13days_exp1"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_15days_exp1",
+          "GSM": "GSM5027647",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_15days_exp1"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_17days_exp1",
+          "GSM": "GSM5027648",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_17days_exp1"
+        },
+        {
+          "expression_header": "O3_negative_control_13days_exp1",
+          "GSM": "GSM5027649",
+          "GEO_sample_title": "O3_negative_control_13days_exp1"
+        },
+        {
+          "expression_header": "O3_negative_control_15days_exp1",
+          "GSM": "GSM5027650",
+          "GEO_sample_title": "O3_negative_control_15days_exp1"
+        },
+        {
+          "expression_header": "O3_negative_control_17days_exp1",
+          "GSM": "GSM5027651",
+          "GEO_sample_title": "O3_negative_control_17days_exp1"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_13days_exp1",
+          "GSM": "GSM5027652",
+          "GEO_sample_title": "O3_transiently_reprogrammed_13days_exp1"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_15days_exp1",
+          "GSM": "GSM5027653",
+          "GEO_sample_title": "O3_transiently_reprogrammed_15days_exp1"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_17days_exp1",
+          "GSM": "GSM5027654",
+          "GEO_sample_title": "O3_transiently_reprogrammed_17days_exp1"
+        }
+      ],
+      "GSE165177_Log2_RPM_Transient_reprogramming_part2_170621.txt.gz": [
+        {
+          "expression_header": "O1_negative_control_intermediate_10days_exp2",
+          "GSM": "GSM5391798",
+          "GEO_sample_title": "O1_negative_control_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O1_negative_control_intermediate_13days_exp2",
+          "GSM": "GSM5391799",
+          "GEO_sample_title": "O1_negative_control_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O1_negative_control_intermediate_15days_exp2",
+          "GSM": "GSM5391800",
+          "GEO_sample_title": "O1_negative_control_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O1_negative_control_intermediate_17days_exp2",
+          "GSM": "GSM5391801",
+          "GEO_sample_title": "O1_negative_control_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O1_failing_to_transiently_reprogram_intermediate_10days_exp2",
+          "GSM": "GSM5391789",
+          "GEO_sample_title": "O1_failing_to_transiently_reprogram_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O1_failing_to_transiently_reprogram_intermediate_13days_exp2",
+          "GSM": "GSM5391790",
+          "GEO_sample_title": "O1_failing_to_transiently_reprogram_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O1_failing_to_transiently_reprogram_intermediate_15days_exp2",
+          "GSM": "GSM5391791",
+          "GEO_sample_title": "O1_failing_to_transiently_reprogram_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O1_failing_to_transiently_reprogram_intermediate_17days_exp2",
+          "GSM": "GSM5391792",
+          "GEO_sample_title": "O1_failing_to_transiently_reprogram_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O1_transient_reprogramming_intermediate_10days_exp2",
+          "GSM": "GSM5391803",
+          "GEO_sample_title": "O1_transient_reprogramming_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O1_transient_reprogramming_intermediate_13days_exp2",
+          "GSM": "GSM5391804",
+          "GEO_sample_title": "O1_transient_reprogramming_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O1_transient_reprogramming_intermediate_15days_exp2",
+          "GSM": "GSM5391805",
+          "GEO_sample_title": "O1_transient_reprogramming_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O1_transient_reprogramming_intermediate_17days_exp2",
+          "GSM": "GSM5391806",
+          "GEO_sample_title": "O1_transient_reprogramming_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_intermediate_10days_exp2",
+          "GSM": "GSM5391820",
+          "GEO_sample_title": "O2_negative_control_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_intermediate_13days_exp2",
+          "GSM": "GSM5391821",
+          "GEO_sample_title": "O2_negative_control_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_intermediate_15days_exp2",
+          "GSM": "GSM5391822",
+          "GEO_sample_title": "O2_negative_control_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_intermediate_17days_exp2",
+          "GSM": "GSM5391823",
+          "GEO_sample_title": "O2_negative_control_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O2_failing_to_transiently_reprogram_intermediate_10days_exp2",
+          "GSM": "GSM5391811",
+          "GEO_sample_title": "O2_failing_to_transiently_reprogram_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O2_failing_to_transiently_reprogram_intermediate_13days_exp2",
+          "GSM": "GSM5391812",
+          "GEO_sample_title": "O2_failing_to_transiently_reprogram_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O2_failing_to_transiently_reprogram_intermediate_15days_exp2",
+          "GSM": "GSM5391813",
+          "GEO_sample_title": "O2_failing_to_transiently_reprogram_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O2_failing_to_transiently_reprogram_intermediate_17days_exp2",
+          "GSM": "GSM5391814",
+          "GEO_sample_title": "O2_failing_to_transiently_reprogram_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O2_transient_reprogramming_intermediate_10days_exp2",
+          "GSM": "GSM5391826",
+          "GEO_sample_title": "O2_transient_reprogramming_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O2_transient_reprogramming_intermediate_13days_exp2",
+          "GSM": "GSM5391827",
+          "GEO_sample_title": "O2_transient_reprogramming_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O2_transient_reprogramming_intermediate_15days_exp2",
+          "GSM": "GSM5391828",
+          "GEO_sample_title": "O2_transient_reprogramming_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O2_transient_reprogramming_intermediate_17days_exp2",
+          "GSM": "GSM5391829",
+          "GEO_sample_title": "O2_transient_reprogramming_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_intermediate_10days_exp2",
+          "GSM": "GSM5391843",
+          "GEO_sample_title": "O3_negative_control_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_intermediate_13days_exp2",
+          "GSM": "GSM5391844",
+          "GEO_sample_title": "O3_negative_control_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_intermediate_15days_exp2",
+          "GSM": "GSM5391845",
+          "GEO_sample_title": "O3_negative_control_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_intermediate_17days_exp2",
+          "GSM": "GSM5391846",
+          "GEO_sample_title": "O3_negative_control_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O3_failing_to_transiently_reprogram_intermediate_10days_exp2",
+          "GSM": "GSM5391834",
+          "GEO_sample_title": "O3_failing_to_transiently_reprogram_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O3_failing_to_transiently_reprogram_intermediate_13days_exp2",
+          "GSM": "GSM5391835",
+          "GEO_sample_title": "O3_failing_to_transiently_reprogram_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O3_failing_to_transiently_reprogram_intermediate_15days_exp2",
+          "GSM": "GSM5391836",
+          "GEO_sample_title": "O3_failing_to_transiently_reprogram_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O3_failing_to_transiently_reprogram_intermediate_17days_exp2",
+          "GSM": "GSM5391837",
+          "GEO_sample_title": "O3_failing_to_transiently_reprogram_intermediate_17days_exp2"
+        },
+        {
+          "expression_header": "O3_transient_reprogramming_intermediate_10days_exp2",
+          "GSM": "GSM5391851",
+          "GEO_sample_title": "O3_transient_reprogramming_intermediate_10days_exp2"
+        },
+        {
+          "expression_header": "O3_transient_reprogramming_intermediate_13days_exp2",
+          "GSM": "GSM5391852",
+          "GEO_sample_title": "O3_transient_reprogramming_intermediate_13days_exp2"
+        },
+        {
+          "expression_header": "O3_transient_reprogramming_intermediate_15days_exp2",
+          "GSM": "GSM5391853",
+          "GEO_sample_title": "O3_transient_reprogramming_intermediate_15days_exp2"
+        },
+        {
+          "expression_header": "O1 Fib",
+          "GSM": "GSM5391793",
+          "GEO_sample_title": "O1_Fib"
+        },
+        {
+          "expression_header": "O1_negative_control_10days_exp2",
+          "GSM": "GSM5391794",
+          "GEO_sample_title": "O1_negative_control_10days_exp2"
+        },
+        {
+          "expression_header": "O1_negative_control_13days_exp2",
+          "GSM": "GSM5391795",
+          "GEO_sample_title": "O1_negative_control_13days_exp2"
+        },
+        {
+          "expression_header": "O1_negative_control_15days_exp2",
+          "GSM": "GSM5391796",
+          "GEO_sample_title": "O1_negative_control_15days_exp2"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_13days_exp2",
+          "GSM": "GSM5391786",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_13days_exp2"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_15days_exp2",
+          "GSM": "GSM5391787",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_15days_exp2"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_17days_exp2",
+          "GSM": "GSM5391788",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_17days_exp2"
+        },
+        {
+          "expression_header": "O1_transiently_reprogrammed_10days_exp2",
+          "GSM": "GSM5391802",
+          "GEO_sample_title": "O1_transiently_reprogrammed_10days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_10days_exp2",
+          "GSM": "GSM5391816",
+          "GEO_sample_title": "O2_negative_control_10days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_13days_exp2",
+          "GSM": "GSM5391817",
+          "GEO_sample_title": "O2_negative_control_13days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_15days_exp2",
+          "GSM": "GSM5391818",
+          "GEO_sample_title": "O2_negative_control_15days_exp2"
+        },
+        {
+          "expression_header": "O2_negative_control_17days_exp2",
+          "GSM": "GSM5391819",
+          "GEO_sample_title": "O2_negative_control_17days_exp2"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_10days_exp2",
+          "GSM": "GSM5391807",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_10days_exp2"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_13days_exp2",
+          "GSM": "GSM5391808",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_13days_exp2"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_17days_exp2",
+          "GSM": "GSM5391810",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_17days_exp2"
+        },
+        {
+          "expression_header": "O2_transiently_reprogrammed_10days_exp2",
+          "GSM": "GSM5391824",
+          "GEO_sample_title": "O2_transiently_reprogrammed_10days_exp2"
+        },
+        {
+          "expression_header": "O2_transiently_reprogrammed_13days_exp2",
+          "GSM": "GSM5391825",
+          "GEO_sample_title": "O2_transiently_reprogrammed_13days_exp2"
+        },
+        {
+          "expression_header": "O3 Fib",
+          "GSM": "GSM5391838",
+          "GEO_sample_title": "O3_Fib"
+        },
+        {
+          "expression_header": "O3_negative_control_13days_exp2",
+          "GSM": "GSM5391840",
+          "GEO_sample_title": "O3_negative_control_13days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_15days_exp2",
+          "GSM": "GSM5391841",
+          "GEO_sample_title": "O3_negative_control_15days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_17days_exp2",
+          "GSM": "GSM5391842",
+          "GEO_sample_title": "O3_negative_control_17days_exp2"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_10days_exp2",
+          "GSM": "GSM5391830",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_10days_exp2"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_13days_exp2",
+          "GSM": "GSM5391831",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_13days_exp2"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_17days_exp2",
+          "GSM": "GSM5391833",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_17days_exp2"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_10days_exp2",
+          "GSM": "GSM5391847",
+          "GEO_sample_title": "O3_transiently_reprogrammed_10days_exp2"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_13days_exp2",
+          "GSM": "GSM5391848",
+          "GEO_sample_title": "O3_transiently_reprogrammed_13days_exp2"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_15days_exp2",
+          "GSM": "GSM5391849",
+          "GEO_sample_title": "O3_transiently_reprogrammed_15days_exp2"
+        },
+        {
+          "expression_header": "O3_transiently_reprogrammed_17days_exp2",
+          "GSM": "GSM5391850",
+          "GEO_sample_title": "O3_transiently_reprogrammed_17days_exp2"
+        },
+        {
+          "expression_header": "iPSC 13",
+          "GSM": "GSM5391783",
+          "GEO_sample_title": "iPSC_13"
+        },
+        {
+          "expression_header": "iPSC 21",
+          "GSM": "GSM5391784",
+          "GEO_sample_title": "iPSC_21"
+        },
+        {
+          "expression_header": "O1_negative_control_17days_exp2",
+          "GSM": "GSM5391797",
+          "GEO_sample_title": "O1_negative_control_17days_exp2"
+        },
+        {
+          "expression_header": "O1_failed_to_transiently_reprogram_10days_exp2",
+          "GSM": "GSM5391785",
+          "GEO_sample_title": "O1_failed_to_transiently_reprogram_10days_exp2"
+        },
+        {
+          "expression_header": "O2 Fib",
+          "GSM": "GSM5391815",
+          "GEO_sample_title": "O2_Fib"
+        },
+        {
+          "expression_header": "O2_failed_to_transiently_reprogram_15days_exp2",
+          "GSM": "GSM5391809",
+          "GEO_sample_title": "O2_failed_to_transiently_reprogram_15days_exp2"
+        },
+        {
+          "expression_header": "O3_negative_control_10days_exp2",
+          "GSM": "GSM5391839",
+          "GEO_sample_title": "O3_negative_control_10days_exp2"
+        },
+        {
+          "expression_header": "O3_failed_to_transiently_reprogram_15days_exp2",
+          "GSM": "GSM5391832",
+          "GEO_sample_title": "O3_failed_to_transiently_reprogram_15days_exp2"
+        }
+      ]
+    },
+    "normalization": "case-fold and collapse spaces/underscores; all titles must join uniquely"
+  },
+  "limits": {
+    "processed_log2_RPM_is_not_raw_count_data": true,
+    "biosample_records_do_not_prove_independent_donors": true,
+    "functional_assays_not_yet_joined_to_expression_samples": true
+  }
+}
