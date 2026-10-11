@@ -32,6 +32,14 @@ For the user’s blunt-force injury case, the key gap is the transition from a t
 
 The next step is to qualify tooth-pose measurement against a known-motion fixture before adding more parameters to the viscoelastic tooth–PDL–bone model. The [position-stability metrology plan](POSITION_STABILITY_METROLOGY_PLAN.md) now includes a standard-library analysis runner, a repeat-acquisition input schema, and a clearly synthetic software check; it turns published repeatability data into analysis-only detection bounds, defines a root-versus-crown position schema, and sets a same-modality phantom gate. A separate [pose acquisition-manifest generator](make_pose_acquisition_manifest.py) creates a randomized operator schedule and a separately stored analysis key from investigator-specified pose conditions and acquisition counts. This supports blinding and balanced repeats when access is managed separately, but does not enforce access control or prove scans are independently repositioned. After finalized measurements are recorded under run codes, [the assembler](assemble_position_metrology_input.py) validates a complete one-to-one run match and joins those values to the restricted known-pose key for analysis; its hash receipt records file identity, not blinding or freeze timing. The analyzer refuses to call a result a pass or fail without criteria declared in advance. Once that measurement pipeline is empirically qualified, the mechanical model can test which measured responses distinguish a functional ligament from ankylosis. Fit it only when per-specimen force–displacement data or digitizable source curves are available; otherwise use clearly labeled sensitivity cases. Do not tune unobserved material parameters toward a desired clinical conclusion.
 
+The new [force–displacement fixture qualification protocol](FORCE_DISPLACEMENT_FIXTURE_QUALIFICATION.md)
+turns the next bench gate into explicit checks for independent sensor calibration,
+blocked-fixture compliance, synchronization, and blinded known-motion repeats.
+This is a written qualification plan only; no physical fixture or sensor has
+been calibrated here. The source studies show that response depends on loading
+velocity, which makes waveform control part of the measurement definition and
+prevents borrowing an injury force from a different device, species, or study.
+
 ## Experimental sequence
 
 1. **Recover source-level mechanics.** The official PDGF-BB supplement is now checksum-verified and its Table S3 calculation is audited; keep the 76% versus 72.3–72.4% conflict unresolved unless public or author-supplied specimen-level data explain it. Continue qualifying the progenitor paper’s displacement values and group sizes from its official full text. Do not manufacture replicate rows from mean curves.
@@ -52,3 +60,4 @@ python /lab/workbench/studies/periodontal-attachment-restoration-2026-10-11/buil
 ```
 
 The source extraction receipt distinguishes retrieved full text, checksum-verified supplement files, and endpoint failures. The derived folder contains normalized endpoint ratios, the source-audited strength ratio, the full fracture table, the displacement comparison, a stiffness non-identifiability sweep, a figure, and provenance records. The second article’s official PMC page was reviewed, but its Europe PMC full-text XML endpoint returned HTTP 500; it is not represented as a locally downloaded specimen-level dataset.
+

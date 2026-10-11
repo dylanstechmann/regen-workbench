@@ -86,6 +86,13 @@ axis signs, calibration, and acquisition behavior have been validated. The
 analyzer deliberately emits no biological pass/fail result or acceptance
 threshold.
 
+Before applying the trace analyzer to a physical setup, qualify the force and
+displacement channels, frame compliance, and channel timing using the
+[force–displacement fixture qualification protocol](FORCE_DISPLACEMENT_FIXTURE_QUALIFICATION.md).
+Published human PDL measurements show that measured force response changes
+with activation velocity, so waveform, loading rate, and time alignment belong
+in the measurement contract; those values are not transferable injury doses.
+
 ## Qualification sequence and pass rules
 
 1. **Lock the estimand and coordinate convention.** Fix axis signs, units, tooth pose representation, baseline source, target tooth, registration mask, support states, and timepoints before reading treatment outcomes. Store all six pose components; a single “distance from ideal” number can hide direction and tipping.
@@ -174,7 +181,7 @@ The example output is in [`derived/synthetic_pose_metrology/`](derived/synthetic
 
 ## Next execution gate
 
-Start with an ex-vivo known-motion phantom and blinded repeat registration using the same image modality end-to-end. If the achieved limits cannot resolve the prespecified movement margin, improve the acquisition/registration pipeline before advancing to intervention biology. Once qualified, use the direct retained-tooth impact model for subluxation/stretch and a separate validated luxation model for actual displacement; neither is a human treatment recommendation. Include a long post-support observation because short-term alignment cannot establish durable restoration.
+Start with a rigid known-motion phantom and blinded repeat registration using the same image modality end-to-end, while separately qualifying the force/displacement fixture and its blank compliance. If the achieved limits cannot resolve the prespecified movement margin, improve the acquisition/registration pipeline before advancing to intervention biology. The fixture protocol qualifies measurement only; it does not select a biological injury force or establish an intervention. Once the measurement systems are empirically qualified, use the direct retained-tooth impact model for subluxation/stretch and a separate validated luxation model for actual displacement; neither is a human treatment recommendation. Include a long post-support observation because short-term alignment cannot establish durable restoration.
 
 ### Sources
 
@@ -186,3 +193,4 @@ Start with an ex-vivo known-motion phantom and blinded repeat registration using
 - Immature-rat lateral luxation studies establish a horizontal-displacement injury precedent; a later study used 3D micro-CT but reported root fracture and resorption, not validated baseline-to-follow-up pose restoration. [1991 study](https://pubmed.ncbi.nlm.nih.gov/1915123/) · [2017 study](https://doi.org/10.1016/j.pdj.2017.08.001).
 - Adult-rat force calibration for experimental subluxation; 900 cN was reported compatible with subluxation, but groups were n=3 and the endpoint was immediate histology. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/20089060/).
 - Experimental immature-rat intrusive-luxation model with micro-CT and histology through 90 days. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/32771418/).
+
