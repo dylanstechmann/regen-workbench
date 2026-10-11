@@ -1,0 +1,7 @@
+panel	n_genes_observed	young_sample_values	old_sample_values	young_mean	old_mean	old_minus_young	interpretation_limit
+matrix_degradation	6	0.908806;0.631604;0.788344	0.554054;1.873933;2.063805	0.776251	1.497264	0.721013	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.
+matrix_inhibitors	3	6.709831;5.703672;7.353743	3.850063;4.454036;5.516040	6.589082	4.606713	-1.982369	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.
+structural_ecm	6	9.316412;8.945219;10.210262	4.713228;6.858883;6.963241	9.490631	6.178450	-3.312180	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.
+inflammation	8	2.260393;1.717597;1.777578	2.670287;2.745380;2.473923	1.918523	2.629863	0.711341	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.
+epithelial_barrier_identity	8	7.606231;7.897891;7.025126	8.241304;8.242817;8.293050	7.509750	8.259057	0.749307	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.
+fibroblast_stromal_identity	8	8.183425;7.638127;8.822415	4.075253;6.119102;6.192607	8.214656	5.462320	-2.752336	Descriptive group contrast in processed expression units; bulk tissue, n=3/group, no inferential test.

@@ -1,0 +1,7 @@
+panel	specified_genes	unique_single_refseq_genes	ambiguous_multi_refseq_genes	missing_genes	included_symbols
+matrix_degradation	8	6	MMP1,MMP2		MMP3,MMP8,MMP9,MMP12,MMP13,MMP27
+matrix_inhibitors	3	3			TIMP1,TIMP2,TIMP3
+structural_ecm	8	6	FN1,DCN		COL1A1,COL1A2,COL3A1,COL5A1,COL6A1,LUM
+inflammation	9	8		CXCL8	IL1A,IL1B,IL6,TNF,CCL2,PTGS2,NFKBIA,ICAM1
+epithelial_barrier_identity	9	8	KRT13		KRT5,KRT14,KRT19,EPCAM,CDH1,CLDN1,SFN,IVL
+fibroblast_stromal_identity	9	8	DCN		COL1A1,COL1A2,COL3A1,LUM,PDGFRA,PDGFRB,THY1,COL6A1

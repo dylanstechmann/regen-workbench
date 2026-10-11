@@ -1,0 +1,134 @@
+{
+  "accession": "GSE83382",
+  "primary_publication": {
+    "pmid": "27391467",
+    "doi": "10.1371/journal.pone.0158777",
+    "pmcid": "PMC4938517"
+  },
+  "eligibility": "Eligible for small, exploratory group-level descriptive analyses only; individual processed-matrix aliases cannot be matched to GEO's sample titles/ages.",
+  "groups": {
+    "young": {
+      "n": 3,
+      "expression_headers": [
+        "Young1",
+        "Young3",
+        "Young4"
+      ]
+    },
+    "old": {
+      "n": 3,
+      "expression_headers": [
+        "Old1",
+        "Old2",
+        "Old3"
+      ]
+    }
+  },
+  "age_metadata_by_group": {
+    "young": [
+      17.0,
+      19.0,
+      19.0
+    ],
+    "old": [
+      64.0,
+      66.0,
+      66.0
+    ]
+  },
+  "sex_metadata": [
+    "Female"
+  ],
+  "matrix_stats": {
+    "matrix_header": [
+      "RefSeq",
+      "Symbol",
+      "Young1",
+      "Young3",
+      "Young4",
+      "Old1",
+      "Old2",
+      "Old3"
+    ],
+    "feature_row_count": 40247,
+    "unique_refseq_features": 40247,
+    "empty_or_placeholder_symbol_rows": 511,
+    "unique_nonplaceholder_gene_symbols": 23502,
+    "symbols_with_multiple_refseq_rows": 7694,
+    "maximum_refseq_rows_per_symbol": 77,
+    "duplicate_symbol_handling": "No collapse: fixed-panel summaries include a gene only when its symbol maps to exactly one RefSeq row. Multi-row symbols remain unresolved and are shown per RefSeq feature."
+  },
+  "processed_scale": "Processed FPKM matrix; GEO metadata states quantile-normalized, log2-transformed, and median-centered across genes and samples.",
+  "analysis": {
+    "fixed_panels": {
+      "matrix_degradation": [
+        "MMP1",
+        "MMP2",
+        "MMP3",
+        "MMP8",
+        "MMP9",
+        "MMP12",
+        "MMP13",
+        "MMP27"
+      ],
+      "matrix_inhibitors": [
+        "TIMP1",
+        "TIMP2",
+        "TIMP3"
+      ],
+      "structural_ecm": [
+        "COL1A1",
+        "COL1A2",
+        "COL3A1",
+        "COL5A1",
+        "COL6A1",
+        "FN1",
+        "DCN",
+        "LUM"
+      ],
+      "inflammation": [
+        "IL1A",
+        "IL1B",
+        "IL6",
+        "TNF",
+        "CXCL8",
+        "CCL2",
+        "PTGS2",
+        "NFKBIA",
+        "ICAM1"
+      ],
+      "epithelial_barrier_identity": [
+        "KRT5",
+        "KRT14",
+        "KRT13",
+        "KRT19",
+        "EPCAM",
+        "CDH1",
+        "CLDN1",
+        "SFN",
+        "IVL"
+      ],
+      "fibroblast_stromal_identity": [
+        "COL1A1",
+        "COL1A2",
+        "COL3A1",
+        "DCN",
+        "LUM",
+        "PDGFRA",
+        "PDGFRB",
+        "THY1",
+        "COL6A1"
+      ]
+    },
+    "panel_score": "Unweighted mean across observed fixed genes for each expression sample, then descriptive mean by age group.",
+    "gene_summary": "A gene is included in a panel score only when its symbol maps to one RefSeq feature; multi-feature symbols are listed separately without averaging or summation.",
+    "uncertainty": "No significance tests, confidence intervals or age-clock training. Three expression samples per group; expression aliases are not matched to individual GEO ages."
+  },
+  "outputs": [
+    "gingival_age_gene_contrasts.tsv",
+    "gingival_age_panel_coverage.tsv",
+    "gingival_age_axis_summary.tsv",
+    "gingival_age_sample_scores.tsv",
+    "gingival_age_feature_contrasts.tsv"
+  ]
+}

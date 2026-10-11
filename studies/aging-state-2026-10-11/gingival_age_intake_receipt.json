@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "accession": "GSE83382",
+  "primary_publication": {
+    "pmid": "27391467",
+    "doi": "10.1371/journal.pone.0158777",
+    "pmcid": "PMC4938517"
+  },
+  "source": "NCBI GEO official FTP",
+  "retrieved_or_cache_checked_utc": "2026-10-11T16:28:47.448960+00:00",
+  "files": {
+    "series_metadata": {
+      "filename": "GSE83382_family.soft.gz",
+      "sha256": "a35c528795ba9f4951216c81fe3519a088ed16c2d83f384a79e34e3f4233a8de",
+      "compressed_bytes": 2593,
+      "sample_count": 6,
+      "metadata_json_sha256": "4b1bdb656173fb4693125789cec851c07bb82c4093bc034802266d643cf8c538",
+      "expanded_bytes": 18976,
+      "local_provenance_receipt": "reused_verified_cache"
+    },
+    "processed_expression": {
+      "filename": "GSE83382_Processed_data_file_FPKM.txt.gz",
+      "sha256": "0f873a12544e0f02194f2a3cd27899bf8e6e10e47564a1babc55b55acbb80479",
+      "compressed_bytes": 1228036,
+      "header": [
+        "RefSeq",
+        "Symbol",
+        "Young1",
+        "Young3",
+        "Young4",
+        "Old1",
+        "Old2",
+        "Old3"
+      ],
+      "line_count_including_header": 40248,
+      "data_row_count": 40247,
+      "column_count": 8,
+      "expanded_bytes": 2794018,
+      "first_feature_row": [
+        "NM_000014",
+        "A2M",
+        "6.035903185",
+        "5.186734279",
+        "6.559670762",
+        "3.477962212",
+        "4.827864743",
+        "5.081629365"
+      ],
+      "local_provenance_receipt": "reused_verified_cache"
+    }
+  },
+  "geo_sample_records": [
+    {
+      "GSM": "GSM2200461",
+      "sample_title": "Young rep1",
+      "synthetic_donor_label": "Y1",
+      "group": "young",
+      "age_years": 17.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "17",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    },
+    {
+      "GSM": "GSM2200462",
+      "sample_title": "Young rep2",
+      "synthetic_donor_label": "Y2",
+      "group": "young",
+      "age_years": 19.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "19",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    },
+    {
+      "GSM": "GSM2200463",
+      "sample_title": "Young rep3",
+      "synthetic_donor_label": "Y3",
+      "group": "young",
+      "age_years": 19.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "19",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    },
+    {
+      "GSM": "GSM2200464",
+      "sample_title": "Old rep1",
+      "synthetic_donor_label": "O1",
+      "group": "old",
+      "age_years": 64.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "64",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    },
+    {
+      "GSM": "GSM2200465",
+      "sample_title": "Old rep2",
+      "synthetic_donor_label": "O2",
+      "group": "old",
+      "age_years": 66.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "66",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    },
+    {
+      "GSM": "GSM2200466",
+      "sample_title": "Old rep3",
+      "synthetic_donor_label": "O3",
+      "group": "old",
+      "age_years": 66.0,
+      "sex": "Female",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "age": "66",
+        "gender": "Female",
+        "tissue": "Gingiva"
+      },
+      "treatment_protocol": [],
+      "growth_protocol": [],
+      "extract_protocol": [
+        "Gingival tissues were removed, flash frozen on dry ice, and RNA was isolated using RNeasy kit (Qiagen). Illumina TruSeq RNA Sample Prep Kit (Cat#RS-122-2001) was used with 4 ug of total RNA for the construction of sequencing libraries.",
+        "RNA libraries were prepared for sequencing using standard Illumina protocols"
+      ],
+      "data_processing": [
+        "Illumina Casava1.7 software used for basecalling.",
+        "Reference genome sequence data from Homo sapiens were obtained from the University of California Santa Cruz Genome Browser Gateway (assembly ID: hg19). The reference genome index was built using the Bowtie2-build component of Bowtie2 (ver. 2.0) and SAMtools (ver. 0.1.18). Tophat2 (ver. 2.0) was applied to map the reads obtained from our tissue samples to the reference genome.",
+        "The fragments per kilobase of transcript per million mapped reads (FPKM) values were used to estimate the expression level of each gene. The FPKM data were normalized by the quantile method, log2-transformed, and median-centered across genes and samples.",
+        "Genome_build: hg19",
+        "Supplementary_files_format_and_content: tab-delimited text files include FPKM values for each Samples.."
+      ]
+    }
+  ],
+  "expression_header_group_map": [
+    {
+      "expression_header": "Young1",
+      "group": "young",
+      "candidate_GSMs": [
+        "GSM2200461",
+        "GSM2200462",
+        "GSM2200463"
+      ],
+      "individual_linkage_resolved": false
+    },
+    {
+      "expression_header": "Young3",
+      "group": "young",
+      "candidate_GSMs": [
+        "GSM2200461",
+        "GSM2200462",
+        "GSM2200463"
+      ],
+      "individual_linkage_resolved": false
+    },
+    {
+      "expression_header": "Young4",
+      "group": "young",
+      "candidate_GSMs": [
+        "GSM2200461",
+        "GSM2200462",
+        "GSM2200463"
+      ],
+      "individual_linkage_resolved": false
+    },
+    {
+      "expression_header": "Old1",
+      "group": "old",
+      "candidate_GSMs": [
+        "GSM2200464",
+        "GSM2200465",
+        "GSM2200466"
+      ],
+      "individual_linkage_resolved": false
+    },
+    {
+      "expression_header": "Old2",
+      "group": "old",
+      "candidate_GSMs": [
+        "GSM2200464",
+        "GSM2200465",
+        "GSM2200466"
+      ],
+      "individual_linkage_resolved": false
+    },
+    {
+      "expression_header": "Old3",
+      "group": "old",
+      "candidate_GSMs": [
+        "GSM2200464",
+        "GSM2200465",
+        "GSM2200466"
+      ],
+      "individual_linkage_resolved": false
+    }
+  ],
+  "sample_mapping_check": {
+    "metadata_sample_count": 6,
+    "matrix_sample_columns": 6,
+    "unique_GSMs_mapped": 6,
+    "individual_samples_mapped_one_to_one": false,
+    "group_counts_match": true,
+    "samples_per_group": {
+      "young": 3,
+      "old": 3
+    },
+    "expression_headers_per_group": {
+      "young": 3,
+      "old": 3
+    },
+    "expression_scale": "Processed FPKM matrix; GEO metadata states quantile-normalized, log2-transformed, and median-centered across genes and samples.",
+    "biological_unit": "The source study describes three distinct people per group. GEO sample records provide individual ages, but processed matrix aliases (Young1/Young3/Young4, Old1/Old2/Old3) cannot be joined one-to-one to GEO's Young rep1-3/Old rep1-3 titles from available metadata. Analyses therefore use group-level replicate values without individual ages."
+  },
+  "eligibility_and_limits": {
+    "eligible_for": "Descriptive group-level young-versus-old gingival tissue comparison and fixed exploratory panels.",
+    "not_eligible_for": "Robust age-clock training, causal age effects, precise differential-expression inference, cell-intrinsic fibroblast or epithelial aging claims.",
+    "limitations": [
+      "Only three RNA-seq donors per age group.",
+      "Young ages are 17-20 and old ages are 60 or older; age is confounded with a widely separated group comparison.",
+      "Bulk gingiva mixes epithelial, stromal, vascular and immune cells.",
+      "Processed FPKM values are already quantile-normalized, log2-transformed, and median-centered; raw count-scale reconstruction is not used.",
+      "The source paper's qPCR validation used a separate five-per-group cohort and cannot increase the RNA-seq sample size."
+    ]
+  }
+}

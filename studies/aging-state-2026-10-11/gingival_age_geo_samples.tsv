@@ -1,0 +1,7 @@
+GSM	synthetic_donor_label	sample_title	group	age_years	sex	source_name	tissue	other_characteristics
+GSM2200461	Y1	Young rep1	young	17.0	Female	Gingiva	Gingiva	{}
+GSM2200462	Y2	Young rep2	young	19.0	Female	Gingiva	Gingiva	{}
+GSM2200463	Y3	Young rep3	young	19.0	Female	Gingiva	Gingiva	{}
+GSM2200464	O1	Old rep1	old	64.0	Female	Gingiva	Gingiva	{}
+GSM2200465	O2	Old rep2	old	66.0	Female	Gingiva	Gingiva	{}
+GSM2200466	O3	Old rep3	old	66.0	Female	Gingiva	Gingiva	{}

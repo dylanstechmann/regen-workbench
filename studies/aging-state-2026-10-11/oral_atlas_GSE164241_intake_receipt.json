@@ -1,0 +1,1162 @@
+{
+  "schema_version": 1,
+  "accession": "GSE164241",
+  "source": "NCBI GEO official FTP series family SOFT",
+  "source_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE164nnn/GSE164241/soft/GSE164241_family.soft.gz",
+  "source_sha256": "ad3d7941b756dd0fcaf18cab76060607b58e40f7240d7ed916856b06519b90f3",
+  "table_s1_source_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0092867421006309-mmc1.xlsx",
+  "table_s1_sha256": "cbb0c51d9af6eab75c3494254bc209d744e9783af2ece12792a6e6efe238fd3a",
+  "table_s1_record_count": 29,
+  "retrieved_or_cache_checked_utc": "2026-10-11T16:29:28.567238+00:00",
+  "series_title": [
+    "Single-cell atlas of human oral mucosa reveals a stromal-neutrophil axis in tissue immunity regulation"
+  ],
+  "pubmed_ids": [
+    "34129837",
+    "38513665"
+  ],
+  "sample_count": 30,
+  "category_counts": {
+    "healthy_buccal": 8,
+    "healthy_gingiva_candidate": 13,
+    "periodontitis_gingiva": 8,
+    "periodontitis_gingiva_added_2023": 1
+  },
+  "Table_S1_linkage": {
+    "GEO_samples_linked": 29,
+    "Table_S1_sample_IDs": 29,
+    "unmatched_GEO_samples": [
+      "GSM7780241"
+    ],
+    "match_methods": {
+      "exact_sample_id": 28,
+      "unique_shared_sample_code_root": 1,
+      "unmatched": 1
+    }
+  },
+  "sample_counts_by_category": {
+    "healthy_buccal": 8,
+    "healthy_gingiva_candidate": 13,
+    "periodontitis_gingiva": 8,
+    "periodontitis_gingiva_added_2023": 1
+  },
+  "inferred_donor_summary": {
+    "health": {
+      "sample_libraries": 21,
+      "inferred_donors": 20,
+      "donor_ages": [
+        21,
+        21,
+        22,
+        22,
+        22,
+        23,
+        24,
+        24,
+        24,
+        28,
+        28,
+        31,
+        32,
+        33,
+        35,
+        37,
+        39,
+        51,
+        57,
+        61
+      ]
+    },
+    "periodontitis": {
+      "sample_libraries": 8,
+      "inferred_donors": 5,
+      "donor_ages": [
+        34,
+        38,
+        42,
+        44,
+        45
+      ]
+    }
+  },
+  "repeated_sample_codes_within_inferred_donor": {
+    "periodontitis:161": [
+      "GSM5005060",
+      "GSM5005061"
+    ],
+    "periodontitis:164": [
+      "GSM5005062",
+      "GSM5177042",
+      "GSM5177043"
+    ],
+    "health:169": [
+      "GSM5177038",
+      "GSM5177039"
+    ]
+  },
+  "processing_versions": {
+    "3.0.1": 25,
+    "2.0.0": 5
+  },
+  "sample_records": [
+    {
+      "GSM": "GSM5005043",
+      "sample_title": "BM150",
+      "category": "healthy_buccal",
+      "source_name": "BM150",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "150"
+      ],
+      "inferred_donor_group": "health:150",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM150",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 23,
+      "sex": "F",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213027",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777384"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777384"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005044",
+      "sample_title": "BM152",
+      "category": "healthy_buccal",
+      "source_name": "BM152",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "152"
+      ],
+      "inferred_donor_group": "health:152",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM152",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 24,
+      "sex": "F",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213026",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777385"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777385"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005045",
+      "sample_title": "BM156",
+      "category": "healthy_buccal",
+      "source_name": "BM156",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "156"
+      ],
+      "inferred_donor_group": "health:156",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM156",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 33,
+      "sex": "F",
+      "race": "AA",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213025",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777386"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777386"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005046",
+      "sample_title": "BM157",
+      "category": "healthy_buccal",
+      "source_name": "BM157",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "157"
+      ],
+      "inferred_donor_group": "health:157",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM157",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 22,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213024",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777387"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777387"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005047",
+      "sample_title": "BM158",
+      "category": "healthy_buccal",
+      "source_name": "BM158",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "158"
+      ],
+      "inferred_donor_group": "health:158",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM158",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 22,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213023",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777388"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777388"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005048",
+      "sample_title": "GM136",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM136",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "136"
+      ],
+      "inferred_donor_group": "health:136",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM136",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 31,
+      "sex": "F",
+      "race": "L",
+      "cellranger_version": "2.0.0",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213021",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777389"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777389"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005049",
+      "sample_title": "GM143",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM143",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "143"
+      ],
+      "inferred_donor_group": "health:143",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM143",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 51,
+      "sex": "F",
+      "race": "AA",
+      "cellranger_version": "2.0.0",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213020",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777390"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777390"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005050",
+      "sample_title": "GM144",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM144",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "144"
+      ],
+      "inferred_donor_group": "health:144",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM144",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 61,
+      "sex": "F",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213019",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777391"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777391"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005051",
+      "sample_title": "GM147",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM147",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "147"
+      ],
+      "inferred_donor_group": "health:147",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM147",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 37,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213010",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777392"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777392"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005052",
+      "sample_title": "GM148",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM148",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "148"
+      ],
+      "inferred_donor_group": "health:148",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM148",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 57,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213009",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777393"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777393"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005053",
+      "sample_title": "GM183",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM183",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "183"
+      ],
+      "inferred_donor_group": "health:183",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM183",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 35,
+      "sex": "F",
+      "race": "A",
+      "cellranger_version": "2.0.0",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213042",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777394"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777394"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005054",
+      "sample_title": "GM184a",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM184a",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "184"
+      ],
+      "inferred_donor_group": "health:184",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM184",
+      "Table_S1_match_method": "unique_shared_sample_code_root",
+      "age": 22,
+      "sex": "F",
+      "race": "AI",
+      "cellranger_version": "2.0.0",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213041",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777395"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777395"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005055",
+      "sample_title": "GM238",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM238",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "238"
+      ],
+      "inferred_donor_group": "health:238",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM238",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 24,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213040",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777396"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777396"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005056",
+      "sample_title": "GM241",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM241",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "241"
+      ],
+      "inferred_donor_group": "health:241",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM241",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 39,
+      "sex": "F",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213022",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777397"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777397"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005057",
+      "sample_title": "GM242",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM242",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "242"
+      ],
+      "inferred_donor_group": "health:242",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM242",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 21,
+      "sex": "F",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213039",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777398"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777398"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005058",
+      "sample_title": "PD134",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD134",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "134"
+      ],
+      "inferred_donor_group": "periodontitis:134",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD134",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 44,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "2.0.0",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213038",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777399"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777399"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005059",
+      "sample_title": "PD153",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD153",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "153"
+      ],
+      "inferred_donor_group": "periodontitis:153",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD153",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 42,
+      "sex": "F",
+      "race": "L",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213037",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777400"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777400"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005060",
+      "sample_title": "PD161",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD161",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "161"
+      ],
+      "inferred_donor_group": "periodontitis:161",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD161",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 34,
+      "sex": "F",
+      "race": "L",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213036",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777401"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777401"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005061",
+      "sample_title": "PD161b",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD161b",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "161"
+      ],
+      "inferred_donor_group": "periodontitis:161",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD161b",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 34,
+      "sex": "F",
+      "race": "L",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213034",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777402"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777402"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5005062",
+      "sample_title": "PD164",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD164",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "164"
+      ],
+      "inferred_donor_group": "periodontitis:164",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD164",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 45,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Jan 04 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN17213033",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777403"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX9777403"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177036",
+      "sample_title": "BM165",
+      "category": "healthy_buccal",
+      "source_name": "BM165",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "165"
+      ],
+      "inferred_donor_group": "health:165",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM165",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 28,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350114",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375201"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375201"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177037",
+      "sample_title": "BM168",
+      "category": "healthy_buccal",
+      "source_name": "BM168",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "168"
+      ],
+      "inferred_donor_group": "health:168",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM168",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 24,
+      "sex": "M",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350113",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375202"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375202"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177038",
+      "sample_title": "BM169",
+      "category": "healthy_buccal",
+      "source_name": "BM169",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Buccal"
+      },
+      "donor_code_root": [
+        "BM",
+        "169"
+      ],
+      "inferred_donor_group": "health:169",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "BM169",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 28,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350112",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375194"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375194"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177039",
+      "sample_title": "GM169",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM169",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "169"
+      ],
+      "inferred_donor_group": "health:169",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM169",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 28,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350111",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375195"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375195"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177040",
+      "sample_title": "GM283",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM283",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "283"
+      ],
+      "inferred_donor_group": "health:283",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM283",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 21,
+      "sex": "M",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350110",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375196"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375196"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177041",
+      "sample_title": "GM289",
+      "category": "healthy_gingiva_candidate",
+      "source_name": "GM289",
+      "characteristics": {
+        "disease state": "Healthy",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "GM",
+        "289"
+      ],
+      "inferred_donor_group": "health:289",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "GM289",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 32,
+      "sex": "M",
+      "race": "A",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350109",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375197"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375197"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177042",
+      "sample_title": "PD164b",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD164b",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "164"
+      ],
+      "inferred_donor_group": "periodontitis:164",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD164b",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 45,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350108",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375198"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375198"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177043",
+      "sample_title": "PD164c",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD164c",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "164"
+      ],
+      "inferred_donor_group": "periodontitis:164",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD164c",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 45,
+      "sex": "M",
+      "race": "C",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350107",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375199"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375199"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM5177044",
+      "sample_title": "PD170",
+      "category": "periodontitis_gingiva",
+      "source_name": "PD170",
+      "characteristics": {
+        "disease state": "Periodontitis",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": [
+        "PD",
+        "170"
+      ],
+      "inferred_donor_group": "periodontitis:170",
+      "donor_grouping_basis": "shared numeric sample-code root; Table S1 age/sex/race agree",
+      "Table_S1_sample_ID": "PD170",
+      "Table_S1_match_method": "exact_sample_id",
+      "age": 38,
+      "sex": "F",
+      "race": "C, L",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL18573",
+      "submission_date": "Mar 18 2021",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN18350115",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375200"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX10375200"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    },
+    {
+      "GSM": "GSM7780241",
+      "sample_title": "ID080UST",
+      "category": "periodontitis_gingiva_added_2023",
+      "source_name": "Gingiva",
+      "characteristics": {
+        "disease state": "Periodontitis-LAD1",
+        "tissue": "Gingiva"
+      },
+      "donor_code_root": null,
+      "inferred_donor_group": "",
+      "donor_grouping_basis": "not linked",
+      "Table_S1_sample_ID": "",
+      "Table_S1_match_method": "unmatched",
+      "age": "",
+      "sex": "",
+      "race": "",
+      "cellranger_version": "3.0.1",
+      "platform_ID": "GPL30173",
+      "submission_date": "Sep 13 2023",
+      "supplementary_files": [],
+      "relations": [
+        "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN37386556",
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX21773053"
+      ],
+      "SRA_accessions": [
+        "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX21773053"
+      ],
+      "library_strategy": [
+        "RNA-Seq"
+      ]
+    }
+  ],
+  "limits": {
+    "donor_groups_are_inferred_from_shared_numeric_sample_code_and_matching_age_sex_race_not_an_explicit_GEO_donor_ID": true,
+    "ID080UST_added_in_2023_is_absent_from_original_Table_S1_and_kept_separate": true,
+    "healthy_buccal_and_gingival_samples_are_separate_tissues_not_exchangeable_age_controls": true,
+    "CellRanger_versions_must_be_considered_in_any_count_level_comparison": true,
+    "cell_level_counts_or_pseudobulk_not_performed": true,
+    "multiple_samples_from_a_donor_must_not_be_counted_as_independent_donors": true
+  },
+  "local_provenance_receipts": {
+    "geo_fetch": "reused_verified_cache",
+    "table_s1_fetch": "reused_verified_cache"
+  }
+}
