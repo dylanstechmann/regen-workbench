@@ -142,6 +142,9 @@ and selected promoter methylation sites with age, but no donor-level public
 matrix was identified. GSE227731 supplies a young-adult cell-identity reference;
 GSE306722 contrasts root maturity and osteogenic capacity, not chronological
 aging. See the [PDL reference qualification](../aging-state-2026-10-11/PDL_AGE_REFERENCE_QUALIFICATION.md).
+The focused source check found only the indexed abstract and no accessible
+donor-level values or full methods; the sample count and donor covariates
+remain unknown.
 
 Do not repeat completed Salmon quantification merely to generate more tables.
 Existing iPS-PDL libraries have one parental iPSC background and unresolved
@@ -288,7 +291,20 @@ The first execution checkpoint is complete and saved in the workbench:
 - **D3 oral aging input:** qualified GSE83382's processed gingiva matrix and GEO donor metadata, preserving the unresolved expression-alias-to-GSM mapping. Fixed matrix-turnover, matrix-inhibitor, structural ECM, inflammatory, epithelial, and stromal panels produce mixed group-level shifts in this three-versus-three, all-female bulk cohort. This is an exploratory input, not a gum-age clock; the donor-linked health/periodontitis comparison remains pending.
 - **D3 comparator qualification:** linked 29 original GSE164241 single-cell libraries to the article's Table S1, separated the later 2023 `ID080UST` addition, and identified the paired healthy buccal/gingival samples plus repeated `PD161`/`PD164` disease biopsy codes. The 8 disease libraries represent five apparent donor-code groups; Cell Ranger versions differ across samples. This is an intake audit only; no cell-level pseudobulk or disease expression test has been run.
 - **PDL age-reference qualification:** the direct human age report found to date assays COL1A1 and selected promoter sites, while public candidates either capture young-adult cell identity, disease, or root/dentition maturity. No donor-resolved adult human PDL transcriptome age series passed the qualification gate.
-- **D4 retained-tooth repair blueprint:** compared cell sheets, local cell-homing cues, multiphasic fiber-guiding scaffolds, layered factor carriers, and a human PDL–bone microtissue. In-socket subluxation and intrusive-luxation injury models exist, but the reviewed regenerative attachment treatments were tested mainly in replantation or surgically created defects. Human cohorts set a strong natural-healing comparator for mild subluxation and show different, root-maturity-dependent risks for displaced injuries. The [blueprint and evidence matrix](../periodontal-attachment-restoration-2026-10-11/IN_SITU_TRAUMA_REPAIR_BLUEPRINT.md) separate these tracks and identify baseline-registered position, load-bearing mechanics, and follow-up after temporary fixation withdrawal as the key combined gap.
+- **D4 retained-tooth repair blueprint:** compared cell sheets, local cell-homing cues, multiphasic fiber-guiding scaffolds, layered factor carriers, a human PDL–bone microtissue, and the 2024 PDLSC-collagen root-surface construct. The 2024 study adds root-facing cell alignment and 4/10-week ectopic root-fragment observations, but no alveolar socket or physiological tooth loading; its in-vitro root-surface experiment did not observe new cementum. In-socket subluxation and intrusive-luxation injury models exist, but the reviewed regenerative attachment treatments were tested mainly in replantation/root-fragment or surgically created-defect settings. Human cohorts set a strong natural-healing comparator for mild subluxation and show different, root-maturity-dependent risks for displaced injuries. The [blueprint and evidence matrix](../periodontal-attachment-restoration-2026-10-11/IN_SITU_TRAUMA_REPAIR_BLUEPRINT.md) separate these tracks and identify baseline-registered position, load-bearing mechanics, and follow-up after temporary fixation withdrawal as the key combined gap.
 - **Integration:** added the dental restoration contract and ranked experimental hypotheses, including explicit tooth position and post-support-removal stability.
 
-This checkpoint has **not** completed the full 8–36-hour program. Remaining work is: preserve the 76% versus table-derived 72.3–72.4% conflict unless underlying data explain it; recover per-tooth displacement records and covariance if publicly or author-supplied; extend the response model only with defensible loading and material parameters; validate published subluxation/intrusive-luxation models with baseline-registered position and longitudinal functional measurements; add the two-interface human PDL–bone construct to the organoid workbench; run the donor-level cell-resolved oral disease challenge with processing-version and age sensitivity; and obtain a donor-resolved adult human PDL age cohort or underlying records. No human intervention has been designed or validated.
+This checkpoint has **not** completed the full 8–36-hour program. Remaining work is: preserve the 76% versus table-derived 72.3–72.4% conflict unless underlying data explain it; recover per-tooth displacement records and covariance if publicly or author-supplied; extend the response model only with defensible loading and material parameters; validate published subluxation/intrusive-luxation models with baseline-registered position and longitudinal functional measurements; qualify measurement repeatability and human donor inputs for the staged PDL-interface assay; run the donor-level cell-resolved oral disease challenge with processing-version and age sensitivity; and obtain a donor-resolved adult human PDL age cohort or underlying records. No human intervention has been designed or validated.
+
+
+## PDL assay design checkpoint — 2026-10-11
+
+Added an organoid-workbench experiment dossier with a staged root-facing to
+two-interface human PDL model, machine-readable condition and endpoint matrices,
+and explicit go/no-go logic. The main evidence update was the 2024 PDLSC-collagen
+root-surface study: it showed aligned cells and ectopic root-fragment persistence,
+but did not show new cementum in its in-vitro root-surface experiment, a
+bone-facing insertion, orthotopic load-bearing repair, or positional recovery.
+The assay design uses this as a benchmark, not as proof of functional PDL
+regeneration. Numeric thresholds stay open until measurement repeatability and
+matched-reference data exist.
