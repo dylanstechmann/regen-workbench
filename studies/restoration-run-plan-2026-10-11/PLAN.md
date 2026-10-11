@@ -378,3 +378,11 @@ historical benchmark, not a therapeutic candidate; fixed donor cutoffs and
 exposure settings await cohort and assay qualification. See
 [`age_by_niche_test.tsv`](../organoid/periodontal-ligament-interface/age_by_niche_test.tsv)
 and the [functional-source audit](../aging-state-2026-10-11/pdl_age_functional_evidence.tsv).
+
+The Li et al. 2020 supplementary expression workbook does not provide a
+donor-by-gene matrix; the paper reports a `p < 0.05` or fold-change `> 2`
+microarray screen and discordant qRT-PCR directions for three selected
+transcripts. Do not train an age panel or nominate a rejuvenation target from
+that workbook. The age-by-niche follow-up now has a donor-level estimand and
+analysis contract, including age-overlap and tooth-source confounding checks:
+[`analysis plan`](../organoid/periodontal-ligament-interface/age_by_niche_analysis_plan.md).

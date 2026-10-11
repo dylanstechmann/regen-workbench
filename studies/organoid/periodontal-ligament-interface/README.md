@@ -69,7 +69,8 @@ track donor and clone identity and retain a matched fibroblast identity check.
    human PDLSC study, not a treatment candidate. Test persistence after
    washout, then require the same bilateral insertion and mechanics gates as
    the main architecture. See
-   [`age_by_niche_test.tsv`](age_by_niche_test.tsv).
+   [`age_by_niche_test.tsv`](age_by_niche_test.tsv) and the
+   [`donor-level analysis contract`](age_by_niche_analysis_plan.md).
 6. **Flow and load:** add perfusion only after the static two-interface
    construct is reproducible. Add defined cyclic loading only after the
    mechanical platform is calibrated, then assess recovery after unloading.
@@ -132,6 +133,12 @@ than an explicitly unresolved threshold.
   cell and ectopic-model results, not proof of in-socket restoration. The
   [PDL age qualification](../../aging-state-2026-10-11/PDL_AGE_REFERENCE_QUALIFICATION.md)
   separates those results from a donor-resolved tissue age reference.
+- The Li et al. 2020 supplementary expression workbook is a group-level
+  differential list rather than a donor-level matrix. Its methods report a
+  permissive `p < 0.05` or fold-change `> 2` screen, and three qRT-PCR
+  directions differed from microarray results. Treat its genes as validation
+  candidates only; the [analysis contract](age_by_niche_analysis_plan.md)
+  keeps the primary inference at the donor and attachment-function levels.
 
 No wet-lab work is represented by this design dossier. No human treatment
 protocol or efficacy claim follows from the proposed assay.

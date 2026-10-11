@@ -55,8 +55,13 @@ differentiation with age, plus shorter telomere length and lower SSEA4 in the
 over-40 group; IL6 and CXCL8 were higher in adult groups. [Li et al. (2020)](https://doi.org/10.1186/s13287-020-01846-w)
 compared donors aged 19–20 with donors aged 35–50, but each experiment used
 three independent donors per group, despite a larger donor source pool. Their
-supplementary group-level microarray analysis is not a donor-resolved age
-atlas. Machine-readable detail and study limits are in
+supplement contains a group-level differential-expression workbook, not the
+donor-by-gene matrix needed for reanalysis. The reported microarray screen
+used `p < 0.05` or fold change `> 2`; no multiple-testing correction is
+described in the methods. Three selected qRT-PCR directions (RC3H1, TNFSF4,
+and TNFSF14) disagreed with the microarray result. Treat its candidate genes as
+hypotheses for independent validation, not a prespecified rejuvenation panel.
+Machine-readable detail and study limits are in
 [`pdl_age_functional_evidence.tsv`](pdl_age_functional_evidence.tsv).
 
 Two mechanistic studies sharpen the assay cautions but do not qualify as
@@ -119,7 +124,9 @@ alternatives and lineage balance before and after washout, then carry the
 strongest condition into the two-interface assay. The primary readouts remain
 root- and bone-facing fiber insertion, ligament-space preservation and
 recoverable mechanics. Report a transient cell-state change separately from
-durable attachment function.
+durable attachment function. The donor-level contrasts, crossed-effects model,
+confounding limits, and advancement rules are specified in the
+[`age-by-niche analysis contract`](../organoid/periodontal-ligament-interface/age_by_niche_analysis_plan.md).
 
 The functional link remains a separate endpoint: fiber insertion into both
 cementum and alveolar bone, ligament-space architecture, physiologic
