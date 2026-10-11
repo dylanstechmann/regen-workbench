@@ -1,0 +1,16 @@
+field	data_type	unit_or_vocabulary	required	definition_and_notes
+specimen_id	string	study-local opaque identifier	yes	Biological unit identifier; keep the mapping to personal identifiers outside the analysis file.
+tooth_id	string	study-local identifier nested in specimen	yes	Target tooth identifier; do not treat repeated teeth or cycles as independent specimens.
+condition_code	string	protocol-defined code	yes	Injury, comparator, or condition code; retain a separate blinded code key where applicable.
+acquisition_id	string	unique acquisition identifier	yes	Identifies the instrument run or synchronized recording session.
+measurement_point	string	protocol-defined point	yes	Crown or root/socket measurement location; define the geometry and coordinate frame in the protocol.
+load_axis_id	string	protocol-defined signed axis	yes	Direction of applied force and measured displacement; document the positive direction and any transformed axes.
+cycle_id	string	unique within acquisition and measurement point	yes	Identifies one loading-unloading cycle; cycles remain repeated measures nested within specimen.
+sample_index	integer	nonnegative integer	yes	Within-trace order index; must be unique in a trace and paired with strictly increasing time.
+time_s	number	seconds	yes	Elapsed time from a declared acquisition origin; must be finite and strictly increasing within each trace.
+phase	category	baseline, loading, unloading, recovery	yes	Phase labels must occur in this order when present; loading and unloading each require at least two samples.
+force_n	number	newtons	yes	Calibrated signed force component along load_axis_id; sign convention must match the documented axis.
+displacement_mm	number	millimeters	yes	Calibrated signed displacement component in the same declared axis convention; state whether fixture compliance has been corrected.
+force_calibration_id	string	calibration record identifier	yes	Traceable identifier for the force sensor calibration and applicable range.
+displacement_calibration_id	string	calibration record identifier	yes	Traceable identifier for the displacement sensor calibration and applicable range.
+pipeline_id	string	versioned processing identifier	yes	Identifies the frozen acquisition/processing pipeline, including filtering and any coordinate transformation.

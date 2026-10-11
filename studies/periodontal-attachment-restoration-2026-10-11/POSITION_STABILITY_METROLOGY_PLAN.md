@@ -66,6 +66,26 @@ trauma-restoration pass threshold. [Rosenberg et al., 1995](https://pubmed.ncbi.
 [Goellner et al., 2013](https://pubmed.ncbi.nlm.nih.gov/23479581/);
 [Andreasen et al., 2012](https://doi.org/10.1111/j.1600-9657.2011.01107.x).
 
+The row-level input schema is in [`mobility_response_data_dictionary.tsv`](mobility_response_data_dictionary.tsv),
+and [`analyze_mobility_response.py`](analyze_mobility_response.py) validates
+calibration and pipeline consistency before producing one descriptive record
+per cycle. The [synthetic trace](examples/synthetic_mobility_response.tsv)
+exists only to test parsing and arithmetic; it is not biological evidence,
+sensor calibration, or a proposed loading protocol. From the repository root,
+run:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_mobility_response.py --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_mobility_response.tsv --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_mobility_response
+```
+
+The output reports the signed force-displacement path integral, cycle extrema,
+and observed displacement change after unloading when recovery samples exist.
+That path integral is not automatically biological energy dissipation; only
+interpret it as a closed-cycle hysteresis measure after fixture compliance,
+axis signs, calibration, and acquisition behavior have been validated. The
+analyzer deliberately emits no biological pass/fail result or acceptance
+threshold.
+
 ## Qualification sequence and pass rules
 
 1. **Lock the estimand and coordinate convention.** Fix axis signs, units, tooth pose representation, baseline source, target tooth, registration mask, support states, and timepoints before reading treatment outcomes. Store all six pose components; a single “distance from ideal” number can hide direction and tipping.

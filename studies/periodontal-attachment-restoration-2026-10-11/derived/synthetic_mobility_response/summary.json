@@ -1,0 +1,10 @@
+{
+  "method_version": "0.1.0",
+  "input_sha256": "69675b186b2539723a27e5991165c596f8386c504786ff808b08b426f3b2d348",
+  "trace_count": 1,
+  "biological_unit_count": 1,
+  "unit_of_analysis": "one measured point, load axis, and cycle; cycles/teeth are nested within specimen",
+  "outputs_are_descriptive_only": true,
+  "biological_pass_fail": "not_assessed",
+  "interpretation_limit": "The signed path integral is not automatically a tissue dissipation estimate. Interpret it as a closed-cycle hysteresis measure only when the force path, sensor calibration, fixture compliance, and sign convention support that interpretation."
+}
