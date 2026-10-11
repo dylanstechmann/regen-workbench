@@ -1,0 +1,3 @@
+pose_condition_id	fixture_id	truth_tx_mm	truth_ty_mm	truth_tz_mm	truth_rx_deg	truth_ry_deg	truth_rz_deg
+synthetic_zero	fixture_A	0	0	0	0	0	0
+synthetic_shifted_pose	fixture_A	1	-2	0.5	3	-2	5

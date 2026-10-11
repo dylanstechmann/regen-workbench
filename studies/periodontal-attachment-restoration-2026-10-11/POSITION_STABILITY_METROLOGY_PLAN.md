@@ -84,6 +84,21 @@ The runner checks that each repeat group has a constant truth pose, then reports
 
 The `null` values are placeholders, not usable limits; the script rejects them until study-specific numeric values are supplied. It does not certify criteria timing or physical scanner performance.
 
+Before acquisition, [`make_pose_acquisition_manifest.py`](make_pose_acquisition_manifest.py) can turn an investigator-defined TSV of fixture poses into two files: a randomized operator schedule containing run codes and acquisition metadata, and an analysis key mapping those codes to known poses. It balances each listed pose condition within every requested session and records each acquisition as a distinct replicate. The key must be saved outside the operator-schedule directory so separate access controls can be applied; the script cannot enforce permissions or prevent an operator from seeing a key they can access. Randomization covers pose order only. It does not randomize treatment allocation, prove that scans are independently repositioned, or choose session counts, repeats, or scientific tolerances. The same modality and pipeline are recorded for all runs in one manifest. [`synthetic_pose_conditions.tsv`](examples/synthetic_pose_conditions.tsv) demonstrates the input schema and contains invented poses solely for software checks.
+
+For a software-only example from the repository root, generate the outputs in separate directories:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/make_pose_acquisition_manifest.py `
+  --conditions studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_pose_conditions.tsv `
+  --schedule-out studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_pose_manifest/operator_schedule.tsv `
+  --key-out studies/periodontal-attachment-restoration-2026-10-11/derived/restricted_synthetic_pose_key/analysis_key.tsv `
+  --sessions 2 --repeats-per-pose-per-session 2 --seed 42 `
+  --operator-id synthetic_operator --modality synthetic_surface --pipeline-id synthetic_pipeline_v0
+```
+
+The counts and metadata above are demonstration settings, not a proposed acquisition design. Keep real analysis keys restricted and do not publish them with operator schedules.
+
 Run the included [synthetic fixture example](examples/synthetic_pose_measurements.tsv) with:
 
 ```powershell
