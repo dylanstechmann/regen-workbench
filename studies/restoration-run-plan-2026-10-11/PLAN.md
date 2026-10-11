@@ -1,3 +1,293 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíïmýN‹Z–‹­¦ëeŠw¬ÔŒ•¹Ñ…°É•ÍÑ½É…Ñ¥½¸…¹‘ÕÉ…‰±”å½ÕÑ¡™Õ°™Õ¹Ñ¥½¸è¹•áÐ€ãŠLÌØµ¡½ÕÈÉÕ¸()A±…¹¹¥¹œ‘…Ñ”è€ÈÀÈØ´ÄÀ´ÄÄ¸$µ…ÍÍ¥ÍÑ•É•Í•…É …¹•¹¥¹••É¥¹œÁÉ½Á½Í…°™½ÈÑ¡”)½Ý¹•ÈÌÁ•ÉÍ½¹…°½µÁÕÑ…Ñ¥½¹…°ÁÉ½©•ÑÌ¸Q¡¥Ì‘½Õµ•¹ÐÍÁ•¥™¥•ÌÝ½É¬Ñ¼ÉÕ¸ì)¥Ð‘½•Ì¹½ÐÉ•Á½ÉÐÑ¡…ÐÑ¡”ÁÉ½Á½Í•…¹…±åÍ•Ì½È¥¹Ñ•ÉÙ•¹Ñ¥½¹Ì¡…Ù”ÍÕ••‘•¸((ŒŒ=‰©•Ñ¥Ù”…¹…±±½…Ñ¥½¸()Q¡”™±…Í¡¥ÀÅÕ•ÍÑ¥½¸¥Ìè€¨©…¸„‘…µ…•¹…ÑÕÉ…°Ñ½½Ñ É•…¥¸¥ÑÌ¥¹Ñ•¹‘•)Á½Í¥Ñ¥½¸°±¥Ù¥¹œ•µ•¹ÑÕ·ŠMÁ•É¥½‘½¹Ñ…°µ±¥…µ•¹ÓŠM‰½¹”…ÑÑ…¡µ•¹Ð°Õ´…É¡¥Ñ•ÑÕÉ”°)…¹Á¡åÍ¥½±½¥…°™Õ¹Ñ¥½¸°Ý¥Ñ ÍÑ…‰±”Á½Í¥Ñ¥½¸…™Ñ•ÈÑ•µÁ½É…ÉäÍÕÁÁ½ÉÐ¥Ì)É•µ½Ù•ü¨¨É••‘½´™É½´±¥™•±½¹œ•áÑ•É¹…°É•Ñ•¹Ñ¥½¸¥Ì„‘•Í¥É•‘ÕÉ…‰¥±¥Ñä)•¹‘Á½¥¹Ð¸¹ä™¥¹¥Ñ”Á½Í¥Ñ¥½¹¥¹œ½È¡•…±¥¹œÍÕÁÁ½ÉÐ¥Ì…¸•¹¥¹••É¥¹œÙ…É¥…‰±”)Ý¡½Í”Ý¥Ñ¡‘É…Ý…°µÕÍÐ‰”™½±±½Ý•‰äµ•…ÍÕÉ•µ•¹ÑÌ½˜ÍÑ…‰¥±¥Ñä¸()±±½…Ñ”…ÁÁÉ½á¥µ…Ñ•±ä€ØÀ”½˜„ÍÕÍÑ…¥¹•Ý½É¬Ý¥¹‘½ÜÑ¼‘•¹Ñ…°É•ÍÑ½É…Ñ¥½¸°(ÌÀ”Ñ¼¡…±±•¹¥¹œÑ¡”•á¥ÍÑ¥¹œ•±±Õ±…Èµ…¥¹œÉ•ÍÕ±Ð°…¹€ÄÀ”Ñ¼É•Á…¥È)½Ù•É…”…¹¥¹Ñ•É…Ñ¥½¸¸Q¡”¡½É¥é½¹Ì‰•±½Ü…É”ÕµÕ±…Ñ¥Ù”Í½Á”Ñ…É•ÑÌ°)½¹‘¥Ñ¥½¹…°½¸ÅÕ…±¥™å¥¹œ¥¹ÁÕÑÌ¸Q¡•ä…É”½µÁÕÑ…Ñ¥½¹…°Ý½É¬ÁÉ½‘ÕÑÌ°¹½Ð„)ÁÉ½µ¥Í”½˜¡Õµ…¸Ñ¥ÍÍÕ”É••¹•É…Ñ¥½¸Ý¥Ñ¡¥¸Ñ¡…ÐÑ¥µ”¸()Q¡”±½¹œµÑ•É´½‰©•Ñ¥Ù”¥ÌÍÕÍÑ…¥¹•¡•…±Ñ¡ä…‘Õ±Ð™Õ¹Ñ¥½¸Ñ¡É½Õ¡½ÕÐÑ¡”)‰½‘ä°ÁÉ•Í•ÉÙ¥¹œÁ•ÉÍ½¹…°…¹…Ñ½µä°ÍÁ•¥…±¥é••±°¥‘•¹Ñ¥Ñä…¹ÕÍ•™Õ°)…ÅÕ¥É•¥¹™½Éµ…Ñ¥½¸¸±½Ü‰¥½±½¥…°µ…”Í½É”¥Ì„ÍÕÁÁ½ÉÑ¥¹œ½‰Í•ÉÙ…Ñ¥½¸¸)Q¡”…•ÁÑ…¹”É¥Ñ•É¥½¸¥Ì‘ÕÉ…‰±”É•½Ù•Éä½˜Ñ¡”É•±•Ù…¹ÐÑ¥ÍÍÕ”™Õ¹Ñ¥½¸¸((ŒŒ]¡ä‘•¹Ñ…°ÑÉ…Õµ„¥ÌÑ¡”™¥ÉÍÐ•¹¥¹••É¥¹œ…Í”()•¹Ñ…°ÑÉ…Õµ„¥Ìµ½É”Ù…É¥•Ñ¡…¸ÍÑÉ•Ñ¡•±¥…µ•¹Ð¸Q¡”%P‘•ÍÉ¥‰•Ì)‘¥ÍÁ±…•µ•¹Ð°Í½­•ÐµÝ…±°¥¹©ÕÉä°‰½¹”‘…µ…”…¹É¥Í­ÌÑ¼Ñ¡”ÁÕ±À¥¸‘¥™™•É•¹Ð)¥¹©ÕÉä…Ñ•½É¥•Ì¸=ÕÈ•¹¥¹••É¥¹œÍÑ…Ñ•ÌÍ¡½Õ±Ñ¡•É•™½É”‘¥ÍÑ¥¹Õ¥Í )…ÑÑ…¡µ•¹Ð‘¥ÍÉÕÁÑ¥½¸°Ñ¥ÍÍÕ”±½ÍÌ°…±Ñ•É••½µ•ÑÉä…¹¥µÁ…¥É•Ù¥Ñ…±¥Ñä¸)mAÉ¥µ…Éä%P¥¹©ÕÉä‘•ÍÉ¥ÁÑ¥½¹Ít¡¡ÑÑÁÌè¼½‘½¤¹½Éœ¼ÄÀ¸ÄÄÄÄ½•‘Ð¸ÄÈÔÜà¤¸()I••¹•É…Ñ¥¹œ…¸…ÑÑ…¡µ•¹Ð…É½Õ¹„‘¥ÍÁ±…•Ñ½½Ñ ½Õ±ÁÉ•Í•ÉÙ”Ñ¡”ÝÉ½¹œ)Á½Í¥Ñ¥½¸¸Q¡”Ñ…É•ÐµÕÍÐ½µ‰¥¹”•½µ•ÑÉäÝ¥Ñ ‰¥½±½¥…°É•Á…¥È¸%˜…ÑÕ…°)ÁÉ”µ¥¹©ÕÉä¥µ…¥¹œ¥Ì…‰Í•¹Ð°…¸•ÍÑ¥µ…Ñ”‰…Í•½¸•…É±¥•ÈÉ•½É‘Ì°…‘©…•¹Ð)Ñ••Ñ ½È„É•™•É•¹”…¹…Ñ½µäµÕÍÐ…ÉÉä•áÁ±¥¥ÐÕ¹•ÉÑ…¥¹Ñäì¥Ð…¹¹½ÐÍ¥±•¹Ñ±ä)‰•½µ”Ñ¡”Á•ÉÍ½¸Ì•á…Ð½É¥¥¹…°•½µ•ÑÉä¸()Q¡”µ½ÕÑ ¥Ì„ÕÍ•™Õ°™±…Í¡¥À‰•…ÕÍ”Í•Ù•É…°‘¥™™¥Õ±Ð¥¹Ñ•É™…•ÌµÕÍÐÝ½É¬)Ñ½•Ñ¡•Èèµ¥¹•É…³ŠMÍ½™ÐÑ¥ÍÍÕ”…ÑÑ…¡µ•¹Ð°µ•¡…¹¥…°±½…‘¥¹œ°•Á¥Ñ¡•±¥…°Í•…°°)Á•É™ÕÍ¥½¸°Í•¹Í…Ñ¥½¸°ÍÁ…Ñ¥…°½É…¹¥é…Ñ¥½¸…¹½¹Ñ¥¹Õ••áÁ½ÍÕÉ”Ñ¼µ¥É½‰•Ì¸)Q¡”Í…µ”‘•Í¥¸‘¥Í¥Á±¥¹”…¸±…Ñ•È…ÁÁ±äÑ¼Ñ•¹‘½»ŠM‰½¹”…ÑÑ…¡µ•¹Ð°…ÉÑ¥±…”°)Í­¥¸°Ù•ÍÍ•±Ì…¹½É…¸½¹ÍÑÉÕÑÌ°Ý¡¥±”Ñ¡•¥ÈÁ…É…µ•Ñ•ÉÌ…¹ÍÕ•ÍÌÉ¥Ñ•É¥„)É•µ…¥¸Ñ¥ÍÍÕ”ÍÁ•¥™¥Œ¸((ŒŒ]½É¬Á…­…”Äè‘•™¥¹”É•ÍÑ½É…Ñ¥½¸…¹•áÑÉ…Ð…ÑÕ…°™Õ¹Ñ¥½¹…°•Ù¥‘•¹”((¨©EÕ•ÍÑ¥½¸è¨¨]¡¥ ÁÕ‰±¥Í¡•¥¹Ñ•ÉÙ•¹Ñ¥½¹ÌÉ•½Ù•È…ÑÑ…¡µ•¹Ð™Õ¹Ñ¥½¸°…¹)Ý¡…Ð¥µÁ½ÉÑ…¹Ð‘•™¥¥ÑÌÉ•µ…¥¸ü()É•…Ñ”„É•ÍÑ½É…Ñ¥½¸½¹ÑÉ…Ð½Ù•É¥¹œè()ð½µ…¥¸ðI•ÅÕ¥É••Ù¥‘•¹”ð½µÁ•Ñ¥¹œ½ÕÑ½µ”Ñ¼É•Ñ…¥¸ð)ð´´µð´´µð´´µð)ðQ½½Ñ Á½Í¥Ñ¥½¸…¹‰¥Ñ”ðQ¡É•”µ‘¥µ•¹Í¥½¹…°Á½Í¥Ñ¥½¸½É½Ñ…Ñ¥½¸É•±…Ñ¥Ù”Ñ¼„‘•±…É•Ñ…É•Ðì½±ÕÍ…°½µÁ…Ñ¥‰¥±¥ÑäìÍÑ…‰¥±¥Ñä…™Ñ•ÈÍÕÁÁ½ÉÐÉ•µ½Ù…°ð½ÉÉ•ÐÍÕÁÁ½ÉÐ…É½Õ¹Ñ¡”ÝÉ½¹œÁ½Í¥Ñ¥½¸ìÉ•ÕÉÉ•¹Ð‘É¥™Ðð)ð•µ•¹ÑÕ·ŠMA3ŠM‰½¹”ð¥‰•ÉÌ¥¹Í•ÉÑ¥¹œ¥¹Ñ¼‰½Ñ ¥¹Ñ•É™…•Ìì½¹Ñ¥¹Õ½ÕÌ±¥…µ•¹ÐÍÁ…”ì½É…¹¥é•½É¥•¹Ñ…Ñ¥½¸ìÁ¡åÍ¥½±½¥…°µ½‰¥±¥ÑäðM…È°‘•Ñ…¡•™¥‰•ÉÌ°•á•ÍÍ¥Ù”‰½¹”°…¹­å±½Í¥Ì½ÈÉ½½ÐÉ•Í½ÉÁÑ¥½¸ð)ðÑÑ…¡µ•¹Ðµ•¡…¹¥Ìð5…Ñ¡•±½…‘¥¹œÉ•¥µ”ì™½É—ŠM‘¥ÍÁ±…•µ•¹Ðì½µÁ±¥…¹”°™…¥±ÕÉ”±½……¹•¹•ÉäìÉ••À½É•½Ù•ÉäÝ¡•É”µ•…ÍÕÉ•ðÁÁ…É•¹Ñ±ä™¥É´™¥á…Ñ¥½¸Ý¥Ñ …‰¹½Éµ…°µ•¡…¹¥Ìð)ð¥¹¥Ù„ð5…É¥¸°Ù½±Õµ”°Á…Á¥±±…”°…ÁÁÉ½ÁÉ¥…Ñ”Á¡•¹½ÑåÁ”°Í•…°½‰…ÉÉ¥•È°¥¹™±…µµ…Ñ¥½¸…¹É•ÕÉÉ•¹”ð½Ù•É…”…±½¹”°±½¹œ©Õ¹Ñ¥½¹…°•Á¥Ñ¡•±¥Õ´½ÈÕ¹ÍÑ…‰±”½¹Ñ½ÕÈð)ð¹…µ•°…¹‘•¹Ñ¥¸ð•½µ•ÑÉä°¹…Ñ¥Ù”µ±¥­”µ¥É½ÍÑÉÕÑÕÉ”°‰½¹‘¥¹œ°¡…É‘¹•ÍÌ°Ý•…È…¹™…Ñ¥Õ”‰•¡…Ù¥½Èð5¥¹•É…°‘•Á½Í¥ÑÌÝ¥Ñ¡½ÕÐ„™Õ¹Ñ¥½¹…°Ñ½½Ñ ÍÕÉ™…”ð)ðAÕ±À…¹¹•ÕÉ…°ÍÕÁÁ½ÉÐðY¥…‰±”Ù…ÍÕ±…É¥é•Ñ¥ÍÍÕ”°Í•¹Í½Éä™Õ¹Ñ¥½¸…¹½¹Ñ¥¹Õ•¡½ÍÐ¥¹Ñ•É…Ñ¥½¸ð…±¥™¥…Ñ¥½¸°¹•É½Í¥Ì½È…‰Í•¹Ð™Õ¹Ñ¥½¹…°¥¹Ñ•É…Ñ¥½¸ð()Q¡”¥¹¥Ñ¥…°ÅÕ…¹Ñ¥Ñ…Ñ¥Ù”Í½ÕÉ”¥Ìm-½µ…ÑÍÔ•Ð…°¸°€ÈÀÈÉt¡¡ÑÑÁÌè¼½‘½¤¹½Éœ¼ÄÀ¸ÄÀÌà½ÌÐÄÔäà´ÀÈÈ´ÀØàØÔ´Ø¤è)É…ÐÉ•Á±…¹Ñ…Ñ¥½¸Ý¥Ñ ¡¥ÍÑ½±½ä…¹µ•¡…¹¥…°•áÑÉ…Ñ¥½¸Ñ•ÍÑ¥¹œ¸Ð€ÈÄ‘…åÌ°)Ñ¡”É•Á½ÉÑ•™…¥±ÕÉ”•¹•ÉäÝ…Ì…ÁÁÉ½á¥µ…Ñ•±ä€ÐÐ”½˜Õ¹¥¹©ÕÉ•½¹ÑÉ½±Ì•Ù•¸)Ñ¡½Õ ÍÑ¥™™¹•ÍÌÉ•½Ù•É•µ½É”±½Í•±äì…É•„µÍÑ…¹‘…É‘¥é•ÍÑÉ•¹Ñ Ý…Ì…‰½ÕÐ(ÜØ”…ÌÍÑ…Ñ•‰äÑ¡”Á…Á•È¸=™™¥¥…°MÕÁÁ±•µ•¹Ñ…ÉäQ…‰±”LÌ½¹™¥ÉµÌ‘¥ÍÁ±…å•)ÍÑÉ•¹Ñ¡Ì½˜€È¸ÐÔ…¹€Ì¸Ìä8½µ·
-È°Ý¡½Í”ÅÕ½Ñ¥•¹Ð¥Ì€ÜÈ¸ÈÜ”ìÉ•½¹ÍÑÉÕÑ¥¹œÑ¡”)Ñ…‰±”ÌÉ½ÕÀµ•…¸±½…‘Ì½Ù•ÈÉ•ÁÉ•Í•¹Ñ…Ñ¥Ù”µÑ½½Ñ …É•…Ì¥Ù•Ì€ÜÈ¸Ìä”¸Q¡”)ÍÕÁÁ±•µ•¹ÐÌÙ…±Õ•Ì…¹¹½Ð•áÁ±…¥¸€ÜØ”°…¹Ñ¡”Í½ÕÉ”‘½•Ì¹½ÐÁÕ‰±¥Í )Á•ÈµÑ½½Ñ ™½É”µ…É•„É•½É‘Ì¸-••ÀÑ¡”½¹™±¥ÐÙ¥Í¥‰±”…¹Õ¹É•½¹¥±•¸)Q¡•Í”…É”‘¥ÍÑ¥¹ÐÍ¡½ÉÐµÑ•É´µ•¡…¹¥…°½ÕÑ½µ•Ì¥¸„ÍÁ•¥™¥Œ…¹¥µ…°µ½‘•°°)¹½Ð¡Õµ…¸¡•Ý¥¹œÁ•É™½Éµ…¹”½È±½¹œµÑ•É´Á½Í¥Ñ¥½¹…°ÍÑ…‰¥±¥Ñä¸()EÕ…±¥™äm…¹…É¥„•Ð…°¸°Á…Ñ¥Ñ”5¥É½Ñ½Á½É…Á¡¥•Ì°€ÈÀÄÅt¡¡ÑÑÁÌè¼½‘½¤¹½Éœ¼ÄÀ¸ÄÀàä½Ñ•¸¹Q¸ÈÀÄÀ¸ÀÈØÐ¤)…Ì„Í•Á…É…Ñ”µ•¡…¹¥…°µÍ½ÕÉ”½µÁ…É¥Í½¸¸¼¹½Ð½¹™ÕÍ”¥ÐÝ¥Ñ Ñ¡”…±É•…‘ä)É•Ù¥•Ý•É½½ÐµÁÉ•Í••‘¥¹œÁ…Á•È¸¥™™•É•¹•Ì¥¸…ÁÁ±¥•±½…‘Ì…¹½µÁ…É…Ñ½È)…ÑÑ…¡µ•¹ÐµÕÍÐÉ•µ…¥¸Ù¥Í¥‰±”¸()•±¥Ù•É…‰±•ÌèÉ•ÍÑ½É…Ñ¥½¹}½¹ÑÉ…Ð¹©Í½¹€°…ÑÑ…¡µ•¹Ñ}™Õ¹Ñ¥½¹}‰•¹¡µ…É¬¹ÑÍÙ€°)M=UI}EU1%%Q%=8¹µ‘€…¹É•½Ù•ÉäµÉ…Ñ¥¼Á±½ÑÌ¸… É½ÜÉ•Ñ…¥¹ÌÍÁ•¥•Ì°)¥¹©ÕÉäµ½‘•°°…¹¥µ…°½Ñ½½Ñ ¡¥•É…É¡ä°Ñ¥µ”°±½…‘¥¹œµ•Ñ¡½°Í½ÕÉ”Ñ…‰±”½™¥ÕÉ”°)Õ¹¥ÑÌ…¹µ¥ÍÍ¥¹œ½ÕÑ½µ•Ì¸AÉ•™•ÈÍÕÁÁ±¥•¹Õµ•É¥Œ‘…Ñ„¸¥¥Ñ¥é•Ù…±Õ•Ì…É”)±…‰•±±••ÍÑ¥µ…Ñ•ÌÝ¥Ñ •áÑÉ…Ñ¥½¸Õ¹•ÉÑ…¥¹Ñä¸MÕµµ…Éä‘…Ñ„…¹¹½ÐÍÕÁÁ±ä)¥¹‘¥Ù¥‘Õ…°½‰Í•ÉÙ…Ñ¥½¹Ì½È½Ñ¡•ÉÝ¥Í”Õ¹…Ù…¥±…‰±”½¹™¥‘•¹”¥¹Ñ•ÉÙ…±Ì¸((¨©½µÁ±•Ñ¥½¸…Ñ”è¨¨…Ð±•…ÍÐ½¹”ÅÕ…±¥™¥•Í½ÕÉ”µ‰…Í•™Õ¹Ñ¥½¹…°½µÁ…É¥Í½¸ì)¹¼¥¹Ù•¹Ñ•Õ¹¥Ù•ÉÍ…°É•½Ù•ÉäÕÑ½™˜½ÈÁ½½±•¡Õµ…¸½…¹¥µ…°•™™¥…äÉ…¹­¥¹œ¸((ŒŒ]½É¬Á…­…”Èè„É•‘Õ•Ñ½½Ñ£ŠM…ÑÑ…¡µ•¹Ðµ•¡…¹¥ÌÍÑÕ‘ä((¨©EÕ•ÍÑ¥½¸è¨¨]¡¥ ½µ‰¥¹…Ñ¥½¹Ì½˜•½µ•ÑÉä°…ÑÑ…¡µ•¹Ð½Ù•É…”…¹Ñ¥ÍÍÕ”)½É…¹¥é…Ñ¥½¸…¸É•½Ù•ÈÕÍ•™Õ°½µÁ±¥…¹”Ý¥Ñ¡½ÕÐ¥¹ÍÑ…‰¥±¥Ñä½È™ÕÍ¥½¸ü()	Õ¥±„Íµ…±°É•ÁÉ½‘Õ¥‰±”ÍÑÕ‘äÍÉ¥ÁÐÕÍ¥¹œ„Ñ½½Ñ ½É½½Ð…¹Í½­•Ð•½µ•ÑÉä)Ý¥Ñ …¸½É¥•¹Ñ•°½µÁ±¥…¹Ð…ÑÑ…¡µ•¹Ð±…å•È¸MÑ…ÉÐÝ¥Ñ „±¥µ¥Ñ•±½…‘¥¹œ)‘¥É•Ñ¥½¸ì•áÑ•¹Ñ¼É½Ñ…Ñ¥½¸½±…Ñ•É…°±½…‘¥¹œ½¹±ä¥˜Ñ¡”Á…É…µ•Ñ•È‰…Í¥Ì…¹)Ñ¥µ”Á•Éµ¥Ð¸Q¡¥Ì¥Ì„É•‘Õ•µ½‘•°°¹½Ð„Á•ÉÍ½¹…±¥é•‘¥¥Ñ…°ÑÝ¥¸¸()½µÁ…É”…¸¥¹Ñ…ÐÉ•™•É•¹”Ý¥Ñ ‘¥ÍÉÕÁÑ•…ÑÑ…¡µ•¹Ð°µ¥Í½É¥•¹Ñ•™¥‰•ÉÌ°)Í¡¥™Ñ••½µ•ÑÉä°Á…ÉÑ¥…°É•Á…¥È°…±Ñ•É•ÍÕÁÁ½ÉÐ¡•¥¡Ð…¹‰½¹”µ‰É¥‘”ÍÑ…Ñ•Ì¸)MÝ••À…ÑÑ…¡µ•¹Ð™É…Ñ¥½¸°±¥…µ•¹ÐÝ¥‘Ñ °™¥‰•È½É¥•¹Ñ…Ñ¥½¸…¹½¹ÍÑ¥ÑÕÑ¥Ù”)Á…É…µ•Ñ•ÉÌ…É½ÍÌÍ½ÕÉ”µ‰…Í•É…¹•Ì¸±•…É±äµ…É¬…¹ä¥±±ÕÍÑÉ…Ñ¥Ù”É…¹”¸)UÍ”É•±…á…Ñ¥½¸½É••À‰•¡…Ù¥½È½¹±äÝ¡•É”„‘•™•¹Í¥‰±”Ù¥Í½•±…ÍÑ¥ŒÁ…É…µ•Ñ•È)Í½ÕÉ”•á¥ÍÑÌì„‘•ÍÑÉÕÑ¥Ù”•áÑÉ…Ñ¥½¸•áÁ•É¥µ•¹Ð‘½•Ì¹½Ð…±¥‰É…Ñ”¹½Éµ…°)¡•Ý¥¹œ½È•Ù•Éä±½…‘¥¹œ‘¥É•Ñ¥½¸¸()•±¥Ù•É…‰±•ÌèÍÑÕ‘ä½‘”°Á…É…µ•Ñ•ÈµÍ½ÕÉ”Ñ…‰±”°É•ÁÉ½‘Õ¥‰±”Í•¹…É¥¼µ…¹¥™•ÍÐ°)™½É—ŠM‘¥ÍÁ±…•µ•¹Ð™¥ÕÉ•Ì°Í•¹Í¥Ñ¥Ù¥Ñäµ…ÁÌ…¹5=1}1%5%QL¹µ‘€¸¡•¬Õ¹¥ÑÌ°)•ÅÕ¥±¥‰É¥Õ´°±¥µ¥Ñ¥¹œ…Í•Ì°¹Õµ•É¥…°½¹Ù•É•¹”…¹Á…É…µ•Ñ•È¥‘•¹Ñ¥™¥…‰¥±¥Ñä¸)M¡½ÜÝ¡•Ñ¡•È…ÑÑ…¡µ•¹Ð…É•„…¹µ…Ñ•É¥…°ÍÑ¥™™¹•ÍÌ…¸‰”‘¥ÍÑ¥¹Õ¥Í¡•™É½´)Ñ¡”…Ù…¥±…‰±”µ•…ÍÕÉ•µ•¹ÑÌ¸Må¹Ñ¡•Ñ¥ŒÙ•É¥™¥…Ñ¥½¸…Í•ÌÉ•µ…¥¸±…‰•±±•¸((¨©…±Í¥™¥•ÉÌè¨¨Ñ¡”¥¹Ñ…Ð‰…Í•±¥¹”…¹¹½ÐÉ•ÁÉ½‘Õ”Ñ¡”µ…Ñ¡¥¹œÉ•™•É•¹”)É•¥µ”ì…ÁÁ…É•¹Ð‰•¹•™¥ÑÌÉ•Ù•ÉÍ”…É½ÍÌ‘•™•¹Í¥‰±”É…¹•Ìì„É¥¥‰½¹”‰É¥‘”)¥Ì¥¹½ÉÉ•Ñ±äÍ½É•…ÌÍÕ•ÍÍ™Õ°±¥…µ•¹ÐìÉ•ÍÑ½É•µ•¡…¹¥Ì½ÕÈ½¹±ä)Ý¥Ñ ÝÉ½¹œ•½µ•ÑÉä¸Í•Á…É…Ñ”Õ¹•ÉÑ…¥¹Ñä½¸É•µ½‘•±¥¹œ½Ù•É¹Ì±…¥µÌ…‰½ÕÐ)±½¹œµÑ•É´‘É¥™Ðè„ÍÑ…Ñ¥Œµ•¡…¹¥Ìµ½‘•°…¹¹½Ð•ÍÑ…‰±¥Í ±¥™•Ñ¥µ”É•Ñ•¹Ñ¥½¸¸((ŒŒ]½É¬Á…­…”ÌèÕ´…¥¹œ°¥¹™±…µµ…Ñ¥½¸…¹•±°µÍ½ÕÉ”ÅÕ…±¥™¥…Ñ¥½¸((¨©EÕ•ÍÑ¥½¸è¨¨¼Ñ¡”…¹‘¥‘…Ñ”å½ÕÑ¡™Õ°™•…ÑÕÉ•ÌÉ•™±•Ð…‘Õ±ÐÑ¥ÍÍÕ”ÍÑ…Ñ”°)¥¹™±…µµ…Ñ¥½¸°•±°µ¥áÑÕÉ”½È‘•Ù•±½Áµ•¹Ñ…°¥µµ…ÑÕÉ¥Ñäü()EÕ…±¥™ämMàÌÌàÉt¡¡ÑÑÁÌè¼½ÝÝÜ¹¹‰¤¹¹±´¹¹¥ ¹½Ø½•¼½ÅÕ•Éä½…Œ¹¤ý…ŒõMàÌÌàÈ¤°)Ý¡¥ •áÁ½Í•ÌÍ¥à¡Õµ…¸¥¹¥Ù„É•½É‘Ì±…‰•±±•å½Õ¹œ½½±¸Õ‘¥Ð‘½¹½È¥‘•¹Ñ¥Ñä°)Í…µÁ±¥¹œ½¹‘¥Ñ¥½¹Ì°…”µ•Ñ…‘…Ñ„…¹Ñ¡”…ÑÕ…°ÁÉ½•ÍÍ•µÙ…±Õ”ÑÉ…¹Í™½Éµ…Ñ¥½¸)‰•™½É”…¹…±åÍ¥Ì¸%˜•±¥¥‰±”°…±Õ±…Ñ”‘•ÍÉ¥ÁÑ¥Ù”•™™•ÐÍ¥é•Ì™½È™¥á•)µ…ÑÉ¥àµÑÕÉ¹½Ù•È°¥¹™±…µµ…Ñ½Éä°•Á¥Ñ¡•±¥…°…¹™¥‰É½‰±…ÍÐÁÉ½É…µÌ¸Q¡¥ÌÍµ…±°)ÍÑÕ‘ä…¹¹½ÐÍÕÁÁ±ä„É½‰ÕÍÐÕ¹¥Ù•ÉÍ…°Õ´µ…”ÁÉ•‘¥Ñ½È¸()UÍ”mMÄØÐÈÐÅt¡¡ÑÑÁÌè¼½ÝÝÜ¹¹‰¤¹¹±´¹¹¥ ¹½Ø½•¼½ÅÕ•Éä½…Œ¹¤ý…ŒõMÄØÐÈÐÄ¤°)Ñ¡”¡Õµ…¸½É…°µµÕ½Í„¡•…±Ñ ½Á•É¥½‘½¹Ñ¥Ñ¥Ì…Ñ±…Ì°…Ì„…¹‘¥‘…Ñ”¥¹™±…µµ…Ñ½Éä)½µÁ…É¥Í½¸¸EÕ…±¥™ä¥ÑÌ‘½¹½ÈµÑ¼µ±¥‰É…Éäµ…À‰•™½É”‘½¹½Èµ±•Ù•°ÁÍ•Õ‘½‰Õ±¬¸)-••À¥¹¥Ù…°™¥‰É½‰±…ÍÐ…¹•Á¥Ñ¡•±¥…°Á½ÁÕ±…Ñ¥½¹ÌÍ•Á…É…Ñ”¸‘•Ù•±½Áµ•¹Ñ…°)Ñ½½Ñ É•™•É•¹”ÍÕ …ÌMÄàÐÜÐäÍÕÁÁ±¥•Ì±¥¹•…”½¹Ñ•áÐ°¹½Ðå½ÕÑ¡™Õ°…‘Õ±Ð)É½Õ¹ÑÉÕÑ ¸()EÕ…±¥™äA0…”•Ù¥‘•¹”Í•Á…É…Ñ•±ä¸Q¡”€Ääää¡Õµ…¸É•Á½ÉÐ±¥¹­Ì=0ÅÄµI9)…¹Í•±•Ñ•ÁÉ½µ½Ñ•Èµ•Ñ¡å±…Ñ¥½¸Í¥Ñ•ÌÝ¥Ñ …”°‰ÕÐ¹¼‘½¹½Èµ±•Ù•°ÁÕ‰±¥Œ)µ…ÑÉ¥àÝ…Ì¥‘•¹Ñ¥™¥•¸MÈÈÜÜÌÄÍÕÁÁ±¥•Ì„å½Õ¹œµ…‘Õ±Ð•±°µ¥‘•¹Ñ¥ÑäÉ•™•É•¹”ì)MÌÀØÜÈÈ½¹ÑÉ…ÍÑÌÉ½½Ðµ…ÑÕÉ¥Ñä…¹½ÍÑ•½•¹¥Œ…Á…¥Ñä°¹½Ð¡É½¹½±½¥…°)…¥¹œ¸M•”Ñ¡”mA0É•™•É•¹”ÅÕ…±¥™¥…Ñ¥½¹t ¸¸½…¥¹œµÍÑ…Ñ”´ÈÀÈØ´ÄÀ´ÄÄ½A1}}II9}EU1%%Q%=8¹µ¤¸()¼¹½ÐÉ•Á•…Ð½µÁ±•Ñ•M…±µ½¸ÅÕ…¹Ñ¥™¥…Ñ¥½¸µ•É•±äÑ¼•¹•É…Ñ”µ½É”Ñ…‰±•Ì¸)á¥ÍÑ¥¹œ¥ALµA0±¥‰É…É¥•Ì¡…Ù”½¹”Á…É•¹Ñ…°¥AM‰…­É½Õ¹…¹Õ¹É•Í½±Ù•)Í½ÕÉ”½‰…Ñ µ…ÁÁ¥¹œ¸MÌÀØÜÈÈ¡…ÌÑÝ¼É½ÕÀµ±•Ù•°É•½É‘ÌÝ¥Ñ Õ¹­¹½Ý¸‘½¹½È)±¥¹­…”°…¹¥ÑÌÍ½ÕÉ”µ…ÑÕÉ¥Ñä±…‰•±Ì½¹•É¸É½½Ð‘•Ù•±½Áµ•¹Ð¸9•¥Ñ¡•È)±¥µ¥Ñ…Ñ¥½¸‘¥Í…ÁÁ•…ÉÌÑ¡É½Õ …¹½Ñ¡•Èµ…É­•ÈÍ½É”¸()•±¥Ù•É…‰±•Ìè¥¹Ñ…­”½¡…Í É••¥ÁÑÌ°‰¥½±½¥…°µÕ¹¥ÐÉ½ÍÍÝ…±¬°•¹”µ½Ù•É…”)Ñ…‰±”°„‰½Õ¹‘•¥¹¥Ù…°ÍÑ…Ñ”µ½µÁ…É¥Í½¸É•Á½ÉÐ…¹„A0…”µÉ•™•É•¹”)ÅÕ…±¥™¥…Ñ¥½¸¸I•Á½ÉÐ…±°ÁÉ•ÍÁ•¥™¥•…á•Ìì…¹‘¥‘…Ñ”ÁÉ½É…µÌµÕÍÐ™…”)¥¹™±…µµ…Ñ½Éä…¹•±°µ½µÁ½Í¥Ñ¥½¸…±Ñ•É¹…Ñ¥Ù•Ì¸((¨©½µÁ±•Ñ¥½¸…Ñ”è¨¨•±¥¥‰¥±¥Ñä¥Ì‘½Õµ•¹Ñ•‰•™½É”¥¹™•É•¹”¸%˜Ñ¡”‘½¹½È)µ…À½È•áÁÉ•ÍÍ¥½¸Í…±”É•µ…¥¹ÌÕ¹É•Í½±Ù•°‘•±¥Ù•È„ÅÕ…±¥™¥…Ñ¥½¸É•Á½ÉÐ…¹)±¥µ¥Ñ•‘•ÍÉ¥ÁÑ¥Ù”É•ÍÕ±ÐÉ…Ñ¡•ÈÑ¡…¸ÍÕ‰ÍÑ¥ÑÕÑ”Í…µÁ±•Ì™½È‘½¹½ÉÌ¸((ŒŒ]½É¬Á…­…”Äè¡…±±•¹”Ñ¡”•á¥ÍÑ¥¹œÉ•ÁÉ½É…µµ¥¹œÉ•ÍÕ±Ð((¨©EÕ•ÍÑ¥½¸è¨¨½•ÌÑ¡”É•ÍÁ½¹Í”•áÑ•¹‰•å½¹½±±…•¸…¹É•µ…¥¸½µÁ…Ñ¥‰±”)Ý¥Ñ ¡•…±Ñ¡ä…‘Õ±Ð™¥‰É½‰±…ÍÐ¥‘•¹Ñ¥Ñä…™Ñ•ÈÝ¥Ñ¡‘É…Ý…°ü()I•ÕÍ”Ñ¡”ÅÕ…±¥™¥•MÄÄÌäÔÜ…”µÉ•™•É•¹”…¹MÄØÔÄÜÜ¥¹Ñ•ÉÙ•¹Ñ¥½¸¥¹ÁÕÑÌ¸)É••é”…¹…±åÍ¥Ì…á•Ì‰•™½É”¥¹ÍÁ•Ñ¥¹œ¹•ÜÑÉ•…Ñµ•¹ÐµÁ…¹•°É•ÍÕ±ÑÌè‰É½…)…‘Õ±Ð…”‘¥É•Ñ¥½¸°•áÑÉ…•±±Õ±…Èµ…ÑÉ¥à°™¥‰É½‰±…ÍÐ¥‘•¹Ñ¥Ñä°Á±ÕÉ¥Á½Ñ•¹ä°)•±°å±”°¥¹™±…µµ…Ñ¥½¸½ÍÑÉ•ÍÌ…¹„Ïmý¶‰žËkºwµçAÉ•ÍÍ¥½¸½Í¥é”µµ…Ñ¡•)É…¹‘½´Á…¹•±Ì°½±±…•¸½4µ•á±Õ‘•Í•¹Í¥Ñ¥Ù¥Ñä…¹±•…Ù”µ½¹”µ‘½¹½È¡•­Ì¸)]¥Ñ Ñ¡É•”¥¹Ñ•ÉÙ•¹Ñ¥½¸‘½¹½È±¥¹•Ì°Í…µÁ±¥¹œÕ¹•ÉÑ…¥¹ÑäÍÑ…åÌÍÕ‰ÍÑ…¹Ñ¥…°¸()Õ‘¥Ð±½¬ÑÉ…¹Í™•ÈÍ•Á…É…Ñ•±ä¸m¥±°•Ð…°¹t¡¡ÑÑÁÌè¼½•±¥™•Í¥•¹•Ì¹½Éœ½…ÉÑ¥±•Ì¼ÜÄØÈÐ¤)É•Á½ÉÐÑ¡…Ð•á¥ÍÑ¥¹œÑÉ…¹ÍÉ¥ÁÑ¥½¸±½­ÌÁ½½É±äÁÉ•‘¥Ñ•¹•…Ñ¥Ù”½¹ÑÉ½±Ì°)Ñ¡•¸ÑÉ…¥¹•„ÕÍÑ½´ÁÉ•‘¥Ñ½È…™Ñ•È‰…Ñ ½ÉÉ•Ñ¥½¸Ñ¼Ñ¡”¥¹Ñ•ÉÙ•¹Ñ¥½¸)‘…Ñ…Í•Ð¸I•ÁÉ½‘Õ”½¹±äÝ¡…ÐÑ¡”Í½ÕÉ”½‘”…¹¥¹ÁÕÑÌ…±±½Ü¸½µÁ…É”„™¥á•)É•™•É•¹”µ½¹±äÑÉ…¹Í™½É´Ý¥Ñ …¹äÉ•ÁÉ½‘Õ¥‰±”©½¥¹Ð¡…Éµ½¹¥é…Ñ¥½¸ìÉ•½É)Ý¡¥ ½‰Í•ÉÙ…Ñ¥½¹Ì¥¹™±Õ•¹”™•…ÑÕÉ”¡½¥”°Í…±¥¹œ…¹‰…Ñ •ÍÑ¥µ…Ñ¥½¸¸)I•Í½±Ù”Ñ¡”•á…ÐÑÉ…¥¹¥¹œ…•ÍÍ¥½¸°™•…ÑÕÉ”µ…ÁÁ¥¹œ…¹ÁÉ½•ÍÍ¥¹œ……¥¹ÍÐ)Ñ¡”½É¥¥¹…°…ÕÑ¡½È½‘”‰•™½É”±…¥µ¥¹œ„É•ÁÉ½‘ÕÑ¥½¸¸%¹ÍÁ•Ð½¹ÑÉ½°µ…”)…±¥‰É…Ñ¥½¸…¹Í•¹Í¥Ñ¥Ù¥Ñä¸Q¡¥Ì¥¹Ù•ÍÑ¥…Ñ•Ì„ÑÉ…¹Í™•È)‘•Á•¹‘•¹äÝ¥Ñ¡½ÕÐÁÉ•ÍÕµ¥¹œÑ¡…ÐÑ¡”Á…Á•ÈÌ½¹±ÕÍ¥½¸¥ÌÝÉ½¹œ¸()%˜Ñ¥µ”…¹µ•Ñ…‘…Ñ„ÅÕ…±¥™¥…Ñ¥½¸Á•Éµ¥Ð°…ÁÁ±ä™É½é•¸Á…¹•±ÌÑ¼)mMÈäÜÈÌÍt¡¡ÑÑÁÌè¼½ÝÝÜ¹¹‰¤¹¹±´¹¹¥ ¹½Ø½•¼½ÅÕ•Éä½…Œ¹¤ý…ŒõMÈäÜÈÌÌ¤°)…¸•¥¡Ðµ±¥‰É…ÉäÉ•ÁÉ½É…µµ¥¹œÍ•É¥•Ì™É½´½¹”€äØµå•…Èµ½±µ…±”™¥‰É½‰±…ÍÐ)‘½¹½È¸%Ð…¸¡…±±•¹”‘¥É•Ñ¥½¸¥¸…¹½Ñ¡•ÈÍ•É¥•Ì°‰ÕÐ…¹¹½ÐÙ…±¥‘…Ñ”‘½¹½È)•¹•É…±¥Ñä½ÈÁ½ÍÐµÝ¥Ñ¡‘É…Ý…°‘ÕÉ…‰¥±¥Ñä¸()•±¥Ù•É…‰±•Ìè	I=}MQQ}91eM%M}A18¹©Í½¹€°•¹”µ±•Ù•°Á…¥É••™™•ÑÌ°)¡•±µ½ÕÐÉ•™•É•¹”µ•ÑÉ¥Ì°Á…¹•°½¹½Éµ…±¥é…Ñ¥½¸Í•¹Í¥Ñ¥Ù¥Ñä™¥ÕÉ•Ì…¹)1=-}QI9MI}U%P¹µ‘€¸((¨©…±Í¥™¥•ÉÌè¨¨…”…É••µ•¹Ð‘¥Í…ÁÁ•…ÉÌÝ¡•¸4•¹•Ì…É”É•µ½Ù•ì™…¥±¥¹œ)¥¹Ñ•Éµ•‘¥…Ñ•ÌÉ•ÁÉ½‘Õ”Ñ¡”Í…µ”…ÁÁ…É•¹Ð‰•¹•™¥ÐìÑ¡”½¹±ÕÍ¥½¸‘•Á•¹‘Ì½¸)½¹”‘½¹½È½È¡…Éµ½¹¥é…Ñ¥½¸¡½¥”ì¥‘•¹Ñ¥ÑäÉ•½Ù•Éä¥Ì¥¹½µÁ±•Ñ”¸I•Ñ…¥¸„)¹•…Ñ¥Ù”½Èµ¥á•½ÕÑ½µ”…ÌÑ¡”É•ÍÕ±Ð¸((ŒŒ]½É¬Á…­…”$ÄèÉ•Á…¥È…É¡¥Ñ•ÑÕÉ•Ì…¹‰½‘äµÝ¥‘”ÑÉ…¹Í±…Ñ¥½¸()½µÁ…É”Ñ¡É•”…ÑÑ…¡µ•¹Ð¡åÁ½Ñ¡•Í•ÌèÉ½½Ðµ±½…±¥é•ÁÉ½•¹¥Ñ½È½•±°Á±…•µ•¹Ð°)ÍÁ…Ñ¥…°•µ•¹ÑÕ·ŠM±¥…µ•¹ÓŠM‰½¹”Õ¥‘…¹”°…¹±½…°•±°µ™É•”É•Á…¥ÈÕ•Ì¸I…¹¬)Ñ¡•´‰ä‘•µ½¹ÍÑÉ…Ñ••¹‘Á½¥¹ÑÌ°µ…¹Õ™…ÑÕÉ…‰¥±¥Ñä°ÍÁ…Ñ¥…°½¹ÑÉ½°°¥¹Ñ•É…Ñ¥½¸)…¹Ñ¡”µ¥ÍÍ¥¹œµ•…ÍÕÉ•µ•¹Ðµ½ÍÐ±¥­•±äÑ¼¡…¹”Ñ¡”É…¹­¥¹œ¸…Ù½É¥¹œ½¹”)É•ÅÕ¥É•Ì•Ù¥‘•¹”™½È‰½Ñ …ÑÑ…¡µ•¹Ð¥¹Ñ•É™…•Ì…¹µ¥¹•É…±¥é…Ñ¥½¸‰½Õ¹‘…É¥•Ì¸()-••ÀÕ´É•½¹ÍÑÉÕÑ¥½¸°•¹…µ•°½‘•¹Ñ¥¸µ…Ñ•É¥…°‘•Ù•±½Áµ•¹Ð°Ù…ÍÕ±…É¥é•ÁÕ±À)…¹Ý¡½±”µÑ½½Ñ É•Á±…•µ•¹Ð…Ì‘¥ÍÑ¥¹Ð½¹¹•Ñ•µ½‘Õ±•Ì¸MÁ•¥™äÑ¡”µ¥ÍÍ¥¹œ)µ…Ñ•É¥…°°•½µ•ÑÉä°Á•É™ÕÍ¥½¸°¥¹¹•ÉÙ…Ñ¥½¸…¹‘ÕÉ…‰¥±¥Ñäµ•…ÍÕÉ•µ•¹ÑÌ™½È•… ¸)9•Ü½É…¹½¥Í½™ÑÝ…É”¥ÌÕÍ•™Õ°½¹±äÝ¡•¸¥ÐÉ•Í½±Ù•Ì½¹”½˜Ñ¡½Í”ÅÕ•ÍÑ¥½¹Ì¸)á¥ÍÑ¥¹œ½áå•¸µ½‘•±Ì¹••µ•…ÍÕÉ•¥¹ÁÕÑÌ™½È…±¥‰É…Ñ¥½¸ì•á¥ÍÑ¥¹œ¥µ…”)Ñ½½±Ì¹•••¹Õ¥¹”É•Ù¥•Ý•µ…Í­Ì…¹Ù…±¥‰¥½±½¥…°µÕ¹¥Ðµ•Ñ…‘…Ñ„¸()½È½Ñ¡•È‰½‘äÍåÍÑ•µÌ°…ÁÁ±äÑ¡”Í…µ”É•Á…¥È½¹ÑÉ…Ðè()ðI•Á…¥È…á¥Ìð9•áÐ•¹¥¹••É¥¹œÅÕ•ÍÑ¥½¸ðÕ¹Ñ¥½¹…°…Ñ”ð)ð´´µð´´µð´´µð)ð9Õ±•…È½µ¥Ñ½¡½¹‘É¥…°Í•ÅÕ•¹”‘…µ…”ð]¡¥ ±•Í¥½¸¥Ì…ÕÍ…°¥¸Ý¡¥ •±°Á½ÁÕ±…Ñ¥½¸°…¹¥Ì½ÉÉ•Ñ¥½¸½ÈÉ•Á±…•µ•¹ÐÁÉ•™•É…‰±”üð%¹Ñ•¹‘•É•Á…¥È°ÍÕÉÙ¥Ù¥¹œ•±±Ì°±½¹”‰•¡…Ù¥½È…¹É•ÍÑ½É•Ñ¥ÍÍÕ”™Õ¹Ñ¥½¸ð)ð•±°µÍÑ…Ñ”‘åÍ™Õ¹Ñ¥½¸ð…¸ÍÁ•¥…±¥é•…‘Õ±Ð™Õ¹Ñ¥½¸‰”É•ÍÑ½É•…¹µ…¥¹Ñ…¥¹•…™Ñ•ÈÑ¡”¥¹Ñ•ÉÙ•¹Ñ¥½¸•¹‘Ìüð%‘•¹Ñ¥Ñä°™Õ¹Ñ¥½¸°½¹ÑÉ½±±•ÁÉ½±¥™•É…Ñ¥½¸…¹‘ÕÉ…‰¥±¥Ñäð)ðM•¹•Í•¹”½¥¹™±…µµ…Ñ½Éä¹¥¡”ð]¡¥ ‘åÍ™Õ¹Ñ¥½¹…°•±±Ì…¸‰”É•µ½Ù•½ÈÉ•Á…¥É•Ý¥Ñ¡½ÕÐ•á¡…ÕÍÑ¥¹œÉ•Á±…•µ•¹Ð…Á…¥ÑäüðI•Í½±ÕÑ¥½¸°ÕÍ•™Õ°µ•±°ÁÉ•Í•ÉÙ…Ñ¥½¸…¹É•½Ù•É•™Õ¹Ñ¥½¸ð)ð4°‘•Á½Í¥ÑÌ…¹¥¹Ñ•É™…•Ìð]¡¥ ÍÑÉÕÑÕÉ”¥Ìµ¥ÍÍ¥¹œ½È¡…Éµ™Õ°°…¹¡½Ü¥Ì¥ÐÉ•µ½‘•±•Ý¥Ñ¡½ÕÐÍ…È½È™ÕÍ¥½¸üðQ¥ÍÍÕ”µÍÁ•¥™¥Œ½µÁ½Í¥Ñ¥½¸°µ•¡…¹¥Ì°•½µ•ÑÉä…¹ÑÕÉ¹½Ù•Èð)ð•±°±½ÍÌ…¹½É…¸…É¡¥Ñ•ÑÕÉ”ð…¸…ÁÁÉ½ÁÉ¥…Ñ”µ…ÑÕÉ”•±±Ì‰”…ÍÍ•µ‰±•…¹½¹¹•Ñ•Ñ¼Ñ¡”¡½ÍÐüðA•É™ÕÍ¥½¸°Í•¹Í½Éä½•±•ÑÉ¥…°½µ•¡…¹¥…°¥¹Ñ•É…Ñ¥½¸…¹Á•ÉÍ¥ÍÑ•¹”ð)ð•±¥Ù•Éä…¹…•ÍÍ¥‰¥±¥Ñäð!½ÜµÕ ½˜Ñ¡”¥¹Ñ•¹‘•½µÁ…ÉÑµ•¹Ð¥ÌÉ•…¡•Ý¥Ñ …Ñ¥Ù”…É¼üð½ÉÉ•Ñ±äÉ•Á…¥É•™Õ¹Ñ¥½¹…°Ñ…É•Ð•±±Ì°É…Ñ¡•ÈÑ¡…¸½É…¸…ÕµÕ±…Ñ¥½¸…±½¹”ð()%¸‰…Í”µ•‘¥Ñ¥¹œµ•Ù¥‘•¹•€°•áÑ•¹Ñ¡”•á¥ÍÑ¥¹œ‘•¹½µ¥¹…Ñ½È‘¥Í¥Á±¥¹”Ñ¡É½Õ )¥¹Ñ•¹‘•µ•±°ÕÁÑ…­”°¥¹ÑÉ…•±±Õ±…È…Ñ¥Ù¥Ñä°¥¹Ñ•¹‘•µ½¹±äÁÉ½‘ÕÐ°ÍÕÉÙ¥Ù…°)…¹Ñ¥ÍÍÕ”™Õ¹Ñ¥½¸¸UÍ”Í½ÕÉ”µ•…ÍÕÉ•µ•¹ÑÌÑ¼‰Õ¥±Ñ¡”½Ù•É…”¡…¥¸ì)Õ¹­¹½Ý¸ÍÑ…•ÌÉ•µ…¥¸Õ¹­¹½Ý¸¸±±•±”™É…Ñ¥½¹Ì°•‘¥Ñ•µ•±°™É…Ñ¥½¹Ì…¹)™Õ¹Ñ¥½¹…°Ñ¥ÍÍÕ”™É…Ñ¥½¹Ì…É”‘¥™™•É•¹Ð‘•¹½µ¥¹…Ñ½ÉÌ¸µ½¹½•¹¥Œ½ÉÉ•Ñ¥½¸)‘½•Ì¹½Ð¥‘•¹Ñ¥™äÝ¡¥ ‘¥ÍÑÉ¥‰ÕÑ•Í½µ…Ñ¥ŒµÕÑ…Ñ¥½¹Ì½˜½É‘¥¹…Éä…¥¹œÍ¡½Õ±)‰”½ÉÉ•Ñ•¸¼¹½Ð¥µÁ½Í”„Õ¹¥Ù•ÉÍ…°±¥¹•…È½Ù•É…”µÑ¼µ™Õ¹Ñ¥½¸ÉÕ±”¸()•±¥Ù•É…‰±•Ìè€ËŠLÌÉ…¹­•‘•¹Ñ…°¡åÁ½Ñ¡•Í¥Ì…É‘Ì°IA%I}=YI}U9Q%=9}5@¹ÑÍÙ€)…¹„‘¥ÍÉ¥µ¥¹…Ñ¥¹œÍÑÕ‘äµ‘•Í¥¸‰É¥•˜¸½È¹•ÕÉ…°Ñ¥ÍÍÕ”°ÁÉ•Í•ÉÙ”µ•µ½Éä…¹)±•…É¹•½É…¹¥é…Ñ¥½¸•áÁ±¥¥Ñ±ä¥¸Ñ¡”Ñ…É•Ðì•¹•É¥Œ‘•Ù•±½Áµ•¹Ñ…°É•Í•ÑÑ¥¹œ)‘½•Ì¹½ÐÍ…Ñ¥Í™äÑ¡…Ð½¹ÑÉ…Ð¸((ŒŒÕµÕ±…Ñ¥Ù”¡•­Á½¥¹ÑÌ…¹Í½Á”½¹ÑÉ½°()ð!½É¥é½¸ð½µµ¥ÑÑ•Í½Á”ð½¹‘¥Ñ¥½¹…°•áÑ•¹Í¥½¸ð)ð´´µð´´µð´´µð)ð€à¡½ÕÉÌðI•ÍÑ½É…Ñ¥½¸½¹ÑÉ…Ðì…Ð±•…ÍÐ½¹”™Õ¹Ñ¥½¹…°‘•¹Ñ…°µÍ½ÕÉ”‰•¹¡µ…É¬ì¥¹¥Ñ¥…°É•‘Õ•µ•¡…¹¥Ì‰…Í•±¥¹”ì™É½é•¸‰É½…‘•Èµ…¥¹œÁ±…¸…¹¥¹ÁÕÐ…Õ‘¥Ðð¥ÉÍÐÍ½ÕÉ”µÅÕ…±¥™¥•¹Õµ•É¥…°½¹ÑÉ…ÍÐ¥˜¥¹ÁÕÑÌÁ•Éµ¥Ðð)ð€ÄÛŠLÈÐ¡½ÕÉÌð5•¡…¹¥…°Í•¹…É¥¼½Í•¹Í¥Ñ¥Ù¥ÑäÍÑÕ‘äì‰É½…Á…¥É•…¥¹œµÍÑ…Ñ”É•ÍÕ±ÑÌ…¹½µÁ•Ñ¥¹œµÍÑ…Ñ”¡•­Ìì‘•¹Ñ…°…É¡¥Ñ•ÑÕÉ”½µÁ…É¥Í½¸ð=¹”ÅÕ…±¥™¥•¥¹¥Ù…°µÍÑ…Ñ”…¹…±åÍ¥Ìð)ð€ÌØ¡½ÕÉÌðM½ÕÉ”½µ½‘•°Õ¹•ÉÑ…¥¹Ñä…Õ‘¥Ðì¥¹‘•Á•¹‘•¹Ðµ•¡…¹¥…°½µÁ…É¥Í½¸Ý¡•É”½µÁ…É…‰±”ì±½¬µÑÉ…¹Í™•ÈÍ•¹Í¥Ñ¥Ù¥ÑäìÉ…¹­•¡åÁ½Ñ¡•Í•Ì…¹¹•áÐ‘•¥Í¥Ù”µ•…ÍÕÉ•µ•¹ÑÌìÉ•ÁÉ½‘Õ¥‰±”É•Á½ÉÐ‰Õ¹‘±”ð=¹”¥¹‘•Á•¹‘•¹ÐÉ•ÁÉ½É…µµ¥¹œµÍ•É¥•Ì¡•¬½È„µ•…ÍÕÉ•‘•±¥Ù•Éä½½Ù•É…”…Õ‘¥Ðì¡½½Í”Ñ¡”ÍÑÉ½¹•È•±¥¥‰±”¥¹ÁÕÐð()Q¡”ÉÕ¸Í¡½Õ±å¥•±ÑÝ¼ÍÕ‰ÍÑ…¹Ñ¥…°ÅÕ…¹Ñ¥Ñ…Ñ¥Ù”ÍÑÕ‘¥•ÏŠQ…ÑÑ…¡µ•¹Ðµ•¡…¹¥Ì)…¹‰É½…•±±Õ±…ÈµÍÑ…Ñ”É•ÍÁ½¹Í—ŠQÁ±ÕÌ„™½ÕÍ•¥¹Ñ•É…Ñ¥½¸µ…À¸Õ±°¡Õµ…¸)Ñ½½Ñ µ½ÉÁ¡½•¹•Í¥Ì°Á•ÉÍ½¹…±¥é•Ù…±¥‘…Ñ¥½¸°Ý¡½±”µ‰½‘ä•‘¥Ñ¥¹œ°½É…¹½¥)±¥¹¥…°Á•É™½Éµ…¹”…¹±½¹œµÑ•É´Õ¹ÍÕÁÁ½ÉÑ•Á½Í¥Ñ¥½¸ÍÑ…‰¥±¥ÑäÉ•ÅÕ¥É”)…‘‘¥Ñ¥½¹…°µ•…ÍÕÉ•µ•¹ÑÌ…¹•áÁ•É¥µ•¹ÑÌ‰•å½¹Ñ¡¥ÌÝ¥¹‘½Ü¸()UÍ”É•…µ½¹±äÁ…É…±±•°É•Í•…É É½±•ÌÝ¥Ñ ½¹”¥µÁ±•µ•¹Ñ…Ñ¥½¸½Ý¹•ÈÁ•ÈÝ½É­¥¹œ)ÑÉ•”¸-••Àµ•Ñ¡½‘ÌÁ…­…•Ì¥¸Ñ¡•¥È•á¥ÍÑ¥¹œÉ•Á½Í¥Ñ½É¥•Ìì‘¼¹½Ðµ•É”Ñ¡•´¸)á±Õ‘•ÁÉ½©•ÑÌÉ•µ…¥¸Õ¹¥MÑ•µ½ÕÉÍ•M¥µÕ±…Ñ½ÉÌ°°…ÉÑ¥™¥¥…°µÝ½µˆµ½‘•±Ì)…¹%}½µÁ…¹¥½¸¸UÍ”±½…°AT…¹…±åÍ•Ì…¹…¡•µ…ÑÉ¥•Ì™¥ÉÍÐ¸9¼Á…¥)½µÁÕÑ”‘•Á•¹‘•¹ä¥Ì¹••‘•™½ÈÑ¡”½É”Í½Á”¸()Ð•… ¡•­Á½¥¹Ð°Í…Ù”½‘”°•á…Ð¥¹ÁÕÐ¡…Í¡•Ì°…ÍÍÕµÁÑ¥½¹Ì°Í½ÕÉ”Õ¹¥ÑÌ°)™…¥±•¡åÁ½Ñ¡•Í•Ì…¹½ÕÑÁÕÑÌ¸AÕ‰±¥ŒÕÁ‘…Ñ•ÌÍ¡½Õ±É•‘¥ÐÍ½ÕÉ”Ý½É¬…¹)¥‘•¹Ñ¥™ä…•¹ÐµÉÕ¸…¹…±åÍ•Ì¸AÉ•Í•ÉÙ”ÁÉ¥Ù…Ñ”I•Í•…É¡•Í¬½‰Í•ÉÙ…Ñ¥½¹Ì…¹)É…Ü‘…Ñ„¥¸Ñ¡•¥È•á¥ÍÑ¥¹œ¥¹½É•ÍÑ½É•Ì¸Q•ÍÑÌ…¹¹Õµ•É¥…°¡•­Ì•ÍÑ…‰±¥Í )Í½™ÑÝ…É”‰•¡…Ù¥½Èì‰¥½±½¥…°É•ÍÑ½É…Ñ¥½¸É•ÅÕ¥É•Ì¥ÑÌ½Ý¸µ•…ÍÕÉ••Ù¥‘•¹”¸()¥¹¥Í Ñ¡”ÉÕ¸Ý¥Ñ Ñ¡”É•ÍÕ±ÑÌÑ¡…ÐÍÕÉÙ¥Ù•¡…±±•¹•Ì°Ñ¡”É•ÍÕ±ÑÌÑ¡…Ð)™…¥±•°…¹Ñ¡”¡¥¡•ÍÐµÙ…±Õ”¹•áÐµ•…ÍÕÉ•µ•¹Ð¸Q¡”¥µµ•‘¥…Ñ”…‘Ù…¹”¥Ì„)±•…É•È°ÅÕ…¹Ñ¥Ñ…Ñ¥Ù•±äÑ•ÍÑ•É½ÕÑ”Ñ½Ý…É™Õ¹Ñ¥½¹…°É•ÍÑ½É…Ñ¥½¸°Ý¥Ñ „)É•½É½˜•á…Ñ±äÝ¡…ÐÉ•µ…¥¹ÌÕ¹ÁÉ½Ù•¸¸((ŒŒIÕ¸¡•­Á½¥¹ÐƒŠP€ÈÀÈØ´ÄÀ´ÄÄ()Q¡”™¥ÉÍÐ•á•ÕÑ¥½¸¡•­Á½¥¹Ð¥Ì½µÁ±•Ñ”…¹Í…Ù•¥¸Ñ¡”Ý½É­‰•¹ è((´€¨©ÄÍ½ÕÉ”ÅÕ…±¥™¥…Ñ¥½¸è¨¨•áÑÉ…Ñ•½¹”™Õ±°µÑ•áÐÉ…ÐA0µ•¡…¹¥ÌÍÑÕ‘ä…¹¥ÑÌ™É…ÑÕÉ”Ñ…‰±”ì¡•­ÍÕ´µÙ•É¥™¥•Ñ¡”½™™¥¥…°ÍÕÁÁ±•µ•¹Ð…¹™½Õ¹Ñ¡…ÐQ…‰±”LÌ½¹™¥ÉµÌÑ¡”‘¥ÍÁ±…å•€È¸ÐÔ¼Ì¸Ìä8½µ·
-ÈÙ…±Õ•Ì‰ÕÐ¹½ÐÑ¡”ÁÉ½Í”Ì€ÜØ”É…Ñ¥¼¸Q¡”ÍÕÁÁ±•µ•¹Ð½µ‰¥¹•ÌÉ½ÕÀµ•…¸±½…Ý¥Ñ ½¹”É•ÁÉ•Í•¹Ñ…Ñ¥Ù”Ñ½½Ñ …É•„Á•ÈÉ½ÕÀ°Í¼Ñ¡”€ÜÈ¸ÏŠLÜÈ¸Ð”É•½¹ÍÑÉÕÑ¥½¸¥Ì¹½Ð…¸…¹¥µ…°µ±•Ù•°•ÍÑ¥µ…Ñ”¸I•Ù¥•Ý•Ñ¡”½™™¥¥…°Á…”™½ÈÑ¡”ÁÉ½•¹¥Ñ½Èµ‘É¥Ù•¸É•…ÑÑ…¡µ•¹ÐÍÑÕ‘ä…™Ñ•È¥ÑÌÕÉ½Á”A5a50•¹‘Á½¥¹Ð™…¥±•¸=ÕÑ½µ•ÌÉ•µ…¥¸Í•Á…É…Ñ”‰äÍÑÕ‘ä…¹±½…‘¥¹œÁÉ½Ñ½½°¸(´€¨©ÈÉ•‘Õ•µ½‘•°è¨¨‰Õ¥±Ð„Í½ÕÉ”µ…¹¡½É•°ÑÝ¼µÁ½¥¹Ð¥¹Ñ•ÉÁ½±…Ñ¥½¸½˜É…ÐÉ½Ý¸‘¥ÍÁ±…•µ•¹Ð‰•ÑÝ••¸ÁÕ‰±¥Í¡•€ÄÀ8…¹€ÄÔ8µ•…¹Ì°Á±ÕÌ„‘¥µ•¹Í¥½¹±•ÍÌÍÑ¥™™¹•ÍÌ¹½¸µ¥‘•¹Ñ¥™¥…‰¥±¥ÑäÍÝ••À¸Q¡”¥¹Ñ•ÉÁ½±…Ñ¥½¸É•ÁÉ½‘Õ•ÌÑ¡”µ•…ÍÕÉ••¹‘Á½¥¹ÑÌ…¹‘½•Ì¹½Ð•áÑÉ…Á½±…Ñ”ì•¹‘Á½¥¹ÐMÍ•¹Í¥Ñ¥Ù¥ÑäÉ…¹•Ì½Ù•É±…À¸	½Ñ …É”•áÁ±¥¥Ñ±ä±¥µ¥Ñ•µ½‘•±Ì°¹½Ð„¡Õµ…¸¡•Ý¥¹œ½È…±¥‰É…Ñ•µ…Ñ•É¥…°µ½‘•°¸(´€¨©Ä‰É½……”¡…±±•¹”è¨¨ÑÉ…¥¹•…”µ‘¥É•Ñ¥½¸Á…¹•±Ì¥¹Í¥‘”É•Á•…Ñ•°…”µÍÑÉ…Ñ¥™¥•™½±‘Ì½¸MÄÄÌäÔÜìÑÉ…¹Í™•ÉÉ•Í¥¹ÌÑ¼µ…Ñ¡•MÄØÔÄÜÜÍ…µÁ±•Ìì½µÁ…É•½±±…•¸°µ…ÑÉ¥à°Á±ÕÉ¥Á½Ñ•¹ä°•±°µå±”°ÀÔÌ½‘…µ…”°…ÕÑ”µÍÑÉ•ÍÌ…¹¥¹™±…µµ…Ñ¥½¸…á•Ì‰ä‘½¹½Èµ½‘•±¥¹”¸Q¡”‰É½…‘¥É•Ñ¥½¸É•ÍÕ±Ð¥ÌÝ•…¬…ÐÑ¡”ÍÕ•ÍÍ™Õ°€ÄÌµ‘…ä•¹‘Á½¥¹Ð…¹‰…Í•½¸ÑÝ¼±¥¹•Ì¸(´€¨©Ì½É…°…¥¹œ¥¹ÁÕÐè¨¨ÅÕ…±¥™¥•MàÌÌàÈÌÁÉ½•ÍÍ•¥¹¥Ù„µ…ÑÉ¥à…¹<‘½¹½Èµ•Ñ…‘…Ñ„°ÁÉ•Í•ÉÙ¥¹œÑ¡”Õ¹É•Í½±Ù••áÁÉ•ÍÍ¥½¸µ…±¥…ÌµÑ¼µM4µ…ÁÁ¥¹œ¸¥á•µ…ÑÉ¥àµÑÕÉ¹½Ù•È°µ…ÑÉ¥àµ¥¹¡¥‰¥Ñ½È°ÍÑÉÕÑÕÉ…°4°¥¹™±…µµ…Ñ½Éä°•Á¥Ñ¡•±¥…°°…¹ÍÑÉ½µ…°Á…¹•±ÌÁÉ½‘Õ”µ¥á•É½ÕÀµ±•Ù•°Í¡¥™ÑÌ¥¸Ñ¡¥ÌÑ¡É•”µÙ•ÉÍÕÌµÑ¡É•”°…±°µ™•µ…±”‰Õ±¬½¡½ÉÐ¸Q¡¥Ì¥Ì…¸•áÁ±½É…Ñ½Éä¥¹ÁÕÐ°¹½Ð„Õ´µ…”±½¬ìÑ¡”‘½¹½Èµ±¥¹­•¡•…±Ñ ½Á•É¥½‘½¹Ñ¥Ñ¥Ì½µÁ…É¥Í½¸É•µ…¥¹ÌÁ•¹‘¥¹œ¸(´€¨©Ì½µÁ…É…Ñ½ÈÅÕ…±¥™¥…Ñ¥½¸è¨¨±¥¹­•€Èä½É¥¥¹…°MÄØÐÈÐÄÍ¥¹±”µ•±°±¥‰É…É¥•ÌÑ¼Ñ¡”…ÉÑ¥±”ÌQ…‰±”LÄ°Í•Á…É…Ñ•Ñ¡”±…Ñ•È€ÈÀÈÌ%ÀàÁUMQ€…‘‘¥Ñ¥½¸°…¹¥‘•¹Ñ¥™¥•Ñ¡”Á…¥É•¡•…±Ñ¡ä‰Õ…°½¥¹¥Ù…°Í…µÁ±•ÌÁ±ÕÌÉ•Á•…Ñ•AÄØÅ€½AÄØÑ€‘¥Í•…Í”‰¥½ÁÍä½‘•Ì¸Q¡”€à‘¥Í•…Í”±¥‰É…É¥•ÌÉ•ÁÉ•Í•¹Ð™¥Ù”…ÁÁ…É•¹Ð‘½¹½Èµ½‘”É½ÕÁÌì•±°I…¹•ÈÙ•ÉÍ¥½¹Ì‘¥™™•È…É½ÍÌÍ…µÁ±•Ì¸Q¡¥Ì¥Ì…¸¥¹Ñ…­”…Õ‘¥Ð½¹±äì¹¼•±°µ±•Ù•°ÁÍ•Õ‘½‰Õ±¬½È‘¥Í•…Í”•áÁÉ•ÍÍ¥½¸Ñ•ÍÐ¡…Ì‰••¸ÉÕ¸¸(´€¨©A0…”µÉ•™•É•¹”ÅÕ…±¥™¥…Ñ¥½¸è¨¨Ñ¡”‘¥É•Ð¡Õµ…¸…”É•Á½ÉÐ™½Õ¹Ñ¼‘…Ñ”…ÍÍ…åÌ=0ÅÄ…¹Í•±•Ñ•ÁÉ½µ½Ñ•ÈÍ¥Ñ•Ì°Ý¡¥±”ÁÕ‰±¥Œ…¹‘¥‘…Ñ•Ì•¥Ñ¡•È…ÁÑÕÉ”å½Õ¹œµ…‘Õ±Ð•±°¥‘•¹Ñ¥Ñä°‘¥Í•…Í”°½ÈÉ½½Ð½‘•¹Ñ¥Ñ¥½¸µ…ÑÕÉ¥Ñä¸9¼‘½¹½ÈµÉ•Í½±Ù•…‘Õ±Ð¡Õµ…¸A0ÑÉ…¹ÍÉ¥ÁÑ½µ”…”Í•É¥•ÌÁ…ÍÍ•Ñ¡”ÅÕ…±¥™¥…Ñ¥½¸…Ñ”¸(´€¨©%¹Ñ•É…Ñ¥½¸è¨¨…‘‘•Ñ¡”‘•¹Ñ…°É•ÍÑ½É…Ñ¥½¸½¹ÑÉ…Ð…¹É…¹­••áÁ•É¥µ•¹Ñ…°¡åÁ½Ñ¡•Í•Ì°¥¹±Õ‘¥¹œ•áÁ±¥¥ÐÑ½½Ñ Á½Í¥Ñ¥½¸…¹Á½ÍÐµÍÕÁÁ½ÉÐµÉ•µ½Ù…°ÍÑ…‰¥±¥Ñä¸()Q¡¥Ì¡•­Á½¥¹Ð¡…Ì€¨©¹½Ð¨¨½µÁ±•Ñ•Ñ¡”™Õ±°€ãŠLÌØµ¡½ÕÈÁÉ½É…´¸I•µ…¥¹¥¹œÝ½É¬¥ÌèÁÉ•Í•ÉÙ”Ñ¡”€ÜØ”Ù•ÉÍÕÌÑ…‰±”µ‘•É¥Ù•€ÜÈ¸ÏŠLÜÈ¸Ð”½¹™±¥ÐÕ¹±•ÍÌÕ¹‘•É±å¥¹œ‘…Ñ„•áÁ±…¥¸¥ÐìÉ•½Ù•ÈÁ•ÈµÑ½½Ñ ‘¥ÍÁ±…•µ•¹ÐÉ•½É‘Ì…¹½Ù…É¥…¹”¥˜ÁÕ‰±¥±ä½È…ÕÑ¡½ÈµÍÕÁÁ±¥•ì•áÑ•¹Ñ¡”É•ÍÁ½¹Í”µ½‘•°½¹±äÝ¥Ñ ‘•™•¹Í¥‰±”±½…‘¥¹œ…¹µ…Ñ•É¥…°Á…É…µ•Ñ•ÉÌìÉÕ¸Ñ¡”‘½¹½Èµ±•Ù•°•±°µÉ•Í½±Ù•½É…°‘¥Í•…Í”¡…±±•¹”Ý¥Ñ ÁÉ½•ÍÍ¥¹œµÙ•ÉÍ¥½¸…¹…”Í•¹Í¥Ñ¥Ù¥Ñäì½‰Ñ…¥¸„‘½¹½ÈµÉ•Í½±Ù•…‘Õ±Ð¡Õµ…¸A0…”½¡½ÉÐ½ÈÕ¹‘•É±å¥¹œÉ•½É‘Ìì…¹½¹¹•ÐÑ¥ÍÍÕ”µÍÁ•¥™¥ŒÍÑ…Ñ”Á…¹•±ÌÑ¼½É…¹½¥½È½¹ÍÑÉÕÐ™Õ¹Ñ¥½¸¸9¼¡Õµ…¸¥¹Ñ•ÉÙ•¹Ñ¥½¸¡…Ì‰••¸‘•Í¥¹•½ÈÙ…±¥‘…Ñ•¸(
+# Dental restoration and durable youthful function: next 8â€“36-hour run
+
+Planning date: 2026-10-11. AI-assisted research and engineering proposal for the
+owner's personal computational projects. This document specifies work to run;
+it does not report that the proposed analyses or interventions have succeeded.
+
+## Objective and allocation
+
+The flagship question is: **Can a damaged natural tooth regain its intended
+position, living cementumâ€“periodontal-ligamentâ€“bone attachment, gum architecture,
+and physiological function, with stable position after temporary support is
+removed?** Freedom from lifelong external retention is a desired durability
+endpoint. Any finite positioning or healing support is an engineering variable
+whose withdrawal must be followed by measurements of stability.
+
+Allocate approximately 60% of a sustained work window to dental restoration,
+30% to challenging the existing cellular-aging result, and 10% to repair
+coverage and integration. The horizons below are cumulative scope targets,
+conditional on qualifying inputs. They are computational work products, not a
+promise of human tissue regeneration within that time.
+
+The long-term objective is sustained healthy adult function throughout the
+body, preserving personal anatomy, specialized cell identity and useful
+acquired information. A low biological-age score is a supporting observation.
+The acceptance criterion is durable recovery of the relevant tissue function.
+
+## Why dental trauma is the first engineering case
+
+Dental trauma is more varied than stretched ligament. The IADT describes
+displacement, socket-wall injury, bone damage and risks to the pulp in different
+injury categories. Our engineering states should therefore distinguish
+attachment disruption, tissue loss, altered geometry and impaired vitality.
+[Primary IADT injury descriptions](https://doi.org/10.1111/edt.12578).
+
+Regenerating an attachment around a displaced tooth could preserve the wrong
+position. The target must combine geometry with biological repair. If actual
+pre-injury imaging is absent, an estimate based on earlier records, adjacent
+teeth or a reference anatomy must carry explicit uncertainty; it cannot silently
+become the person's exact original geometry.
+
+The mouth is a useful flagship because several difficult interfaces must work
+together: mineralâ€“soft tissue attachment, mechanical loading, epithelial seal,
+perfusion, sensation, spatial organization and continued exposure to microbes.
+The same design discipline can later apply to tendonâ€“bone attachment, cartilage,
+skin, vessels and organ constructs, while their parameters and success criteria
+remain tissue specific.
+
+## Work package D1: define restoration and extract actual functional evidence
+
+**Question:** Which published interventions recover attachment function, and
+what important deficits remain?
+
+Create a restoration contract covering:
+
+| Domain | Required evidence | Competing outcome to retain |
+|---|---|---|
+| Tooth position and bite | Three-dimensional position/rotation relative to a declared target; occlusal compatibility; stability after support removal | Correct support around the wrong position; recurrent drift |
+| Cementumâ€“PDLâ€“bone | Fibers inserting into both interfaces; continuous ligament space; organized orientation; physiological mobility | Scar, detached fibers, excessive bone, ankylosis or root resorption |
+| Attachment mechanics | Matched loading regime; forceâ€“displacement; compliance, failure load and energy; creep/recovery where measured | Apparently firm fixation with abnormal mechanics |
+| Gingiva | Margin, volume, papillae, appropriate phenotype, seal/barrier, inflammation and recurrence | Coverage alone, long junctional epithelium or unstable contour |
+| Enamel and dentin | Geometry, native-like microstructure, bonding, hardness, wear and fatigue behavior | Mineral deposits without a functional tooth surface |
+| Pulp and neural support | Viable vascularized tissue, sensory function and continued host integration | Calcification, necrosis or absent functional integration |
+
+The initial quantitative source is [Komatsu et al., 2022](https://doi.org/10.1038/s41598-022-06865-6):
+rat replantation with histology and mechanical extraction testing. At 21 days,
+the reported failure energy was approximately 44% of uninjured controls even
+though stiffness recovered more closely; area-standardized strength was about
+76% as stated by the paper. Official Supplementary Table S3 confirms displayed
+strengths of 2.45 and 3.39 N/mmÂ², whose quotient is 72.27%; reconstructing the
+table's group mean loads over representative-tooth areas gives 72.39%. The
+supplement's values cannot explain 76%, and the source does not publish
+per-tooth force-area records. Keep the conflict visible and unreconciled.
+These are distinct short-term mechanical outcomes in a specific animal model,
+not human chewing performance or long-term positional stability.
+
+Qualify [Dangaria et al., Apatite Microtopographies, 2011](https://doi.org/10.1089/ten.TEA.2010.0264)
+as a separate mechanical-source comparison. Do not confuse it with the already
+reviewed root-preseeding paper. Differences in applied loads and comparator
+attachment must remain visible.
+
+Deliverables: `restoration_contract.json`, `attachment_function_benchmark.tsv`,
+`SOURCE_QUALIFICATION.md` and recovery-ratio plots. Each row retains species,
+injury model, animal/tooth hierarchy, time, loading method, source table/figure,
+units and missing outcomes. Prefer supplied numeric data. Digitized values are
+labelled estimates with extraction uncertainty. Summary data cannot supply
+individual observations or otherwise unavailable confidence intervals.
+
+**Completion gate:** at least one qualified source-based functional comparison;
+no invented universal recovery cutoff or pooled human/animal efficacy ranking.
+
+## Work package D2: a reduced toothâ€“attachment mechanics study
+
+**Question:** Which combinations of geometry, attachment coverage and tissue
+organization can recover useful compliance without instability or fusion?
+
+Build a small reproducible study script using a tooth/root and socket geometry
+with an oriented, compliant attachment layer. Start with a limited loading
+direction; extend to rotation/lateral loading only if the parameter basis and
+time permit. This is a reduced model, not a personalized digital twin.
+
+Compare an intact reference with disrupted attachment, misoriented fibers,
+shifted geometry, partial repair, altered support height and bone-bridge states.
+Sweep attachment fraction, ligament width, fiber orientation and constitutive
+parameters across source-based ranges. Clearly mark any illustrative range.
+Use relaxation/creep behavior only where a defensible viscoelastic parameter
+source exists; a destructive extraction experiment does not calibrate normal
+chewing or every loading direction.
+
+Deliverables: study code, parameter-source table, reproducible scenario manifest,
+forceâ€“displacement figures, sensitivity maps and `MODEL_LIMITS.md`. Check units,
+equilibrium, limiting cases, numerical convergence and parameter identifiability.
+Show whether attachment area and material stiffness can be distinguished from
+the available measurements. Synthetic verification cases remain labelled.
+
+**Falsifiers:** the intact baseline cannot reproduce the matching reference
+regime; apparent benefits reverse across defensible ranges; a rigid bone bridge
+is incorrectly scored as successful ligament; restored mechanics occur only
+with wrong geometry. A separate uncertainty on remodeling governs claims about
+long-term drift: a static mechanics model cannot establish lifetime retention.
+
+## Work package D3: gum aging, inflammation and cell-source qualification
+
+**Question:** Do the candidate youthful features reflect adult tissue state,
+inflammation, cell mixture or developmental immaturity?
+
+Qualify [GSE83382](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE83382),
+which exposes six human gingiva records labelled young/old. Audit donor identity,
+sampling conditions, age metadata and the actual processed-value transformation
+before analysis. If eligible, calculate descriptive effect sizes for fixed
+matrix-turnover, inflammatory, epithelial and fibroblast programs. This small
+study cannot supply a robust universal gum-age predictor.
+
+Use [GSE164241](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164241),
+the human oral-mucosa health/periodontitis atlas, as a candidate inflammatory
+comparison. Qualify its donor-to-library map before donor-level pseudobulk.
+Keep gingival fibroblast and epithelial populations separate. A developmental
+tooth reference such as GSE184749 supplies lineage context, not youthful adult
+ground truth.
+
+Qualify PDL age evidence separately. The 1999 human report links COL1A1 mRNA
+and selected promoter methylation sites with age, but no donor-level public
+matrix was identified. GSE227731 supplies a young-adult cell-identity reference;
+GSE306722 contrasts root maturity and osteogenic capacity, not chronological
+aging. See the [PDL reference qualification](../aging-state-2026-10-11/PDL_AGE_REFERENCE_QUALIFICATION.md).
+
+Do not repeat completed Salmon quantification merely to generate more tables.
+Existing iPS-PDL libraries have one parental iPSC background and unresolved
+source/batch mapping. GSE306722 has two group-level records with unknown donor
+linkage, and its source maturity labels concern root development. Neither
+limitation disappears through another marker score.
+
+Deliverables: intake/hash receipts, biological-unit crosswalk, gene-coverage
+table, a bounded gingival state-comparison report and a PDL age-reference
+qualification. Report all prespecified axes; candidate programs must face
+inflammatory and cell-composition alternatives.
+
+**Completion gate:** eligibility is documented before inference. If the donor
+map or expression scale remains unresolved, deliver a qualification report and
+limited descriptive result rather than substitute samples for donors.
+
+## Work package A1: challenge the existing reprogramming result
+
+**Question:** Does the response extend beyond collagen and remain compatible
+with healthy adult fibroblast identity after withdrawal?
+
+Reuse the qualified GSE113957 age-reference and GSE165177 intervention inputs.
+Freeze analysis axes before inspecting new treatment-panel results: broad
+adult age direction, extracellular matrix, fibroblast identity, pluripotency,
+cell cycle, inflammation/stress and a source-defined senescence program.
+Expression alone cannot establish senescence or malignant behavior; these are
+alternative-state screens.
+
+Select and weight age-associated genes only within reference training folds,
+with donor-level held-out evaluation. Exclude HGPS and childhood development
+from the primary adult reference. Retain age-range, sex, biopsy-site and
+available culture/batch sensitivities; record missing covariates. On the
+intervention data, preserve donor/experiment/duration matching and the
+successful/failing intermediate and post-withdrawal comparisons.
+
+The primary output is broad age-direction concordance with donor-level effects,
+not a newly invented estimate of years younger. Include expression/size-matched
+random panels, collagen/ECM-excluded sensitivity and leave-one-donor checks.
+With three intervention donor lines, sampling uncertainty stays substantial.
+
+Audit clock transfer separately. [Gill et al.](https://elifesciences.org/articles/71624)
+report that existing transcription clocks poorly predicted negative controls,
+then trained a custom predictor after batch correction to the intervention
+dataset. Reproduce only what the source code and inputs allow. Compare a fixed
+reference-only transform with any reproducible joint harmonization; record
+which observations influence feature choice, scaling and batch estimation.
+Resolve the exact training accession, feature mapping and processing against
+the original author code before claiming a reproduction. Inspect control-age
+calibration and sensitivity. This investigates a transfer
+dependency without presuming that the paper's conclusion is wrong.
+
+If time and metadata qualification permit, apply frozen panels to
+[GSE297233](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297233),
+an eight-library reprogramming series from one 96-year-old male fibroblast
+donor. It can challenge direction in another series, but cannot validate donor
+generality or post-withdrawal durability.
+
+Deliverables: `BROAD_STATE_ANALYSIS_PLAN.json`, gene-level paired effects,
+held-out reference metrics, panel/normalization sensitivity figures and
+`CLOCK_TRANSFER_AUDIT.md`.
+
+**Falsifiers:** age agreement disappears when ECM genes are removed; failing
+intermediates reproduce the same apparent benefit; the conclusion depends on
+one donor or harmonization choice; identity recovery is incomplete. Retain a
+negative or mixed outcome as the result.
+
+## Work package I1: repair architectures and body-wide translation
+
+Compare three attachment hypotheses: root-localized progenitor/cell placement,
+spatial cementumâ€“ligamentâ€“bone guidance, and local cell-free repair cues. Rank
+them by demonstrated endpoints, manufacturability, spatial control, integration
+and the missing measurement most likely to change the ranking. Favoring one
+requires evidence for both attachment interfaces and mineralization boundaries.
+
+Keep gum reconstruction, enamel/dentin material development, vascularized pulp
+and whole-tooth replacement as distinct connected modules. Specify the missing
+material, geometry, perfusion, innervation and durability measurements for each.
+New organoid software is useful only when it resolves one of those questions.
+Existing oxygen models need measured inputs for calibration; existing image
+tools need genuine reviewed masks and valid biological-unit metadata.
+
+For other body systems, apply the same repair contract:
+
+| Repair axis | Next engineering question | Functional gate |
+|---|---|---|
+| Nuclear/mitochondrial sequence damage | Which lesion is causal in which cell population, and is correction or replacement preferable? | Intended repair, surviving cells, clone behavior and restored tissue function |
+| Cell-state dysfunction | Can specialized adult function be restored and maintained after the intervention ends? | Identity, function, controlled proliferation and durability |
+| Senescence/inflammatory niche | Which dysfunctional cells can be removed or repaired without exhausting replacement capacity? | Resolution, useful-cell preservation and recovered function |
+| ECM, deposits and interfaces | Which structure is missing or harmful, and how is it remodeled without scar or fusion? | Tissue-specific composition, mechanics, geometry and turnover |
+| Cell loss and organ architecture | Can appropriate mature cells be assembled and connected to the host? | Perfusion, sensory/electrical/mechanical integration and persistence |
+| Delivery and accessibility | How much of the intended compartment is reached with active cargo? | Correctly repaired functional target cells, rather than organ accumulation alone |
+
+In `base-editing-evidence`, extend the existing denominator discipline through
+intended-cell uptake, intracellular activity, intended-only product, survival
+and tissue function. Use source measurements to build the coverage chain;
+unknown stages remain unknown. Allele fractions, edited-cell fractions and
+functional tissue fractions are different denominators. A monogenic correction
+does not identify which distributed somatic mutations of ordinary aging should
+be corrected. Do not impose a universal linear coverage-to-function rule.
+
+Deliverables: 2â€“3 ranked dental hypothesis cards, `REPAIR_COVERAGE_FUNCTION_MAP.tsv`
+and a discriminating study-design brief. For neural tissue, preserve memory and
+learned organization explicitly in the target; generic developmental resetting
+does not satisfy that contract.
+
+## Cumulative checkpoints and scope control
+
+| Horizon | Committed scope | Conditional extension |
+|---|---|---|
+| 8 hours | Restoration contract; at least one functional dental-source benchmark; initial reduced mechanics baseline; frozen broader-aging plan and input audit | First source-qualified numerical contrast if inputs permit |
+| 16â€“24 hours | Mechanical scenario/sensitivity study; broad paired aging-state results and competing-state checks; dental architecture comparison | One qualified gingival-state analysis |
+| 36 hours | Source/model uncertainty audit; independent mechanical comparison where comparable; clock-transfer sensitivity; ranked hypotheses and next decisive measurements; reproducible report bundle | One independent reprogramming-series check or a measured delivery/coverage audit; choose the stronger eligible input |
+
+The run should yield two substantial quantitative studiesâ€”attachment mechanics
+and broad cellular-state responseâ€”plus a focused integration map. Full human
+tooth morphogenesis, personalized FE validation, whole-body editing, organoid
+clinical performance and long-term unsupported position stability require
+additional measurements and experiments beyond this window.
+
+Use read-only parallel research roles with one implementation owner per working
+tree. Keep methods packages in their existing repositories; do not merge them.
+Excluded projects remain uniStemCourseSimulators, CAD, artificial-womb models
+and AI_Companion. Use local CPU analyses and cached matrices first. No paid
+compute dependency is needed for the core scope.
+
+At each checkpoint, save code, exact input hashes, assumptions, source units,
+failed hypotheses and outputs. Public updates should credit source work and
+identify agent-run analyses. Preserve private ResearchDesk observations and
+raw data in their existing ignored stores. Tests and numerical checks establish
+software behavior; biological restoration requires its own measured evidence.
+
+Finish the run with the results that survived challenges, the results that
+failed, and the highest-value next measurement. The immediate advance is a
+clearer, quantitatively tested route toward functional restoration, with a
+record of exactly what remains unproven.
+
+## Run checkpoint â€” 2026-10-11
+
+The first execution checkpoint is complete and saved in the workbench:
+
+- **D1 source qualification:** extracted one full-text rat PDL mechanics study and its fracture table; checksum-verified the official supplement and found that Table S3 confirms the displayed 2.45/3.39 N/mmÂ² values but not the prose's 76% ratio. The supplement combines group mean load with one representative tooth area per group, so the 72.3â€“72.4% reconstruction is not an animal-level estimate. Reviewed the official page for the progenitor-driven reattachment study after its Europe PMC XML endpoint failed. Outcomes remain separate by study and loading protocol.
+- **D2 reduced model:** built a source-anchored, two-point interpolation of rat crown displacement between published 10 N and 15 N means, plus a dimensionless stiffness non-identifiability sweep. The interpolation reproduces the measured endpoints and does not extrapolate; endpoint SD sensitivity ranges overlap. Both are explicitly limited models, not a human chewing or calibrated material model.
+- **A1 broad age challenge:** trained age-direction panels inside repeated, age-stratified folds on GSE113957; transferred signs to matched GSE165177 samples; compared collagen, matrix, pluripotency, cell-cycle, p53/damage, acute-stress and inflammation axes by donor-coded line. The broad direction result is weak at the successful 13-day endpoint and based on two lines.
+- **D3 oral aging input:** qualified GSE83382's processed gingiva matrix and GEO donor metadata, preserving the unresolved expression-alias-to-GSM mapping. Fixed matrix-turnover, matrix-inhibitor, structural ECM, inflammatory, epithelial, and stromal panels produce mixed group-level shifts in this three-versus-three, all-female bulk cohort. This is an exploratory input, not a gum-age clock; the donor-linked health/periodontitis comparison remains pending.
+- **D3 comparator qualification:** linked 29 original GSE164241 single-cell libraries to the article's Table S1, separated the later 2023 `ID080UST` addition, and identified the paired healthy buccal/gingival samples plus repeated `PD161`/`PD164` disease biopsy codes. The 8 disease libraries represent five apparent donor-code groups; Cell Ranger versions differ across samples. This is an intake audit only; no cell-level pseudobulk or disease expression test has been run.
+- **PDL age-reference qualification:** the direct human age report found to date assays COL1A1 and selected promoter sites, while public candidates either capture young-adult cell identity, disease, or root/dentition maturity. No donor-resolved adult human PDL transcriptome age series passed the qualification gate.
+- **Integration:** added the dental restoration contract and ranked experimental hypotheses, including explicit tooth position and post-support-removal stability.
+
+This checkpoint has **not** completed the full 8â€“36-hour program. Remaining work is: preserve the 76% versus table-derived 72.3â€“72.4% conflict unless underlying data explain it; recover per-tooth displacement records and covariance if publicly or author-supplied; extend the response model only with defensible loading and material parameters; run the donor-level cell-resolved oral disease challenge with processing-version and age sensitivity; obtain a donor-resolved adult human PDL age cohort or underlying records; and connect tissue-specific state panels to organoid or construct function. No human intervention has been designed or validated.
