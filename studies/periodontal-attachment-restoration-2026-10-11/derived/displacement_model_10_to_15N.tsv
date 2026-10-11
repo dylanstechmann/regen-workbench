@@ -1,0 +1,13 @@
+group	load_N	mean_displacement_um	model_status	observed_source_point	source_SD_at_endpoint_um
+WT_control	10	141.0000	linear interpolation of source group means; only 10–15 N interval is supported	True	23.0000
+WT_control	11	172.2000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+WT_control	12	203.4000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+WT_control	13	234.6000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+WT_control	14	265.8000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+WT_control	15	297.0000	linear interpolation of source group means; only 10–15 N interval is supported	True	34.0000
+progenitor_replant	10	156.0000	linear interpolation of source group means; only 10–15 N interval is supported	True	19.0000
+progenitor_replant	11	184.8000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+progenitor_replant	12	213.6000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+progenitor_replant	13	242.4000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+progenitor_replant	14	271.2000	linear interpolation of source group means; only 10–15 N interval is supported	False	not_reported_at_interpolated_forces
+progenitor_replant	15	300.0000	linear interpolation of source group means; only 10–15 N interval is supported	True	26.0000

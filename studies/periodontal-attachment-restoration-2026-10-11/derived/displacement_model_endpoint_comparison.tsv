@@ -1,0 +1,3 @@
+load_N	WT_mean_um	WT_SD_um	progenitor_replant_mean_um	progenitor_replant_SD_um	treated_minus_WT_um	treated_to_WT_mean_ratio	meaning
+10	141.0	23	156.0	19	15.0	1.10638298	descriptive difference of published group means; no inferential test reconstructed
+15	297.0	34	300.0	26	3.0	1.01010101	descriptive difference of published group means; no inferential test reconstructed
