@@ -15,6 +15,10 @@ methylation-sensitive Southern blot methods. Its abstract does not give the
 sample count, age-by-sample values, covariates, or an accession for individual
 data. It supports COL1A1 and promoter methylation as hypotheses for a modern
 PDL study, not a multigene age reference or a quantified restoration target.
+The focused source check found the PubMed record and ScienceDirect abstract,
+but no accessible full methods or sample-level data. This leaves donor count,
+tooth/root maturity, periodontal-health ascertainment, and age-specific effect
+sizes unresolved; do not infer them from the reported age span.
 
 ## Candidate dataset disposition
 

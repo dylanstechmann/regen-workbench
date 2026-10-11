@@ -1,0 +1,60 @@
+{
+  "manifest_schema_version": "1.0.0",
+  "experiment_id": "human-pdl-bone-interface-assay",
+  "title": "Human periodontal ligament–bone interface model with a root-facing attachment",
+  "question": "Can a staged human-cell construct achieve a viable ligament compartment with oriented collagen insertion at both a root-facing mineral interface and a bone-facing interface, while avoiding mineral bridging and retaining recoverable mechanical response?",
+  "status": "design_only",
+  "claim_boundary": "This is an in-vitro model design. It cannot establish tooth repositioning, intact-socket trauma repair, durable human attachment, rejuvenation, or clinical benefit.",
+  "experimental_unit": "Independent human donor/cell preparation and manufacturing batch; constructs, sections, image fields, and repeated loads are nested observations.",
+  "published_chassis": [
+    {
+      "id": "root_surface_pdlsc_collagen_2024",
+      "uri": "https://doi.org/10.1021/acsami.4c13830",
+      "contribution": "PDLSC-laden collagen printed on excised root fragments; in-vitro migration and alignment; ectopic root-fragment implantation in immunocompromised mice through 4 and 10 weeks.",
+      "transfer_limit": "No alveolar socket or physiological tooth load; the authors describe parallel alignment as short of functional fiber insertion, and the in-vitro root-surface experiment did not observe new cementum."
+    },
+    {
+      "id": "human_pdl_bone_microtissue_2022",
+      "uri": "https://doi.org/10.1016/j.gendis.2020.11.011",
+      "contribution": "Bioprinted human PDL/alveolar-bone microtissue with cohesion, viability, and shape retention under microfluidic flow.",
+      "transfer_limit": "No root-facing cementum interface, inserted ligament fibers, or tooth-scale function."
+    },
+    {
+      "id": "fiber_guided_defect_scaffold_2014",
+      "uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4074763/",
+      "contribution": "Oriented fiber guidance in a rat periodontal fenestration-defect model.",
+      "transfer_limit": "Open defect model and short follow-up; not retained-tooth impact repair."
+    }
+  ],
+  "model_components": [
+    "Root-facing dentin/cementum-relevant mineral surface, with surface identity explicitly recorded",
+    "A non-mineralized ligament compartment containing donor-tracked PDL fibroblasts or PDL progenitor cells",
+    "A separate bone-facing compartment containing donor-tracked osteogenic cells",
+    "Spatially guided collagen bundles tested for insertion into both mineralized boundaries",
+    "Perfused endothelial support and cyclic mechanical loading introduced only after static two-interface acceptance"
+  ],
+  "stages": [
+    {"stage": 1, "name": "Root-facing benchmark", "design_reference": "2024 PDLSC-collagen/root-fragment study", "decision": "Reproducible viability, migration, surface continuity, and orientation; no cementogenesis claim."},
+    {"stage": 2, "name": "Two-compartment interface", "design_reference": "2022 human PDL-bone microtissue plus root-facing benchmark", "decision": "Compare homogeneous and biphasic architectures; reject mineral bridging."},
+    {"stage": 3, "name": "Fiber insertion", "design_reference": "Guided versus non-guided architecture", "decision": "Require continuous bundles inserted at both interfaces, not just aligned cells or surface coverage."},
+    {"stage": 4, "name": "Transport and mechanics", "design_reference": "Add perfusion, then calibrated cyclic loading", "decision": "Require viable depth, recoverable compliance, and no interface loss or bone bridge."},
+    {"stage": 5, "name": "Orthotopic transfer", "design_reference": "Separate retained-tooth injury model", "decision": "Assess tooth position, pulp, gingiva, resorption, function, and stability after temporary support withdrawal."}
+  ],
+  "primary_endpoints": ["fiber_insertion_root", "fiber_insertion_bone", "ectopic_mineral_bridge", "mechanical_response", "cyclic_recovery"],
+  "condition_matrix": "condition_matrix.tsv",
+  "endpoint_contract": "endpoint_contract.tsv",
+  "threshold_policy": "Freeze numeric thresholds only after assay repeatability and matched healthy-reference distributions are available. Do not invent a universal PDL stiffness, fiber-angle, or ligament-width cutoff.",
+  "analysis_policy": [
+    "Retain donor and batch as biological units; do not treat sections or fields as independent replicates.",
+    "Blind architecture labels for histology and mechanics scoring where feasible.",
+    "Compare mechanics only under matched sample geometry, fixture, and loading history.",
+    "Report viability, PDL identity, osteogenic drift, inflammation, interface insertion, mineral bridging, and mechanics as separate outcomes.",
+    "A construct that is stiff because of mineral bridging fails regardless of bulk load capacity."
+  ],
+  "limitations": [
+    "No wet-lab work or treatment has been performed in this repository.",
+    "In-vitro repair cannot show correction of a displaced tooth or lifelong stability.",
+    "No numeric acceptance thresholds are available until a calibrated assay and matched reference distributions exist.",
+    "Human PDL chronological-age references remain sparse; cell source age, root maturity, disease state, and tooth type must be recorded rather than collapsed into a single youth score."
+  ]
+}

@@ -9,8 +9,11 @@ healing or apical tissue responses. I did not identify a qualifying study that
 combines a regenerative intervention with baseline-registered tooth position,
 load-bearing PDL function, and durability after temporary stabilization is
 removed. Most positive attachment-regeneration studies still start with an
-extracted tooth or a surgically created periodontal defect. That gap should
-drive the next experiments.
+extracted root or a surgically created periodontal defect. A 2024 PDLSC-laden
+collagen construct added root-fragment surface organization and ectopic
+follow-up, but it did not recreate an alveolar socket or physiological tooth
+loading. The combined in-socket, load-bearing, post-support durability test
+remains the key gap.
 
 Separate two outcomes throughout the program:
 
@@ -41,6 +44,7 @@ durability endpoint is assessed after it is removed.
 | Fiber-guiding multiphasic scaffold | A CT-designed scaffold was tested in rat periodontal fenestration defects after cementum removal. Oriented PDL-like fibers and attachments to tooth and bone were more consistent with the guided architecture than with an amorphous scaffold; 9/12 guided constructs retained a PDL architecture at 6 weeks. | Geometry and fiber orientation matter alongside cell identity and mineral formation. | This is a surgically opened defect with short follow-up, not restoration of an intact socket after blunt trauma. [Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC4074763/) |
 | Layered BMP carrier | In a monkey furcation-defect study, a double-layer collagen-membrane approach was reported to regenerate cementum, ligament, and alveolar process with perpendicular collagen fibers and no ankylosis at 12 weeks; the single-layer approach often ankylosed. | Spatially separating regenerative compartments may reduce bone bridging across the ligament space. | Older defect-model result; no in-socket trauma, long-term positional test, or current manufacturing specification. [Study](https://pubmed.ncbi.nlm.nih.gov/9541226/) |
 | Human PDL–bone microtissue | A 3D-bioprinted, two-cell human model maintained shape under microfluidic flow for more than 10 days, with cell viability beyond 7 days and PDL-fibroblast/osteoblast layer cohesion and migration. | A human-cell interface can support early material, perfusion, and dose-screening work. | It does not yet recreate a cementum-facing root, aligned inserting fibers, mature neurovascularized ligament, or tooth-scale mechanical function. [Study](https://doi.org/10.1016/j.gendis.2020.11.011) |
+| Root-surface PDLSC collagen construct | A 2024 study printed PDLSC-laden collagen on excised root fragments; in vitro, cells migrated and aligned at the surface. Ectopic root-fragment implants in immunocompromised mice were examined at 4 and 10 weeks. The authors report no new cementum in the in-vitro root-surface experiment and describe the parallel cell alignment as short of functionally oriented PDL insertion. | The closest recent root-facing cell-placement benchmark; tests surface coverage, migration, viability, and alignment on a root substrate. | Ectopic root-fragment implantation has no alveolar socket or occlusal loading and does not establish insertion at both interfaces, tooth position, or functional attachment. [Study](https://doi.org/10.1021/acsami.4c13830) |
 
 These are preclinical feasibility signals across different injury models and
 endpoints. Their percentages must not be pooled or described as human success
@@ -78,22 +82,27 @@ substitute for this combined contract.
 
 ### Gate 2 — Build a human-cell interface model
 
-Adapt the published PDL–bone microtissue as a screening chassis, then add the
-features missing for tooth support: a mineralized root/cementum-facing surface,
-a defined PDL-width compartment, anisotropic fiber guidance, and an alveolar
-bone-facing compartment. Keep PDL fibroblasts/PDL progenitors and osteogenic
-cells spatially distinct; add perfused endothelial support only after the
-two-interface structure is stable. Keep gingival epithelium as a separate
-outer-tissue module rather than mixing it into the PDL readout.
+Use the published root-surface PDLSC-collagen construct as the root-facing
+organization benchmark and the human PDL–bone microtissue as a compartment and
+perfusion benchmark. Add the missing tooth-support features in stages: a
+defined ligament-width region, a root/cementum-facing mineral surface, a
+separate alveolar-bone-facing compartment, and anisotropic fibers that insert
+at both boundaries. Keep PDL fibroblasts/PDL progenitors and osteogenic cells
+spatially distinct; add perfused endothelial support only after the static
+two-interface structure is reproducible. Keep gingival epithelium separate.
+The detailed organoid-workbench assay contract is in
+[`studies/organoid/periodontal-ligament-interface/`](../organoid/periodontal-ligament-interface/README.md).
 
-First compare architecture without adding complex factor cocktails: aligned
-versus random fibers, biphasic versus homogeneous matrix, and perfused versus
-static culture. Then compare cell-sheet delivery and endogenous-cell-homing
-signals as separate factors. Measure cell identity, fiber orientation and
-insertion, mineral deposition location, viability, inflammatory response,
+First qualify the root-facing benchmark, then compare biphasic versus
+homogeneous architecture, then aligned versus non-aligned guidance. Add flow
+and cyclic loading only after architecture and measurement repeatability pass.
+Cell-sheet delivery and endogenous-cell-homing signals remain separate future
+factor comparisons. Measure cell identity, fiber orientation and insertion at
+each interface, mineral deposition location, viability, inflammation,
 leachables, and low-amplitude cyclic mechanics. Include a bone-bridge/ankylosis
-positive-control signature so the assay can reject a construct that is strong
-only because it is too stiff.
+positive-control signature so the assay rejects a construct that is strong
+only because it is too stiff. Freeze numeric acceptance limits only after
+repeatability and matched-reference distributions are measured.
 
 ### Gate 3 — Separate injury models instead of extrapolating between them
 
@@ -136,8 +145,10 @@ external force to hold alignment has not met the requested restoration target.
 1. Specify imaging registration and tooth-position error bounds using the
    repository's CT/displacement model; keep measurement error separate from
    biological drift.
-2. Add the two-interface human PDL–bone model to the organoid track with a
-   materials/geometry matrix and acceptance criteria for fiber insertion.
+2. The staged human PDL-interface assay contract and architecture matrix are
+   now in the organoid track. Next, qualify image/mechanics measurement
+   repeatability, biological-unit metadata, and donor-matched healthy reference
+   distributions before freezing numeric thresholds.
 3. Qualify the published rat subluxation-impact model and an intrusive-luxation
    model against the target injury classes. Determine whether either has
    reproducible longitudinal tooth-position data; do not silently substitute
