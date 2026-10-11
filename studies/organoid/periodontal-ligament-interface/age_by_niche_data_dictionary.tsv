@@ -1,0 +1,37 @@
+field	entity	required_definition	allowed_or_format	missing_rule
+donor_id	donor_roster	Study-specific pseudonymous identifier; same person must never appear as both target and niche donor in this pilot	Unique text ID; no name, initials, date of birth, record number or contact data	Required
+role	donor_roster	Biological role in the crossed assay	target or niche	Required
+age_years	donor_roster	Age at tissue collection in completed years, retained continuously	Nonnegative numeric years; do not infer exact age from an age band	Required
+age_stratum	donor_roster	Recruitment label used to ensure source-age coverage; not the primary analysis scale	Exactly two prospective labels, each represented among target and niche roles	Required
+sex	donor_roster	Recorded sex variable used for source description and sensitivity analysis	Study-defined categories; document source and handling of unknown/intersex values	Unknown if unavailable
+tooth_class	donor_roster	Tooth identity/class and dentition context	Prospectively defined category	Required
+root_maturity	donor_roster	Root-development status at collection	Immature, mature, or indeterminate with method	Required
+periodontal_status	donor_roster	Clinical periodontal status and supporting diagnostic basis	Prospectively defined criteria; retain component observations where feasible	Required
+extraction_indication	donor_roster	Reason for extraction, which may select source tissue	Prospectively defined category; free text only in a controlled companion record	Required
+smoking_status	donor_roster	Smoking exposure relevant to cell and tissue state	Prospectively defined categories; record assessment date	Unknown if unavailable
+metabolic_status	donor_roster	Relevant metabolic conditions that may alter tissue state	Controlled categories; avoid unnecessary medical detail	Unknown if unavailable
+relevant_medications	donor_roster	Medication classes prespecified as potential modifiers	Controlled categories; do not include a medication list that identifies the donor	Unknown if unavailable
+sampling_region	donor_roster	Anatomical PDL sampling region and side where recorded	Prospectively defined category	Required
+isolation_batch	donor_roster	Cell-isolation processing batch	Unique text ID	Required
+passage	donor_roster	Cell passage at assay entry	Integer passage number	Required
+expansion_doublings	donor_roster	Cumulative population doublings before assay entry	Nonnegative numeric value; retain calculation method	Required
+niche_donor_id	allocation_manifest	Independent source donor for conditioned-medium lot; blank only for unconditioned controls	Pseudonymous ID matching one roster row with role=niche	Blank for unconditioned controls
+niche_lot_id	allocation_manifest	Single conditioned-medium preparation lot linked to its niche donor; the generator creates one lot per donor	Generated ID L-<niche_donor_id>; repeated lots require a separately specified nested design	Blank for unconditioned controls
+target_donor_id	allocation_manifest	Independent recipient-cell donor	Pseudonymous ID matching one roster row with role=target	Required
+target_age_years	allocation_manifest	Exact age copied from the target-donor roster for allocation auditing	Numeric years; exact-age analysis remains continuous	Required
+target_age_stratum	allocation_manifest	Recruitment stratum copied from the target-donor roster	One of the two labels in the qualified roster	Required
+niche_age_years	allocation_manifest	Exact age copied from the niche-donor roster	Numeric years	Blank for unconditioned controls
+niche_age_stratum	allocation_manifest	Recruitment stratum copied from the niche-donor roster	One of the two labels in the qualified roster; value none for unconditioned controls	Required; value none for unconditioned controls
+exposure_condition	allocation_manifest	Condition assigned to the target donor	unconditioned, conditioned	Required
+construct_rep	allocation_manifest	Repeated construct within the same target×niche pair; technical/manufacturing replicate, not a donor	Positive integer	Required
+condition_key	allocation_manifest	Composite blocking label for target-age stratum, exposure, and niche-age stratum	Generated as target_stratum|exposure|niche_stratum; none marks unconditioned controls	Required
+batch_id	allocation_manifest	Manufacturing/assay batch used as a blocking variable	Unique text ID	Required
+randomized_order	allocation_manifest	Blinded processing/acquisition order generated before outcomes are observed	Positive integer within batch	Required
+blinded_code	allocation_manifest	Outcome-scoring label that does not reveal donor age or condition	Random unique text ID	Required
+allocation_id	allocation_manifest and outcome_table	Unique randomized construct assignment and foreign key for its raw outcome records	Generated ID in manifest; exact ID in linked outcome rows	Required
+seed	allocation_manifest	Seed for deterministic batch allocation and blinded-code generation	Integer recorded in the protocol	Required
+timepoint	outcome_table	Pre-exposure, exposure-end, or prespecified post-washout measurement	Controlled study labels	Required for repeated outcomes
+endpoint_id	outcome_table	Prespecified endpoint from endpoint_contract.tsv	Exact endpoint ID	Required
+value	outcome_table	Raw endpoint value before any transformation or normalization	Numeric plus unit in a separate field	Required; never overwrite raw value
+unit	outcome_table	Measurement unit or scoring scale	Endpoint-specific controlled value	Required
+qc_status	outcome_table	Predeclared validity status and reason	accepted, failed plus controlled reason	Required; do not omit failed measurements

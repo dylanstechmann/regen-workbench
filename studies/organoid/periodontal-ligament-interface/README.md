@@ -140,5 +140,19 @@ than an explicitly unresolved threshold.
   candidates only; the [analysis contract](age_by_niche_analysis_plan.md)
   keeps the primary inference at the donor and attachment-function levels.
 
+## Pilot-ready tools
+
+The [pilot runbook](age_by_niche_pilot_runbook.md) specifies source
+qualification, blinded scoring, batch blocking, and the variance pilot. The
+[roster template](age_niche_donor_roster_template.tsv) is blank and uses
+pseudonymous IDs; its fields are defined in the
+[data dictionary](age_by_niche_data_dictionary.tsv). Generate the complete
+target-donor × niche-donor allocation with
+[`make_age_niche_allocation.py`](make_age_niche_allocation.py). After the pilot,
+use [`simulate_age_niche_interaction.py`](simulate_age_niche_interaction.py)
+with measured variance components and a prospectively justified smallest
+relevant effect. Its sample-size output is a planning approximation, not a
+biological finding or confirmatory mixed-model result.
+
 No wet-lab work is represented by this design dossier. No human treatment
 protocol or efficacy claim follows from the proposed assay.

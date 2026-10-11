@@ -120,3 +120,11 @@ fold change `> 2`, and its text notes discordant qRT-PCR directions for three
 selected genes. Those candidates should not define the primary panel. The
 cell-source × niche interaction and functional attachment outcomes are the
 prespecified focus.
+
+Pilot preparation is operationalized in the
+[`runbook`](age_by_niche_pilot_runbook.md), with a blank pseudonymous roster
+[`template`](age_niche_donor_roster_template.tsv),
+[`data dictionary`](age_by_niche_data_dictionary.tsv), reproducible
+[`allocation generator`](make_age_niche_allocation.py), and variance-input
+[`power simulator`](simulate_age_niche_interaction.py). These tools do not
+choose age cutoffs, effect margins, or a confirmatory donor count.
