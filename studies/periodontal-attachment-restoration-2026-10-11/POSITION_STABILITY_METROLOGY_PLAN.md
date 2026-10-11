@@ -39,6 +39,33 @@ When no true preinjury image exists, label the target source as `prior_clinical_
 
 **Imaging policy:** do not acquire repeated ionizing scans solely to make a dense time series by default. In preclinical work, evaluate whether serial imaging, endpoint-only imaging, and sham-imaged controls are needed to quantify imaging effects. In people, use existing/clinically indicated images unless an ethics-reviewed protocol separately justifies additional exposure. The IADT guideline is a care guideline, not permission for a research imaging schedule.
 
+## Functional mobility assay selection
+
+Position and function need separate readouts. A tooth can occupy the target pose
+while its attachment is ankylosed, or retain a physiologic-looking mobility
+score while sitting in the wrong pose. The assay stack should therefore pair a
+root/socket position measure with a calibrated mechanical response and a
+tissue-level attachment check.
+
+| Method | Direct readout | Evidence and fit | Limit | Role in this program |
+|---|---|---|---|---|
+| Periotest-type impact damping | Contact-time/damping-derived scalar after a defined crown impact | In a primary study, association with tooth deflection was stronger in teeth with clinical mobility (R² 0.79–0.91) than in healthy subjects (R² 0.43–0.54); associations improved above 1 N, consistent with sensitivity to secondary movement. | It is principally a damping measure, not a full force–displacement curve; its relation to displacement depends on baseline mobility and tooth class. | Secondary repeatable screen alongside direct mechanics; never a stand-alone regeneration or ankylosis discriminator. |
+| Calibrated force with direct displacement measurement | Displacement under a recorded load; ideally directional crown and root/socket motion | A 19-person study measured force-related three-dimensional mobility in 3 N increments and found tooth-class-dependent correlation with Periotest. A separate 44-tooth root-fracture cohort measured labiolingual excursion under a 100 g impact longitudinally and found mobility trajectories related to healing type and age. | The first cohort had periodontal involvement; the second had root fractures. Neither establishes a validated loading range or acceptance threshold for blunt-force subluxation/lateral luxation restoration. | Primary functional bench endpoint: report the measured force–displacement path and recovery, then qualify repeatability in an ex-vivo tooth/socket fixture before any in-vivo use. |
+| Root/socket pose imaging | Static tooth pose relative to an unaffected jaw frame | Detects whether the tooth remains at its declared target pose, with root and crown reported separately. | Does not show whether the PDL dissipates load or has been replaced by bone; crown-only surface scans cannot establish root pose. | Structural position endpoint, paired with mechanics. |
+| Attachment histology and tissue identity | Cementum continuity, inserting fibers, ligament space, bone interface, ankylosis/resorption | Can establish whether the intended interfaces and adverse tissue states are present. | Terminal or tissue-sampling evidence; does not by itself establish loaded function or durable position. | Biological confirmation and safety gate, not a substitute for pose or mechanics. |
+
+**Selection decision:** use known-force displacement as the primary functional
+measurement and Periotest as a lower-burden secondary measure. First validate
+the displacement sensors and fixture compliance with truth-known ex-vivo
+controls; then test whether repeated loading/unloading reveals recovery and
+energy dissipation in intact reference attachments versus bone-bridged
+controls. Do not borrow a force value from the root-fracture or mobility
+cohorts as a target for a new model, and do not set a single PTV threshold from
+implant or tooth-class-specific references. The literature does not supply a
+trauma-restoration pass threshold. [Rosenberg et al., 1995](https://pubmed.ncbi.nlm.nih.gov/7568735/);
+[Goellner et al., 2013](https://pubmed.ncbi.nlm.nih.gov/23479581/);
+[Andreasen et al., 2012](https://doi.org/10.1111/j.1600-9657.2011.01107.x).
+
 ## Qualification sequence and pass rules
 
 1. **Lock the estimand and coordinate convention.** Fix axis signs, units, tooth pose representation, baseline source, target tooth, registration mask, support states, and timepoints before reading treatment outcomes. Store all six pose components; a single “distance from ideal” number can hide direction and tipping.
