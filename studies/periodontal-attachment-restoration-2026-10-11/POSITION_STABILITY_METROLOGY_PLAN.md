@@ -136,5 +136,6 @@ Start with an ex-vivo known-motion phantom and blinded repeat registration using
 - Adult-rat subluxation and occlusal-loading periodontal-repair model, 90 Wistar rats, 7- and 21-day endpoints. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/28208234/).
 - Separate 2024 90-rat subluxation study focused on pulp–dentin response, not PDL position or function. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/38420008/).
 - Adult-rat extrusive-luxation model validation, with acute 1- and 3-day histology but no baseline-registered position-recovery endpoint. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/29214377/).
+- Immature-rat lateral luxation studies establish a horizontal-displacement injury precedent; a later study used 3D micro-CT but reported root fracture and resorption, not validated baseline-to-follow-up pose restoration. [1991 study](https://pubmed.ncbi.nlm.nih.gov/1915123/) · [2017 study](https://doi.org/10.1016/j.pdj.2017.08.001).
 - Adult-rat force calibration for experimental subluxation; 900 cN was reported compatible with subluxation, but groups were n=3 and the endpoint was immediate histology. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/20089060/).
 - Experimental immature-rat intrusive-luxation model with micro-CT and histology through 90 days. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/32771418/).
