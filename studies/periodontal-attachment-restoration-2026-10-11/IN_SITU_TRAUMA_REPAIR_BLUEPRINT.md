@@ -47,7 +47,10 @@ native attachment or pulp recovery. [Busato et al., 2014](https://pubmed.ncbi.nl
 | PDL cell sheet | Delayed canine replantation; the study reports favourable histologic healing in 88.4% with multilayer PDL cell sheets versus 5.3% in controls at 8 weeks, with new PDL and cementum. | Cell delivery can improve attachment healing in a severe replantation model. | No regenerative intervention comparison in an in-socket injury model, durable function, or position after fixation withdrawal. [Study](https://pubmed.ncbi.nlm.nih.gov/21907971/) |
 | Endogenous cell homing | Beagle roots had PDL stripped, were air-dried, decoronated, and replanted; EDTA plus SDF1/BMP7 coating produced complete histologic healing in 5/12 roots at 6 months. The remaining treated roots still showed some ankylosis or resorption. | Local recruitment signals plus root-surface conditioning can produce inserted collagen fibers and vascularized PDL-like tissue without cell expansion. | Three dogs supplied the roots; root-level results are clustered within animals. SDF1, BMP7, EDTA, and release kinetics were not separated; complete healing was below half. [Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC4647325/) |
 | In-socket subluxation healing | Ninety Wistar rats received a measured impact injury, with or without traumatic occlusion, and were examined at 7 or 21 days. Added traumatic occlusion delayed repair and altered PDL width, collagen, and bone area. | A direct retained-tooth impact model exists; occlusal loading is a design variable, not a nuisance to ignore. | No regenerative intervention, pretreatment coordinate tracking, long-term mechanics, or post-stabilization position endpoint. [Study](https://pubmed.ncbi.nlm.nih.gov/28208234/) |
+| Subluxation model calibration | Eighteen adult Wistar rats were assigned to six force groups (n=3); 900 cN produced gingival/periodontal changes judged compatible with subluxation, while 1000 cN caused fractures. | Provides a published force-calibration starting point for a retained-tooth injury model. | Small groups and immediate histology; force is not a transferable dose across devices/species, and no baseline-registered displacement or long-term repair was measured. [Study](https://pubmed.ncbi.nlm.nih.gov/20089060/) |
 | In-socket subluxation plus induced movement | Forty adult rats were assigned to eight groups; after a 900 cN impact, 50 cN induced tooth movement began at day 1 or 3. Histologic periodontal response in these groups was similar to movement-only animals. | Tests a direct force-after-impact question and cautions against assuming added tooth movement improves periodontal repair. | It did not measure return to pretreatment pose, root-level 3D position, load-bearing recovery, or durability after support removal; n=5/group. [Study](https://pubmed.ncbi.nlm.nih.gov/24713565/) |
+| Subluxation pulp response | Ninety Wistar rats were assigned to naïve, subluxation, and subluxation-plus-traumatic-occlusion groups and examined at 7 or 21 days. Several pulp changes normalized by day 21, while traumatic occlusion was associated with more pulp calcification and inflammatory changes. | Shows that pulp recovery and PDL repair need separate outcome modules; occlusal loading can alter pulp response as well. | This study focuses on the pulp–dentin complex, not tooth pose or functional PDL restoration. [Study](https://pubmed.ncbi.nlm.nih.gov/38420008/) |
+| Extrusive-luxation model validation | Forty adult Wistar rats received one of three applied extrusion forces and were examined histologically after 1 or 3 days; PDL bleeding increased with force, and 1500 cN produced the greatest damage. | A distinct model can create acute PDL injury under extrusive loading, making it a candidate for the displaced-tooth track. | Acute histology only; no serial tooth-position measurement, restoration, functional attachment, or post-support durability endpoint. [Study](https://pubmed.ncbi.nlm.nih.gov/29214377/) |
 | Immature in-socket intrusion | A 20 N intrusion model in 3-week-old rats tracked micro-CT and histology from 3 to 90 days; spontaneous re-eruption occurred during follow-up. | Supplies a distinct positional natural-history model and shows that eruption/position can change after injury. | Immature molars are not mature adult teeth; re-eruption does not establish native PDL mechanics, and pulp changes, ankylosis, and replacement resorption were also reported. [Study](https://doi.org/10.1016/j.joen.2020.07.031) |
 | Human subluxation natural history | A longitudinal permanent-tooth cohort included 404 subluxated teeth; among mature-root teeth, 3-year risks were 3.6% for surface resorption, 0.6% for infection-related resorption, 0.6% for ankylosis-related resorption, and 0.6% for marginal bone loss. No teeth were lost during observation. | Mild in-socket injuries often have a strong natural-healing baseline; any regenerative adjunct must outperform matched standard-care healing. | Observational cohort with clinically managed injuries; it does not establish molecular mechanisms or post-stabilization mechanics. [Study](https://pubmed.ncbi.nlm.nih.gov/22804794/) |
 | Human extrusive/lateral luxation natural history | A longitudinal cohort followed 82 extrusive and 179 lateral luxations, with scheduled reviews through 10 years. At 3 years in mature-root teeth, surface resorption was 15.6% after extrusion and 29.5% after lateral luxation; ankylosis-related resorption was rare. | Stratify by displacement pattern and root maturity; these injuries have a different natural history from simple subluxation. | Observational clinical outcomes; no regenerative intervention or direct force–displacement recovery endpoint. [Study](https://pubmed.ncbi.nlm.nih.gov/22971023/) |
@@ -62,6 +65,29 @@ native attachment or pulp recovery. [Busato et al., 2014](https://pubmed.ncbi.nl
 These are preclinical feasibility signals across different injury models and
 endpoints. Their percentages must not be pooled or described as human success
 rates.
+
+## Model selection for impact-related loosening and displacement
+
+Choose the model by the injury phenotype and keep the inference bounded:
+
+| Target injury | Best current model family | What it can answer now | Required additions before it answers restoration |
+|---|---|---|---|
+| A loosened tooth that remains in its socket | Adult retained-tooth subluxation, with force calibration and a no-added-occlusal-trauma arm | Whether an intervention changes repair of native-root PDL after impact | Same-modality baseline and follow-up tooth/root pose, attachment and pulp outcomes, mechanics, plus durability after temporary support withdrawal |
+| A tooth shifted or tilted within its socket | A separately qualified luxation model; the adult-rat extrusion model is a starting candidate, while immature intrusion supplies a different natural-history case | Acute tissue injury after a defined displacement-direction class; intrusion data also show spontaneous positional change can occur | Confirm and quantify actual displacement, register six-degree-of-freedom tooth pose, use mature-root-relevant models where possible, and measure PDL function and post-support stability over longer follow-up |
+| Severe loss of viable root-surface PDL | Delayed replantation / stripped-root model | Whether a root-surface cell or homing strategy can rebuild attachment under severe injury | Keep as an attachment positive control; do not use its results as evidence for in-socket pose restoration |
+
+The 2010 subluxation calibration study is only a starting point: it used three
+animals per force level and immediate histology. Its reported force should not
+be copied as a dose for another apparatus or species. The adult-rat extrusion
+study adds a distinct displacement-class candidate, but its 1- and 3-day
+histology does not establish how far the tooth moved or whether it returned to
+its original pose. The 2024 90-rat study is a pulp–dentin response study, while
+the similar-sized 2017 study supplies the periodontal repair outcomes; these
+complement one another but must not be conflated. [Subluxation calibration,
+2010](https://pubmed.ncbi.nlm.nih.gov/20089060/); [periodontal repair,
+2017](https://pubmed.ncbi.nlm.nih.gov/28208234/); [pulp response,
+2024](https://pubmed.ncbi.nlm.nih.gov/38420008/); [extrusive model,
+2018](https://pubmed.ncbi.nlm.nih.gov/29214377/).
 
 ## Consequence for the no-permanent-retention goal
 
@@ -180,13 +206,14 @@ external force to hold alignment has not met the requested restoration target.
    now in the organoid track. Next, qualify image/mechanics measurement
    repeatability, biological-unit metadata, and donor-matched healthy reference
    distributions before freezing numeric thresholds.
-3. Qualify the published rat subluxation-impact model and an intrusive-luxation
-   model against the target injury classes. The 2014 post-subluxation movement
-   study did not improve histologic repair over movement-only controls, and
-   the immature intrusion model reports spontaneous re-eruption alongside
-   tissue complications. Determine whether either has reproducible
-   baseline-registered position and post-support durability data; do not
-   silently substitute replantation outcomes for this measure.
+3. Qualify the adult-rat subluxation and extrusion models against distinct
+   injury classes. The subluxation calibration has small force groups, and the
+   extrusion model has only acute histology; neither supplies baseline-registered
+   pose recovery or post-support durability. Keep the immature intrusion model
+   as a separate developmental natural-history track. The 2014 post-subluxation
+   movement study did not improve histologic repair over movement-only
+   controls. Do not silently substitute replantation outcomes for in-socket
+   restoration.
 4. Pre-register the minimum animal-level design only after the ex-vivo assay
    demonstrates repeatable mechanical and ankylosis discrimination.
 

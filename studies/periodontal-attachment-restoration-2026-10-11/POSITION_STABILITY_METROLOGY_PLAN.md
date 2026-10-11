@@ -133,5 +133,8 @@ Start with an ex-vivo known-motion phantom and blinded repeat registration using
 
 - Kubota R, et al. *Analysis of Three-Dimensional Tooth Movement: A Comparative Study Between Digital Dental Models and Craniofacial Models.* 2024. [Full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC11405094/) · [DOI](https://doi.org/10.7759/cureus.67094).
 - Bourguignon C, et al. *International Association of Dental Traumatology guidelines for the management of traumatic dental injuries: 1. Fractures and luxations.* 2020. [AAPD-hosted guideline](https://www.aapd.org/research/oral-health-policies--recommendations/guidelines-for-the-management-of-traumatic-dental-injuries-1-fracture-and-luxations-or-permanent-teeth/) · [DOI](https://doi.org/10.1111/edt.12578).
-- Experimental subluxation and occlusal-loading model, 90 Wistar rats, 7- and 21-day endpoints. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/38420008/).
+- Adult-rat subluxation and occlusal-loading periodontal-repair model, 90 Wistar rats, 7- and 21-day endpoints. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/28208234/).
+- Separate 2024 90-rat subluxation study focused on pulp–dentin response, not PDL position or function. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/38420008/).
+- Adult-rat extrusive-luxation model validation, with acute 1- and 3-day histology but no baseline-registered position-recovery endpoint. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/29214377/).
+- Adult-rat force calibration for experimental subluxation; 900 cN was reported compatible with subluxation, but groups were n=3 and the endpoint was immediate histology. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/20089060/).
 - Experimental immature-rat intrusive-luxation model with micro-CT and histology through 90 days. [PubMed record](https://pubmed.ncbi.nlm.nih.gov/32771418/).
