@@ -197,6 +197,17 @@ Use a known-geometry benchmark to test reconstruction before interpreting an
 individual photograph. No geometric rendering or thin coating establishes
 restoration of original tooth substance.
 
+First checkpoint (2026-10-17): the
+[public micro-CT silhouette pilot](../periodontal-attachment-restoration-2026-10-11/TOOTH_TARGET_RECONSTRUCTION_PILOT.md)
+ran 21 fixed configurations on one sampled pre-instrumentation tooth. Its
+simple three-axis baseline matches supplied outlines exactly while retaining
+20.5-21.2% excess volume across segmentation thresholds. This is a coarse
+geometry counterexample; reference intactness, real-photo performance and
+internal tissue boundaries remain unqualified. The
+[materials comparison](../periodontal-attachment-restoration-2026-10-11/ENAMEL_SCALE_AND_INTERFACE_COMPARISON.md)
+adds verified repeat-cycle enamel thickening and keeps depth, substrate,
+interface function and bulk reconstruction as distinct questions.
+
 **Completion gate:** every damaged domain has an explicit target, evidence
 role, uncertainty, functional readout and falsifier. A component-only result
 remains component-only until geometry, hard tissues, pulp, attachment, gingiva

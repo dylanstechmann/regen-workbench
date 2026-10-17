@@ -89,6 +89,10 @@ It is a set of qualified leads, not a clinical efficacy ranking.
   acid challenges. This supports investigating host-integrated mineral
   growth; it does not demonstrate millimetre-scale crown reconstruction or
   long-term treatment outcomes in people. [Primary article](https://www.nature.com/articles/s41467-025-64982-y).
+- **Repeat-cycle thickening:** Shao et al. (2019), supplementary Figure S10,
+  show approximately 5 and 10 micrometre layers after two and four cycles.
+  This supplies a scale-up lead while leaving bulk reconstruction unresolved.
+  [Primary article](https://doi.org/10.1126/sciadv.aaw9569).
 - **Enamel-forming cells:** Patni et al. (2026) report human iPSC-derived
   ameloblast organoids producing enamel-like calcified material under a mouse
   kidney capsule. That provides a cell-development lead; it does not establish
@@ -167,3 +171,11 @@ Separately benchmark material candidates by demonstrated depth, volume and
 interface performance. Do not use a rendered surface or a predicted thickness
 map as evidence of biological regeneration. Actual historical photographs can
 then supply individual constraints when privately available and suitable.
+
+The first [public-data silhouette pilot](TOOTH_TARGET_RECONSTRUCTION_PILOT.md)
+is now complete: one pre-instrumentation scan, with intactness unqualified,
+provides a coarse outer-envelope reference. Three perfect outlines still
+permit approximately 21% excess reconstructed volume for this baseline.
+This establishes a failure case, not validated photo reconstruction or enamel
+thickness recovery. The [depth/interface comparison](ENAMEL_SCALE_AND_INTERFACE_COMPARISON.md)
+now distinguishes single-layer, repeated-layer and cell-generated evidence.
