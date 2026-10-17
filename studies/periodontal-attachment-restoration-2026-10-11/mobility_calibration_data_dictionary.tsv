@@ -1,0 +1,16 @@
+field	meaning	allowed_values_or_units	validation_notes
+calibration_id	Identifier for one reference-calibration session	Nonblank text	One calibration ID per analysis run
+channel	Measurement channel being checked	force or displacement	Force requires N; displacement requires mm
+instrument_id	Installed sensor or instrument identifier	Nonblank text	One instrument per channel in one run
+reference_id	Independent reference instrument or standard identifier	Nonblank text	One reference per channel in one run
+reference_certificate_id	Certificate or traceability-record identifier for the reference	Nonblank text	Record certificate date, scope, and uncertainty separately
+pipeline_id	Frozen acquisition and conversion pipeline identifier	Nonblank text	One pipeline per analysis run; change it when conversion or filtering changes
+point_id	Reference level identifier within a channel	Nonblank text	Must map to the same reference value and uncertainty throughout the run
+replicate_id	Unique repeated reading within a point, direction, rate, and timepoint	Nonblank text	At least two replicates per group; no duplicate IDs within a group
+direction	Direction or state used to reach the point	Nonblank text; e.g. ascending, descending, zero_return	Keep sign convention and physical definition in the calibration record
+rate_id	Declared motion or loading rate condition	Nonblank text; e.g. static, rate_01	Define the numeric rate and waveform in the calibration record
+timepoint	Calibration timing relative to the measurement session	pre or post	Every matched point/direction/rate requires both
+reference_value	Known value supplied by the independent reference	N for force; mm for displacement	Finite numeric value
+indicated_value	Value reported by the installed channel and frozen pipeline	N for force; mm for displacement	Finite numeric value; no post hoc correction unless separately versioned
+reference_uncertainty	Standard uncertainty associated with the reference value	Same unit as channel; nonnegative	Reported but not combined with observed error by this tool
+unit	Unit for both reference and indicated values	N for force; mm for displacement	Must match the channel

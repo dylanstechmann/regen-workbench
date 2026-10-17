@@ -1,0 +1,38 @@
+{
+  "method_version": "0.1.0",
+  "input_sha256": "38fc6a378aaba4378585851131224021b5874905b19fe08677806813fe4073b2",
+  "calibration_id": "synthetic_cal_v0",
+  "pipeline_id": "pipeline_v0",
+  "criteria_id": null,
+  "locked_before_outcome_review": null,
+  "overall_status": "not_assessed",
+  "channels": {
+    "displacement": {
+      "unit": "mm",
+      "n_calibration_groups": 4,
+      "n_matched_pre_post_points": 2,
+      "max_abs_group_bias": 0.0020000000000000018,
+      "max_group_rmse": 0.008406346808612335,
+      "max_repeatability_coefficient_95": 0.027718585822512687,
+      "max_abs_pre_post_drift": 0.0020000000000000018,
+      "status": "not_assessed"
+    },
+    "force": {
+      "unit": "N",
+      "n_calibration_groups": 4,
+      "n_matched_pre_post_points": 2,
+      "max_abs_group_bias": 0.010000000000000083,
+      "max_group_rmse": 0.08225975119502052,
+      "max_repeatability_coefficient_95": 0.27718585822512687,
+      "max_abs_pre_post_drift": 0.010000000000000675,
+      "status": "not_assessed"
+    }
+  },
+  "interpretation_limits": [
+    "This report audits reference-based calibration points; it is not a calibration certificate or an independent accreditation.",
+    "Reference uncertainty is reported but not combined with the observed errors; include it in the study uncertainty budget.",
+    "The repeatability coefficient is 1.96*sqrt(2)*sample SD within each point group; it can be unstable with few replicates.",
+    "Results cover only the channels, levels, directions, rates, instruments, references, and pipeline present in this file.",
+    "A pass does not establish fixture compliance correction, biological validity, or suitability of any injury force."
+  ]
+}

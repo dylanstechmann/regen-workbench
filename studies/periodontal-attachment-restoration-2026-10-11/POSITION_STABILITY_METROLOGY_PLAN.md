@@ -93,6 +93,24 @@ Published human PDL measurements show that measured force response changes
 with activation velocity, so waveform, loading rate, and time alignment belong
 in the measurement contract; those values are not transferable injury doses.
 
+Reference-based force and displacement calibration records can be checked with
+[`analyze_force_displacement_calibration.py`](analyze_force_displacement_calibration.py),
+using the field definitions in
+[`mobility_calibration_data_dictionary.tsv`](mobility_calibration_data_dictionary.tsv).
+The included calibration rows are invented software QA data only. Run them
+without thresholds to produce a `not_assessed` report:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_force_displacement_calibration.py `
+  --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_mobility_calibration.tsv `
+  --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_mobility_calibration
+```
+
+The analyzer reports calibration-point bias, RMSE, repeatability, and matched
+pre/post drift. Numeric pass limits must be justified and locked before outcome
+review; this calculation does not qualify the fixture or select a biological
+loading level.
+
 ## Qualification sequence and pass rules
 
 1. **Lock the estimand and coordinate convention.** Fix axis signs, units, tooth pose representation, baseline source, target tooth, registration mask, support states, and timepoints before reading treatment outcomes. Store all six pose components; a single “distance from ideal” number can hide direction and tipping.

@@ -101,6 +101,27 @@ source file. Calibration identifiers in
 [`mobility_response_data_dictionary.tsv`](mobility_response_data_dictionary.tsv)
 must resolve to these records.
 
+The point-level input schema is defined in
+[`mobility_calibration_data_dictionary.tsv`](mobility_calibration_data_dictionary.tsv).
+[`analyze_force_displacement_calibration.py`](analyze_force_displacement_calibration.py)
+checks reference-based point groups, within-group repeatability, and matched
+pre/post drift for the force and displacement channels. Run the included
+[`synthetic_mobility_calibration.tsv`](examples/synthetic_mobility_calibration.tsv)
+from the repository root to verify the software path:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_force_displacement_calibration.py `
+  --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_mobility_calibration.tsv `
+  --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_mobility_calibration
+```
+
+The example uses invented values and has no acceptance criteria, so its status
+is `not_assessed`. For physical calibration records, provide numeric limits in
+a criteria JSON only after the study team freezes them before outcome review.
+Even then, a software `pass` is a screening result against those entered limits,
+not an accredited calibration certificate or completion of the full fixture
+qualification protocol.
+
 After qualification, the
 [`analyze_mobility_response.py`](analyze_mobility_response.py) script can
 summarize traces using the frozen calibration and pipeline identifiers. Its
