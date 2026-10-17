@@ -172,6 +172,10 @@ those biological/material endpoints.
 
 ## Reproduce and credit
 
+Follow-up: the [additional-specimen transport check](TOOTH_PATCH_TRANSPORT_REPORT.md)
+keeps these settings fixed on M3#88 and M3#90. It retains the mixed direction
+of the internal-imaging comparison and source mesh defects.
+
 With the source reference fetched by `analyze_paired_tooth_surfaces.py --fetch`
 and NumPy available, run from the repository:
 

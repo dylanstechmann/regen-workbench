@@ -1,0 +1,174 @@
+{
+  "status": "frozen before new specimen patch outcomes; not independently preregistered",
+  "development_specimen": 83,
+  "pilot_plan_sha256": "7679ef1373865b625c6741af2aabc066b4293373292ea23a4fc11982b88ea716",
+  "selection": "all remaining Table1 adult maturation-H wear-1 specimens without dataset reconstructed-tip flag",
+  "primary_doi": "10.1371/journal.pone.0159688",
+  "dataset_doi": "10.18563/m3.2.1.e1",
+  "settings": {
+    "grid_spacing_mm": 0.125,
+    "center_fractions_xy": [
+      [
+        0.35,
+        0.5
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.65,
+        0.5
+      ]
+    ],
+    "patch_radii_mm": [
+      0.4,
+      0.8,
+      1.2
+    ],
+    "support_inner_margin_mm": 0.15,
+    "support_outer_margin_mm": 1.0,
+    "methods": [
+      "exterior_plane",
+      "exterior_quadratic",
+      "internal_imaging_plane_residual",
+      "internal_imaging_quadratic_residual"
+    ],
+    "minimum_support_points": 12,
+    "maximum_design_condition_number": 10000000000.0
+  },
+  "orientation": "source pose; no mirroring; fractional locations are computational, not homologous anatomical landmarks",
+  "decision_rule": "report each specimen and all failures; no pooling patches as independent specimens; no retuning",
+  "specimens": [
+    {
+      "model_id": 88,
+      "specimen_identifier": "GLN04-289B-URM2",
+      "age_years_source_table1": ">30",
+      "sex_source_table1": "F",
+      "maturation": "H",
+      "wear_stage": 1,
+      "reconstructed_tip_flag": false,
+      "archive_bytes": 4692371,
+      "archive_sha256": "f506e17f4ab0ae7e63da962a794636607611418fa89e3e08b66498bdace0a367",
+      "url": "https://www.morphomuseum.com/specimenfiles/send-file-specimenfile/88",
+      "doi": "10.18563/m3.sf.88",
+      "mesh_audits": {
+        "OES": {
+          "vertices": 156995,
+          "faces": 313201,
+          "unique_edges": 470196,
+          "boundary_edges": 789,
+          "boundary_vertices": 788,
+          "boundary_vertex_degree_not_two": 1,
+          "nonmanifold_edges": 0,
+          "inconsistent_internal_edge_winding": 0,
+          "zero_area_triangles": 0,
+          "area_mm2_nominal": 247.2985424112159,
+          "raw_axis_extents_mm_nominal": [
+            10.812303533174038,
+            10.434212453276157,
+            6.185695508358002
+          ],
+          "watertight": false,
+          "not_checked": [
+            "self-intersection",
+            "independent segmentation correctness",
+            "raw-scan registration"
+          ]
+        },
+        "EDJ": {
+          "vertices": 90678,
+          "faces": 180565,
+          "unique_edges": 271242,
+          "boundary_edges": 789,
+          "boundary_vertices": 788,
+          "boundary_vertex_degree_not_two": 1,
+          "nonmanifold_edges": 0,
+          "inconsistent_internal_edge_winding": 0,
+          "zero_area_triangles": 0,
+          "area_mm2_nominal": 138.4296022883714,
+          "raw_axis_extents_mm_nominal": [
+            9.956197912227392,
+            8.003880298626425,
+            4.729995833154682
+          ],
+          "watertight": false,
+          "not_checked": [
+            "self-intersection",
+            "independent segmentation correctness",
+            "raw-scan registration"
+          ]
+        }
+      },
+      "shared_pose": true,
+      "readme_members": [
+        "readme_sf88.txt"
+      ]
+    },
+    {
+      "model_id": 90,
+      "specimen_identifier": "GLN05-292-URM2",
+      "age_years_source_table1": "20-29",
+      "sex_source_table1": "F",
+      "maturation": "H",
+      "wear_stage": 1,
+      "reconstructed_tip_flag": false,
+      "archive_bytes": 4821965,
+      "archive_sha256": "ddb7c6a7ea7b35bc383920b44e0417f33efc22962f7e449bcd591a391299b61f",
+      "url": "https://www.morphomuseum.com/specimenfiles/send-file-specimenfile/90",
+      "doi": "10.18563/m3.sf.90",
+      "mesh_audits": {
+        "OES": {
+          "vertices": 156312,
+          "faces": 311632,
+          "unique_edges": 467942,
+          "boundary_edges": 990,
+          "boundary_vertices": 990,
+          "boundary_vertex_degree_not_two": 0,
+          "nonmanifold_edges": 1,
+          "inconsistent_internal_edge_winding": 0,
+          "zero_area_triangles": 0,
+          "area_mm2_nominal": 262.2264938794649,
+          "raw_axis_extents_mm_nominal": [
+            11.689989351073265,
+            10.717298138067246,
+            6.681098478089332
+          ],
+          "watertight": false,
+          "not_checked": [
+            "self-intersection",
+            "independent segmentation correctness",
+            "raw-scan registration"
+          ]
+        },
+        "EDJ": {
+          "vertices": 91910,
+          "faces": 182828,
+          "unique_edges": 274737,
+          "boundary_edges": 990,
+          "boundary_vertices": 990,
+          "boundary_vertex_degree_not_two": 0,
+          "nonmanifold_edges": 0,
+          "inconsistent_internal_edge_winding": 0,
+          "zero_area_triangles": 0,
+          "area_mm2_nominal": 162.23714087964498,
+          "raw_axis_extents_mm_nominal": [
+            11.144188001499653,
+            8.43853418329239,
+            5.444960830272674
+          ],
+          "watertight": false,
+          "not_checked": [
+            "self-intersection",
+            "independent segmentation correctness",
+            "raw-scan registration"
+          ]
+        }
+      },
+      "shared_pose": true,
+      "readme_members": [
+        "readme_sf90.txt"
+      ]
+    }
+  ]
+}

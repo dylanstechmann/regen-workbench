@@ -1,0 +1,138 @@
+{
+  "additional_specimens": 2,
+  "frozen_intake_sha256": "30c3f3820ffcc1597fa80fc51232ce01ca1c5e00f09734bc0e26b502a9cd62ee",
+  "independent_source_collections": 1,
+  "results": [
+    {
+      "model_id": 88,
+      "specimen_identifier": "GLN04-289B-URM2",
+      "means": {
+        "exterior_plane": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.35471818850598325
+        },
+        "exterior_quadratic": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.1551757821227629
+        },
+        "internal_imaging_plane_residual": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.1902118088859387
+        },
+        "internal_imaging_quadratic_residual": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.1529838279722882
+        }
+      },
+      "quadratic_paired_differences": [
+        {
+          "case_id": "location1_r0.4",
+          "informed_minus_exterior_mae_mm": 0.027785880329130375
+        },
+        {
+          "case_id": "location1_r0.8",
+          "informed_minus_exterior_mae_mm": 0.00028826591318009687
+        },
+        {
+          "case_id": "location1_r1.2",
+          "informed_minus_exterior_mae_mm": -0.004104023823413239
+        },
+        {
+          "case_id": "location2_r0.4",
+          "informed_minus_exterior_mae_mm": -0.001353491073275731
+        },
+        {
+          "case_id": "location2_r0.8",
+          "informed_minus_exterior_mae_mm": -0.007765856555856515
+        },
+        {
+          "case_id": "location2_r1.2",
+          "informed_minus_exterior_mae_mm": -0.0546144791219933
+        },
+        {
+          "case_id": "location3_r0.4",
+          "informed_minus_exterior_mae_mm": -0.006525147554057753
+        },
+        {
+          "case_id": "location3_r0.8",
+          "informed_minus_exterior_mae_mm": 0.021436736561094932
+        },
+        {
+          "case_id": "location3_r1.2",
+          "informed_minus_exterior_mae_mm": 0.0051245279709190295
+        }
+      ],
+      "scored_comparisons": 36
+    },
+    {
+      "model_id": 90,
+      "specimen_identifier": "GLN05-292-URM2",
+      "means": {
+        "exterior_plane": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.27680936740517015
+        },
+        "exterior_quadratic": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.16214668379047392
+        },
+        "internal_imaging_plane_residual": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.2676059779256399
+        },
+        "internal_imaging_quadratic_residual": {
+          "scored": 9,
+          "total": 9,
+          "mean_patch_mae_mm": 0.22576070802314863
+        }
+      },
+      "quadratic_paired_differences": [
+        {
+          "case_id": "location1_r0.4",
+          "informed_minus_exterior_mae_mm": -0.010197911950051389
+        },
+        {
+          "case_id": "location1_r0.8",
+          "informed_minus_exterior_mae_mm": 0.0762906252180916
+        },
+        {
+          "case_id": "location1_r1.2",
+          "informed_minus_exterior_mae_mm": 0.02684716121577152
+        },
+        {
+          "case_id": "location2_r0.4",
+          "informed_minus_exterior_mae_mm": -0.008563330879559489
+        },
+        {
+          "case_id": "location2_r0.8",
+          "informed_minus_exterior_mae_mm": -0.004350993356775745
+        },
+        {
+          "case_id": "location2_r1.2",
+          "informed_minus_exterior_mae_mm": -0.012613962035539439
+        },
+        {
+          "case_id": "location3_r0.4",
+          "informed_minus_exterior_mae_mm": 0.11547624455725225
+        },
+        {
+          "case_id": "location3_r0.8",
+          "informed_minus_exterior_mae_mm": 0.1815425592065401
+        },
+        {
+          "case_id": "location3_r1.2",
+          "informed_minus_exterior_mae_mm": 0.20809582611834299
+        }
+      ],
+      "scored_comparisons": 36
+    }
+  ],
+  "qualification": "same-collection transport check; no population inference or clinical margin"
+}

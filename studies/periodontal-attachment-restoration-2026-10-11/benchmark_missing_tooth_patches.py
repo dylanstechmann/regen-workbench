@@ -1,14 +1,15 @@
 """Withheld tooth top-envelope patches: exterior and internal-imaging baselines.
 
-One source specimen; synthetic digital omissions. Generic local polynomial
+One source specimen per invocation; synthetic digital omissions. Generic local polynomial
 fits do not imply enamel growth, exact historical recovery or clinical repair.
-Source-derived outputs: Le Luyer et al. 2016, M3#83, CC BY-NC 4.0.
+Source-derived outputs: Le Luyer et al. 2016, source model in plan, CC BY-NC 4.0.
 """
 from __future__ import annotations
 
 import argparse
 import csv
 import hashlib
+import html
 import importlib.util
 import json
 import math
@@ -131,7 +132,8 @@ def score_heights(prediction: np.ndarray, truth: np.ndarray, cell_area: float) -
             "deficit_envelope_volume_mm3": float(np.maximum(-errors, 0).sum() * cell_area)}
 
 
-def error_map(case: dict, truth: np.ndarray, spacing: float, output: Path) -> None:
+def error_map(case: dict, truth: np.ndarray, spacing: float, output: Path,
+              source_label: str = "M3#83 GLN04-252-ULM2") -> None:
     methods = ["exterior_quadratic", "internal_imaging_quadratic_residual"]
     errors = [case["predictions"][m] - truth for m in methods]
     finite = np.concatenate([e[np.isfinite(e)] for e in errors])
@@ -156,7 +158,7 @@ def error_map(case: dict, truth: np.ndarray, spacing: float, output: Path) -> No
                 color = "#" + "".join(f"{v:02x}" for v in rgb)
             parts.append(f'<rect x="{left+x:.2f}" y="{105+y:.2f}" width="{spacing*scale:.2f}" height="{spacing*scale:.2f}" fill="{color}"/>')
     parts += [f'<text x="20" y="350" font-size="13">Shared scale: +/-{limit:.1f} mm vertical error. Orange: excess; blue: deficit; gray: unavailable.</text>',
-              '<text x="20" y="375" font-size="12">M3#83 GLN04-252-ULM2; geometry test, not regenerated tooth material.</text>',
+              f'<text x="20" y="375" font-size="12">{html.escape(source_label)}; geometry test, not regenerated tooth material.</text>',
               '<text x="20" y="397" font-size="10">Le Luyer et al. 2016; Osteotheque de Pessac, Universite de Bordeaux; curator S. Rottier. CC BY-NC 4.0.</text>',
               '</g></svg>']
     output.write_text("\n".join(parts) + "\n", encoding="utf-8", newline="\n")
@@ -166,21 +168,26 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--plan", type=Path, default=HERE / "patch_reconstruction_plan.json")
     parser.add_argument("--out", type=Path, default=HERE / "derived" / "missing_tooth_patches")
+    parser.add_argument("--archive", type=Path, default=reference.ARCHIVE)
     args = parser.parse_args()
     # Hash text in canonical UTF-8/LF form so Git checkout newline settings
     # cannot invalidate otherwise identical prediction/plan receipts.
     plan_raw = args.plan.read_text(encoding="utf-8").encode("utf-8")
     plan = json.loads(plan_raw)
-    raw = reference.ARCHIVE.read_bytes()
+    raw = args.archive.read_bytes()
     source_hash = hashlib.sha256(raw).hexdigest()
-    if source_hash != plan["archive_sha256"] or source_hash != reference.SOURCE_SHA256:
+    if source_hash != plan["archive_sha256"]:
         raise ValueError("Source does not match the recorded plan")
+    model_id = plan.get("model_id", 83)
+    identifier = plan.get("specimen_identifier", reference.IDENTIFIER)
+    if model_id == 83 and source_hash != reference.SOURCE_SHA256:
+        raise ValueError("Development specimen does not match its pinned archive")
     meshes = {}
-    with zipfile.ZipFile(reference.ARCHIVE) as archive:
+    with zipfile.ZipFile(args.archive) as archive:
         for role in ("OES", "EDJ"):
-            base = f"M3#83/{reference.IDENTIFIER}_{role}"
+            base = f"M3#{model_id}/{identifier}_{role}"
             vertices, faces = reference.read_ply(archive.read(base + ".ply"))
-            pose = reference.read_pose(archive.read(base + "_M3_83.pos"))
+            pose = reference.read_pose(archive.read(base + f"_M3_{model_id}.pos"))
             meshes[role] = (reference.transform(vertices, pose), faces)
     vertices, faces = meshes["OES"]
     lo, hi = vertices[:, :2].min(axis=0), vertices[:, :2].max(axis=0)
@@ -248,7 +255,7 @@ def main() -> None:
             rows.append({"case_id": case["case_id"], "radius_mm": case["radius"], "method": method,
                          **score_heights(prediction, truth, spacing ** 2)})
         if case["case_id"] == "location2_r0.8":
-            error_map(case, truth, spacing, args.out / "fixed_patch_error_map.svg")
+            error_map(case, truth, spacing, args.out / "fixed_patch_error_map.svg", plan["source_model"])
     with (args.out / "patch_errors.tsv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]), delimiter="\t", lineterminator="\n")
         writer.writeheader(); writer.writerows(rows)

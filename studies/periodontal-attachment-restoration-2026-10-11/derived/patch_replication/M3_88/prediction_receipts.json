@@ -1,0 +1,964 @@
+{
+  "plan_sha256": "ba928a7f00a0888ed35d2b3c680a78c59c14ea7d85ceaa9c26cdc718a3c9f3c5",
+  "source_sha256": "f506e17f4ab0ae7e63da962a794636607611418fa89e3e08b66498bdace0a367",
+  "grid_xy_extent_mm": [
+    [
+      -5.171315571955208,
+      -5.244363459756849
+    ],
+    [
+      5.64098796121883,
+      5.189848993519306
+    ]
+  ],
+  "spacing_mm": 0.125,
+  "text_hash_convention": "UTF-8 with LF newlines",
+  "stage": "predictions finalized before reference evaluation",
+  "cases": [
+    {
+      "case_id": "location1_r0.4",
+      "center_fraction_xy": [
+        0.35,
+        0.5
+      ],
+      "center_xy_mm": [
+        -1.3870093353442954,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.4,
+      "removed_triangle_count": 1230,
+      "retained_triangle_count": 311971,
+      "removed_face_indices_sha256": "60bed0bdad9cb613025dba192219ccf5977a79173e33651be50c1e08274454dd",
+      "query_count": 33,
+      "query_xy_sha256": "3532c5b1e929420781e8ab7eb6f0f0f86fdd8b90d298a24e26972be9a368baef",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.632471816171438,
+            -0.6413684356635043,
+            0.22010167932684133
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 1.8738156500675855,
+          "support_xy_sha256": "b46e2cdeab99d5c5d8612cd03214646597226201cafa3bbce5d44b1dbd85a2d2",
+          "support_target_sha256": "b77522adef6f38a990b5f58f5f16a2e96e209f9935c9cfaec163fdee2928ea92",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "6c805a01bc225c7d8c07f835b3aaa38a87bb49f27b0ea5b6a026ffaee9cdd4de"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.379313546680957,
+            -0.6398337695175046,
+            0.23657892697666819,
+            0.0586778320533827,
+            0.08751550139840032,
+            0.8229667928793207
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 6.830311423349484,
+          "support_xy_sha256": "b46e2cdeab99d5c5d8612cd03214646597226201cafa3bbce5d44b1dbd85a2d2",
+          "support_target_sha256": "b77522adef6f38a990b5f58f5f16a2e96e209f9935c9cfaec163fdee2928ea92",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "71518ddd260bd61b97997a5921fa143c88c1d9c1fcb84b326e7a6298e10ec56f"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.6355562610038017,
+            -0.39972928782962514,
+            0.2603332059302524
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 1.8738156500675855,
+          "support_xy_sha256": "b46e2cdeab99d5c5d8612cd03214646597226201cafa3bbce5d44b1dbd85a2d2",
+          "support_target_sha256": "5f1a93e97b508e5ab1343c6539fdd1bb26f84cbd4af6d492eaa59b8ea219a331",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "e93a523d3c6e3af4720ce2e462cc59eb77cb823d71cb838b3e16f4587224bf37"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.6152293679455918,
+            -0.4008584043074612,
+            0.26863479881912505,
+            -0.2493332014446665,
+            -0.06286510325374857,
+            0.32885190958451216
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 6.830311423349484,
+          "support_xy_sha256": "b46e2cdeab99d5c5d8612cd03214646597226201cafa3bbce5d44b1dbd85a2d2",
+          "support_target_sha256": "5f1a93e97b508e5ab1343c6539fdd1bb26f84cbd4af6d492eaa59b8ea219a331",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "c12bca0174447570d6c0b039ce4457c1b8c48c9a51bc32d2ddb03b5bc203a4b2"
+        }
+      }
+    },
+    {
+      "case_id": "location1_r0.8",
+      "center_fraction_xy": [
+        0.35,
+        0.5
+      ],
+      "center_xy_mm": [
+        -1.3870093353442954,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.8,
+      "removed_triangle_count": 4128,
+      "retained_triangle_count": 309073,
+      "removed_face_indices_sha256": "8e7a425ad81970dec24e0ace05fab988334d922c49c738d99b618d4376a2d98b",
+      "query_count": 130,
+      "query_xy_sha256": "9bf9d6199f8e1b34d6282ace5a1c9eb721ec639f9c9530a2138a15f57be7c4cf",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.816015171595994,
+            -0.6609975503793372,
+            0.15838043844135447
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 473,
+          "design_condition_number": 1.7759732182218022,
+          "support_xy_sha256": "dca74fc1d7449cea9f6d39cf1b3ae51a210557c1d461663d5225f4f078a35e5d",
+          "support_target_sha256": "bf12dbd007a36449d0b25e4a3053abf0345b214df8b7569e71d47881384e2379",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "ba87fc8456e45905c06e6224f2093e5e6630884f62bc3981907cad864cf8e6f7"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.4500336164284073,
+            -0.6616273736242981,
+            0.15709846447731624,
+            0.1927157386657728,
+            -0.2176277956623205,
+            0.9442006889196818
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 473,
+          "design_condition_number": 8.174948883802974,
+          "support_xy_sha256": "dca74fc1d7449cea9f6d39cf1b3ae51a210557c1d461663d5225f4f078a35e5d",
+          "support_target_sha256": "bf12dbd007a36449d0b25e4a3053abf0345b214df8b7569e71d47881384e2379",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "6d25de433468bafae1f68496786a98ad77345496cf8a76b3e6f5476fa7f00501"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.6441274897398543,
+            -0.3256339478290062,
+            0.11650184401146439
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 473,
+          "design_condition_number": 1.7759732182218022,
+          "support_xy_sha256": "dca74fc1d7449cea9f6d39cf1b3ae51a210557c1d461663d5225f4f078a35e5d",
+          "support_target_sha256": "3491f818b45581c35e825acbdc2aca4aa0599bc3cd1d5ab8a392adbf024a0f6b",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "2c9bc569b2c8e94d8703e8af78d6c8e0ddeb4ca0715702d654deb1d7913b0910"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.6224458041689107,
+            -0.3255028269098757,
+            0.1162201013054401,
+            -0.18244399320519752,
+            -0.2122166319306225,
+            0.2474013662436361
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 473,
+          "design_condition_number": 8.174948883802974,
+          "support_xy_sha256": "dca74fc1d7449cea9f6d39cf1b3ae51a210557c1d461663d5225f4f078a35e5d",
+          "support_target_sha256": "3491f818b45581c35e825acbdc2aca4aa0599bc3cd1d5ab8a392adbf024a0f6b",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "70383a0728b3fbafc0dd47bfaeacfd7996e90f2fb61b52bb56b20cece6b3de5c"
+        }
+      }
+    },
+    {
+      "case_id": "location1_r1.2",
+      "center_fraction_xy": [
+        0.35,
+        0.5
+      ],
+      "center_xy_mm": [
+        -1.3870093353442954,
+        -0.02725723311877104
+      ],
+      "radius_mm": 1.2,
+      "removed_triangle_count": 8016,
+      "retained_triangle_count": 305185,
+      "removed_face_indices_sha256": "e3dcbe3eef169d504131dba53f874c0f708f70acdf7df05f37cd1a7bb341a029",
+      "query_count": 288,
+      "query_xy_sha256": "fe2c0f3b0614b07d348367724841a3ac0b80162e49bc954775566b93eb3dbf60",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.9975212888641747,
+            -0.6372780259067305,
+            0.058452950946566246
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 1.7119203614428091,
+          "support_xy_sha256": "2e9707ac5e57e98e3cd4782e328d6ecfa86cbc328417337c5a826b345caa2a42",
+          "support_target_sha256": "161d153ceb5a6b7dd0633831daa52adb7e168a9cfaefc2e1ac0044479b43e777",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "d72c8bd8165f4e389cf25980b93b54f97999d638811c7df5058a508c22a0c812"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.5650902516447442,
+            -0.6392057005973311,
+            0.05663303314378954,
+            0.29862108939735793,
+            -0.37294201225193874,
+            0.9646306252177619
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 9.741258836682531,
+          "support_xy_sha256": "2e9707ac5e57e98e3cd4782e328d6ecfa86cbc328417337c5a826b345caa2a42",
+          "support_target_sha256": "161d153ceb5a6b7dd0633831daa52adb7e168a9cfaefc2e1ac0044479b43e777",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "59990f725d11e1582058fbc5a0e90824b627eced01d64ceecdfe67980cafc11c"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.7140441683745118,
+            -0.3238224524839713,
+            -0.03212175596331438
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 1.7119203614428091,
+          "support_xy_sha256": "2e9707ac5e57e98e3cd4782e328d6ecfa86cbc328417337c5a826b345caa2a42",
+          "support_target_sha256": "5653bccf5b0fe37fc448fcaf98e7a5a36af12614e0b9dcf82e9c61164c3f187c",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "05069d52e8e4240d1fa1ea32f7967c63548fb886d966a0960466cd0aa5e99f0e"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.4248496963034818,
+            -0.32436605307764954,
+            -0.0319783123688462,
+            0.42867409902137815,
+            -0.14866897909125462,
+            0.4141721317929975
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            -1.3870093353442954,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 9.741258836682531,
+          "support_xy_sha256": "2e9707ac5e57e98e3cd4782e328d6ecfa86cbc328417337c5a826b345caa2a42",
+          "support_target_sha256": "5653bccf5b0fe37fc448fcaf98e7a5a36af12614e0b9dcf82e9c61164c3f187c",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "e4dfeacac8b07065e4023c3abadd5050f14010d2451ff57228a341eba269bd8e"
+        }
+      }
+    },
+    {
+      "case_id": "location2_r0.4",
+      "center_fraction_xy": [
+        0.5,
+        0.5
+      ],
+      "center_xy_mm": [
+        0.2348361946318107,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.4,
+      "removed_triangle_count": 974,
+      "retained_triangle_count": 312227,
+      "removed_face_indices_sha256": "09dd4515fbabf351c146a932ca41b25d83a9cf7535a44547ab9deeb8c647110d",
+      "query_count": 32,
+      "query_xy_sha256": "5b8a54454ca5bcb5f7bbc41fe539a476d00975b7acb076c53b2cfe9a04e72bfb",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.5004315914092072,
+            0.5271769413606192,
+            -0.11882233841437753
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 1.8738021231324329,
+          "support_xy_sha256": "716fdaa1228b30d65ce9d7ace43e20ccfe1a0616647257db70b32ea438e930b0",
+          "support_target_sha256": "8b3754c502e67bcd105476822c378faea251dc129ddb728fe9e42251007da34c",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "d4df0dca8d3dbdafea0dd9441edf0162b67da3bc64504283eb29170cc43a7eb4"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.2016539257060197,
+            0.5291250455208678,
+            -0.11134932401200721,
+            0.4183104624045041,
+            -0.22445417908352064,
+            0.6157960545099409
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 6.830127762281468,
+          "support_xy_sha256": "716fdaa1228b30d65ce9d7ace43e20ccfe1a0616647257db70b32ea438e930b0",
+          "support_target_sha256": "8b3754c502e67bcd105476822c378faea251dc129ddb728fe9e42251007da34c",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "23c493b8429debbd9df0410812d6868f5c992299c48b5cf80e94d865911e1019"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.5161166369202348,
+            0.277102508484313,
+            -0.07837568240423086
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 1.8738021231324329,
+          "support_xy_sha256": "716fdaa1228b30d65ce9d7ace43e20ccfe1a0616647257db70b32ea438e930b0",
+          "support_target_sha256": "69520f69ecbb0a00efa03a9ae81b1123005ac2a8b481bab07ce9d20d429283cc",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "e5db33e46912f9eeac4af0daecf0d0efa68de2b227837e2baa90b47e0d93b1dc"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.351727324283965,
+            0.2782193670080252,
+            -0.07444977432961825,
+            0.22608601851585858,
+            -0.19033767109685892,
+            0.3438945364607097
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 332,
+          "design_condition_number": 6.830127762281468,
+          "support_xy_sha256": "716fdaa1228b30d65ce9d7ace43e20ccfe1a0616647257db70b32ea438e930b0",
+          "support_target_sha256": "69520f69ecbb0a00efa03a9ae81b1123005ac2a8b481bab07ce9d20d429283cc",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "e2b8d9cd6722b2f97e485984bf39ffcd34a6df139c7b26e3f1912af7c898f916"
+        }
+      }
+    },
+    {
+      "case_id": "location2_r0.8",
+      "center_fraction_xy": [
+        0.5,
+        0.5
+      ],
+      "center_xy_mm": [
+        0.2348361946318107,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.8,
+      "removed_triangle_count": 3654,
+      "retained_triangle_count": 309547,
+      "removed_face_indices_sha256": "7ede3bca4e9b9b36fca2a9fb5d10985ebc24f4c8fb092f001ec5a9805f0ab8dc",
+      "query_count": 130,
+      "query_xy_sha256": "927be987df1a0663c7b6c0fe9bac172dcfd051b244bd5e50171ec65c763c9bf2",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.6937499949485773,
+            0.45319822964607187,
+            -0.0934612838577441
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 472,
+          "design_condition_number": 1.7702187906548303,
+          "support_xy_sha256": "c3ca7659b6a7e3ee1ad52ed85239eb424ea512423bb2c41e832015b11e0d86fd",
+          "support_target_sha256": "0a6c3d08b9d0d80508e45150a03a548c41e2b4ae2e5eb4f96217bd4af92273d6",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "2c52281af7f524bbd554efe8703f077f4977ed4bee785f356bb7010cdbc72904"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.3282637620570905,
+            0.452045119721985,
+            -0.09452988634256936,
+            0.5444886873103959,
+            -0.21691893234172063,
+            0.5903856449596732
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 472,
+          "design_condition_number": 8.193897758259201,
+          "support_xy_sha256": "c3ca7659b6a7e3ee1ad52ed85239eb424ea512423bb2c41e832015b11e0d86fd",
+          "support_target_sha256": "0a6c3d08b9d0d80508e45150a03a548c41e2b4ae2e5eb4f96217bd4af92273d6",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "2e25bf70a82b105341e4dedb3c1a48f6b3e7711a7fe78774ade899cc9b8ef899"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.6091448944268307,
+            0.1397708535294263,
+            -0.04487603224774062
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 472,
+          "design_condition_number": 1.7702187906548303,
+          "support_xy_sha256": "c3ca7659b6a7e3ee1ad52ed85239eb424ea512423bb2c41e832015b11e0d86fd",
+          "support_target_sha256": "0b1569fea41445b7df20d0462fd5cd275686d05fc474cd8d3454c06c69027513",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "3a0c7884ba0191de629a700cd16c8fe8563c98cab452e62a493c8dc3a2b3f179"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.4454975650087125,
+            0.13897834771962636,
+            -0.04533161753946563,
+            0.20655946005493453,
+            -0.19700153757273375,
+            0.3009278439206746
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 472,
+          "design_condition_number": 8.193897758259201,
+          "support_xy_sha256": "c3ca7659b6a7e3ee1ad52ed85239eb424ea512423bb2c41e832015b11e0d86fd",
+          "support_target_sha256": "0b1569fea41445b7df20d0462fd5cd275686d05fc474cd8d3454c06c69027513",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "a019fe47fe90e402c9e045075ddd167258a3f81f36875b0371303de79043acde"
+        }
+      }
+    },
+    {
+      "case_id": "location2_r1.2",
+      "center_fraction_xy": [
+        0.5,
+        0.5
+      ],
+      "center_xy_mm": [
+        0.2348361946318107,
+        -0.02725723311877104
+      ],
+      "radius_mm": 1.2,
+      "removed_triangle_count": 7743,
+      "retained_triangle_count": 305458,
+      "removed_face_indices_sha256": "58de3b5489f77610592970debbc5b8159eab40d1a25f52badc7949b72f0b8b73",
+      "query_count": 288,
+      "query_xy_sha256": "0f95a0b1b0cb19727ac15f34908f8014527e3cb6843becf577f31bf32c956052",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.8683977612923095,
+            0.3190113124680824,
+            -0.044963400078411764
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 1.714918497839695,
+          "support_xy_sha256": "612be9f4b377fe31334dd4c8b8b07bb30720f8b633bc296244a9218c7c32b3e0",
+          "support_target_sha256": "03b62e76362e41235c79cf1eb472c7ebadc93c94f7b6cd368547eba38004d0d9",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "046e59c2276996bbcb7d38de77618d4830cec97d92a2f8bf3ba86ddcb20f23fe"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            2.480315874875555,
+            0.3181982960794978,
+            -0.04517483600675385,
+            0.620761370133341,
+            -0.048611040187201325,
+            0.5108545144320981
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 9.736551662088434,
+          "support_xy_sha256": "612be9f4b377fe31334dd4c8b8b07bb30720f8b633bc296244a9218c7c32b3e0",
+          "support_target_sha256": "03b62e76362e41235c79cf1eb472c7ebadc93c94f7b6cd368547eba38004d0d9",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "7140bc6df69bdd722ce96c33c4e6e69cf5b437eed63673d04a941180d76476c7"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.6909453211930434,
+            0.02766870092629161,
+            -0.047653296064541543
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 1.714918497839695,
+          "support_xy_sha256": "612be9f4b377fe31334dd4c8b8b07bb30720f8b633bc296244a9218c7c32b3e0",
+          "support_target_sha256": "b689adc9bec5a1ea7189c83631cc283cd0124d83016f0aa4d378433b20490637",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "0b50dcf3fc5041ccdf4f507028f21318f6fcb0ddf4be98c46a74f51380979180"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.4946256502431503,
+            0.02681168256330646,
+            -0.0481933944862356,
+            0.2856350502345923,
+            -0.253192120321257,
+            0.28876323560792827
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            0.2348361946318107,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 607,
+          "design_condition_number": 9.736551662088434,
+          "support_xy_sha256": "612be9f4b377fe31334dd4c8b8b07bb30720f8b633bc296244a9218c7c32b3e0",
+          "support_target_sha256": "b689adc9bec5a1ea7189c83631cc283cd0124d83016f0aa4d378433b20490637",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "0f9dd42ec59bfb93699f6217ecd6c8728f9fef9223a064cfa45043e98ccc0a7b"
+        }
+      }
+    },
+    {
+      "case_id": "location3_r0.4",
+      "center_fraction_xy": [
+        0.65,
+        0.5
+      ],
+      "center_xy_mm": [
+        1.8566817246079168,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.4,
+      "removed_triangle_count": 740,
+      "retained_triangle_count": 312461,
+      "removed_face_indices_sha256": "ad7b14c2ef834d8aca3213e9e2f1fc1275d0a5ae6835cc35511804702df11b76",
+      "query_count": 32,
+      "query_xy_sha256": "2fb5887a38d2f345728af64da13f10a3b9a132a3c09f381a09ad9ba0ebac2e4e",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            3.052137438281245,
+            0.37680137585758755,
+            0.22966062569110307
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 330,
+          "design_condition_number": 1.8755279297037963,
+          "support_xy_sha256": "c9cc2aaae81e0b1d788911a492a8ae3e81853a2c595f3f2da054c44d151d468e",
+          "support_target_sha256": "7eb28df5f87a1ca4a471cc1a27b769b2b25e5d718ab5158abf80352e9dd4af9c",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "8847652afc9abe229734f9357bf9b6c270a41d070f34bd9b8f0ef930e5317ccb"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            3.145439825815178,
+            0.37186959242745943,
+            0.23585434452291715,
+            -0.3598307650933907,
+            0.3855826977414916,
+            0.03372027510819173
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 330,
+          "design_condition_number": 6.8625509859334946,
+          "support_xy_sha256": "c9cc2aaae81e0b1d788911a492a8ae3e81853a2c595f3f2da054c44d151d468e",
+          "support_target_sha256": "7eb28df5f87a1ca4a471cc1a27b769b2b25e5d718ab5158abf80352e9dd4af9c",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "4fb3399c2404263bc31b318f9c79a2dcbd87ffc22da1b00012a149346abd529e"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.7515218340617829,
+            0.1855673743212495,
+            -0.11971027007495134
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 330,
+          "design_condition_number": 1.8755279297037963,
+          "support_xy_sha256": "c9cc2aaae81e0b1d788911a492a8ae3e81853a2c595f3f2da054c44d151d468e",
+          "support_target_sha256": "91e15f82f7114f253170c73a8e7b892683743f395f83739a94f96ea5b5ab60e4",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "10a604a222e2df2dc5741f9b540b5a460f50db422538b08f2370778a8f0294a2"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.6892214225811715,
+            0.18902107034485058,
+            -0.1241122714517792,
+            0.24448827111084706,
+            -0.2901390629661536,
+            -0.02626256457783939
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.4,
+          "support_count": 330,
+          "design_condition_number": 6.8625509859334946,
+          "support_xy_sha256": "c9cc2aaae81e0b1d788911a492a8ae3e81853a2c595f3f2da054c44d151d468e",
+          "support_target_sha256": "91e15f82f7114f253170c73a8e7b892683743f395f83739a94f96ea5b5ab60e4",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "bc23d2e26dff96994580e4766b09230f224122e69019fe959308c8f933fc8658"
+        }
+      }
+    },
+    {
+      "case_id": "location3_r0.8",
+      "center_fraction_xy": [
+        0.65,
+        0.5
+      ],
+      "center_xy_mm": [
+        1.8566817246079168,
+        -0.02725723311877104
+      ],
+      "radius_mm": 0.8,
+      "removed_triangle_count": 2875,
+      "retained_triangle_count": 310326,
+      "removed_face_indices_sha256": "c9adfe560e8c45d7368e1ddec1a308c95336fc98cbbb159f0151dd12fb9c895f",
+      "query_count": 130,
+      "query_xy_sha256": "80631a540ad330413102a300793bc3d17a509a58bb70b2de9280a281f827e4a3",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.9502769489588054,
+            0.40948124011339293,
+            0.23676350397806206
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 470,
+          "design_condition_number": 1.7742590953510322,
+          "support_xy_sha256": "09534249ad56aec98d65abccd9534ada2dcdb9c42b048804617cf42f082d6168",
+          "support_target_sha256": "56f1d90a83e0cc9672a479295565fe6fa5b674b91aa187a3feab306a91ef9a23",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "a279025901767ec9e2306d70d7f2ec02f772e291597fa1a87ca9d20ecaffc955"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            3.1727258923645754,
+            0.412095755760928,
+            0.23634497774276556,
+            -0.6175983901211265,
+            0.6773395226126662,
+            -0.07006603165316963
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 470,
+          "design_condition_number": 8.221148651103304,
+          "support_xy_sha256": "09534249ad56aec98d65abccd9534ada2dcdb9c42b048804617cf42f082d6168",
+          "support_target_sha256": "56f1d90a83e0cc9672a479295565fe6fa5b674b91aa187a3feab306a91ef9a23",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "e9ab1a5ec9fe4fc54bdc5a3d2c7be74875627707dc2ff592961f3bfbe0386bc8"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.768695705015514,
+            0.32568844049936235,
+            -0.05170471308430259
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 470,
+          "design_condition_number": 1.7742590953510322,
+          "support_xy_sha256": "09534249ad56aec98d65abccd9534ada2dcdb9c42b048804617cf42f082d6168",
+          "support_target_sha256": "fe08c258d5ad6ed3da066e4790c3fe33a19b5f3e86b062575cf15b605fc0f23d",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "3c3f07e9899fdee0399449653082caaff79202dabb8925299880b64c459f52a1"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.7753307717127715,
+            0.32627460088346044,
+            -0.05161522440674945,
+            0.06283504315813568,
+            0.10961872530583745,
+            -0.08220755236885992
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 1.8,
+          "support_count": 470,
+          "design_condition_number": 8.221148651103304,
+          "support_xy_sha256": "09534249ad56aec98d65abccd9534ada2dcdb9c42b048804617cf42f082d6168",
+          "support_target_sha256": "fe08c258d5ad6ed3da066e4790c3fe33a19b5f3e86b062575cf15b605fc0f23d",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "2dd6f10c6dfc103469b044fe805d5d4ee4fb69efb60c180394412925dd589430"
+        }
+      }
+    },
+    {
+      "case_id": "location3_r1.2",
+      "center_fraction_xy": [
+        0.65,
+        0.5
+      ],
+      "center_xy_mm": [
+        1.8566817246079168,
+        -0.02725723311877104
+      ],
+      "radius_mm": 1.2,
+      "removed_triangle_count": 6626,
+      "retained_triangle_count": 306575,
+      "removed_face_indices_sha256": "a837b57091040738dc653a869004e48ffcf686eab8747569124eb5a0a24abb2c",
+      "query_count": 289,
+      "query_xy_sha256": "5e16a1b272554cc8c84ed61952f01c166bded6c5d610f2208dba57229b66d3b0",
+      "methods": {
+        "exterior_plane": {
+          "coefficients": [
+            2.8551435382739387,
+            0.44503726715350994,
+            0.17013968486645184
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 608,
+          "design_condition_number": 1.7151034987129234,
+          "support_xy_sha256": "93c693eaebb313d82f1ed9eaa571cf597e84688cd2afb0e08ce107974581066f",
+          "support_target_sha256": "1a3591a01011105e71e7e54e9b5228f5eb66e3f55f40f2d2426a69a65e191c6e",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "bca7cf691332792e96503c0b7dba006a0e1a599cd430e8f6bf3f5767409c3722"
+        },
+        "exterior_quadratic": {
+          "coefficients": [
+            3.0349798738515736,
+            0.4497124601573219,
+            0.16774909295676957,
+            -0.635850731563712,
+            0.692863114879683,
+            0.1095489414099679
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 608,
+          "design_condition_number": 9.718501426959913,
+          "support_xy_sha256": "93c693eaebb313d82f1ed9eaa571cf597e84688cd2afb0e08ce107974581066f",
+          "support_target_sha256": "1a3591a01011105e71e7e54e9b5228f5eb66e3f55f40f2d2426a69a65e191c6e",
+          "status": "predicted",
+          "information_branch": "retained_exterior_only",
+          "prediction_sha256": "0bd64fcdb7932fd16d186b4df4dd03ffde53fcb182e318c25e3d5f87574613f9"
+        },
+        "internal_imaging_plane_residual": {
+          "coefficients": [
+            1.7625495576449548,
+            0.427993758887736,
+            0.030567606003593876
+          ],
+          "degree": 1,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 608,
+          "design_condition_number": 1.7151034987129234,
+          "support_xy_sha256": "93c693eaebb313d82f1ed9eaa571cf597e84688cd2afb0e08ce107974581066f",
+          "support_target_sha256": "e57f757315366f6e38f1dfb08daa061b5c5a22ed1d921ac5881bdfe726abf87b",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "762486d806f964b1f36dec28b56f22a77409b24e379a33a4b807bbadc2566298"
+        },
+        "internal_imaging_quadratic_residual": {
+          "coefficients": [
+            1.803926088723835,
+            0.42977606122776457,
+            0.030016301320330244,
+            -0.11711444624902827,
+            0.48668237156247834,
+            -0.006429745663058336
+          ],
+          "degree": 2,
+          "normalization_center_xy_mm": [
+            1.8566817246079168,
+            -0.02725723311877104
+          ],
+          "normalization_scale_mm": 2.2,
+          "support_count": 608,
+          "design_condition_number": 9.718501426959913,
+          "support_xy_sha256": "93c693eaebb313d82f1ed9eaa571cf597e84688cd2afb0e08ce107974581066f",
+          "support_target_sha256": "e57f757315366f6e38f1dfb08daa061b5c5a22ed1d921ac5881bdfe726abf87b",
+          "status": "predicted",
+          "information_branch": "full_source_internal_imaging",
+          "prediction_sha256": "c5ff212e7506d6274a20eb90c0e438a7d0e859530b8bb071f62bab6bbeddd1d5"
+        }
+      }
+    }
+  ]
+}

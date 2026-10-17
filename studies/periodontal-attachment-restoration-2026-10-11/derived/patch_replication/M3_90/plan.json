@@ -1,0 +1,56 @@
+{
+  "analysis_type": "additional-specimen transport check with frozen pilot settings",
+  "source_model": "M3#90 GLN05-292-URM2",
+  "archive_sha256": "ddb7c6a7ea7b35bc383920b44e0417f33efc22962f7e449bcd591a391299b61f",
+  "plan_status": "frozen before new specimen patch outcomes; not independently preregistered",
+  "source_pose": "supplied shared row-vector rigid transforms",
+  "privileged_extent_information": "full source XY bounding extent and metric scale supplied; no camera/scale recovery",
+  "grid_spacing_mm": 0.125,
+  "center_fractions_xy": [
+    [
+      0.35,
+      0.5
+    ],
+    [
+      0.5,
+      0.5
+    ],
+    [
+      0.65,
+      0.5
+    ]
+  ],
+  "patch_radii_mm": [
+    0.4,
+    0.8,
+    1.2
+  ],
+  "support_inner_margin_mm": 0.15,
+  "support_outer_margin_mm": 1.0,
+  "holdout_rule": "remove every OES triangle whose XY projection intersects the patch disk; rasterize support only from retained faces",
+  "query_rule": "all regular-grid points inside the disk; no outcome-dependent selection",
+  "support_rule": "regular-grid annulus from radius+0.15 to radius+1.0; finite retained-surface top-envelope observations",
+  "methods": [
+    "exterior_plane",
+    "exterior_quadratic",
+    "internal_imaging_plane_residual",
+    "internal_imaging_quadratic_residual"
+  ],
+  "internal_imaging_branch": "full source EDJ available in its shared pose; fit OES-minus-EDJ vertical gaps on visible support",
+  "minimum_support_points": 12,
+  "maximum_design_condition_number": 10000000000.0,
+  "prediction_rule": "save all coefficients and prediction hashes before computing the full-reference target heights",
+  "primary_outputs": [
+    "vertical height MAE",
+    "vertical height RMSE",
+    "signed mean height error",
+    "maximum absolute vertical error",
+    "separate excess and deficit envelope-volume proxies",
+    "coverage and failures"
+  ],
+  "scoring_gate": "score only when every query has a full-reference hit and a finite prediction; preserve incomplete cases as unscored rows",
+  "clinical_pass_margin": null,
+  "scope": "2.5D top-envelope geometry only; not full 3D fracture repair, photos, enamel identity, tissue growth or human treatment",
+  "model_id": 90,
+  "specimen_identifier": "GLN05-292-URM2"
+}

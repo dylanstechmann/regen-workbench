@@ -449,3 +449,12 @@ transcripts. Do not train an age panel or nominate a rejuvenation target from
 that workbook. The age-by-niche follow-up now has a donor-level estimand and
 analysis contract, including age-overlap and tooth-source confounding checks:
 [`analysis plan`](../organoid/periodontal-ligament-interface/age_by_niche_analysis_plan.md).
+
+## Additional-tooth transport check — 2026-10-17
+
+Two additional adult wear-stage-1 specimens were evaluated with unchanged
+pilot settings. Internal imaging had mixed effects; all 72 comparisons
+scored, and mesh defects were retained. See the
+[transport report](../periodontal-attachment-restoration-2026-10-11/TOOTH_PATCH_TRANSPORT_REPORT.md).
+The next method-development stage must treat these and the original tooth
+as already seen and qualify untouched specimens before claiming validation.
