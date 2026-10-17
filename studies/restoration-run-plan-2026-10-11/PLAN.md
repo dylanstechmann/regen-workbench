@@ -6,6 +6,14 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
+Before selecting the next experiment, review the
+[persistent goals and continuity record](GOALS_AND_CONTINUITY.md). It retains
+the complete natural-tooth target, stability without lifelong retention,
+whole-body youthful function, stem-cell/organoid and genome-repair work, and
+earlier compound questions. The current geometry checkpoint addresses only
+one part of these goals; the remaining tissue and durability endpoints stay
+required.
+
 The flagship question is: **Can a damaged natural tooth regain its intended
 shape and missing substance, enamel thickness and structure, dentin and intact
 interfaces, viable pulp, position, living cementum–periodontal-ligament–bone
