@@ -126,6 +126,12 @@ against silhouette and anatomical-prior baselines, and measure regional
 surface error and uncertainty coverage on other specimens. Keep specimens
 and donors disjoint if learning or tuning is introduced.
 
+Follow-up checkpoint: a [paired OES/EDJ reference](PAIRED_TOOTH_SURFACE_REFERENCE.md)
+has now been acquired and audited for one adult source specimen. It supports
+sectional contour-gap sensitivity tests, with explicit source sampling,
+segmentation and open-boundary limitations. It does not yet establish full
+3D thickness accuracy or recovery from historical photographs.
+
 Evaluate enamel-growth depth and interfaces separately using the
 [materials comparison](ENAMEL_SCALE_AND_INTERFACE_COMPARISON.md). A good
 geometric reconstruction supplies a proposed target; it does not make a

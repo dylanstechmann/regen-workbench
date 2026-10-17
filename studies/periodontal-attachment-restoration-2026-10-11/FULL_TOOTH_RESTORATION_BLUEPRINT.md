@@ -179,3 +179,9 @@ permit approximately 21% excess reconstructed volume for this baseline.
 This establishes a failure case, not validated photo reconstruction or enamel
 thickness recovery. The [depth/interface comparison](ENAMEL_SCALE_AND_INTERFACE_COMPARISON.md)
 now distinguishes single-layer, repeated-layer and cell-generated evidence.
+
+The next [paired-surface reference checkpoint](PAIRED_TOOTH_SURFACE_REFERENCE.md)
+adds a source-defined internal enamel-dentine boundary. Deliberately shifting
+that boundary demonstrates why unchanged outer shape and small mean gap bias
+can conceal regional thickness errors. The reference is provisional and does
+not qualify micrometre-scale repaired-layer measurement.

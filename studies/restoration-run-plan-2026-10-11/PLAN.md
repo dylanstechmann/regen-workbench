@@ -208,6 +208,15 @@ internal tissue boundaries remain unqualified. The
 adds verified repeat-cycle enamel thickening and keeps depth, substrate,
 interface function and bulk reconstruction as distinct questions.
 
+Second checkpoint: the [paired-source surface audit](../periodontal-attachment-restoration-2026-10-11/PAIRED_TOOTH_SURFACE_REFERENCE.md)
+selected an adult completed-maturation/wear-stage-1 reference and ran regional
+gap sensitivity with its separately supplied EDJ. Internal contour shifts
+leave external geometry unchanged while local gap errors can be much larger
+than the mean change. This is a source-defined geometry reference, not
+independent tissue truth or a validated clinical thickness assay. Next,
+evaluate withheld surface-patch recovery while separating exterior-only and
+internal-imaging-informed reconstruction branches.
+
 **Completion gate:** every damaged domain has an explicit target, evidence
 role, uncertainty, functional readout and falsifier. A component-only result
 remains component-only until geometry, hard tissues, pulp, attachment, gingiva

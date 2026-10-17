@@ -1,0 +1,391 @@
+{
+  "analysis": "paired-source-surface intake and sectional contour-gap sensitivity",
+  "specimen": "GLN04-252-ULM2",
+  "model_id": "M3#83",
+  "doi": "10.18563/m3.sf.83",
+  "associated_dataset_article": "https://doi.org/10.18563/m3.2.1.e1",
+  "primary_methods_article": "https://doi.org/10.1371/journal.pone.0159688",
+  "authors": "Le Luyer M, Coquerelle M, Rottier S, Bayle P (2016)",
+  "collection": "Osteotheque de Pessac, Universite de Bordeaux, France",
+  "curator": "Dr Stephane Rottier",
+  "source_license": "CC-BY-NC-4.0",
+  "derived_data_license": "CC-BY-NC-4.0",
+  "archive_sha256": "d475ce2ef330417bafb0029f42a11a2c07e56163a98dec42424d9997c41177c8",
+  "archive_bytes": 4030861,
+  "archive_url": "https://www.morphomuseum.com/specimenfiles/send-file-specimenfile/83",
+  "source_members": [
+    {
+      "member": "M3#83/GLN04-252-ULM2_OES.ply",
+      "bytes": 5135379,
+      "sha256": "0e798cb3480857a3d920642b2c63733c01db5978311bfffddc1e76026deada20"
+    },
+    {
+      "member": "M3#83/GLN04-252-ULM2_OES_M3_83.pos",
+      "bytes": 303,
+      "sha256": "e49837a2de02a9008d5b0231bbe28758e9345f32945346c0c7bab47c38135642"
+    },
+    {
+      "member": "M3#83/GLN04-252-ULM2_EDJ.ply",
+      "bytes": 3380660,
+      "sha256": "9a956c0c9f876706937c48ff5b153f5fce10d2dd2300d3f2dafdc04fd18d59e4"
+    },
+    {
+      "member": "M3#83/GLN04-252-ULM2_EDJ_M3_83.pos",
+      "bytes": 303,
+      "sha256": "e49837a2de02a9008d5b0231bbe28758e9345f32945346c0c7bab47c38135642"
+    }
+  ],
+  "source_selection": "first ascending M3 ID meeting adult, H maturation, wear1, no reconstructed-tip flag in source metadata",
+  "source_claims": {
+    "age": ">30",
+    "sex": "M",
+    "maturation": "H",
+    "wear_stage": "1",
+    "specific_native_scan_voxel_size_um": null,
+    "study_native_voxel_range_um": [
+      17.93,
+      36.18
+    ],
+    "segmentation": "source half-maximum threshold segmentation, manual corrections, constrained surface smoothing"
+  },
+  "nominal_units": "mm, source instructions/readme; no independent calibration",
+  "readme_stated_maximal_length_mm": 11.52,
+  "maximal_length_definition": "unspecified; raw and posed bounding-box extents retained without rescaling",
+  "same_source_pose": true,
+  "identical_boundary_vertex_sets": true,
+  "surface_audits": {
+    "OES": {
+      "vertices": 125493,
+      "faces": 250205,
+      "unique_edges": 375697,
+      "boundary_edges": 779,
+      "boundary_vertices": 779,
+      "boundary_vertex_degree_not_two": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_internal_edge_winding": 0,
+      "zero_area_triangles": 0,
+      "area_mm2_nominal": 240.30714609609194,
+      "raw_axis_extents_mm_nominal": [
+        10.619400024414062,
+        10.760990858078003,
+        7.91130256652832
+      ],
+      "watertight": false,
+      "not_checked": [
+        "self-intersection",
+        "independent segmentation correctness",
+        "raw-scan registration"
+      ],
+      "posed_axis_extents_mm_nominal": [
+        11.490445472451214,
+        9.37411129319501,
+        6.668122746186732
+      ]
+    },
+    "EDJ": {
+      "vertices": 82695,
+      "faces": 164609,
+      "unique_edges": 247303,
+      "boundary_edges": 779,
+      "boundary_vertices": 779,
+      "boundary_vertex_degree_not_two": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_internal_edge_winding": 0,
+      "zero_area_triangles": 1,
+      "area_mm2_nominal": 157.6734454316171,
+      "raw_axis_extents_mm_nominal": [
+        9.938499450683594,
+        9.151110887527466,
+        7.2769012451171875
+      ],
+      "watertight": false,
+      "not_checked": [
+        "self-intersection",
+        "independent segmentation correctness",
+        "raw-scan registration"
+      ],
+      "posed_axis_extents_mm_nominal": [
+        11.024421588011744,
+        7.544287342604637,
+        5.857603118866923
+      ]
+    }
+  },
+  "volume_assessment": "not computed: individual crown surfaces have open cervical boundaries",
+  "measurement": "arc-length-weighted midpoint-to-nearest-EDJ-segment distance within each plane; not 3D local thickness",
+  "midpoint_quadrature_sensitivity": [
+    {
+      "plane_axis": "x",
+      "subdivision_factor": 4,
+      "mean_gap_change_um": 0.010876516280955428
+    },
+    {
+      "plane_axis": "y",
+      "subdivision_factor": 4,
+      "mean_gap_change_um": 0.0071565521082561645
+    },
+    {
+      "plane_axis": "z",
+      "subdivision_factor": 4,
+      "mean_gap_change_um": 0.013429365436357088
+    }
+  ],
+  "perturbation": "synthetic rigid shifts of EDJ contours in plane; not measured segmentation uncertainty or new anatomy",
+  "qualification": "provisional source-defined geometry reference; not independently adjudicated tissue truth",
+  "unassessed": [
+    "microstructure",
+    "material identity",
+    "pulp/PDL",
+    "cracks",
+    "living human repair",
+    "photo reconstruction",
+    "2-10 um repair-layer detection",
+    "3D surface self-intersection"
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "rows": [
+    {
+      "plane_axis": "x",
+      "plane_coordinate_mm": -0.4830047027688025,
+      "in_plane_shift_axis": "y",
+      "synthetic_EDJ_shift_mm": 0.0,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.0,
+      "max_absolute_point_gap_change_um": 0.0,
+      "outer_segment_count": 915,
+      "inner_segment_count": 673,
+      "outer_contour_length_mm": 17.808353878918034,
+      "arc_weighted_mean_gap_mm": 1.1472432173605513,
+      "arc_weighted_p10_gap_mm": 0.4557439751721766,
+      "arc_weighted_median_gap_mm": 1.2455221214205934,
+      "arc_weighted_p90_gap_mm": 1.680282794293805
+    },
+    {
+      "plane_axis": "x",
+      "plane_coordinate_mm": -0.4830047027688025,
+      "in_plane_shift_axis": "y",
+      "synthetic_EDJ_shift_mm": -0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -0.22491900739196602,
+      "max_absolute_point_gap_change_um": 49.999538918180654,
+      "outer_segment_count": 915,
+      "inner_segment_count": 673,
+      "outer_contour_length_mm": 17.808353878918034,
+      "arc_weighted_mean_gap_mm": 1.1470182983531594,
+      "arc_weighted_p10_gap_mm": 0.4585888738679783,
+      "arc_weighted_median_gap_mm": 1.2366650215981654,
+      "arc_weighted_p90_gap_mm": 1.6673841846487376
+    },
+    {
+      "plane_axis": "x",
+      "plane_coordinate_mm": -0.4830047027688025,
+      "in_plane_shift_axis": "y",
+      "synthetic_EDJ_shift_mm": -0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -0.15138930366132008,
+      "max_absolute_point_gap_change_um": 19.999821833941333,
+      "outer_segment_count": 915,
+      "inner_segment_count": 673,
+      "outer_contour_length_mm": 17.808353878918034,
+      "arc_weighted_mean_gap_mm": 1.14709182805689,
+      "arc_weighted_p10_gap_mm": 0.4572941111033127,
+      "arc_weighted_median_gap_mm": 1.246350321121389,
+      "arc_weighted_p90_gap_mm": 1.6738841500515431
+    },
+    {
+      "plane_axis": "x",
+      "plane_coordinate_mm": -0.4830047027688025,
+      "in_plane_shift_axis": "y",
+      "synthetic_EDJ_shift_mm": 0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.22477667513154387,
+      "max_absolute_point_gap_change_um": 19.999829555766844,
+      "outer_segment_count": 915,
+      "inner_segment_count": 673,
+      "outer_contour_length_mm": 17.808353878918034,
+      "arc_weighted_mean_gap_mm": 1.147467994035683,
+      "arc_weighted_p10_gap_mm": 0.45533563749408706,
+      "arc_weighted_median_gap_mm": 1.246362794510419,
+      "arc_weighted_p90_gap_mm": 1.6918925706783552
+    },
+    {
+      "plane_axis": "x",
+      "plane_coordinate_mm": -0.4830047027688025,
+      "in_plane_shift_axis": "y",
+      "synthetic_EDJ_shift_mm": 0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.723951992925409,
+      "max_absolute_point_gap_change_um": 49.99958730428378,
+      "outer_segment_count": 915,
+      "inner_segment_count": 673,
+      "outer_contour_length_mm": 17.808353878918034,
+      "arc_weighted_mean_gap_mm": 1.1479671693534768,
+      "arc_weighted_p10_gap_mm": 0.4553644119199681,
+      "arc_weighted_median_gap_mm": 1.2514761943647401,
+      "arc_weighted_p90_gap_mm": 1.6960237162902922
+    },
+    {
+      "plane_axis": "y",
+      "plane_coordinate_mm": 0.024460522242904847,
+      "in_plane_shift_axis": "z",
+      "synthetic_EDJ_shift_mm": 0.0,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.0,
+      "max_absolute_point_gap_change_um": 0.0,
+      "outer_segment_count": 1055,
+      "inner_segment_count": 811,
+      "outer_contour_length_mm": 21.21145401944794,
+      "arc_weighted_mean_gap_mm": 1.2962632731368078,
+      "arc_weighted_p10_gap_mm": 0.3815333970062283,
+      "arc_weighted_median_gap_mm": 1.5273123178424275,
+      "arc_weighted_p90_gap_mm": 1.793418664980524
+    },
+    {
+      "plane_axis": "y",
+      "plane_coordinate_mm": 0.024460522242904847,
+      "in_plane_shift_axis": "z",
+      "synthetic_EDJ_shift_mm": -0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 33.90885154190282,
+      "max_absolute_point_gap_change_um": 49.99992070912618,
+      "outer_segment_count": 1055,
+      "inner_segment_count": 811,
+      "outer_contour_length_mm": 21.21145401944794,
+      "arc_weighted_mean_gap_mm": 1.3301721246787106,
+      "arc_weighted_p10_gap_mm": 0.3936288085219507,
+      "arc_weighted_median_gap_mm": 1.5710608925285017,
+      "arc_weighted_p90_gap_mm": 1.8368606287825133
+    },
+    {
+      "plane_axis": "y",
+      "plane_coordinate_mm": 0.024460522242904847,
+      "in_plane_shift_axis": "z",
+      "synthetic_EDJ_shift_mm": -0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 13.546844417720028,
+      "max_absolute_point_gap_change_um": 19.999967736895165,
+      "outer_segment_count": 1055,
+      "inner_segment_count": 811,
+      "outer_contour_length_mm": 21.21145401944794,
+      "arc_weighted_mean_gap_mm": 1.3098101175545278,
+      "arc_weighted_p10_gap_mm": 0.38505865757447866,
+      "arc_weighted_median_gap_mm": 1.544463969877037,
+      "arc_weighted_p90_gap_mm": 1.8102962236544127
+    },
+    {
+      "plane_axis": "y",
+      "plane_coordinate_mm": 0.024460522242904847,
+      "in_plane_shift_axis": "z",
+      "synthetic_EDJ_shift_mm": 0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -13.483470092336303,
+      "max_absolute_point_gap_change_um": 19.999966977874315,
+      "outer_segment_count": 1055,
+      "inner_segment_count": 811,
+      "outer_contour_length_mm": 21.21145401944794,
+      "arc_weighted_mean_gap_mm": 1.2827798030444715,
+      "arc_weighted_p10_gap_mm": 0.3732537160273289,
+      "arc_weighted_median_gap_mm": 1.5108727388754875,
+      "arc_weighted_p90_gap_mm": 1.7752964506905644
+    },
+    {
+      "plane_axis": "y",
+      "plane_coordinate_mm": 0.024460522242904847,
+      "in_plane_shift_axis": "z",
+      "synthetic_EDJ_shift_mm": 0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -33.54836663829852,
+      "max_absolute_point_gap_change_um": 49.99991596187736,
+      "outer_segment_count": 1055,
+      "inner_segment_count": 811,
+      "outer_contour_length_mm": 21.21145401944794,
+      "arc_weighted_mean_gap_mm": 1.2627149064985093,
+      "arc_weighted_p10_gap_mm": 0.3634541622782595,
+      "arc_weighted_median_gap_mm": 1.4848928509689137,
+      "arc_weighted_p90_gap_mm": 1.746029420804413
+    },
+    {
+      "plane_axis": "z",
+      "plane_coordinate_mm": 0.5158001803677088,
+      "in_plane_shift_axis": "x",
+      "synthetic_EDJ_shift_mm": 0.0,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.0,
+      "max_absolute_point_gap_change_um": 0.0,
+      "outer_segment_count": 1696,
+      "inner_segment_count": 1409,
+      "outer_contour_length_mm": 33.0287919513168,
+      "arc_weighted_mean_gap_mm": 1.1762440361760083,
+      "arc_weighted_p10_gap_mm": 0.9907448105024952,
+      "arc_weighted_median_gap_mm": 1.158441827407573,
+      "arc_weighted_p90_gap_mm": 1.3609820346660093
+    },
+    {
+      "plane_axis": "z",
+      "plane_coordinate_mm": 0.5158001803677088,
+      "in_plane_shift_axis": "x",
+      "synthetic_EDJ_shift_mm": -0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.3861168902381529,
+      "max_absolute_point_gap_change_um": 49.99999657756105,
+      "outer_segment_count": 1696,
+      "inner_segment_count": 1409,
+      "outer_contour_length_mm": 33.0287919513168,
+      "arc_weighted_mean_gap_mm": 1.1766301530662464,
+      "arc_weighted_p10_gap_mm": 0.9972843412338004,
+      "arc_weighted_median_gap_mm": 1.1513384964924585,
+      "arc_weighted_p90_gap_mm": 1.399922534095594
+    },
+    {
+      "plane_axis": "z",
+      "plane_coordinate_mm": 0.5158001803677088,
+      "in_plane_shift_axis": "x",
+      "synthetic_EDJ_shift_mm": -0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": 0.12731739545346343,
+      "max_absolute_point_gap_change_um": 19.99999860136881,
+      "outer_segment_count": 1696,
+      "inner_segment_count": 1409,
+      "outer_contour_length_mm": 33.0287919513168,
+      "arc_weighted_mean_gap_mm": 1.1763713535714617,
+      "arc_weighted_p10_gap_mm": 0.9929807581223512,
+      "arc_weighted_median_gap_mm": 1.1537960246675698,
+      "arc_weighted_p90_gap_mm": 1.3735641184633218
+    },
+    {
+      "plane_axis": "z",
+      "plane_coordinate_mm": 0.5158001803677088,
+      "in_plane_shift_axis": "x",
+      "synthetic_EDJ_shift_mm": 0.02,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -0.08212012743014085,
+      "max_absolute_point_gap_change_um": 19.999998559770304,
+      "outer_segment_count": 1696,
+      "inner_segment_count": 1409,
+      "outer_contour_length_mm": 33.0287919513168,
+      "arc_weighted_mean_gap_mm": 1.1761619160485781,
+      "arc_weighted_p10_gap_mm": 0.9872091394743855,
+      "arc_weighted_median_gap_mm": 1.163663575429908,
+      "arc_weighted_p90_gap_mm": 1.353437212504434
+    },
+    {
+      "plane_axis": "z",
+      "plane_coordinate_mm": 0.5158001803677088,
+      "in_plane_shift_axis": "x",
+      "synthetic_EDJ_shift_mm": 0.05,
+      "outer_surface_changed": false,
+      "mean_gap_change_um": -0.13846847826881614,
+      "max_absolute_point_gap_change_um": 49.999996317275254,
+      "outer_segment_count": 1696,
+      "inner_segment_count": 1409,
+      "outer_contour_length_mm": 33.0287919513168,
+      "arc_weighted_mean_gap_mm": 1.1761055676977394,
+      "arc_weighted_p10_gap_mm": 0.9800540128546533,
+      "arc_weighted_median_gap_mm": 1.1640469034615357,
+      "arc_weighted_p90_gap_mm": 1.335131752976772
+    }
+  ]
+}
