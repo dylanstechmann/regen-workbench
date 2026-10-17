@@ -290,7 +290,8 @@ def write_outputs(group_records: list[dict], drift_records: list[dict], summary:
                     field: f"{record[field]:.9g}" if isinstance(record[field], float) else record[field]
                     for field in fields
                 })
-    (outdir / "calibration_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    with (outdir / "calibration_summary.json").open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write(json.dumps(summary, indent=2) + "\n")
 
 
 def main() -> None:

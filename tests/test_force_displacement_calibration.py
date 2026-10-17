@@ -116,7 +116,9 @@ class ForceDisplacementCalibrationTests(unittest.TestCase):
         write_outputs(records, drift, summary, outdir)
         self.assertTrue((outdir / "calibration_group_metrics.tsv").exists())
         self.assertTrue((outdir / "calibration_drift_metrics.tsv").exists())
-        self.assertEqual(json.loads((outdir / "calibration_summary.json").read_text()) ["overall_status"], "not_assessed")
+        summary_bytes = (outdir / "calibration_summary.json").read_bytes()
+        self.assertNotIn(b"\r", summary_bytes)
+        self.assertEqual(json.loads(summary_bytes)["overall_status"], "not_assessed")
 
     def test_rejects_missing_pre_or_post_measurement(self):
         rows = self.example_rows()
