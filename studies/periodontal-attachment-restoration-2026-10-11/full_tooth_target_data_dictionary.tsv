@@ -1,0 +1,21 @@
+field	meaning	values_or_units	recording_rule
+tooth_id	Stable tooth identifier and numbering convention	Nonblank text	Record numbering system and tooth identity
+region_id	Surface or internal region being reconstructed	Nonblank text	Separate visible and hidden regions
+target_component	Tissue or interface required in this region	enamel; dentin; DEJ; pulp; cementum; PDL; bone; gingiva	Keep tissue identity separate from shape
+baseline_source_id	Private asset or record supporting the target	Asset identifier	Do not embed personal images or identifiers in public records
+baseline_source_type	Kind of historical or inferred evidence	3d_scan; cast; photograph; clinical_record; surviving_anatomy; contralateral_prior; population_prior	A prior is not an individual historical measurement
+baseline_date	Date or interval of source capture	ISO date or documented interval	Unknown remains unknown
+source_scale_status	Whether metric dimensions are supported	measured; calibrated; inferred; unknown	Uncalibrated photograph pixels do not establish millimetres
+source_visibility	Coverage of this target region	visible; partially_visible; hidden	Hidden enamel thickness and internal anatomy require additional evidence
+target_evidence_role	How the regional target was obtained	direct_measurement; image_constrained; individual_inference; external_prior; unknown	Never upgrade an inferred target to a measured original
+target_geometry_asset_id	Controlled reference to target surface or volume	Asset identifier or unknown	Preserve source-to-target reconstruction history
+current_geometry_asset_id	Controlled reference to current surface or volume	Asset identifier or unknown	Current restorative material is a separate compartment
+enamel_target_thickness_mm	Target thickness relative to measured or inferred DEJ	mm or unknown	Record position, measurement method and uncertainty; photos alone are insufficient
+dentin_target_volume_mm3	Target regional dentin volume	mm3 or unknown	Do not combine enamel and dentin into one biological endpoint
+missing_enamel_volume_mm3	Estimated physical enamel deficit	mm3 or unknown	Record registration and segmentation uncertainty
+missing_dentin_volume_mm3	Estimated physical dentin deficit	mm3 or unknown	Keep restorative material separate from native dentin
+existing_restoration_asset_id	Material type and extent of any existing restoration	Asset identifier or none/unknown	No automatic removal is implied
+crack_assessment_id	Record of crack extent and assessment method	Record identifier or unknown	Visible surface continuity does not establish internal integrity
+uncertainty_record_id	Region-specific error estimate or uncertainty envelope	Record identifier	State sources including scale, pose, segmentation and hidden-region inference
+reported_damage_history_id	Separately governed history of reported damage mechanism	Private record identifier or unknown	Do not infer cause or treatment necessity from photographs
+target_status	Whether the target is sufficiently supported for a stated use	supported; partially_supported; unassessed	State the intended use; geometry support is not tissue-regeneration evidence

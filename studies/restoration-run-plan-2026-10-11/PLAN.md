@@ -7,9 +7,10 @@ it does not report that the proposed analyses or interventions have succeeded.
 ## Objective and allocation
 
 The flagship question is: **Can a damaged natural tooth regain its intended
-position, living cementum–periodontal-ligament–bone attachment, gum architecture,
-and physiological function, with stable position after temporary support is
-removed?** Freedom from lifelong external retention is a desired durability
+shape and missing substance, enamel thickness and structure, dentin and intact
+interfaces, viable pulp, position, living cementum–periodontal-ligament–bone
+attachment, gum architecture and physiological function, with stable position
+after temporary support is removed?** Freedom from lifelong external retention is a desired durability
 endpoint. Any finite positioning or healing support is an engineering variable
 whose withdrawal must be followed by measurements of stability.
 
@@ -167,6 +168,39 @@ inflammatory and cell-composition alternatives.
 **Completion gate:** eligibility is documented before inference. If the donor
 map or expression scale remains unresolved, deliver a qualification report and
 limited descriptive result rather than substitute samples for donors.
+
+## Work package D4: restore lost tooth substance and internal integrity
+
+Scope expansion recorded 2026-10-17. Use the
+[full-tooth restoration blueprint](../periodontal-attachment-restoration-2026-10-11/FULL_TOOTH_RESTORATION_BLUEPRINT.md)
+and version-2 restoration contract. Separate retained enamel demineralization,
+physically missing enamel, dentin loss, damaged interfaces, cracks and pulp
+involvement. Record reported causes separately from measured structural defects.
+
+Historical photographs constrain visible form and gums. Earlier scans/casts
+provide stronger dimensional references where available; hidden enamel
+thickness, internal interfaces and crack depth remain measured, inferred or
+unknown per region. Preserve the individual's anatomy and label prior-based
+reconstruction explicitly.
+
+Compare material routes by recovered depth and volume, architecture, host
+integration and repeated-load behavior. The 2025 enamel-like mineral-growth
+source provides a micrometre-layer lead; the existing 2026 ameloblast source
+provides an enamel-forming-cell lead. Neither supplies complete crown repair.
+Keep dentin/pulp repair and living periodontal attachment as independent,
+coupled modules. The final crown geometry must be evaluated with the attachment
+because it changes force transfer and occlusal contacts.
+
+Deliverables: a region-specific target/uncertainty map, source-based thickness
+and interface comparison, and a high-level discriminating research design.
+Use a known-geometry benchmark to test reconstruction before interpreting an
+individual photograph. No geometric rendering or thin coating establishes
+restoration of original tooth substance.
+
+**Completion gate:** every damaged domain has an explicit target, evidence
+role, uncertainty, functional readout and falsifier. A component-only result
+remains component-only until geometry, hard tissues, pulp, attachment, gingiva
+and durability meet their independent gates.
 
 ## Work package A1: challenge the existing reprogramming result
 

@@ -1,21 +1,47 @@
 {
-  "schema_version": 1,
-  "objective": "Restore the tooth, periodontal attachment and surrounding gum to the individual's intended geometry, viable adult tissue identity and durable physiologic function.",
+  "schema_version": 2,
+  "objective": "Restore the individual's damaged natural tooth and surrounding tissues, including missing crown/root substance, enamel thickness and architecture, dentin and its interfaces, pulp, periodontal attachment, gingiva, intended geometry and durable physiologic function.",
+  "protocol_status": "Integrated research specification; no validated human protocol for complete regeneration is established by the evidence reviewed here.",
   "explicit_constraints": [
     "Do not count a tooth held at the wrong position as full restoration.",
     "Do not count ankylotic fusion or a rigid scaffold as a functional periodontal ligament.",
     "Do not infer whole-organism age reversal from a local marker change.",
-    "Temporary positioning or healing support is a measured transition variable; long-term stability must be evaluated after removal."
+    "Temporary positioning or healing support is a measured transition variable; long-term stability must be evaluated after removal.",
+    "Do not equate remineralization of retained enamel with replacement of physically missing enamel or dentin volume.",
+    "Do not equate a thin enamel-like surface layer, restoration material, or similar hardness with original full-thickness native enamel.",
+    "Do not infer hidden enamel thickness, the dentin-enamel junction, pulp health, or crack depth from ordinary photographs.",
+    "Preserve personal anatomy; estimated or population-derived target regions must remain labeled as inferred.",
+    "Reported damage mechanism and measured structural findings are recorded separately; photographs alone do not establish cause or prior treatment necessity."
+  ],
+  "target_reconstruction_policy": {
+    "reference_order": ["individual pre-damage three-dimensional scan or cast with qualified dimensions", "calibrated individual multi-view historical photographs for visible surface constraints", "individual surviving anatomy and earlier clinical records", "contralateral or population priors explicitly labeled as inferred"],
+    "photograph_role": "Constrain visible crown contours, incisal edges, apparent alignment and gingival margins; metric scale and camera geometry require qualification.",
+    "hidden_regions": "Record enamel/dentin thickness, internal interfaces, inaccessible surfaces and crack extent as unknown unless supported by suitable measurements; inferred regions retain uncertainty.",
+    "exactness_rule": "An exact-original reconstruction claim requires adequate individual baseline measurements; photographs alone generally support a constrained target rather than a unique full-volume reconstruction."
+  },
+  "damage_states": [
+    "demineralized enamel with retained structure",
+    "physically missing enamel volume",
+    "enamel and dentin volume loss with exposed dentin",
+    "pulp exposure or impaired vitality",
+    "enamel, dentin or root crack/fracture",
+    "thermal or laser-associated structural change requiring characterization",
+    "existing restorative material and altered host-material interface",
+    "cementum, periodontal ligament, socket or gingival injury",
+    "combined hard-tissue and attachment damage"
   ],
   "restoration_domains": [
+    {"domain": "crown_geometry_and_lost_volume", "measurements": ["individual reference geometry and uncertainty by region", "missing enamel and dentin volumes separately", "cusp, incisal edge and contact-point geometry", "remaining native tissue versus restorative material", "color, translucency and surface texture"], "failure_modes": ["cosmetic outline without restored substance", "unmeasured internal deficit", "over-contouring or altered bite", "inferred anatomy reported as measured original anatomy"]},
+    {"domain": "enamel_thickness_architecture_and_surface", "measurements": ["spatial enamel thickness relative to the dentin-enamel junction", "recovered volume and depth", "mineral composition and rod/interrod architecture where appropriate", "host-to-repair integration", "hardness, fracture behavior, acid resistance, wear and cyclic fatigue"], "failure_modes": ["micrometre-scale layer counted as full-depth replacement", "mineral crust or mismatched architecture", "delamination", "crack propagation", "rapid wear or recurrent erosion"]},
+    {"domain": "dentin_interfaces_and_crack_integrity", "measurements": ["dentin volume, organization and tubule architecture", "dentin-enamel junction geometry and mechanical continuity", "crack location, depth and progression", "host-to-repair bond and seal", "fracture toughness, leakage and fatigue behavior"], "failure_modes": ["surface closure with a persistent deep crack", "repair mineral counted as original dentin without characterization", "weak interface or leakage", "root fracture", "pulp-space obliteration"]},
     {"domain": "position_and_occlusion", "measurements": ["3D tooth position and rotation vs declared target", "occlusal contact", "stability after support removal"], "failure_modes": ["healing in shifted position", "recurrent drift", "malocclusion"]},
     {"domain": "cementum_PDL_bone_attachment", "measurements": ["continuous physiologic ligament space", "fiber orientation and insertion into both cementum and alveolar bone", "cementum and socket integrity", "absence of ankylosis and root resorption"], "failure_modes": ["scar or disconnected fibers", "bone bridge", "replacement resorption", "root-surface loss"]},
-    {"domain": "mechanical_function", "measurements": ["mobility under controlled force series", "force-displacement curve", "stiffness", "failure load", "failure energy", "creep/recovery and cyclic fatigue"], "failure_modes": ["excess looseness", "over-stiff attachment", "brittle failure", "fatigue or creep"]},
+    {"domain": "mechanical_function", "measurements": ["mobility under controlled force series", "force-displacement curve", "stiffness", "failure load", "failure energy", "creep/recovery and cyclic fatigue", "load transfer using the restored crown and intended occlusal contacts"], "failure_modes": ["excess looseness", "over-stiff attachment", "brittle failure", "fatigue or creep", "restored crown geometry overloads the attachment"]},
     {"domain": "gingiva_and_barrier", "measurements": ["margin and papilla geometry", "tissue volume and phenotype", "epithelial seal", "perfusion", "inflammation and recurrence"], "failure_modes": ["coverage without healthy attachment", "recession", "pocketing", "chronic inflammation"]},
     {"domain": "pulp_vitality_and_sensation", "measurements": ["pulp perfusion and viability", "sensory response", "continued host integration"], "failure_modes": ["necrosis", "pulpal calcification", "loss of sensation"]},
     {"domain": "durability_and_identity", "measurements": ["adult lineage markers and morphology", "genomic integrity", "proliferation control", "function after intervention withdrawal", "longitudinal positional stability"], "failure_modes": ["dedifferentiation", "uncontrolled proliferation", "loss of function", "relapse"]}
   ],
   "unit_of_analysis": "Declare species, individual, tooth, socket, sample, donor and repeated-measure hierarchy for every result. Do not convert group means to specimen-level data.",
-  "minimum_gate": "Convergent geometry, living attachment histology, physiologic mobility, load-bearing function, absence of ankylosis/resorption, and stability after temporary support is removed. A single molecular marker or stiffness result is insufficient.",
-  "current_evidence_boundary": "Available evidence here is preclinical and does not establish a human method to reverse a trauma-displaced in-situ tooth without orthodontic repositioning or short-term stabilization."
+  "minimum_gate": "Every damaged domain must independently meet justified, predeclared targets: individual geometry and lost substance; enamel/dentin architecture and interfaces; crack and fatigue integrity; viable pulp where applicable; living attachment, gingival barrier and physiologic mobility; absence of ankylosis/resorption; and stability after temporary support is removed. Report component-only success when any required domain remains unresolved.",
+  "current_evidence_boundary": "The reviewed sources include ex-vivo enamel-like surface regrowth, preclinical dentin repair, ectopic ameloblast-derived mineral and animal attachment regeneration. They do not establish complete, original-thickness, multi-tissue regeneration of a damaged mature human tooth or exact hidden anatomy from photographs."
 }

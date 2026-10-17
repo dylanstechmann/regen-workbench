@@ -4,6 +4,14 @@ This study turns “restore a tooth to its youthful state” into a set of measu
 
 This is an AI-assisted evidence synthesis and computational benchmark. The original animal experiments belong to the cited source authors; this workspace analysis is not a new biological experiment or clinical treatment validation.
 
+The scope now also includes physically missing enamel/dentin, original crown
+volume and enamel thickness, crack integrity, the dentin-enamel interface and
+pulp. The [full-tooth restoration blueprint](FULL_TOOTH_RESTORATION_BLUEPRINT.md)
+connects these requirements to the attachment benchmark. Historical photographs
+can constrain visible anatomy; hidden thickness and internal tissue integrity
+remain separate measurements or labeled estimates. The
+[restoration contract](restoration_contract.json) records the expanded target.
+
 ## Evidence checkpoint
 
 The 2022 rat replantation study measured extraction force–displacement after local PDGF-BB pretreatment. At day 21, the paper reports recovery to 54% of control for failure load, 68% for maximum deformation, and 44% for failure energy (toughness); stiffness was described as almost control, but an exact ratio was not given. Its table also reports root or socket fractures during the extraction test in 0/10 non-replanted controls, 8/9 PBS controls, 10/10 atelocollagen controls, and 3/10 PDGF-BB-treated replants. The paper reports an area-standardized strength of 2.45 N/mm² versus 3.39 N/mm² control and calls that “approximately 76%.” Official Supplementary Table S3 confirms those displayed strengths and lists group mean maximum loads of 18.6 and 34.1 N divided by total root areas of 7.58 and 10.06 mm² from one representative tooth per group. Those calculations give 72.39%; dividing the displayed strengths gives 72.27%. The discrepancy remains unreconciled, and the table does not provide per-tooth variability. The paper says supporting data are available upon reasonable request. These measurements are animal group summaries, and extraction is not normal chewing. The authors also observed abnormal bone-like structures in the dental pulp in most replanted teeth, including the PDGF-BB group. [Komatsu et al., 2022](https://doi.org/10.1038/s41598-022-06865-6) [official Supplementary Information](https://static-content.springer.com/esm/art%3A10.1038%2Fs41598-022-06865-6/MediaObjects/41598_2022_6865_MOESM1_ESM.pdf)
