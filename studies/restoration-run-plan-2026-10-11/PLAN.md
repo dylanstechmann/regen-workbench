@@ -217,6 +217,15 @@ independent tissue truth or a validated clinical thickness assay. Next,
 evaluate withheld surface-patch recovery while separating exterior-only and
 internal-imaging-informed reconstruction branches.
 
+Third checkpoint: the [withheld-surface benchmark](../periodontal-attachment-restoration-2026-10-11/MISSING_TOOTH_PATCH_RECONSTRUCTION_REPORT.md)
+completed nine fixed disk patches, four baselines and a finer-grid numerical
+sensitivity on the same source specimen. Predictions are finalized before
+full-reference evaluation; retained-triangle data flow has a hidden-target
+mutation test. Internal-imaging quadratic residual fits improve five patches
+but worsen four. The next geometry gate is replication on separately
+qualified specimens before changing priors. No material manufacture or
+biological-restoration result follows from these height-field tests.
+
 **Completion gate:** every damaged domain has an explicit target, evidence
 role, uncertainty, functional readout and falsifier. A component-only result
 remains component-only until geometry, hard tissues, pulp, attachment, gingiva

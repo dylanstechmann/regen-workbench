@@ -185,3 +185,9 @@ adds a source-defined internal enamel-dentine boundary. Deliberately shifting
 that boundary demonstrates why unchanged outer shape and small mean gap bias
 can conceal regional thickness errors. The reference is provisional and does
 not qualify micrometre-scale repaired-layer measurement.
+
+The [missing-surface benchmark](MISSING_TOOTH_PATCH_RECONSTRUCTION_REPORT.md)
+now tests recovery against withheld source geometry. Nine patches and four
+fixed baselines retain both improvements and failures when internal imaging
+is added. This provides a reconstruction comparison, with numerical sampling
+sensitivity, rather than evidence that the missing material can be grown.

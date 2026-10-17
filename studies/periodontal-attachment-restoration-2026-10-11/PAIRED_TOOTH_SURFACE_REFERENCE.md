@@ -151,6 +151,13 @@ exterior-only branch and expose it only in a separately labeled branch with
 internal imaging. This will test recovery of missing substance geometry;
 it will not by itself demonstrate biological repair.
 
+That [withheld-patch comparison](MISSING_TOOTH_PATCH_RECONSTRUCTION_REPORT.md)
+has now been run on nine patches with four fixed baselines. The internal-
+imaging quadratic model improves five patches but worsens four relative to
+the exterior-only quadratic. Both sampling grids preserve this mixed result;
+internal information and an adequate regional shape model remain separate
+requirements.
+
 ## Reproduce and credit
 
 From the repository, with Python and NumPy available:
