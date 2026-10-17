@@ -1,0 +1,11 @@
+field	meaning	allowed_values_or_units	validation_notes
+run_id	Identifier for one timing qualification run	Nonblank text	One run per analysis
+pipeline_id	Frozen acquisition, filtering, and event-detection pipeline	Nonblank text	One pipeline per run
+timebase_id	Shared clock or common reference timebase identifier	Nonblank text	One timebase per run; document trigger wiring and clock source
+condition_id	Timing condition identifier for one event waveform	Nonblank text	At least two repeat events per condition and rate
+replicate_id	Unique trigger-event repeat within a condition	Nonblank text	Independent trigger events, not repeated exports of one event
+rate_id	Declared waveform or movement-rate condition	Nonblank text	Include the fastest planned waveform in physical qualification
+reference_time_s	Event time from the independent common reference	Seconds	Finite timestamp
+force_event_time_s	Same event time detected by the force channel	Seconds	Finite timestamp, on the declared common timebase
+displacement_event_time_s	Same event time detected by the displacement channel	Seconds	Finite timestamp, on the declared common timebase
+max_velocity_mm_s	Maximum planned displacement velocity for this condition	mm/s; nonnegative	Must be justified by the planned waveform; timing error bound is velocity times observed absolute channel offset

@@ -111,6 +111,13 @@ pre/post drift. Numeric pass limits must be justified and locked before outcome
 review; this calculation does not qualify the fixture or select a biological
 loading level.
 
+The next two fixture gates also have small analyzers: [`analyze_fixture_compliance.py`](analyze_fixture_compliance.py)
+summarizes raw blocked-fixture movement and evaluates any supplied correction
+on held-out phantom states, while [`analyze_channel_timing.py`](analyze_channel_timing.py)
+reports trigger offset, jitter, and the resulting displacement-error bound.
+Their included examples are synthetic software checks only. The fixture tool
+does not fit a correction, and neither report establishes physical qualification.
+
 ## Qualification sequence and pass rules
 
 1. **Lock the estimand and coordinate convention.** Fix axis signs, units, tooth pose representation, baseline source, target tooth, registration mask, support states, and timepoints before reading treatment outcomes. Store all six pose components; a single “distance from ideal” number can hide direction and tipping.

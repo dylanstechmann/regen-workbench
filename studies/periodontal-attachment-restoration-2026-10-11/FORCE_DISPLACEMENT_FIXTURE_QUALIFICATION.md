@@ -122,6 +122,40 @@ Even then, a software `pass` is a screening result against those entered limits,
 not an accredited calibration certificate or completion of the full fixture
 qualification protocol.
 
+For the blocked-fixture compliance gate, use the schema in
+[`fixture_compliance_data_dictionary.tsv`](fixture_compliance_data_dictionary.tsv)
+and [`analyze_fixture_compliance.py`](analyze_fixture_compliance.py). It reports
+raw apparent displacement by force, direction, and rate, plus final residuals
+and repeatability. If a correction is supplied, keep development and held-out
+state IDs separate; the analyzer evaluates supplied corrected values and does
+not fit the correction. The invented
+[`synthetic_fixture_compliance.tsv`](examples/synthetic_fixture_compliance.tsv)
+can be run as a software check:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_fixture_compliance.py `
+  --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_fixture_compliance.tsv `
+  --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_fixture_compliance
+```
+
+For the common-trigger time-alignment gate, use
+[`channel_timing_data_dictionary.tsv`](channel_timing_data_dictionary.tsv)
+and [`analyze_channel_timing.py`](analyze_channel_timing.py). The analyzer
+reports force and displacement latency, channel offset and jitter, and the
+observed timing-error bound `max_velocity × max_abs_offset`. The invented
+[`synthetic_channel_timing.tsv`](examples/synthetic_channel_timing.tsv) is
+software QA only:
+
+```powershell
+python studies/periodontal-attachment-restoration-2026-10-11/analyze_channel_timing.py `
+  --input studies/periodontal-attachment-restoration-2026-10-11/examples/synthetic_channel_timing.tsv `
+  --outdir studies/periodontal-attachment-restoration-2026-10-11/derived/synthetic_channel_timing
+```
+
+All three example reports return `not_assessed` because they contain invented
+data and no study-specific acceptance criteria. A tool status cannot replace
+raw traces, independent reference standards, or held-out physical validation.
+
 After qualification, the
 [`analyze_mobility_response.py`](analyze_mobility_response.py) script can
 summarize traces using the frozen calibration and pipeline identifiers. Its

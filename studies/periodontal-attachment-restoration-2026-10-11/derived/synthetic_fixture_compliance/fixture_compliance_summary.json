@@ -1,0 +1,22 @@
+{
+  "method_version": "0.1.0",
+  "input_sha256": "1e2b7c1f3a5c41458fa68533355d26f9538243493f1b01940cb28467a25371c5",
+  "fixture_id": "synthetic_fixture_v0",
+  "pipeline_id": "pipeline_v0",
+  "correction_id": "linear_correction_v0",
+  "criteria_id": null,
+  "locked_before_outcome_review": null,
+  "n_groups": 8,
+  "n_held_out_groups": 4,
+  "max_held_out_blank_raw_apparent_movement_mm": 0.021,
+  "max_held_out_final_residual_mm": 0.0025000000000000022,
+  "max_held_out_final_rmse_mm": 0.002041241452319317,
+  "max_held_out_repeatability_coefficient_95_mm": 0.0013859292911256344,
+  "overall_status": "not_assessed",
+  "interpretation_limits": [
+    "This report summarizes blocked-fixture or known-motion phantom measurements; it is not a fixture certificate.",
+    "The tool does not fit a compliance correction or verify how correction values were generated; corrected results must be evaluated on genuinely held-out states.",
+    "Force, direction, rate, contact point, and fixture configuration define the qualified domain; do not extrapolate beyond it.",
+    "A pass does not establish biological validity, an injury dose, or suitability for patient use."
+  ]
+}

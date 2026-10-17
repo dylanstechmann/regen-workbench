@@ -1,0 +1,7 @@
+run_id	pipeline_id	timebase_id	condition_id	replicate_id	rate_id	reference_time_s	force_event_time_s	displacement_event_time_s	max_velocity_mm_s
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	fast_pulse	r1	fastest_planned	0	0.001	0.002	2
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	fast_pulse	r2	fastest_planned	1	1.0015	1.0025	2
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	fast_pulse	r3	fastest_planned	2	2.0005	2.001	2
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	slow_pulse	r1	slower_planned	3	3.001	3.0015	0.5
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	slow_pulse	r2	slower_planned	4	4.0015	4.002	0.5
+synthetic_timing_v0	pipeline_v0	shared_clock_v0	slow_pulse	r3	slower_planned	5	5.0005	5.001	0.5

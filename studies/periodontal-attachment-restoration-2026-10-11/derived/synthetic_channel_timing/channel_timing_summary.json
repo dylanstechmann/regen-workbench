@@ -1,0 +1,20 @@
+{
+  "method_version": "0.1.0",
+  "input_sha256": "bbd65cc25ad15ee4b394f684c11be7e17f4fda8598a13fa03b2c713cfafd6fce",
+  "run_id": "synthetic_timing_v0",
+  "pipeline_id": "pipeline_v0",
+  "timebase_id": "shared_clock_v0",
+  "criteria_id": null,
+  "locked_before_outcome_review": null,
+  "n_conditions": 2,
+  "max_abs_channel_offset_s": 0.001,
+  "max_channel_offset_jitter_sd_s": 0.0002886751345949411,
+  "max_observed_timing_error_mm": 0.002,
+  "overall_status": "not_assessed",
+  "interpretation_limits": [
+    "The displacement error bound uses the largest observed absolute channel offset times the declared maximum velocity for each condition.",
+    "Repeated trigger tests characterize observed timing only; they do not prove clock accuracy between triggers or across untested waveforms.",
+    "The reference event, detection method, sampling rates, filters, and timebase must be documented and held fixed.",
+    "A pass does not establish biological validity, an injury dose, or suitability for patient use."
+  ]
+}

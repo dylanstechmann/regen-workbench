@@ -1,0 +1,15 @@
+field	meaning	allowed_values_or_units	validation_notes
+fixture_id	Identifies the physical fixture and load path	Nonblank text	One fixture per analysis run
+pipeline_id	Frozen acquisition and conversion pipeline identifier	Nonblank text	One pipeline per run
+correction_id	Identifier for externally generated compliance correction, or no correction	Nonblank text; use none if absent	This analyzer evaluates supplied corrected values but does not fit a model
+state_id	Known blank or phantom pose state identifier	Nonblank text	Truth displacement must be constant for an ID; do not reuse across development and held-out splits
+state_type	Whether the reference state is blocked blank or known phantom motion	blank or known_motion	A blank state must have zero reference displacement
+split	Data role relative to correction development	development or held_out	Only held-out rows contribute to qualification status
+direction	Loading path direction or state	Nonblank text; e.g. ascending, descending, zero_return	Define sign and physical direction in the acquisition record
+rate_id	Declared loading or movement rate condition	Nonblank text	Define the numeric rate and waveform in the acquisition record
+force_level_id	Reference force point identifier	Nonblank text	Force value must remain fixed within a point group
+replicate_id	Unique repeat within a fixture point group	Nonblank text	At least two independent replicates per group
+force_n	Magnitude of the force recorded at the specimen contact	N; nonnegative	Assumed already qualified by the force-channel calibration audit
+reference_displacement_mm	Known displacement for the blank or phantom state	mm	Finite numeric; zero for blank states
+raw_displacement_mm	Uncorrected apparent displacement reported by the pipeline	mm	Preserve alongside any correction
+corrected_displacement_mm	Displacement after the named, versioned correction	mm or blank if no correction	If correction_id is not none, supply for every row; validate only on held-out states
