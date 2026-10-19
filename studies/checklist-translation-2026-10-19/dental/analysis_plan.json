@@ -1,0 +1,62 @@
+{
+  "study_date": "2026-10-19",
+  "scope": "Actual observed restoration comparator and bounded intended-depth source intake; no new synthetic data",
+  "data_source": {
+    "doi": "10.5281/zenodo.7412385",
+    "version": 3,
+    "article_doi": "10.1007/s00784-022-04841-y",
+    "registry": "48 source fracture-table teeth; G1-G4, T1-T12 each",
+    "source_ids": "Original source row codes plus separately retained group/specimen-number columns; neither overwritten"
+  },
+  "group_mapping": {
+    "G1": "PICN inlay, composite previously aged",
+    "G2": "LDS inlay, composite previously aged",
+    "G3": "PICN inlay, composite not previously aged",
+    "G4": "LDS inlay, composite not previously aged"
+  },
+  "states": {
+    "baseline_Filling": "Original composite restoration before inlay preparation; not a comparable baseline for inlay-tooth interface",
+    "R1": "Prior composite loading only G1/G2; 240000 mechanical cycles",
+    "baseline_Inlay": "After inlay placement before final loading block",
+    "R2": "After common 1200000-cycle final mechanical loading block",
+    "terminal_fracture": "Later destructive overload; face-category crack outcome and peak load, no fatigue event time"
+  },
+  "paired_primary": {
+    "interfaces": [
+      "distal Inlay-Composit: baseline_Inlay vs R2",
+      "mesial Inlay-Tooth: baseline_Inlay vs R2"
+    ],
+    "unit": "one tooth per interface per state; no pooled face replicates",
+    "identity_policy": "If source code and declared identity conflict, mark both source-code and destination teeth unresolved; strict subset omits the entire affected keys from linked means but preserves all 48 in registry. Conditional sensitivity trusts all row codes. Internally consistent does not mean externally verified.",
+    "estimand": "Mean within-tooth postload minus baseline noncontinuous proportion among assessable margin, in percentage points, strict observed subset; no CI, test or causal contrast",
+    "full_scanned_uncertainty": "For each record, gap/full to (gap+not_assessable)/full; a blank not_assessable field gives upper100%. Paired difference bounds [post_low-pre_high,post_high-pre_low], then equal-tooth means. Printed values only, no measurement-error model. Conservative not necessarily sharp; not-assessable portions may all be gaps or none.",
+    "geometry_limit": "Nominal interface region, no registered pixels or local crack-growth trajectory"
+  },
+  "fracture": {
+    "peak_load": "Retain all literal numerical loads including 6.76N G1/T11",
+    "G1_diagnostic": "Show omission of G1/T11 separately, neither a corrected datum nor a justified exclusion",
+    "face_hierarchy": "Binary category indicators across four faces; any category at tooth level; modes not mutually exclusive",
+    "joint_question": "Recorded positive noncontinuous length at either final inlay interface AND subsequent below-simulated-bone fracture",
+    "joint_bounds": "All 48 registry denominator. Internally consistent linked positive known. Ambiguous margin identity and observed below-bone fracture unknown. Below-bone negative makes joint negative irrespective of margin identity. Bounds known/48 to (known+unknown)/48; no assertion of sharpness or same-time/causal association."
+  },
+  "missingness": {
+    "unknown_donor_ids": "No donor-balanced mean or independent donor inference",
+    "repair_depth": "Missing for all 48. Nominal cavity depths and CEJ-relative locations never substituted.",
+    "substrate": "Optical tooth substance label, no record-specific enamel/dentin segmentation",
+    "tracer_leakage": "Missing; optical gaps not substituted",
+    "fatigue_failure_time": "Missing; peak force and experiment-wide no-debonding statement not substituted",
+    "source_blank_unassessable_fields": "Retained unknown; no silent zero or LOD imputation",
+    "rounding_tolerance_um": 0.011,
+    "rounding_tolerance_meaning": "Printed full-minus-nonassessable-minus-assessable length consistency only; no mechanical acceptance threshold"
+  },
+  "prior_bridge": "Reuse missing depth/leakage/fatigue handlers from studies/checklist-mechanisms-2026-10-19/dental/analyze_linked_material_outcomes.py; retain assay-specific unavailable states",
+  "full_restoration_contract": [
+    "Original natural enamel volume/thickness and architecture",
+    "Dentin volume and junctions",
+    "Living pulp",
+    "Native PDL/cementum/socket attachment",
+    "Youthful gums",
+    "Original pose and load stability after finite support withdrawal"
+  ],
+  "stopping_rule": "Four primary candidates screened; eight retained files. Stop after a usable partial observed comparator and do not pursue opaque large workbook or contact authors."
+}

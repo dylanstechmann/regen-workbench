@@ -1,0 +1,85 @@
+{
+  "study_date": "2026-10-19",
+  "retained_fetches": [
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2022.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11734256/fullTextXML",
+      "bytes": 88221,
+      "sha256": "ecb1f491989ab093466f20c7f1385694e88c889a06341914b10998f56fead5c7",
+      "receipt_path": "data/provenance/1792439933132561200_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:58:53.121735+00:00",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2026.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12973557/fullTextXML",
+      "bytes": 160592,
+      "sha256": "de6182258892aba59171da8ed880c9b0ed76df813d62b545c427cf0f9bf7d8c3",
+      "receipt_path": "data/provenance/1792439934056774500_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:58:54.048031+00:00",
+      "license": "CC-BY-NC-ND-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/zenodo7412385.json",
+      "source_url": "https://zenodo.org/api/records/7412385",
+      "bytes": 6674,
+      "sha256": "f7c230140f0cc43f30d8ee9360993c5cab6f338c31d1d7ab9f9f4d5224bbf415",
+      "receipt_path": "data/provenance/1792439934647581000_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:58:54.633570+00:00",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_primary.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10264514/fullTextXML",
+      "bytes": 112671,
+      "sha256": "79da031cdc324b92980e8a7126e660deb87470fcee1cba155948d430cefcd827",
+      "receipt_path": "data/provenance/1792439955444893500_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:59:15.436862+00:00",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_fracture.pdf",
+      "source_url": "https://zenodo.org/api/records/7412385/files/1%20fracture%20analysis.pdf/content",
+      "bytes": 53320,
+      "sha256": "9d5833175a6945c48ff0c4e1cefae163556b2bde0b579e301f53f80d20815160",
+      "receipt_path": "data/provenance/1792439956217314400_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:59:16.207309+00:00",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_marginal.pdf",
+      "source_url": "https://zenodo.org/api/records/7412385/files/3%20marginal%20analysis.pdf/content",
+      "bytes": 125960,
+      "sha256": "829c1044c6d17cfca9413a3df9f086e875c43975455e7392b871b9272e60fce4",
+      "receipt_path": "data/provenance/1792439957359530800_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:59:17.351354+00:00",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/hea2024.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11585591/fullTextXML",
+      "bytes": 243317,
+      "sha256": "59ab9904595d4ef23904facbb1a4431171820df82874476f76842009fb2e1851",
+      "receipt_path": "data/provenance/1792439959105045600_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:59:19.097024+00:00",
+      "license": "CC-BY-NC-ND-4.0"
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2026_supp.docx",
+      "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12903-026-07837-2/MediaObjects/12903_2026_7837_MOESM1_ESM.docx",
+      "bytes": 231015,
+      "sha256": "b0fd559cb7513b1fa431c30032a9f18e028e1e3838a546104c6158a7c0e65bac",
+      "receipt_path": "data/provenance/1792439978349137600_dental-translation-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T19:59:38.339140+00:00",
+      "license": "CC-BY-NC-ND-4.0"
+    }
+  ],
+  "raw_distribution": "Raw sources and render PNGs remain ignored. Only attributed Theisen CC-BY-4.0 numerical tables and original analysis are included in this study. Other papers support factual candidate eligibility judgments; no article text, graph images or workbook bytes are republished.",
+  "bounded_unretained_attempts": [
+    {
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-54576-5/MediaObjects/41467_2024_54576_MOESM4_ESM.xlsx",
+      "status": "response exceeded 20,000,000-byte cap; read 20,000,001 bytes then discarded; no file/hash/receipt, workbook not inspected",
+      "do_not_infer": "No claim about workbook numerical completeness or specimen linkage"
+    }
+  ]
+}

@@ -21,6 +21,18 @@ stored as citations, not silently scraped.
 
 ## Working views
 
+**Progress** opens the desk with recent analyses across the restoration goals.
+Filter by research area and open each report or selected results. Objectives,
+published-data analyses, observational comparisons, synthetic examples and
+conditional calculations retain separate labels, limitations and next steps.
+The curated catalog lives in `tools/data/research-progress.json`; it does not
+search for files, fetch sources or execute studies. Declared local study text
+must match its canonical UTF-8/LF size and SHA-256. If any linked file changes,
+the entire card's conclusion and downloads are withheld until the catalog is
+reviewed. Downloads recheck the card; failed or superseded refreshes cannot
+restore an earlier displayed finding. These are integrity checks, not proof of
+biological validity. Personal observations and raw-source caches are excluded.
+
 **Teeth, gums & periodontal attachment** and **Organoids & stem-cell construct
 function** now add component-specific assessment axes and ten starter campaigns.
 The [dental research track](studies/dental-regeneration-2026-10-09/README.md)

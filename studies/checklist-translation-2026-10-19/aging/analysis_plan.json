@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-19",
+  "status": "Exploratory plan specified after earlier panel results and metadata review, before the new per-gene/support outcomes. Not preregistered.",
+  "question": "Is the opposing structural-ECM direction concentrated in one of its fixed genes, and does it persist under stated metadata-only age-support restrictions?",
+  "genes": ["COL1A1", "COL1A2", "COL3A1", "COL5A1", "COL6A1", "FN1", "DCN", "LUM"],
+  "panel_policy": "Exactly the existing eight structural-ECM genes with equal weights, all available in both cohorts; no expression-based gene filtering, alias changes, retraining or preferred seven-gene replacement.",
+  "inputs": {
+    "cell_metadata": {"path": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241/gingival_cellset_donor_counts.tsv", "sha256_lf_text": "fa20518ddad18e2ffe10647a9a24462cb0c0ec70209d32780aa1cdc3779f4ccc"},
+    "cell_raw_fixed_genes": {"path": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241/gingival_cellset_pseudobulk_fixed_genes.tsv", "sha256_lf_text": "396c4df081c0339a301c501c0d395092cf4f1d2f9e6cd63f58d9de62b03dfb33"},
+    "partial_mixture_genes": {"path": "studies/checklist-mechanisms-2026-10-19/aging/derived/partial_mixture_gene_values.tsv", "sha256_lf_text": "ecccbb2208d306bda0aabb31e2e8d541c941f89322487dbd721c898d1039d74f"},
+    "bulk_metadata": {"path": "studies/checklist-followup-2026-10-19/aging/derived/GSE173078_sample_manifest.tsv", "sha256_lf_text": "d9c63c4700c1aefff7fabd306886eee54aa62ccb5d0cdbca080ee80c7ff4772e"},
+    "bulk_gene_values": {"path": "studies/checklist-followup-2026-10-19/aging/derived/fixed_panel_gene_values.tsv", "sha256_lf_text": "e43040f4623996805d1d54b475a6f35361cc2e97770f9e267e36dad5cdd83124"}
+  },
+  "populations": {
+    "all_healthy": "All original source-labelled healthy donor codes, 13 cell-resolved and 12 bulk. Disease samples never enter.",
+    "shared_observed_age_span": "Intersection of the two original healthy age ranges, inclusive; computed from metadata before outcomes. This is 28-61 years, but actual retained bulk ages stop at 45, so ranges are not matched distributions.",
+    "shared_nonempty_decade_bins": "Keep all donors in floor(age/10)*10 bins containing at least one original healthy donor in each cohort. Frozen bins are 20,30,60. This is only coarse support: 61 versus 63-68 in the older bin is not matched age, and a one-donor bin is retained visibly."
+  },
+  "score_modes": {
+    "fibroblast_only": "GSE164241 raw fibroblasts_all CPM, then gene log1p",
+    "observed_partial_capture": "GSE164241 previously audited nine-disjoint-compartment observed partial-mixture CPM, then gene log1p",
+    "common_RNA_partial_capture": "GSE164241 previously frozen 13-healthy-donor common-RNA partial mixture CPM, unchanged, then gene log1p",
+    "bulk_gingiva": "GSE173078 previously audited per-gene log1p(CPM)"
+  },
+  "models": ["age_only", "age_sex_processing"],
+  "model_rule": "Separate within-source OLS, intercept and centered age in decades; second model adds male plus processing indicator (Cell Ranger3.0.1 versus2.0.0 in GSE164241; batchB versusA in GSE173078). Same donors/design for all eight genes in each fit; full rank and at least two residual degrees of freedom or explicit failure.",
+  "contribution_rule": "OLS on the mean of the eight gene log1p(CPM) equals the mean of their eight coefficients under identical rows/design. Report every gene coefficient and its 1/8 panel contribution. Absolute contribution shares are descriptive algebra, not causal fractions, independent replication or variance explained.",
+  "gene_omission_rule": "Compute all eight seven-gene omission diagnostics for every fit. Omission never selects a replacement panel, new weights or a preferred model; genes are not biological replicates.",
+  "donor_omission_rule": "Omit each donor from each panel fit, keeping population definitions and prior common-RNA weights frozen. This is influence analysis, not donor-held-out validation; omitted cell-source donors contributed to the old common-weight reference.",
+  "limits": [
+    "All population restrictions are demographic sensitivities, not improved clinical validation or age matching.",
+    "Bulk, fibroblast-only and partial captured-cell RNA mixtures remain distinct estimands; 386 excluded captured cells have unknown RNA, and capture fractions are not intact tissue fractions.",
+    "Source-specific covariates are not a shared batch correction or causal identification; older male coverage remains inadequate.",
+    "Relative log1p(CPM), correlated genes and observational donor contrasts cannot establish intrinsic aging, a biological-age estimate, rejuvenation or functional repair.",
+    "Matched-donor bulk versus cell-resolved measurements are still missing; cohort, site, ascertainment and assay differences remain unresolved."
+  ]
+}

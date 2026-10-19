@@ -1,10 +1,12 @@
 'use strict';
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
-let workspace, selected = 'reprogramming', activeTab = 'evidence', chemistryRun = null, selectedCampaignId = null;
+let workspace, selected = 'reprogramming', activeTab = 'progress', chemistryRun = null, selectedCampaignId = null;
 let runPage = 0, runPageSize = 50, historyRuns = [], historyTotal = 0;
 const runCache = new Map();
 let experimentRecords = [];
+let progressRecords = null;
+let progressRequestGeneration = 0;
 let modelArtifactState = null;
 let researchRecords = [], researchRecordTotal = 0, researchRecordPage = 0, researchRecordBlueprint = null;
 let researchEditorType = 'question';
@@ -35,6 +37,57 @@ function safeLink(title, url) {
   link.target = '_blank'; link.rel = 'noreferrer'; return link;
 }
 function badge(text, cls = '') { return el('span', text, `tag ${cls}`); }
+
+function renderProgress() {
+  const container = $('#progress-records');
+  container.replaceChildren();
+  if (progressRecords === null) {
+    container.append(el('p','Refresh progress to load current results.','empty'));
+    return;
+  }
+  const topic = $('#progress-topic').value;
+  const rows = (progressRecords || []).filter(row => !topic || row.topic === topic);
+  if (!rows.length) container.append(el('p','No progress entries match this research area.','empty'));
+  for (const row of rows) {
+    const card = el('article',null,'model-bench-card');
+    card.append(badge(row.evidence_label),el('h3',row.title),el('p',`${row.topic} · ${row.updated_on}`,'boundary'));
+    if (!row.available) {
+      card.append(el('p',row.message,'boundary'));
+    } else {
+      card.append(el('p',row.result),el('p',row.boundary,'boundary'));
+      card.append(el('h4','Next useful step'),el('p',row.next_step));
+      const links = el('div',null,'row experiment-artifacts');
+      for (const artifact of row.artifacts) links.append(safeLink(artifact.label,artifact.url));
+      card.append(links);
+    }
+    container.append(card);
+  }
+}
+
+async function refreshProgress() {
+  const generation = ++progressRequestGeneration;
+  const select = $('#progress-topic'), previous = select.value;
+  progressRecords = null;
+  $('#progress-count').textContent = '';
+  select.disabled = true;
+  $('#progress-records').replaceChildren(el('p','Loading current progress…','empty'));
+  try {
+    const result = await api('/api/research-progress');
+    if (generation !== progressRequestGeneration) return;
+    progressRecords = result.updates;
+    $('#progress-count').textContent = result.count || '';
+    select.replaceChildren(new Option('All research areas',''));
+    for (const topic of [...new Set(progressRecords.map(row=>row.topic))].sort()) select.append(new Option(topic,topic));
+    select.value = [...select.options].some(option=>option.value===previous) ? previous : '';
+    select.disabled = false;
+    renderProgress();
+  } catch (error) {
+    if (generation !== progressRequestGeneration) return;
+    progressRecords = null;
+    $('#progress-records').replaceChildren(el('p','Progress could not be refreshed. Try again.','empty'));
+    throw error;
+  }
+}
 function notice(message, error = false) { $('#notice').textContent = message; $('#notice').hidden = false; $('#notice').className = error ? 'error' : ''; }
 function task(fn) { return async (event) => { try { await fn(event); } catch (error) { notice(error.message, true); } }; }
 async function api(path, data) {
@@ -959,6 +1012,7 @@ async function renderArea() {
     await refreshModelBench();
   }
   if (!experimentRecords.length) await refreshExperiments();
+  if (progressRecords === null) await refreshProgress();
 }
 async function refresh() {
   workspace = await api('/api/state');
@@ -1112,6 +1166,7 @@ function renderCampaignRuns() {
 }
 $$('[data-tab]').forEach(button => button.addEventListener('click',task(async () => {
   switchTab(button.dataset.tab);
+  if (activeTab === 'progress') await refreshProgress();
   if (button.dataset.tab === 'model-bench') await refreshModelBench();
   if (button.dataset.tab === 'study-design') await loadResearchRecords(0);
 })));
@@ -1139,6 +1194,8 @@ $('#research-record-form').addEventListener('submit',task(async event=>{
 $('#source-filter').addEventListener('change',renderRecords); $('#record-filter').addEventListener('input',renderRecords);
 $('#passing-only').addEventListener('change',renderChemistry);
 $('#refresh-experiments').addEventListener('click',task(refreshExperiments));
+$('#refresh-progress').addEventListener('click',task(refreshProgress));
+$('#progress-topic').addEventListener('change',renderProgress);
 $('#refresh-model-bench').addEventListener('click',task(refreshModelBench));
 $('#chemistry-run').addEventListener('change',task(async event => {
   const area = selected, loaded = await getRun(event.target.value);
@@ -1192,6 +1249,7 @@ $('#export').addEventListener('click',task(async () => {
 }));
 
 async function init() {
+  const progressLoad = refreshProgress().catch(error => notice(error.message,true));
   workspace = await api('/api/state');
   researchRecordTemplate();
   if (!workspace.blueprints.some(b => b.id === selected)) selected = workspace.blueprints[0].id;
@@ -1205,6 +1263,7 @@ async function init() {
     if (input.disabled) label.append(el('small','key missing'));
     $('#providers').append(label);
   }
+  await progressLoad;
   await renderArea(); $('#connection').textContent = 'Ready';
   setInterval(task(async () => {
     if (refreshing || !workspace.runs.some(r => busy.has(r.status))) return;

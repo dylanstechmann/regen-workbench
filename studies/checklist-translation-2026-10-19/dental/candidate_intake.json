@@ -1,0 +1,105 @@
+{
+  "screen_kind": "bounded_primary_source_intake_not_systematic_review",
+  "intended_eligibility": "Public numerical data linking same actual specimen measured repair depth, resolved host substrate and interface crack/durability/leakage/fatigue outcome; hierarchy and failure/unknown states recoverable",
+  "fully_eligible_candidates": 0,
+  "selected_partial_candidate": "theisen2023",
+  "candidates": [
+    {
+      "candidate_id": "theisen2023",
+      "article": "https://doi.org/10.1007/s00784-022-04841-y",
+      "deposit": "https://doi.org/10.5281/zenodo.7412385",
+      "retained_files": [
+        "theisen_primary.xml",
+        "zenodo7412385.json",
+        "theisen_fracture.pdf",
+        "theisen_marginal.pdf"
+      ],
+      "material_scope": "Resin composite, PICN and LDS restorations in extracted human molars; mechanical comparator, not bioidentical regeneration",
+      "units_and_assays": {
+        "marginal_full_assessable_nonassessable_noncontinuous_lengths": "micrometers",
+        "continuous_assessable_margin": "percent",
+        "terminal_peak_load": "N",
+        "terminal_fracture": "binary face indicators in three nonexclusive categories, four faces nested in tooth",
+        "repair_depth": "No actual specimen-level measured value; preparation geometry nominal millimeters",
+        "substrate": "optical tooth/composite/inlay label, no tooth-region enamel/dentin mask"
+      },
+      "hierarchy": "48 molars, donor crosswalk unknown; 384 repeated margin region/state rows and4 fracture faces per tooth",
+      "linkage": "Code keys G1-G4/T1-T12 link margin states and fracture records conditionally;57 marginal rows conflict with specimen-number columns, affecting11 possible keys;37 internally consistent teeth",
+      "eligibility": "PARTIAL_ONLY: actual linked optical-margin/terminal-fracture comparator; missing measured repair depth, enamel/dentin segmentation, native regenerated tissue and fatigue event histories",
+      "retained_adverse_or_unknown": [
+        "G1_T11 literal6.76N and publication-summary mismatch",
+        "Five blank nonassessable fields",
+        "70 below-bone face indicators across35 teeth",
+        "Prior composite aging differs by group",
+        "No-debonding source statement does not erase terminal overload cracks"
+      ]
+    },
+    {
+      "candidate_id": "alam2022",
+      "article": "https://doi.org/10.3290/j.jad.b3240695",
+      "primary_xml": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11734256/fullTextXML",
+      "retained_files": [
+        "thickness2022.xml"
+      ],
+      "material_scope": "Universal adhesive resin-dentin interfaces; immediate bond-strength comparison",
+      "units_and_assays": {
+        "adhesive_film_thickness": "micrometers, measured from both fractured ends of the same tested stick",
+        "microtensile_strength": "MPa",
+        "failure_mode": "adhesive/nonadhesive at stick level, published only aggregate figure",
+        "hardness_modulus": "Separate specimens; not same-stick measurements"
+      },
+      "hierarchy": "99 premolars total; 72 for strength, 8 teeth per group, 3 sticks per tooth (24 per group); separate 27 teeth for indentation. Donor identities absent.",
+      "linkage": "Study explicitly correlates same-stick thickness/strength, but retrieved publicXML exposes figures/correlations rather than numerical tooth/stick crosswalk; no supplement/table link found",
+      "eligibility": "NOT_NUMERICALLY_ELIGIBLE in this intake: same-stick physical assay linkage exists but no public numerical tooth-linked table retrieved; adhesive film is not regenerated enamel depth; immediate rather than durability endpoint",
+      "retained_adverse_or_unknown": [
+        "Different adhesives show opposite pooled thickness-strength directions",
+        "Paper treats sticks as statistical units despite 3 sticks per tooth; donor-level significance cannot be imported",
+        "No pretest failures reported, not an inference about durability",
+        "Film thickness was measured after fracture, not an established prospective pre-load depth predictor"
+      ]
+    },
+    {
+      "candidate_id": "thickness2026",
+      "article": "https://doi.org/10.1186/s12903-026-07837-2",
+      "primary_xml": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12973557/fullTextXML",
+      "retained_files": [
+        "thickness2026.xml",
+        "thickness2026_supp.docx"
+      ],
+      "material_scope": "Universal adhesive film; extracted-tooth bond strength immediate and after thermocycling",
+      "units_and_assays": {
+        "film_thickness": "micrometers, one stick per tooth imaged",
+        "microtensile_strength": "MPa; two sticks per tooth, one immediate and one aged"
+      },
+      "hierarchy": "40 teeth, 2 sticks per tooth; exact imaged stick-to-strength crosswalk not supplied publicly",
+      "linkage": "DOCX contains two raster graph images and captions, with no OOXML charts, embedded workbooks or raw numerical tables; article data-availability statement requires corresponding-author request, not performed",
+      "eligibility": "NOT_NUMERICALLY_ELIGIBLE: no retrieved raw specimen-linked numbers; adhesive film does not establish enamel repair depth",
+      "retained_adverse_or_unknown": [
+        "Paired immediate/aged teeth must not turn into 80 independent donors",
+        "No adapted figure/image distributed; CC-BY-NC-ND metadata"
+      ]
+    },
+    {
+      "candidate_id": "hea2024",
+      "article": "https://doi.org/10.1038/s41467-024-54576-5",
+      "primary_xml": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11585591/fullTextXML",
+      "retained_files": [
+        "hea2024.xml"
+      ],
+      "material_scope": "Hierarchical outer-enamel analogue; bulk material and enamel-bonded mechanical tests",
+      "units_and_assays": {
+        "shear_bond_strength": "MPa = peak force (N) / contact area (mm^2)",
+        "bulk_sample_dimensions": "nominal millimeters, not actual repaired depth linked to host junction",
+        "durability": "bulk abrasion/cycling evidence separate from enamel-bonded shear assay in retrieved methods"
+      },
+      "hierarchy": "No numerical specimen-to-host-depth/interface crosswalk available from retainedXML; workbook not inspected",
+      "linkage": "Primary XML links source XLSX; response exceeded 20 MB cap and was discarded. No claims made about unseen workbook linkage.",
+      "eligibility": "UNRESOLVED_SOURCE_DATA_NOT_INSPECTED; retrieved methods do not establish a paired repair-depth/interface-durability dataset",
+      "retained_adverse_or_unknown": [
+        "Bulk analogue must not be treated as in-situ enamel regrowth",
+        "Source XML license CC-BY-NC-ND; no source figures or adapted visuals distributed"
+      ]
+    }
+  ],
+  "not_claimed": "Failure to retrieve a fully eligible dataset in four candidates is not proof none exists or a systematic field-wide absence."
+}

@@ -1,0 +1,81 @@
+{
+  "study": "Rapamycin selectivity/reproductive translation audit",
+  "date": "2026-10-19",
+  "raw_source_cache": "data/literature/checklist-rapamycin-translation-2026-10-19",
+  "source_files": [
+    {
+      "source_id": "dl001_primary_html",
+      "url": "https://www.nature.com/articles/s41467-019-11174-0",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/DL001_nature.html",
+      "bytes": 521447,
+      "sha256": "e4235a57fb8860415dc6d75b28e1a905334326d90b42a05b5d2b61f4cf1cce01",
+      "actual_fetch_receipt": "data/provenance/1792439855841475500_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Complete downloaded primary source."
+    },
+    {
+      "source_id": "human_cohort_abstract",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:18510638&format=json&resultType=core",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/human_cohort_index.json",
+      "bytes": 6906,
+      "sha256": "238fab7b12a23df08fa6aeafec92a146098cb61475f37be9b64a1b8e16102028",
+      "actual_fetch_receipt": "data/provenance/1792439879119865400_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Primary indexed abstract and metadata only; not full text."
+    },
+    {
+      "source_id": "dl001_primary_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6642166/fullTextXML",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/DL001.xml",
+      "bytes": 151132,
+      "sha256": "4f4c0d3ff0d5dade0353ed270f868ab2727b0111bc8751f4905a1def650bd87c",
+      "actual_fetch_receipt": "data/provenance/1792439879615848900_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Complete downloaded primary source."
+    },
+    {
+      "source_id": "adult_meiosis_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6339782/fullTextXML",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/adult_meiosis.xml",
+      "bytes": 167841,
+      "sha256": "7a22d66141f9a310a43208634f7a255948d5be12b75bd7dd51d8bcfb3ad4a222",
+      "actual_fetch_receipt": "data/provenance/1792439879807369900_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Complete downloaded primary source."
+    },
+    {
+      "source_id": "dl001_partial_prefix",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-019-11174-0/MediaObjects/41467_2019_11174_MOESM3_ESM.xlsx",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/DL001_source_xlsx_tail.bin",
+      "bytes": 65537,
+      "sha256": "0dc21c2c218c52a0e6b088bf9974fd36526ac3b75411eccdb8800e9eb64c529f",
+      "actual_fetch_receipt": "data/provenance/1792439880703028400_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Initial Range request requested last 65,536 bytes, but server ignored Range and returned HTTP 200; only first 65,537 bytes were read. This is a partial prefix, not workbook/ZIP source. Excluded from numeric extraction."
+    },
+    {
+      "source_id": "dl001_source_data",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-019-11174-0/MediaObjects/41467_2019_11174_MOESM3_ESM.xlsx",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/DL001_source_data.xlsx",
+      "bytes": 386504926,
+      "sha256": "22367646420d08389f4f88375789f2455d40090c4cee30c97d6c629fba24cbce",
+      "actual_fetch_receipt": "data/provenance/1792439921955306300_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Complete 386,504,926-byte workbook downloaded with 400 MiB/55 s limit, completed in 4.75 s; only selected worksheet/shared-string XML read. Embedded images and structures not extracted."
+    },
+    {
+      "source_id": "raptor_abstract",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28490482&format=json&resultType=core",
+      "relative_cached_path": "data/literature/checklist-rapamycin-translation-2026-10-19/raptor_germline_index.json",
+      "bytes": 9152,
+      "sha256": "838d28a48832c17205a64f0a59348a437e7a6476f24c055e7b47e7e5d259045b",
+      "actual_fetch_receipt": "data/provenance/1792439995347318500_checklist-rapamycin-source-fetch.json",
+      "access_scope": "Primary indexed abstract and metadata only; not full text."
+    }
+  ],
+  "prior_atlas": {
+    "commit": "af7b57c2cfad64683f82044199cca812a01b9a03",
+    "read_only_report_url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/rapamycin-selectivity-2026-10-09/README.md",
+    "read_only_delivery_url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/peptide-delivery-transfer-2026-10-09/README.md",
+    "access": "Previously fetched pinned public files re-read from in-session tool result; no actual-download receipt invented for that read."
+  },
+  "failed_web_access": [
+    "Nature web-tool follow-up returned an identity-provider redirect although direct primary HTML fetch succeeded.",
+    "Aging Figure 7 original-image link returned 404 via web tool; no numeric recovery data extracted/digitized from an inaccessible image."
+  ],
+  "policy": "Raw copyrighted downloads and genuine receipts remain ignored locally; derived factual numeric inputs and exact source locations are tracked. No structures, experimental preparation steps or regimens copied."
+}

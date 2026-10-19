@@ -1,0 +1,1298 @@
+{
+  "data_kind": "observed_restoration_comparator_with_unresolved_source_errors",
+  "n_registered_teeth": 48,
+  "n_marginal_rows": 384,
+  "identity_audit": {
+    "n_conflicting_rows": 57,
+    "conflicting_rows": [
+      {
+        "code": "G3_T5_D_B_CmT",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 21
+      },
+      {
+        "code": "G3_T5_D_R2_CmT",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 22
+      },
+      {
+        "code": "G3_T5_D_B_InCm",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 23
+      },
+      {
+        "code": "G3_T5_D_R2_InCm",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 24
+      },
+      {
+        "code": "G3_T5_M_B_CmT",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 25
+      },
+      {
+        "code": "G3_T5_M_B_InT",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 26
+      },
+      {
+        "code": "G3_T5_M_R2_InT",
+        "key": "G3_T5",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 27
+      },
+      {
+        "code": "G3_T6_D_B_CmT",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 28
+      },
+      {
+        "code": "G3_T6_D_R2_CmT",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 29
+      },
+      {
+        "code": "G3_T6_D_B_InCm",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 30
+      },
+      {
+        "code": "G3_T6_D_R2_InCm",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 31
+      },
+      {
+        "code": "G3_T6_M_B_CmT",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 32
+      },
+      {
+        "code": "G3_T6_M_B_InT",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 33
+      },
+      {
+        "code": "G3_T6_M_R2_InT",
+        "key": "G3_T6",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 34
+      },
+      {
+        "code": "G3_T7_D_B_CmT",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 35
+      },
+      {
+        "code": "G3_T7_D_R2_CmT",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 36
+      },
+      {
+        "code": "G3_T7_D_B_InCm",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 37
+      },
+      {
+        "code": "G3_T7_D_R2_InCm",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 38
+      },
+      {
+        "code": "G3_T7_M_B_CmT",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 39
+      },
+      {
+        "code": "G3_T7_M_B_InT",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 40
+      },
+      {
+        "code": "G3_T7_M_R2_InT",
+        "key": "G3_T7",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 41
+      },
+      {
+        "code": "G3_T8_D_B_CmT",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 42
+      },
+      {
+        "code": "G3_T8_D_R2_CmT",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 43
+      },
+      {
+        "code": "G3_T8_D_B_InCm",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 44
+      },
+      {
+        "code": "G3_T8_D_R2_InCm",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 45
+      },
+      {
+        "code": "G3_T8_M_B_CmT",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 46
+      },
+      {
+        "code": "G3_T8_M_B_InT",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 47
+      },
+      {
+        "code": "G3_T8_M_R2_InT",
+        "key": "G3_T8",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 48
+      },
+      {
+        "code": "G3_T9_D_B_CmT",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 49
+      },
+      {
+        "code": "G3_T9_D_R2_CmT",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 50
+      },
+      {
+        "code": "G3_T9_D_B_InCm",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 51
+      },
+      {
+        "code": "G3_T9_D_R2_InCm",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 52
+      },
+      {
+        "code": "G3_T9_M_B_CmT",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 53
+      },
+      {
+        "code": "G3_T9_M_B_InT",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 54
+      },
+      {
+        "code": "G3_T9_M_R2_InT",
+        "key": "G3_T9",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 55
+      },
+      {
+        "code": "G3_T10_D_B_CmT",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 56
+      },
+      {
+        "code": "G3_T10_D_R2_CmT",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 57
+      },
+      {
+        "code": "G3_T10_D_B_InCm",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 58
+      },
+      {
+        "code": "G3_T10_D_R2_InCm",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 59
+      },
+      {
+        "code": "G3_T10_M_B_CmT",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 60
+      },
+      {
+        "code": "G3_T10_M_B_InT",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 61
+      },
+      {
+        "code": "G3_T10_M_R2_InT",
+        "key": "G3_T10",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 62
+      },
+      {
+        "code": "G3_T11_D_B_CmT",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 63
+      },
+      {
+        "code": "G3_T11_D_R2_CmT",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 64
+      },
+      {
+        "code": "G3_T11_D_B_InCm",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 65
+      },
+      {
+        "code": "G3_T11_D_R2_InCm",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 66
+      },
+      {
+        "code": "G3_T11_M_B_CmT",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 67
+      },
+      {
+        "code": "G3_T11_M_B_InT",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 68
+      },
+      {
+        "code": "G3_T11_M_R2_InT",
+        "key": "G3_T11",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 69
+      },
+      {
+        "code": "G3_T12_D_B_CmT",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 70
+      },
+      {
+        "code": "G3_T12_D_R2_CmT",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 71
+      },
+      {
+        "code": "G3_T12_D_B_InCm",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 72
+      },
+      {
+        "code": "G3_T12_D_R2_InCm",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 73
+      },
+      {
+        "code": "G3_T12_M_B_CmT",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 74
+      },
+      {
+        "code": "G3_T12_M_B_InT",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 75
+      },
+      {
+        "code": "G3_T12_M_R2_InT",
+        "key": "G3_T12",
+        "declared_key": "G3_T4",
+        "source_page": 4,
+        "source_table_row": 76
+      },
+      {
+        "code": "G4_T9_M_R2_InT",
+        "key": "G4_T9",
+        "declared_key": "G4_T10",
+        "source_page": 5,
+        "source_table_row": 64
+      }
+    ],
+    "ambiguous_tooth_keys_both_ends": [
+      "G3_T10",
+      "G3_T11",
+      "G3_T12",
+      "G3_T4",
+      "G3_T5",
+      "G3_T6",
+      "G3_T7",
+      "G3_T8",
+      "G3_T9",
+      "G4_T10",
+      "G4_T9"
+    ],
+    "n_ambiguous_teeth": 11,
+    "n_internally_consistent_teeth": 37
+  },
+  "blank_nonassessable_fields": [
+    "G1_T11_D_R2_InCm",
+    "G2_T5_D_R2_CmT",
+    "G2_T8_D_R2_InCm",
+    "G4_T1_M_R2_InT",
+    "G4_T11_D_R2_InCm"
+  ],
+  "strict_internal_identity_paired_margin_summaries": [
+    {
+      "group": "G1",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 8.247402164648344,
+      "postload_mean_noncontinuous_assessable_percent": 9.11175008847992,
+      "mean_paired_change_percentage_points": 0.8643479238315744,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -0.30651725534824886,
+        7.866660133593015
+      ],
+      "postload_recorded_positive_gap_teeth": 9,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G1",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 10.259795972659242,
+      "postload_mean_noncontinuous_assessable_percent": 10.941140896780844,
+      "mean_paired_change_percentage_points": 0.6813449241216015,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -6.623822007102105,
+        7.7385963628521965
+      ],
+      "postload_recorded_positive_gap_teeth": 9,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G2",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 8.531692703319537,
+      "postload_mean_noncontinuous_assessable_percent": 8.777180295535755,
+      "mean_paired_change_percentage_points": 0.24548759221621852,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        0.24547878359903272,
+        7.95069102365945
+      ],
+      "postload_recorded_positive_gap_teeth": 5,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G2",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 1.3728267553660423,
+      "postload_mean_noncontinuous_assessable_percent": 1.4447915300426846,
+      "mean_paired_change_percentage_points": 0.07196477467664232,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -5.9917612881561935,
+        7.377162606878626
+      ],
+      "postload_recorded_positive_gap_teeth": 4,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G3",
+      "interface": "InCm",
+      "n_teeth": 3,
+      "baseline_mean_noncontinuous_assessable_percent": 0.0,
+      "postload_mean_noncontinuous_assessable_percent": 0.10264036836547498,
+      "mean_paired_change_percentage_points": 0.10264036836547498,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        0.10264036836547498,
+        0.10264036836547498
+      ],
+      "postload_recorded_positive_gap_teeth": 1,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G3",
+      "interface": "InT",
+      "n_teeth": 3,
+      "baseline_mean_noncontinuous_assessable_percent": 1.4641441156821946,
+      "postload_mean_noncontinuous_assessable_percent": 1.6818493745818412,
+      "mean_paired_change_percentage_points": 0.21770525889964673,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -21.660947448749525,
+        25.516240946677
+      ],
+      "postload_recorded_positive_gap_teeth": 2,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G4",
+      "interface": "InCm",
+      "n_teeth": 10,
+      "baseline_mean_noncontinuous_assessable_percent": 4.413806052199801,
+      "postload_mean_noncontinuous_assessable_percent": 4.522019459296325,
+      "mean_paired_change_percentage_points": 0.1082134070965239,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -1.182610612993051,
+        7.356339048390685
+      ],
+      "postload_recorded_positive_gap_teeth": 1,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G4",
+      "interface": "InT",
+      "n_teeth": 10,
+      "baseline_mean_noncontinuous_assessable_percent": 3.2693690779609703,
+      "postload_mean_noncontinuous_assessable_percent": 3.3844774140917884,
+      "mean_paired_change_percentage_points": 0.11510833613081836,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -8.945147952220411,
+        17.82610425484799
+      ],
+      "postload_recorded_positive_gap_teeth": 4,
+      "postload_missing_unassessable_field_teeth": 1
+    }
+  ],
+  "conditional_trust_row_codes_paired_margin_summaries": [
+    {
+      "group": "G1",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 8.247402164648344,
+      "postload_mean_noncontinuous_assessable_percent": 9.11175008847992,
+      "mean_paired_change_percentage_points": 0.8643479238315744,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -0.30651725534824886,
+        7.866660133593015
+      ],
+      "postload_recorded_positive_gap_teeth": 9,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G1",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 10.259795972659242,
+      "postload_mean_noncontinuous_assessable_percent": 10.941140896780844,
+      "mean_paired_change_percentage_points": 0.6813449241216015,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -6.623822007102105,
+        7.7385963628521965
+      ],
+      "postload_recorded_positive_gap_teeth": 9,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G2",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 8.531692703319537,
+      "postload_mean_noncontinuous_assessable_percent": 8.777180295535755,
+      "mean_paired_change_percentage_points": 0.24548759221621852,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        0.24547878359903272,
+        7.95069102365945
+      ],
+      "postload_recorded_positive_gap_teeth": 5,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G2",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 1.3728267553660423,
+      "postload_mean_noncontinuous_assessable_percent": 1.4447915300426846,
+      "mean_paired_change_percentage_points": 0.07196477467664232,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -5.9917612881561935,
+        7.377162606878626
+      ],
+      "postload_recorded_positive_gap_teeth": 4,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G3",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 3.3191684839151328,
+      "postload_mean_noncontinuous_assessable_percent": 3.478719180326881,
+      "mean_paired_change_percentage_points": 0.15955069641174818,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        0.15955270429026214,
+        0.15955270429026214
+      ],
+      "postload_recorded_positive_gap_teeth": 4,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G3",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 3.0937747133524685,
+      "postload_mean_noncontinuous_assessable_percent": 3.3468899064819335,
+      "mean_paired_change_percentage_points": 0.25311519312946523,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -12.03842393578504,
+        13.357218156687297
+      ],
+      "postload_recorded_positive_gap_teeth": 9,
+      "postload_missing_unassessable_field_teeth": 0
+    },
+    {
+      "group": "G4",
+      "interface": "InCm",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 3.6781717101665006,
+      "postload_mean_noncontinuous_assessable_percent": 3.7683495494136037,
+      "mean_paired_change_percentage_points": 0.09017783924710325,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -1.5735413595021543,
+        6.130282540325571
+      ],
+      "postload_recorded_positive_gap_teeth": 1,
+      "postload_missing_unassessable_field_teeth": 1
+    },
+    {
+      "group": "G4",
+      "interface": "InT",
+      "n_teeth": 12,
+      "baseline_mean_noncontinuous_assessable_percent": 5.580506067192204,
+      "postload_mean_noncontinuous_assessable_percent": 5.781468922090055,
+      "mean_paired_change_percentage_points": 0.200962854897851,
+      "mean_paired_change_full_scanned_bounds_percentage_points": [
+        -7.449437567794536,
+        15.071111037365151
+      ],
+      "postload_recorded_positive_gap_teeth": 5,
+      "postload_missing_unassessable_field_teeth": 1
+    }
+  ],
+  "literal_fracture_summaries": [
+    {
+      "group": "G1",
+      "n_literal_loads": 12,
+      "literal_mean_N": 1790.9675,
+      "literal_sample_sd_N": 726.735410150014,
+      "face_category_counts": {
+        "1": 1,
+        "2": 28,
+        "3": 16
+      },
+      "tooth_any_category_counts": {
+        "1": 1,
+        "2": 11,
+        "3": 7
+      }
+    },
+    {
+      "group": "G2",
+      "n_literal_loads": 12,
+      "literal_mean_N": 1596.8746841666666,
+      "literal_sample_sd_N": 385.7790266030911,
+      "face_category_counts": {
+        "1": 1,
+        "2": 21,
+        "3": 19
+      },
+      "tooth_any_category_counts": {
+        "1": 1,
+        "2": 11,
+        "3": 9
+      }
+    },
+    {
+      "group": "G3",
+      "n_literal_loads": 12,
+      "literal_mean_N": 1839.9894408333334,
+      "literal_sample_sd_N": 360.7383539762184,
+      "face_category_counts": {
+        "1": 1,
+        "2": 24,
+        "3": 20
+      },
+      "tooth_any_category_counts": {
+        "1": 1,
+        "2": 11,
+        "3": 11
+      }
+    },
+    {
+      "group": "G4",
+      "n_literal_loads": 12,
+      "literal_mean_N": 1290.8872336666668,
+      "literal_sample_sd_N": 237.61831703448917,
+      "face_category_counts": {
+        "1": 3,
+        "2": 23,
+        "3": 15
+      },
+      "tooth_any_category_counts": {
+        "1": 3,
+        "2": 12,
+        "3": 8
+      }
+    }
+  ],
+  "g1_load_ambiguity_diagnostic": {
+    "literal_G1_T11_N": 6.76,
+    "published_mean_N": 1953.2,
+    "published_sample_sd_N": 483.4,
+    "omit_G1_T11_n": 11,
+    "omit_G1_T11_mean_N": 1953.168181818182,
+    "omit_G1_T11_sample_sd_N": 483.4037488439282,
+    "interpretation": "Omission numerically reproduces publication rounding; no evidence resolves whether source value or exclusion was intended. Literal value is retained."
+  },
+  "joint_recorded_gap_and_terminal_below_bone_fracture": {
+    "denominator_teeth": 48,
+    "known_joint_positive": 19,
+    "unknown_from_identity": 9,
+    "finite_cohort_proportion_bounds": [
+      0.3958333333333333,
+      0.5833333333333334
+    ],
+    "conditional_trust_row_codes_joint_positive": 26,
+    "interpretation": "Detected noncontinuous optical margin at postload inspection and later terminal fracture below simulated bone, not simultaneous events, biological repair, causal coupling, true gap-free classification, or failure incidence during cycling"
+  },
+  "prior_bridge": {
+    "prior_bridge_text_sha256": "f09424fc4037a0871f51b8d921e38aaa0d3b192294cfc04658552cb59333c831",
+    "registered_teeth": 48,
+    "depth_example_result": {
+      "depth_um": null,
+      "target_difference_um": null,
+      "target_difference_bounds_um": null,
+      "depth_measurement_bounds_um": null,
+      "depth_bounds_kind": null,
+      "depth_state": "unassessed_missing_depth"
+    },
+    "leakage_example_result": [
+      0.0,
+      null,
+      "unmeasured"
+    ],
+    "fatigue_example_result": [
+      "unknown",
+      "unmeasured"
+    ],
+    "measured_repair_depth_n": 0,
+    "tracer_leakage_n": 0,
+    "fatigue_event_time_n": 0,
+    "paired_intended_depth_interface_analysis": "unavailable",
+    "donor_balanced_analysis": "unavailable_unknown_donor_crosswalk",
+    "host_substrate_resolution": "tooth substance in optical margin labels; no row-specific enamel/dentin segmentation",
+    "failure_of_full_contract": "No regenerated enamel/dentin, native living PDL, gum, pulp or pose after finite support withdrawal is measured"
+  },
+  "specimen_links": [
+    {
+      "source_code_key": "G1_T1",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1167.62,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G1_T2",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1766.25,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G1_T3",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1567.74,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T4",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1701.03,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G1_T5",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1716.27,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G1_T6",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2579.13,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T7",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1525.27,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T8",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2363.97,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T9",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2138.42,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T10",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2684.89,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T11",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 6.76,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G1_T12",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2274.26,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T1",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1104.46936,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T2",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1480.25916,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T3",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2305.78906,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T4",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1203.80908,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T5",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1277.99536,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T6",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2232.0874,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T7",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1723.86316,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T8",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1763.37598,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T9",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1825.47241,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T10",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1385.31018,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G2_T11",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1535.48547,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G2_T12",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1324.57959,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G3_T1",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2315.78687,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G3_T2",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2041.77722,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G3_T3",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2185.21362,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G3_T4",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1959.84656,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T5",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1669.78564,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T6",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1457.20215,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T7",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1628.48547,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T8",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1253.85779,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T9",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 2444.84741,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T10",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1805.21216,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G3_T11",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1790.07581,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G3_T12",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1527.78259,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G4_T1",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1169.9812,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G4_T2",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1345.57654,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T3",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1549.54517,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T4",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1552.86731,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T5",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1279.21082,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T6",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1797.15076,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    },
+    {
+      "source_code_key": "G4_T7",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 988.244324,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T8",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1119.27356,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T9",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1088.36487,
+      "source_code_conditional_detected_gap": false,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T10",
+      "identity_status": "unresolved_conflict_component",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1117.29626,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "unknown_identity"
+    },
+    {
+      "source_code_key": "G4_T11",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1156.58728,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": false,
+      "joint_status_with_identity_uncertainty": "recorded_joint_negative"
+    },
+    {
+      "source_code_key": "G4_T12",
+      "identity_status": "internally_consistent",
+      "donor_id": null,
+      "measured_repair_depth_um": null,
+      "fracture_load_N_literal": 1326.54871,
+      "source_code_conditional_detected_gap": true,
+      "terminal_any_below_bone_fracture": true,
+      "joint_status_with_identity_uncertainty": "recorded_joint_positive"
+    }
+  ],
+  "source_extract_text_sha256": "71f4b38e5ab92d12276609d096a7199167fadf8e9be54a08eca4b5ea5ae8f02c",
+  "cache_verification": [
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2022.xml",
+      "sha256": "ecb1f491989ab093466f20c7f1385694e88c889a06341914b10998f56fead5c7",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2026.xml",
+      "sha256": "de6182258892aba59171da8ed880c9b0ed76df813d62b545c427cf0f9bf7d8c3",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/zenodo7412385.json",
+      "sha256": "f7c230140f0cc43f30d8ee9360993c5cab6f338c31d1d7ab9f9f4d5224bbf415",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_primary.xml",
+      "sha256": "79da031cdc324b92980e8a7126e660deb87470fcee1cba155948d430cefcd827",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_fracture.pdf",
+      "sha256": "9d5833175a6945c48ff0c4e1cefae163556b2bde0b579e301f53f80d20815160",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/theisen_marginal.pdf",
+      "sha256": "829c1044c6d17cfca9413a3df9f086e875c43975455e7392b871b9272e60fce4",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/hea2024.xml",
+      "sha256": "59ab9904595d4ef23904facbb1a4431171820df82874476f76842009fb2e1851",
+      "verified": true
+    },
+    {
+      "cache_path": "data/literature/checklist-translation-2026-10-19/dental/thickness2026_supp.docx",
+      "sha256": "b0fd559cb7513b1fa431c30032a9f18e028e1e3838a546104c6158a7c0e65bac",
+      "verified": true
+    }
+  ]
+}

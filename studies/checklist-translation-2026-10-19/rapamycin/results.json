@@ -1,0 +1,140 @@
+{
+  "inputs_sha256": "acffc16a75bfdbf2164db8641f816713c3a09d6cbd4250fe32837ab9fd3dc89f",
+  "hash_convention": "UTF-8 text after universal-newline normalization to LF",
+  "analysis_status": "Descriptive source reanalysis, no new significance/equivalence tests or reproductive-risk model",
+  "PC3_cell_selectivity": {
+    "rapamycin": {
+      "C1_ic50_pM": {
+        "n": 4,
+        "mean": 63.30875,
+        "sample_sd": 18.539744161755127,
+        "sem": 9.269872080877564
+      },
+      "C2_ic50_pM": {
+        "n": 4,
+        "mean": 534.8955,
+        "sample_sd": 257.4247456772561,
+        "sem": 128.71237283862806
+      },
+      "paired_replicate_C2_C1_selectivity": [
+        11.138165864518875,
+        16.67567071411712,
+        1.8753832100804584,
+        9.088419859381116
+      ],
+      "mean_of_paired_ratios": {
+        "n": 4,
+        "mean": 9.694409912024392,
+        "sample_sd": 6.119009618852125,
+        "sem": 3.0595048094260626
+      },
+      "ratio_of_mean_ic50s": 8.448997966315872
+    },
+    "DL001": {
+      "C1_ic50_pM": {
+        "n": 4,
+        "mean": 74.93599999999999,
+        "sample_sd": 24.883770118961746,
+        "sem": 12.441885059480873
+      },
+      "C2_ic50_pM": {
+        "n": 4,
+        "mean": 26245.41275,
+        "sample_sd": 14227.642744789488,
+        "sem": 7113.821372394744
+      },
+      "paired_replicate_C2_C1_selectivity": [
+        829.2318040543676,
+        587.6838400281579,
+        94.54376231254774,
+        222.04815010511405
+      ],
+      "mean_of_paired_ratios": {
+        "n": 4,
+        "mean": 433.37688912504683,
+        "sample_sd": 336.6400018476735,
+        "sem": 168.32000092383674
+      },
+      "ratio_of_mean_ic50s": 350.2377061759368
+    },
+    "relative_DL001_vs_rapamycin": {
+      "ratio_of_compound_mean_paired_selectivities": 44.70379250082162,
+      "ratio_of_compound_ratios_of_mean_ic50s": 41.45316492822587,
+      "cross_compound_replicate_pairing_assumed": false,
+      "new_p_value": null,
+      "interpretation": "Different descriptive estimands, not conflicting experiments. No reproductive or tissue selectivity follows from PC3 ratios."
+    }
+  },
+  "tissue_pathway_series": 18,
+  "tissue_pathway_interpretation": "Different tissues and source sex/context; zeros retained as normalized readouts, not proof of absent kinase activity. No parent tissue exposure is measured by these values.",
+  "reported_whole_blood_compound_concentration_ng_per_mL": {
+    "DL001": {
+      "n": 9,
+      "mean": 186.27777777777777,
+      "sample_sd": 34.14135241088795,
+      "sem": 11.380450803629316
+    },
+    "rapamycin": {
+      "n": 18,
+      "mean": 257.2055555555556,
+      "sample_sd": 174.50345512245082,
+      "sem": 41.13085881918912
+    }
+  },
+  "whole_blood_DL001_to_rapamycin_mean_ratio": 0.7242369915977276,
+  "blood_parent_exposure_qualification": "Single reported post-administration whole-blood time point, not AUC, oral F, unbound or testis concentration. Assay validation/specificity not established from the retrieved main-text methods. Cannot match to female Figure3d animals or infer cause of pathway selectivity.",
+  "adult_mouse_testis_mass": {
+    "rapamycin_to_control_reported_mean_ratio": 0.4609740670461733,
+    "reported_mean_difference_mg_per_pair": -85.22,
+    "control_n_animals": 5,
+    "rapamycin_n_animals": 4,
+    "individual_observations_or_new_confidence_interval": null,
+    "human_testicular_volume_inference": null,
+    "mechanistic_attribution_to_C2_alone": null
+  },
+  "human_transplant_descriptive_contrasts": {
+    "total_sperm_count_mean_difference_million": -263.59999999999997,
+    "motile_sperm_mean_difference_percentage_points": -18.8,
+    "n_semen_by_regimen": null,
+    "adjusted_causal_effect": null,
+    "probability_of_infertility_or_recovery": null,
+    "comparison_to_DL001": null,
+    "interpretation": "Unadjusted differences of reported abstract means in transplant recipients. Respondents are not the established semen sample size; no healthy-person effect or testicular-volume estimate follows."
+  },
+  "candidate_joint_evidence_gates": {
+    "DL001": {
+      "joint_human_reproductive_protection_comparison_eligible": false,
+      "missing": [
+        "testis_cell_native_parent_exposure",
+        "testis_cell_C1_C2_time_context",
+        "direct_reproductive_endpoints",
+        "matched_specified_intended_function",
+        "same_relevant_population_for_joint_comparison",
+        "human_reproductive_candidate_comparison"
+      ],
+      "human_reproductive_risk_reduction_estimate": null
+    },
+    "rapamycin": {
+      "joint_human_reproductive_protection_comparison_eligible": false,
+      "missing": [
+        "testis_cell_native_parent_exposure",
+        "testis_cell_C1_C2_time_context",
+        "matched_specified_intended_function",
+        "same_relevant_population_for_joint_comparison",
+        "human_reproductive_candidate_comparison"
+      ],
+      "human_reproductive_risk_reduction_estimate": null
+    }
+  },
+  "human_safe_analogue_or_equivalent_benefit_identified": false,
+  "recovery_qualification": {
+    "source_location": "Figure 7 and results/abstract",
+    "n_animals_per_group": 3,
+    "followup_months": 2,
+    "reported_outcomes": "testis mass and motility described as restored; sperm counts increased; abstract qualifies the effect as partially reversible",
+    "raw_individual_count_or_motility_values": null,
+    "numeric_recovery_probability": null,
+    "human_recovery_guarantee": false,
+    "qualification": "Do not reinterpret non-significant testis mass as demonstrated equivalence or recovery of every reproductive outcome. No figure digitization is substituted for raw data."
+  }
+}

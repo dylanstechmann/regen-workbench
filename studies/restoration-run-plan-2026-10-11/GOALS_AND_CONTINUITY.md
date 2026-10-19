@@ -4,7 +4,10 @@ Recorded from the owner's directions in this conversation; updated 2026-10-19.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
-Latest execution: the [2026-10-19 mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)
+Latest execution: the [2026-10-19 source-linked translation work](../checklist-translation-2026-10-19/README.md)
+adds a partial real dental mechanical comparison, a gene/age-support challenge,
+original rapamycin-comparator data and a working research-desk Progress view.
+The [mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)
 add a specimen-linked dental analysis bridge, a broader captured-cell RNA
 composition challenge, SS-31 exposure/material-burden work and finite-capacity
 caffeine binding. The [measured-data follow-up](../checklist-followup-2026-10-19/README.md)

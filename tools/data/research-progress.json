@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "curation": "AI-assisted summaries; explicit local artifact pins. Updating a pin requires reviewing the changed artifact. No automatic discovery, execution or remote fetching.",
+  "updates": [
+    {
+      "id": "restoration-goals",
+      "title": "The full restoration goals",
+      "topic": "Whole-body restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "research_plan",
+      "result": "Restore natural tooth substance and form, gums, living attachment, sensation and stable position after temporary support; pursue durable youthful function throughout the body.",
+      "boundary": "These are research objectives. Photos constrain visible form but do not uniquely recover hidden tooth thickness or internal damage.",
+      "next_step": "Keep every required tissue and function visible when choosing a narrower experiment.",
+      "artifacts": [
+        {
+          "id": "goals",
+          "label": "Read the goals",
+          "path": "studies/restoration-run-plan-2026-10-11/GOALS_AND_CONTINUITY.md",
+          "sha256_lf_text": "f21c35048a5933f4353900735ceecb1d1732b54ab365fb5c3ea0796fbc41c789",
+          "bytes_utf8_lf": 7219
+        },
+        {
+          "id": "plan",
+          "label": "Read the run plan",
+          "path": "studies/restoration-run-plan-2026-10-11/PLAN.md",
+          "sha256_lf_text": "df5a90b23aa9dfeaff868dedf03f070556c2df3a568fe2a696809f4b947c1c9d",
+          "bytes_utf8_lf": 35142
+        }
+      ]
+    },
+    {
+      "id": "dental-real-linkage",
+      "title": "48 teeth, with unresolved specimen identities",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Analyzed 384 optical-margin rows and 48 fracture records. Thirty-seven teeth have internally consistent links; adverse joint-outcome bounds retain all 48.",
+      "boundary": "Eleven teeth have identity uncertainty. Deposited low load and blank margin fields stay unchanged. Preparation depth is nominal; these are extracted restored teeth, not regenerated tissue.",
+      "next_step": "Add measured regional repair thickness and valid same-specimen histories while preserving the remaining tooth under loading.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the linked-data analysis",
+          "path": "studies/checklist-translation-2026-10-19/dental/REPORT.md",
+          "sha256_lf_text": "7469aa741d310f8870854d817dd672ed97d18d345d0c3b02113beca8a42fb83d",
+          "bytes_utf8_lf": 10574
+        },
+        {
+          "id": "links",
+          "label": "See specimen linkage",
+          "path": "studies/checklist-translation-2026-10-19/dental/derived/theisen_specimen_links.tsv",
+          "sha256_lf_text": "27055446d9a247dc0b199dee6315064d410d79801ffe73d23ae7121a25cce955",
+          "bytes_utf8_lf": 4493
+        }
+      ]
+    },
+    {
+      "id": "aging-gene-age-support",
+      "title": "Age support changes the gingival trend",
+      "topic": "Aging and youthful function",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "observational_reanalysis",
+      "result": "The full-cohort conflict spans nearly every fixed ECM gene. Restricting the bulk cohort to younger ages reverses its direction; shared-decade analysis preserves the earlier opposition.",
+      "boundary": "The common-span restriction removes every bulk donor over 45. These subsets are not matched-age or matched-donor validation, and expression is not restored function.",
+      "next_step": "Seek matched-donor bulk/cell-resolved measurements with qualified sampling sites and independent functional outcomes.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the gene and age-support challenge",
+          "path": "studies/checklist-translation-2026-10-19/aging/REPORT.md",
+          "sha256_lf_text": "db6677ae1ba19aca3c7bdccf1b53999c814f2956d63b5bc2d3dadeec6ab8a718",
+          "bytes_utf8_lf": 10338
+        },
+        {
+          "id": "effects",
+          "label": "See all panel effects",
+          "path": "studies/checklist-translation-2026-10-19/aging/derived/fixed_panel_age_effects.tsv",
+          "sha256_lf_text": "8e86aef24a2f43e0a5172afa10783d3a51e292ed92170feec2fe619c1a44fb1d",
+          "bytes_utf8_lf": 6123
+        }
+      ]
+    },
+    {
+      "id": "rapamycin-source-selectivity",
+      "title": "Selective signaling has not established reproductive protection",
+      "topic": "Compound selectivity",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Original paired data reproduce DL001 selectivity: 433.38 as the mean of paired ratios, versus 350.24 as the ratio of means. The apparent discrepancy is resolved.",
+      "boundary": "Different assay states, unequal tissue responses and unmatched blood contexts remain. There is no direct DL001 reproductive-protection comparison or established healthy-human testicular-volume inference.",
+      "next_step": "Specify useful function to retain and require same-context relevant-cell exposure plus direct reproductive outcomes.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the selectivity analysis",
+          "path": "studies/checklist-translation-2026-10-19/rapamycin/REPORT.md",
+          "sha256_lf_text": "2200ae283af9f832f25f8d932a79d82bcef4ea883ba88d4c92592a1a17bb9738",
+          "bytes_utf8_lf": 14094
+        },
+        {
+          "id": "results",
+          "label": "See source-derived results",
+          "path": "studies/checklist-translation-2026-10-19/rapamycin/results.json",
+          "sha256_lf_text": "caa70923a2d012b38b1280e932951f57a412884eb721dfd8d05b3bea7db6b354",
+          "bytes_utf8_lf": 5667
+        }
+      ]
+    },
+    {
+      "id": "dental-measured-materials",
+      "title": "What the measured dental material data show",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Recomputed 75 stored source positions. Apparent toughness improves over acid-etched enamel but remains below the native mean; enamel wear directions are unfavorable.",
+      "boundary": "Source positions are not independent donors. Actual repair-depth and interface measurements are not linked to these specimen outcomes.",
+      "next_step": "Find specimen-linked depth, crack, leakage and fatigue observations.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read analysis",
+          "path": "studies/checklist-followup-2026-10-19/dental/REPORT.md",
+          "sha256_lf_text": "f628218793db7fe5d16e44484ea700d230da86658171e50e968b8570b0393b9e",
+          "bytes_utf8_lf": 10698
+        },
+        {
+          "id": "summary",
+          "label": "See material summaries",
+          "path": "studies/checklist-followup-2026-10-19/dental/derived/material_summary.tsv",
+          "sha256_lf_text": "20fa7c1d180ea04000474a3a935b3191c01a7c93f40a6d5561327aa32edc96da",
+          "bytes_utf8_lf": 3394
+        }
+      ]
+    },
+    {
+      "id": "dental-linkage-bridge",
+      "title": "Keep dental depth and failures connected",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "software_fixture",
+      "result": "The analysis preserves specimen/tooth/donor nesting, missing leakage and censored fatigue outcomes. The linked examples are synthetic.",
+      "boundary": "The real 75-position source extract supplies zero identifiable linked specimens. Software examples are not regenerated tissue or material performance measurements.",
+      "next_step": "Apply the bridge to an eligible registered specimen series while keeping unknown targets and missing outcomes visible.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the measurement bridge",
+          "path": "studies/checklist-mechanisms-2026-10-19/dental/REPORT.md",
+          "sha256_lf_text": "a370c8199b4071b702da4ac518656dea52ad80a2709a9e8f10a7f6b684561f74",
+          "bytes_utf8_lf": 11074
+        },
+        {
+          "id": "template",
+          "label": "Get an empty measurement packet",
+          "path": "studies/checklist-mechanisms-2026-10-19/dental/measurement_template.json",
+          "sha256_lf_text": "49f2cd7ba08d25e78f73a7588db51d5eab348289d06927b5dbfed80e71883e4e",
+          "bytes_utf8_lf": 379
+        }
+      ]
+    },
+    {
+      "id": "aging-partial-mixture",
+      "title": "Cell composition does not yet explain the age disagreement",
+      "topic": "Aging and youthful function",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "observational_reanalysis",
+      "result": "Structural-ECM age slopes stay positive in observed and common-RNA partial mixtures, opposing the earlier bulk-tissue direction.",
+      "boundary": "The retained groups cover 99.55% of captured cells, but omitted RNA is unknown. This is not reconstructed whole tissue or a biological-age clock.",
+      "next_step": "Read the follow-up gene/age-support challenge, then seek matched-donor bulk and cell-resolved measurements.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the composition challenge",
+          "path": "studies/checklist-mechanisms-2026-10-19/aging/REPORT.md",
+          "sha256_lf_text": "3d2f02e0445e6503b9799b9b627d54a8615e3bfb2bd6570882cda6c9a34abd0d",
+          "bytes_utf8_lf": 12136
+        },
+        {
+          "id": "effects",
+          "label": "See all age-model results",
+          "path": "studies/checklist-mechanisms-2026-10-19/aging/derived/healthy_age_effects.tsv",
+          "sha256_lf_text": "5ad74a1d3a719ba05be8e4145e83998ba18393ebca7c19f55cd2d8906547ee7a",
+          "bytes_utf8_lf": 15053
+        }
+      ]
+    },
+    {
+      "id": "ss31-exposure-material",
+      "title": "SS-31: intact exposure and material accounting",
+      "topic": "Compound delivery",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_audit_conditional_model",
+      "result": "Separated intact parent from metabolites, reproduced 21 cellular summaries and bounded oral material needs without assigning oral availability.",
+      "boundary": "Useful cellular access, oral availability and actual manufacturing cost remain unknown. Repeated source values across endpoints are retained as unresolved dependence.",
+      "next_step": "Measure native-parent cellular exposure/function and released-parent process recovery before ranking modifications or delivery approaches.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the SS-31 analysis",
+          "path": "studies/checklist-mechanisms-2026-10-19/ss31/REPORT.md",
+          "sha256_lf_text": "fd1b9dd940e2c816d932eda9e7028296fe809c4a56ee8467ce660140526f5c6a",
+          "bytes_utf8_lf": 13842
+        },
+        {
+          "id": "results",
+          "label": "See conditional results",
+          "path": "studies/checklist-mechanisms-2026-10-19/ss31/results.json",
+          "sha256_lf_text": "85a2fa1392a0b4ce9eb62f7832df8fe546982b350187918709b0c328862be387",
+          "bytes_utf8_lf": 7480
+        }
+      ]
+    },
+    {
+      "id": "caffeine-competitive-capture",
+      "title": "Caffeine capture needs capacity as well as binding",
+      "topic": "Caffeine reversal",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "illustrative_model",
+      "result": "A reversible, finite-capacity model uses published buffer affinities to test capture and competition; equimolar host does not imply complete capture.",
+      "boundary": "Chosen buffer concentrations are not human exposures or doses. Paraxanthine capture, oral delivery, brain exchange and sleep recovery are unresolved.",
+      "next_step": "Qualify free-guest binding and intact accessible host in a physiological matrix before interpreting systemic capture.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the capture model",
+          "path": "studies/checklist-mechanisms-2026-10-19/caffeine/REPORT.md",
+          "sha256_lf_text": "7a00691429efaf81f04b4d360279f31169840a3452e3fac914c5d5e4f07d7ebd",
+          "bytes_utf8_lf": 4464
+        },
+        {
+          "id": "requirements",
+          "label": "See capture requirements",
+          "path": "studies/checklist-mechanisms-2026-10-19/caffeine/derived/target_capture_requirements.tsv",
+          "sha256_lf_text": "2fccd71faab54eef21adb87163b606230e4450af090c3f7fa8789a07b5bf2486",
+          "bytes_utf8_lf": 13083
+        }
+      ]
+    },
+    {
+      "id": "organoid-measured-function",
+      "title": "Relative spheroid response is not absolute function",
+      "topic": "Organoids and stem cells",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Reconstructed 48 paired insulin observations. The flow/vascular-bed condition has the highest mean relative stimulation index, but not the highest absolute stimulated output.",
+      "boundary": "These are source cell-line spheroids, not patient grafts. Donor, lot and circuit crosswalks are unavailable; the pairs cannot be counted as independent people.",
+      "next_step": "Link perfusion, identity, viability and function on the same constructs with their actual unit hierarchy.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the function analysis",
+          "path": "studies/checklist-followup-2026-10-19/organoid/REPORT.md",
+          "sha256_lf_text": "cff240ab19c016a130aec27698652d2886f01d26b4f2d2e7634ac1b2f080892e",
+          "bytes_utf8_lf": 6687
+        },
+        {
+          "id": "summary",
+          "label": "See condition summaries",
+          "path": "studies/checklist-followup-2026-10-19/organoid/derived/condition_summary.tsv",
+          "sha256_lf_text": "e2caf3a76d09a6c46f6be73539fe1ab0f9bbcd0fa18108295eb1d0ab025d84c0",
+          "bytes_utf8_lf": 1162
+        }
+      ]
+    },
+    {
+      "id": "repair-joint-endpoints",
+      "title": "Separate repair endpoints do not establish joint success",
+      "topic": "Organoids and genome repair",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "illustrative_model",
+      "result": "The joint-endpoint audit shows why separate favorable measurements cannot establish how many units satisfy every required repair condition.",
+      "boundary": "The illustrative endpoint counts are synthetic. Allele, cell and tissue-area denominators cannot be silently combined.",
+      "next_step": "Obtain joint observations with comparable denominators, unit IDs and the relevant functional outcome.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the joint-endpoint audit",
+          "path": "studies/checklist-progress-2026-10-19/integration/REPORT.md",
+          "sha256_lf_text": "3ed343ae58e0194d85b28186316e2cf7d68437290b668c1ce599862609c44a07",
+          "bytes_utf8_lf": 5560
+        }
+      ]
+    }
+  ]
+}

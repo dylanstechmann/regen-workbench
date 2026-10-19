@@ -6,7 +6,10 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
-The [2026-10-19 mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)
+The [2026-10-19 source-linked translation work](../checklist-translation-2026-10-19/README.md)
+adds actual linked mechanical records with identity uncertainty, a fixed-gene
+age-support challenge, original selectivity/tissue data and the desk's Progress
+view. The [mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)
 advance specimen-linked dental performance, captured-cell RNA composition,
 SS-31 exposure/material burden and finite reversible caffeine binding.
 The [measured-data follow-up](../checklist-followup-2026-10-19/README.md)

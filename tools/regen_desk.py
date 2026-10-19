@@ -28,6 +28,7 @@ from urllib.request import Request, urlopen
 import archive_collector as ac
 import frozen_evaluation as fe
 import regen
+import research_progress
 from regen_compute import compound_screen, manifest, write_json
 
 HOME = Path(__file__).resolve().parents[1]
@@ -3039,6 +3040,15 @@ def make_handler(desk):
                     return self.send(200, desk.state())
                 if route == "/api/experiments":
                     return self.send(200, desk.experiments())
+                if route == "/api/research-progress":
+                    return self.send(200, research_progress.catalog(HOME))
+                if route == "/api/research-progress/artifact":
+                    query = parse_qs(urlsplit(self.path).query, keep_blank_values=True)
+                    values = [query.get(name, []) for name in ("update_id", "artifact_id")]
+                    if any(len(items) != 1 or not items[0] for items in values):
+                        raise ValueError("Select one progress card and one artifact")
+                    content, content_type = research_progress.artifact_file(HOME, values[0][0], values[1][0])
+                    return self.send(200, content, content_type)
                 if route == "/api/ectogenesis/models":
                     if not any(item["id"] == "ectogenesis" for item in desk.store["blueprints"]):
                         raise ValueError("The ectogenesis research area is not configured")

@@ -1,0 +1,527 @@
+{
+  "version": 1,
+  "prior_atlas_commit": "af7b57c2cfad64683f82044199cca812a01b9a03",
+  "dl001_ic50": {
+    "source_id": "dl001_source_data",
+    "source_sheet": "Fig. 1f",
+    "assay": "24h PC3 cell treatment; AlphaLISA phospho-S6 S240/S244 and phospho-AKT S473 per primary caption/methods; lysates measured afterward, not a purified-enzyme affinity assay",
+    "units": "source fM; divide by 1000 to report pM; Fig. 1d/e label logC(fM), and converted means reproduce article pM numbers",
+    "unit_qualification": "Figure 1d group labels say S6K whereas article identifies pS6 S240/S244; this audit follows caption/method endpoint and does not refit curves",
+    "biological_replicates_per_compound": 4,
+    "technical_replicates_per_biological_experiment": 3,
+    "independence": "Technical readings are not twelve independent biological replicates; ratio pairing follows same source column C-F within each compound. Cross-compound pairing is not assumed.",
+    "replicates": [
+      {
+        "compound": "rapamycin",
+        "source_column": "C",
+        "biological_replicate": 1,
+        "c1_ic50_source_fM": 61086.0,
+        "c2_ic50_source_fM": 680386.0,
+        "source_ratio_c2_c1": 11.138165864518875,
+        "source_cells": [
+          "Fig. 1f!C3",
+          "Fig. 1f!C7",
+          "Fig. 1f!C12"
+        ]
+      },
+      {
+        "compound": "rapamycin",
+        "source_column": "D",
+        "biological_replicate": 2,
+        "c1_ic50_source_fM": 38131.0,
+        "c2_ic50_source_fM": 635860.0,
+        "source_ratio_c2_c1": 16.67567071411712,
+        "source_cells": [
+          "Fig. 1f!D3",
+          "Fig. 1f!D7",
+          "Fig. 1f!D12"
+        ]
+      },
+      {
+        "compound": "rapamycin",
+        "source_column": "E",
+        "biological_replicate": 3,
+        "c1_ic50_source_fM": 79917.0,
+        "c2_ic50_source_fM": 149875.0,
+        "source_ratio_c2_c1": 1.8753832100804584,
+        "source_cells": [
+          "Fig. 1f!E3",
+          "Fig. 1f!E7",
+          "Fig. 1f!E12"
+        ]
+      },
+      {
+        "compound": "rapamycin",
+        "source_column": "F",
+        "biological_replicate": 4,
+        "c1_ic50_source_fM": 74101.0,
+        "c2_ic50_source_fM": 673461.0,
+        "source_ratio_c2_c1": 9.088419859381116,
+        "source_cells": [
+          "Fig. 1f!F3",
+          "Fig. 1f!F7",
+          "Fig. 1f!F12"
+        ]
+      },
+      {
+        "compound": "DL001",
+        "source_column": "C",
+        "biological_replicate": 1,
+        "c1_ic50_source_fM": 43114.0,
+        "c2_ic50_source_fM": 35751500.0,
+        "source_ratio_c2_c1": 829.2318040543674,
+        "source_cells": [
+          "Fig. 1f!C4",
+          "Fig. 1f!C8",
+          "Fig. 1f!C13"
+        ]
+      },
+      {
+        "compound": "DL001",
+        "source_column": "D",
+        "biological_replicate": 2,
+        "c1_ic50_source_fM": 68187.0,
+        "c2_ic50_source_fM": 40072398.0,
+        "source_ratio_c2_c1": 587.6838400281579,
+        "source_cells": [
+          "Fig. 1f!D4",
+          "Fig. 1f!D8",
+          "Fig. 1f!D13"
+        ]
+      },
+      {
+        "compound": "DL001",
+        "source_column": "E",
+        "biological_replicate": 3,
+        "c1_ic50_source_fM": 99492.0,
+        "c2_ic50_source_fM": 9406348.0,
+        "source_ratio_c2_c1": 94.54376231254774,
+        "source_cells": [
+          "Fig. 1f!E4",
+          "Fig. 1f!E8",
+          "Fig. 1f!E13"
+        ]
+      },
+      {
+        "compound": "DL001",
+        "source_column": "F",
+        "biological_replicate": 4,
+        "c1_ic50_source_fM": 88951.0,
+        "c2_ic50_source_fM": 19751405.0,
+        "source_ratio_c2_c1": 222.04815010511405,
+        "source_cells": [
+          "Fig. 1f!F4",
+          "Fig. 1f!F8",
+          "Fig. 1f!F13"
+        ]
+      }
+    ]
+  },
+  "dl001_tissue_pathway": {
+    "source_id": "dl001_source_data",
+    "source_sheet": "Fig. 3d",
+    "context": "female C57BL/6J mice; source 20-day comparison, n=4 biologically independent animals/group; administration route i.p. per methods",
+    "normalization": "phosphorylation readout normalized to source vehicle mean; raw intensity/denominator measurement not present in this extracted table",
+    "C1_marker": "S6 S240/S244",
+    "C2_marker": "AKT S473",
+    "free_parent_exposure_measured": false,
+    "target_function_equivalence_established": false,
+    "testis_in_11_tissue_panel": false,
+    "series": [
+      {
+        "pathway": "C1",
+        "tissue": "liver",
+        "compound": "vehicle",
+        "values": [
+          1.003442,
+          0.89147,
+          1.100401,
+          1.004688
+        ],
+        "source_cells": "Fig. 3d!B4:E4"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "liver",
+        "compound": "rapamycin",
+        "values": [
+          0.027502,
+          0.071796,
+          0.072192,
+          0.015834
+        ],
+        "source_cells": "Fig. 3d!F4:I4"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "liver",
+        "compound": "DL001",
+        "values": [
+          0.540781,
+          0.451044,
+          0.35658,
+          0.448584
+        ],
+        "source_cells": "Fig. 3d!J4:M4"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "gastrocnemius",
+        "compound": "vehicle",
+        "values": [
+          2.004955,
+          0.815932,
+          0.606778,
+          0.572335
+        ],
+        "source_cells": "Fig. 3d!B7:E7"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "gastrocnemius",
+        "compound": "rapamycin",
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source_cells": "Fig. 3d!F7:I7"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "gastrocnemius",
+        "compound": "DL001",
+        "values": [
+          0.022981,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source_cells": "Fig. 3d!J7:M7"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "heart",
+        "compound": "vehicle",
+        "values": [
+          1.082622,
+          1.052491,
+          0.8770574,
+          0.9878289
+        ],
+        "source_cells": "Fig. 3d!B10:E10"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "heart",
+        "compound": "rapamycin",
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source_cells": "Fig. 3d!F10:I10"
+      },
+      {
+        "pathway": "C1",
+        "tissue": "heart",
+        "compound": "DL001",
+        "values": [
+          0.3838589,
+          0.2964784,
+          0.2044351,
+          0.4306271
+        ],
+        "source_cells": "Fig. 3d!J10:M10"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "liver",
+        "compound": "vehicle",
+        "values": [
+          1.519414,
+          0.661902,
+          0.551239,
+          1.267444
+        ],
+        "source_cells": "Fig. 3d!B16:E16"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "liver",
+        "compound": "rapamycin",
+        "values": [
+          0.352217,
+          0.201877,
+          0.05222,
+          0.195911
+        ],
+        "source_cells": "Fig. 3d!F16:I16"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "liver",
+        "compound": "DL001",
+        "values": [
+          0.471649,
+          0.236399,
+          0.924184,
+          0.627535
+        ],
+        "source_cells": "Fig. 3d!J16:M16"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "gastrocnemius",
+        "compound": "vehicle",
+        "values": [
+          1.336979,
+          0.706566,
+          0.790217,
+          1.166238
+        ],
+        "source_cells": "Fig. 3d!B19:E19"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "gastrocnemius",
+        "compound": "rapamycin",
+        "values": [
+          0.0,
+          0.337369,
+          0.226774,
+          0.0
+        ],
+        "source_cells": "Fig. 3d!F19:I19"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "gastrocnemius",
+        "compound": "DL001",
+        "values": [
+          0.921048,
+          0.738361,
+          0.802746,
+          0.608607
+        ],
+        "source_cells": "Fig. 3d!J19:M19"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "heart",
+        "compound": "vehicle",
+        "values": [
+          1.332934,
+          1.025266,
+          0.6855528,
+          0.9562478
+        ],
+        "source_cells": "Fig. 3d!B22:E22"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "heart",
+        "compound": "rapamycin",
+        "values": [
+          0.05936328,
+          0.2393448,
+          0.2470859,
+          0.1282959
+        ],
+        "source_cells": "Fig. 3d!F22:I22"
+      },
+      {
+        "pathway": "C2",
+        "tissue": "heart",
+        "compound": "DL001",
+        "values": [
+          1.167435,
+          1.01832,
+          1.756647,
+          1.02224
+        ],
+        "source_cells": "Fig. 3d!J22:M22"
+      }
+    ],
+    "collection_context": "Overnight fasting and precollection insulin stimulation per methods; activation state is part of the assay context, not baseline untreated tissue physiology."
+  },
+  "dl001_blood_parent": {
+    "source_id": "dl001_source_data",
+    "source_sheet": "fig. S4",
+    "context": "male C57BL/6J comparison following 5-week exposure, source 16 h after final administration; whole blood, not free plasma or testicular parent",
+    "route": "i.p. mouse study; no oral F derived",
+    "series": [
+      {
+        "compound": "DL001",
+        "values_ng_per_mL_whole_blood": [
+          178.5,
+          143.5,
+          159.5,
+          179.5,
+          155.5,
+          245.0,
+          178.5,
+          227.5,
+          209.0
+        ],
+        "source_cells": "fig. S4!J3:J11",
+        "source_mean": 186.27777777777777,
+        "source_sem": 11.380450803629321
+      },
+      {
+        "compound": "rapamycin",
+        "values_ng_per_mL_whole_blood": [
+          429.0,
+          504.0,
+          226.0,
+          365.0,
+          343.0,
+          332.0,
+          545.0,
+          388.0,
+          239.0,
+          16.7,
+          19.4,
+          16.9,
+          315.0,
+          249.0,
+          11.3,
+          12.4,
+          301.0,
+          317.0
+        ],
+        "source_cells": "fig. S4!L3:L20",
+        "source_mean": 257.2055555555556,
+        "source_sem": 41.13085881918911
+      }
+    ],
+    "cross_links_to_figure3d_animals": null,
+    "same_population_as_figure3d": false,
+    "measured_free_fraction": null,
+    "target_or_testis_intracellular_concentrations": null,
+    "assay_validation_in_retrieved_main_text": null,
+    "analyte_qualification": "Source reports compound-specific whole-blood concentrations; analytical specificity, recovery, lower limit and native intracellular parent are not verified by this intake.",
+    "molar_or_free_exposure_matching": false
+  },
+  "mouse_reproductive": {
+    "source_id": "adult_meiosis_xml",
+    "species": "mouse",
+    "sex": "male",
+    "strain": "C57BL/6",
+    "age_start_weeks": [
+      7,
+      8
+    ],
+    "route": "intraperitoneal",
+    "context": "adult chronic exposure study, not an oral or healthy-human experiment",
+    "testis_mass": {
+      "source_location": "Results section1 and Figure 1d",
+      "unit": "mg per testis pair",
+      "control_mean": 158.1,
+      "control_sd": 6.98,
+      "control_n_animals": 5,
+      "rapamycin_mean": 72.88,
+      "rapamycin_sd": 7.876,
+      "rapamycin_n_animals": 4,
+      "individual_observations": null,
+      "raw_volume_measured": false
+    },
+    "other_observations": [
+      "testicular C1 and C2 signaling/complex integrity impaired in n=3 animals/group",
+      "histology shows meiotic arrest and epididymal histology lacks mature sperm; not a direct mating-outcome count"
+    ],
+    "recovery": {
+      "source_location": "Figure 7 and results/abstract",
+      "n_animals_per_group": 3,
+      "followup_months": 2,
+      "reported_outcomes": "testis mass and motility described as restored; sperm counts increased; abstract qualifies the effect as partially reversible",
+      "raw_individual_count_or_motility_values": null,
+      "numeric_recovery_probability": null,
+      "human_recovery_guarantee": false,
+      "qualification": "Do not reinterpret non-significant testis mass as demonstrated equivalence or recovery of every reproductive outcome. No figure digitization is substituted for raw data."
+    }
+  },
+  "human_reproductive": {
+    "source_id": "human_cohort_abstract",
+    "pmid": "18510638",
+    "doi": "10.1111/j.1600-6143.2008.02267.x",
+    "design": "observational male kidney-transplant cohort, questionnaire and proposed semen analysis, not randomized healthy volunteers",
+    "age_years": [
+      20,
+      40
+    ],
+    "respondents": 95,
+    "recipients_contacted": 116,
+    "n_semen_analysis_by_regimen": null,
+    "sperm_count_total_million": {
+      "sirolimus": 28.6,
+      "sirolimus_reported_dispersion": 31.2,
+      "no_sirolimus": 292.2,
+      "no_sirolimus_reported_dispersion": 271.2,
+      "dispersion_type": "reported plus/minus in abstract; type not verified from full text here"
+    },
+    "motile_sperm_percent": {
+      "sirolimus": 22.2,
+      "sirolimus_reported_dispersion": 12.3,
+      "no_sirolimus": 41.0,
+      "no_sirolimus_reported_dispersion": 14.5,
+      "dispersion_type": "reported plus/minus in abstract; type not verified from full text here"
+    },
+    "fathered_pregnancy_rate_per_1000_patient_years": {
+      "sirolimus": 5.9,
+      "sirolimus_source_95CI": [
+        0.8,
+        42.1
+      ],
+      "no_sirolimus": 92.9,
+      "no_sirolimus_source_95CI": [
+        66.4,
+        130.0
+      ]
+    },
+    "interruption": {
+      "n": 6,
+      "number_reported_significant_sperm_improvement": 3,
+      "causal_recovery_probability": null
+    },
+    "testicular_volume_observation": null,
+    "direct_candidate_comparison_to_dl001": false,
+    "uncontrolled_transport_factors": [
+      "transplant disease/context",
+      "other immunosuppressants and regimen selection",
+      "semen-analysis participation and denominator",
+      "partner and pregnancy-attempt factors",
+      "exposure duration and native testicular exposure"
+    ]
+  },
+  "raptor_genetic_counterexample": {
+    "source_id": "raptor_abstract",
+    "pmid": "28490482",
+    "doi": "10.1096/fj.201700251R",
+    "access": "primary indexed abstract only",
+    "model": "conditional male-germline Raptor ablation in mice",
+    "result": "meiotic arrest, abnormal sex-chromosome silencing and infertility support an mTORC1 requirement",
+    "pharmacological_threshold_established": false,
+    "dl001_reproductive_effect_established": false
+  },
+  "reproductive_comparison_gate_inputs": {
+    "DL001": {
+      "testis_cell_native_parent_exposure": false,
+      "testis_cell_C1_C2_time_context": false,
+      "direct_reproductive_endpoints": false,
+      "matched_specified_intended_function": false,
+      "same_relevant_population_for_joint_comparison": false,
+      "human_reproductive_candidate_comparison": false
+    },
+    "rapamycin": {
+      "testis_cell_native_parent_exposure": false,
+      "testis_cell_C1_C2_time_context": false,
+      "direct_reproductive_endpoints": true,
+      "matched_specified_intended_function": false,
+      "same_relevant_population_for_joint_comparison": false,
+      "human_reproductive_candidate_comparison": false
+    }
+  }
+}

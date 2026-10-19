@@ -1,0 +1,8395 @@
+{
+  "data_kind": "observed_public_numeric_tables_not_synthetic",
+  "source_doi": "10.5281/zenodo.7412385",
+  "license": "CC-BY-4.0",
+  "attribution": "Theisen, Amato, Krastl, Attin, Blatz, Weiger and Eggmann, dataset version 3 (2022)",
+  "extraction": "pdfplumber table extraction; all seven original PDF pages rendered and visually inspected; no numeric corrections",
+  "marginal_columns": [
+    "code",
+    "group",
+    "specimen_number",
+    "side",
+    "interface",
+    "measurement",
+    "material",
+    "loading_rounds",
+    "full_um",
+    "not_assessable_um",
+    "assessable_um",
+    "noncontinuous_um",
+    "continuous_percent"
+  ],
+  "fracture_columns": [
+    "group_label",
+    "specimen_label",
+    "buccal_type_1",
+    "buccal_type_2",
+    "buccal_type_3",
+    "oral_type_1",
+    "oral_type_2",
+    "oral_type_3",
+    "mesial_type_1",
+    "mesial_type_2",
+    "mesial_type_3",
+    "distal_type_1",
+    "distal_type_2",
+    "distal_type_3",
+    "load_N"
+  ],
+  "marginal_rows": [
+    {
+      "source_page": 1,
+      "source_table_row": 2,
+      "cells": [
+        "G1_T1_D_B_CmT",
+        "1",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "133.391",
+        "1.134",
+        "132.26 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 3,
+      "cells": [
+        "G1_T1_D_R1_CmT",
+        "1",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8370.117",
+        "217.875",
+        "8152.24 \u00b5m",
+        "351.11",
+        "95.69%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 4,
+      "cells": [
+        "G1_T1_D_R2_CmT",
+        "1",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8353.107",
+        "283.968",
+        "8069.14 \u00b5m",
+        "357.254",
+        "95.57%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 5,
+      "cells": [
+        "G1_T1_D_B_InCm",
+        "1",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2976.659",
+        "0",
+        "2976.66 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 6,
+      "cells": [
+        "G1_T1_D_R2_InCm",
+        "1",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2975.757",
+        "0",
+        "2975.76 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 7,
+      "cells": [
+        "G1_T1_M_B_CmT",
+        "1",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "63.625",
+        "0",
+        "63.63 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 8,
+      "cells": [
+        "G1_T1_M_R1_CmT",
+        "1",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4094.717",
+        "0",
+        "4094.72 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 9,
+      "cells": [
+        "G1_T1_M_B_InT",
+        "1",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8521.521",
+        "0",
+        "8521.52 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 10,
+      "cells": [
+        "G1_T1_M_R2_InT",
+        "1",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8401.648",
+        "0",
+        "8401.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 11,
+      "cells": [
+        "G1_T2_D_B_CmT",
+        "1",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3685.898",
+        "21.426",
+        "3664.47 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 12,
+      "cells": [
+        "G1_T2_D_R1_CmT",
+        "1",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8345.061",
+        "328.558",
+        "8016.50 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 13,
+      "cells": [
+        "G1_T2_D_R2_CmT",
+        "1",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8076.253",
+        "243.358",
+        "7832.90 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 14,
+      "cells": [
+        "G1_T2_D_B_InCm",
+        "1",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2788.68",
+        "0",
+        "2788.68 \u00b5m",
+        "382.268",
+        "86.29%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 15,
+      "cells": [
+        "G1_T2_D_R2_InCm",
+        "1",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2770.515",
+        "0",
+        "2770.52 \u00b5m",
+        "505.361",
+        "81.76%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 16,
+      "cells": [
+        "G1_T2_M_B_CmT",
+        "1",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3572.11",
+        "0",
+        "3572.11 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 17,
+      "cells": [
+        "G1_T2_M_R1_CmT",
+        "1",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3829.284",
+        "0",
+        "3829.28 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 18,
+      "cells": [
+        "G1_T2_M_B_InT",
+        "1",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8130.27",
+        "0",
+        "8130.27 \u00b5m",
+        "1557.417",
+        "80.84%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 19,
+      "cells": [
+        "G1_T2_M_R2_InT",
+        "1",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8162.98",
+        "0",
+        "8162.98 \u00b5m",
+        "1584.794",
+        "80.59%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 20,
+      "cells": [
+        "G1_T3_D_B_CmT",
+        "1",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3944.159",
+        "1031.416",
+        "2912.74 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 21,
+      "cells": [
+        "G1_T3_D_R1_CmT",
+        "1",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8490.293",
+        "1006.763",
+        "7483.53 \u00b5m",
+        "15.289",
+        "99.80%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 22,
+      "cells": [
+        "G1_T3_D_R2_CmT",
+        "1",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8465.021",
+        "1043.606",
+        "7421.42 \u00b5m",
+        "15.328",
+        "99.79%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 23,
+      "cells": [
+        "G1_T3_D_B_InCm",
+        "1",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2624.179",
+        "0",
+        "2624.18 \u00b5m",
+        "171.969",
+        "93.45%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 24,
+      "cells": [
+        "G1_T3_D_R2_InCm",
+        "1",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2625.958",
+        "0",
+        "2625.96 \u00b5m",
+        "182.301",
+        "93.06%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 25,
+      "cells": [
+        "G1_T3_M_B_CmT",
+        "1",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3902.99",
+        "425.939",
+        "3477.05 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 26,
+      "cells": [
+        "G1_T3_M_R1_CmT",
+        "1",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4071.148",
+        "472.845",
+        "3598.30 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 27,
+      "cells": [
+        "G1_T3_M_B_InT",
+        "1",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8265.635",
+        "0",
+        "8265.64 \u00b5m",
+        "105.35",
+        "98.73%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 28,
+      "cells": [
+        "G1_T3_M_R2_InT",
+        "1",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8266.014",
+        "0",
+        "8266.01 \u00b5m",
+        "106.641",
+        "98.71%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 29,
+      "cells": [
+        "G1_T4_D_B_CmT",
+        "1",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8027.386",
+        "0",
+        "8027.39 \u00b5m",
+        "78.058",
+        "99.03%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 30,
+      "cells": [
+        "G1_T4_D_R1_CmT",
+        "1",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8027.386",
+        "0",
+        "8027.39 \u00b5m",
+        "109.059",
+        "98.64%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 31,
+      "cells": [
+        "G1_T4_D_R2_CmT",
+        "1",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8084.811",
+        "0",
+        "8084.81 \u00b5m",
+        "109.72",
+        "98.64%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 32,
+      "cells": [
+        "G1_T4_D_B_InCm",
+        "1",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2569.637",
+        "0",
+        "2569.64 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 33,
+      "cells": [
+        "G1_T4_D_R2_InCm",
+        "1",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2567.073",
+        "0",
+        "2567.07 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 34,
+      "cells": [
+        "G1_T4_M_B_CmT",
+        "1",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3577.538",
+        "0",
+        "3577.54 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 35,
+      "cells": [
+        "G1_T4_M_R1_CmT",
+        "1",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3506.457",
+        "0",
+        "3506.46 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 36,
+      "cells": [
+        "G1_T4_M_B_InT",
+        "1",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8299.47",
+        "0",
+        "8299.47 \u00b5m",
+        "3801.667",
+        "54.19%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 37,
+      "cells": [
+        "G1_T4_M_R2_InT",
+        "1",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8244.803",
+        "0",
+        "8244.80 \u00b5m",
+        "3791.912",
+        "54.01%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 38,
+      "cells": [
+        "G1_T5_D_B_CmT",
+        "1",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4005.133",
+        "0",
+        "4005.13 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 39,
+      "cells": [
+        "G1_T5_D_R1_CmT",
+        "1",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8346.127",
+        "629.68",
+        "7716.45 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 40,
+      "cells": [
+        "G1_T5_D_R2_CmT",
+        "1",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8165.345",
+        "0",
+        "8165.35 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 41,
+      "cells": [
+        "G1_T5_D_B_InCm",
+        "1",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2909.013",
+        "423.847",
+        "2485.17 \u00b5m",
+        "88.667",
+        "96.43%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 42,
+      "cells": [
+        "G1_T5_D_R2_InCm",
+        "1",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2860.669",
+        "0",
+        "2860.67 \u00b5m",
+        "113.131",
+        "96.05%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 43,
+      "cells": [
+        "G1_T5_M_B_CmT",
+        "1",
+        "5",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3830.541",
+        "0",
+        "3830.54 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 44,
+      "cells": [
+        "G1_T5_M_R1_CmT",
+        "1",
+        "5",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4204.247",
+        "0",
+        "4204.25 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 45,
+      "cells": [
+        "G1_T5_M_B_InT",
+        "1",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8225.511",
+        "0",
+        "8225.51 \u00b5m",
+        "20.041",
+        "99.76%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 46,
+      "cells": [
+        "G1_T5_M_R2_InT",
+        "1",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8171.941",
+        "0",
+        "8171.94 \u00b5m",
+        "22.719",
+        "99.72%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 47,
+      "cells": [
+        "G1_T6_D_B_CmT",
+        "1",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3615.083",
+        "0",
+        "3615.08 \u00b5m",
+        "21.851",
+        "99.40%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 48,
+      "cells": [
+        "G1_T6_D_R1_CmT",
+        "1",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7873.787",
+        "0",
+        "7873.79 \u00b5m",
+        "50.236",
+        "99.36%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 49,
+      "cells": [
+        "G1_T6_D_R2_CmT",
+        "1",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7859.825",
+        "0",
+        "7859.83 \u00b5m",
+        "54.618",
+        "99.31%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 50,
+      "cells": [
+        "G1_T6_D_B_InCm",
+        "1",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2898.836",
+        "0",
+        "2898.84 \u00b5m",
+        "839.093",
+        "71.05%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 51,
+      "cells": [
+        "G1_T6_D_R2_InCm",
+        "1",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2769.263",
+        "0",
+        "2769.26 \u00b5m",
+        "842.066",
+        "69.59%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 52,
+      "cells": [
+        "G1_T6_M_B_CmT",
+        "1",
+        "6",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3369.43",
+        "0",
+        "3369.43 \u00b5m",
+        "44.545",
+        "98.68%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 53,
+      "cells": [
+        "G1_T6_M_R1_CmT",
+        "1",
+        "6",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3573.065",
+        "0",
+        "3573.07 \u00b5m",
+        "90.951",
+        "97.45%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 54,
+      "cells": [
+        "G1_T6_M_B_InT",
+        "1",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7929.49",
+        "153.231",
+        "7776.26 \u00b5m",
+        "2476.643",
+        "68.15%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 55,
+      "cells": [
+        "G1_T6_M_R2_InT",
+        "1",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7956.292",
+        "168.273",
+        "7788.02 \u00b5m",
+        "2914.629",
+        "62.58%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 56,
+      "cells": [
+        "G1_T7_D_B_CmT",
+        "1",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3887.575",
+        "53.951",
+        "3833.62 \u00b5m",
+        "19.118",
+        "99.50%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 57,
+      "cells": [
+        "G1_T7_D_R1_CmT",
+        "1",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8251.047",
+        "0",
+        "8251.05 \u00b5m",
+        "80.938",
+        "99.02%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 58,
+      "cells": [
+        "G1_T7_D_R2_CmT",
+        "1",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8163.639",
+        "0",
+        "8163.64 \u00b5m",
+        "97.158",
+        "98.81%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 59,
+      "cells": [
+        "G1_T7_D_B_InCm",
+        "1",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2623.949",
+        "0",
+        "2623.95 \u00b5m",
+        "19.536",
+        "99.26%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 60,
+      "cells": [
+        "G1_T7_D_R2_InCm",
+        "1",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2657.495",
+        "0",
+        "2657.50 \u00b5m",
+        "21.276",
+        "99.20%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 61,
+      "cells": [
+        "G1_T7_M_B_CmT",
+        "1",
+        "7",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3959.819",
+        "606.045",
+        "3353.77 \u00b5m",
+        "9.209",
+        "99.73%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 62,
+      "cells": [
+        "G1_T7_M_R1_CmT",
+        "1",
+        "7",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4007.609",
+        "1019.685",
+        "2987.92 \u00b5m",
+        "13.816",
+        "99.54%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 63,
+      "cells": [
+        "G1_T7_M_B_InT",
+        "1",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7901.715",
+        "2693.529",
+        "5208.19 \u00b5m",
+        "15.644",
+        "99.70%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 64,
+      "cells": [
+        "G1_T7_M_R2_InT",
+        "1",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7879.797",
+        "2832.73",
+        "5047.07 \u00b5m",
+        "17.347",
+        "99.66%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 65,
+      "cells": [
+        "G1_T8_D_B_CmT",
+        "1",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3347.75",
+        "0",
+        "3347.75 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 66,
+      "cells": [
+        "G1_T8_D_R1_CmT",
+        "1",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7913.749",
+        "0",
+        "7913.75 \u00b5m",
+        "16.231",
+        "99.79%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 67,
+      "cells": [
+        "G1_T8_D_R2_CmT",
+        "1",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7896.581",
+        "0",
+        "7896.58 \u00b5m",
+        "19.349",
+        "99.75%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 68,
+      "cells": [
+        "G1_T8_D_B_InCm",
+        "1",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2664.532",
+        "0",
+        "2664.53 \u00b5m",
+        "77.712",
+        "97.08%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 69,
+      "cells": [
+        "G1_T8_D_R2_InCm",
+        "1",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2674.044",
+        "0",
+        "2674.04 \u00b5m",
+        "82.165",
+        "96.93%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 70,
+      "cells": [
+        "G1_T8_M_B_CmT",
+        "1",
+        "8",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3913.22",
+        "229.809",
+        "3683.41 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 71,
+      "cells": [
+        "G1_T8_M_R1_CmT",
+        "1",
+        "8",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3945.755",
+        "244.883",
+        "3700.87 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 72,
+      "cells": [
+        "G1_T8_M_B_InT",
+        "1",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8197.331",
+        "0",
+        "8197.33 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 73,
+      "cells": [
+        "G1_T8_M_R2_InT",
+        "1",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8234.776",
+        "0",
+        "8234.78 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 74,
+      "cells": [
+        "G1_T9_D_B_CmT",
+        "1",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8086.437",
+        "498.188",
+        "7588.25 \u00b5m",
+        "776.402",
+        "89.77%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 75,
+      "cells": [
+        "G1_T9_D_R1_CmT",
+        "1",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8086.437",
+        "611.945",
+        "7474.49 \u00b5m",
+        "1001.928",
+        "86.60%"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 76,
+      "cells": [
+        "G1_T9_D_R2_CmT",
+        "1",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8153.873",
+        "675.898",
+        "7477.98 \u00b5m",
+        "1011.12",
+        "86.48%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 2,
+      "cells": [
+        "G1_T9_D_B_InCm",
+        "1",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8330.002",
+        "0",
+        "8330.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 3,
+      "cells": [
+        "G1_T9_D_R2_InCm",
+        "1",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8333.198",
+        "0",
+        "8333.20 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 4,
+      "cells": [
+        "G1_T9_M_B_CmT",
+        "1",
+        "9",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3882.59",
+        "551.924",
+        "3330.67 \u00b5m",
+        "40.737",
+        "98.78%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 5,
+      "cells": [
+        "G1_T9_M_R1_CmT",
+        "1",
+        "9",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3910.385",
+        "593.683",
+        "3316.70 \u00b5m",
+        "42.217",
+        "98.73%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 6,
+      "cells": [
+        "G1_T9_M_B_InT",
+        "1",
+        "9",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2589.485",
+        "0",
+        "2589.49 \u00b5m",
+        "104.024",
+        "95.98%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 7,
+      "cells": [
+        "G1_T9_M_R2_InT",
+        "1",
+        "9",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2603.399",
+        "0",
+        "2603.40 \u00b5m",
+        "132.329",
+        "94.92%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 8,
+      "cells": [
+        "G1_T10_D_B_CmT",
+        "1",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3658.001",
+        "0",
+        "3658.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 9,
+      "cells": [
+        "G1_T10_D_R1_CmT",
+        "1",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8227.877",
+        "0",
+        "8227.88 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 10,
+      "cells": [
+        "G1_T10_D_R2_CmT",
+        "1",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8306.92",
+        "0",
+        "8306.92 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 11,
+      "cells": [
+        "G1_T10_D_B_InCm",
+        "1",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2752.979",
+        "0",
+        "2752.98 \u00b5m",
+        "114.619",
+        "95.84%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 12,
+      "cells": [
+        "G1_T10_D_R2_InCm",
+        "1",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2739.278",
+        "0",
+        "2739.28 \u00b5m",
+        "129.407",
+        "95.28%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 13,
+      "cells": [
+        "G1_T10_M_B_CmT",
+        "1",
+        "10",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4004.149",
+        "0",
+        "4004.15 \u00b5m",
+        "61.3",
+        "98.47%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 14,
+      "cells": [
+        "G1_T10_M_R1_CmT",
+        "1",
+        "10",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3828.815",
+        "0",
+        "3828.82 \u00b5m",
+        "62.878",
+        "98.36%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 15,
+      "cells": [
+        "G1_T10_M_B_InT",
+        "1",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8206.729",
+        "2716.622",
+        "5490.11 \u00b5m",
+        "630.113",
+        "88.52%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 16,
+      "cells": [
+        "G1_T10_M_R2_InT",
+        "1",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8188.324",
+        "2691.155",
+        "5497.17 \u00b5m",
+        "682.486",
+        "87.58%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 17,
+      "cells": [
+        "G1_T11_D_B_CmT",
+        "1",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "4079.136",
+        "371.152",
+        "3707.98 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 18,
+      "cells": [
+        "G1_T11_D_R1_CmT",
+        "1",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8422.988",
+        "645.265",
+        "7777.72 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 19,
+      "cells": [
+        "G1_T11_D_R2_CmT",
+        "1",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8436.3",
+        "932.183",
+        "7504.12 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 20,
+      "cells": [
+        "G1_T11_D_B_InCm",
+        "1",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2563.746",
+        "0",
+        "2563.75 \u00b5m",
+        "354.646",
+        "86.17%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 21,
+      "cells": [
+        "G1_T11_D_R2_InCm",
+        "1",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2609.956",
+        "",
+        "2609.96 \u00b5m",
+        "430.434",
+        "83.51%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 22,
+      "cells": [
+        "G1_T11_M_B_CmT",
+        "1",
+        "11",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3931.503",
+        "0",
+        "3931.50 \u00b5m",
+        "32.503",
+        "99.17%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 23,
+      "cells": [
+        "G1_T11_M_R1_CmT",
+        "1",
+        "11",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3834.359",
+        "0",
+        "3834.36 \u00b5m",
+        "33.047",
+        "99.14%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 24,
+      "cells": [
+        "G1_T11_M_B_InT",
+        "1",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8332.71",
+        "1504.965",
+        "6827.75 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 25,
+      "cells": [
+        "G1_T11_M_R2_InT",
+        "1",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8361.022",
+        "1190.224",
+        "7170.80 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 26,
+      "cells": [
+        "G1_T12_D_B_CmT",
+        "1",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3561.938",
+        "0",
+        "3561.94 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 27,
+      "cells": [
+        "G1_T12_D_R1_CmT",
+        "1",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8036.619",
+        "0",
+        "8036.62 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 28,
+      "cells": [
+        "G1_T12_D_R2_CmT",
+        "1",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "7956.627",
+        "0",
+        "7956.63 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 29,
+      "cells": [
+        "G1_T12_D_B_InCm",
+        "1",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2688.306",
+        "0",
+        "2688.31 \u00b5m",
+        "659.616",
+        "75.46%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 30,
+      "cells": [
+        "G1_T12_D_R2_InCm",
+        "1",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "2720.422",
+        "0",
+        "2720.42 \u00b5m",
+        "672.117",
+        "75.29%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 31,
+      "cells": [
+        "G1_T12_M_B_CmT",
+        "1",
+        "12",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3683.206",
+        "225.299",
+        "3457.91 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 32,
+      "cells": [
+        "G1_T12_M_R1_CmT",
+        "1",
+        "12",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "3795.791",
+        "251.793",
+        "3544.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 33,
+      "cells": [
+        "G1_T12_M_B_InT",
+        "1",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8159.117",
+        "0",
+        "8159.12 \u00b5m",
+        "733.822",
+        "91.01%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 34,
+      "cells": [
+        "G1_T12_M_R2_InT",
+        "1",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "2",
+        "8195.905",
+        "0",
+        "8195.91 \u00b5m",
+        "741.994",
+        "90.95%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 35,
+      "cells": [
+        "G2_T1_D_B_CmT",
+        "2",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8106.281",
+        "0",
+        "8106.28 \u00b5m",
+        "92.662",
+        "98.86%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 36,
+      "cells": [
+        "G2_T1_D_R1_CmT",
+        "2",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8106.281",
+        "0",
+        "8106.28 \u00b5m",
+        "118.245",
+        "98.54%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 37,
+      "cells": [
+        "G2_T1_D_R2_CmT",
+        "2",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8072.911",
+        "0",
+        "8072.91 \u00b5m",
+        "271.887",
+        "96.63%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 38,
+      "cells": [
+        "G2_T1_D_B_InCm",
+        "2",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2762.798",
+        "0",
+        "2762.80 \u00b5m",
+        "675.826",
+        "75.54%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 39,
+      "cells": [
+        "G2_T1_D_R2_InCm",
+        "2",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2770.821",
+        "0",
+        "2770.82 \u00b5m",
+        "688.492",
+        "75.15%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 40,
+      "cells": [
+        "G2_T1_M_B_CmT",
+        "2",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8222.201",
+        "1460.695",
+        "6761.51 \u00b5m",
+        "17.832",
+        "99.74%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 41,
+      "cells": [
+        "G2_T1_M_R1_CmT",
+        "2",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8222.201",
+        "1460.695",
+        "6761.51 \u00b5m",
+        "19.958",
+        "99.70%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 42,
+      "cells": [
+        "G2_T1_M_B_InT",
+        "2",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8264.641",
+        "650.157",
+        "7614.48 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 43,
+      "cells": [
+        "G2_T1_M_R2_InT",
+        "2",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8290.683",
+        "745.59",
+        "7545.09 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 44,
+      "cells": [
+        "G2_T2_D_B_CmT",
+        "2",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3701.192",
+        "482.514",
+        "3218.68 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 45,
+      "cells": [
+        "G2_T2_D_R1_CmT",
+        "2",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8196.199",
+        "0",
+        "8196.20 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 46,
+      "cells": [
+        "G2_T2_D_R2_CmT",
+        "2",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8212.214",
+        "878.493",
+        "7333.72 \u00b5m",
+        "860.902",
+        "88.26%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 47,
+      "cells": [
+        "G2_T2_D_B_InCm",
+        "2",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3046.901",
+        "0",
+        "3046.90 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 48,
+      "cells": [
+        "G2_T2_D_R2_InCm",
+        "2",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2990.437",
+        "0",
+        "2990.44 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 49,
+      "cells": [
+        "G2_T2_M_B_CmT",
+        "2",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3439.3",
+        "0",
+        "3439.30 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 50,
+      "cells": [
+        "G2_T2_M_R1_CmT",
+        "2",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "7959.748",
+        "744.808",
+        "7214.94 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 51,
+      "cells": [
+        "G2_T2_M_B_InT",
+        "2",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8124.591",
+        "0",
+        "8124.59 \u00b5m",
+        "139.061",
+        "98.29%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 52,
+      "cells": [
+        "G2_T2_M_R2_InT",
+        "2",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8122.558",
+        "0",
+        "8122.56 \u00b5m",
+        "140.686",
+        "98.27%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 53,
+      "cells": [
+        "G2_T3_D_B_CmT",
+        "2",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3678.665",
+        "1163",
+        "2515.67 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 54,
+      "cells": [
+        "G2_T3_D_R1_CmT",
+        "2",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8147.836",
+        "0",
+        "8147.84 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 55,
+      "cells": [
+        "G2_T3_D_R2_CmT",
+        "2",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8136.691",
+        "0",
+        "8136.69 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 56,
+      "cells": [
+        "G2_T3_D_B_InCm",
+        "2",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3058.288",
+        "0",
+        "3058.29 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 57,
+      "cells": [
+        "G2_T3_D_R2_InCm",
+        "2",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3018.944",
+        "0",
+        "3018.94 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 58,
+      "cells": [
+        "G2_T3_M_B_CmT",
+        "2",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3535.452",
+        "337.16",
+        "3198.29 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 59,
+      "cells": [
+        "G2_T3_M_R1_CmT",
+        "2",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8256.803",
+        "2284.804",
+        "5972.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 60,
+      "cells": [
+        "G2_T3_M_B_InT",
+        "2",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "7929.669",
+        "0",
+        "7929.67 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 61,
+      "cells": [
+        "G2_T3_M_R2_InT",
+        "2",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "7987.652",
+        "0",
+        "7987.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 62,
+      "cells": [
+        "G2_T4_D_B_CmT",
+        "2",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "4201.302",
+        "367.664",
+        "3833.64 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 63,
+      "cells": [
+        "G2_T4_D_R1_CmT",
+        "2",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8237.641",
+        "128.332",
+        "8109.31 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 64,
+      "cells": [
+        "G2_T4_D_R2_CmT",
+        "2",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8293.869",
+        "246.757",
+        "8047.11 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 65,
+      "cells": [
+        "G2_T4_D_B_InCm",
+        "2",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2685.692",
+        "0",
+        "2685.69 \u00b5m",
+        "870.685",
+        "67.58%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 66,
+      "cells": [
+        "G2_T4_D_R2_InCm",
+        "2",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2733.403",
+        "0",
+        "2733.40 \u00b5m",
+        "902.407",
+        "66.99%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 67,
+      "cells": [
+        "G2_T4_M_B_CmT",
+        "2",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8113.774",
+        "1316.538",
+        "6797.24 \u00b5m",
+        "25.476",
+        "99.63%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 68,
+      "cells": [
+        "G2_T4_M_R1_CmT",
+        "2",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8113.774",
+        "1316.538",
+        "6797.24 \u00b5m",
+        "34.011",
+        "99.50%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 69,
+      "cells": [
+        "G2_T4_M_B_InT",
+        "2",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8225.087",
+        "0",
+        "8225.09 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 70,
+      "cells": [
+        "G2_T4_M_R2_InT",
+        "2",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8233.086",
+        "0",
+        "8233.09 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 71,
+      "cells": [
+        "G2_T5_D_B_CmT",
+        "2",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3707.964",
+        "0",
+        "3707.96 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 72,
+      "cells": [
+        "G2_T5_D_R1_CmT",
+        "2",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8100.389",
+        "0",
+        "8100.39 \u00b5m",
+        "30.17",
+        "99.63%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 73,
+      "cells": [
+        "G2_T5_D_R2_CmT",
+        "2",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8176.849",
+        "",
+        "8176.85 \u00b5m",
+        "30.78",
+        "99.62%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 74,
+      "cells": [
+        "G2_T5_D_B_InCm",
+        "2",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2654.233",
+        "0",
+        "2654.23 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 75,
+      "cells": [
+        "G2_T5_D_R2_InCm",
+        "2",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2693.218",
+        "0",
+        "2693.22 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 2,
+      "source_table_row": 76,
+      "cells": [
+        "G2_T5_M_B_CmT",
+        "2",
+        "5",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3842.901",
+        "0",
+        "3842.90 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 2,
+      "cells": [
+        "G2_T5_M_R1_CmT",
+        "2",
+        "5",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8249.294",
+        "519.185",
+        "7730.11 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 3,
+      "cells": [
+        "G2_T5_M_B_InT",
+        "2",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8004.45",
+        "2686.836",
+        "5317.61 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 4,
+      "cells": [
+        "G2_T5_M_R2_InT",
+        "2",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "7989.897",
+        "3610.023",
+        "4379.87 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 5,
+      "cells": [
+        "G2_T6_D_B_CmT",
+        "2",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3998.712",
+        "445.36",
+        "3553.35 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 6,
+      "cells": [
+        "G2_T6_D_R1_CmT",
+        "2",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8409.514",
+        "881.452",
+        "7528.06 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 7,
+      "cells": [
+        "G2_T6_D_R2_CmT",
+        "2",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8422.435",
+        "1058.145",
+        "7364.29 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 8,
+      "cells": [
+        "G2_T6_D_B_InCm",
+        "2",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2753.877",
+        "0",
+        "2753.88 \u00b5m",
+        "473.65",
+        "82.80%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 9,
+      "cells": [
+        "G2_T6_D_R2_InCm",
+        "2",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2767.131",
+        "0",
+        "2767.13 \u00b5m",
+        "519.808",
+        "81.21%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 10,
+      "cells": [
+        "G2_T6_M_B_CmT",
+        "2",
+        "6",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "4402.605",
+        "1057.177",
+        "3345.43 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 11,
+      "cells": [
+        "G2_T6_M_R1_CmT",
+        "2",
+        "6",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8409.313",
+        "1062.636",
+        "7346.68 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 12,
+      "cells": [
+        "G2_T6_M_B_InT",
+        "2",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8415.901",
+        "1108.404",
+        "7307.50 \u00b5m",
+        "89.702",
+        "98.77%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 13,
+      "cells": [
+        "G2_T6_M_R2_InT",
+        "2",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8601.43",
+        "1694.725",
+        "6906.71 \u00b5m",
+        "95.907",
+        "98.61%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 14,
+      "cells": [
+        "G2_T7_D_B_CmT",
+        "2",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8439.174",
+        "828.397",
+        "7610.78 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 15,
+      "cells": [
+        "G2_T7_D_R1_CmT",
+        "2",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8439.174",
+        "828.397",
+        "7610.78 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 16,
+      "cells": [
+        "G2_T7_D_R2_CmT",
+        "2",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8433.998",
+        "866.564",
+        "7567.43 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 17,
+      "cells": [
+        "G2_T7_D_B_InCm",
+        "2",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2890.652",
+        "0",
+        "2890.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 18,
+      "cells": [
+        "G2_T7_D_R2_InCm",
+        "2",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2769.462",
+        "0",
+        "2769.46 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 19,
+      "cells": [
+        "G2_T7_M_B_CmT",
+        "2",
+        "7",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8147.245",
+        "477.82",
+        "7669.43 \u00b5m",
+        "53.723",
+        "99.30%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 20,
+      "cells": [
+        "G2_T7_M_R1_CmT",
+        "2",
+        "7",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8147.245",
+        "477.82",
+        "7669.43 \u00b5m",
+        "54.108",
+        "99.29%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 21,
+      "cells": [
+        "G2_T7_M_B_InT",
+        "2",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8416.077",
+        "0",
+        "8416.08 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 22,
+      "cells": [
+        "G2_T7_M_R2_InT",
+        "2",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8527.498",
+        "0",
+        "8527.50 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 23,
+      "cells": [
+        "G2_T8_D_B_CmT",
+        "2",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3628.836",
+        "0",
+        "3628.84 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 24,
+      "cells": [
+        "G2_T8_D_R1_CmT",
+        "2",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8325.076",
+        "446.807",
+        "7878.27 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 25,
+      "cells": [
+        "G2_T8_D_R2_CmT",
+        "2",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8336.385",
+        "210.299",
+        "8126.09 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 26,
+      "cells": [
+        "G2_T8_D_B_InCm",
+        "2",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2783.414",
+        "0",
+        "2783.41 \u00b5m",
+        "199.4",
+        "92.84%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 27,
+      "cells": [
+        "G2_T8_D_R2_InCm",
+        "2",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2914.844",
+        "",
+        "2914.84 \u00b5m",
+        "219.705",
+        "92.46%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 28,
+      "cells": [
+        "G2_T8_M_B_CmT",
+        "2",
+        "8",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8350.978",
+        "2927.458",
+        "5423.52 \u00b5m",
+        "556.29",
+        "89.74%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 29,
+      "cells": [
+        "G2_T8_M_R1_CmT",
+        "2",
+        "8",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8350.978",
+        "2927.458",
+        "5423.52 \u00b5m",
+        "563.288",
+        "89.61%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 30,
+      "cells": [
+        "G2_T8_M_B_InT",
+        "2",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8303.333",
+        "0",
+        "8303.33 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 31,
+      "cells": [
+        "G2_T8_M_R2_InT",
+        "2",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8356.573",
+        "0",
+        "8356.57 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 32,
+      "cells": [
+        "G2_T9_D_B_CmT",
+        "2",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8224.194",
+        "0",
+        "8224.19 \u00b5m",
+        "3.989",
+        "99.95%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 33,
+      "cells": [
+        "G2_T9_D_R1_CmT",
+        "2",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8224.194",
+        "0",
+        "8224.19 \u00b5m",
+        "4.272",
+        "99.95%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 34,
+      "cells": [
+        "G2_T9_D_R2_CmT",
+        "2",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8265.575",
+        "0",
+        "8265.58 \u00b5m",
+        "19.368",
+        "99.77%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 35,
+      "cells": [
+        "G2_T9_D_B_InCm",
+        "2",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2826.66",
+        "0",
+        "2826.66 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 36,
+      "cells": [
+        "G2_T9_D_R2_InCm",
+        "2",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2801.535",
+        "0",
+        "2801.54 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 37,
+      "cells": [
+        "G2_T9_M_B_CmT",
+        "2",
+        "9",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3748.978",
+        "393.424",
+        "3355.55 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 38,
+      "cells": [
+        "G2_T9_M_R1_CmT",
+        "2",
+        "9",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8136.846",
+        "599.741",
+        "7537.11 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 39,
+      "cells": [
+        "G2_T9_M_B_InT",
+        "2",
+        "9",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8081.998",
+        "990.85",
+        "7091.15 \u00b5m",
+        "49.471",
+        "99.30%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 40,
+      "cells": [
+        "G2_T9_M_R2_InT",
+        "2",
+        "9",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8056.806",
+        "1122.537",
+        "6934.27 \u00b5m",
+        "60.869",
+        "99.12%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 41,
+      "cells": [
+        "G2_T10_D_B_CmT",
+        "2",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3738.913",
+        "0",
+        "3738.91 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 42,
+      "cells": [
+        "G2_T10_D_R1_CmT",
+        "2",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8193.545",
+        "0",
+        "8193.55 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 43,
+      "cells": [
+        "G2_T10_D_R2_CmT",
+        "2",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8186.593",
+        "0",
+        "8186.59 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 44,
+      "cells": [
+        "G2_T10_D_B_InCm",
+        "2",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2867.607",
+        "0",
+        "2867.61 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 45,
+      "cells": [
+        "G2_T10_D_R2_InCm",
+        "2",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2847.888",
+        "0",
+        "2847.89 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 46,
+      "cells": [
+        "G2_T10_M_B_CmT",
+        "2",
+        "10",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3881.4",
+        "0",
+        "3881.40 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 47,
+      "cells": [
+        "G2_T10_M_R1_CmT",
+        "2",
+        "10",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8364.972",
+        "1477.097",
+        "6887.88 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 48,
+      "cells": [
+        "G2_T10_M_B_InT",
+        "2",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8334.744",
+        "0",
+        "8334.74 \u00b5m",
+        "1069.942",
+        "87.16%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 49,
+      "cells": [
+        "G2_T10_M_R2_InT",
+        "2",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8299.75",
+        "0",
+        "8299.75 \u00b5m",
+        "1107.108",
+        "86.66%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 50,
+      "cells": [
+        "G2_T11_D_B_CmT",
+        "2",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3532.492",
+        "0",
+        "3532.49 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 51,
+      "cells": [
+        "G2_T11_D_R1_CmT",
+        "2",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8382.436",
+        "872.566",
+        "7509.87 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 52,
+      "cells": [
+        "G2_T11_D_R2_CmT",
+        "2",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8297.608",
+        "767.888",
+        "7529.72 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 53,
+      "cells": [
+        "G2_T11_D_B_InCm",
+        "2",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3065.875",
+        "0",
+        "3065.88 \u00b5m",
+        "648.005",
+        "78.86%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 54,
+      "cells": [
+        "G2_T11_D_R2_InCm",
+        "2",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3067.271",
+        "0",
+        "3067.27 \u00b5m",
+        "648.469",
+        "78.86%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 55,
+      "cells": [
+        "G2_T11_M_B_CmT",
+        "2",
+        "11",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3734.691",
+        "0",
+        "3734.69 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 56,
+      "cells": [
+        "G2_T11_M_R1_CmT",
+        "2",
+        "11",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8306.659",
+        "343.459",
+        "7963.20 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 57,
+      "cells": [
+        "G2_T11_M_B_InT",
+        "2",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8203.716",
+        "471.894",
+        "7731.82 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 58,
+      "cells": [
+        "G2_T11_M_R2_InT",
+        "2",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8250.307",
+        "0",
+        "8250.31 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 59,
+      "cells": [
+        "G2_T12_D_B_CmT",
+        "2",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "3378.043",
+        "0",
+        "3378.04 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 60,
+      "cells": [
+        "G2_T12_D_R1_CmT",
+        "2",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8162.741",
+        "1791.729",
+        "6371.01 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 61,
+      "cells": [
+        "G2_T12_D_R2_CmT",
+        "2",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8140.988",
+        "2714.39",
+        "5426.60 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 62,
+      "cells": [
+        "G2_T12_D_B_InCm",
+        "2",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2721.478",
+        "0",
+        "2721.48 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 63,
+      "cells": [
+        "G2_T12_D_R2_InCm",
+        "2",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "2722.201",
+        "0",
+        "2722.20 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 64,
+      "cells": [
+        "G2_T12_M_B_CmT",
+        "2",
+        "12",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8028.67",
+        "0",
+        "8028.67 \u00b5m",
+        "2.79",
+        "99.97%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 65,
+      "cells": [
+        "G2_T12_M_R1_CmT",
+        "2",
+        "12",
+        "mesial",
+        "Composit-Tooth",
+        "1. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8028.67",
+        "0",
+        "8028.67 \u00b5m",
+        "4.312",
+        "99.95%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 66,
+      "cells": [
+        "G2_T12_M_B_InT",
+        "2",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8071.903",
+        "0",
+        "8071.90 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 67,
+      "cells": [
+        "G2_T12_M_R2_InT",
+        "2",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "2",
+        "8021.384",
+        "0",
+        "8021.38 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 68,
+      "cells": [
+        "G3_T1_D_B_CmT",
+        "3",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7999.397",
+        "214.089",
+        "7785.31 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 69,
+      "cells": [
+        "G3_T1_D_R2_CmT",
+        "3",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7998.717",
+        "158.142",
+        "7840.58 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 70,
+      "cells": [
+        "G3_T1_D_B_InCm",
+        "3",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2750.356",
+        "0",
+        "2750.36 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 71,
+      "cells": [
+        "G3_T1_D_R2_InCm",
+        "3",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2733.916",
+        "0",
+        "2733.92 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 72,
+      "cells": [
+        "G3_T1_M_B_CmT",
+        "3",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3775.773",
+        "0",
+        "3775.77 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 73,
+      "cells": [
+        "G3_T1_M_B_InT",
+        "3",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8245.962",
+        "478.628",
+        "7767.33 \u00b5m",
+        "238.114",
+        "96.93%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 74,
+      "cells": [
+        "G3_T1_M_R2_InT",
+        "3",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8158.386",
+        "384.526",
+        "7773.86 \u00b5m",
+        "260.196",
+        "96.65%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 75,
+      "cells": [
+        "G3_T2_D_B_CmT",
+        "3",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8166.199",
+        "708.664",
+        "7457.54 \u00b5m",
+        "34.405",
+        "99.54%"
+      ]
+    },
+    {
+      "source_page": 3,
+      "source_table_row": 76,
+      "cells": [
+        "G3_T2_D_R2_CmT",
+        "3",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8131.955",
+        "647.971",
+        "7483.98 \u00b5m",
+        "38.215",
+        "99.49%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 2,
+      "cells": [
+        "G3_T2_D_B_InCm",
+        "3",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3285.013",
+        "0",
+        "3285.01 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 3,
+      "cells": [
+        "G3_T2_D_R2_InCm",
+        "3",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3099.82",
+        "0",
+        "3099.82 \u00b5m",
+        "9.545",
+        "99.69%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 4,
+      "cells": [
+        "G3_T2_M_B_CmT",
+        "3",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8318.691",
+        "3293.716",
+        "5024.98 \u00b5m",
+        "38.404",
+        "99.24%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 5,
+      "cells": [
+        "G3_T2_M_B_InT",
+        "3",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8149.716",
+        "2904.126",
+        "5245.59 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 6,
+      "cells": [
+        "G3_T2_M_R2_InT",
+        "3",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8142.711",
+        "3357.414",
+        "4785.30 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 7,
+      "cells": [
+        "G3_T3_D_B_CmT",
+        "3",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8036.313",
+        "0",
+        "8036.31 \u00b5m",
+        "27.82",
+        "99.65%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 8,
+      "cells": [
+        "G3_T3_D_R2_CmT",
+        "3",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8041.509",
+        "0",
+        "8041.51 \u00b5m",
+        "39.254",
+        "99.51%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 9,
+      "cells": [
+        "G3_T3_D_B_InCm",
+        "3",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3021.863",
+        "0",
+        "3021.86 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 10,
+      "cells": [
+        "G3_T3_D_R2_InCm",
+        "3",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2947.618",
+        "0",
+        "2947.62 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 11,
+      "cells": [
+        "G3_T3_M_B_CmT",
+        "3",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3567.601",
+        "0",
+        "3567.60 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 12,
+      "cells": [
+        "G3_T3_M_B_InT",
+        "3",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7879.403",
+        "1892.963",
+        "5986.44 \u00b5m",
+        "79.431",
+        "98.67%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 13,
+      "cells": [
+        "G3_T3_M_R2_InT",
+        "3",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7959.366",
+        "2397.591",
+        "5561.78 \u00b5m",
+        "94.466",
+        "98.30%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 14,
+      "cells": [
+        "G3_T4_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8205.56",
+        "0",
+        "8205.56 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 15,
+      "cells": [
+        "G3_T4_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8118.697",
+        "0",
+        "8118.70 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 16,
+      "cells": [
+        "G3_T4_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3019.651",
+        "0",
+        "3019.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 17,
+      "cells": [
+        "G3_T4_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2927.126",
+        "0",
+        "2927.13 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 18,
+      "cells": [
+        "G3_T4_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3797.282",
+        "0",
+        "3797.28 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 19,
+      "cells": [
+        "G3_T4_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8067.96",
+        "0",
+        "8067.96 \u00b5m",
+        "245.167",
+        "96.96%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 20,
+      "cells": [
+        "G3_T4_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8054.956",
+        "0",
+        "8054.96 \u00b5m",
+        "260.276",
+        "96.77%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 21,
+      "cells": [
+        "G3_T5_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8224.141",
+        "0",
+        "8224.14 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 22,
+      "cells": [
+        "G3_T5_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8168.413",
+        "0",
+        "8168.41 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 23,
+      "cells": [
+        "G3_T5_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2629.219",
+        "0",
+        "2629.22 \u00b5m",
+        "541.384",
+        "79.41%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 24,
+      "cells": [
+        "G3_T5_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2662.277",
+        "0",
+        "2662.28 \u00b5m",
+        "583.236",
+        "78.09%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 25,
+      "cells": [
+        "G3_T5_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8156.023",
+        "547.651",
+        "7608.37 \u00b5m",
+        "10.048",
+        "99.87%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 26,
+      "cells": [
+        "G3_T5_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8399.58",
+        "0",
+        "8399.58 \u00b5m",
+        "1152.113",
+        "86.28%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 27,
+      "cells": [
+        "G3_T5_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8371.735",
+        "0",
+        "8371.74 \u00b5m",
+        "1296.772",
+        "84.51%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 28,
+      "cells": [
+        "G3_T6_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7921.504",
+        "0",
+        "7921.50 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 29,
+      "cells": [
+        "G3_T6_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7916.408",
+        "0",
+        "7916.41 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 30,
+      "cells": [
+        "G3_T6_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2695.779",
+        "0",
+        "2695.78 \u00b5m",
+        "266.734",
+        "90.11%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 31,
+      "cells": [
+        "G3_T6_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2691.857",
+        "0",
+        "2691.86 \u00b5m",
+        "270.699",
+        "89.94%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 32,
+      "cells": [
+        "G3_T6_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7861.422",
+        "475.159",
+        "7386.26 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 33,
+      "cells": [
+        "G3_T6_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7990.893",
+        "0",
+        "7990.89 \u00b5m",
+        "32.091",
+        "99.60%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 34,
+      "cells": [
+        "G3_T6_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7994.778",
+        "0",
+        "7994.78 \u00b5m",
+        "31.934",
+        "99.60%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 35,
+      "cells": [
+        "G3_T7_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7840.691",
+        "71.798",
+        "7768.89 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 36,
+      "cells": [
+        "G3_T7_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7870.532",
+        "146.349",
+        "7724.18 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 37,
+      "cells": [
+        "G3_T7_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2979.634",
+        "0",
+        "2979.63 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 38,
+      "cells": [
+        "G3_T7_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2996.169",
+        "0",
+        "2996.17 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 39,
+      "cells": [
+        "G3_T7_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7960.242",
+        "0",
+        "7960.24 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 40,
+      "cells": [
+        "G3_T7_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8214.112",
+        "0",
+        "8214.11 \u00b5m",
+        "260.474",
+        "96.83%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 41,
+      "cells": [
+        "G3_T7_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8195.419",
+        "0",
+        "8195.42 \u00b5m",
+        "287.225",
+        "96.50%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 42,
+      "cells": [
+        "G3_T8_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8136.58",
+        "0",
+        "8136.58 \u00b5m",
+        "689.472",
+        "91.53%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 43,
+      "cells": [
+        "G3_T8_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8094.439",
+        "0",
+        "8094.44 \u00b5m",
+        "685.018",
+        "91.54%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 44,
+      "cells": [
+        "G3_T8_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2619.601",
+        "0",
+        "2619.60 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 45,
+      "cells": [
+        "G3_T8_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2628.244",
+        "0",
+        "2628.24 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 46,
+      "cells": [
+        "G3_T8_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8129.029",
+        "470.622",
+        "7658.41 \u00b5m",
+        "51.387",
+        "99.33%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 47,
+      "cells": [
+        "G3_T8_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8176.392",
+        "790.581",
+        "7385.81 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 48,
+      "cells": [
+        "G3_T8_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8188.181",
+        "836.238",
+        "7351.94 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 49,
+      "cells": [
+        "G3_T9_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7954.266",
+        "0",
+        "7954.27 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 50,
+      "cells": [
+        "G3_T9_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "7909.418",
+        "0",
+        "7909.42 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 51,
+      "cells": [
+        "G3_T9_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2687.111",
+        "0",
+        "2687.11 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 52,
+      "cells": [
+        "G3_T9_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2719.136",
+        "0",
+        "2719.14 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 53,
+      "cells": [
+        "G3_T9_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3717.042",
+        "0",
+        "3717.04 \u00b5m",
+        "58.888",
+        "98.42%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 54,
+      "cells": [
+        "G3_T9_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8274.142",
+        "0",
+        "8274.14 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 55,
+      "cells": [
+        "G3_T9_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8278.257",
+        "0",
+        "8278.26 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 56,
+      "cells": [
+        "G3_T10_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8138.944",
+        "433.113",
+        "7705.83 \u00b5m",
+        "2000.424",
+        "74.04%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 57,
+      "cells": [
+        "G3_T10_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8139.485",
+        "484.231",
+        "7655.25 \u00b5m",
+        "1991.309",
+        "73.99%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 58,
+      "cells": [
+        "G3_T10_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2734.268",
+        "0",
+        "2734.27 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 59,
+      "cells": [
+        "G3_T10_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2734.268",
+        "0",
+        "2734.27 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 60,
+      "cells": [
+        "G3_T10_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "3773.274",
+        "0",
+        "3773.27 \u00b5m",
+        "505.431",
+        "86.60%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 61,
+      "cells": [
+        "G3_T10_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8397.325",
+        "1539.74",
+        "6857.59 \u00b5m",
+        "24.735",
+        "99.64%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 62,
+      "cells": [
+        "G3_T10_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8424.003",
+        "1329.965",
+        "7094.04 \u00b5m",
+        "27.042",
+        "99.62%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 63,
+      "cells": [
+        "G3_T11_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8163.983",
+        "642.577",
+        "7521.41 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 64,
+      "cells": [
+        "G3_T11_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8214.469",
+        "1078.669",
+        "7135.80 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 65,
+      "cells": [
+        "G3_T11_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2759.603",
+        "0",
+        "2759.60 \u00b5m",
+        "257.87",
+        "90.66%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 66,
+      "cells": [
+        "G3_T11_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2718.053",
+        "0",
+        "2718.05 \u00b5m",
+        "257.484",
+        "90.53%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 67,
+      "cells": [
+        "G3_T11_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8316.262",
+        "984.735",
+        "7331.53 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 68,
+      "cells": [
+        "G3_T11_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8097.165",
+        "1722.463",
+        "6374.70 \u00b5m",
+        "391.506",
+        "93.86%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 69,
+      "cells": [
+        "G3_T11_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8041.159",
+        "1754.463",
+        "6286.70 \u00b5m",
+        "389.419",
+        "93.81%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 70,
+      "cells": [
+        "G3_T12_D_B_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8118.082",
+        "892.928",
+        "7225.15 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 71,
+      "cells": [
+        "G3_T12_D_R2_CmT",
+        "3",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8188.757",
+        "1460.199",
+        "6728.56 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 72,
+      "cells": [
+        "G3_T12_D_B_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2993.401",
+        "0",
+        "2993.40 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 73,
+      "cells": [
+        "G3_T12_D_R2_InCm",
+        "3",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "2941.333",
+        "0",
+        "2941.33 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 74,
+      "cells": [
+        "G3_T12_M_B_CmT",
+        "3",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8200.509",
+        "1482.593",
+        "6717.92 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 75,
+      "cells": [
+        "G3_T12_M_B_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8104.207",
+        "2631.593",
+        "5472.61 \u00b5m",
+        "323.041",
+        "94.10%"
+      ]
+    },
+    {
+      "source_page": 4,
+      "source_table_row": 76,
+      "cells": [
+        "G3_T12_M_R2_InT",
+        "3",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / Enamic 4 M2-HT",
+        "1",
+        "8108.411",
+        "2728.282",
+        "5380.13 \u00b5m",
+        "318.307",
+        "94.08%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 2,
+      "cells": [
+        "G4_T1_D_B_CmT",
+        "4",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7886.675",
+        "0",
+        "7886.68 \u00b5m",
+        "283.395",
+        "96.41%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 3,
+      "cells": [
+        "G4_T1_D_R2_CmT",
+        "4",
+        "1",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7910.708",
+        "0",
+        "7910.71 \u00b5m",
+        "353.374",
+        "95.53%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 4,
+      "cells": [
+        "G4_T1_D_B_InCm",
+        "4",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2816.13",
+        "363.512",
+        "2452.62 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 5,
+      "cells": [
+        "G4_T1_D_R2_InCm",
+        "4",
+        "1",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3078.917",
+        "355.246",
+        "2723.67 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 6,
+      "cells": [
+        "G4_T1_M_B_CmT",
+        "4",
+        "1",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8028.672",
+        "1158.876",
+        "6869.80 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 7,
+      "cells": [
+        "G4_T1_M_B_InT",
+        "4",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8071.091",
+        "0",
+        "8071.09 \u00b5m",
+        "911.967",
+        "88.70%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 8,
+      "cells": [
+        "G4_T1_M_R2_InT",
+        "4",
+        "1",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8079.158",
+        "",
+        "8079.16 \u00b5m",
+        "967.48",
+        "88.02%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 9,
+      "cells": [
+        "G4_T2_D_B_CmT",
+        "4",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7977.34",
+        "0",
+        "7977.34 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 10,
+      "cells": [
+        "G4_T2_D_R2_CmT",
+        "4",
+        "2",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7929.278",
+        "671.07",
+        "7258.21 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 11,
+      "cells": [
+        "G4_T2_D_B_InCm",
+        "4",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3141.715",
+        "0",
+        "3141.72 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 12,
+      "cells": [
+        "G4_T2_D_R2_InCm",
+        "4",
+        "2",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3007.002",
+        "0",
+        "3007.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 13,
+      "cells": [
+        "G4_T2_M_B_CmT",
+        "4",
+        "2",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7857.396",
+        "1837.08",
+        "6020.32 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 14,
+      "cells": [
+        "G4_T2_M_B_InT",
+        "4",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7865.592",
+        "1239.986",
+        "6625.61 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 15,
+      "cells": [
+        "G4_T2_M_R2_InT",
+        "4",
+        "2",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7850.96",
+        "883.041",
+        "6967.92 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 16,
+      "cells": [
+        "G4_T3_D_B_CmT",
+        "4",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8003.806",
+        "0",
+        "8003.81 \u00b5m",
+        "47.858",
+        "99.40%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 17,
+      "cells": [
+        "G4_T3_D_R2_CmT",
+        "4",
+        "3",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7997.994",
+        "0",
+        "7997.99 \u00b5m",
+        "47.208",
+        "99.41%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 18,
+      "cells": [
+        "G4_T3_D_B_InCm",
+        "4",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2644.613",
+        "0",
+        "2644.61 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 19,
+      "cells": [
+        "G4_T3_D_R2_InCm",
+        "4",
+        "3",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2701.441",
+        "0",
+        "2701.44 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 20,
+      "cells": [
+        "G4_T3_M_B_CmT",
+        "4",
+        "3",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8064.772",
+        "887.775",
+        "7177.00 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 21,
+      "cells": [
+        "G4_T3_M_B_InT",
+        "4",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8287.895",
+        "0",
+        "8287.90 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 22,
+      "cells": [
+        "G4_T3_M_R2_InT",
+        "4",
+        "3",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8217.696",
+        "30.865",
+        "8186.83 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 23,
+      "cells": [
+        "G4_T4_D_B_CmT",
+        "4",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8155.985",
+        "0",
+        "8155.99 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 24,
+      "cells": [
+        "G4_T4_D_R2_CmT",
+        "4",
+        "4",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8150.755",
+        "0",
+        "8150.76 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 25,
+      "cells": [
+        "G4_T4_D_B_InCm",
+        "4",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2655.046",
+        "0",
+        "2655.05 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 26,
+      "cells": [
+        "G4_T4_D_R2_InCm",
+        "4",
+        "4",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2690.702",
+        "0",
+        "2690.70 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 27,
+      "cells": [
+        "G4_T4_M_B_CmT",
+        "4",
+        "4",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8064.384",
+        "1479.997",
+        "6584.39 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 28,
+      "cells": [
+        "G4_T4_M_B_InT",
+        "4",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8058.536",
+        "0",
+        "8058.54 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 29,
+      "cells": [
+        "G4_T4_M_R2_InT",
+        "4",
+        "4",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8115.817",
+        "0",
+        "8115.82 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 30,
+      "cells": [
+        "G4_T5_D_B_CmT",
+        "4",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7726.706",
+        "0",
+        "7726.71 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 31,
+      "cells": [
+        "G4_T5_D_R2_CmT",
+        "4",
+        "5",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7746.02",
+        "0",
+        "7746.02 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 32,
+      "cells": [
+        "G4_T5_D_B_InCm",
+        "4",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3239.256",
+        "0",
+        "3239.26 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 33,
+      "cells": [
+        "G4_T5_D_R2_InCm",
+        "4",
+        "5",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3147.022",
+        "193.966",
+        "2953.06 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 34,
+      "cells": [
+        "G4_T5_M_B_CmT",
+        "4",
+        "5",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7826.158",
+        "1590.244",
+        "6235.91 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 35,
+      "cells": [
+        "G4_T5_M_B_InT",
+        "4",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7988.548",
+        "0",
+        "7988.55 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 36,
+      "cells": [
+        "G4_T5_M_R2_InT",
+        "4",
+        "5",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8095.619",
+        "0",
+        "8095.62 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 37,
+      "cells": [
+        "G4_T6_D_B_CmT",
+        "4",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7886.07",
+        "188.424",
+        "7697.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 38,
+      "cells": [
+        "G4_T6_D_R2_CmT",
+        "4",
+        "6",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7890.013",
+        "135.374",
+        "7754.64 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 39,
+      "cells": [
+        "G4_T6_D_B_InCm",
+        "4",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3141.323",
+        "0",
+        "3141.32 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 40,
+      "cells": [
+        "G4_T6_D_R2_InCm",
+        "4",
+        "6",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3418.064",
+        "0",
+        "3418.06 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 41,
+      "cells": [
+        "G4_T6_M_B_CmT",
+        "4",
+        "6",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7943.153",
+        "1094.373",
+        "6848.78 \u00b5m",
+        "35.87",
+        "99.48%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 42,
+      "cells": [
+        "G4_T6_M_B_InT",
+        "4",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7850.629",
+        "1092.3",
+        "6758.33 \u00b5m",
+        "828.288",
+        "87.74%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 43,
+      "cells": [
+        "G4_T6_M_R2_InT",
+        "4",
+        "6",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7920.002",
+        "1122.173",
+        "6797.83 \u00b5m",
+        "845.205",
+        "87.57%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 44,
+      "cells": [
+        "G4_T7_D_B_CmT",
+        "4",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8100.596",
+        "777.973",
+        "7322.62 \u00b5m",
+        "432.885",
+        "94.09%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 45,
+      "cells": [
+        "G4_T7_D_R2_CmT",
+        "4",
+        "7",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8147.431",
+        "949.927",
+        "7197.50 \u00b5m",
+        "464.508",
+        "93.55%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 46,
+      "cells": [
+        "G4_T7_D_B_InCm",
+        "4",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2708.479",
+        "0",
+        "2708.48 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 47,
+      "cells": [
+        "G4_T7_D_R2_InCm",
+        "4",
+        "7",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2708.868",
+        "0",
+        "2708.87 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 48,
+      "cells": [
+        "G4_T7_M_B_CmT",
+        "4",
+        "7",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8051.29",
+        "960.699",
+        "7090.59 \u00b5m",
+        "11.675",
+        "99.84%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 49,
+      "cells": [
+        "G4_T7_M_B_InT",
+        "4",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8005.478",
+        "17.34",
+        "7988.14 \u00b5m",
+        "490.593",
+        "93.86%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 50,
+      "cells": [
+        "G4_T7_M_R2_InT",
+        "4",
+        "7",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8013.765",
+        "158.642",
+        "7855.12 \u00b5m",
+        "504.448",
+        "93.58%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 51,
+      "cells": [
+        "G4_T8_D_B_CmT",
+        "4",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7919.427",
+        "0",
+        "7919.43 \u00b5m",
+        "385.154",
+        "95.14%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 52,
+      "cells": [
+        "G4_T8_D_R2_CmT",
+        "4",
+        "8",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7947.559",
+        "0",
+        "7947.56 \u00b5m",
+        "386.805",
+        "95.13%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 53,
+      "cells": [
+        "G4_T8_D_B_InCm",
+        "4",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3209.538",
+        "0",
+        "3209.54 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 54,
+      "cells": [
+        "G4_T8_D_R2_InCm",
+        "4",
+        "8",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3346.647",
+        "0",
+        "3346.65 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 55,
+      "cells": [
+        "G4_T8_M_B_CmT",
+        "4",
+        "8",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7927.565",
+        "0",
+        "7927.57 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 56,
+      "cells": [
+        "G4_T8_M_B_InT",
+        "4",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7564.97",
+        "4579.64",
+        "2985.33 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 57,
+      "cells": [
+        "G4_T8_M_R2_InT",
+        "4",
+        "8",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7598.328",
+        "4671.729",
+        "2926.60 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 58,
+      "cells": [
+        "G4_T9_D_B_CmT",
+        "4",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7863.212",
+        "290.63",
+        "7572.58 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 59,
+      "cells": [
+        "G4_T9_D_R2_CmT",
+        "4",
+        "9",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7802.385",
+        "398.307",
+        "7404.08 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 60,
+      "cells": [
+        "G4_T9_D_B_InCm",
+        "4",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3288.622",
+        "232.058",
+        "3056.56 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 61,
+      "cells": [
+        "G4_T9_D_R2_InCm",
+        "4",
+        "9",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3057.122",
+        "0",
+        "3057.12 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 62,
+      "cells": [
+        "G4_T9_M_B_CmT",
+        "4",
+        "9",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8111.891",
+        "2406.171",
+        "5705.72 \u00b5m",
+        "17.223",
+        "99.70%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 63,
+      "cells": [
+        "G4_T9_M_B_InT",
+        "4",
+        "9",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7980.261",
+        "95.942",
+        "7884.32 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 64,
+      "cells": [
+        "G4_T9_M_R2_InT",
+        "4",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7924.12",
+        "105.535",
+        "7818.59 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 65,
+      "cells": [
+        "G4_T10_D_B_CmT",
+        "4",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7824.782",
+        "0",
+        "7824.78 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 66,
+      "cells": [
+        "G4_T10_D_R2_CmT",
+        "4",
+        "10",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7822.868",
+        "0",
+        "7822.87 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 67,
+      "cells": [
+        "G4_T10_D_B_InCm",
+        "4",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2720.402",
+        "0",
+        "2720.40 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 68,
+      "cells": [
+        "G4_T10_D_R2_InCm",
+        "4",
+        "10",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2765.421",
+        "0",
+        "2765.42 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 69,
+      "cells": [
+        "G4_T10_M_B_CmT",
+        "4",
+        "10",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8147.323",
+        "436.738",
+        "7710.59 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 70,
+      "cells": [
+        "G4_T10_M_B_InT",
+        "4",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7978.504",
+        "0",
+        "7978.50 \u00b5m",
+        "2734.422",
+        "65.73%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 71,
+      "cells": [
+        "G4_T10_M_R2_InT",
+        "4",
+        "10",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7900.214",
+        "0",
+        "7900.21 \u00b5m",
+        "2807.17",
+        "64.47%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 72,
+      "cells": [
+        "G4_T11_D_B_CmT",
+        "4",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7972.697",
+        "154.309",
+        "7818.39 \u00b5m",
+        "163.937",
+        "97.90%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 73,
+      "cells": [
+        "G4_T11_D_R2_CmT",
+        "4",
+        "11",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7983.424",
+        "372.157",
+        "7611.27 \u00b5m",
+        "185.925",
+        "97.56%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 74,
+      "cells": [
+        "G4_T11_D_B_InCm",
+        "4",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2955.947",
+        "0",
+        "2955.95 \u00b5m",
+        "1304.699",
+        "55.86%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 75,
+      "cells": [
+        "G4_T11_D_R2_InCm",
+        "4",
+        "11",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "2915.829",
+        "",
+        "2915.83 \u00b5m",
+        "1318.544",
+        "54.78%"
+      ]
+    },
+    {
+      "source_page": 5,
+      "source_table_row": 76,
+      "cells": [
+        "G4_T11_M_B_CmT",
+        "4",
+        "11",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8106.707",
+        "1040.426",
+        "7066.28 \u00b5m",
+        "6.881",
+        "99.90%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 2,
+      "cells": [
+        "G4_T11_M_B_InT",
+        "4",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7989.404",
+        "0",
+        "7989.40 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 3,
+      "cells": [
+        "G4_T11_M_R2_InT",
+        "4",
+        "11",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8029.682",
+        "0",
+        "8029.68 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 4,
+      "cells": [
+        "G4_T12_D_B_CmT",
+        "4",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7901.115",
+        "0",
+        "7901.12 \u00b5m",
+        "534.478",
+        "93.24%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 5,
+      "cells": [
+        "G4_T12_D_R2_CmT",
+        "4",
+        "12",
+        "distal",
+        "Composit-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "7893.876",
+        "0",
+        "7893.88 \u00b5m",
+        "548.402",
+        "93.05%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 6,
+      "cells": [
+        "G4_T12_D_B_InCm",
+        "4",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3000.26",
+        "0",
+        "3000.26 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 7,
+      "cells": [
+        "G4_T12_D_R2_InCm",
+        "4",
+        "12",
+        "distal",
+        "Inlay-Composit",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "3010.03",
+        "0",
+        "3010.03 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 8,
+      "cells": [
+        "G4_T12_M_B_CmT",
+        "4",
+        "12",
+        "mesial",
+        "Composit-Tooth",
+        "baseline_Filling",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8091.021",
+        "1316.579",
+        "6774.44 \u00b5m",
+        "0",
+        "100.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 9,
+      "cells": [
+        "G4_T12_M_B_InT",
+        "4",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "baseline_Inlay",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8197.656",
+        "0",
+        "8197.66 \u00b5m",
+        "245.699",
+        "97.00%"
+      ]
+    },
+    {
+      "source_page": 6,
+      "source_table_row": 10,
+      "cells": [
+        "G4_T12_M_R2_InT",
+        "4",
+        "12",
+        "mesial",
+        "Inlay-Tooth",
+        "2. thermomechanical cycle",
+        "Tetric A4 / E.max CAD HAT A4/C 14",
+        "1",
+        "8149.479",
+        "0",
+        "8149.48 \u00b5m",
+        "245.659",
+        "96.99%"
+      ]
+    }
+  ],
+  "fracture_rows": [
+    {
+      "source_page": 1,
+      "source_table_row": 4,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        "G1 (Enamic, 1. and 2. TML)",
+        "T1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1167.62"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 5,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T2",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1766.25"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 6,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T3",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "1567.74"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 7,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T4",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1701.03"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 8,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T5",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1716.27"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 9,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T6",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "2579.13"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 10,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T7",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1525.27"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 11,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T8",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "2363.97"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 12,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T9",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "2138.42"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 13,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T10",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "2684.89"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 14,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T11",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "6.76"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 15,
+      "group_label_carried_from_merged_cell": "G1 (Enamic, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T12",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "2274.26"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 16,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        "G2 (E.max, 1. and 2. TML)",
+        "T1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "1104.46936"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 17,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T2",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1480.25916"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 18,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T3",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "2305.78906"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 19,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T4",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1203.80908"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 20,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T5",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1277.99536"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 21,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T6",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "2232.0874"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 22,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T7",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1723.86316"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 23,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T8",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1763.37598"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 24,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T9",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1825.47241"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 25,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T10",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1385.31018"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 26,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T11",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "1535.48547"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 27,
+      "group_label_carried_from_merged_cell": "G2 (E.max, 1. and 2. TML)",
+      "cells": [
+        null,
+        "T12",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "1324.57959"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 28,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        "G3: (Enamic, only 2. TML)",
+        "T1",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "2315.78687"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 29,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T2",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "2041.77722"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 30,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T3",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "2185.21362"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 31,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T4",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1959.84656"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 32,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T5",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1669.78564"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 33,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T6",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1457.20215"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 34,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T7",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1628.48547"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 35,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T8",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "1253.85779"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 36,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T9",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "2444.84741"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 37,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T10",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "1805.21216"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 38,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T11",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1790.07581"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 39,
+      "group_label_carried_from_merged_cell": "G3: (Enamic, only 2. TML)",
+      "cells": [
+        null,
+        "T12",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "1527.78259"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 40,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        "G4 (E.max, only 2. TML)",
+        "T1",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "1169.9812"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 41,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T2",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1345.57654"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 42,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T3",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1549.54517"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 43,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T4",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1552.86731"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 44,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T5",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1279.21082"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 45,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T6",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1797.15076"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 46,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T7",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "988.244324"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 47,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T8",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "1",
+        "1119.27356"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 48,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T9",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1088.36487"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 49,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T10",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "1117.29626"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 50,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T11",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "1",
+        "",
+        "1156.58728"
+      ]
+    },
+    {
+      "source_page": 1,
+      "source_table_row": 51,
+      "group_label_carried_from_merged_cell": "G4 (E.max, only 2. TML)",
+      "cells": [
+        null,
+        "T12",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "1",
+        "",
+        "1326.54871"
+      ]
+    }
+  ]
+}

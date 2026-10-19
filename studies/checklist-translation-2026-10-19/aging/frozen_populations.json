@@ -1,0 +1,690 @@
+{
+  "rules": {
+    "shared_age_span": [
+      28.0,
+      61.0
+    ],
+    "shared_decade_starts": [
+      20,
+      30,
+      60
+    ]
+  },
+  "populations": {
+    "all_healthy": {
+      "GSE164241": {
+        "donors": [
+          {
+            "donor": "health:147",
+            "cohort": "GSE164241",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:184",
+            "cohort": "GSE164241",
+            "age": 22.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:241",
+            "cohort": "GSE164241",
+            "age": 39.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:144",
+            "cohort": "GSE164241",
+            "age": 61.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:136",
+            "cohort": "GSE164241",
+            "age": 31.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:143",
+            "cohort": "GSE164241",
+            "age": 51.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:289",
+            "cohort": "GSE164241",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:183",
+            "cohort": "GSE164241",
+            "age": 35.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:242",
+            "cohort": "GSE164241",
+            "age": 21.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:238",
+            "cohort": "GSE164241",
+            "age": 24.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:148",
+            "cohort": "GSE164241",
+            "age": 57.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:169",
+            "cohort": "GSE164241",
+            "age": 28.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:283",
+            "cohort": "GSE164241",
+            "age": 21.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          }
+        ],
+        "n_donors": 13,
+        "ages_sorted": [
+          21.0,
+          21.0,
+          22.0,
+          24.0,
+          28.0,
+          31.0,
+          32.0,
+          35.0,
+          37.0,
+          39.0,
+          51.0,
+          57.0,
+          61.0
+        ],
+        "sex_counts": {
+          "female": 10,
+          "male": 3
+        },
+        "processing_counts": {
+          "3.0.1": 9,
+          "2.0.0": 4
+        },
+        "decade_counts": {
+          "20": 5,
+          "30": 5,
+          "50": 2,
+          "60": 1
+        }
+      },
+      "GSE173078": {
+        "donors": [
+          {
+            "donor": "AC013",
+            "cohort": "GSE173078",
+            "age": 42.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC016",
+            "cohort": "GSE173078",
+            "age": 68.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC018",
+            "cohort": "GSE173078",
+            "age": 28.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC019",
+            "cohort": "GSE173078",
+            "age": 39.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC022",
+            "cohort": "GSE173078",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC024",
+            "cohort": "GSE173078",
+            "age": 45.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC050",
+            "cohort": "GSE173078",
+            "age": 75.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC052",
+            "cohort": "GSE173078",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC054",
+            "cohort": "GSE173078",
+            "age": 42.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC056",
+            "cohort": "GSE173078",
+            "age": 66.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC058",
+            "cohort": "GSE173078",
+            "age": 40.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC060",
+            "cohort": "GSE173078",
+            "age": 63.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          }
+        ],
+        "n_donors": 12,
+        "ages_sorted": [
+          28.0,
+          32.0,
+          37.0,
+          39.0,
+          40.0,
+          42.0,
+          42.0,
+          45.0,
+          63.0,
+          66.0,
+          68.0,
+          75.0
+        ],
+        "sex_counts": {
+          "female": 10,
+          "male": 2
+        },
+        "processing_counts": {
+          "A": 6,
+          "B": 6
+        },
+        "decade_counts": {
+          "20": 1,
+          "30": 3,
+          "40": 4,
+          "60": 3,
+          "70": 1
+        }
+      }
+    },
+    "shared_observed_age_span": {
+      "GSE164241": {
+        "donors": [
+          {
+            "donor": "health:147",
+            "cohort": "GSE164241",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:241",
+            "cohort": "GSE164241",
+            "age": 39.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:144",
+            "cohort": "GSE164241",
+            "age": 61.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:136",
+            "cohort": "GSE164241",
+            "age": 31.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:143",
+            "cohort": "GSE164241",
+            "age": 51.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:289",
+            "cohort": "GSE164241",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:183",
+            "cohort": "GSE164241",
+            "age": 35.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:148",
+            "cohort": "GSE164241",
+            "age": 57.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:169",
+            "cohort": "GSE164241",
+            "age": 28.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          }
+        ],
+        "n_donors": 9,
+        "ages_sorted": [
+          28.0,
+          31.0,
+          32.0,
+          35.0,
+          37.0,
+          39.0,
+          51.0,
+          57.0,
+          61.0
+        ],
+        "sex_counts": {
+          "female": 7,
+          "male": 2
+        },
+        "processing_counts": {
+          "3.0.1": 6,
+          "2.0.0": 3
+        },
+        "decade_counts": {
+          "20": 1,
+          "30": 5,
+          "50": 2,
+          "60": 1
+        }
+      },
+      "GSE173078": {
+        "donors": [
+          {
+            "donor": "AC013",
+            "cohort": "GSE173078",
+            "age": 42.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC018",
+            "cohort": "GSE173078",
+            "age": 28.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC019",
+            "cohort": "GSE173078",
+            "age": 39.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC022",
+            "cohort": "GSE173078",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC024",
+            "cohort": "GSE173078",
+            "age": 45.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC052",
+            "cohort": "GSE173078",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC054",
+            "cohort": "GSE173078",
+            "age": 42.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC058",
+            "cohort": "GSE173078",
+            "age": 40.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          }
+        ],
+        "n_donors": 8,
+        "ages_sorted": [
+          28.0,
+          32.0,
+          37.0,
+          39.0,
+          40.0,
+          42.0,
+          42.0,
+          45.0
+        ],
+        "sex_counts": {
+          "female": 6,
+          "male": 2
+        },
+        "processing_counts": {
+          "A": 5,
+          "B": 3
+        },
+        "decade_counts": {
+          "20": 1,
+          "30": 3,
+          "40": 4
+        }
+      }
+    },
+    "shared_nonempty_decade_bins": {
+      "GSE164241": {
+        "donors": [
+          {
+            "donor": "health:147",
+            "cohort": "GSE164241",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:184",
+            "cohort": "GSE164241",
+            "age": 22.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:241",
+            "cohort": "GSE164241",
+            "age": 39.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:144",
+            "cohort": "GSE164241",
+            "age": 61.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:136",
+            "cohort": "GSE164241",
+            "age": 31.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:289",
+            "cohort": "GSE164241",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:183",
+            "cohort": "GSE164241",
+            "age": 35.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "2.0.0"
+          },
+          {
+            "donor": "health:242",
+            "cohort": "GSE164241",
+            "age": 21.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:238",
+            "cohort": "GSE164241",
+            "age": 24.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:169",
+            "cohort": "GSE164241",
+            "age": 28.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          },
+          {
+            "donor": "health:283",
+            "cohort": "GSE164241",
+            "age": 21.0,
+            "sex": "male",
+            "processing": 1,
+            "processing_label": "3.0.1"
+          }
+        ],
+        "n_donors": 11,
+        "ages_sorted": [
+          21.0,
+          21.0,
+          22.0,
+          24.0,
+          28.0,
+          31.0,
+          32.0,
+          35.0,
+          37.0,
+          39.0,
+          61.0
+        ],
+        "sex_counts": {
+          "female": 8,
+          "male": 3
+        },
+        "processing_counts": {
+          "3.0.1": 8,
+          "2.0.0": 3
+        },
+        "decade_counts": {
+          "20": 5,
+          "30": 5,
+          "60": 1
+        }
+      },
+      "GSE173078": {
+        "donors": [
+          {
+            "donor": "AC016",
+            "cohort": "GSE173078",
+            "age": 68.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC018",
+            "cohort": "GSE173078",
+            "age": 28.0,
+            "sex": "female",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC019",
+            "cohort": "GSE173078",
+            "age": 39.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC022",
+            "cohort": "GSE173078",
+            "age": 32.0,
+            "sex": "male",
+            "processing": 0,
+            "processing_label": "A"
+          },
+          {
+            "donor": "AC052",
+            "cohort": "GSE173078",
+            "age": 37.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC056",
+            "cohort": "GSE173078",
+            "age": 66.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          },
+          {
+            "donor": "AC060",
+            "cohort": "GSE173078",
+            "age": 63.0,
+            "sex": "female",
+            "processing": 1,
+            "processing_label": "B"
+          }
+        ],
+        "n_donors": 7,
+        "ages_sorted": [
+          28.0,
+          32.0,
+          37.0,
+          39.0,
+          63.0,
+          66.0,
+          68.0
+        ],
+        "sex_counts": {
+          "female": 5,
+          "male": 2
+        },
+        "processing_counts": {
+          "A": 4,
+          "B": 3
+        },
+        "decade_counts": {
+          "20": 1,
+          "30": 3,
+          "60": 3
+        }
+      }
+    }
+  },
+  "status": "Metadata-only rules frozen before per-gene outcomes; exploratory, not preregistered",
+  "plan_sha256_lf_text": "2affe6c922e3f768be41320479dc4a5aa9fb7c6f9af5c590cef55c2a846356ea",
+  "metadata_script_sha256_lf_text": "51c7467be5ca956e9f2ff21da709ac2b62ab229e01cfde0b38d783a74bffccb3",
+  "gene_expression_used": false,
+  "clinical_age_matching": false
+}

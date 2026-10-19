@@ -1,0 +1,31 @@
+{
+  "status": "fixed_ECM_gene_and_demographic_support_challenge",
+  "n_fixed_genes": 8,
+  "panel_fits": 24,
+  "gene_effect_rows": 192,
+  "gene_omission_rows": 192,
+  "donor_omission_rows": 252,
+  "new_source_fetches": 0,
+  "plan_sha256_lf_text": "2affe6c922e3f768be41320479dc4a5aa9fb7c6f9af5c590cef55c2a846356ea",
+  "frozen_populations_sha256_lf_text": "a79d6556a8addf355b65074ae66580cd2153bd966e8b7b3dcd5bd037dfc4c7a7",
+  "script_sha256_lf_text": "16bb782e741eb5c7ba0aa37c64f0731dc83ad298d075d2a448427127ac4b67ec",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "output_sha256_lf_text": {
+    "healthy_gene_values.tsv": "6654a790e3c452d9afe7518a692f0ef9eb00c7b5795292af688715ee3c8bae10",
+    "gene_contributions.tsv": "68a1110a988fad585b5ca2dfb214d145b574f45db495a52bba21dc110c7bfa4e",
+    "fixed_panel_age_effects.tsv": "8e86aef24a2f43e0a5172afa10783d3a51e292ed92170feec2fe619c1a44fb1d",
+    "all_gene_omissions.tsv": "f015364e255abb32e2cd1401369268ead2fc783b516e64b60ee3478d20b8c037",
+    "donor_omissions.tsv": "76397f097b760e9fcf8ac97aae243c19ed2d6b72acdec6cf56d341ae37aa847e",
+    "cross_cohort_gene_directions.tsv": "8a46111fe4be4617a7809ba809ee879f29fd822512e337c82bcbf1e4bf198e58"
+  },
+  "limits": [
+    "All population restrictions are demographic sensitivities, not improved clinical validation or age matching.",
+    "Bulk, fibroblast-only and partial captured-cell RNA mixtures remain distinct estimands; 386 excluded captured cells have unknown RNA, and capture fractions are not intact tissue fractions.",
+    "Source-specific covariates are not a shared batch correction or causal identification; older male coverage remains inadequate.",
+    "Relative log1p(CPM), correlated genes and observational donor contrasts cannot establish intrinsic aging, a biological-age estimate, rejuvenation or functional repair.",
+    "Matched-donor bulk versus cell-resolved measurements are still missing; cohort, site, ascertainment and assay differences remain unresolved."
+  ]
+}
