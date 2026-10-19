@@ -1,0 +1,260 @@
+{
+  "status": "Source-data unavailability qualified; authorized pivot to primary analytical specificity and PK intake",
+  "inputs_sha256_lf_text": "0a22838bfeac0f27d19b0c0ce6715f532ad74816f17f02d0ab1e6062242eea0e",
+  "hash_convention": "UTF-8 text after universal-newline normalization to LF",
+  "MSC_units": {
+    "human_donors": 12,
+    "recipient_mice": 36,
+    "combined_independent_sample_size": null,
+    "histology_field_n_can_replace_mouse_n": false,
+    "donor_linkage": {
+      "numerical_donor_linked_metabolism_repair_reanalysis_eligible": false,
+      "missing": [
+        "numeric_metabolic_values",
+        "numeric_repair_values",
+        "stable_individual_donor_ids",
+        "culture_to_donor_crosswalk",
+        "recipient_to_donor_crosswalk",
+        "endpoint_unit_hierarchy_resolved"
+      ],
+      "effect_or_correlation_estimate": null
+    }
+  },
+  "analytical_scale_comparison": {
+    "reported_LLOD_ng_per_mL": 0.1,
+    "reported_ELISA_signal_range_ng_per_mL": [
+      45.9,
+      218.5
+    ],
+    "reported_ELISA_signal_to_LLOD_scale_ratio_range": [
+      458.99999999999994,
+      2185.0
+    ],
+    "n_reference_subjects": 20,
+    "individual_paired_concentrations_available": false,
+    "true_intact_parent_concentrations": null,
+    "assay_bias_or_cross_reactivity_estimate": null,
+    "universal_ELISA_failure_inferred": false,
+    "interpretation": "Reported immunoassay-signal/LCMS-detection-limit scale separation only; not a true concentration bound, specificity proof, calibration slope, or PK parameter."
+  },
+  "steady_state_identity": {
+    "expression": "C_ss = F * R / CL",
+    "scope": "Simple linear steady-state parent mass balance; R is administered parent input rate, F its systemic fraction, C_ss its exogenous intact-parent increment with endogenous contribution resolved.",
+    "half_life_expression": "t_half = ln(2) * V / CL",
+    "half_life_scope": "One-compartment linear disposition (or appropriate terminal distribution volume); neither V nor terminal slope follows from one steady-state immunoreactive concentration.",
+    "K14Q_reported_apparent_clearance_slowing_factor": 2.6,
+    "variant_specific_plasma_calibration_preserved": true,
+    "interpretation": "Variant-specific calibration corrects lower assay sensitivity and is real evidence. It does not resolve intact molecular species, every product's cross-reactivity, endogenous baseline, input F or a decay half-life. Knoop's different commercial assay does not universally invalidate it.",
+    "new_native_clearance_or_half_life_estimate": null
+  },
+  "pk_eligibility": [
+    {
+      "case_id": "MSC_cell_pretreatment",
+      "context": "cell_pretreatment",
+      "reported_timepoint_count": 0,
+      "finite_interval_parent_AUC_intake_eligible": false,
+      "terminal_half_life_intake_eligible": false,
+      "absolute_parent_clearance_from_AUC_intake_eligible": false,
+      "absolute_oral_F_intake_eligible": false,
+      "missing_for_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs"
+      ],
+      "missing_for_terminal_half_life": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "sufficient_terminal_phase_sampling"
+      ],
+      "missing_for_absolute_clearance_from_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "systemic_input_fraction_known",
+        "administered_parent_amount_known",
+        "complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "missing_for_oral_F": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "paired_oral_iv_parent_auc_available",
+        "dose_normalization_known",
+        "route_comparison_context_qualified",
+        "both_routes_complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "numerical_AUC_half_life_clearance_or_F": null,
+      "gate_limit": "Source-presence checks for concentration-time/AUC accounting only; the separate steady-state identity does not require a decay series. No data fit or quantitative inference is made by a passing gate."
+    },
+    {
+      "case_id": "Knoop_endogenous_reference",
+      "context": "endogenous_observation",
+      "reported_timepoint_count": 0,
+      "finite_interval_parent_AUC_intake_eligible": false,
+      "terminal_half_life_intake_eligible": false,
+      "absolute_parent_clearance_from_AUC_intake_eligible": false,
+      "absolute_oral_F_intake_eligible": false,
+      "missing_for_AUC": [
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs"
+      ],
+      "missing_for_terminal_half_life": [
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "sufficient_terminal_phase_sampling"
+      ],
+      "missing_for_absolute_clearance_from_AUC": [
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "systemic_input_fraction_known",
+        "administered_parent_amount_known",
+        "complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "missing_for_oral_F": [
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "paired_oral_iv_parent_auc_available",
+        "dose_normalization_known",
+        "route_comparison_context_qualified",
+        "both_routes_complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "numerical_AUC_half_life_clearance_or_F": null,
+      "gate_limit": "Source-presence checks for concentration-time/AUC accounting only; the separate steady-state identity does not require a decay series. No data fit or quantitative inference is made by a passing gate."
+    },
+    {
+      "case_id": "Knoop_storage_caption",
+      "context": "sample_storage",
+      "reported_timepoint_count": 0,
+      "finite_interval_parent_AUC_intake_eligible": false,
+      "terminal_half_life_intake_eligible": false,
+      "absolute_parent_clearance_from_AUC_intake_eligible": false,
+      "absolute_oral_F_intake_eligible": false,
+      "missing_for_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs"
+      ],
+      "missing_for_terminal_half_life": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "sufficient_terminal_phase_sampling"
+      ],
+      "missing_for_absolute_clearance_from_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "systemic_input_fraction_known",
+        "administered_parent_amount_known",
+        "complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "missing_for_oral_F": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "administered_systemic_route_known",
+        "serial_concentration_time_data",
+        "in_vivo_systemic_administration_context",
+        "at_least_two_quantified_concentration_time_pairs",
+        "paired_oral_iv_parent_auc_available",
+        "dose_normalization_known",
+        "route_comparison_context_qualified",
+        "both_routes_complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "numerical_AUC_half_life_clearance_or_F": null,
+      "gate_limit": "Source-presence checks for concentration-time/AUC accounting only; the separate steady-state identity does not require a decay series. No data fit or quantitative inference is made by a passing gate."
+    },
+    {
+      "case_id": "K14Q_pump_ELISA",
+      "context": "steady_state_extravascular_infusion",
+      "reported_timepoint_count": 1,
+      "finite_interval_parent_AUC_intake_eligible": false,
+      "terminal_half_life_intake_eligible": false,
+      "absolute_parent_clearance_from_AUC_intake_eligible": false,
+      "absolute_oral_F_intake_eligible": false,
+      "missing_for_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "serial_concentration_time_data",
+        "at_least_two_quantified_concentration_time_pairs"
+      ],
+      "missing_for_terminal_half_life": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "serial_concentration_time_data",
+        "at_least_two_quantified_concentration_time_pairs",
+        "sufficient_terminal_phase_sampling"
+      ],
+      "missing_for_absolute_clearance_from_AUC": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "serial_concentration_time_data",
+        "at_least_two_quantified_concentration_time_pairs",
+        "systemic_input_fraction_known",
+        "administered_parent_amount_known",
+        "complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "missing_for_oral_F": [
+        "source_reports_parent_specific_detection",
+        "source_reports_quantitative_matrix_assay_validation",
+        "baseline_or_endogenous_component_resolved",
+        "serial_concentration_time_data",
+        "at_least_two_quantified_concentration_time_pairs",
+        "paired_oral_iv_parent_auc_available",
+        "dose_normalization_known",
+        "route_comparison_context_qualified",
+        "both_routes_complete_parent_AUC_or_qualified_extrapolation"
+      ],
+      "numerical_AUC_half_life_clearance_or_F": null,
+      "gate_limit": "Source-presence checks for concentration-time/AUC accounting only; the separate steady-state identity does not require a decay series. No data fit or quantitative inference is made by a passing gate."
+    }
+  ],
+  "eligible_numerical_parent_pk_datasets": 0,
+  "oral_F_assigned": null,
+  "delivery_or_analogue_functional_rank": null,
+  "source_observations_digitized_or_synthesized": false
+}

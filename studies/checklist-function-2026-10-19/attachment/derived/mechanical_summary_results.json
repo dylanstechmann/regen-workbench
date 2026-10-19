@@ -1,0 +1,105 @@
+{
+  "magnetic_construct": {
+    "evidence_kind": "recomputed_source_summary_arithmetic",
+    "post_stiffness_N_per_m": 0.95,
+    "post_stiffness_N_per_mm": 0.00095,
+    "bare_post_force_recomputed_uN": 408.5,
+    "bare_post_force_source_uN": 408.5,
+    "baseline_mean_shortening_um": 777.0,
+    "baseline_mean_shortening_fraction": 0.097125,
+    "force_from_reported_mean_length_and_post_stiffness_uN": 738.15,
+    "source_active_force_mean_uN": 739.0,
+    "source_active_force_mean_N": 0.000739,
+    "force_mean_absolute_difference_uN": 0.8500000000000227,
+    "force_mean_relative_difference_percent": 0.11502029769959712,
+    "uncertainty_interval": null,
+    "interpretation": "Force and length are algebraically linked through modeled post stiffness; numerical agreement is not independent validation. No stiffness uncertainty, raw repeated lengths, n/covariance or recovery distribution is invented.",
+    "tissue_modulus": {
+      "status": "unavailable",
+      "missing": [
+        "tissue_gauge_length",
+        "tissue_cross_section",
+        "passive_tissue_force_displacement_slope"
+      ],
+      "native_equivalence": "not_tested"
+    }
+  },
+  "native_passive_reference": {
+    "evidence_kind": "separate_native_passive_aggregate_reference",
+    "source_summary_rows": 6,
+    "independent_human_donors_reported": 3,
+    "teeth_reported": 6,
+    "slices_reported": 18,
+    "individual_donor_ages_or_crosswalk_available": false,
+    "all_branch_summary_mean_min_MPa": 0.33,
+    "all_branch_summary_mean_max_MPa": 5.59,
+    "ratio_of_largest_to_smallest_summary_mean": 16.939393939393938,
+    "upper_discussion_value_MPa": 6.82,
+    "largest_E2_mean_plus_its_SD_MPa": 6.82,
+    "individual_extreme_range": null,
+    "regime_effects": [
+      {
+        "tooth_class": "Central incisors",
+        "E1_5N_regime_to_1N_regime_ratio_of_means": 2.716417910447761,
+        "E2_5N_regime_to_1N_regime_ratio_of_means": 2.1254752851711025
+      },
+      {
+        "tooth_class": "Lateral incisors",
+        "E1_5N_regime_to_1N_regime_ratio_of_means": 2.4545454545454546,
+        "E2_5N_regime_to_1N_regime_ratio_of_means": 1.7844827586206897
+      }
+    ],
+    "per_regime_branch_ratios": [
+      {
+        "tooth_class": "Central incisors",
+        "peak_load_N": 1.0,
+        "loading_rate_N_per_min": 1.0,
+        "E2_to_E1_ratio_of_source_means": 3.9253731343283578,
+        "source_bilinear_transition_strain": 0.083
+      },
+      {
+        "tooth_class": "Lateral incisors",
+        "peak_load_N": 1.0,
+        "loading_rate_N_per_min": 1.0,
+        "E2_to_E1_ratio_of_source_means": 7.030303030303029,
+        "source_bilinear_transition_strain": 0.081
+      },
+      {
+        "tooth_class": "Central incisors",
+        "peak_load_N": 3.0,
+        "loading_rate_N_per_min": 3.0,
+        "E2_to_E1_ratio_of_source_means": 3.8793103448275863,
+        "source_bilinear_transition_strain": 0.103
+      },
+      {
+        "tooth_class": "Lateral incisors",
+        "peak_load_N": 3.0,
+        "loading_rate_N_per_min": 3.0,
+        "E2_to_E1_ratio_of_source_means": 5.288461538461538,
+        "source_bilinear_transition_strain": 0.135
+      },
+      {
+        "tooth_class": "Central incisors",
+        "peak_load_N": 5.0,
+        "loading_rate_N_per_min": 5.0,
+        "E2_to_E1_ratio_of_source_means": 3.071428571428571,
+        "source_bilinear_transition_strain": 0.11
+      },
+      {
+        "tooth_class": "Lateral incisors",
+        "peak_load_N": 5.0,
+        "loading_rate_N_per_min": 5.0,
+        "E2_to_E1_ratio_of_source_means": 5.111111111111111,
+        "source_bilinear_transition_strain": 0.167
+      }
+    ],
+    "loading_rate_and_peak_load_identically_coupled": true,
+    "interpretation": "Ratios of aggregate means only; no donor-paired effect, independent rate effect, confidence interval, distribution of individual ratios or physiological acceptance band. Source epsilon is a bilinear transition, not rupture strain."
+  },
+  "joint_age_niche_or_attachment_function_result": "unavailable",
+  "native_construct_modulus_equivalence": "not_tested_different_quantities_and_missing_geometry",
+  "individual_construct_recovery_fraction": null,
+  "donor_age_effect": null,
+  "rejuvenation_claim": false,
+  "boundary": "Active cell contraction, passive tissue modulus, bilateral inserted attachment and stable original tooth pose are separate outcomes; no source is upgraded into regenerated attachment or durable human repair."
+}

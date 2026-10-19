@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "status": "Post-source exploratory aggregate-data audit; no preregistration or blinded selection claim",
+  "bounded_sources": [
+    {"source_id": "magnetic2024", "doi": "10.1177/00220345241264792", "role": "Human-cell construct active contraction, force calculation and recovery/creep qualification"},
+    {"source_id": "native_tension2018", "doi": "10.1186/s12938-018-0607-0", "role": "Separate native human passive tensile reference, all six Table2 rows and Table1 regimes"},
+    {"source_id": "viscoelastic2024", "doi": "10.1002/advs.202309562", "role": "Age/niche and attachment-function eligibility context only; no new numerical animal or marker inference"}
+  ],
+  "stop_rule": "Source set frozen after source inspection and access qualification; no further retrieval retries, broad search or contacts",
+  "operations": [
+    "Extract printed aggregate numbers only; no plot digitization, invented individual trajectories or inferred donor means",
+    "Recompute magnetic post force from reported stiffness and deflection; calculate contraction relative to source acellular length",
+    "Preserve original aggregate spread labels: Figure2 mean+/-SEM; bare-post deflection spread unspecified in main-text paragraph",
+    "Native: preserve six Table2 means/SDs and source transition-strain labels, summarize E2/E1 and 5N/1N-regime ratios of means without inferential statistics",
+    "Keep loading rate and peak force as coupled source regimes, not isolated independent effects",
+    "Do not convert post bending stiffness into tissue elastic modulus without construct gauge length/cross-section and passive tissue slope",
+    "Qualify age-by-niche, bilateral insertion, recovery, position and physiological durability separately; do not combine endpoints across sources"
+  ],
+  "units": {
+    "magnetic": "Heterogeneous PDL-cell constructs derived from one source-described healthy human donor; numeric donor age unavailable in accessed main article; constructs nested in source cell preparation",
+    "native": "18 root-level slices from6 teeth from3 male cadavers ages31-52; individual ages, tooth/donor/slice crosswalk and raw mechanics not available in accessed public tables; four cycles are repeated measurements",
+    "viscoelastic": "Human PDLSCs from6 donors ages18-30; no per-donor age/assay crosswalk in accessed article; human culture and rat replantation are separate units"
+  },
+  "excluded_inferences": ["New age clock", "Age-by-niche interaction", "Individual recovery fraction or recovery distribution", "Healthy mechanics equivalence", "Causal rate effect", "Joint attachment-function success across unlinked source units", "Permanent tooth-position stability", "Bilateral inserted native attachment", "Biological rejuvenation or human treatment benefit"],
+  "publication": "Raw source bytes remain ignored; release only attributed numerical aggregate extracts, original calculations and source qualification. The failed DOCX response remains classified as HTML, not a supplement. No figure reproduction or article text redistribution."
+}

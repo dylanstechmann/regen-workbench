@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "date": "2026-10-19",
+  "prior_work": {
+    "atlas_commit": "af7b57c2cfad64683f82044199cca812a01b9a03",
+    "atlas_report": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/peptide-delivery-transfer-2026-10-09/README.md",
+    "earlier_msc_qualification": "studies/checklist-progress-2026-10-19/compounds/mots_repair_observations.json",
+    "already_known": [
+      "K14Q calculated apparent clearance/function counterexample",
+      "CK2 binding context and tagged nuclear trafficking limitations",
+      "MSC metabolic activation does not establish repair"
+    ]
+  },
+  "msc_intake": {
+    "source_id": "msc_xml",
+    "doi": "10.1186/s41232-026-00431-7",
+    "pmid": "42324588",
+    "pmcid": "PMC13536784",
+    "numerical_functional_source_data_available": false,
+    "availability_statement": "Data available from corresponding author upon reasonable request; no request made.",
+    "public_table_scope": "Only Table 1 donor demographic aggregates, not metabolic or repair observations.",
+    "linked_supplement_scope": "One JPG supplemental figure, no linked numeric workbook/CSV/source-data table located in retrieved primary XML/HTML. Image not downloaded or digitized.",
+    "human_donors": {
+      "lean_n": 6,
+      "obese_n": 6,
+      "sex_female_male_per_group": [
+        3,
+        3
+      ],
+      "individual_identifiers": null,
+      "table1_age_years_reported_mean_sd": {
+        "lean": [
+          58.33,
+          10.69
+        ],
+        "obese": [
+          56.0,
+          9.01
+        ]
+      },
+      "tissue": "subcutaneous abdominal adipose; different clinical procurement contexts",
+      "culture_passage": 3,
+      "paired_conditions": "source donor groups assessed with/without peptide pretreatment; individual donor/culture crosswalk absent"
+    },
+    "recipient_mice": {
+      "species": "mouse",
+      "strain": "129-S1",
+      "age_weeks": 11,
+      "n_groups": 6,
+      "n_mice_per_group": 6,
+      "groups": [
+        "sham+vehicle",
+        "RAS+vehicle",
+        "RAS+lean MSC",
+        "RAS+obese MSC",
+        "RAS+lean MSC+MOTS-c",
+        "RAS+obese MSC+MOTS-c"
+      ],
+      "donor_to_recipient_crosswalk": null,
+      "sex_in_retrieved_methods": null,
+      "followup_after_cell_infusion_weeks": 2,
+      "treatment_context": "Transplantation of pretreated human MSCs; not direct oral/systemic peptide PK.",
+      "histology_fields_per_kidney": 10,
+      "histology_field_unit": "nested image fields, not independent animals",
+      "repeated_bp_weight_visits": "baseline, 2 weeks, 4 weeks; repeated measures, not independent recipients"
+    },
+    "measurement_intake": [
+      {
+        "domain": "intracellular MOTS-c signal",
+        "source_location": "MSC protein expression; Figure 2A",
+        "assay": "antibody immunoblot normalized with loading control; low-molecular-weight transfer precautions documented",
+        "native_exogenous_parent_identity_resolved": false,
+        "participant_values_available": false,
+        "claim_boundary": "Source calls increased signal efficient uptake; signal does not distinguish exogenous intact parent, fragments and altered endogenous expression."
+      },
+      {
+        "domain": "AMPK/mTOR metabolic signaling",
+        "source_location": "Figure 2B",
+        "assay": "total/phosphorylated protein immunoblot ratios",
+        "participant_values_available": false,
+        "claim_boundary": "Not same-donor numerical repair linkage and not intact-parent systemic exposure."
+      },
+      {
+        "domain": "proliferation/adhesion",
+        "source_location": "Figure 1A-B",
+        "assay": "culture confluence time measurements and adhesion-related absorbance",
+        "participant_values_available": false,
+        "claim_boundary": "Culture measurements/repeated times do not enlarge donor n; lean and obese directions differ in the source."
+      },
+      {
+        "domain": "senescence/inflammation gene expression",
+        "source_location": "Figure 1C-D",
+        "assay": "qPCR marker expression",
+        "participant_values_available": false,
+        "claim_boundary": "Gene markers are not complete senescence or clinical repair endpoints."
+      },
+      {
+        "domain": "renal perfusion",
+        "source_location": "Figure 3C; Imaging studies",
+        "assay": "ASL MRI cortex/medulla in recipient mice",
+        "participant_values_available": false,
+        "claim_boundary": "Two organ compartments do not double independent recipient count."
+      },
+      {
+        "domain": "oxygenation/volume",
+        "source_location": "Figure 4; Imaging studies",
+        "assay": "BOLD MRI/T2* and image-derived volume",
+        "participant_values_available": false,
+        "claim_boundary": "Source reports selected favorable outcomes; prior T2* caption-direction ambiguity unresolved without raw data."
+      },
+      {
+        "domain": "tubular injury/fibrosis",
+        "source_location": "Figure 5; Histological studies",
+        "assay": "ordinal injury score and fibrotic area across nested fields",
+        "participant_values_available": false,
+        "claim_boundary": "Fields nested in kidney/mouse; no mouse-level source values or donor-to-mouse assignment retrieved."
+      }
+    ],
+    "donor_linked_reanalysis_inputs": {
+      "numeric_metabolic_values": false,
+      "numeric_repair_values": false,
+      "stable_individual_donor_ids": false,
+      "culture_to_donor_crosswalk": false,
+      "recipient_to_donor_crosswalk": false,
+      "endpoint_unit_hierarchy_resolved": false
+    }
+  },
+  "knoop_analytical_comparison": {
+    "source_id": "knoop_primary_index",
+    "doi": "10.1002/rcm.8337",
+    "pmid": "30394592",
+    "access": "Primary indexed abstract saved; publisher abstract and supporting-information captions read through web. Full article redirects to abstract; supplement downloads 403.",
+    "population": "20 healthy reference subjects; endogenous analyte, no peptide administration described in this comparison",
+    "n_subjects": 20,
+    "matrix": "human plasma",
+    "measurement": "LC/MS targeting peptide with four in-vitro-derived metabolites and two oxidation products distinguished in analytical scope",
+    "llod_value": 100.0,
+    "llod_unit": "pg/mL",
+    "limit_type": "LLOD, not a supplied LLOQ for a PK dataset",
+    "elisa_reported_range": [
+      45.9,
+      218.5
+    ],
+    "elisa_range_unit": "ng/mL",
+    "lcms_cohort_confirmation": "Reported ELISA levels were not confirmed by LC/MS. Individual paired results not available in retrieved abstract.",
+    "individual_paired_concentrations": null,
+    "lcms_nondetects_replaced_by_zero": false,
+    "dose_route_timecourse": null,
+    "supporting_information_captions": [
+      {
+        "id": "SI2",
+        "source_scope": "publisher-visible caption only; PDF 403, no figure inspected",
+        "reported_context": "Storage up to 24 h under different temperature/reducing-agent conditions; relative peak-area ratios to internal standard; trend lines for visualization",
+        "biological_in_vivo_half_life": false,
+        "numeric_curve_points_available": false
+      },
+      {
+        "id": "SI5",
+        "source_scope": "publisher-visible caption only; PDF 403, no spectra inspected",
+        "reported_context": "Modified ELISA-kit reference identified as C-terminally amidated in caption; different molecular form from native free-acid reference",
+        "cause_of_human_assay_difference_established": false,
+        "universal_ELISA_invalidity_established": false
+      }
+    ]
+  },
+  "k14q_steady_state": {
+    "source_id": "k14q_xml",
+    "doi": "10.18632/aging.202529",
+    "pmid": "33468709",
+    "route": "intraperitoneal osmotic pump in C57BL/6 mice",
+    "sampling_context": "sacrifice/plasma sample 24 h after implantation; source calls it steady state; remaining pump peptide concentrations also checked",
+    "pk_experiment_n_in_retrieved_methods": null,
+    "serial_postinput_concentrations_available": false,
+    "reported_relative_apparent_clearance_slowing_factor": 2.6,
+    "assay": "MOTS-c ELISA; variant detected with lower sensitivity and a variant-specific calibration curve",
+    "calibration_matrix": "synthetic variant spiked into human plasma; variant-specific curve used for human carriers and infused mice",
+    "calibration_is_corrective_evidence": true,
+    "cross_reactivity_with_all_parent_products_resolved": false,
+    "native_intact_species_measured_by_ms": false,
+    "baseline_subtraction_details_resolved_here": false,
+    "intraperitoneal_systemic_input_fraction_measured": false,
+    "volume_measured_for_half_life": false,
+    "human_half_life_established": false,
+    "qualification": "No intact-parent decay series; do not import functional-mouse group sizes as pump PK n. Knoop commercial-kit comparison does not invalidate this differently calibrated assay universally."
+  },
+  "pk_evidence_cases": [
+    {
+      "case_id": "MSC_cell_pretreatment",
+      "context": "cell_pretreatment",
+      "source_reports_parent_specific_detection": false,
+      "source_reports_quantitative_matrix_assay_validation": false,
+      "baseline_or_endogenous_component_resolved": false,
+      "administered_systemic_route_known": false,
+      "systemic_input_fraction_known": false,
+      "serial_concentration_time_data": false,
+      "sufficient_terminal_phase_sampling": false,
+      "reported_timepoint_count": 0,
+      "paired_oral_iv_parent_auc_available": false,
+      "dose_normalization_known": false,
+      "route_comparison_context_qualified": false,
+      "administered_parent_amount_known": false,
+      "complete_parent_AUC_or_qualified_extrapolation": false,
+      "both_routes_complete_parent_AUC_or_qualified_extrapolation": false
+    },
+    {
+      "case_id": "Knoop_endogenous_reference",
+      "context": "endogenous_observation",
+      "source_reports_parent_specific_detection": true,
+      "source_reports_quantitative_matrix_assay_validation": true,
+      "baseline_or_endogenous_component_resolved": false,
+      "administered_systemic_route_known": false,
+      "systemic_input_fraction_known": false,
+      "serial_concentration_time_data": false,
+      "sufficient_terminal_phase_sampling": false,
+      "reported_timepoint_count": 0,
+      "paired_oral_iv_parent_auc_available": false,
+      "dose_normalization_known": false,
+      "route_comparison_context_qualified": false,
+      "assay_validation_qualification": "Primary abstract reports validation for quantitative interpretation; no independent revalidation or LLOQ/point-level table retrieved.",
+      "administered_parent_amount_known": false,
+      "complete_parent_AUC_or_qualified_extrapolation": false,
+      "both_routes_complete_parent_AUC_or_qualified_extrapolation": false
+    },
+    {
+      "case_id": "Knoop_storage_caption",
+      "context": "sample_storage",
+      "source_reports_parent_specific_detection": null,
+      "source_reports_quantitative_matrix_assay_validation": null,
+      "baseline_or_endogenous_component_resolved": false,
+      "administered_systemic_route_known": false,
+      "systemic_input_fraction_known": false,
+      "serial_concentration_time_data": false,
+      "sufficient_terminal_phase_sampling": false,
+      "reported_timepoint_count": 0,
+      "paired_oral_iv_parent_auc_available": false,
+      "dose_normalization_known": false,
+      "route_comparison_context_qualified": false,
+      "administered_parent_amount_known": false,
+      "complete_parent_AUC_or_qualified_extrapolation": false,
+      "both_routes_complete_parent_AUC_or_qualified_extrapolation": false
+    },
+    {
+      "case_id": "K14Q_pump_ELISA",
+      "context": "steady_state_extravascular_infusion",
+      "source_reports_parent_specific_detection": false,
+      "source_reports_quantitative_matrix_assay_validation": null,
+      "baseline_or_endogenous_component_resolved": null,
+      "administered_systemic_route_known": true,
+      "systemic_input_fraction_known": false,
+      "serial_concentration_time_data": false,
+      "sufficient_terminal_phase_sampling": false,
+      "reported_timepoint_count": 1,
+      "paired_oral_iv_parent_auc_available": false,
+      "dose_normalization_known": false,
+      "route_comparison_context_qualified": false,
+      "administered_parent_amount_known": false,
+      "complete_parent_AUC_or_qualified_extrapolation": false,
+      "both_routes_complete_parent_AUC_or_qualified_extrapolation": false
+    }
+  ]
+}

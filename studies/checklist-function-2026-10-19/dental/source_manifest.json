@@ -1,0 +1,98 @@
+{
+  "study_date": "2026-10-19",
+  "article_doi": "10.1038/s41467-024-54576-5",
+  "article_license_metadata": "CC-BY-NC-ND-4.0",
+  "new_actual_fetch": {
+    "cache_path": "data/literature/checklist-function-2026-10-19/dental/HEA2024_source_data.xlsx",
+    "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-54576-5/MediaObjects/41467_2024_54576_MOESM4_ESM.xlsx",
+    "bytes": 29902662,
+    "sha256": "242fcb42e123669a80c891f74036c979de7be78c1e78d7cac4d0eb31a0f717b8",
+    "actual_receipt": "data/provenance/1792443259269148300_dental-function-hea-source-fetch.json",
+    "fetched_at_utc": "2026-10-19T20:54:19.235635+00:00",
+    "bound_bytes": 419430400,
+    "bound_seconds": 60,
+    "elapsed_seconds": 0.563
+  },
+  "reused_primary_context_not_a_new_fetch": {
+    "cache_path": "data/literature/checklist-translation-2026-10-19/dental/hea2024.xml",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11585591/fullTextXML",
+    "bytes": 243317,
+    "sha256": "59ab9904595d4ef23904facbb1a4431171820df82874476f76842009fb2e1851",
+    "original_actual_receipt": "data/provenance/1792439959105045600_dental-translation-source-fetch.json"
+  },
+  "selected_xml_members": [
+    {
+      "sheet": "Fig.4c",
+      "member": "xl/worksheets/sheet6.xml",
+      "member_sha256": "ca16fe4ff7d04a52f3b0e5efdeb607e232c1370817b58124ac7911873773e223",
+      "populated_value_cells": 642,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Fig.5e",
+      "member": "xl/worksheets/sheet10.xml",
+      "member_sha256": "c6f5b6481ffc455db4678ee44f3ffeaac5404e1c2ff39b8f9dffbe846461667d",
+      "populated_value_cells": 26,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Fig.6b",
+      "member": "xl/worksheets/sheet12.xml",
+      "member_sha256": "fac13bdb815461c34a3d07dd55f6264c3b9bc7a6af1b6b28695a1cba08b2760d",
+      "populated_value_cells": 148,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Supplementary Fig. 8",
+      "member": "xl/worksheets/sheet18.xml",
+      "member_sha256": "07b83329ba513061b3925486585e8db0accf67ab5396ebabd4d63725cbcfffc5",
+      "populated_value_cells": 989,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Supplementary Fig. 41",
+      "member": "xl/worksheets/sheet46.xml",
+      "member_sha256": "68f9a7127f13f9753d775837c3bd317f0dd8eb7f047461cbaa13653a92088903",
+      "populated_value_cells": 34,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Supplementary Fig. 43c",
+      "member": "xl/worksheets/sheet49.xml",
+      "member_sha256": "7afbea63e432b52bf5e95ea11cbb5f7de5309c8a66c734c9b11e95f5686b2484",
+      "populated_value_cells": 101,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Supplementary Fig. 43f",
+      "member": "xl/worksheets/sheet51.xml",
+      "member_sha256": "277286e6b455ab88728968bc245f2b428329f5469f3224701e1978177f0916bc",
+      "populated_value_cells": 101,
+      "formula_cell_addresses": []
+    },
+    {
+      "sheet": "Supplementary Fig. 48",
+      "member": "xl/worksheets/sheet53.xml",
+      "member_sha256": "38f0b96839a426b821a2946530f832127d0f788bbc4cae1f06b8507afad604fa",
+      "populated_value_cells": 155,
+      "formula_cell_addresses": []
+    }
+  ],
+  "read_policy": "Worksheet and shared-string XML only; no image or molecular depiction extraction. Source images and figures are not copied, redrawn or adapted.",
+  "publish_scope": "Factual numeric observations, cell locations, original descriptive calculations and original prose only. Full workbook, XML and receipts remain ignored. Source metadata NC-ND is retained; no inference that all article material is available for adaptation.",
+  "acquisition_status": "Complete source now inspected, superseding prior uninspected status without changing earlier intake files. No further source acquisition in this batch.",
+  "source_author_names_as_indexed": [
+    "Lu Junfeng",
+    "Deng Jingjing",
+    "Wei Yan",
+    "Yang Xiuyi",
+    "Zhao Hewei",
+    "Zhao Qihan",
+    "Liu Shaojia",
+    "Li Fengshi",
+    "Li Yangbei",
+    "Deng Xuliang",
+    "Jiang Lei",
+    "Guo Lin"
+  ]
+}

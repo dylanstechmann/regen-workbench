@@ -6,7 +6,12 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
-The [2026-10-19 source-linked translation work](../checklist-translation-2026-10-19/README.md)
+The [2026-10-19 functional benchmarks](../checklist-function-2026-10-19/README.md)
+add enamel-analogue crack/fatigue/roughness calculations, separate human PDL
+construct/native-mechanics summaries and a MOTS-c assay/PK audit. These refine
+the measurement basis; they do not establish repaired native attachment,
+original enamel thickness, a rejuvenation effect or an oral peptide product.
+The [source-linked translation work](../checklist-translation-2026-10-19/README.md)
 adds actual linked mechanical records with identity uncertainty, a fixed-gene
 age-support challenge, original selectivity/tissue data and the desk's Progress
 view. The [mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)

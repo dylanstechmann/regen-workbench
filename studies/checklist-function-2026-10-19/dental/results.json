@@ -1,0 +1,474 @@
+{
+  "data_kind": "descriptive_observed_bulk_material_comparator",
+  "full_repair_depth_interface_durability_eligible": false,
+  "fatigue_trace_summaries": [
+    {
+      "material": "enamel",
+      "trace_identity": "Fig.4c:D",
+      "n_serial_points": 159,
+      "n_listed_traces": 1,
+      "independent_specimen_or_donor_n": null,
+      "observed_cycle_window": [
+        100.0,
+        150000.0
+      ],
+      "first_source_displacement_mm": 0.02033,
+      "last_source_displacement_mm": 0.20008,
+      "change_over_observed_window_mm": 0.17975000000000002,
+      "cycle_weighted_mean_displacement_mm": 0.18446529019346228,
+      "decreasing_displacement_steps_retained": 31,
+      "failure_time_or_survival_probability": null
+    },
+    {
+      "material": "HEA",
+      "trace_identity": "Fig.4c:E",
+      "n_serial_points": 159,
+      "n_listed_traces": 1,
+      "independent_specimen_or_donor_n": null,
+      "observed_cycle_window": [
+        100.0,
+        150000.0
+      ],
+      "first_source_displacement_mm": 0.0183,
+      "last_source_displacement_mm": 0.17356,
+      "change_over_observed_window_mm": 0.15525999999999998,
+      "cycle_weighted_mean_displacement_mm": 0.07802185123415609,
+      "decreasing_displacement_steps_retained": 15,
+      "failure_time_or_survival_probability": null
+    },
+    {
+      "material": "EA",
+      "trace_identity": "Fig.4c:F",
+      "n_serial_points": 159,
+      "n_listed_traces": 1,
+      "independent_specimen_or_donor_n": null,
+      "observed_cycle_window": [
+        100.0,
+        150000.0
+      ],
+      "first_source_displacement_mm": 0.01886,
+      "last_source_displacement_mm": 0.30076,
+      "change_over_observed_window_mm": 0.28190000000000004,
+      "cycle_weighted_mean_displacement_mm": 0.16303742161440962,
+      "decreasing_displacement_steps_retained": 2,
+      "failure_time_or_survival_probability": null
+    }
+  ],
+  "main_bulk_R_curve_comparison": {
+    "common_observed_crack_extension_mm": [
+      0.0,
+      0.0784
+    ],
+    "interpolation": "piecewise linear within observed coordinates only",
+    "traces": [
+      {
+        "trace_identity": "Fig.6b:C:D",
+        "material": "HEA",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 3.6376,
+        "last_source_crack_extension_mm": 0.19795,
+        "last_source_K": 19.79316,
+        "K_at_common_upper_MPa_sqrt_m": 14.001304642857143,
+        "mean_K_over_common_interval_MPa_sqrt_m": 9.348969871196246,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Fig.6b:E:F",
+        "material": "HEA",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 3.68273,
+        "last_source_crack_extension_mm": 0.19317,
+        "last_source_K": 19.60513,
+        "K_at_common_upper_MPa_sqrt_m": 14.266355036524415,
+        "mean_K_over_common_interval_MPa_sqrt_m": 9.864778719575575,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Fig.6b:G:H",
+        "material": "enamel",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 0.96386,
+        "last_source_crack_extension_mm": 0.08586,
+        "last_source_K": 5.90496,
+        "K_at_common_upper_MPa_sqrt_m": 5.644793293617021,
+        "mean_K_over_common_interval_MPa_sqrt_m": 4.2217513522297,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Fig.6b:I:J",
+        "material": "enamel",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 0.84386,
+        "last_source_crack_extension_mm": 0.0784,
+        "last_source_K": 5.44496,
+        "K_at_common_upper_MPa_sqrt_m": 5.44496,
+        "mean_K_over_common_interval_MPa_sqrt_m": 3.9436790242346937,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Fig.6b:K:L",
+        "material": "EA",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 2.33395,
+        "last_source_crack_extension_mm": 0.13068,
+        "last_source_K": 10.1824,
+        "K_at_common_upper_MPa_sqrt_m": 8.475703770491803,
+        "mean_K_over_common_interval_MPa_sqrt_m": 6.008578940709684,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Fig.6b:M:N",
+        "material": "EA",
+        "architecture_context": "main_perpendicular",
+        "n_serial_points": 11,
+        "initial_source_K": 2.05523,
+        "last_source_crack_extension_mm": 0.13391,
+        "last_source_K": 10.21752,
+        "K_at_common_upper_MPa_sqrt_m": 6.947232321428571,
+        "mean_K_over_common_interval_MPa_sqrt_m": 4.965265783516307,
+        "decreasing_K_steps_retained": 0
+      }
+    ],
+    "trace_summaries": [
+      {
+        "material": "HEA",
+        "architecture_context": "main_perpendicular",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 14.13382983969078,
+        "trace_range_K_at_common_upper": [
+          14.001304642857143,
+          14.266355036524415
+        ],
+        "trace_mean_of_interval_mean_K": 9.60687429538591,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      },
+      {
+        "material": "enamel",
+        "architecture_context": "main_perpendicular",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 5.544876646808511,
+        "trace_range_K_at_common_upper": [
+          5.44496,
+          5.644793293617021
+        ],
+        "trace_mean_of_interval_mean_K": 4.082715188232196,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      },
+      {
+        "material": "EA",
+        "architecture_context": "main_perpendicular",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 7.711468045960187,
+        "trace_range_K_at_common_upper": [
+          6.947232321428571,
+          8.475703770491803
+        ],
+        "trace_mean_of_interval_mean_K": 5.486922362112995,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      }
+    ]
+  },
+  "source_label_directional_R_curve_comparison": {
+    "common_observed_crack_extension_mm": [
+      0.0,
+      0.04577
+    ],
+    "interpolation": "piecewise linear within observed coordinates only",
+    "traces": [
+      {
+        "trace_identity": "Supplementary Fig. 43c:E:F",
+        "material": "HEA",
+        "architecture_context": "source_LD",
+        "n_serial_points": 11,
+        "initial_source_K": 1.06703,
+        "last_source_crack_extension_mm": 0.09982,
+        "last_source_K": 7.30237,
+        "K_at_common_upper_MPa_sqrt_m": 4.150231446229913,
+        "mean_K_over_common_interval_MPa_sqrt_m": 2.7444430049357336,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43c:H:I",
+        "material": "HEA",
+        "architecture_context": "source_LD",
+        "n_serial_points": 11,
+        "initial_source_K": 1.37276,
+        "last_source_crack_extension_mm": 0.09858,
+        "last_source_K": 7.21046,
+        "K_at_common_upper_MPa_sqrt_m": 4.043903786644951,
+        "mean_K_over_common_interval_MPa_sqrt_m": 2.740046830946084,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43c:K:L",
+        "material": "enamel",
+        "architecture_context": "source_LD",
+        "n_serial_points": 11,
+        "initial_source_K": 0.31851,
+        "last_source_crack_extension_mm": 0.05417,
+        "last_source_K": 2.3536,
+        "K_at_common_upper_MPa_sqrt_m": 1.9050517161716172,
+        "mean_K_over_common_interval_MPa_sqrt_m": 1.3669076069831148,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43c:N:O",
+        "material": "enamel",
+        "architecture_context": "source_LD",
+        "n_serial_points": 11,
+        "initial_source_K": 0.26437,
+        "last_source_crack_extension_mm": 0.0522,
+        "last_source_K": 2.23938,
+        "K_at_common_upper_MPa_sqrt_m": 2.0417148484848484,
+        "mean_K_over_common_interval_MPa_sqrt_m": 1.2970545465867644,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43f:E:F",
+        "material": "HEA",
+        "architecture_context": "source_TD",
+        "n_serial_points": 11,
+        "initial_source_K": 1.66901,
+        "last_source_crack_extension_mm": 0.14953,
+        "last_source_K": 11.17304,
+        "K_at_common_upper_MPa_sqrt_m": 4.3205896955503515,
+        "mean_K_over_common_interval_MPa_sqrt_m": 3.1060326514841794,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43f:H:I",
+        "material": "HEA",
+        "architecture_context": "source_TD",
+        "n_serial_points": 11,
+        "initial_source_K": 1.51664,
+        "last_source_crack_extension_mm": 0.1419,
+        "last_source_K": 10.72061,
+        "K_at_common_upper_MPa_sqrt_m": 4.436700732265446,
+        "mean_K_over_common_interval_MPa_sqrt_m": 3.02640561515667,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43f:K:L",
+        "material": "enamel",
+        "architecture_context": "source_TD",
+        "n_serial_points": 11,
+        "initial_source_K": 0.63914,
+        "last_source_crack_extension_mm": 0.04577,
+        "last_source_K": 4.09311,
+        "K_at_common_upper_MPa_sqrt_m": 4.09311,
+        "mean_K_over_common_interval_MPa_sqrt_m": 2.560248443303474,
+        "decreasing_K_steps_retained": 0
+      },
+      {
+        "trace_identity": "Supplementary Fig. 43f:N:O",
+        "material": "enamel",
+        "architecture_context": "source_TD",
+        "n_serial_points": 11,
+        "initial_source_K": 0.52874,
+        "last_source_crack_extension_mm": 0.0474,
+        "last_source_K": 4.17876,
+        "K_at_common_upper_MPa_sqrt_m": 4.024409108527132,
+        "mean_K_over_common_interval_MPa_sqrt_m": 2.196932573225921,
+        "decreasing_K_steps_retained": 0
+      }
+    ],
+    "trace_summaries": [
+      {
+        "material": "HEA",
+        "architecture_context": "source_LD",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 4.097067616437432,
+        "trace_range_K_at_common_upper": [
+          4.043903786644951,
+          4.150231446229913
+        ],
+        "trace_mean_of_interval_mean_K": 2.7422449179409085,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      },
+      {
+        "material": "enamel",
+        "architecture_context": "source_LD",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 1.973383282328233,
+        "trace_range_K_at_common_upper": [
+          1.9050517161716172,
+          2.0417148484848484
+        ],
+        "trace_mean_of_interval_mean_K": 1.3319810767849396,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      },
+      {
+        "material": "HEA",
+        "architecture_context": "source_TD",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 4.378645213907898,
+        "trace_range_K_at_common_upper": [
+          4.3205896955503515,
+          4.436700732265446
+        ],
+        "trace_mean_of_interval_mean_K": 3.0662191333204247,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      },
+      {
+        "material": "enamel",
+        "architecture_context": "source_TD",
+        "n_listed_traces": 2,
+        "trace_mean_K_at_common_upper": 4.058759554263566,
+        "trace_range_K_at_common_upper": [
+          4.024409108527132,
+          4.09311
+        ],
+        "trace_mean_of_interval_mean_K": 2.3785905082646974,
+        "independent_specimen_or_donor_n": null,
+        "new_sem_or_confidence_interval": null
+      }
+    ]
+  },
+  "roughness_summary_changes": [
+    {
+      "material": "HEA",
+      "before_mean_nm": 3.35,
+      "after_mean_nm": 4.13,
+      "source_before_sd_nm": 0.25,
+      "source_after_sd_nm": 0.36,
+      "difference_of_reported_means_nm": 0.7799999999999998,
+      "relative_change_of_reported_means_percent": 23.283582089552233,
+      "paired_individual_change_variance_or_CI": null,
+      "interpretation": "Unfavorable roughness direction retained; a difference of published means is not a paired specimen-level estimate or equivalence test"
+    },
+    {
+      "material": "enamel",
+      "before_mean_nm": 3.27,
+      "after_mean_nm": 4.08,
+      "source_before_sd_nm": 0.22,
+      "source_after_sd_nm": 0.35,
+      "difference_of_reported_means_nm": 0.81,
+      "relative_change_of_reported_means_percent": 24.770642201834868,
+      "paired_individual_change_variance_or_CI": null,
+      "interpretation": "Unfavorable roughness direction retained; a difference of published means is not a paired specimen-level estimate or equivalence test"
+    },
+    {
+      "material": "EA",
+      "before_mean_nm": 3.41,
+      "after_mean_nm": 12.14,
+      "source_before_sd_nm": 0.28,
+      "source_after_sd_nm": 1.14,
+      "difference_of_reported_means_nm": 8.73,
+      "relative_change_of_reported_means_percent": 256.0117302052786,
+      "paired_individual_change_variance_or_CI": null,
+      "interpretation": "Unfavorable roughness direction retained; a difference of published means is not a paired specimen-level estimate or equivalence test"
+    }
+  ],
+  "published_toughness_summaries_kept_separate": [
+    {
+      "material": "HEA",
+      "source_sheet": "Supplementary Fig. 41",
+      "KIC_mean": 3.79,
+      "KIC_source_sd": 0.55,
+      "KJC_mean": 19.8,
+      "KJC_source_sd": 2.9,
+      "cells": [
+        "E4",
+        "F4",
+        "G4",
+        "H4"
+      ],
+      "raw_specimen_crosswalk": null
+    },
+    {
+      "material": "enamel",
+      "source_sheet": "Supplementary Fig. 41",
+      "KIC_mean": 0.96,
+      "KIC_source_sd": 0.41,
+      "KJC_mean": 5.9,
+      "KJC_source_sd": 0.98,
+      "cells": [
+        "I4",
+        "J4",
+        "K4",
+        "L4"
+      ],
+      "raw_specimen_crosswalk": null
+    },
+    {
+      "material": "EA",
+      "source_sheet": "Supplementary Fig. 41",
+      "KIC_mean": 2.34,
+      "KIC_source_sd": 0.33,
+      "KJC_mean": 10.1,
+      "KJC_source_sd": 1.1,
+      "cells": [
+        "M4",
+        "N4",
+        "O4",
+        "P4"
+      ],
+      "raw_specimen_crosswalk": null
+    }
+  ],
+  "host_enamel_delamination_source_ordinate_comparison": {
+    "traces": [
+      {
+        "material": "HEA",
+        "trace_identity": "Supplementary Fig. 8:C:D",
+        "n_serial_points": 298,
+        "peak_source_stress_ordinate": 63.39339,
+        "source_displacement_at_peak": 0.41386,
+        "absolute_stress_unit_validated": null,
+        "independent_specimen_or_donor_n": null
+      },
+      {
+        "material": "ZrO2",
+        "trace_identity": "Supplementary Fig. 8:E:F",
+        "n_serial_points": 193,
+        "peak_source_stress_ordinate": 18.50492,
+        "source_displacement_at_peak": 0.40667,
+        "absolute_stress_unit_validated": null,
+        "independent_specimen_or_donor_n": null
+      }
+    ],
+    "peak_ordinate_ratio_HEA_to_ZrO2": 3.425758663101489,
+    "ratio_qualification": "Conditional on the common stress ordinate scale used for the two traces in the same source figure. Identical stress headers and primary delamination-comparison text support that reading; absolute units, actual bond areas and per-specimen geometry are not validated. This is a ratio of two listed trace peaks, not a cohort mean or validated absolute bond strength.",
+    "host_interface_fatigue_or_repair_depth_linkage": null
+  },
+  "source_summary_reconstruction_from_two_curves_attempted": false,
+  "interface_assay_audit": {
+    "sheet": "Supplementary Fig. 48",
+    "header_F1": "displacement(mm)",
+    "header_G1": "force(N)",
+    "source_context": "Primary methods explicitly link Supplementary Fig.48 to corroboration of compliance and crack length in SENB calculations",
+    "is_host_enamel_shear_bond_dataset": false,
+    "numeric_force_curve_not_used_as_interface_data": true,
+    "identified_host_bond_numeric_table": "Supplementary Fig. 8",
+    "actual_interface_context": "Primary results explicitly associate Supplementary Fig.8 with delamination of HEA or ZrO2 from enamel",
+    "absolute_ordinate_unit_and_area_validated": false
+  },
+  "hierarchy_and_missingness": {
+    "serial_R_curve_points": 154,
+    "serial_fatigue_points": 477,
+    "listed_R_curves": 14,
+    "listed_fatigue_traces": 3,
+    "listed_interface_traces": 2,
+    "serial_interface_points": 491,
+    "donor_count": null,
+    "independent_specimen_count_from_deposited_vectors": null,
+    "per_specimen_measured_repair_thickness": null,
+    "per_specimen_geometry_to_curve_crosswalk": null,
+    "joint_host_interface_fatigue_or_leakage": null,
+    "native_PDL_gum_pulp_and_pose_after_finite_support": null
+  },
+  "calendar_life_or_growth_forecast": null,
+  "uncertainty_qualification": "Trace ranges and missing source linkage are not confidence intervals. Processed source R-curves are not revalidated toughness measurements. Geometry/orientation, source summary SD hierarchy and absent donor/specimen identifiers limit transfer to repaired teeth.",
+  "inputs_text_sha256": "7a4c299545b0fed66e7f3b29f95abc93374c7cdb334f54b39640900ab2f8d229"
+}

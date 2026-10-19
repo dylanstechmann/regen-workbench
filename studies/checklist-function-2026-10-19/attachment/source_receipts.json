@@ -1,0 +1,67 @@
+{
+  "actual_fetches": [
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11095218/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11095218/fullTextXML",
+      "cache_path": "data/literature/checklist-function-2026-10-19/attachment/viscoelastic2024.xml",
+      "content_type": "application/xml",
+      "bytes": 241507,
+      "sha256": "b8a40d3cfa4c04c1b73aa168cdc0b8a3d20ea49f5ad39cce4cec674665cc2e5a",
+      "receipt_path": "data/provenance/1792443354684209200_checklist-attachment-function-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T20:55:54.686065+00:00",
+      "expected_document_received": true
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6251174/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6251174/fullTextXML",
+      "cache_path": "data/literature/checklist-function-2026-10-19/attachment/native_tension2018.xml",
+      "content_type": "application/xml",
+      "bytes": 74400,
+      "sha256": "9186128a57c490cc19a332f603d168a6131365930d3e74d8f10721674aeafdd1",
+      "receipt_path": "data/provenance/1792443355827728600_checklist-attachment-function-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T20:55:55.827728+00:00",
+      "expected_document_received": true
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11465412/",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11465412/",
+      "cache_path": "data/literature/checklist-function-2026-10-19/attachment/magnetic2024.html",
+      "content_type": "text/html",
+      "bytes": 190862,
+      "sha256": "88913ed51b8ae662bbf274a414bc4c8b8ad16a66413e426f21741d9a6bc6c59e",
+      "receipt_path": "data/provenance/1792443385492265400_checklist-attachment-function-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T20:56:25.493264+00:00",
+      "expected_document_received": true
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11465412/bin/sj-docx-1-jdr-10.1177_00220345241264792.docx",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11465412/bin/sj-docx-1-jdr-10.1177_00220345241264792.docx",
+      "cache_path": "data/literature/checklist-function-2026-10-19/attachment/magnetic2024_supp.docx",
+      "content_type": "text/html",
+      "bytes": 1816,
+      "sha256": "0881c42c328deaab4dc79cbd6dd883ce2d5dd39201d84926b8616766f47c4ee3",
+      "receipt_path": "data/provenance/1792443386132503200_checklist-attachment-function-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T20:56:26.133507+00:00",
+      "expected_document_received": false,
+      "classification": "HTML_download_challenge_not_a_DOCX"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11465412/fullTextXML",
+      "http_status": 500,
+      "retained_source_payload": false,
+      "fetch_receipt_created": false,
+      "observed_on": "2026-10-19",
+      "timing_note": "Observed in initial run before failure logging was added; no exact timestamp assigned"
+    },
+    {
+      "source_url": "https://journals.sagepub.com/doi/suppl/10.1177/00220345241264792/suppl_file/sj-docx-1-jdr-10.1177_00220345241264792.docx",
+      "http_status": 403,
+      "retained_source_payload": false,
+      "fetch_receipt_created": false,
+      "observed_on": "2026-10-19",
+      "timing_note": "Observed in initial run before failure logging was added; no exact timestamp assigned"
+    }
+  ]
+}

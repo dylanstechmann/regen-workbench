@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-19",
+  "source_files": [
+    {
+      "source_id": "msc_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13536784/fullTextXML",
+      "relative_cached_path": "data/literature/checklist-motsc-function-2026-10-19/MSC_primary.xml",
+      "bytes": 113423,
+      "sha256": "fe763ca582674af45befe1696cb4fad2917099a26e973faadcb07d1b94519133",
+      "actual_fetch_receipt": "data/provenance/1792443283415255200_checklist-motsc-source-fetch.json",
+      "access_scope": "Complete downloaded primary XML/HTML; inspectable source, no source figures redistributed."
+    },
+    {
+      "source_id": "msc_html",
+      "url": "https://link.springer.com/article/10.1186/s41232-026-00431-7",
+      "relative_cached_path": "data/literature/checklist-motsc-function-2026-10-19/MSC_primary.html",
+      "bytes": 517995,
+      "sha256": "f0c3c7cabb44f433d9aae4a6410502f15759fb0c3b104f70487c9a3200cd0fd2",
+      "actual_fetch_receipt": "data/provenance/1792443284141823700_checklist-motsc-source-fetch.json",
+      "access_scope": "Complete downloaded primary XML/HTML; inspectable source, no source figures redistributed."
+    },
+    {
+      "source_id": "knoop_primary_index",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1002/rcm.8337&format=json&resultType=core",
+      "relative_cached_path": "data/literature/checklist-motsc-function-2026-10-19/Knoop_primary_index.json",
+      "bytes": 6752,
+      "sha256": "830b5930756c7e3eb6a26788768b1dccecf94757990e27678e8f5865353774b4",
+      "actual_fetch_receipt": "data/provenance/1792443352037403500_checklist-motsc-source-fetch.json",
+      "access_scope": "Primary indexed abstract/metadata only; subscription fulltext not retrieved."
+    },
+    {
+      "source_id": "k14q_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7880332/fullTextXML",
+      "relative_cached_path": "data/literature/checklist-motsc-function-2026-10-19/K14Q_primary.xml",
+      "bytes": 148377,
+      "sha256": "7706100fcac3ed0e4e98999eb999733b8c100cd9d8aa0ceba556011c1d1c0f8a",
+      "actual_fetch_receipt": "data/provenance/1792443418322949500_checklist-motsc-source-fetch.json",
+      "access_scope": "Complete downloaded primary XML/HTML; inspectable source, no source figures redistributed."
+    }
+  ],
+  "source_set_frozen": true,
+  "raw_cache": "data/literature/checklist-motsc-function-2026-10-19",
+  "prior_read_only_access": {
+    "atlas_commit": "af7b57c2cfad64683f82044199cca812a01b9a03",
+    "atlas_report": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/peptide-delivery-transfer-2026-10-09/README.md",
+    "earlier_msc_qualification": "studies/checklist-progress-2026-10-19/compounds/mots_repair_observations.json",
+    "already_known": [
+      "K14Q calculated apparent clearance/function counterexample",
+      "CK2 binding context and tagged nuclear trafficking limitations",
+      "MSC metabolic activation does not establish repair"
+    ]
+  },
+  "primary_web_only": [
+    {
+      "url": "https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/rcm.8337",
+      "scope": "Publisher abstract and SI2/SI5 captions read; source images/full body not retrieved; no local bytes/hash claimed.",
+      "local_download": "HTTP403"
+    },
+    {
+      "url": "https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/full/10.1002/rcm.8337",
+      "scope": "Publisher redirected full-text link to abstract."
+    }
+  ],
+  "failed_access_no_download_receipt": [
+    {
+      "url": "https://analyticalsciencejournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Frcm.8337&file=rcm8337-sup-0002-SI-figure2_revised.pdf",
+      "failure": "HTTP403 in direct request and web tool; no PDF/curve read."
+    },
+    {
+      "url": "https://analyticalsciencejournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Frcm.8337&file=rcm8337-sup-0005-SI-figure5_revised.pdf",
+      "failure": "HTTP403 in direct request and web tool; no PDF/spectra read."
+    },
+    {
+      "url": "https://www.dshs-koeln.de/fileadmin/redaktion/Institute/Biochemie/PDF/Proceedings/Proceedings_27/Recent_Advances_in_Doping_Analysis_27_2019.pdf.pdf",
+      "failure": "Direct DNS failure; web open404. Indexed primary conference text was encountered but not used as an independent dataset or to manufacture sample observations."
+    }
+  ],
+  "publication_scope": "Independent factual annotation and bounded arithmetic only. Raw articles, source figures and provenance receipts remain ignored. MSC primary article carries CC-BY-NC-ND4.0; no source figure adaptation or reproduced article text. No contact, human regimen, sequence design, or synthetic performance data."
+}

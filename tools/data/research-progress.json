@@ -16,15 +16,93 @@
           "id": "goals",
           "label": "Read the goals",
           "path": "studies/restoration-run-plan-2026-10-11/GOALS_AND_CONTINUITY.md",
-          "sha256_lf_text": "f21c35048a5933f4353900735ceecb1d1732b54ab365fb5c3ea0796fbc41c789",
-          "bytes_utf8_lf": 7219
+          "sha256_lf_text": "5da1ccc075b22693dd074ef6dea97203734f6ba6fbd5cf93eda895cfed502af5",
+          "bytes_utf8_lf": 7580
         },
         {
           "id": "plan",
           "label": "Read the run plan",
           "path": "studies/restoration-run-plan-2026-10-11/PLAN.md",
-          "sha256_lf_text": "df5a90b23aa9dfeaff868dedf03f070556c2df3a568fe2a696809f4b947c1c9d",
-          "bytes_utf8_lf": 35142
+          "sha256_lf_text": "a856d3d80449e35ff3ac7c3bb29508a7451a2ae3efb69295012c3f5ce13c36ec",
+          "bytes_utf8_lf": 35520
+        }
+      ]
+    },
+    {
+      "id": "dental-bulk-interface-function",
+      "title": "Dental bulk resistance and host attachment need separate measurements",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Reanalyzed 14 listed crack-resistance curves, three contact-fatigue traces and three brushing-roughness summary pairs from the HEA workbook. Roughness worsens in all three material summaries.",
+      "boundary": "Listed traces and serial points do not identify independent specimens. Bulk response and the separate delamination traces do not link actual repair thickness to host-interface fatigue or clinical durability.",
+      "next_step": "Connect measured regional thickness, host-junction behavior and retained-tooth damage under repeated loading on the same physical specimen.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the material and interface analysis",
+          "path": "studies/checklist-function-2026-10-19/dental/REPORT.md",
+          "sha256_lf_text": "4efcc63d7e01d5912c8dc23fe12fee7b7ab5fdb9fe55a533d909920cbf02c15b",
+          "bytes_utf8_lf": 12595
+        },
+        {
+          "id": "results",
+          "label": "See the source-derived curve summaries",
+          "path": "studies/checklist-function-2026-10-19/dental/results.json",
+          "sha256_lf_text": "e927ced3e3d9d92d87a4c047e65b47bd4d62cd7a931a7d2fc1a3850d89d13f95",
+          "bytes_utf8_lf": 17496
+        }
+      ]
+    },
+    {
+      "id": "attachment-active-passive-function",
+      "title": "Construct contraction is distinct from native ligament mechanics",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Recomputed 777 micrometers of construct shortening and all six native-human tensile summary rows. Native summary moduli change across coupled force and loading-rate regimes.",
+      "boundary": "Force and shortening in the construct are algebraically linked. Active contraction and passive modulus cannot establish equivalent tissue function, donor-age effects, regenerated bilateral attachment or stable tooth position.",
+      "next_step": "Link donor identity, construct geometry, both mineralized insertion interfaces, passive response and measured recovery before testing age-by-niche effects.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the attachment mechanics audit",
+          "path": "studies/checklist-function-2026-10-19/attachment/REPORT.md",
+          "sha256_lf_text": "c524b18f72511f2eeb57aef45d3f18b0c86c5cd4233040d252861fbb784f2fac",
+          "bytes_utf8_lf": 8074
+        },
+        {
+          "id": "results",
+          "label": "See the aggregate mechanical calculations",
+          "path": "studies/checklist-function-2026-10-19/attachment/derived/mechanical_summary_results.json",
+          "sha256_lf_text": "f9fe896ec7c29f3fe3c88905bd45317f6208e6e74541c3e2f2dffac7b2aa4646",
+          "bytes_utf8_lf": 4452
+        }
+      ]
+    },
+    {
+      "id": "motsc-parent-assay-eligibility",
+      "title": "MOTS-c persistence claims depend on what the assay measures",
+      "topic": "Compound delivery",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_audit_conditional_model",
+      "result": "Qualified a primary ELISA/LC-MS disagreement and the K14Q steady-state comparison, preserving its variant-specific plasma calibration. None of the four bounded source contexts qualifies as administered-parent concentration-time PK.",
+      "boundary": "Signal-to-detection-limit scale separation is not true concentration or universal assay failure. One steady-state immunoreactive measurement does not identify intact-parent half-life or oral availability; donor-linked repair data remain unavailable.",
+      "next_step": "Resolve intact administered parent, endogenous background and products, then connect exposure with the intended donor-stratified repair function.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the MOTS-c measurement audit",
+          "path": "studies/checklist-function-2026-10-19/motsc/REPORT.md",
+          "sha256_lf_text": "a21488d63305a911ede467385e2bad69c4226c52e1f96a1fd94dbf738b819038",
+          "bytes_utf8_lf": 10075
+        },
+        {
+          "id": "results",
+          "label": "See assay and PK eligibility results",
+          "path": "studies/checklist-function-2026-10-19/motsc/results.json",
+          "sha256_lf_text": "3c9865abc7901e1f490fed4def8c87a412a217a1225d5e647d06db3423f20f1a",
+          "bytes_utf8_lf": 12606
         }
       ]
     },

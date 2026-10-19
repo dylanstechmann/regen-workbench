@@ -1,0 +1,147 @@
+{
+  "data_kind": "observed_primary_summary_numbers_no_synthetic_people_or_constructs",
+  "magnetic": {
+    "source_id": "magnetic2024",
+    "doi": "10.1177/00220345241264792",
+    "data_kind": "printed_aggregate_summaries_not_individual_construct_records",
+    "assumed_PDMS_elastic_modulus_MPa": 2.5,
+    "calculated_post_stiffness_uN_per_um": 0.95,
+    "bare_post_deflection_um": 430.0,
+    "bare_post_deflection_reported_spread_um": 21.0,
+    "bare_post_spread_definition": "Not specified in the accessed main-text paragraph; not assigned SD or SEM",
+    "source_bare_post_force_uN": 408.5,
+    "PTC_length_mean_um": 7223.0,
+    "PTC_length_SEM_um": 37.0,
+    "acellular_reference_length_um": 8000.0,
+    "PTC_active_force_mean_uN": 739.0,
+    "PTC_active_force_SEM_uN": 37.0,
+    "PTC_spread_definition": "mean+/-SEM in Figure2 caption; inferential baseline n not assigned from unrelated panels",
+    "source_paragraph_indices_zero_based": {
+      "post_stiffness": 18,
+      "bare_deflection": 21,
+      "contraction": 28
+    },
+    "source_paragraph_sha256": {
+      "post_stiffness": "4c171f6f2c920527ecb422d33cfbf485e70d721df4d994ec2afaf38e765cd06f",
+      "bare_deflection": "f6dac61af08485cdb601059e43d2f6a5b95eb213a6729b872a5fd4b39138ef14",
+      "contraction": "10cd68f76cd341639667443148fec9350a1e5eb120a3932dd409d7e458424af4"
+    },
+    "recovery_measurement_context": {
+      "4h_constructs": 5,
+      "24h_constructs": 6,
+      "1week_constructs": 6,
+      "numeric_individual_before_during_after_lengths": null,
+      "same_construct_timecourse_crosswalk": null,
+      "context_locator": "Figure3D-F caption; n are constructs, not independent donors"
+    },
+    "qualitative_outcomes_only": {
+      "4h": "Partial elastic recovery with residual deformation",
+      "24h": "Little elastic recovery and permanent deformation",
+      "1week": "Creep elongation and reduced calculated contractile force"
+    }
+  },
+  "native": {
+    "source_id": "native_tension2018",
+    "doi": "10.1186/s12938-018-0607-0",
+    "data_kind": "printed_aggregate_means_and_SDs_not_individual_donor_data",
+    "regimes": [
+      {
+        "peak_load_N": 1.0,
+        "loading_rate_N_per_min": 1.0,
+        "hold_s": 60.0,
+        "unloading_rate_N_per_min": 2.0,
+        "repeated_cycles": 4
+      },
+      {
+        "peak_load_N": 3.0,
+        "loading_rate_N_per_min": 3.0,
+        "hold_s": 60.0,
+        "unloading_rate_N_per_min": 6.0,
+        "repeated_cycles": 4
+      },
+      {
+        "peak_load_N": 5.0,
+        "loading_rate_N_per_min": 5.0,
+        "hold_s": 60.0,
+        "unloading_rate_N_per_min": 10.0,
+        "repeated_cycles": 4
+      }
+    ],
+    "table2_rows": [
+      {
+        "peak_load_N": 1.0,
+        "tooth_class": "Central incisors",
+        "E1_mean_MPa": 0.67,
+        "E1_SD_MPa": 0.45,
+        "E2_mean_MPa": 2.63,
+        "E2_SD_MPa": 0.51,
+        "source_mean_ultimate_strain": 0.083,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      },
+      {
+        "peak_load_N": 1.0,
+        "tooth_class": "Lateral incisors",
+        "E1_mean_MPa": 0.33,
+        "E1_SD_MPa": 0.2,
+        "E2_mean_MPa": 2.32,
+        "E2_SD_MPa": 1.15,
+        "source_mean_ultimate_strain": 0.081,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      },
+      {
+        "peak_load_N": 3.0,
+        "tooth_class": "Central incisors",
+        "E1_mean_MPa": 1.16,
+        "E1_SD_MPa": 0.73,
+        "E2_mean_MPa": 4.5,
+        "E2_SD_MPa": 1.01,
+        "source_mean_ultimate_strain": 0.103,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      },
+      {
+        "peak_load_N": 3.0,
+        "tooth_class": "Lateral incisors",
+        "E1_mean_MPa": 0.52,
+        "E1_SD_MPa": 0.3,
+        "E2_mean_MPa": 2.75,
+        "E2_SD_MPa": 1.16,
+        "source_mean_ultimate_strain": 0.135,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      },
+      {
+        "peak_load_N": 5.0,
+        "tooth_class": "Central incisors",
+        "E1_mean_MPa": 1.82,
+        "E1_SD_MPa": 1.07,
+        "E2_mean_MPa": 5.59,
+        "E2_SD_MPa": 1.23,
+        "source_mean_ultimate_strain": 0.11,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      },
+      {
+        "peak_load_N": 5.0,
+        "tooth_class": "Lateral incisors",
+        "E1_mean_MPa": 0.81,
+        "E1_SD_MPa": 0.36,
+        "E2_mean_MPa": 4.14,
+        "E2_SD_MPa": 1.31,
+        "source_mean_ultimate_strain": 0.167,
+        "strain_definition": "Bilinear transition epsilon12 in main text; not a measured rupture/failure strain",
+        "unit": "Aggregate source tooth-class/regime summary; not an individual donor"
+      }
+    ],
+    "source_discussion_upper_value_MPa": 6.82,
+    "context": "Three male cadavers ages31-52;18 slices from6 incisors; individual ages and crosswalk absent; repeated cycles within specimens"
+  },
+  "cache_receipts_text_sha256": "a2f074dcd8a9e5d2923b759e67dc68dbb3b1844a51ac8430d84f8c8f4c379052",
+  "extractor_text_sha256": "a68cb32ff93ae6fc7b643e2c95ea023d8a54f7fd044372e931ae833215b304a3",
+  "rights": {
+    "native": "Wu et al.2018, CC BY4.0; numerical table transcription and original calculations",
+    "magnetic": "Mulimani et al.2024; factual numerical summaries only, raw article/response bytes ignored; no text or figures redistributed"
+  }
+}

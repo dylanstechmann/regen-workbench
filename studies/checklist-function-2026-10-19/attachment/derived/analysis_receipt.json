@@ -1,0 +1,15 @@
+{
+  "analysis_text_sha256": "f496b77d34b243e1aefa68a757c107fb860be0173d106872de24e4b0916b7160",
+  "plan_text_sha256": "2f3541f216ff431182528f07952a92030f97d210a853022e0834c99775d4b75d",
+  "extract_text_sha256": "057f75ea93be690f35268dd4b752d9255079ae4b1b0bfdd9742b0b265a8a1e1e",
+  "qualification_text_sha256": "8bf0cb5eab7adf0b14a19b612342d913ad4f8906ac050d0b30d33b5515c3c6b0",
+  "source_receipts_text_sha256": "a2f074dcd8a9e5d2923b759e67dc68dbb3b1844a51ac8430d84f8c8f4c379052",
+  "results_text_sha256": "f9fe896ec7c29f3fe3c88905bd45317f6208e6e74541c3e2f2dffac7b2aa4646",
+  "evidence_kind": "observed_printed_aggregate_summary_reanalysis_not_individual_construct_data",
+  "raw_cache_required_for_default_analysis": false,
+  "new_data_acquired_by_analysis": false,
+  "software": {
+    "python": "3.11.15",
+    "third_party_analysis_packages": []
+  }
+}
