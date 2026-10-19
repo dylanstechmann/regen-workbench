@@ -1,0 +1,92 @@
+{
+  "input_sha256": "522515a9b1391a748478f3390c18738824457dd7b839e6002d0a0b54db972ee6",
+  "text_hash_convention": "canonical UTF-8/LF",
+  "results": [
+    {
+      "example_id": "same_regions_marginals_only",
+      "input_status": "synthetic demonstration; no measured cells or tissue",
+      "population": {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100
+      },
+      "required_endpoints": [
+        "intended_only_genetic_product",
+        "target_lineage_identity",
+        "functional_perfusion",
+        "defined_host_interface"
+      ],
+      "qualification": "Joint attainment of declared assay criteria; not clinical regeneration or a universal quality score",
+      "problems": [],
+      "joint_attaining_count": null,
+      "lower_bound_count": 15,
+      "upper_bound_count": 70,
+      "independence_product_benchmark_fraction": 0.378,
+      "status": "joint_bounded_not_measured",
+      "lower_bound_fraction": 0.15,
+      "upper_bound_fraction": 0.7,
+      "independence_warning": "Benchmark assumes independent endpoints; not an estimated or observed joint outcome"
+    },
+    {
+      "example_id": "incompatible_editing_alleles_and_tissue_regions",
+      "input_status": "synthetic demonstration; no measured cells or tissue",
+      "population": {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100
+      },
+      "required_endpoints": [
+        "intended_only_genetic_product",
+        "target_lineage_identity",
+        "functional_perfusion",
+        "defined_host_interface"
+      ],
+      "qualification": "Joint attainment of declared assay criteria; not clinical regeneration or a universal quality score",
+      "problems": [
+        {
+          "endpoint": "intended_only_genetic_product",
+          "reason": "incompatible_observation_set",
+          "fields": [
+            "unit"
+          ]
+        }
+      ],
+      "joint_attaining_count": null,
+      "lower_bound_count": null,
+      "upper_bound_count": null,
+      "independence_product_benchmark_fraction": null,
+      "status": "unidentified_incompatible_or_incomplete_endpoints"
+    },
+    {
+      "example_id": "direct_joint_observation",
+      "input_status": "synthetic demonstration; no measured cells or tissue",
+      "population": {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100
+      },
+      "required_endpoints": [
+        "intended_only_genetic_product",
+        "target_lineage_identity",
+        "functional_perfusion",
+        "defined_host_interface"
+      ],
+      "qualification": "Joint attainment of declared assay criteria; not clinical regeneration or a universal quality score",
+      "problems": [],
+      "joint_attaining_count": 40,
+      "lower_bound_count": 15,
+      "upper_bound_count": 70,
+      "independence_product_benchmark_fraction": 0.378,
+      "status": "joint_measured",
+      "lower_bound_fraction": 0.15,
+      "upper_bound_fraction": 0.7,
+      "independence_warning": "Benchmark assumes independent endpoints; not an estimated or observed joint outcome"
+    }
+  ]
+}

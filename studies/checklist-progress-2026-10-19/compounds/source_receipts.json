@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "scope": "Focused decision advance; not a systematic exhaustive review",
+  "sources": [
+    {
+      "id": "S01",
+      "doi": "10.1016/j.ejmech.2023.115582",
+      "pmid": "37421886",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10399613/pdf/nihms-1914552.pdf",
+      "access_mode": "web-indexed primary discovery PDF/table text plus official metadata",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/europepmc_1792421457082013500.json",
+        "bytes": 1837,
+        "sha256": "efb13985c0cd57a8ae6669788a4738e08bf0d2b7088365dbda8b6969717f2321"
+      }
+    },
+    {
+      "id": "S02",
+      "doi": "10.1016/j.jpet.2025.103787",
+      "pmid": "41421047",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0022356525403000",
+      "access_mode": "web-indexed primary full text section 3.2/Figure 2; no author dataset or source-page byte archive",
+      "continuity": "new_detail_existing_source",
+      "download": {
+        "local_path": "data/literature/europepmc_1792421457058839400.json",
+        "bytes": 1314,
+        "sha256": "f0eea67d48ffa7bd27c202a5e1307f7d18f18e40db3b5bc0f6904a9fcd22155d"
+      },
+      "limitations": [
+        "Direct web-open attempts gave internal errors; indexed primary result supplied full text",
+        "No absolute oral F extracted",
+        "Figure 1 timing and Figure 3A route conflicts retained"
+      ]
+    },
+    {
+      "id": "S03",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215244s000lbl.pdf",
+      "access_mode": "FDA primary label PDF text, sections 11-12.3, through web",
+      "continuity": "rechecked_existing",
+      "download": null
+    },
+    {
+      "id": "S04",
+      "doi": "10.1186/s41232-026-00431-7",
+      "pmid": "42324588",
+      "pmcid": "PMC13536784",
+      "url": "https://doi.org/10.1186/s41232-026-00431-7",
+      "fetch_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13536784/fullTextXML",
+      "access_mode": "primary full XML; methods, results, figures, limitations and availability read",
+      "continuity": "new_evidence_added",
+      "download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/mots_reparative.xml",
+        "bytes": 113423,
+        "sha256": "fe763ca582674af45befe1696cb4fad2917099a26e973faadcb07d1b94519133"
+      },
+      "metadata_download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/mots_reparative_core.json",
+        "bytes": 6634,
+        "sha256": "2c3226b4fe90c23b0370c5d7ea5710cccbf1b68b73fb9bf3d8f1afdaa8c46534"
+      },
+      "license": "CC BY-NC-ND 4.0; source full text and figures not redistributed",
+      "limitations": [
+        "No donor-level raw table downloaded or contact made",
+        "No raw MRI reanalysis; source T2-star/oxygenation caption direction unresolved"
+      ]
+    },
+    {
+      "id": "S05",
+      "url": "https://clinicaltrials.gov/study/NCT07505745",
+      "fetch_url": "https://clinicaltrials.gov/api/v2/studies/NCT07505745",
+      "access_mode": "official complete trial API record; native-name MOTS-c, not material certification",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/ctg_mots_07505745.json",
+        "bytes": 9168,
+        "sha256": "bd5cb373dca4c237f4ee7928df27bfed6e53a2faca541052b0358fc5fa2bfe1a"
+      }
+    },
+    {
+      "id": "S06",
+      "url": "https://clinicaltrials.gov/study/NCT03998514",
+      "fetch_url": "https://clinicaltrials.gov/api/v2/studies/NCT03998514",
+      "access_mode": "official complete trial API record; separate CB4211 analogue",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/ctg_cb4211_03998514.json",
+        "bytes": 28002,
+        "sha256": "43d678c70f9532389e6c8d13e396dd054e165806074f993ce903d799897da3bf"
+      }
+    },
+    {
+      "id": "S07",
+      "doi": "10.1016/j.jinorgbio.2016.08.013",
+      "pmid": "27586814",
+      "url": "https://doi.org/10.1016/j.jinorgbio.2016.08.013",
+      "access_mode": "primary abstract through official Europe PMC core record",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/27586814_core.json",
+        "bytes": 9760,
+        "sha256": "22479fc3c8245236bae121c696c7595e7bd2532dfcfdc0631c154316f02b5476"
+      }
+    },
+    {
+      "id": "S08",
+      "doi": "10.1134/S0012496613020166",
+      "pmid": "23652441",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23652441/",
+      "access_mode": "primary metadata only; retrieved record has no abstract",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/europepmc_1792421458086410000.json",
+        "bytes": 1293,
+        "sha256": "120d7f663d54487f707d09b7a0769779a2dccf221e971e8413beccc252d4edcd"
+      }
+    },
+    {
+      "id": "S09",
+      "doi": "10.1111/j.1600-6143.2008.02267.x",
+      "pmid": "18510638",
+      "url": "https://doi.org/10.1111/j.1600-6143.2008.02267.x",
+      "access_mode": "primary abstract through official Europe PMC core record",
+      "continuity": "rechecked_existing",
+      "download": {
+        "local_path": "data/literature/checklist-compounds-2026-10-19/18510638_core.json",
+        "bytes": 6906,
+        "sha256": "238fab7b12a23df08fa6aeafec92a146098cb61475f37be9b64a1b8e16102028"
+      }
+    },
+    {
+      "id": "A01",
+      "url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/slu915-oral-comparators-2026-10-09/README.md",
+      "access_mode": "GitHub connector read-only full file; prior artifact, not primary biological evidence",
+      "continuity": "existing_work_audited"
+    },
+    {
+      "id": "A02",
+      "url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/ss31-analog-audit-2026-10-09/README.md",
+      "access_mode": "GitHub connector read-only full file; prior artifact, not primary biological evidence",
+      "continuity": "existing_work_audited"
+    },
+    {
+      "id": "A03",
+      "url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/peptide-delivery-transfer-2026-10-09/README.md",
+      "access_mode": "GitHub connector read-only full file; prior artifact, not primary biological evidence",
+      "continuity": "existing_work_audited"
+    },
+    {
+      "id": "A04",
+      "url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/rapamycin-selectivity-2026-10-09/README.md",
+      "access_mode": "GitHub connector read-only full file; prior artifact, not primary biological evidence",
+      "continuity": "existing_work_audited"
+    },
+    {
+      "id": "A05",
+      "url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/oral-targeting-feasibility-2026-10-09/RESEARCH_DECISIONS.md",
+      "access_mode": "GitHub connector read-only full file; prior artifact, not primary biological evidence",
+      "continuity": "existing_work_audited"
+    }
+  ],
+  "scoped_negative_searches": [
+    {
+      "id": "Q01",
+      "query": "TITLE_ABS:(\"N-acetyl epitalon\" OR \"N-acetyl epithalon\" OR \"acetylated epitalon\" OR \"acetylated epithalon\")",
+      "hit_count": 0,
+      "page_size": 20,
+      "download": {
+        "local_path": "data/literature/europepmc_1792421617543863300.json",
+        "bytes": 356,
+        "sha256": "06308e2d42125a35e4d1969f8cd9ee3ba7aa1f47af2f486a7eb9e9aa2627b9e3"
+      }
+    },
+    {
+      "id": "Q02",
+      "query": "TITLE_ABS:Adamax AND (peptide OR Semax OR adamantyl)",
+      "hit_count": 0,
+      "page_size": 20,
+      "download": {
+        "local_path": "data/literature/europepmc_1792421617491045900.json",
+        "bytes": 294,
+        "sha256": "9761e5cbc7b038abb63744ecfc4e1e6202621e6f3012e3a4eed328b5b6aea230"
+      }
+    }
+  ],
+  "negative_search_limit": "Zero in these exact title/abstract queries does not prove no differently named or unindexed work",
+  "actual_local_regen_receipts": [
+    {
+      "file": "data/provenance/1792421457067856200_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:50:57.060839+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421457058839400.json",
+          "bytes": 1314,
+          "sha256": "f0eea67d48ffa7bd27c202a5e1307f7d18f18e40db3b5bc0f6904a9fcd22155d"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421457091011600_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:50:57.084009+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421457082013500.json",
+          "bytes": 1837,
+          "sha256": "efb13985c0cd57a8ae6669788a4738e08bf0d2b7088365dbda8b6969717f2321"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421457585254100_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:50:57.577897+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421457575896300.json",
+          "bytes": 5196,
+          "sha256": "0211f9e93872bdffdfd666f4c6fd0d1b78462f58119510787171d258f51047de"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421458095319200_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:50:58.088410+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421458086410000.json",
+          "bytes": 1293,
+          "sha256": "120d7f663d54487f707d09b7a0769779a2dccf221e971e8413beccc252d4edcd"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421494492367800_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:51:34.483374+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/mots_reparative_core.json",
+          "bytes": 6634,
+          "sha256": "2c3226b4fe90c23b0370c5d7ea5710cccbf1b68b73fb9bf3d8f1afdaa8c46534"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421494670913400_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:51:34.662314+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/ctg_mots_07505745.json",
+          "bytes": 9168,
+          "sha256": "bd5cb373dca4c237f4ee7928df27bfed6e53a2faca541052b0358fc5fa2bfe1a"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421494860727600_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:51:34.850722+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/ctg_cb4211_03998514.json",
+          "bytes": 28002,
+          "sha256": "43d678c70f9532389e6c8d13e396dd054e165806074f993ce903d799897da3bf"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421529530875600_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:52:09.517688+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/mots_reparative.xml",
+          "bytes": 113423,
+          "sha256": "fe763ca582674af45befe1696cb4fad2917099a26e973faadcb07d1b94519133"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421617501229700_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:53:37.493061+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421617491045900.json",
+          "bytes": 294,
+          "sha256": "9761e5cbc7b038abb63744ecfc4e1e6202621e6f3012e3a4eed328b5b6aea230"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421617507956600_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:53:37.500057+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421617498055600.json",
+          "bytes": 1418,
+          "sha256": "a8c79988b052f6d5b12ea1a53d01e1fd627feb958970de5cfb1e77525c577a14"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421617551662800_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:53:37.543863+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421617541734200.json",
+          "bytes": 1414,
+          "sha256": "370407dd282462dbc560203717c84a27fa569dc5fe6f91096747f55052ebb87e"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421617554973300_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:53:37.545870+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421617543863300.json",
+          "bytes": 356,
+          "sha256": "06308e2d42125a35e4d1969f8cd9ee3ba7aa1f47af2f486a7eb9e9aa2627b9e3"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421629880638800_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:53:49.871547+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/18510638_core.json",
+          "bytes": 6906,
+          "sha256": "238fab7b12a23df08fa6aeafec92a146098cb61475f37be9b64a1b8e16102028"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421630831175000_checklist-compound-source-fetch.json",
+      "action": "checklist-compound-source-fetch",
+      "when": "2026-10-19T14:53:50.823787+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-compounds-2026-10-19/27586814_core.json",
+          "bytes": 9760,
+          "sha256": "22479fc3c8245236bae121c696c7595e7bd2532dfcfdc0631c154316f02b5476"
+        }
+      ]
+    },
+    {
+      "file": "data/provenance/1792421902273418800_europepmc.json",
+      "action": "europepmc",
+      "when": "2026-10-19T14:58:22.266020+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/europepmc_1792421902264462700.json",
+          "bytes": 1549,
+          "sha256": "7cfac827516ab6b4db02e8c307e4ee06b7573a1f2a0561c552b1090328a6b236"
+        }
+      ]
+    }
+  ],
+  "data_handling": "Actual download/provenance bytes remain ignored locally; primary full texts/figures not republished. Null download denotes web access without local source-byte archive.",
+  "search_positive_control": {
+    "query": "TITLE_ABS:Semax",
+    "hit_count": 207,
+    "page_size": 1,
+    "note": "Control confirms TITLE_ABS queries return records; not an efficacy review",
+    "download": {
+      "local_path": "data/literature/europepmc_1792421902264462700.json",
+      "bytes": 1549,
+      "sha256": "7cfac827516ab6b4db02e8c307e4ee06b7573a1f2a0561c552b1090328a6b236"
+    }
+  }
+}

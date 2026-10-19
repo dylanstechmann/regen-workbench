@@ -6,6 +6,11 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
+The [2026-10-19 execution report](../checklist-progress-2026-10-19/README.md)
+records the latest coordinated work across dental restoration, cell-state
+analysis, compounds, caffeine reversal and organoid/genome-repair integration,
+with concrete next decisions and remaining evidence gaps.
+
 Before selecting the next experiment, review the
 [persistent goals and continuity record](GOALS_AND_CONTINUITY.md). It retains
 the complete natural-tooth target, stability without lifelong retention,

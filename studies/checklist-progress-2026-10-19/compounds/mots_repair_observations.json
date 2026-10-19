@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "source_id": "S04",
+  "doi": "10.1186/s41232-026-00431-7",
+  "pmid": "42324588",
+  "pmcid": "PMC13536784",
+  "review_date": "2026-10-19",
+  "new_relative_to_reviewed_atlas_reports": true,
+  "evidence_type": "Primary human-cell study with pretreated-cell transplantation into a mouse renal-injury model; not a human treatment or oral PK study",
+  "grouping": {
+    "donors_per_metabolic_group": 6,
+    "donor_groups": ["lean", "obese"],
+    "donor_sex_per_group": {"female": 3, "male": 3},
+    "mouse_groups": 6,
+    "mice_per_group": 6,
+    "recipient_followup_after_cell_administration_weeks": 2,
+    "donor_to_mouse_assignment_available_in_download": false,
+    "raw_donor_level_table_downloaded": false,
+    "unit_warning": "Replicate wells, fields, donors and mice cannot be pooled as independent samples; same-unit proxy/function pairing is not established here"
+  },
+  "observations": [
+    {"id": "MR-01", "domain": "metabolic_activation", "context": "obese-donor MSC culture", "source_location": "Figure 2 and Results", "direction": "p-AMPKalpha/AMPKalpha increased; p-mTOR/mTOR decreased", "reported_favorable_proxy": true, "repair_success_established": false},
+    {"id": "MR-02", "domain": "proliferation", "context": "donor-stratified MSC culture", "source_location": "Figure 1A", "direction": "decreased in obese MSCs; increased in lean MSCs", "reported_favorable_proxy": "mixed_by_donor_state", "repair_success_established": false},
+    {"id": "MR-03", "domain": "senescence_inflammation", "context": "obese-donor MSC culture", "source_location": "Figure 1C-D", "direction": "p16, p21 and TNF-alpha gene expression increased", "reported_favorable_proxy": false, "repair_success_established": false},
+    {"id": "MR-04", "domain": "perfusion", "context": "mouse stenotic kidney after cell administration", "source_location": "Figure 3", "direction": "obese-MSC deficit not rescued; several lean-MSC improvements blunted", "reported_favorable_proxy": false, "repair_success_established": false},
+    {"id": "MR-05", "domain": "oxygenation", "context": "mouse stenotic kidney", "source_location": "Figure 4 and Results", "direction": "selected reported oxygenation benefit retained, including obese-MSC medullary comparison", "reported_favorable_proxy": true, "repair_success_established": false, "interpretation_limit": "Source Figure 4 caption's T2-star/oxygenation direction is not independently resolved here; no raw MRI reanalysis"},
+    {"id": "MR-06", "domain": "organ_volume", "context": "mouse stenotic kidney", "source_location": "Figure 4B", "direction": "volume improved across MSC groups; not specific proof of MOTS-c benefit", "reported_favorable_proxy": true, "repair_success_established": false},
+    {"id": "MR-07", "domain": "injury_fibrosis", "context": "mouse stenotic kidney", "source_location": "Figure 5 and Results", "direction": "pretreatment failed to establish integrated repair; fibrosis and lean-MSC injury outcomes were unfavorable", "reported_favorable_proxy": false, "repair_success_established": false}
+  ],
+  "functional_gate": {
+    "metabolic_marker_alone_can_pass": false,
+    "selected_oxygenation_or_volume_can_offset_failed_required_repair_domain": false,
+    "require_donor_stratification": true,
+    "required_domains_to_declare_before_new_variant_ranking": ["intended tissue function", "senescence/inflammatory response", "integration", "durability", "intact active-species exposure"]
+  },
+  "limitations": ["Small homogeneous donor cohort", "Pharmacological cell pretreatment does not establish systemic exposure effects", "Short recipient follow-up", "Selected endpoints differ by donor state", "No numerical effect sizes extracted from plot images", "No dental-cell or clinical treatment inference", "No raw-data access or contact request was made"],
+  "publication_handling": "This file is an independent factual annotation. Source full text and figures are not redistributed. The primary article carries CC BY-NC-ND 4.0; no adapted source figure is published."
+}

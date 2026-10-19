@@ -1,0 +1,9 @@
+{
+  "plan_sha256": "b505afb596de85254230555508fca93e8569612012943d770cd1e8409ff561d8",
+  "rows": 360,
+  "status": "hypothetical mechanism comparison; not a validated PK/PD or sleep model",
+  "maximum_molecular_balance_error": 2.220446049250313e-16,
+  "half_life_source": "https://pubmed.ncbi.nlm.nih.gov/3756065/",
+  "new_molecule_designed": false,
+  "clinical_success_threshold": null
+}

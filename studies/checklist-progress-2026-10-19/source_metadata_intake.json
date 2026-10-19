@@ -1,0 +1,40 @@
+{
+  "retrieved_date": "2026-10-19",
+  "query": "(EXT_ID:3756065 OR EXT_ID:22966134 OR EXT_ID:38365780 OR EXT_ID:40373211 OR EXT_ID:23261866)",
+  "access_scope": "EuropePMC search metadata; primary full texts or abstracts additionally reviewed through source URLs as specified in reports",
+  "raw_metadata_sha256": "7ac1d8d5623938b55b4d027aa9aa5785cd33b246afa0e43924ea46da4b0e743c",
+  "raw_metadata_bytes": 7102,
+  "local_raw_file": "data/literature/europepmc_1792421698746626000.json",
+  "sources": [
+    {
+      "pmid": "40373211",
+      "doi": "10.1056/nejmoa2504747",
+      "title": "Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease.",
+      "year": "2025"
+    },
+    {
+      "pmid": "38365780",
+      "doi": "10.1038/s41467-024-45710-4",
+      "title": "A microfluidic platform integrating functional vascularized organoids-on-chip.",
+      "year": "2024"
+    },
+    {
+      "pmid": "23261866",
+      "doi": "10.1016/j.neuropharm.2012.11.029",
+      "title": "Psychostimulant pharmacological profile of paraxanthine, the main metabolite of caffeine in humans.",
+      "year": "2013"
+    },
+    {
+      "pmid": "22966134",
+      "doi": "10.2967/jnumed.112.105114",
+      "title": "Caffeine occupancy of human cerebral A1 adenosine receptors: in vivo quantification with 18F-CPFPX and PET.",
+      "year": "2012"
+    },
+    {
+      "pmid": "3756065",
+      "doi": "10.1111/j.1365-2125.1986.tb05246.x",
+      "title": "Comparative pharmacokinetics of caffeine and its primary demethylated metabolites paraxanthine, theobromine and theophylline in man.",
+      "year": "1986"
+    }
+  ]
+}

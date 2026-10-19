@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "design_only_no_specimens_or_clinical_results",
+  "question": "Does a qualified hard-tissue repair retain its volume, material identity and interfaces when the intended full crown loads a living attachment, while the tooth remains at its declared target pose after finite support and the intervention end?",
+  "parent_contract": "../../periodontal-attachment-restoration-2026-10-11/restoration_contract.json",
+  "PDL_assay": "../../organoid/periodontal-ligament-interface/assay_design.json",
+  "required_domains": [
+    "crown_geometry_and_lost_volume",
+    "enamel_thickness_architecture_and_surface",
+    "dentin_interfaces_and_crack_integrity",
+    "position_and_occlusion",
+    "cementum_PDL_bone_attachment",
+    "mechanical_function",
+    "gingiva_and_barrier",
+    "pulp_vitality_and_sensation",
+    "durability_and_identity"
+  ],
+  "threshold_status": "calibrate_then_freeze_before_candidate_ranking",
+  "clinical_pass_margin": null,
+  "stage_sequence": [
+    {
+      "id": "I0",
+      "system": "Independently characterized intact/damaged ex-vivo research specimens and measurement references",
+      "required_inputs": ["pseudonymous donor/tooth/root identity", "species/tooth type/root maturity", "enamel and dentin target/current surfaces and provenance by region", "crack extent and remaining tissue state", "restorative-material boundaries", "source-specific thickness, volume and pose measurement uncertainty", "stable registration mask excluding repaired crown and remodeled socket", "healthy-reference distributions and fixture repeatability"],
+      "decision": "Freeze specimen eligibility, target confidence, tested depths, waveform/contact history, endpoint margins and analysis before comparative outcomes; unresolved uncertainty or hidden crack extent stays unassessed.",
+      "claim_limit": "Source mesh resolution or a historical photo is not qualified micrometre layer metrology."
+    },
+    {
+      "id": "I1",
+      "system": "Substrate-stratified hard-tissue repair comparison",
+      "substrata": ["retained enamel", "exposed dentin with underlying dentin deficit separately recorded", "native tissue/restorative-material boundary"],
+      "required_outputs": ["recovered enamel and dentin volumes separately with interval/uncertainty", "thickness map and architecture through intended depth", "host/repair and interlayer failure mode", "dentin transition plus adjacent mantle-dentin integrity", "leakage/permeability", "crack initiation, path and progression under matched wet cyclic challenge", "wear and contour/contact changes"],
+      "decision": "First qualify thin-layer positive controls, then challenge a predeclared larger-depth target. A prefabricated insert and in-situ mineral growth remain separate repair architectures. Passing indentation alone cannot advance this gate.",
+      "claim_limit": "Ex-vivo volume or interface success establishes neither pulp viability nor living attachment."
+    },
+    {
+      "id": "I2",
+      "system": "Tooth/crown plus root-facing PDL/bone construct or qualified ex-vivo attachment fixture",
+      "required_outputs": ["actual full repaired-crown contacts and 3D load vectors in the fixed root/socket frame", "root-facing and bone-facing fiber insertion", "ligament space and mineral-bridge map", "force/displacement path, hysteresis, creep and unloaded recovery", "interface leakage/delamination and crack progression during the same load history", "paired support-present and support-absent boundary-condition records"],
+      "decision": "Evaluate the final crown, not only the shortened damaged crown. Hold fixture geometry and force history fixed for a mechanics comparison; separately document the measured contact history. An unusually rigid bridge is a failed attachment even if displacement is low.",
+      "claim_limit": "A construct or fixture does not establish spontaneous repositioning or living in-socket stability."
+    },
+    {
+      "id": "I3",
+      "system": "Separately qualified orthotopic retained-tooth combined-damage model under appropriate review",
+      "required_outputs": ["individual baseline target pose and confidence", "root/socket and crown pose tracked separately", "actual support removal and intervention withdrawal timestamps", "unloaded drift plus loaded excursion and recovery at every follow-up", "enamel/dentin volume, interface and crack integrity", "pulp vitality/perfusion, gingival barrier and inflammatory state", "PDL insertion, ankylosis and resorption", "all assigned specimens including tooth loss, technical failures and missing follow-up"],
+      "decision": "Require every damaged domain to meet its independently frozen margin over the declared post-withdrawal horizon. Component-only success is reported if any required domain is failed or unassessed.",
+      "claim_limit": "No finite follow-up demonstrates lifetime stability or a validated human complete-regeneration protocol."
+    }
+  ],
+  "comparison_design": {
+    "core": "Hard-tissue candidate/control crossed with attachment candidate/control only after both modules qualify separately; an interaction tests whether their joint performance differs from additive module effects.",
+    "references": ["matched intact full-crown reference", "combined-damage control", "established restorative comparator where relevant", "rigid mineral-bridge/attachment-failure control for the research model", "process and substrate controls"],
+    "boundary_condition_contrast": "Support present versus removed must be compared at the same full crown geometry and stated load history. Do not infer load sharing from a support label.",
+    "analysis_unit": "Individual/tooth with donor, cell donor, manufacturing batch and socket hierarchy. Fields, sections, time samples, load cycles and multiple teeth from the same donor are nested observations.",
+    "sample_size_status": "Unspecified until the variance/repeatability pilot yields variance components and a justified smallest relevant effect. No fabricated power claim.",
+    "masking": "Separate acquisition identifiers and analysis labels; freeze target construction and thresholds before candidate outcomes; retain every eligible failure."
+  },
+  "time_anchors": [
+    "individual intact reference when available; inferred target otherwise labeled",
+    "post-damage assessment",
+    "final crown before support withdrawal",
+    "immediately after withdrawal under the same qualified unloaded condition",
+    "prespecified repeated post-withdrawal assessments with elapsed time from actual removal"
+  ],
+  "do_not_conflate": [
+    "Crown material added or lost versus rigid-body movement: register unchanged root/jaw structures, never the changing repaired crown as its own stable frame.",
+    "Unloaded target-pose error versus reversible loaded excursion versus drift from the immediate post-removal baseline.",
+    "Moment about a declared origin versus PDL strain, stress, interface failure, or predicted tooth drift.",
+    "Parallel alignment versus bilateral fiber insertion; stiffness versus functional non-mineralized attachment.",
+    "Thin enamel-like mineral versus recovered dentin, native transition architecture or bulk enamel.",
+    "Separate ex-vivo material and ectopic attachment successes versus an integrated living-tooth result."
+  ],
+  "falsification": [
+    "Repair depth or recovered volume falls below its predeclared target despite acceptable surface appearance.",
+    "Delamination, interlayer discontinuity, leakage or crack extension emerges at the intended depth under the declared challenge.",
+    "The full restored crown fails an attachment that passed with the shortened crown or while supported.",
+    "Low mobility is explained by a mineral bridge, ankylosis or rigid support rather than a recoverable ligament.",
+    "Tooth pose drifts after finite support removal or stable position occurs with pulp loss, resorption or failed gingival barrier."
+  ],
+  "next_falsifiable_step": "Acquire a substrate-qualified extracted-tooth series with independently mapped missing volume and intact controls; evaluate one source-scale positive control and one prospectively selected greater depth with the same through-depth/interface/cyclic-load endpoints. Select depth and specimen count after metrology qualification and variance pilot, before candidate ranking. Only an architecture passing I1 advances to the existing bilateral-insertion PDL assay at I2. No material growth is presumed."
+}

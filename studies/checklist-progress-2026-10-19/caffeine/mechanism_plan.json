@@ -1,0 +1,21 @@
+{
+  "status": "exploratory hypothetical sensitivity plan; not independently preregistered",
+  "initial_state": "One normalized molecular equivalent of fully absorbed parent; no pre-existing metabolite",
+  "parent_half_life_hours": [2.0, 4.1, 8.0],
+  "metabolite_half_life_hours": 3.1,
+  "half_life_evidence": "4.1 and 3.1 h are caffeine/paraxanthine group values in a six-male-volunteer primary study (PMID3756065); 2 and 8 h are chosen sensitivity values, not a population interval",
+  "natural_active_product_fractions": [0.5, 1.0],
+  "formation_assumption": "Chosen sensitivity fractions; all metabolite types collapsed into one paraxanthine-like state. No human pathway fraction is estimated.",
+  "metabolite_proxy_weights": [0.5, 1.0, 2.0],
+  "weight_assumption": "Arbitrary active-equivalent weights, not measured receptor affinities, effects or sleep potency",
+  "evaluation_hours": [2.0, 6.0, 12.0, 24.0],
+  "event_assumption": "All hypothetical mechanisms begin at hour2 with immediate systemic availability; capture is instantaneous and irreversible, with no rebound or capacity limit",
+  "scenarios": [
+    {"name": "natural_clearance", "event_hours": 2.0, "extra_parent_clearance_per_hour": 0.0, "extra_clearance_active_product_fraction": 0.0, "capture_parent_fraction": 0.0, "capture_metabolite_fraction": 0.0},
+    {"name": "extra_clearance_to_active_product", "event_hours": 2.0, "extra_parent_clearance_per_hour": 0.6931471805599453, "extra_clearance_active_product_fraction": 1.0, "capture_parent_fraction": 0.0, "capture_metabolite_fraction": 0.0},
+    {"name": "extra_clearance_to_inactive_sink", "event_hours": 2.0, "extra_parent_clearance_per_hour": 0.6931471805599453, "extra_clearance_active_product_fraction": 0.0, "capture_parent_fraction": 0.0, "capture_metabolite_fraction": 0.0},
+    {"name": "ideal_parent_only_capture", "event_hours": 2.0, "extra_parent_clearance_per_hour": 0.0, "extra_clearance_active_product_fraction": 0.0, "capture_parent_fraction": 0.8, "capture_metabolite_fraction": 0.0},
+    {"name": "ideal_parent_and_metabolite_capture", "event_hours": 2.0, "extra_parent_clearance_per_hour": 0.0, "extra_clearance_active_product_fraction": 0.0, "capture_parent_fraction": 0.8, "capture_metabolite_fraction": 0.8}
+  ],
+  "limits": ["No oral absorption or gut compartment", "No tissue distribution or BBB kinetics", "No receptor binding/unbinding or endogenous adenosine", "No CYP interaction prediction", "No binder structure, capacity or kinetics", "No sleep or other clinical endpoint", "No treatment or dose selection"]
+}

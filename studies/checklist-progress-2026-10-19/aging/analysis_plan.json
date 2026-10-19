@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "status": "Exploratory challenge specified after reviewing existing published summaries and before running these new sensitivity outcomes; not an independent preregistration.",
+  "goal": "Persistent goal 4: distinguish donor-level age associations from disease, covariate imbalance and fibroblast mixture before selecting tissue-repair readouts.",
+  "source_commit": "439c3306709777b80e604690e232a7b89e6b3ee7",
+  "input_directory": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241",
+  "input_sha256_lf_text": {
+    "gingival_fixed_panel_donor_scores.tsv": "e29c6372225b6696e7009a8eaaea6adac30b24021171f1214a00b853af6bf51b",
+    "gingival_cellset_pseudobulk_fixed_genes.tsv": "396c4df081c0339a301c501c0d395092cf4f1d2f9e6cd63f58d9de62b03dfb33",
+    "gingival_fixed_panel_coverage.tsv": "12b287cd7017c0922165d62eab804b66526dc3805fbbae11414a42ca8366c23f",
+    "oral_atlas_sample_crosswalk.tsv": "d693db2da901bd536825c3a5ad654f8a15aaf38d230761b3b5c47829ad0faee7"
+  },
+  "primary_cell_groups": [
+    "fibroblasts_all", "epithelium_all", "endothelium_all",
+    "perivascular_support", "dendritic_cells_all", "lymphoid_all",
+    "neutrophils", "macrophages_monocytes", "mast_cells"
+  ],
+  "subgroup_policy": "Exclude fibroblast/epithelial and lymphoid subgroups from aggregate counts; they overlap their combined parent and are not independent replication.",
+  "minimum_original_healthy_donors": 8,
+  "minimum_original_disease_donors": 4,
+  "minimum_cells_per_donor": 20,
+  "minimum_residual_degrees_of_freedom": 2,
+  "disease_models": [
+    "unadjusted", "age", "age_sex", "age_version", "age_sex_version",
+    "age_overlap", "female_age_overlap"
+  ],
+  "healthy_age_models": ["age", "age_sex", "age_version", "age_sex_version"],
+  "influence_models": ["age", "age_sex_version"],
+  "age_overlap_rule": "Use the intersection of the healthy and disease age ranges in the full panel/cell-group donor set. Freeze those bounds before restrictions and omission checks; do not choose by expression outcomes.",
+  "female_age_overlap_rule": "Restrict the frozen all-sex age-overlap range to female donors. This removes male extrapolation but further reduces donor support.",
+  "covariates": {
+    "age": "centered age in decades, linear",
+    "sex": "male indicator relative to female, as supplied by the source metadata",
+    "version": "Cell Ranger 3.0.1 indicator relative to 2.0.0; mixed versions are rejected"
+  },
+  "influence_rule": "Omit exactly one inferred donor at a time from the full panel/cell-group dataset; retain failures and all individual donor results. No cell- or biopsy-level resampling.",
+  "fibroblast_mixture_challenge": {
+    "subgroups": ["fibroblast_1", "fibroblast_2"],
+    "minimum_cells_each_subgroup": 20,
+    "fixed_subgroup_rna_weights": [0.5, 0.5],
+    "score": "For each gene, 0.5*CPM(Fibroblast 1)+0.5*CPM(Fibroblast 2), then mean log1p across the unchanged panel genes. Equal RNA weights are not equal cell fractions.",
+    "checks": "Subgroup raw counts, cells and total UMIs must sum exactly to the combined fibroblast values; observed-mixture scores must reproduce the old combined scores within 1e-10.",
+    "model_policy": "Compare observed and fixed-mixture scores using exactly the same donor sets and four full-cohort adjustment sets. No model is selected after seeing the results."
+  },
+  "interpretation": [
+    "All fitted coefficients and omission ranges are descriptive; no confirmatory p-values, age-in-years prediction, rejuvenation estimate or functional-regeneration claim.",
+    "Correlated panels and compartments share donors and are not independent studies.",
+    "Covariate adjustment and mixture standardization do not identify causal disease or aging effects.",
+    "Restricted common support may expose a lack of donors rather than resolve confounding."
+  ]
+}

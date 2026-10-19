@@ -4,6 +4,11 @@ Recorded from the owner's directions in this conversation; updated 2026-10-17.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
+Latest execution: the [2026-10-19 parallel progress report](../checklist-progress-2026-10-19/README.md)
+links new dental-material/attachment work, donor-level aging challenges,
+compound evidence, caffeine modeling and an organoid/genome-repair integration
+audit. Its results are partial progress; all persistent goals below remain.
+
 ## End goals that must survive narrower experiments
 
 1. **Restore the individual's natural teeth and the complete surrounding

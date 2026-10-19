@@ -1,0 +1,10 @@
+sex	version	n_healthy	n_disease	healthy_ages	disease_ages	age_overlap_min	age_overlap_max	n_healthy_in_age_overlap	n_disease_in_age_overlap	interpretation
+all	all	13	5	21;21;22;24;28;31;32;35;37;39;51;57;61	34;38;42;44;45	34.0	45.0	3	5	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+all	2.0.0	4	1	22;31;35;51	44	44.0	44.0	0	1	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+all	3.0.1	9	4	21;21;24;28;32;37;39;57;61	34;38;42;45	34.0	45.0	2	4	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+female	all	10	3	21;22;24;31;35;37;39;51;57;61	34;38;42	34.0	42.0	3	3	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+female	2.0.0	4	0	22;31;35;51				0	0	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+female	3.0.1	6	3	21;24;37;39;57;61	34;38;42	34.0	42.0	2	3	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+male	all	3	2	21;28;32	44;45			0	0	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+male	2.0.0	0	1		44			0	0	Age-range intersection only; overlap is not matched sampling or causal exchangeability.
+male	3.0.1	3	1	21;28;32	45			0	0	Age-range intersection only; overlap is not matched sampling or causal exchangeability.

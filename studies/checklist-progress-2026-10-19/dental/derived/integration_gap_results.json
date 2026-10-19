@@ -1,0 +1,288 @@
+{
+  "status": "computed_scale_arithmetic_and_synthetic_sensitivity_no_biological_experiment",
+  "receipt": {
+    "inputs_sha256": "52ffab53e0dadfbde2bf9c3a99c925317f06bcf77963842301909a39d8ea5d25",
+    "script_sha256": "8d3504363cb3d6f91799da031e374e62efa8024b29565d3fcabe4211a03fe66c",
+    "integration_contract_sha256": "5aafb9bda528dcfa27f6e4ba1d2005e84bedf97d1ab0e8a1201c7d01e5268cff",
+    "parent_contract_sha256": "a9e55a1a9ce27ac36fc0acfcecb73af4f91461b7eac0a19939f364e3b634e815"
+  },
+  "volume_budget": {
+    "reference_area_mm2": 8.0,
+    "scenarios": [
+      {
+        "scenario_id": "shallow_enamel_fixture",
+        "substrate": "surviving_enamel",
+        "missing_enamel_volume_mm3": 0.4,
+        "enamel_volume_sensitivity_bounds_mm3": [
+          0.32,
+          0.48
+        ],
+        "missing_dentin_volume_mm3": 0.0,
+        "dentin_volume_sensitivity_bounds_mm3": [
+          0.0,
+          0.0
+        ],
+        "matching_source_configurations": 2,
+        "source_transfer_state": "nominal_scale_comparison_only"
+      },
+      {
+        "scenario_id": "bulk_enamel_fixture",
+        "substrate": "surviving_enamel",
+        "missing_enamel_volume_mm3": 4.0,
+        "enamel_volume_sensitivity_bounds_mm3": [
+          3.6,
+          4.4
+        ],
+        "missing_dentin_volume_mm3": 0.0,
+        "dentin_volume_sensitivity_bounds_mm3": [
+          0.0,
+          0.0
+        ],
+        "matching_source_configurations": 2,
+        "source_transfer_state": "nominal_scale_comparison_only"
+      },
+      {
+        "scenario_id": "combined_enamel_dentin_fixture",
+        "substrate": "exposed_dentin",
+        "missing_enamel_volume_mm3": 4.0,
+        "enamel_volume_sensitivity_bounds_mm3": [
+          3.6,
+          4.4
+        ],
+        "missing_dentin_volume_mm3": 4.0,
+        "dentin_volume_sensitivity_bounds_mm3": [
+          3.2,
+          4.8
+        ],
+        "matching_source_configurations": 1,
+        "source_transfer_state": "nominal_scale_comparison_only"
+      },
+      {
+        "scenario_id": "restorative_boundary_fixture",
+        "substrate": "restorative_boundary",
+        "missing_enamel_volume_mm3": 4.0,
+        "enamel_volume_sensitivity_bounds_mm3": [
+          3.6,
+          4.4
+        ],
+        "missing_dentin_volume_mm3": 0.0,
+        "dentin_volume_sensitivity_bounds_mm3": [
+          0.0,
+          0.0
+        ],
+        "matching_source_configurations": 0,
+        "source_transfer_state": "unsupported_substrate"
+      }
+    ],
+    "comparisons": [
+      {
+        "scenario_id": "shallow_enamel_fixture",
+        "source_configuration": "hasan_prismatic_2um",
+        "nominal_prism_equivalent_layer_volume_mm3": 0.016,
+        "nominal_layer_to_missing_enamel_depth_percent": 4.0,
+        "target_bounds_only_depth_percent_range": [
+          3.3333333333333335,
+          5.0
+        ],
+        "qualified_dentin_volume_recovery_mm3": null,
+        "dentin_recovery_state": "not_established_by_enamel_like_layer",
+        "full_area_coverage_verified": false,
+        "source_measurement_uncertainty_um": null
+      },
+      {
+        "scenario_id": "shallow_enamel_fixture",
+        "source_configuration": "hasan_aprismatic_10um",
+        "nominal_prism_equivalent_layer_volume_mm3": 0.08,
+        "nominal_layer_to_missing_enamel_depth_percent": 20.0,
+        "target_bounds_only_depth_percent_range": [
+          16.666666666666668,
+          25.0
+        ],
+        "qualified_dentin_volume_recovery_mm3": null,
+        "dentin_recovery_state": "not_established_by_enamel_like_layer",
+        "full_area_coverage_verified": false,
+        "source_measurement_uncertainty_um": null
+      },
+      {
+        "scenario_id": "bulk_enamel_fixture",
+        "source_configuration": "hasan_prismatic_2um",
+        "nominal_prism_equivalent_layer_volume_mm3": 0.016,
+        "nominal_layer_to_missing_enamel_depth_percent": 0.4,
+        "target_bounds_only_depth_percent_range": [
+          0.36363636363636365,
+          0.4444444444444445
+        ],
+        "qualified_dentin_volume_recovery_mm3": null,
+        "dentin_recovery_state": "not_established_by_enamel_like_layer",
+        "full_area_coverage_verified": false,
+        "source_measurement_uncertainty_um": null
+      },
+      {
+        "scenario_id": "bulk_enamel_fixture",
+        "source_configuration": "hasan_aprismatic_10um",
+        "nominal_prism_equivalent_layer_volume_mm3": 0.08,
+        "nominal_layer_to_missing_enamel_depth_percent": 2.0,
+        "target_bounds_only_depth_percent_range": [
+          1.8181818181818181,
+          2.2222222222222223
+        ],
+        "qualified_dentin_volume_recovery_mm3": null,
+        "dentin_recovery_state": "not_established_by_enamel_like_layer",
+        "full_area_coverage_verified": false,
+        "source_measurement_uncertainty_um": null
+      },
+      {
+        "scenario_id": "combined_enamel_dentin_fixture",
+        "source_configuration": "hasan_dentin_5um",
+        "nominal_prism_equivalent_layer_volume_mm3": 0.04,
+        "nominal_layer_to_missing_enamel_depth_percent": 1.0,
+        "target_bounds_only_depth_percent_range": [
+          0.9090909090909091,
+          1.1111111111111112
+        ],
+        "qualified_dentin_volume_recovery_mm3": null,
+        "dentin_recovery_state": "not_established_by_enamel_like_layer",
+        "full_area_coverage_verified": false,
+        "source_measurement_uncertainty_um": null
+      }
+    ]
+  },
+  "contact_moment_sensitivity": [
+    {
+      "load_direction": "axial",
+      "contact_case": "negative_lateral_offset",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        -0.5,
+        -0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 0.0,
+      "restored_moment_magnitude_Nmm_per_N": 0.5,
+      "moment_magnitude_change_percent": null,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    },
+    {
+      "load_direction": "axial",
+      "contact_case": "height_only",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 0.0,
+      "restored_moment_magnitude_Nmm_per_N": 0.0,
+      "moment_magnitude_change_percent": null,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    },
+    {
+      "load_direction": "axial",
+      "contact_case": "positive_lateral_offset",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        0.5,
+        0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 0.0,
+      "restored_moment_magnitude_Nmm_per_N": 0.5,
+      "moment_magnitude_change_percent": null,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    },
+    {
+      "load_direction": "oblique",
+      "contact_case": "negative_lateral_offset",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        2.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        1.8169872981077808,
+        -0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 2.0,
+      "restored_moment_magnitude_Nmm_per_N": 1.8169872981077808,
+      "moment_magnitude_change_percent": -9.150635094610958,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    },
+    {
+      "load_direction": "oblique",
+      "contact_case": "height_only",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        2.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        2.25,
+        0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 2.0,
+      "restored_moment_magnitude_Nmm_per_N": 2.25,
+      "moment_magnitude_change_percent": 12.5,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    },
+    {
+      "load_direction": "oblique",
+      "contact_case": "positive_lateral_offset",
+      "damaged_moment_vector_Nmm_per_N": [
+        -0.0,
+        2.0,
+        0.0
+      ],
+      "restored_moment_vector_Nmm_per_N": [
+        -0.0,
+        2.683012701892219,
+        0.0
+      ],
+      "damaged_moment_magnitude_Nmm_per_N": 2.0,
+      "restored_moment_magnitude_Nmm_per_N": 2.683012701892219,
+      "moment_magnitude_change_percent": 34.15063509461096,
+      "PDL_strain": null,
+      "predicted_pose_drift_mm": null
+    }
+  ],
+  "restoration_goal_audit": {
+    "domains_preserved": 9,
+    "domain_results": {
+      "crown_geometry_and_lost_volume": "unassessed",
+      "enamel_thickness_architecture_and_surface": "unassessed",
+      "dentin_interfaces_and_crack_integrity": "unassessed",
+      "position_and_occlusion": "unassessed",
+      "cementum_PDL_bone_attachment": "unassessed",
+      "mechanical_function": "unassessed",
+      "gingiva_and_barrier": "unassessed",
+      "pulp_vitality_and_sensation": "unassessed",
+      "durability_and_identity": "unassessed"
+    },
+    "integrated_success": false,
+    "reason": "No experimental observations or qualified numerical margins are supplied."
+  },
+  "limits": [
+    "Prism-equivalent volumes assume complete uniform coverage of a flat 8 mm2 reference footprint; actual coverage and recovered volumes are unmeasured.",
+    "Approximate source layer depths are configuration labels, not confidence bounds or a growth law; no cycle count, time to repair or clinical efficacy is predicted.",
+    "Target-depth sensitivity bounds are synthetic choices, not empirical measurement uncertainties. Source layer uncertainty remains unknown.",
+    "Moment differences follow r cross a unit load direction about a fixed origin. No force magnitude, PDL constitutive law, interface strength, support load sharing or tooth drift is inferred."
+  ]
+}

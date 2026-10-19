@@ -1,0 +1,45 @@
+{
+  "source_accession": "GSE164241",
+  "source_commit": "439c3306709777b80e604690e232a7b89e6b3ee7",
+  "source_h5ad_sha256_from_prior_receipt": "7dc13de46fd2702dbfaf8d69bec933b79b05196ebce7d516e59cea471aa83c4e",
+  "source_h5ad_reread": false,
+  "new_network_fetch": false,
+  "plan_sha256_lf_text": "63a92c1c54eb1bc198bc489f71428baee4721a704d799caac6f117a0f9ac872f",
+  "script_sha256_lf_text": "d11d7b587b6b3f91f61906477e910be3b30ecd63e4f5d6794c77c468ffd7469a",
+  "input_sha256_lf_text": {
+    "gingival_fixed_panel_donor_scores.tsv": "e29c6372225b6696e7009a8eaaea6adac30b24021171f1214a00b853af6bf51b",
+    "gingival_cellset_pseudobulk_fixed_genes.tsv": "396c4df081c0339a301c501c0d395092cf4f1d2f9e6cd63f58d9de62b03dfb33",
+    "gingival_fixed_panel_coverage.tsv": "12b287cd7017c0922165d62eab804b66526dc3805fbbae11414a42ca8366c23f",
+    "oral_atlas_sample_crosswalk.tsv": "d693db2da901bd536825c3a5ad654f8a15aaf38d230761b3b5c47829ad0faee7"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "unit": "inferred donor; repeated biopsies already aggregated; cell groups and panels share donors",
+  "disease_model_rows": 98,
+  "healthy_age_model_rows": 56,
+  "omission_rows": 488,
+  "mixture_model_rows": 80,
+  "disease_coefficient_units": "mean log1p(CPM) difference; not fold change, activity, tissue function or years of age",
+  "age_coefficient_units": "mean log1p(CPM) per 10 chronological years; cross-sectional association",
+  "mixture_reconstruction_max_abs_error": 1.7763568394002505e-15,
+  "output_sha256_lf_text": {
+    "donor_common_support.tsv": "47300fca74bc914e44ba19563d8716120d382d41fc4d54e9bd180ce393532652",
+    "disease_adjustment_challenge.tsv": "98fc23e115c2882692729a0668a0836a59b6313e95128696769dd9384daf4c22",
+    "healthy_age_adjustment_challenge.tsv": "3c271465ece5400134a787acd9be3bda5b6730c6bddc6340def310a6b059191d",
+    "donor_omission_effects.tsv": "cdeb024528d0ad72f20c53466e1af4d4d5a3139b58795a8501a7a8a00a82e02a",
+    "donor_omission_summary.tsv": "cea9ffca9b53e94a4993edda7d698139e48e2b0d2ee66e3fd2f515597f6be8a3",
+    "fibroblast_mixture_audit.tsv": "f776cb9f44f37c37a9b94aa9e5748c069b2fa880cccd42af6fbd5abfb0731689",
+    "fibroblast_mixture_effects.tsv": "d3734fe54a34b81ef596f3897376e42597cfd84a3baf2a2e8550f641f98ff6a0"
+  },
+  "limits": [
+    "All fitted coefficients and omission ranges are descriptive; no confirmatory p-values, age-in-years prediction, rejuvenation estimate or functional-regeneration claim.",
+    "Correlated panels and compartments share donors and are not independent studies.",
+    "Covariate adjustment and mixture standardization do not identify causal disease or aging effects.",
+    "Restricted common support may expose a lack of donors rather than resolve confounding.",
+    "Original donor IDs are inferred, not formally supplied independent-person identifiers.",
+    "Equal subtype RNA weights may remove relevant biology and do not separate individual cell states within each annotated subgroup.",
+    "All adjustments are observational, panel/cell-group dependent and based on a single cohort; no patient intervention, clock training or functional repair was tested."
+  ]
+}

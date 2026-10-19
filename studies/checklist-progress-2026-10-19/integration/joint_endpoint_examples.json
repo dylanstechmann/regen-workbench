@@ -1,0 +1,168 @@
+[
+  {
+    "example_id": "same_regions_marginals_only",
+    "input_status": "synthetic demonstration; no measured cells or tissue",
+    "population": {
+      "population_id": "synthetic-construct-1",
+      "unit": "registered_equal_volume_target_region",
+      "timepoint": "chosen_endpoint",
+      "sampling_frame": "same 100 predetermined target regions",
+      "n_units": 100
+    },
+    "required_endpoints": [
+      "intended_only_genetic_product",
+      "target_lineage_identity",
+      "functional_perfusion",
+      "defined_host_interface"
+    ],
+    "observations": [
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "intended_only_genetic_product",
+        "attaining_count": 80
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "target_lineage_identity",
+        "attaining_count": 90
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "functional_perfusion",
+        "attaining_count": 75
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "defined_host_interface",
+        "attaining_count": 70
+      }
+    ]
+  },
+  {
+    "example_id": "incompatible_editing_alleles_and_tissue_regions",
+    "input_status": "synthetic demonstration; no measured cells or tissue",
+    "population": {
+      "population_id": "synthetic-construct-1",
+      "unit": "registered_equal_volume_target_region",
+      "timepoint": "chosen_endpoint",
+      "sampling_frame": "same 100 predetermined target regions",
+      "n_units": 100
+    },
+    "required_endpoints": [
+      "intended_only_genetic_product",
+      "target_lineage_identity",
+      "functional_perfusion",
+      "defined_host_interface"
+    ],
+    "observations": [
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "sequenced_allele",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "intended_only_genetic_product",
+        "attaining_count": 80
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "target_lineage_identity",
+        "attaining_count": 90
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "functional_perfusion",
+        "attaining_count": 75
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "defined_host_interface",
+        "attaining_count": 70
+      }
+    ]
+  },
+  {
+    "example_id": "direct_joint_observation",
+    "input_status": "synthetic demonstration; no measured cells or tissue",
+    "population": {
+      "population_id": "synthetic-construct-1",
+      "unit": "registered_equal_volume_target_region",
+      "timepoint": "chosen_endpoint",
+      "sampling_frame": "same 100 predetermined target regions",
+      "n_units": 100
+    },
+    "required_endpoints": [
+      "intended_only_genetic_product",
+      "target_lineage_identity",
+      "functional_perfusion",
+      "defined_host_interface"
+    ],
+    "observations": [
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "intended_only_genetic_product",
+        "attaining_count": 80
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "target_lineage_identity",
+        "attaining_count": 90
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "functional_perfusion",
+        "attaining_count": 75
+      },
+      {
+        "population_id": "synthetic-construct-1",
+        "unit": "registered_equal_volume_target_region",
+        "timepoint": "chosen_endpoint",
+        "sampling_frame": "same 100 predetermined target regions",
+        "n_units": 100,
+        "endpoint": "defined_host_interface",
+        "attaining_count": 70
+      }
+    ],
+    "joint_attaining_count": 40
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "status": "source_anchored_arithmetic_and_synthetic_geometry_sensitivity",
+  "reference_footprint_mm": [2.0, 4.0],
+  "reference_footprint_source": "Hasan 2025, aprismatic-enamel experiment; a nominal treatment footprint, not measured uniform final coverage.",
+  "source_configurations": [
+    {
+      "id": "hasan_prismatic_2um",
+      "substrate": "surviving_enamel",
+      "nominal_depth_um": 2.0,
+      "measurement_qualification": "Approximate coating-depth configuration with mineral growth through the coating; not an independently mapped full-area final thickness distribution.",
+      "measurement_uncertainty_um": null,
+      "source": "https://www.nature.com/articles/s41467-025-64982-y",
+      "locator": "Results: Remineralization of enamel and dentine; Regeneration of prismatic enamel; Fig. 3"
+    },
+    {
+      "id": "hasan_aprismatic_10um",
+      "substrate": "surviving_enamel",
+      "nominal_depth_um": 10.0,
+      "measurement_qualification": "Approximate illustrated mineral-layer thickness; n=3 independent experiments in Fig. 2d, not a recovered tooth/donor-level thickness distribution.",
+      "measurement_uncertainty_um": null,
+      "source": "https://www.nature.com/articles/s41467-025-64982-y",
+      "locator": "Fig. 2c,d and Results: Remineralization of enamel and dentine"
+    },
+    {
+      "id": "hasan_dentin_5um",
+      "substrate": "exposed_dentin",
+      "nominal_depth_um": 5.0,
+      "measurement_qualification": "Approximate illustrated mineral-layer thickness; n=5 independent experiments in Fig. 2i. Other dentin configurations use a nominal 2 micrometre coating; these are not pooled replicates.",
+      "measurement_uncertainty_um": null,
+      "source": "https://www.nature.com/articles/s41467-025-64982-y",
+      "locator": "Fig. 2h,i; distinguish Fig. 5 configuration"
+    }
+  ],
+  "defect_scenarios": [
+    {
+      "id": "shallow_enamel_fixture",
+      "status": "synthetic_flat_prism",
+      "substrate": "surviving_enamel",
+      "missing_enamel_depth_mm": 0.05,
+      "enamel_depth_sensitivity_bounds_mm": [0.04, 0.06],
+      "missing_dentin_depth_mm": 0.0,
+      "dentin_depth_sensitivity_bounds_mm": [0.0, 0.0]
+    },
+    {
+      "id": "bulk_enamel_fixture",
+      "status": "synthetic_flat_prism",
+      "substrate": "surviving_enamel",
+      "missing_enamel_depth_mm": 0.5,
+      "enamel_depth_sensitivity_bounds_mm": [0.45, 0.55],
+      "missing_dentin_depth_mm": 0.0,
+      "dentin_depth_sensitivity_bounds_mm": [0.0, 0.0]
+    },
+    {
+      "id": "combined_enamel_dentin_fixture",
+      "status": "synthetic_flat_prism",
+      "substrate": "exposed_dentin",
+      "missing_enamel_depth_mm": 0.5,
+      "enamel_depth_sensitivity_bounds_mm": [0.45, 0.55],
+      "missing_dentin_depth_mm": 0.5,
+      "dentin_depth_sensitivity_bounds_mm": [0.4, 0.6]
+    },
+    {
+      "id": "restorative_boundary_fixture",
+      "status": "synthetic_flat_prism",
+      "substrate": "restorative_boundary",
+      "missing_enamel_depth_mm": 0.5,
+      "enamel_depth_sensitivity_bounds_mm": [0.45, 0.55],
+      "missing_dentin_depth_mm": 0.0,
+      "dentin_depth_sensitivity_bounds_mm": [0.0, 0.0]
+    }
+  ],
+  "sensitivity_bounds_meaning": "Investigator-defined illustrative bounds on a synthetic target, not confidence intervals, segmentation errors, patient data or source uncertainty.",
+  "moment_sensitivity": {
+    "status": "synthetic_rigid_body_equilibrium_only",
+    "frame": "Fixed root/socket reference; x lateral, y transverse, z coronal. Moment is r cross F about the declared origin, not a fitted tooth center of resistance.",
+    "damaged_contact_mm": [0.0, 0.0, 4.0],
+    "restored_contacts_mm": [
+      {"id": "negative_lateral_offset", "point": [-0.5, 0.0, 4.5]},
+      {"id": "height_only", "point": [0.0, 0.0, 4.5]},
+      {"id": "positive_lateral_offset", "point": [0.5, 0.0, 4.5]}
+    ],
+    "unit_load_directions": [
+      {"id": "axial", "vector": [0.0, 0.0, -1.0]},
+      {"id": "oblique", "vector": [0.5, 0.0, -0.8660254037844386]}
+    ],
+    "load_magnitude_N": null,
+    "support_load_share": null,
+    "PDL_material_law": null,
+    "interface_strength": null
+  }
+}

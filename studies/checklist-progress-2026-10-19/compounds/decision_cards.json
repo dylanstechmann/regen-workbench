@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "purpose": "Prioritize research comparisons across retained compound questions; not candidate selection for human use",
+  "global_rule": "A favorable proxy cannot compensate for a failed required functional domain. Missing, contradictory, and adverse results remain visible.",
+  "cards": [
+    {
+      "id": "CP-01",
+      "priority": 1,
+      "program": "SLU-PP-915 oral exposure",
+      "question": "Which exposure limitation remains after starting with the already orally active mouse parent?",
+      "existing_reference": "2023 compound 10s; chemically distinct from SLU-PP-332; prior atlas exact-graph panel",
+      "newly_qualified": "Oral mouse plasma half-life 18-28 minutes; suspension dose-response plateau and one-hour repeated-administration sampling context",
+      "next_computational_artifact": "Route-resolved intact-parent concentration-time intake table with route/timing discrepancy log; calculate AUC only if an adequate table is obtained",
+      "required_inputs": ["intact-parent assay identity and calibration", "time and concentration units", "route and formulation identity", "per-observation uncertainty", "sample and specimen hierarchy", "suitable comparison-route reference"],
+      "required_endpoints": ["intact-parent exposure", "ERR isoform activity and maximal response", "target-tissue function", "adverse effects"],
+      "stop_or_redirect": ["Absolute F inferred from a single concentration or intraperitoneal comparator", "Total signal mistaken for intact parent", "A structural edit selected before distinguishing dissolution, chemical loss and metabolism"],
+      "unknowns": ["Human oral exposure", "Absolute oral F not extracted", "Full repeated-dose exposure profile", "Source Figure 1 timing and Figure 3A route conflicts"],
+      "source_ids": ["S01", "S02"],
+      "status": "data_intake_pending"
+    },
+    {
+      "id": "CP-02",
+      "priority": 2,
+      "program": "MOTS-c delivery and stem-cell function",
+      "question": "Does better exposure retain repair function in the intended donor and tissue context?",
+      "existing_reference": "Prior atlas parent/cap matrix, K14Q function-clearance counterexample and separate native-name/CB4211 registry records",
+      "newly_qualified": "Human-adipose-MSC study supplies metabolic activation with impaired repair and mixed secondary outcomes",
+      "next_computational_artifact": "Donor-linked evidence table stratified by metabolic state, plus a proxy/function discordance analysis only after raw paired data intake",
+      "required_inputs": ["donor identifier and metabolic state", "matched untreated comparator", "cell identity and passage", "intact-parent versus assay signal", "recipient identifier and donor-to-recipient mapping", "time and exposure context"],
+      "required_endpoints": ["relevant repair function", "senescence and inflammatory response", "metabolic target response", "durability and adverse healing"],
+      "stop_or_redirect": ["AMPK activation alone declared rejuvenation", "Longer residence substitutes for repair function", "A group-level metabolic result is treated as paired with an individual repair outcome", "Selected oxygenation benefit erases failed perfusion or fibrosis endpoints"],
+      "unknowns": ["Donor-level raw measurements not downloaded", "Relevant dental-cell response", "Oral native-peptide exposure", "Human treatment benefit"],
+      "source_ids": ["S04", "S05", "S06"],
+      "status": "functional_gate_added_raw_data_pending"
+    },
+    {
+      "id": "CP-03",
+      "priority": 3,
+      "program": "SS-31 duration, oral delivery and cost",
+      "question": "Does a delivery or process change improve useful function or production burden without losing parent access?",
+      "existing_reference": "Exact parent and published cell comparators; FDA stability-versus-residence audit; unchanged-parent process patent",
+      "newly_qualified": "FDA label rechecked; no new oral or cost result",
+      "next_computational_artifact": "Evidence-linked comparison matrix separating intact recovery, free exposure, mitochondrial function and process economics",
+      "required_inputs": ["exact covalent identity and termini", "intact parent and products measured separately", "free versus total exposure", "functional comparator at matched free exposure", "actual yield, purification, impurity and stability inputs for costing"],
+      "required_endpoints": ["intact-parent target access", "relevant cellular or organ function", "duration of function after exposure falls", "cost and impurities independently"],
+      "stop_or_redirect": ["Protease resistance treated as correction of renal parent clearance", "Conjugate or carrier signal counted as active parent", "Proteinogenic residue substitution assumed biologically equivalent", "Oral route convenience assumed lower material cost"],
+      "unknowns": ["Validated human oral exposure for proposed variants", "Free target-tissue exposure", "Independent process economics", "Whether greater plasma residence improves the intended function"],
+      "source_ids": ["S03", "A02", "A05"],
+      "status": "comparison_specified_no_new_variant_selected"
+    },
+    {
+      "id": "CP-04",
+      "priority": 4,
+      "program": "Acetylated Epitalon and Semax/Adamax analogy",
+      "question": "Which exact molecule and directly compared property does the analogy establish?",
+      "existing_reference": "Prior atlas exact Epitalon cap matrix and bounded Adamax evidence search",
+      "newly_qualified": "Scoped negative searches repeated; primary Semax acetylation abstract and stability metadata rechecked",
+      "next_computational_artifact": "Identity-to-assay mapping that refuses to combine N-acetyl free acid, amidate, acetate salt, P021 and Adamax by nickname",
+      "required_inputs": ["explicit terminal groups", "linkage and stereochemical identity", "direct parent-versus-variant assay", "intact-species PK if duration is claimed"],
+      "required_endpoints": ["retained relevant function", "measured stability in identified matrix", "route-specific exposure"],
+      "stop_or_redirect": ["Registry structure used as efficacy evidence", "Numerical half-life inferred from a stability-paper title", "P021 evidence assigned to Adamax", "A cap assumed pharmacologically inert"],
+      "unknowns": ["Identity of any material labelled only Adamax", "Direct oral PK of the named acetylated Epitalon form", "Comparative duration and relevant human benefit"],
+      "source_ids": ["S07", "S08", "Q01", "Q02", "A03"],
+      "status": "identity_and_direct_comparison_required"
+    },
+    {
+      "id": "CP-05",
+      "priority": 5,
+      "program": "Reproductive-sparing rapamycin selectivity",
+      "question": "Which target-organ benefit must be retained while reducing relevant testicular cell effects?",
+      "existing_reference": "Prior atlas human, animal, cell-selective and distribution evidence audit plus synthetic selectivity counterexamples",
+      "newly_qualified": "Human transplant-cohort reproductive abstract rechecked; not a healthy-user testicular-volume estimate",
+      "next_computational_artifact": "Target-organ-specific comparison card with separate testicular compartment and reproductive endpoints",
+      "required_inputs": ["declared benefit and target organ", "free active-parent exposure", "relevant testicular cell-type response", "complex-specific pathway data", "direct reproductive measurements and recovery"],
+      "required_endpoints": ["retained target-organ function", "sperm quantity, motility and morphology", "endocrine effects", "testicular structure and volume", "recovery"],
+      "stop_or_redirect": ["mTORC2 sparing declared fertility protection", "Lower total testis signal declared lower cell-level inhibition", "Local benefit relabelled systemic rejuvenation", "Recovery guaranteed from selected cases"],
+      "unknowns": ["A demonstrated reproductive-sparing human rapalog", "Healthy-user risk frequency", "Benefit across all body tissues", "Suitable tissue-selective activation or protection mechanism"],
+      "source_ids": ["S09", "A04"],
+      "status": "target_benefit_definition_required"
+    }
+  ]
+}
