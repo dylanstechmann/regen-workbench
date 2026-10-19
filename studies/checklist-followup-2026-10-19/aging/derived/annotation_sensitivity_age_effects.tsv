@@ -1,0 +1,5 @@
+model	analysis_status	n_genes	n_donors	n_female	n_male	status	slope_per_decade	rank	residual_df	max_leverage	omission_min	omission_max
+all_healthy_age	posthoc_annotation_sensitivity	9	12	10	2	descriptive_only	-0.2582707198769958	2	10	0.3535793105591993		
+all_healthy_age_sex_batch	posthoc_annotation_sensitivity	9	12	10	2	descriptive_only	-0.26907089486171853	4	8	0.5057133973337491		
+female_age	posthoc_annotation_sensitivity	9	10	10	0	descriptive_only	-0.25689828284343147	2	8	0.36153575821472517		
+female_age_batch	posthoc_annotation_sensitivity	9	10	10	0	descriptive_only	-0.2820832474107244	3	7	0.48356595242775713	-0.3421926547388558	-0.14731823649931997

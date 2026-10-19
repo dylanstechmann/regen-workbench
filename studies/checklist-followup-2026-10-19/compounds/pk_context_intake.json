@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "study_id": "SLU-PP-915-JPET-103787",
+  "review_date": "2026-10-19",
+  "main_integration_reference": "a80e2817965819b4e349efe4ee2e8b116b682360",
+  "source_doi": "10.1016/j.jpet.2025.103787",
+  "profiles": [
+    {
+      "analyte": "SLU-PP-915",
+      "matrix": "plasma",
+      "species": "mouse",
+      "strain_sex": "C57BL/6 male",
+      "source_doi": "10.1016/j.jpet.2025.103787",
+      "source_access": "indexed primary body/captions; numeric figure/table not acquired",
+      "time_unit": "h",
+      "concentration_unit": null,
+      "censoring_policy": null,
+      "numeric_source": {
+        "kind": "indexed_prose",
+        "metadata_only": null,
+        "sha256": null,
+        "location": null
+      },
+      "assay_qualification": {
+        "parent_identity": null,
+        "calibration": null,
+        "selectivity": null,
+        "sample_stability": null
+      },
+      "sampling": {
+        "design": null,
+        "curve_unit": null,
+        "statistical_unit": "mouse",
+        "individual_curves_and_covariance_available": false
+      },
+      "route_or_time_conflict": false,
+      "points": [],
+      "id": "F2A_ORAL",
+      "route": "oral_voluntary_suspension",
+      "curve_kind": "cross_exposure_single_time",
+      "source_location": "Section 3.2 / Figure 2A",
+      "context": "Concentration comparisons at one hour across exposure groups; not a time course",
+      "reported_n_per_group": 4
+    },
+    {
+      "analyte": "SLU-PP-915",
+      "matrix": "plasma",
+      "species": "mouse",
+      "strain_sex": "C57BL/6 male",
+      "source_doi": "10.1016/j.jpet.2025.103787",
+      "source_access": "indexed primary body/captions; numeric figure/table not acquired",
+      "time_unit": "h",
+      "concentration_unit": null,
+      "censoring_policy": null,
+      "numeric_source": {
+        "kind": "indexed_prose",
+        "metadata_only": null,
+        "sha256": null,
+        "location": null
+      },
+      "assay_qualification": {
+        "parent_identity": null,
+        "calibration": null,
+        "selectivity": null,
+        "sample_stability": null
+      },
+      "sampling": {
+        "design": null,
+        "curve_unit": null,
+        "statistical_unit": "mouse",
+        "individual_curves_and_covariance_available": false
+      },
+      "route_or_time_conflict": null,
+      "points": [],
+      "id": "F2A_IP",
+      "route": "intraperitoneal",
+      "curve_kind": "cross_exposure_single_time",
+      "source_location": "Section 3.2 / Figure 2A",
+      "context": "Text describes IP comparator at the same post-administration time; route labels require figure verification",
+      "reported_n_per_group": null
+    },
+    {
+      "analyte": "SLU-PP-915",
+      "matrix": "plasma",
+      "species": "mouse",
+      "strain_sex": "C57BL/6 male",
+      "source_doi": "10.1016/j.jpet.2025.103787",
+      "source_access": "indexed primary body/captions; numeric figure/table not acquired",
+      "time_unit": "h",
+      "concentration_unit": null,
+      "censoring_policy": null,
+      "numeric_source": {
+        "kind": "indexed_prose",
+        "metadata_only": null,
+        "sha256": null,
+        "location": null
+      },
+      "assay_qualification": {
+        "parent_identity": null,
+        "calibration": null,
+        "selectivity": null,
+        "sample_stability": null
+      },
+      "sampling": {
+        "design": null,
+        "curve_unit": null,
+        "statistical_unit": "mouse",
+        "individual_curves_and_covariance_available": false
+      },
+      "route_or_time_conflict": false,
+      "points": [],
+      "id": "F2B_ORAL",
+      "route": "oral_gavage",
+      "curve_kind": "concentration_time",
+      "source_location": "Section 3.2 / Figure 2B",
+      "context": "Oral plasma exposure and reported half-life; numeric times, concentrations, assay details and per-time sample hierarchy not acquired",
+      "reported_n_per_group": null,
+      "reported_half_life_summary": {
+        "lower_min": 18,
+        "upper_min": 28,
+        "source_kind": "author reported range in prose",
+        "assigned_to_exposure_groups": false,
+        "refitted_here": false,
+        "not_a_concentration_time_table": true
+      }
+    },
+    {
+      "analyte": "SLU-PP-915",
+      "matrix": "plasma",
+      "species": "mouse",
+      "strain_sex": "C57BL/6 male",
+      "source_doi": "10.1016/j.jpet.2025.103787",
+      "source_access": "indexed primary body/captions; numeric figure/table not acquired",
+      "time_unit": "h",
+      "concentration_unit": null,
+      "censoring_policy": null,
+      "numeric_source": {
+        "kind": "indexed_prose",
+        "metadata_only": null,
+        "sha256": null,
+        "location": null
+      },
+      "assay_qualification": {
+        "parent_identity": null,
+        "calibration": null,
+        "selectivity": null,
+        "sample_stability": null
+      },
+      "sampling": {
+        "design": null,
+        "curve_unit": null,
+        "statistical_unit": "mouse",
+        "individual_curves_and_covariance_available": false
+      },
+      "route_or_time_conflict": false,
+      "points": [],
+      "id": "F2C_ORAL",
+      "route": "oral_voluntary_suspension",
+      "curve_kind": "repeated_single_time",
+      "source_location": "Section 3.2 / Figure 2C",
+      "context": "One-hour concentration after initial versus final administration; not a full repeated-exposure time course",
+      "reported_n_per_group": null
+    },
+    {
+      "analyte": "SLU-PP-915",
+      "matrix": "plasma",
+      "species": "mouse",
+      "strain_sex": "C57BL/6 male",
+      "source_doi": "10.1016/j.jpet.2025.103787",
+      "source_access": "indexed primary body/captions; numeric figure/table not acquired",
+      "time_unit": "h",
+      "concentration_unit": null,
+      "censoring_policy": null,
+      "numeric_source": {
+        "kind": "indexed_prose",
+        "metadata_only": null,
+        "sha256": null,
+        "location": null
+      },
+      "assay_qualification": {
+        "parent_identity": null,
+        "calibration": null,
+        "selectivity": null,
+        "sample_stability": null
+      },
+      "sampling": {
+        "design": null,
+        "curve_unit": null,
+        "statistical_unit": "mouse",
+        "individual_curves_and_covariance_available": false
+      },
+      "route_or_time_conflict": false,
+      "points": [],
+      "id": "F2C_IP",
+      "route": "intraperitoneal",
+      "curve_kind": "repeated_single_time",
+      "source_location": "Section 3.2 / Figure 2C",
+      "context": "IP comparator at initial/final one-hour assessment; no within-interval numeric curve",
+      "reported_n_per_group": null
+    }
+  ],
+  "points_statement": "Empty point arrays record unacquired numeric observations, not zero plasma concentrations or negative oral exposure. Published oral mouse activity remains established.",
+  "uncertainty_context": {
+    "general_statistics": "Article section 2.6 describes mean plus/minus SEM",
+    "not_inferred": "Do not assign a general or neighboring-panel sample count to Figure 2B; per-time n and serial/terminal design remain unknown."
+  },
+  "excluded_non_pk_panels": [
+    {
+      "source_location": "Figure 2D/E",
+      "reason": "Ddit4 gene expression is a pharmacodynamic endpoint, not parent concentration"
+    },
+    {
+      "source_location": "Figure 2F/G",
+      "reason": "Running performance is a functional endpoint, not parent concentration"
+    },
+    {
+      "source_location": "Figure 3A",
+      "reason": "Molecular endpoint with oral-text/IP-caption conflict; not used to construct a PK curve"
+    }
+  ],
+  "absolute_F_reference": {
+    "qualified_intravenous_reference_acquired": false,
+    "exposure_normalization_qualified": false,
+    "matched_population_and_clearance_qualified": false,
+    "route_matched_auc_window_or_terminal_coverage_qualified": false,
+    "oral_profile_id": null,
+    "intravenous_profile_id": null
+  },
+  "availability_scope": "No numerical oral PK table or calibrated figure extraction obtained from the bounded official-source/repository checks; not a claim that no data exist."
+}

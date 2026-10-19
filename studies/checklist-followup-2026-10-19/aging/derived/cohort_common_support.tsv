@@ -1,0 +1,7 @@
+challenge	sex	n_healthy	n_challenge	healthy_ages	challenge_ages	age_overlap_min	age_overlap_max	n_healthy_in_range_intersection	n_challenge_in_range_intersection	interpretation
+Periodontitis	all	12	12	28.0;32.0;37.0;39.0;40.0;42.0;42.0;45.0;63.0;66.0;68.0;75.0	29.0;35.0;47.0;48.0;50.0;56.0;57.0;62.0;66.0;70.0;74.0;78.0	29.0	75.0	11	11	Range intersection is not matched sampling or a guarantee of common covariate support.
+Periodontitis	female	10	6	28.0;37.0;40.0;42.0;42.0;45.0;63.0;66.0;68.0;75.0	29.0;47.0;48.0;57.0;74.0;78.0	29.0	75.0	9	5	Range intersection is not matched sampling or a guarantee of common covariate support.
+Periodontitis	male	2	6	32.0;39.0	35.0;50.0;56.0;62.0;66.0;70.0	35.0	39.0	1	1	Range intersection is not matched sampling or a guarantee of common covariate support.
+Gingivitis	all	12	12	28.0;32.0;37.0;39.0;40.0;42.0;42.0;45.0;63.0;66.0;68.0;75.0	25.0;28.0;30.0;34.0;45.0;45.0;48.0;53.0;55.0;55.0;62.0;70.0	28.0	70.0	11	11	Range intersection is not matched sampling or a guarantee of common covariate support.
+Gingivitis	female	10	8	28.0;37.0;40.0;42.0;42.0;45.0;63.0;66.0;68.0;75.0	28.0;30.0;34.0;45.0;45.0;48.0;55.0;55.0	28.0	55.0	6	8	Range intersection is not matched sampling or a guarantee of common covariate support.
+Gingivitis	male	2	4	32.0;39.0	25.0;53.0;62.0;70.0	32.0	39.0	2	0	Range intersection is not matched sampling or a guarantee of common covariate support.

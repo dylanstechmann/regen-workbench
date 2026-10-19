@@ -1,0 +1,33 @@
+{
+  "source_doi": "10.1038/s41467-024-45710-4",
+  "source_workbook_sha256": "ce85f0d6bce6d5dfc992fe7c5b6b60cae2e919cd807ebb23c54cecdc162bc055",
+  "source_workbook_bytes": 29553,
+  "plan_sha256_lf_text": "da36d5127b924b963bb7fe28220d0f7c41f66334298add80ddeba05ca4db0d29",
+  "script_sha256_lf_text": "b158369376073815cfff841a5afcd4bb9a8bb204c3378ba039e6d9849bf5c8f2",
+  "source_workbook_unchanged": true,
+  "observations": 48,
+  "condition_count": 5,
+  "single_observation_omission_rows": 81,
+  "max_source_si_reconstruction_error": 0.0,
+  "descriptive_factorial_mean_contrast": 1.0746039921961903,
+  "factorial_interpretation": "Flow+vascular-bed mean - flow-only mean - bed-only mean + static mean; no causal interaction inference",
+  "output_sha256_lf_text": {
+    "paired_insulin_observations.tsv": "e7006bd03fcd675c310b0d91641e2e0b0c8c88d440bda819580ebeab2dc1888a",
+    "condition_summary.tsv": "e2caf3a76d09a6c46f6be73539fe1ab0f9bbcd0fa18108295eb1d0ab025d84c0",
+    "condition_contrasts.tsv": "9d694e0a55ee1049b4136b860c059d5256f5fed0f89ff242b67dd466584467ec",
+    "single_observation_influence.tsv": "1d5724c57028397c7fafa3ed2dfdb94edb26647fd8db86da7c91bef75c2a5332",
+    "source_statistics_context.json": "d8e7f8beba93ef249d8766f44b82a0b933a96273463df419a1959b1ce51e36d1"
+  },
+  "limits": [
+    "Post-source-inspection exploratory selection; no holdout",
+    "Reported spheroid observations, not independent human donors",
+    "Manufacturing, donor and chip/circuit batch mapping unresolved",
+    "ELISA technical duplicates are not additional biological units",
+    "No confirmatory p-value or donor-level interval recalculated",
+    "Functional output is glucose-responsive insulin secretion in the source construct; not complete organ replacement, dental attachment or rejuvenation",
+    "Caption versus workbook statistical-method mismatch retained",
+    "No joint perfusion/identity/function per-region measurements inferred from separate endpoints"
+  ],
+  "new_biological_experiment": false,
+  "source_derived_license": "CC-BY-4.0"
+}

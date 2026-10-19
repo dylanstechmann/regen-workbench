@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "status": "Exploratory source-data reanalysis specified after inspecting numerical blocks; not preregistered or independent validation.",
+  "question": "Which measured thin-layer material results can inform an intended-depth/interface qualification, and which source hierarchy or identity gaps prevent stronger inference?",
+  "source_citation": "Hasan A, Chuvilin A, Van Teijlingen A et al. Biomimetic supramolecular protein matrix restores structure and properties of human dental enamel. Nature Communications 16, 9434 (2025). DOI 10.1038/s41467-025-64982-y.",
+  "article_url": "https://www.nature.com/articles/s41467-025-64982-y",
+  "source_license": "CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+  "source_files": {
+    "workbook": {
+      "filename": "hasan_source_data.xlsx",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-025-64982-y/MediaObjects/41467_2025_64982_MOESM4_ESM.xlsx",
+      "bytes": 185838555,
+      "sha256": "04dcc52eb9a64a9bd695136ebd71cbfa06ba4f3a77d562436df16002e4cd4dcf",
+      "maximum_fetch_bytes": 200000000,
+      "actual_fetch_receipt": "data/provenance/1792424216168651100_hasan-source-data-download.json"
+    },
+    "article_xml": {
+      "filename": "hasan_primary.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12586552/fullTextXML",
+      "bytes": 210765,
+      "sha256": "a78f5fc40ef98119469a87c07583a0ac2882f634a5edcad67b9a8a5360570057",
+      "maximum_fetch_bytes": 3000000,
+      "actual_fetch_receipt": "data/provenance/1792424393557106900_hasan-primary-xml-download.json"
+    }
+  },
+  "workbook_sheet": "Fig. 6",
+  "header_checks": {"T18": "Fracture toughness", "T19": "Native", "U19": "Acid etched", "V19": "Remineralized", "X18": "Enamel - Volume loss", "Z18": "Enamel - Height loss", "AC3": "Dentine - Volume loss", "AE3": "Dentine - Height loss"},
+  "series": [
+    {"id": "K_native", "endpoint": "indentation_apparent_fracture_toughness", "substrate": "enamel", "condition": "native", "unit": "MPa m^0.5", "range": "T20:T22", "caption_n_samples": 3, "figure": "6d", "hierarchy": "Three caption-aligned values; methods specify at least 5 indents/sample. Sample/donor IDs and indentation-to-sample mapping absent from the selected block."},
+    {"id": "K_acid", "endpoint": "indentation_apparent_fracture_toughness", "substrate": "enamel", "condition": "acid_etched", "unit": "MPa m^0.5", "range": "U20:U22", "caption_n_samples": 3, "figure": "6d", "hierarchy": "Three caption-aligned values; underlying repeated indentations cannot increase independent sample count."},
+    {"id": "K_remineralized", "endpoint": "indentation_apparent_fracture_toughness", "substrate": "enamel", "condition": "remineralized", "unit": "MPa m^0.5", "range": "V20:V22", "caption_n_samples": 3, "figure": "6d", "hierarchy": "Three caption-aligned values; direct donor linkage to native/acid groups is not supplied."},
+    {"id": "enamel_volume_native", "endpoint": "wear_volume_loss", "substrate": "enamel", "condition": "native", "unit": "mm^3", "range": "X20:X27", "caption_n_samples": 8, "figure": "6f", "hierarchy": "Methods use 32 extracted molars, 8 per substrate/condition. Row-to-molar and molar-to-donor IDs absent."},
+    {"id": "enamel_volume_remineralized", "endpoint": "wear_volume_loss", "substrate": "enamel", "condition": "remineralized", "unit": "mm^3", "range": "Y20:Y27", "caption_n_samples": 8, "figure": "6f", "hierarchy": "Group consists of 8 caption-reported samples; row position is not a donor pairing."},
+    {"id": "enamel_height_native", "endpoint": "wear_height_loss", "substrate": "enamel", "condition": "native", "unit": "micrometre", "range": "Z20:Z27", "caption_n_samples": 8, "figure": "6f", "hierarchy": "Height and volume concern the same source groups, not independent replications; individual cross-endpoint mapping unverified."},
+    {"id": "enamel_height_remineralized", "endpoint": "wear_height_loss", "substrate": "enamel", "condition": "remineralized", "unit": "micrometre", "range": "AA20:AA27", "caption_n_samples": 8, "figure": "6f", "hierarchy": "No specimen-ID crosswalk supplied; no paired tests or joint-attainment claim."},
+    {"id": "dentin_volume_native", "endpoint": "wear_volume_loss", "substrate": "dentin", "condition": "native", "unit": "mm^3", "range": "AC5:AC12", "trailing_ambiguous_cell": "AC13", "caption_n_samples": 8, "figure": "6g", "hierarchy": "Conditional first 8-value block aligned to caption count and height-block length; an unlabeled ninth number remains unresolved."},
+    {"id": "dentin_volume_mineralized", "endpoint": "wear_volume_loss", "substrate": "dentin", "condition": "mineralized", "unit": "mm^3", "range": "AD5:AD12", "trailing_ambiguous_cell": "AD13", "caption_n_samples": 8, "figure": "6g", "hierarchy": "The extra numeric cell is retained with identity unknown, not promoted to a ninth specimen."},
+    {"id": "dentin_height_native", "endpoint": "wear_height_loss", "substrate": "dentin", "condition": "native", "unit": "micrometre", "range": "AE5:AE12", "caption_n_samples": 8, "figure": "6g", "hierarchy": "Eight caption-aligned values; no ninth height value, donor or specimen identifier is supplied."},
+    {"id": "dentin_height_mineralized", "endpoint": "wear_height_loss", "substrate": "dentin", "condition": "mineralized", "unit": "micrometre", "range": "AF5:AF12", "caption_n_samples": 8, "figure": "6g", "hierarchy": "Eight caption-aligned values; no pooling with enamel or fracture specimens."}
+  ],
+  "contrasts": [
+    {"id": "fracture_remineralized_vs_native", "reference": "K_native", "candidate": "K_remineralized", "favorable_direction": "higher"},
+    {"id": "fracture_remineralized_vs_acid", "reference": "K_acid", "candidate": "K_remineralized", "favorable_direction": "higher"},
+    {"id": "enamel_volume_loss", "reference": "enamel_volume_native", "candidate": "enamel_volume_remineralized", "favorable_direction": "lower"},
+    {"id": "enamel_height_loss", "reference": "enamel_height_native", "candidate": "enamel_height_remineralized", "favorable_direction": "lower"},
+    {"id": "dentin_volume_loss_conditional_first8", "reference": "dentin_volume_native", "candidate": "dentin_volume_mineralized", "favorable_direction": "lower"},
+    {"id": "dentin_height_loss", "reference": "dentin_height_native", "candidate": "dentin_height_mineralized", "favorable_direction": "lower"}
+  ],
+  "statistics": {
+    "primary_dispersion": "Descriptive sample SD with denominator n_values-1; not a standard error or confidence interval.",
+    "source_dispersion_audit": "Also report population-divisor SD of the exact listed values to inspect the relation to rounded article SDs; do not silently change conventions.",
+    "unlabeled_values": "Compare trailing value to first 8 mean and median; retain exact cell, style, formula and adjacent-label checks. All 9-numeric-values sensitivity is bookkeeping only, not 9 specimens or a summary-cell interpretation.",
+    "no_inference": "No p-values, paired tests, confidence intervals, equivalence claims, donor count or clinical uncertainty inferred from unlabeled source positions."
+  },
+  "limits": [
+    "Apparent indentation fracture toughness is not bulk KIc, host-repair interfacial toughness or full-crown fatigue resistance.",
+    "Wear groups compare untreated native tissue with a preparation-plus-mineralization process; there is no acid-etched-only wear arm in the selected figures.",
+    "Neither lack of reported statistical significance nor similar group means proves native-tissue equivalence.",
+    "No per-specimen layer-depth map, donor linkage, depth/property pairing, crack-path/interface load curve, living PDL or support-withdrawal endpoint is supplied by these numerical blocks.",
+    "No growth rate, repeat-cycle forecast, human dose, application procedure or clinical lifespan conversion is generated."
+  ]
+}

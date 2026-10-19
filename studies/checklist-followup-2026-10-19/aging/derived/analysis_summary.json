@@ -1,0 +1,54 @@
+{
+  "accession": "GSE173078",
+  "analysis_type": "fixed_panel_bulk_age_direction_challenge",
+  "clinical_health": "provider-labelled Healthy, not independently adjudicated",
+  "source_h5ad_used": false,
+  "count_features": 25559,
+  "count_libraries": 36,
+  "participants_by_phenotype": {
+    "Periodontitis": 12,
+    "Healthy": 12,
+    "Gingivitis": 12
+  },
+  "healthy_sex_counts": {
+    "female": 10,
+    "male": 2
+  },
+  "primary_healthy_female_donors": 10,
+  "primary_age_range": [
+    28,
+    75
+  ],
+  "age_effect_rows": 24,
+  "donor_omission_rows": 132,
+  "primary_model": "female_age_batch",
+  "source_receipts_sha256_lf_text": "6ae16291f85868305ecd4edcbfb81e7463ab509ba35be746cce233f9810a55e0",
+  "plan_sha256_lf_text": "1974261f571684dca5b9d35ddb1df46abd42a91c6cb799f3c84a6278f7765fd8",
+  "script_sha256_lf_text": "63ca3a3ad2f49ead0f2fe619034d81788f960a2934e4a376f469680b892d6b46",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "annotation_sensitivity_plan_sha256_lf_text": "2c54dc7411f1b4f68f16c7c5f1f804d82f525fa7c49872b88d98521dbf1a534d",
+  "annotation_sensitivity_status": "Post-hoc official-symbol mapping; primary exact-symbol analysis preserved separately",
+  "output_sha256_lf_text": {
+    "GSE173078_sample_manifest.tsv": "d9c63c4700c1aefff7fabd306886eee54aa62ccb5d0cdbca080ee80c7ff4772e",
+    "cohort_common_support.tsv": "bfd4d9e9b6314abeb799b49b327d24dc0741e9d844cef5f980b3f892c34986fb",
+    "fixed_panel_coverage.tsv": "141cacc5648215355ac429d866ed2265ab54a0479b72fb386600631325a67e07",
+    "fixed_panel_gene_values.tsv": "e43040f4623996805d1d54b475a6f35361cc2e97770f9e267e36dad5cdd83124",
+    "fixed_panel_donor_scores.tsv": "5a83b8580afde982ce59d8775f4fbce4c93b18fbdaab1808a1dd416aee7fe004",
+    "healthy_age_effects.tsv": "27b16b25e625a466fa075aa621827cec9c325fd7f9e9091f787128fae965891b",
+    "healthy_age_donor_omissions.tsv": "c4f5b542c777b2adf990d65171bb74ea48f4ece1430db6745c660dad145a5d1a",
+    "direction_transport.tsv": "8dd33edf257ab400ff68c3633e07c6f48bcc58c9ded3ae45b409e121c25d8996",
+    "annotation_sensitivity_donor_scores.tsv": "d5b5f7a5ce0f762cdc4d2a0a30e24a382eeac89f2c1c1b3cc15eaac5ccaa4f68",
+    "annotation_sensitivity_age_effects.tsv": "135da0dd2320fa8ea15db9997c50574178efd5a74e51712c8923e3ed7a496797",
+    "annotation_sensitivity_donor_omissions.tsv": "cb5e4cdbe6ce1c39d41c367f2cf9bc18c076215193a12fa720ed494f4958e5e8"
+  },
+  "limits": [
+    "GEO labels are source metadata; sampling/extraction indication, oral exposures and detailed health ascertainment are not recovered here.",
+    "Participant codes are one library each in the official patient-based series design. They are not externally verified person identifiers or proof that all historical study participants differ.",
+    "Two healthy men cannot identify a male age trajectory, and no older healthy man occurs in batch B.",
+    "Bulk cell mixture, gene length effects, normalization, cohort and batch may change directions; sign agreement does not establish cell-intrinsic aging.",
+    "A source-labelled healthy transcript association is not an intervention, a measure of lost function, rejuvenation or a repair target."
+  ]
+}

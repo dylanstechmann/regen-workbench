@@ -6,8 +6,11 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
-The [2026-10-19 execution report](../checklist-progress-2026-10-19/README.md)
-records the latest coordinated work across dental restoration, cell-state
+The [2026-10-19 measured-data follow-up](../checklist-followup-2026-10-19/README.md)
+records new dental material, gingival-age reference, pancreatic-spheroid
+function and oral-PK intake work. The
+[earlier execution report](../checklist-progress-2026-10-19/README.md)
+records coordinated work across dental restoration, cell-state
 analysis, compounds, caffeine reversal and organoid/genome-repair integration,
 with concrete next decisions and remaining evidence gaps.
 

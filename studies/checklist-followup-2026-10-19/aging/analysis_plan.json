@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-19",
+  "status": "Exploratory plan written after primary-source and demographic screening, before computing any panel outcomes. Not independently preregistered.",
+  "question": "Do unchanged gingival panel age directions transfer to separately deposited, participant-coded healthy bulk gingiva when donor age, sex and processing batch are observable?",
+  "reference_accession": "GSE173078",
+  "reference_eligibility": "Usable for a bounded source-labelled-healthy, donor-coded bulk-expression age challenge; not a sex-balanced population reference or independent adjudication of clinical health.",
+  "counts_sha256": "2d6f0b1eb9889e65dafa4e9052d71d43e639781b6ccdd325c2595b72c1759c9b",
+  "frozen_panel_coverage": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241/gingival_fixed_panel_coverage.tsv",
+  "frozen_panel_coverage_sha256_lf_text": "12b287cd7017c0922165d62eab804b66526dc3805fbbae11414a42ca8366c23f",
+  "previous_bulk_table": "studies/aging-state-2026-10-11/derived/gingival-age-reference-GSE83382/gingival_age_axis_summary.tsv",
+  "previous_bulk_sha256_lf_text": "b594790630288abccb908d37e47c1392d0143666c46d72db27c8b5cbfe58816a",
+  "previous_cell_table": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241/gingival_healthy_age_slopes.tsv",
+  "previous_cell_sha256_lf_text": "44bc4b080cc5cd15e8e1ac7b5c23c6e8ad6b109f2e505fe2cee0d3369d31d875",
+  "matrix_policy": "Read exact unique gene symbols and nonnegative integer counts, verify every AC column against one official GSM participant code, sum all features for library size. No outcome-based gene filtering, duplicate-symbol picking or differential-expression feature selection.",
+  "normalization": "CPM from each library's total supplied counts, then log1p, then unweighted mean over exactly mapped frozen panel genes. No cross-cohort scaling, age clock, batch correction using evaluation outcomes, training or retraining.",
+  "primary_model": "female_age_batch",
+  "primary_reason": "10 healthy women span 28-75 years and both batches; only two healthy men (32/39) are available. This prespecified restriction is based on metadata, not expression outcomes.",
+  "models": ["all_healthy_age", "all_healthy_age_sex_batch", "female_age", "female_age_batch"],
+  "model_policy": "OLS with intercept and centered age/10; add male and/or batch B indicator only as named. Preserve rank failures; require at least two residual degrees of freedom. Disease and gingivitis samples never enter healthy age fitting.",
+  "donor_omissions": ["female_age_batch", "all_healthy_age_sex_batch"],
+  "diagnostics": "Retain individual omission effects, coefficient ranges, rank, residual degrees of freedom and leverage; these ranges are not confidence intervals.",
+  "comparison_policy": "Compare signs with earlier bulk GSE83382 and the specified GSE164241 cell compartment, without pooling scores, people or effect magnitudes. Mixed bulk and cell-resolved expression are different estimands. Missing genes and age ranges remain visible.",
+  "cell_comparator_by_panel": {
+    "matrix_degradation": "fibroblasts_all",
+    "matrix_inhibitors": "fibroblasts_all",
+    "structural_ecm": "fibroblasts_all",
+    "inflammation": "fibroblasts_all",
+    "epithelial_barrier_identity": "epithelium_all",
+    "fibroblast_stromal_identity": "fibroblasts_all"
+  },
+  "limits": [
+    "GEO labels are source metadata; sampling/extraction indication, oral exposures and detailed health ascertainment are not recovered here.",
+    "Participant codes are one library each in the official patient-based series design. They are not externally verified person identifiers or proof that all historical study participants differ.",
+    "Two healthy men cannot identify a male age trajectory, and no older healthy man occurs in batch B.",
+    "Bulk cell mixture, gene length effects, normalization, cohort and batch may change directions; sign agreement does not establish cell-intrinsic aging.",
+    "A source-labelled healthy transcript association is not an intervention, a measure of lost function, rejuvenation or a repair target."
+  ]
+}

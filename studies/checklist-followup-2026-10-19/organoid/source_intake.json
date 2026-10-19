@@ -1,0 +1,23 @@
+{
+  "retrieved_date": "2026-10-19",
+  "source_doi": "10.1038/s41467-024-45710-4",
+  "license": "CC-BY-4.0",
+  "access_scope": "Full primary XML and unmodified official Source Data workbook; Figure7 captions/methods and source-cell values inspected",
+  "downloads": [
+    {
+      "role": "primary_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10873332/fullTextXML",
+      "local_path": "data/literature/organoid-perfusion-2026-10-19/Quintard_2024_primary.xml",
+      "bytes": 158480,
+      "sha256": "650a1c2e3b494fcf6ca523faf2ca0e7f7953b14bcac80b002ac6497e8439a17e"
+    },
+    {
+      "role": "source_workbook",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-45710-4/MediaObjects/41467_2024_45710_MOESM10_ESM.xlsx",
+      "local_path": "data/literature/organoid-perfusion-2026-10-19/Quintard_2024_source_data.xlsx",
+      "bytes": 29553,
+      "sha256": "ce85f0d6bce6d5dfc992fe7c5b6b60cae2e919cd807ebb23c54cecdc162bc055"
+    }
+  ],
+  "incomplete_supplementary_archive": "Fallback stream stopped once official direct workbook host was identified; incomplete bytes removed; no completed-fetch receipt fabricated"
+}

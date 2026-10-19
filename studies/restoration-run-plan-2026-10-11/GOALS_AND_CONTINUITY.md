@@ -4,10 +4,12 @@ Recorded from the owner's directions in this conversation; updated 2026-10-17.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
-Latest execution: the [2026-10-19 parallel progress report](../checklist-progress-2026-10-19/README.md)
-links new dental-material/attachment work, donor-level aging challenges,
-compound evidence, caffeine modeling and an organoid/genome-repair integration
-audit. Its results are partial progress; all persistent goals below remain.
+Latest execution: the [2026-10-19 measured-data follow-up](../checklist-followup-2026-10-19/README.md)
+adds actual dental-property and pancreatic-spheroid function analyses, a
+separate gingival-age cohort and oral-PK eligibility checks. The
+[earlier coordinated report](../checklist-progress-2026-10-19/README.md) retains
+the compound, caffeine and organoid/genome-repair integration work. These are
+partial advances; all persistent goals below remain.
 
 ## End goals that must survive narrower experiments
 

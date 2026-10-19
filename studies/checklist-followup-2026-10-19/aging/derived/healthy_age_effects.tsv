@@ -1,0 +1,25 @@
+panel	model	n_donors	n_female	n_male	status	slope_per_decade	rank	residual_df	max_leverage	omission_min	omission_max	omission_fits	omission_sign_changes
+matrix_degradation	all_healthy_age	12	10	2	descriptive_only	-0.15881124202043942	2	10	0.3535793105591993			0	
+matrix_degradation	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.2114654448392721	4	8	0.5057133973337491	-0.26412897872667485	-0.10946280349081783	12	0
+matrix_degradation	female_age	10	10	0	descriptive_only	-0.17653598347474417	2	8	0.36153575821472517			0	
+matrix_degradation	female_age_batch	10	10	0	descriptive_only	-0.24421301275037532	3	7	0.48356595242775713	-0.3088215769325714	-0.1553087332191762	10	0
+matrix_inhibitors	all_healthy_age	12	10	2	descriptive_only	-0.08899016385633716	2	10	0.3535793105591993			0	
+matrix_inhibitors	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.1343538393969762	4	8	0.5057133973337491	-0.15736593816750732	-0.06396479707554756	12	0
+matrix_inhibitors	female_age	10	10	0	descriptive_only	-0.12265185990922942	2	8	0.36153575821472517			0	
+matrix_inhibitors	female_age_batch	10	10	0	descriptive_only	-0.13768314491785963	3	7	0.48356595242775713	-0.16184992576004686	-0.06761824617233878	10	0
+structural_ecm	all_healthy_age	12	10	2	descriptive_only	-0.1452945235374065	2	10	0.3535793105591993			0	
+structural_ecm	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.23621158253818508	4	8	0.5057133973337491	-0.29742140934842726	-0.0894436573073294	12	0
+structural_ecm	female_age	10	10	0	descriptive_only	-0.19285865000418112	2	8	0.36153575821472517			0	
+structural_ecm	female_age_batch	10	10	0	descriptive_only	-0.246190024439376	3	7	0.48356595242775713	-0.31074872909144235	-0.10147128661753621	10	0
+inflammation	all_healthy_age	12	10	2	descriptive_only	-0.23216186867969732	2	10	0.3535793105591993			0	
+inflammation	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.23443318759842519	4	8	0.5057133973337491	-0.27113299775289296	-0.12281189326051217	12	0
+inflammation	female_age	10	10	0	descriptive_only	-0.23763682191503363	2	8	0.36153575821472517			0	
+inflammation	female_age_batch	10	10	0	descriptive_only	-0.24562795392269693	3	7	0.48356595242775713	-0.28670073723282224	-0.13516465490229546	10	0
+epithelial_barrier_identity	all_healthy_age	12	10	2	descriptive_only	-0.04205755008697136	2	10	0.3535793105591993			0	
+epithelial_barrier_identity	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.04670010511676281	4	8	0.5057133973337491	-0.09071667136113598	-0.030504227163005132	12	0
+epithelial_barrier_identity	female_age	10	10	0	descriptive_only	-0.03837108374412007	2	8	0.36153575821472517			0	
+epithelial_barrier_identity	female_age_batch	10	10	0	descriptive_only	-0.050093966691787145	3	7	0.48356595242775713	-0.09594564718404654	-0.03432360476981429	10	0
+fibroblast_stromal_identity	all_healthy_age	12	10	2	descriptive_only	-0.205478500514956	2	10	0.3535793105591993			0	
+fibroblast_stromal_identity	all_healthy_age_sex_batch	12	10	2	descriptive_only	-0.2622041149594607	4	8	0.5057133973337491	-0.3066029070125333	-0.1235345026899981	12	0
+fibroblast_stromal_identity	female_age	10	10	0	descriptive_only	-0.2384751534015771	2	8	0.36153575821472517			0	
+fibroblast_stromal_identity	female_age_batch	10	10	0	descriptive_only	-0.2718563593684049	3	7	0.48356595242775713	-0.3192810516337531	-0.13522434912909376	10	0

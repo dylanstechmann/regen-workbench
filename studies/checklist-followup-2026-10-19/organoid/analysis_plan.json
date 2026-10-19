@@ -1,0 +1,67 @@
+{
+  "status": "exploratory reanalysis specified after source/caption inspection; not preregistered",
+  "source_doi": "10.1038/s41467-024-45710-4",
+  "source_workbook_sha256": "ce85f0d6bce6d5dfc992fe7c5b6b60cae2e919cd807ebb23c54cecdc162bc055",
+  "source_sheet": "Figure 7",
+  "source_pair_rows": [
+    4,
+    25
+  ],
+  "source_si_rows": [
+    41,
+    62
+  ],
+  "groups": [
+    {
+      "id": "in_well",
+      "source_label": "In-well",
+      "low_column": 1,
+      "si_column": 1,
+      "expected_observations": 22
+    },
+    {
+      "id": "static_without_vascularization",
+      "source_label": "Static w/o vasc.",
+      "low_column": 3,
+      "si_column": 2,
+      "expected_observations": 5
+    },
+    {
+      "id": "static_with_vascularization",
+      "source_label": "Static with vasc.",
+      "low_column": 5,
+      "si_column": 3,
+      "expected_observations": 5
+    },
+    {
+      "id": "flow_without_vascularization",
+      "source_label": "Flow w/o vasc.",
+      "low_column": 7,
+      "si_column": 4,
+      "expected_observations": 5
+    },
+    {
+      "id": "flow_with_vascularization",
+      "source_label": "Flow with vasc.",
+      "low_column": 9,
+      "si_column": 5,
+      "expected_observations": 11
+    }
+  ],
+  "endpoints": [
+    "per-observation insulin high/low ratio matched to source Figure7d",
+    "mean and median SI per reported condition",
+    "single-observation omission influence on descriptive mean differences",
+    "descriptive four-chip-condition factorial mean contrast"
+  ],
+  "limits": [
+    "Post-source-inspection exploratory selection; no holdout",
+    "Reported spheroid observations, not independent human donors",
+    "Manufacturing, donor and chip/circuit batch mapping unresolved",
+    "ELISA technical duplicates are not additional biological units",
+    "No confirmatory p-value or donor-level interval recalculated",
+    "Functional output is glucose-responsive insulin secretion in the source construct; not complete organ replacement, dental attachment or rejuvenation",
+    "Caption versus workbook statistical-method mismatch retained",
+    "No joint perfusion/identity/function per-region measurements inferred from separate endpoints"
+  ]
+}

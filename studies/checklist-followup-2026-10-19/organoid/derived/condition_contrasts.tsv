@@ -1,0 +1,5 @@
+comparator	mean_si_difference	ratio_of_mean_stimulation_indices	single_observation_omission_min_difference	single_observation_omission_max_difference	interpretation
+in_well	1.1891519858481658	1.8246705854999135	1.0218487168179593	1.3036691249027348	Descriptive assay observations; no donor/batch-independent causal effect or confidence interval
+static_without_vascularization	1.3202296721965951	2.007121280248266	1.1529264031663886	1.434746811251164	Descriptive assay observations; no donor/batch-independent causal effect or confidence interval
+static_with_vascularization	1.1613550230688137	1.790161558727415	0.9940517540386071	1.2758721621233826	Descriptive assay observations; no donor/batch-independent causal effect or confidence interval
+flow_without_vascularization	1.2334786413239718	1.8825404437138131	1.0661753722937652	1.388738970649046	Descriptive assay observations; no donor/batch-independent causal effect or confidence interval

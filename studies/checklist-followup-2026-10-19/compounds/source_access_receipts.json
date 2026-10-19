@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "target_doi": "10.1016/j.jpet.2025.103787",
+  "access_attempts": [
+    {
+      "name": "publisher.html",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0022356525403000",
+      "when": "2026-10-19T15:36:14.003274+00:00",
+      "status": 403,
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "jpet_abstract.html",
+      "url": "https://jpet.aspetjournals.org/article/S0022-3565%2825%2940300-0/abstract",
+      "when": "2026-10-19T15:36:14.117855+00:00",
+      "status": 403,
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "crossref.json",
+      "url": "https://api.crossref.org/works/10.1016/j.jpet.2025.103787",
+      "when": "2026-10-19T15:36:14.228261+00:00",
+      "status": 200,
+      "final_url": "https://api.crossref.org/works/10.1016/j.jpet.2025.103787",
+      "content_type": "application/json",
+      "bytes": 19135,
+      "sha256": "e07293c53fcf692d4f582cba90192f5f11f0374808493a3364e78450aad355fc",
+      "local_path": "data/literature/checklist-followup-compounds-2026-10-19/crossref.json"
+    },
+    {
+      "name": "institution.html",
+      "url": "https://scholars.uhsp.edu/en/publications/an-orally-active-estrogen-receptor-related-receptor-agonist-slu-p/",
+      "when": "2026-10-19T15:36:14.407520+00:00",
+      "status": 200,
+      "final_url": "https://scholars.uhsp.edu/en/publications/an-orally-active-estrogen-receptor-related-receptor-agonist-slu-p/",
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 45612,
+      "sha256": "d2a1ab98fe57b5789486013c0b93dc15caf72c6bbbd643656d38f9e08a666ab9",
+      "local_path": "data/literature/checklist-followup-compounds-2026-10-19/institution.html"
+    },
+    {
+      "name": "registered_tdm.xml",
+      "url": "https://api.elsevier.com/content/article/PII:S0022356525403000?httpAccept=text/xml",
+      "when": "2026-10-19T15:36:53.912447+00:00",
+      "status": 200,
+      "final_url": "https://api.elsevier.com/content/article/PII:S0022356525403000?httpAccept=text/xml",
+      "content_type": "text/xml;charset=UTF-8",
+      "bytes": 1890,
+      "sha256": "c98f43a47e58122eb5f642aedb0a8c03e0bd9fd9618e4cfa8241f0d0e3e758bf",
+      "local_path": "data/literature/checklist-followup-compounds-2026-10-19/registered_tdm.xml",
+      "content_assessment": {
+        "root": "full-text-retrieval-response",
+        "contains_coredata": true,
+        "contains_article_body": false,
+        "contains_numeric_pk_table": false,
+        "note": "HTTP 200 returned core bibliographic XML only; does not qualify numerical article access"
+      }
+    },
+    {
+      "name": "openalex.json",
+      "url": "https://api.openalex.org/works/https://doi.org/10.1016/j.jpet.2025.103787",
+      "when": "2026-10-19T15:36:54.259802+00:00",
+      "status": 200,
+      "final_url": "https://api.openalex.org/works/https://doi.org/10.1016/j.jpet.2025.103787",
+      "content_type": "application/json",
+      "bytes": 19274,
+      "sha256": "3498dee59a78abb7e0e61a6b20993d7c2e455f758750f7f51461b3e0ea2c1195",
+      "local_path": "data/literature/checklist-followup-compounds-2026-10-19/openalex.json"
+    }
+  ],
+  "actual_regen_download_receipts": [
+    {
+      "path": "data/provenance/1792424174407010900_checklist-followup-source-fetch.json",
+      "action": "checklist-followup-source-fetch",
+      "when": "2026-10-19T15:36:14.395727+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-followup-compounds-2026-10-19/crossref.json",
+          "bytes": 19135,
+          "sha256": "e07293c53fcf692d4f582cba90192f5f11f0374808493a3364e78450aad355fc"
+        }
+      ]
+    },
+    {
+      "path": "data/provenance/1792424174705727000_checklist-followup-source-fetch.json",
+      "action": "checklist-followup-source-fetch",
+      "when": "2026-10-19T15:36:14.564766+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-followup-compounds-2026-10-19/institution.html",
+          "bytes": 45612,
+          "sha256": "d2a1ab98fe57b5789486013c0b93dc15caf72c6bbbd643656d38f9e08a666ab9"
+        }
+      ]
+    },
+    {
+      "path": "data/provenance/1792424214258798500_checklist-followup-source-fetch.json",
+      "action": "checklist-followup-source-fetch",
+      "when": "2026-10-19T15:36:54.246639+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-followup-compounds-2026-10-19/registered_tdm.xml",
+          "bytes": 1890,
+          "sha256": "c98f43a47e58122eb5f642aedb0a8c03e0bd9fd9618e4cfa8241f0d0e3e758bf"
+        }
+      ]
+    },
+    {
+      "path": "data/provenance/1792424214721727500_checklist-followup-source-fetch.json",
+      "action": "checklist-followup-source-fetch",
+      "when": "2026-10-19T15:36:54.705216+00:00",
+      "outputs": [
+        {
+          "local_path": "data/literature/checklist-followup-compounds-2026-10-19/openalex.json",
+          "bytes": 19274,
+          "sha256": "3498dee59a78abb7e0e61a6b20993d7c2e455f758750f7f51461b3e0ea2c1195"
+        }
+      ]
+    }
+  ],
+  "primary_indexed_text_access": {
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0022356525403000",
+    "access_mode": "Web search returned indexed primary full text; section 3.2, Figure 2 caption, section 2.6, data availability read",
+    "local_source_bytes_archived": false,
+    "numeric_figure_points_extracted": false
+  },
+  "bounded_repository_checks": {
+    "queries": [
+      "\"10.1016/j.jpet.2025.103787\" dataset OR figshare OR zenodo OR dryad OR mendeley",
+      "\"10.1016/j.jpet.2025.103787\" site:data.mendeley.com",
+      "\"10.1016/j.jpet.2025.103787\" site:figshare.com",
+      "\"S0022356525403000\" \"mmc\""
+    ],
+    "outcome": "No eligible numerical oral PK source located in returned results. This is not an exhaustive repository search or evidence that no data exist."
+  },
+  "not_acquired": [
+    "Oral concentration-time numerical table",
+    "Calibrated Figure 2B extraction",
+    "Parent-specific quantitative assay method/validation",
+    "Per-time n and serial-versus-terminal sampling hierarchy",
+    "Qualified IV reference"
+  ],
+  "boundary": "No credentials, payments, access-control bypass, author contact or external messages. Full texts, figure images and raw source responses are not published in this package."
+}

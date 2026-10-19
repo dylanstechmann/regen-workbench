@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-19",
+  "status": "Post-hoc annotation sensitivity specified after the exact-symbol primary results showed missing CXCL8. Primary results and plan remain unchanged.",
+  "approved_symbol": "CXCL8",
+  "source_previous_symbol": "IL8",
+  "official_record": "HGNC:6025",
+  "source_id": "HGNC_CXCL8",
+  "operation": "Restore the same prespecified ninth inflammation gene using its official previous symbol IL8. Require current CXCL8 to be absent and IL8 to occur exactly once; never sum two symbol rows or select by age correlation.",
+  "model_policy": "Use the original four frozen models and donor sets without tuning. Report separately from the primary eight-exact-symbol inflammation panel, with all donor omissions for the primary female+batch model.",
+  "claim_limit": "An annotation sensitivity is not new feature discovery, clinical inflammation, an age clock or rejuvenation."
+}

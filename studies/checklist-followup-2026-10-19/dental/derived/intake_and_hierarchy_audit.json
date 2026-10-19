@@ -1,0 +1,295 @@
+{
+  "status": "actual_published_material_values_reanalyzed; no new biological experiment",
+  "source_citation": "Hasan A, Chuvilin A, Van Teijlingen A et al. Biomimetic supramolecular protein matrix restores structure and properties of human dental enamel. Nature Communications 16, 9434 (2025). DOI 10.1038/s41467-025-64982-y.",
+  "source_license": "CC BY 4.0; https://creativecommons.org/licenses/by/4.0/",
+  "source_workbook_or_article_files_redistributed": false,
+  "attributed_numeric_extracts_redistributed": true,
+  "source_files": {
+    "workbook": {
+      "sha256": "04dcc52eb9a64a9bd695136ebd71cbfa06ba4f3a77d562436df16002e4cd4dcf",
+      "bytes": 185838555
+    },
+    "article_xml": {
+      "sha256": "a78f5fc40ef98119469a87c07583a0ac2882f634a5edcad67b9a8a5360570057",
+      "bytes": 210765
+    }
+  },
+  "plan_sha256_lf_text": "253c2f9884f7d5dfaf62528cd42c6989ad3a83cd34223b08c78ebbccb7cb8444",
+  "script_sha256_lf_text": "4f873932e4d400faa2dcbc04618f6c1b1d59e1a90ec3d02b02819dcb3318cdb9",
+  "workbook_inventory": {
+    "worksheet_count": 57,
+    "selected_sheets": {
+      "Fig. 3": {
+        "worksheet_member": "xl/worksheets/sheet3.xml",
+        "uncompressed_xml_bytes": 445899,
+        "nonempty_value_cells": 9236
+      },
+      "Fig. 5": {
+        "worksheet_member": "xl/worksheets/sheet5.xml",
+        "uncompressed_xml_bytes": 443603,
+        "nonempty_value_cells": 9306
+      },
+      "Fig. 6": {
+        "worksheet_member": "xl/worksheets/sheet6.xml",
+        "uncompressed_xml_bytes": 113672,
+        "nonempty_value_cells": 2385
+      }
+    },
+    "reader": "Python standard-library OOXML reader; source workbook unchanged"
+  },
+  "assay_linkage": {
+    "doi": "10.1038/s41467-025-64982-y",
+    "assay_sections_verified": [
+      "Apparent fracture toughness analysis",
+      "Chewing & grinding abrasion test",
+      "Statistical analysis"
+    ],
+    "wear_source_hierarchy": "32 extracted human molars; 8 per substrate/condition, donor identities unknown",
+    "fracture_source_hierarchy": "Caption3 samples/group; methods at least5 indents/sample; selected cells have no specimen or indentation crosswalk",
+    "source_error_bar_definition": "Methods say mean +/- SD; denominator not specified",
+    "units_verified_in_methods": {
+      "wear_volume_loss": "mm^3",
+      "wear_height_loss": "micrometre"
+    },
+    "interface_scope": "No quantitative host-repair interface toughness, depth/property pairing or living attachment endpoint in selected numerical blocks"
+  },
+  "selected_numeric_observations": 75,
+  "series_summaries": 13,
+  "contrasts": 6,
+  "ambiguous_trailing_values": [
+    {
+      "series": "dentin_volume_native",
+      "trailing_cell": "AC13",
+      "stored_value": "2.5099999999999998",
+      "value": 2.51,
+      "formula": null,
+      "style": "8",
+      "nearby_labels": {},
+      "nearby_cells": {
+        "AC12": {
+          "value": "1.3959999999999999",
+          "stored_text": "1.3959999999999999",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AD12": {
+          "value": "1.113",
+          "stored_text": "1.113",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AE12": {
+          "value": "12.38",
+          "stored_text": "12.38",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AF12": {
+          "value": "10.837",
+          "stored_text": "10.837",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AC13": {
+          "value": "2.5099999999999998",
+          "stored_text": "2.5099999999999998",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AD13": {
+          "value": "1.67",
+          "stored_text": "1.67",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AE13": {
+          "value": null,
+          "stored_text": null,
+          "type": "n",
+          "style": "7",
+          "formula": null
+        },
+        "AF13": {
+          "value": null,
+          "stored_text": null,
+          "type": "n",
+          "style": "7",
+          "formula": null
+        }
+      },
+      "first8_mean": 2.500875,
+      "first8_median": 2.516,
+      "trailing_minus_first8_mean": 0.009124999999999606,
+      "trailing_minus_first8_median": -0.006000000000000227,
+      "identity": "unresolved: neither specimen nor summary label supplied",
+      "same_row_height_values": {
+        "AE13": null,
+        "AF13": null
+      }
+    },
+    {
+      "series": "dentin_volume_mineralized",
+      "trailing_cell": "AD13",
+      "stored_value": "1.67",
+      "value": 1.67,
+      "formula": null,
+      "style": "8",
+      "nearby_labels": {},
+      "nearby_cells": {
+        "AC12": {
+          "value": "1.3959999999999999",
+          "stored_text": "1.3959999999999999",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AD12": {
+          "value": "1.113",
+          "stored_text": "1.113",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AE12": {
+          "value": "12.38",
+          "stored_text": "12.38",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AF12": {
+          "value": "10.837",
+          "stored_text": "10.837",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AC13": {
+          "value": "2.5099999999999998",
+          "stored_text": "2.5099999999999998",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AD13": {
+          "value": "1.67",
+          "stored_text": "1.67",
+          "type": "n",
+          "style": "8",
+          "formula": null
+        },
+        "AE13": {
+          "value": null,
+          "stored_text": null,
+          "type": "n",
+          "style": "7",
+          "formula": null
+        },
+        "AF13": {
+          "value": null,
+          "stored_text": null,
+          "type": "n",
+          "style": "7",
+          "formula": null
+        }
+      },
+      "first8_mean": 1.67425,
+      "first8_median": 1.424,
+      "trailing_minus_first8_mean": -0.004250000000000087,
+      "trailing_minus_first8_median": 0.246,
+      "identity": "unresolved: neither specimen nor summary label supplied",
+      "same_row_height_values": {
+        "AE13": null,
+        "AF13": null
+      }
+    }
+  ],
+  "indentation_inventory_not_replication": [
+    {
+      "sheet": "Fig. 3",
+      "figure": "3f",
+      "condition": "native",
+      "modulus_range": "AG5:AG102",
+      "listed_indentation_values": 98,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    },
+    {
+      "sheet": "Fig. 3",
+      "figure": "3f",
+      "condition": "acid_etched",
+      "modulus_range": "AI5:AI102",
+      "listed_indentation_values": 98,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    },
+    {
+      "sheet": "Fig. 3",
+      "figure": "3f",
+      "condition": "remineralized",
+      "modulus_range": "AK5:AK73",
+      "listed_indentation_values": 69,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    },
+    {
+      "sheet": "Fig. 5",
+      "figure": "5f",
+      "condition": "native",
+      "modulus_range": "AB5:AB97",
+      "listed_indentation_values": 93,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    },
+    {
+      "sheet": "Fig. 5",
+      "figure": "5f",
+      "condition": "acid_etched",
+      "modulus_range": "AC5:AC102",
+      "listed_indentation_values": 98,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    },
+    {
+      "sheet": "Fig. 5",
+      "figure": "5f",
+      "condition": "mineralized",
+      "modulus_range": "AD5:AD101",
+      "listed_indentation_values": 97,
+      "caption_independent_experiments": 3,
+      "indent_to_experiment_crosswalk": null,
+      "independent_donor_count": null,
+      "reanalysis_state": "inventory_only_not_independent_replicates"
+    }
+  ],
+  "fracture_deficit_recovery_between_group_means_fraction": 0.7341291985872449,
+  "fracture_recovery_qualification": "Descriptive interpolation between reference group means; not percent tooth restored or donor-level recovery",
+  "output_sha256_lf_text": {
+    "material_observations.tsv": "3be12698b5b88695473e10dbbdbe5603b2d459d5079af6cdea64c9f7e38d8eb3",
+    "material_summary.tsv": "20fa7c1d180ea04000474a3a935b3191c01a7c93f40a6d5561327aa32edc96da",
+    "material_contrasts.tsv": "e49ba6752b19cc3558c5a78f28a8219ed5682c57035e7769e571f343389c39ed"
+  },
+  "limits": [
+    "Apparent indentation fracture toughness is not bulk KIc, host-repair interfacial toughness or full-crown fatigue resistance.",
+    "Wear groups compare untreated native tissue with a preparation-plus-mineralization process; there is no acid-etched-only wear arm in the selected figures.",
+    "Neither lack of reported statistical significance nor similar group means proves native-tissue equivalence.",
+    "No per-specimen layer-depth map, donor linkage, depth/property pairing, crack-path/interface load curve, living PDL or support-withdrawal endpoint is supplied by these numerical blocks.",
+    "No growth rate, repeat-cycle forecast, human dose, application procedure or clinical lifespan conversion is generated."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source_statistic_scope": "Original workbook outputs transcribed; no confirmatory test recalculated",
+  "figure_caption_test_description": "unpaired t test, two-tailed",
+  "workbook_test_description": "ANOVA and Dunnett multiple comparisons",
+  "source_anova_f": 11.2,
+  "source_anova_p": "<.001",
+  "source_variance_test": "Brown-Forsythe",
+  "source_variance_test_p": 0.004,
+  "source_total_observations": 48,
+  "claim_limit": "No donor, lot or chip/batch mapping supplied in this workbook; reported spheroids are not independent human donors"
+}

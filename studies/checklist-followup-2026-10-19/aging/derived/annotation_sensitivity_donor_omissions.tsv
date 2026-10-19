@@ -1,0 +1,11 @@
+model	omitted_donor	n_donors	n_female	n_male	status	slope_per_decade	rank	residual_df	max_leverage
+female_age_batch	AC013	9	9	0	descriptive_only	-0.3027289088050465	3	6	0.5432500330556658
+female_age_batch	AC016	9	9	0	descriptive_only	-0.2546158165037279	3	6	0.473640135510639
+female_age_batch	AC018	9	9	0	descriptive_only	-0.14731823649931997	3	6	0.49030760681246116
+female_age_batch	AC024	9	9	0	descriptive_only	-0.2819187855415833	3	6	0.5617609271349537
+female_age_batch	AC050	9	9	0	descriptive_only	-0.3421926547388558	3	6	0.5629444672714057
+female_age_batch	AC052	9	9	0	descriptive_only	-0.30008643032883053	3	6	0.528195330280127
+female_age_batch	AC054	9	9	0	descriptive_only	-0.3156913367852088	3	6	0.50367656478184
+female_age_batch	AC056	9	9	0	descriptive_only	-0.29385033656006837	3	6	0.5049306109838047
+female_age_batch	AC058	9	9	0	descriptive_only	-0.27510259738070786	3	6	0.5119447604433978
+female_age_batch	AC060	9	9	0	descriptive_only	-0.282635061867543	3	6	0.49523219814241515

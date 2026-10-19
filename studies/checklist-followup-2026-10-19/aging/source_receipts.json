@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "scope": "Focused primary-source qualification, not an exhaustive review",
+  "sources": [
+    {
+      "id": "GSE173078",
+      "filename": "GSE173078_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE173nnn/GSE173078/soft/GSE173078_family.soft.gz",
+      "purpose": "Official donor, age, sex, tissue, phenotype and library metadata",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE173nnn/GSE173078/soft/GSE173078_family.soft.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE173078_family.soft.gz",
+      "bytes": 3979,
+      "sha256": "604f072c7dea1bc9c40888c40fa67426b1a6fe407fd1236e4fee19ce3e4cb493",
+      "provenance_path": "data/provenance/1792424224980810100_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "GSE111523",
+      "filename": "GSE111523_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE111nnn/GSE111523/soft/GSE111523_family.soft.gz",
+      "purpose": "Official donor, age, sex, tissue, phenotype and library metadata",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE111nnn/GSE111523/soft/GSE111523_family.soft.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE111523_family.soft.gz",
+      "bytes": 3105,
+      "sha256": "79a9bb9e0a3f107e613340cc1b5fe217b8a422d04fc5d3ed37edcf87034e0b35",
+      "provenance_path": "data/provenance/1792424225181951500_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "GSE133603",
+      "filename": "GSE133603_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE133nnn/GSE133603/soft/GSE133603_family.soft.gz",
+      "purpose": "Official donor, age, sex, tissue, phenotype and library metadata",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE133nnn/GSE133603/soft/GSE133603_family.soft.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE133603_family.soft.gz",
+      "bytes": 3998,
+      "sha256": "46e42ca9f9cc62445a81709ee643294972727e8fd93ae59809379d37244f0132",
+      "provenance_path": "data/provenance/1792424225340234500_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "GSE224044",
+      "filename": "GSE224044_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE224nnn/GSE224044/soft/GSE224044_family.soft.gz",
+      "purpose": "Official donor, age, sex, tissue, phenotype and library metadata",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE224nnn/GSE224044/soft/GSE224044_family.soft.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE224044_family.soft.gz",
+      "bytes": 2345,
+      "sha256": "d4d72eae81e17156fc9da8b80e5c4b8c720866d8fdc150c970f8a99b9187daf9",
+      "provenance_path": "data/provenance/1792424225480217900_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "cilia_aging_primary",
+      "filename": "PMC13354758.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13354758/fullTextXML",
+      "purpose": "Independent 2026 human healthy-gingiva single-cell aging source, methods and data availability",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13354758/fullTextXML",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/PMC13354758.xml",
+      "bytes": 129049,
+      "sha256": "43e26f7f4f87d8d9ac83f349c98bacf6f24d8e1b0ef916db4298c8e034568a59",
+      "provenance_path": "data/provenance/1792424226940353900_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "GSE312885",
+      "filename": "GSE312885_family.soft.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE312nnn/GSE312885/soft/GSE312885_family.soft.gz",
+      "purpose": "Official donor, age, sex, tissue, phenotype and library metadata",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE312nnn/GSE312885/soft/GSE312885_family.soft.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE312885_family.soft.gz",
+      "bytes": 3157,
+      "sha256": "1e782926f066f7d96760791a07f02fcb621c236d333adae3c1d869bb0dd96671",
+      "provenance_path": "data/provenance/1792424330517384600_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "GSE173078_counts",
+      "filename": "GSE173078_rnaseq_raw_counts.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE173nnn/GSE173078/suppl/GSE173078_rnaseq_raw_counts.txt.gz",
+      "purpose": "Small official integer gene-count matrix; download only after metadata qualification",
+      "final_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE173nnn/GSE173078/suppl/GSE173078_rnaseq_raw_counts.txt.gz",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/GSE173078_rnaseq_raw_counts.txt.gz",
+      "bytes": 1202359,
+      "sha256": "2d6f0b1eb9889e65dafa4e9052d71d43e639781b6ccdd325c2595b72c1759c9b",
+      "provenance_path": "data/provenance/1792424330831914800_checklist-independent-oral-reference-fetch.json"
+    },
+    {
+      "id": "HGNC_CXCL8",
+      "filename": "HGNC_CXCL8.json",
+      "url": "https://rest.genenames.org/fetch/symbol/CXCL8",
+      "purpose": "Official previous-symbol mapping for a separately labelled post-outcome annotation sensitivity",
+      "final_url": "https://rest.genenames.org/fetch/symbol/CXCL8",
+      "local_path": "data/literature/checklist-aging-followup-2026-10-19/HGNC_CXCL8.json",
+      "bytes": 1608,
+      "sha256": "6a7f276eb5a7b259bb4514b6dbab82f9e9b656db68c42d1b1fe3c2f19bb1a30e",
+      "provenance_path": "data/provenance/1792424579819493300_checklist-independent-oral-reference-fetch.json"
+    }
+  ]
+}

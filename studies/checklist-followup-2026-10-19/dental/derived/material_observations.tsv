@@ -1,0 +1,76 @@
+series	endpoint	substrate	condition	sheet	cell	source_numeric_text	value	unit	source_position_not_specimen_id	observation_status	specimen_id	donor_id	formula
+K_native	indentation_apparent_fracture_toughness	enamel	native	Fig. 6	T20	1.0402943760447401	1.04029437604474	MPa m^0.5	1	caption_aligned_values			none
+K_native	indentation_apparent_fracture_toughness	enamel	native	Fig. 6	T21	1.2705166421953167	1.2705166421953167	MPa m^0.5	2	caption_aligned_values			none
+K_native	indentation_apparent_fracture_toughness	enamel	native	Fig. 6	T22	1.3387095924570729	1.3387095924570729	MPa m^0.5	3	caption_aligned_values			none
+K_acid	indentation_apparent_fracture_toughness	enamel	acid_etched	Fig. 6	U20	0.6336018269688658	0.6336018269688658	MPa m^0.5	1	caption_aligned_values			none
+K_acid	indentation_apparent_fracture_toughness	enamel	acid_etched	Fig. 6	U21	0.71600845324077489	0.7160084532407749	MPa m^0.5	2	caption_aligned_values			none
+K_acid	indentation_apparent_fracture_toughness	enamel	acid_etched	Fig. 6	U22	0.82334580452927708	0.8233458045292771	MPa m^0.5	3	caption_aligned_values			none
+K_remineralized	indentation_apparent_fracture_toughness	enamel	remineralized	Fig. 6	V20	0.93729192046252807	0.9372919204625281	MPa m^0.5	1	caption_aligned_values			none
+K_remineralized	indentation_apparent_fracture_toughness	enamel	remineralized	Fig. 6	V21	1.1419280290286669	1.1419280290286669	MPa m^0.5	2	caption_aligned_values			none
+K_remineralized	indentation_apparent_fracture_toughness	enamel	remineralized	Fig. 6	V22	1.1777252673517802	1.1777252673517802	MPa m^0.5	3	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X20	2.7759999999999998	2.776	mm^3	1	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X21	4.7990000000000004	4.799	mm^3	2	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X22	4.2729999999999997	4.273	mm^3	3	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X23	1.6419999999999999	1.642	mm^3	4	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X24	1.587	1.587	mm^3	5	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X25	3.286	3.286	mm^3	6	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X26	2.5579999999999998	2.558	mm^3	7	caption_aligned_values			none
+enamel_volume_native	wear_volume_loss	enamel	native	Fig. 6	X27	2.4180000000000001	2.418	mm^3	8	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y20	5.96	5.96	mm^3	1	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y21	5.2089999999999996	5.209	mm^3	2	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y22	2.74	2.74	mm^3	3	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y23	1.9390000000000001	1.939	mm^3	4	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y24	3.1880000000000002	3.188	mm^3	5	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y25	2.5939999999999999	2.594	mm^3	6	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y26	4.5330000000000004	4.533	mm^3	7	caption_aligned_values			none
+enamel_volume_remineralized	wear_volume_loss	enamel	remineralized	Fig. 6	Y27	1.83	1.83	mm^3	8	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z20	27.097000000000001	27.097	micrometre	1	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z21	43.494999999999997	43.495	micrometre	2	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z22	42.445999999999998	42.446	micrometre	3	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z23	16.555	16.555	micrometre	4	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z24	19.334	19.334	micrometre	5	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z25	33.753	33.753	micrometre	6	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z26	24.943999999999999	24.944	micrometre	7	caption_aligned_values			none
+enamel_height_native	wear_height_loss	enamel	native	Fig. 6	Z27	25.416	25.416	micrometre	8	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA20	34.328000000000003	34.328	micrometre	1	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA21	49.23	49.23	micrometre	2	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA22	27.584	27.584	micrometre	3	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA23	19.803000000000001	19.803	micrometre	4	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA24	28.925000000000001	28.925	micrometre	5	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA25	27.940999999999999	27.941	micrometre	6	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA26	36.511000000000003	36.511	micrometre	7	caption_aligned_values			none
+enamel_height_remineralized	wear_height_loss	enamel	remineralized	Fig. 6	AA27	20.096	20.096	micrometre	8	caption_aligned_values			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC5	2.931	2.931	mm^3	1	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC6	1.26	1.26	mm^3	2	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC7	1.7390000000000001	1.739	mm^3	3	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC8	3.899	3.899	mm^3	4	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC9	2.101	2.101	mm^3	5	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC10	3.5760000000000001	3.576	mm^3	6	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC11	3.105	3.105	mm^3	7	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC12	1.3959999999999999	1.396	mm^3	8	conditional_caption_aligned_first8			none
+dentin_volume_native	wear_volume_loss	dentin	native	Fig. 6	AC13	2.5099999999999998	2.51	mm^3		ambiguous_trailing_cell_not_a_specimen			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD5	2.44	2.44	mm^3	1	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD6	3.0790000000000002	3.079	mm^3	2	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD7	1.51	1.51	mm^3	3	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD8	1.3080000000000001	1.308	mm^3	4	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD9	1.6080000000000001	1.608	mm^3	5	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD10	1.3380000000000001	1.338	mm^3	6	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD11	0.998	0.998	mm^3	7	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD12	1.113	1.113	mm^3	8	conditional_caption_aligned_first8			none
+dentin_volume_mineralized	wear_volume_loss	dentin	mineralized	Fig. 6	AD13	1.67	1.67	mm^3		ambiguous_trailing_cell_not_a_specimen			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE5	31.065000000000001	31.065	micrometre	1	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE6	22.446000000000002	22.446	micrometre	2	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE7	17	17.0	micrometre	3	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE8	41.374000000000002	41.374	micrometre	4	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE9	22.466999999999999	22.467	micrometre	5	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE10	41.008000000000003	41.008	micrometre	6	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE11	36.543999999999997	36.544	micrometre	7	caption_aligned_values			none
+dentin_height_native	wear_height_loss	dentin	native	Fig. 6	AE12	12.38	12.38	micrometre	8	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF5	27.881	27.881	micrometre	1	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF6	27.948	27.948	micrometre	2	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF7	15.622999999999999	15.623	micrometre	3	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF8	15.545	15.545	micrometre	4	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF9	15.525	15.525	micrometre	5	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF10	11.654	11.654	micrometre	6	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF11	9.5579999999999998	9.558	micrometre	7	caption_aligned_values			none
+dentin_height_mineralized	wear_height_loss	dentin	mineralized	Fig. 6	AF12	10.837	10.837	micrometre	8	caption_aligned_values			none
