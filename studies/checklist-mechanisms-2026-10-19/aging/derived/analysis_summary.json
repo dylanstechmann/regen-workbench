@@ -1,0 +1,48 @@
+{
+  "status": "partial_captured_cell_RNA_mixture_challenge",
+  "whole_tissue_reconstruction": false,
+  "new_source_fetches": 0,
+  "donor_counts": {
+    "healthy": 13,
+    "periodontitis": 5
+  },
+  "n_disjoint_compartments": 9,
+  "n_panels": 6,
+  "unique_panel_genes_shared_by_all_donor_compartment_keys": 40,
+  "panel_gene_counts": {
+    "matrix_degradation": 8,
+    "matrix_inhibitors": 3,
+    "structural_ecm": 8,
+    "inflammation": 9,
+    "epithelial_barrier_identity": 9,
+    "fibroblast_stromal_identity": 9
+  },
+  "age_model_rows": 90,
+  "donor_omission_rows": 468,
+  "max_gene_reconstruction_absolute_CPM_error": 1.8189894035458565e-12,
+  "plan_sha256_lf_text": "d7d1ebaef50d96a0f41f15d179b052b18d894bc26c915fd134807c35f5d60ba1",
+  "frozen_RNA_weights_sha256_lf_text": "524cbbb9b871c3a783c5f7074d8224869c226c1f713020275614170c09e885d9",
+  "script_sha256_lf_text": "e3e50f3e433d5fe30892008c7904b084dee153ba487bd293a098e8616eeac7ff",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "output_sha256_lf_text": {
+    "partial_mixture_gene_values.tsv": "ecccbb2208d306bda0aabb31e2e8d541c941f89322487dbd721c898d1039d74f",
+    "partial_mixture_donor_scores.tsv": "bbe4906e49d285559fdc38a57b9b9171d3757e6478fd7e0441d210663c235d27",
+    "healthy_age_effects.tsv": "5ad74a1d3a719ba05be8e4145e83998ba18393ebca7c19f55cd2d8906547ee7a",
+    "healthy_age_donor_omissions.tsv": "7813bdb8a8aa6e324bcd282b2631ee1f9296220411772422b2b7e229f2e14e9f",
+    "direction_challenge.tsv": "1c2a6c4fe9403655856b1c5859e70aee6edf172bd2b6550156463707c757fd7d"
+  },
+  "metadata_output_sha256_lf_text": {
+    "capture_coverage_audit.json": "547ca05c5ccf90c6cc18a84333a92255e69a81c3a4240ad552dd3b6394f9ed29",
+    "donor_compartment_metadata.tsv": "44dc48e3f12fefa7ef1cb332f19ad81603a930ef70b2988c3e4e23a9896b456d"
+  },
+  "limits": [
+    "Selected groups cover 85,752 of 86,138 captured cells; omitted cell-cycle/melanocyte/Schwann/Merkel labels lack retained raw pseudobulk. Their UMI contribution is unknown.",
+    "Captured single-cell RNA fractions are affected by dissociation, capture, annotation and sequencing; they are not measured intact-tissue cell/RNA fractions.",
+    "Common-composition standardization is an algebraic observational sensitivity, not a causal intervention or reconstruction of whole gingiva.",
+    "The same inferred donors and correlated panels are reused. No biological age clock, training, donor-independent validation or rejuvenation claim.",
+    "Cell mixture cannot be separated from all cohort, tissue-site, age-range, health and assay differences between studies."
+  ]
+}

@@ -1,11 +1,14 @@
 # Persistent goals and continuity
 
-Recorded from the owner's directions in this conversation; updated 2026-10-17.
+Recorded from the owner's directions in this conversation; updated 2026-10-19.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
-Latest execution: the [2026-10-19 measured-data follow-up](../checklist-followup-2026-10-19/README.md)
-adds actual dental-property and pancreatic-spheroid function analyses, a
+Latest execution: the [2026-10-19 mechanism challenges](../checklist-mechanisms-2026-10-19/README.md)
+add a specimen-linked dental analysis bridge, a broader captured-cell RNA
+composition challenge, SS-31 exposure/material-burden work and finite-capacity
+caffeine binding. The [measured-data follow-up](../checklist-followup-2026-10-19/README.md)
+retains the actual dental-property and pancreatic-spheroid function analyses,
 separate gingival-age cohort and oral-PK eligibility checks. The
 [earlier coordinated report](../checklist-progress-2026-10-19/README.md) retains
 the compound, caffeine and organoid/genome-repair integration work. These are
@@ -50,9 +53,10 @@ records the wider repair and youthful-function priorities.
 
 ## Earlier compound questions remain in the backlog
 
-These are retained questions, not validated designs, treatments or confirmed
-ongoing analyses. Their current repository artifacts were not audited in this
-continuity update. Verify compound identities and evidence before resuming.
+These remain research questions, not validated designs or treatments. Selected
+current audits are linked in the execution reports above; other entries are
+retained for later work. Verify compound identities and evidence before resuming
+an unaudited question.
 
 | Earlier request | Research question to retain |
 | --- | --- |

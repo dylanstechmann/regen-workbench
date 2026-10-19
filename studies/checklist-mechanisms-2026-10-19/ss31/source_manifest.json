@@ -1,0 +1,77 @@
+{
+  "study": "SS-31 useful exposure and released-material audit",
+  "date": "2026-10-19",
+  "source_files": [
+    {
+      "source_id": "fda_review",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/215244Orig1s000IntegratedR.pdf",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/FDA_integrated_review.pdf",
+      "bytes": 20587533,
+      "sha256": "354af3d2efb096379db185bcbd181635c91bbe0c1a3a2327c375a16f820f2415",
+      "actual_fetch_receipt": "data/provenance/1792436220895010300_checklist-ss31-source-fetch.json",
+      "access_scope": "Complete downloaded PDF; image tables visually checked on PDF pp256,259,272. Printed page is PDF page minus69 in those sections."
+    },
+    {
+      "source_id": "fda_label",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215244s000lbl.pdf",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/FDA_label.pdf",
+      "bytes": 1187499,
+      "sha256": "1a32a3b7452b7c33c4a60b7f9175f80fcce499775feb39b4c14743293e6bf618",
+      "actual_fetch_receipt": "data/provenance/1792436221053046500_checklist-ss31-source-fetch.json",
+      "access_scope": "Complete downloaded label, sections11-12.3."
+    },
+    {
+      "source_id": "patent_process",
+      "url": "https://patents.google.com/patent/EP3160984B1/en",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/EP3160984B1.html",
+      "bytes": 189837,
+      "sha256": "2de8a11047dabec96fc5772e7c6b753f9b5bd520f27ea0bd99db9e52f85ca350",
+      "actual_fetch_receipt": "data/provenance/1792436220243629400_checklist-ss31-source-fetch.json",
+      "access_scope": "Downloaded primary patent HTML, examples and general assertions; no independent commercial process audit."
+    },
+    {
+      "source_id": "patent_intermediate",
+      "url": "https://patents.google.com/patent/EP3774844B1/en",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/EP3774844B1.html",
+      "bytes": 233471,
+      "sha256": "3d8b5334728beab906a241007fb52da6c137074715b5ecb9bae5352f4b0eb7c0",
+      "actual_fetch_receipt": "data/provenance/1792436413725577300_checklist-ss31-source-fetch.json",
+      "access_scope": "Downloaded primary patent HTML; Example 2 crystalline Compound II is an intermediate, not released parent."
+    },
+    {
+      "source_id": "elife_challenge",
+      "url": "https://elifesciences.org/articles/75531",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/elife75531.html",
+      "bytes": 3038,
+      "sha256": "32ed63159c77e21ee19ca1b9aa3213ccf0218eb59539560b132a8e68ef0e18ea",
+      "actual_fetch_receipt": "data/provenance/1792436221243527900_checklist-ss31-source-fetch.json",
+      "access_scope": "HTTP success returned a client challenge, not article contents; excluded from scientific extraction."
+    },
+    {
+      "source_id": "elife_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9342957/fullTextXML",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/elife75531.xml",
+      "bytes": 337811,
+      "sha256": "6d81bf36a4a69f1ab637a915cd4767e20d2550c0d520a6114347ac437244e24f",
+      "actual_fetch_receipt": "data/provenance/1792436415372351000_checklist-ss31-source-fetch.json",
+      "access_scope": "Complete primary article XML from repository; DOI 10.7554/eLife.75531. Figure6 caption and methods checked."
+    },
+    {
+      "source_id": "elife_figure6",
+      "url": "https://cdn.elifesciences.org/articles/75531/elife-75531-fig6-data1-v1.xlsx",
+      "relative_cached_path": "data/literature/checklist-ss31-mechanisms-2026-10-19/elife75531_figure6.xlsx",
+      "bytes": 14205,
+      "sha256": "a1e38222b6e4767d82d796f655761e84e4e59bcf58b1f163c9fccb35bcf48d45",
+      "actual_fetch_receipt": "data/provenance/1792436605436787500_checklist-ss31-source-fetch.json",
+      "access_scope": "Primary Figure6 source workbook. Read-only extraction. Workbook values are already normalized; raw images/denominators not available here."
+    }
+  ],
+  "prior_atlas": {
+    "commit": "af7b57c2cfad64683f82044199cca812a01b9a03",
+    "audit_url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/ss31-analog-audit-2026-10-09/README.md",
+    "delivery_audit_url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/peptide-delivery-transfer-2026-10-09/README.md",
+    "model_url": "https://github.com/dylanstechmann/geroscience-compound-atlas/blob/af7b57c2cfad64683f82044199cca812a01b9a03/studies/oral-targeting-feasibility-2026-10-09/analysis_models.py",
+    "access": "Read-only GitHub source fetch, no local download and no fetch provenance receipt invented."
+  },
+  "artifact_policy": "Downloaded raw sources and actual-fetch receipts remain ignored locally. Derived numeric inputs carry source locations and hashes. No source images, preparation recipes, sequences or clinical regimens copied into tracked artifacts."
+}

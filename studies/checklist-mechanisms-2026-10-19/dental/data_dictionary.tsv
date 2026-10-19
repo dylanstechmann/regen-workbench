@@ -1,0 +1,39 @@
+table_or_object	field	unit_or_type	grain	meaning_and_requirement
+dataset	data_kind	text	one dataset	Declare empty template, synthetic software fixture or an actual registered dataset; synthetic records cannot be presented as biological results.
+dataset	assay_id	identifier	one dataset	One qualified common material/load-assay definition; analyze incompatible assays separately.
+dataset	baseline_material_state_id	identifier	one dataset	Common depth/leakage/indentation snapshot state; terminal crack paths and later fatigue follow-up are separate endpoints.
+dataset	baseline_assessment_cycles	cycles	one dataset	Same baseline exposure for material snapshots; cannot pool different times by giving them the same label.
+dataset	fatigue_horizon_cycles	cycles	one dataset	Predeclared observation horizon H for first material failure; an estimand time point, not a clinical acceptance margin.
+dataset	depth_statistic	minimum_over_registered_region	one dataset	Requires independently measured minimum repair depth over the predeclared region; not maximum depth or an isolated favorable image.
+dataset	leakage_unit	nonnegative_normalized_assay_units	one dataset	Assay-specific nonnegative scale; no cross-assay conversion, clinical cutoff or zero imputation.
+specimens	specimen_id	identifier	one assigned physical specimen	Unique pseudonymous registry key; register failures/missing follow-up before outcomes. Workbook cell positions are not specimen IDs.
+specimens	donor_id	identifier or null	one donor	Known physical donor identity; null means unknown, never a new independent donor per row.
+specimens	tooth_id	identifier or null	one tooth nested in donor	Multiple coupons from one tooth remain nested; a known tooth cannot map to two different donors.
+specimens	batch_id	identifier	one manufacturing batch	Retain batch even when confounded with donor or condition; no causal batch correction is estimated here.
+specimens	region_id	identifier	one declared repair region per specimen	The target and all linked measurements must refer to this same registered region; repeated regions are not additional independent specimens.
+specimens	condition	text	one specimen	Prospectively defined experimental comparison label; not inferred from favorable outcomes.
+specimens	substrate	retained_enamel or exposed_dentin or restorative_boundary	one specimen	Keep interface evidence separate by surviving substrate; do not inherit native-enamel results at a restoration edge.
+specimens	architecture	text	one specimen	Actual candidate/reference architecture; growth and prefabricated insert are distinct labels.
+specimens	target_depth_um	micrometres or null	one specimen/region	Individually defined intended repair depth. This script treats it as a supplied point target; uncertainty in the target needs a separately qualified extension.
+measurements	specimen_id and region_id	identifiers	one snapshot packet per assigned specimen	Must join the registry exactly; duplicate packets, unknown specimens or mismatched regions fail validation.
+measurements	state_id and assessment_cycles	identifier and cycles	one baseline snapshot	Must match the common dataset baseline state/time. Destructive endpoints cannot be assigned to a still-tested coupon without valid lineage/time evidence.
+measurements	missing_reasons	endpoint-to-text mapping	one incomplete packet	Every null depth, leakage, terminal crack-path or fatigue field needs an explicit reason, including unknown reason when appropriate; absent entire packets remain in the assigned denominator.
+depth	value_um	micrometres	one baseline specimen/region statistic	Observed regional depth statistic; retained even if target is missing. It is not an indentation count or a source configuration depth.
+depth	bounds_um	lower/upper micrometres or null	one depth statistic	Measurement bounds must bracket the observed value. Results state interval position relative to supplied target, never full material acceptance.
+depth	bounds_kind	text when bounds exist	one depth statistic	Specify measurement bound, confidence-interval procedure or synthetic bounds; subtraction does not change its uncertainty interpretation.
+leakage	kind	exact or left_censored or right_censored	one baseline specimen/region	Exact is a measured value; left uses interval[0,limit]; right uses[limit,unbounded]. No LOD/2 substitution.
+leakage	value	nonnegative assay units	one leakage measurement	Measured value or censoring limit under the common assay. A null record contributes unknown[0,unbounded] only to all-assigned bounds, not an observed zero.
+terminal_crack_path	category	none_detected or interfacial or mixed or cohesive_host or cohesive_repair	one terminal specimen observation	Describe observed crack route; none detected depends on assay resolution. Cohesive host/repair damage is not a successful interface or complete repair.
+terminal_crack_path	assessment_cycles	cycles	one terminal specimen observation	Actual time of crack-path adjudication; distributions at varying terminal times are not crack incidence at H or pre-fatigue predictors.
+fatigue	kind	event or right_censored	one first-failure follow-up record	Only first material failure is an event; technical fixture loss is a censoring reason and must not become an event or successful runout.
+fatigue	cycle_bounds	lower/upper cycles for event	one event	Exact event uses equal bounds. Failure known by H when upper<=H; no failure by H when lower>H; a straddling interval remains unknown.
+fatigue	failure_mode	interfacial or mixed or cohesive_host or cohesive_repair	one observed material event	Keep adverse material failure modes separately; a causal mechanism is not established by the label alone.
+fatigue	cycles and reason	cycles and planned_runout/technical_loss/withdrawal/lost_follow_up	one censored follow-up	A censored specimen is known without failure by H only if observed event-free through H; censoring before H stays unknown without independent-censoring assumptions.
+indentations	indent_id	identifier	one repeated indentation	Unique measurement key; additional indents do not increase tooth/donor count.
+indentations	specimen_id/region_id/state_id/assessment_cycles	identifiers and cycles	one indentation	Must join the same physical registry region and qualified baseline snapshot as other baseline material observations.
+indentations	endpoint and unit	indentation_apparent_fracture_toughness and MPa m^0.5	one indentation	Study implementation supports this Hasan-anchored property only; not bulk KIc, host-repair junction toughness or a universal material score.
+indentations	value	nonnegative MPa m^0.5	one indentation	Average within specimen first, then within tooth and donor for the declared balanced estimand; report endpoint missingness and unknown identities.
+output	hierarchical_mean	material endpoint units	observed endpoint subset	Reports specimen-weighted and equal-tooth-then-equal-donor means with observed/assigned counts; no p-values, confidence intervals or causal effect.
+output	fatigue_failure_fraction_bounds	fraction	all assigned specimens in condition/substrate/architecture/target stratum	Lower=failure_known/N; upper=(failure_known+unknown)/N. These are finite-cohort identification bounds, not confidence limits or acceptance thresholds.
+output	leakage_all_assigned_mean_bounds	assay units	all assigned specimens in stratum	Average lower/upper observation bounds; null upper means no finite bound. This is not the mean of complete cases or an imputed-data estimate.
+output	full_restoration_domains	unassessed	all parent contract domains	Material analysis cannot pass PDL, gums, pulp, original pose, full-crown load transfer or stability after finite support withdrawal.

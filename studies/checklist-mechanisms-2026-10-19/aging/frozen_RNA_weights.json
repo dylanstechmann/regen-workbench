@@ -1,0 +1,38 @@
+{
+  "status": "Frozen from metadata before panel outcomes; exploratory, not preregistered",
+  "rule": "Equal-donor arithmetic mean of each healthy donor's included-compartment RNA fractions",
+  "reference_donors": [
+    "health:136",
+    "health:143",
+    "health:144",
+    "health:147",
+    "health:148",
+    "health:169",
+    "health:183",
+    "health:184",
+    "health:238",
+    "health:241",
+    "health:242",
+    "health:283",
+    "health:289"
+  ],
+  "n_reference_donors": 13,
+  "weights": {
+    "fibroblasts_all": 0.2622924012352594,
+    "epithelium_all": 0.12572985199591963,
+    "endothelium_all": 0.3832910055484895,
+    "perivascular_support": 0.05141042999420602,
+    "dendritic_cells_all": 0.027521147292908887,
+    "lymphoid_all": 0.11245996771059508,
+    "neutrophils": 0.008170343042347497,
+    "macrophages_monocytes": 0.013656158493745225,
+    "mast_cells": 0.015468694686528787
+  },
+  "selected_gene_values_used": false,
+  "age_labels_used_to_optimize_weights": false,
+  "disease_donors_used": false,
+  "pooled_donor_counts_used": false,
+  "cell_fraction_substituted_for_RNA": false,
+  "plan_sha256_lf_text": "d7d1ebaef50d96a0f41f15d179b052b18d894bc26c915fd134807c35f5d60ba1",
+  "metadata_script_sha256_lf_text": "9e6c1a556ba3d567c6a5338745c299486f4d7fd7427ba7e454a9e5eee584a10e"
+}

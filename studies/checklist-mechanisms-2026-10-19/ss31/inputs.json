@@ -1,0 +1,524 @@
+{
+  "version": 1,
+  "compound": "SS-31 / elamipretide, unchanged parent unless explicitly stated",
+  "fda_label": {
+    "source_id": "fda_label",
+    "section": "12.3",
+    "human_sc_absolute_bioavailability_approx": 0.92,
+    "protein_bound_fraction_approx": 0.39,
+    "oral_parent_bioavailability": null,
+    "target_intact_parent_access": null,
+    "released_parent_unit_cost": null
+  },
+  "human_plasma_stability": {
+    "source_id": "fda_review",
+    "pdf_pages": [
+      250,
+      251
+    ],
+    "printed_pages": [
+      181,
+      182
+    ],
+    "matrix": "pooled male human plasma, in vitro",
+    "assay": "LC-MS/MS after incubation through 6 h; fitted half-life can exceed observation window",
+    "replicates": 3,
+    "reported_half_life_h": [
+      30.8,
+      26.1
+    ],
+    "statistic": "reported fitted values at two assay inputs; not a confidence interval"
+  },
+  "human_iv_parent_pk": {
+    "source_id": "fda_review",
+    "pdf_page": 256,
+    "printed_page": 187,
+    "table": "103",
+    "route": "IV",
+    "population": "healthy volunteers",
+    "statistic": "mean and SD, six subjects per source cohort",
+    "cohorts": [
+      {
+        "cohort_id": "IV-1",
+        "n_subjects": 6,
+        "terminal_half_life_h_mean": 3.23,
+        "terminal_half_life_h_sd": 0.53,
+        "clearance_mL_h_kg_mean": 134.2,
+        "clearance_mL_h_kg_sd": 21.96,
+        "mean_residence_time_h_mean": 2.4,
+        "mean_residence_time_h_sd": 0.24,
+        "vss_mL_kg_mean": 320.2,
+        "vss_mL_kg_sd": 49.4
+      },
+      {
+        "cohort_id": "IV-2",
+        "n_subjects": 6,
+        "terminal_half_life_h_mean": 3.79,
+        "terminal_half_life_h_sd": 0.31,
+        "clearance_mL_h_kg_mean": 147.2,
+        "clearance_mL_h_kg_sd": 16.6,
+        "mean_residence_time_h_mean": 2.65,
+        "mean_residence_time_h_sd": 0.26,
+        "vss_mL_kg_mean": 392.8,
+        "vss_mL_kg_sd": 76.4
+      },
+      {
+        "cohort_id": "IV-3",
+        "n_subjects": 6,
+        "terminal_half_life_h_mean": 3.93,
+        "terminal_half_life_h_sd": 0.43,
+        "clearance_mL_h_kg_mean": 131.6,
+        "clearance_mL_h_kg_sd": 23.2,
+        "mean_residence_time_h_mean": 2.64,
+        "mean_residence_time_h_sd": 0.48,
+        "vss_mL_kg_mean": 340.2,
+        "vss_mL_kg_sd": 35.5
+      },
+      {
+        "cohort_id": "IV-4",
+        "n_subjects": 6,
+        "terminal_half_life_h_mean": 3.27,
+        "terminal_half_life_h_sd": 0.38,
+        "clearance_mL_h_kg_mean": 120.3,
+        "clearance_mL_h_kg_sd": 16.4,
+        "mean_residence_time_h_mean": 2.58,
+        "mean_residence_time_h_sd": 0.27,
+        "vss_mL_kg_mean": 307.8,
+        "vss_mL_kg_sd": 30.4
+      },
+      {
+        "cohort_id": "IV-5",
+        "n_subjects": 6,
+        "terminal_half_life_h_mean": 3.92,
+        "terminal_half_life_h_sd": 0.32,
+        "clearance_mL_h_kg_mean": 121.3,
+        "clearance_mL_h_kg_sd": 9.4,
+        "mean_residence_time_h_mean": 2.67,
+        "mean_residence_time_h_sd": 0.19,
+        "vss_mL_kg_mean": 322.1,
+        "vss_mL_kg_sd": 12.7
+      }
+    ]
+  },
+  "human_sc_parent_pk": {
+    "source_id": "fda_review",
+    "pdf_page": 259,
+    "printed_page": 190,
+    "table": "105",
+    "route": "SC",
+    "population": "healthy volunteers, single-administration cohorts A-F",
+    "statistic": "geometric mean with CV%; cohort ranges are not uncertainty intervals",
+    "cohorts": [
+      {
+        "cohort_id": "A",
+        "n_subjects": 6,
+        "terminal_half_life_h_geometric_mean": 1.76,
+        "cv_percent": 23.1
+      },
+      {
+        "cohort_id": "B",
+        "n_subjects": 6,
+        "terminal_half_life_h_geometric_mean": 2.4,
+        "cv_percent": 42.2
+      },
+      {
+        "cohort_id": "C",
+        "n_subjects": 6,
+        "terminal_half_life_h_geometric_mean": 2.33,
+        "cv_percent": 33.5
+      },
+      {
+        "cohort_id": "D",
+        "n_subjects": 5,
+        "terminal_half_life_h_geometric_mean": 2.78,
+        "cv_percent": 22.4
+      },
+      {
+        "cohort_id": "E",
+        "n_subjects": 6,
+        "terminal_half_life_h_geometric_mean": 2.79,
+        "cv_percent": 27.1
+      },
+      {
+        "cohort_id": "F",
+        "n_subjects": 6,
+        "terminal_half_life_h_geometric_mean": 2.74,
+        "cv_percent": 15.7
+      }
+    ],
+    "metabolite_qualification": "M1 and M2 reported separately; selected estimable M2 half-lives 8.09-13.67h have small/variable estimable n and high CV. Do not use as parent residence or activity."
+  },
+  "urinary_recovery": {
+    "source_id": "fda_review",
+    "study": "SPIRI-154",
+    "pdf_pages": [
+      269,
+      272
+    ],
+    "printed_pages": [
+      200,
+      203
+    ],
+    "figure": "35",
+    "route": "IV",
+    "collection_h": 48,
+    "population": "normal renal function cohort, six subjects in an overall 24-subject renal-function study",
+    "n_subjects": 6,
+    "reported_fraction_parent_approx": 0.1,
+    "reported_fraction_m1_approx": 0.34,
+    "reported_fraction_m2_approx": 0.57,
+    "statistic": "rounded review summary, no subject-level recovery uncertainty extracted",
+    "rounding_sum_not_renormalized": true,
+    "clearance_fraction_eligibility": "Sensitivity anchor only. Adequate unchanged-parent urinary collection and linear time-invariant disposition required. Metabolites excreted in urine do not imply unchanged-parent renal clearance. Other parent disappearance need not be nonrenal."
+  },
+  "process": {
+    "final_parent": {
+      "source_id": "patent_process",
+      "source_locations": [
+        "general process assertions",
+        "Example 6"
+      ],
+      "isolated_salt": "elamipretide triacetate",
+      "isolated_final_salt_mass_g": 0.7,
+      "protected_precursor_input_mass_g": 2.0,
+      "general_purity_claim_greater_than_percent": 98.5,
+      "purity_claim_context": "applicant general purity assertion; method not explicit in that paragraph, not an independently verified final-lot weight assay",
+      "absolute_overall_molar_yield": null,
+      "released_parent_mass": null,
+      "unit_cost": null,
+      "missing": [
+        "matched end-to-end batch identity",
+        "precursor and salt stoichiometric content closure",
+        "final weight assay/water/residual-solvent/counterion correction",
+        "released-parent output and impurity specifications",
+        "stage-specific recovery and rejected batches",
+        "labor, materials, equipment, QC and release cost"
+      ]
+    },
+    "intermediate_quality": {
+      "source_id": "patent_intermediate",
+      "source_location": "Example 2",
+      "material": "crystalline Compound II intermediate, not SS-31 parent",
+      "hplc_area_purity_fraction": 0.994,
+      "weight_assay_fraction": 0.987,
+      "assay_context": "source calculated weight assay corrects residual solvents, water and residue on ignition; chromatographic area purity is a different measure",
+      "final_parent_conversion_allowed": false
+    }
+  },
+  "cell_endpoints": [
+    {
+      "endpoint_id": "tmrm_serum_withdrawal",
+      "source_id": "elife_figure6",
+      "cell_line": "ARPE-19",
+      "source_unit": "three independent experiments; source caption says 4-6 microscopy fields averaged within each experiment",
+      "normalization": "percent of serum-supplemented control",
+      "matched_intracellular_parent_exposure": false,
+      "series": [
+        {
+          "compound": "Control",
+          "source_cells": "TMRM!C3:C5",
+          "replicate_values": [
+            100,
+            100,
+            100
+          ],
+          "source_mean": 100,
+          "source_sd": 0
+        },
+        {
+          "compound": "No peptide",
+          "source_cells": "TMRM!D3:D5",
+          "replicate_values": [
+            52.48890195455171,
+            56.69712123576691,
+            57.167264215106485
+          ],
+          "source_mean": 55.45109580180837,
+          "source_sd": 2.576082859071012
+        },
+        {
+          "compound": "SS-31",
+          "source_cells": "TMRM!E3:E5",
+          "replicate_values": [
+            63.31593638443154,
+            70.42744011398865,
+            72.34483457295008
+          ],
+          "source_mean": 68.69607035712342,
+          "source_sd": 4.756940356037588
+        },
+        {
+          "compound": "SS-20",
+          "source_cells": "TMRM!F3:F5",
+          "replicate_values": [
+            80.46118627893394,
+            65.78225557705763,
+            78.74711347214388
+          ],
+          "source_mean": 74.99685177604515,
+          "source_sd": 8.025964037393935
+        },
+        {
+          "compound": "SPN4",
+          "source_cells": "TMRM!G3:G5",
+          "replicate_values": [
+            63.18232892579492,
+            64.72255081576189,
+            66.64802792848785
+          ],
+          "source_mean": 64.85096922334822,
+          "source_sd": 1.7364146566623848
+        },
+        {
+          "compound": "SPN10",
+          "source_cells": "TMRM!H3:H5",
+          "replicate_values": [
+            76.85663810030745,
+            73.83411655171996,
+            85.6565398312083
+          ],
+          "source_mean": 78.78243149441191,
+          "source_sd": 6.1419812110938015
+        }
+      ]
+    },
+    {
+      "endpoint_id": "viability_unstressed",
+      "source_id": "elife_figure6",
+      "cell_line": "HK-2",
+      "source_unit": "six independent samples per caption; donor/batch identity unavailable",
+      "normalization": "ratio to no-peptide control in same condition",
+      "matched_intracellular_parent_exposure": false,
+      "series": [
+        {
+          "compound": "Control",
+          "source_cells": "Cell Viability!E2:E7",
+          "replicate_values": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "source_mean": 1,
+          "source_sd": 0
+        },
+        {
+          "compound": "SS-31",
+          "source_cells": "Cell Viability!F2:F7",
+          "replicate_values": [
+            1.041159,
+            1.109498,
+            0.939583,
+            0.976701,
+            1.044392,
+            0.977884
+          ],
+          "source_mean": 1.0148694999999999,
+          "source_sd": 0.06166050196600742
+        },
+        {
+          "compound": "SS-20",
+          "source_cells": "Cell Viability!G2:G7",
+          "replicate_values": [
+            1.022748,
+            1.070326,
+            0.947064,
+            0.995251,
+            1.007912,
+            0.985108
+          ],
+          "source_mean": 1.0047348333333335,
+          "source_sd": 0.04108004480239365
+        },
+        {
+          "compound": "SPN4",
+          "source_cells": "Cell Viability!H2:H7",
+          "replicate_values": [
+            0.96484,
+            1.066711,
+            0.945598,
+            0.957801,
+            1.02961,
+            0.979068
+          ],
+          "source_mean": 0.9906046666666666,
+          "source_sd": 0.04735437322852729
+        },
+        {
+          "compound": "SPN10",
+          "source_cells": "Cell Viability!I2:I7",
+          "replicate_values": [
+            1.006181,
+            1.066945,
+            0.975839,
+            0.986562,
+            1.0308,
+            0.962975
+          ],
+          "source_mean": 1.0048836666666667,
+          "source_sd": 0.03862786811444124
+        }
+      ]
+    },
+    {
+      "endpoint_id": "viability_stressed",
+      "source_id": "elife_figure6",
+      "cell_line": "HK-2",
+      "source_unit": "five independent samples per caption; donor/batch identity unavailable",
+      "normalization": "ratio to no-peptide stressed control",
+      "matched_intracellular_parent_exposure": false,
+      "series": [
+        {
+          "compound": "Control",
+          "source_cells": "Cell Viability!M2:M6",
+          "replicate_values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "source_mean": 1,
+          "source_sd": 0
+        },
+        {
+          "compound": "SS-31",
+          "source_cells": "Cell Viability!N2:N6",
+          "replicate_values": [
+            1.15038462,
+            1.18564337,
+            1.47914195,
+            1.4682782,
+            1.43730983
+          ],
+          "source_mean": 1.344151594,
+          "source_sd": 0.16200213328338348
+        },
+        {
+          "compound": "SS-20",
+          "source_cells": "Cell Viability!O2:O6",
+          "replicate_values": [
+            1.35976526,
+            1.34669361,
+            1.49898727,
+            1.54315615,
+            1.55479637
+          ],
+          "source_mean": 1.460679732,
+          "source_sd": 0.10037969815878216
+        },
+        {
+          "compound": "SPN4",
+          "source_cells": "Cell Viability!P2:P6",
+          "replicate_values": [
+            1.65790024,
+            1.51151404,
+            1.49898727,
+            1.54315615,
+            1.55479637
+          ],
+          "source_mean": 1.5532708139999998,
+          "source_sd": 0.06273412519936523
+        },
+        {
+          "compound": "SPN10",
+          "source_cells": "Cell Viability!Q2:Q6",
+          "replicate_values": [
+            1.82969815,
+            2.06115783,
+            1.6351956,
+            1.73806674,
+            1.7314975
+          ],
+          "source_mean": 1.7991231639999998,
+          "source_sd": 0.16184124901945926
+        }
+      ]
+    },
+    {
+      "endpoint_id": "atp_stressed",
+      "source_id": "elife_figure6",
+      "cell_line": "HK-2",
+      "source_unit": "five independent samples per caption; donor/batch identity unavailable",
+      "normalization": "ratio to no-peptide stressed control",
+      "matched_intracellular_parent_exposure": false,
+      "series": [
+        {
+          "compound": "Control",
+          "source_cells": "Cellular ATP!C2:C6",
+          "replicate_values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "source_mean": 1,
+          "source_sd": 0
+        },
+        {
+          "compound": "SS-31",
+          "source_cells": "Cellular ATP!D2:D6",
+          "replicate_values": [
+            1.15038462,
+            1.18564337,
+            1.35618061,
+            1.36898395,
+            1.31919694
+          ],
+          "source_mean": 1.276077898,
+          "source_sd": 0.10109949893538973
+        },
+        {
+          "compound": "SS-20",
+          "source_cells": "Cellular ATP!E2:E6",
+          "replicate_values": [
+            1.35976526,
+            1.34669361,
+            1.47914195,
+            1.4682782,
+            1.43730983
+          ],
+          "source_mean": 1.4182377700000002,
+          "source_sd": 0.06147094538175455
+        },
+        {
+          "compound": "SPN4",
+          "source_cells": "Cellular ATP!F2:F6",
+          "replicate_values": [
+            1.19136044,
+            1.18614397,
+            1.49898727,
+            1.54315615,
+            1.55479637
+          ],
+          "source_mean": 1.39488884,
+          "source_sd": 0.18933325569724804
+        },
+        {
+          "compound": "SPN10",
+          "source_cells": "Cellular ATP!G2:G6",
+          "replicate_values": [
+            1.82969815,
+            2.06115783,
+            1.6351956,
+            1.73806674,
+            1.7314975
+          ],
+          "source_mean": 1.7991231639999998,
+          "source_sd": 0.16184124901945926
+        }
+      ]
+    }
+  ],
+  "comparison_unknowns": {
+    "oral_F": null,
+    "native_intracellular_access": null,
+    "relative_function_at_matched_intracellular_parent_exposure": null,
+    "final_released_material_cost": null,
+    "analogue_renal_clearance": null,
+    "analogue_distribution": null
+  }
+}

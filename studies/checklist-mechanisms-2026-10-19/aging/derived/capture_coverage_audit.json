@@ -1,0 +1,362 @@
+{
+  "status": "partial_captured_cell_mixture",
+  "included_cells": 85752,
+  "captured_cells": 86138,
+  "captured_cell_fraction": 0.995518818639857,
+  "omitted_cell_UMIs": null,
+  "included_labels": {
+    "Arterial VECs": {
+      "compartment": "endothelium_all",
+      "n_cells": 2911
+    },
+    "B.Cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 2488
+    },
+    "Capillary VECs": {
+      "compartment": "endothelium_all",
+      "n_cells": 3754
+    },
+    "Conventional dendritic cells": {
+      "compartment": "dendritic_cells_all",
+      "n_cells": 1542
+    },
+    "Fibroblast 1": {
+      "compartment": "fibroblasts_all",
+      "n_cells": 8197
+    },
+    "Fibroblast 2": {
+      "compartment": "fibroblasts_all",
+      "n_cells": 8094
+    },
+    "Gamma delta-T cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 907
+    },
+    "Langerhans cells": {
+      "compartment": "dendritic_cells_all",
+      "n_cells": 100
+    },
+    "Lining mucosal keratinocyte": {
+      "compartment": "epithelium_all",
+      "n_cells": 2082
+    },
+    "Lymphatic endothelial cell 1": {
+      "compartment": "endothelium_all",
+      "n_cells": 1316
+    },
+    "Lymphatic endothelial cell 2": {
+      "compartment": "endothelium_all",
+      "n_cells": 120
+    },
+    "Macrophages/Monocytes": {
+      "compartment": "macrophages_monocytes",
+      "n_cells": 1504
+    },
+    "Mast cells": {
+      "compartment": "mast_cells",
+      "n_cells": 2460
+    },
+    "Masticatory mucosal keratinocyte": {
+      "compartment": "epithelium_all",
+      "n_cells": 1422
+    },
+    "Mucosal-associated invariant T cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 1249
+    },
+    "NK cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 891
+    },
+    "NKT cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 851
+    },
+    "Neutrophils": {
+      "compartment": "neutrophils",
+      "n_cells": 1301
+    },
+    "Pericytes": {
+      "compartment": "perivascular_support",
+      "n_cells": 2821
+    },
+    "Plasma cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 9124
+    },
+    "Plasmacytoid dendritic cells": {
+      "compartment": "dendritic_cells_all",
+      "n_cells": 445
+    },
+    "Post-capillary venule VECs": {
+      "compartment": "endothelium_all",
+      "n_cells": 14757
+    },
+    "Sulcus/junction epithelial keratinocytes": {
+      "compartment": "epithelium_all",
+      "n_cells": 701
+    },
+    "Suprabasal keratinocytes": {
+      "compartment": "epithelium_all",
+      "n_cells": 866
+    },
+    "Tc cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 5173
+    },
+    "Th cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 6840
+    },
+    "Th17 cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 519
+    },
+    "Treg cells": {
+      "compartment": "lymphoid_all",
+      "n_cells": 844
+    },
+    "Vascular smooth muscle cells": {
+      "compartment": "perivascular_support",
+      "n_cells": 2473
+    }
+  },
+  "omitted_labels": {
+    "Cells in the cell cycle (mixed cells)": {
+      "n_cells": 222,
+      "source_exclusion": "Mixed-lineage label; excluded from lineage-specific contrasts."
+    },
+    "Melanocytes": {
+      "n_cells": 119,
+      "source_exclusion": "Outside the prespecified oral repair panels in this focused analysis."
+    },
+    "Merkel Cells": {
+      "n_cells": 19,
+      "source_exclusion": "Sparse group (19 cells) and outside the prespecified oral repair panels."
+    },
+    "Schwann cells": {
+      "n_cells": 26,
+      "source_exclusion": "Sparse group (26 cells) and outside the prespecified oral repair panels."
+    }
+  },
+  "whole_tissue_reconstruction": false,
+  "donor_coverage": [
+    {
+      "donor": "health:136",
+      "condition": "healthy",
+      "age": "31",
+      "sex": "female",
+      "included_cells": 2199,
+      "included_total_raw_umis": 8551512,
+      "minimum_compartment_cells": 31,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 2215,
+      "omitted_captured_cells": 16
+    },
+    {
+      "donor": "health:143",
+      "condition": "healthy",
+      "age": "51",
+      "sex": "female",
+      "included_cells": 2872,
+      "included_total_raw_umis": 10010453,
+      "minimum_compartment_cells": 18,
+      "strict20_eligible": false,
+      "all_source_captured_cells": 2914,
+      "omitted_captured_cells": 42
+    },
+    {
+      "donor": "health:144",
+      "condition": "healthy",
+      "age": "61",
+      "sex": "female",
+      "included_cells": 1832,
+      "included_total_raw_umis": 7275830,
+      "minimum_compartment_cells": 18,
+      "strict20_eligible": false,
+      "all_source_captured_cells": 1838,
+      "omitted_captured_cells": 6
+    },
+    {
+      "donor": "health:147",
+      "condition": "healthy",
+      "age": "37",
+      "sex": "female",
+      "included_cells": 1671,
+      "included_total_raw_umis": 4902931,
+      "minimum_compartment_cells": 14,
+      "strict20_eligible": false,
+      "all_source_captured_cells": 1681,
+      "omitted_captured_cells": 10
+    },
+    {
+      "donor": "health:148",
+      "condition": "healthy",
+      "age": "57",
+      "sex": "female",
+      "included_cells": 7594,
+      "included_total_raw_umis": 17797521,
+      "minimum_compartment_cells": 64,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 7633,
+      "omitted_captured_cells": 39
+    },
+    {
+      "donor": "health:169",
+      "condition": "healthy",
+      "age": "28",
+      "sex": "male",
+      "included_cells": 4006,
+      "included_total_raw_umis": 22790652,
+      "minimum_compartment_cells": 28,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 4035,
+      "omitted_captured_cells": 29
+    },
+    {
+      "donor": "health:183",
+      "condition": "healthy",
+      "age": "35",
+      "sex": "female",
+      "included_cells": 5031,
+      "included_total_raw_umis": 11048127,
+      "minimum_compartment_cells": 45,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 5065,
+      "omitted_captured_cells": 34
+    },
+    {
+      "donor": "health:184",
+      "condition": "healthy",
+      "age": "22",
+      "sex": "female",
+      "included_cells": 1963,
+      "included_total_raw_umis": 5732591,
+      "minimum_compartment_cells": 9,
+      "strict20_eligible": false,
+      "all_source_captured_cells": 1986,
+      "omitted_captured_cells": 23
+    },
+    {
+      "donor": "health:238",
+      "condition": "healthy",
+      "age": "24",
+      "sex": "female",
+      "included_cells": 8134,
+      "included_total_raw_umis": 20861227,
+      "minimum_compartment_cells": 105,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 8154,
+      "omitted_captured_cells": 20
+    },
+    {
+      "donor": "health:241",
+      "condition": "healthy",
+      "age": "39",
+      "sex": "female",
+      "included_cells": 3436,
+      "included_total_raw_umis": 5054181,
+      "minimum_compartment_cells": 19,
+      "strict20_eligible": false,
+      "all_source_captured_cells": 3443,
+      "omitted_captured_cells": 7
+    },
+    {
+      "donor": "health:242",
+      "condition": "healthy",
+      "age": "21",
+      "sex": "female",
+      "included_cells": 6480,
+      "included_total_raw_umis": 10363971,
+      "minimum_compartment_cells": 70,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 6512,
+      "omitted_captured_cells": 32
+    },
+    {
+      "donor": "health:283",
+      "condition": "healthy",
+      "age": "21",
+      "sex": "male",
+      "included_cells": 5868,
+      "included_total_raw_umis": 31484248,
+      "minimum_compartment_cells": 56,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 5901,
+      "omitted_captured_cells": 33
+    },
+    {
+      "donor": "health:289",
+      "condition": "healthy",
+      "age": "32",
+      "sex": "male",
+      "included_cells": 2966,
+      "included_total_raw_umis": 11705909,
+      "minimum_compartment_cells": 26,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 2975,
+      "omitted_captured_cells": 9
+    },
+    {
+      "donor": "periodontitis:134",
+      "condition": "periodontitis",
+      "age": "44",
+      "sex": "male",
+      "included_cells": 2555,
+      "included_total_raw_umis": 3340352,
+      "minimum_compartment_cells": 33,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 2564,
+      "omitted_captured_cells": 9
+    },
+    {
+      "donor": "periodontitis:153",
+      "condition": "periodontitis",
+      "age": "42",
+      "sex": "female",
+      "included_cells": 1690,
+      "included_total_raw_umis": 9701480,
+      "minimum_compartment_cells": 37,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 1695,
+      "omitted_captured_cells": 5
+    },
+    {
+      "donor": "periodontitis:161",
+      "condition": "periodontitis",
+      "age": "34",
+      "sex": "female",
+      "included_cells": 4733,
+      "included_total_raw_umis": 22556756,
+      "minimum_compartment_cells": 77,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 4744,
+      "omitted_captured_cells": 11
+    },
+    {
+      "donor": "periodontitis:164",
+      "condition": "periodontitis",
+      "age": "45",
+      "sex": "male",
+      "included_cells": 16428,
+      "included_total_raw_umis": 72192556,
+      "minimum_compartment_cells": 152,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 16473,
+      "omitted_captured_cells": 45
+    },
+    {
+      "donor": "periodontitis:170",
+      "condition": "periodontitis",
+      "age": "38",
+      "sex": "female",
+      "included_cells": 6294,
+      "included_total_raw_umis": 28574056,
+      "minimum_compartment_cells": 86,
+      "strict20_eligible": true,
+      "all_source_captured_cells": 6310,
+      "omitted_captured_cells": 16
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "plan_sha256_lf_text": "ae6d7f7057a886515f1d34ccdaad6f6dc872e32a6ba8f6700e416439b113495b",
+  "script_sha256_lf_text": "c1626674744055fb4cb1323ab53e756bde76a949052f8361a2da8aa2a4dd10cf",
+  "output_sha256_lf_text": {
+    "finite_capacity_equilibria.tsv": "b7f7c99c838bc6c4098189099191878f19365dab03f0b12d55fd020f5d1c23a1",
+    "target_capture_requirements.tsv": "2fccd71faab54eef21adb87163b606230e4450af090c3f7fa8789a07b5bf2486"
+  },
+  "equilibrium_rows": 180,
+  "requirement_rows": 108,
+  "maximum_host_balance_error_M": 8.673617379884035e-19,
+  "caffeine_to_theophylline_affinity_ratio": 2.6989247311827955,
+  "caffeine_to_theobromine_affinity_ratio": 2.74617067833698,
+  "paraxanthine_result": "not_identifiable_missing_affinity",
+  "human_oral_sleep_result": "not_identifiable_not_modelled"
+}

@@ -1,0 +1,369 @@
+{
+  "status": "linked_descriptive_estimands_only",
+  "data_kind": "synthetic_linked_software_fixture_no_biological_observations",
+  "groups": [
+    {
+      "condition": "greater_depth_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 50,
+      "assigned_specimens": 3,
+      "manufacturing_batches": [
+        "SYN_B1",
+        "SYN_B2"
+      ],
+      "depth": {
+        "n_assigned_specimens": 3,
+        "n_observed_specimens": 2,
+        "n_missing_endpoint": 1,
+        "observed_specimen_weighted_mean": 47.0,
+        "tooth_then_donor_balanced_mean": 47.0,
+        "n_observed_donors": 2,
+        "qualification": "Observed endpoint subset only; no confidence interval or independent-replicate inference",
+        "hierarchy_status": "descriptive_hierarchy_preserved"
+      },
+      "depth_states": {
+        "below_target_with_given_bounds": 1,
+        "bounds_overlap_target": 1,
+        "unassessed_missing_depth": 1
+      },
+      "apparent_toughness": {
+        "n_assigned_specimens": 3,
+        "n_observed_specimens": 0,
+        "n_missing_endpoint": 3,
+        "observed_specimen_weighted_mean": null,
+        "tooth_then_donor_balanced_mean": null,
+        "n_observed_donors": null,
+        "qualification": "Observed endpoint subset only; no confidence interval or independent-replicate inference",
+        "hierarchy_status": "unavailable_no_endpoint"
+      },
+      "naive_indent_weighted_mean_diagnostic_only": null,
+      "fatigue_horizon_cycles": 100.0,
+      "fatigue_state_counts": {
+        "unknown": 2,
+        "known_no_failure_by_horizon": 1
+      },
+      "fatigue_failure_fraction_bounds": [
+        0.0,
+        0.6666666666666666
+      ],
+      "fatigue_estimand": "Fraction of all assigned specimens with first material failure by H; unknown/censored outcomes retained, no independent-censoring assumption",
+      "leakage_all_assigned_mean_bounds": [
+        0.3666666666666667,
+        null
+      ],
+      "leakage_upper_null_meaning": "No finite upper bound; not zero, an exact mean or a confidence interval",
+      "leakage_observation_kinds": {
+        "exact": 2,
+        "unmeasured": 1
+      },
+      "terminal_crack_paths_at_recorded_times": {
+        "interfacial": 1,
+        "unmeasured": 1,
+        "mixed": 1
+      },
+      "terminal_crack_path_limit": "Assessment cycles differ and remain in specimen records; these are not crack-path frequencies at H or a baseline predictor",
+      "joint_restoration_success": "unassessed_no_joint_acceptance_rule"
+    },
+    {
+      "condition": "thin_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 10,
+      "assigned_specimens": 3,
+      "manufacturing_batches": [
+        "SYN_B1",
+        "SYN_B2"
+      ],
+      "depth": {
+        "n_assigned_specimens": 3,
+        "n_observed_specimens": 3,
+        "n_missing_endpoint": 0,
+        "observed_specimen_weighted_mean": 10.0,
+        "tooth_then_donor_balanced_mean": 10.25,
+        "n_observed_donors": 2,
+        "qualification": "Observed endpoint subset only; no confidence interval or independent-replicate inference",
+        "hierarchy_status": "descriptive_hierarchy_preserved"
+      },
+      "depth_states": {
+        "bounds_overlap_target": 2,
+        "at_or_above_target_with_given_bounds": 1
+      },
+      "apparent_toughness": {
+        "n_assigned_specimens": 3,
+        "n_observed_specimens": 3,
+        "n_missing_endpoint": 0,
+        "observed_specimen_weighted_mean": 1.0666666666666667,
+        "tooth_then_donor_balanced_mean": 1.125,
+        "n_observed_donors": 2,
+        "qualification": "Observed endpoint subset only; no confidence interval or independent-replicate inference",
+        "hierarchy_status": "descriptive_hierarchy_preserved"
+      },
+      "naive_indent_weighted_mean_diagnostic_only": 1.1714285714285715,
+      "fatigue_horizon_cycles": 100.0,
+      "fatigue_state_counts": {
+        "known_no_failure_by_horizon": 1,
+        "known_failure_by_horizon": 1,
+        "unknown": 1
+      },
+      "fatigue_failure_fraction_bounds": [
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "fatigue_estimand": "Fraction of all assigned specimens with first material failure by H; unknown/censored outcomes retained, no independent-censoring assumption",
+      "leakage_all_assigned_mean_bounds": [
+        0.19999999999999998,
+        null
+      ],
+      "leakage_upper_null_meaning": "No finite upper bound; not zero, an exact mean or a confidence interval",
+      "leakage_observation_kinds": {
+        "exact": 1,
+        "left_censored": 1,
+        "right_censored": 1
+      },
+      "terminal_crack_paths_at_recorded_times": {
+        "cohesive_host": 1,
+        "interfacial": 1,
+        "cohesive_repair": 1
+      },
+      "terminal_crack_path_limit": "Assessment cycles differ and remain in specimen records; these are not crack-path frequencies at H or a baseline predictor",
+      "joint_restoration_success": "unassessed_no_joint_acceptance_rule"
+    }
+  ],
+  "specimen_outcomes": [
+    {
+      "specimen_id": "SYN_A1",
+      "donor_id": "SYN_D1",
+      "tooth_id": "SYN_T1",
+      "batch_id": "SYN_B1",
+      "region_id": "SYN_R_A1",
+      "condition": "thin_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 10,
+      "depth_um": 10.0,
+      "target_difference_um": 0.0,
+      "target_difference_bounds_um": [
+        -1.0,
+        1.0
+      ],
+      "depth_measurement_bounds_um": [
+        9.0,
+        11.0
+      ],
+      "depth_bounds_kind": "synthetic_bounds",
+      "depth_state": "bounds_overlap_target",
+      "leakage_lower": 0.1,
+      "leakage_upper": 0.1,
+      "leakage_kind": "exact",
+      "fatigue_state_by_horizon": "known_no_failure_by_horizon",
+      "fatigue_reason": "cohesive_host",
+      "terminal_crack_path": {
+        "category": "cohesive_host",
+        "assessment_cycles": 120
+      },
+      "indentations_count": 2,
+      "specimen_mean_apparent_toughness": 1.1,
+      "missing_outcome_reasons": {},
+      "measurement_packet_missing": false
+    },
+    {
+      "specimen_id": "SYN_A2",
+      "donor_id": "SYN_D1",
+      "tooth_id": "SYN_T1",
+      "batch_id": "SYN_B1",
+      "region_id": "SYN_R_A2",
+      "condition": "thin_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 10,
+      "depth_um": 9.0,
+      "target_difference_um": -1.0,
+      "target_difference_bounds_um": [
+        -2.0,
+        0.0
+      ],
+      "depth_measurement_bounds_um": [
+        8.0,
+        10.0
+      ],
+      "depth_bounds_kind": "synthetic_bounds",
+      "depth_state": "bounds_overlap_target",
+      "leakage_lower": 0.0,
+      "leakage_upper": 0.2,
+      "leakage_kind": "left_censored",
+      "fatigue_state_by_horizon": "known_failure_by_horizon",
+      "fatigue_reason": "interfacial",
+      "terminal_crack_path": {
+        "category": "interfacial",
+        "assessment_cycles": 60
+      },
+      "indentations_count": 1,
+      "specimen_mean_apparent_toughness": 0.8,
+      "missing_outcome_reasons": {},
+      "measurement_packet_missing": false
+    },
+    {
+      "specimen_id": "SYN_A3",
+      "donor_id": "SYN_D2",
+      "tooth_id": "SYN_T2",
+      "batch_id": "SYN_B2",
+      "region_id": "SYN_R_A3",
+      "condition": "thin_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 10,
+      "depth_um": 11.0,
+      "target_difference_um": 1.0,
+      "target_difference_bounds_um": [
+        0.0,
+        2.0
+      ],
+      "depth_measurement_bounds_um": [
+        10.0,
+        12.0
+      ],
+      "depth_bounds_kind": "synthetic_bounds",
+      "depth_state": "at_or_above_target_with_given_bounds",
+      "leakage_lower": 0.5,
+      "leakage_upper": null,
+      "leakage_kind": "right_censored",
+      "fatigue_state_by_horizon": "unknown",
+      "fatigue_reason": "technical_loss",
+      "terminal_crack_path": {
+        "category": "cohesive_repair",
+        "assessment_cycles": 80
+      },
+      "indentations_count": 4,
+      "specimen_mean_apparent_toughness": 1.3,
+      "missing_outcome_reasons": {},
+      "measurement_packet_missing": false
+    },
+    {
+      "specimen_id": "SYN_B1",
+      "donor_id": "SYN_D1",
+      "tooth_id": "SYN_T1",
+      "batch_id": "SYN_B1",
+      "region_id": "SYN_R_B1",
+      "condition": "greater_depth_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 50,
+      "depth_um": 42.0,
+      "target_difference_um": -8.0,
+      "target_difference_bounds_um": [
+        -10.0,
+        -6.0
+      ],
+      "depth_measurement_bounds_um": [
+        40.0,
+        44.0
+      ],
+      "depth_bounds_kind": "synthetic_bounds",
+      "depth_state": "below_target_with_given_bounds",
+      "leakage_lower": 0.3,
+      "leakage_upper": 0.3,
+      "leakage_kind": "exact",
+      "fatigue_state_by_horizon": "unknown",
+      "fatigue_reason": "interfacial",
+      "terminal_crack_path": {
+        "category": "interfacial",
+        "assessment_cycles": 110
+      },
+      "indentations_count": 0,
+      "specimen_mean_apparent_toughness": null,
+      "missing_outcome_reasons": {},
+      "measurement_packet_missing": false
+    },
+    {
+      "specimen_id": "SYN_B2",
+      "donor_id": "SYN_D2",
+      "tooth_id": "SYN_T2",
+      "batch_id": "SYN_B2",
+      "region_id": "SYN_R_B2",
+      "condition": "greater_depth_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 50,
+      "depth_um": 52.0,
+      "target_difference_um": 2.0,
+      "target_difference_bounds_um": [
+        -1.0,
+        5.0
+      ],
+      "depth_measurement_bounds_um": [
+        49.0,
+        55.0
+      ],
+      "depth_bounds_kind": "synthetic_bounds",
+      "depth_state": "bounds_overlap_target",
+      "leakage_lower": 0.0,
+      "leakage_upper": null,
+      "leakage_kind": "unmeasured",
+      "fatigue_state_by_horizon": "known_no_failure_by_horizon",
+      "fatigue_reason": "planned_runout",
+      "terminal_crack_path": null,
+      "indentations_count": 0,
+      "specimen_mean_apparent_toughness": null,
+      "missing_outcome_reasons": {
+        "leakage": "SYN_instrument_failure",
+        "terminal_crack_path": "SYN_not_adjudicated"
+      },
+      "measurement_packet_missing": false
+    },
+    {
+      "specimen_id": "SYN_B3",
+      "donor_id": null,
+      "tooth_id": null,
+      "batch_id": "SYN_B2",
+      "region_id": "SYN_R_B3",
+      "condition": "greater_depth_fixture",
+      "substrate": "retained_enamel",
+      "architecture": "SYN_candidate",
+      "target_depth_um": 50,
+      "depth_um": null,
+      "target_difference_um": null,
+      "target_difference_bounds_um": null,
+      "depth_measurement_bounds_um": null,
+      "depth_bounds_kind": null,
+      "depth_state": "unassessed_missing_depth",
+      "leakage_lower": 0.8,
+      "leakage_upper": 0.8,
+      "leakage_kind": "exact",
+      "fatigue_state_by_horizon": "unknown",
+      "fatigue_reason": "unmeasured",
+      "terminal_crack_path": {
+        "category": "mixed",
+        "assessment_cycles": 70
+      },
+      "indentations_count": 0,
+      "specimen_mean_apparent_toughness": null,
+      "missing_outcome_reasons": {
+        "depth": "SYN_not_acquired",
+        "fatigue": "SYN_no_followup_record"
+      },
+      "measurement_packet_missing": false
+    }
+  ],
+  "full_restoration_domains": {
+    "crown_geometry_and_lost_volume": "unassessed",
+    "enamel_thickness_architecture_and_surface": "unassessed",
+    "dentin_interfaces_and_crack_integrity": "unassessed",
+    "position_and_occlusion": "unassessed",
+    "cementum_PDL_bone_attachment": "unassessed",
+    "mechanical_function": "unassessed",
+    "gingiva_and_barrier": "unassessed",
+    "pulp_vitality_and_sensation": "unassessed",
+    "durability_and_identity": "unassessed"
+  },
+  "limits": [
+    "No numerical clinical acceptance thresholds, p-values, confidence intervals or causal depth effect are estimated.",
+    "Depth/leakage/indent snapshots precede separate fatigue follow-up; terminal crack paths retain assessment cycles. No simultaneous joint-success claim.",
+    "All-assigned leakage bounds use only nonnegativity; zero is a lower bound for missing measurements, never an imputed observed value.",
+    "PDL, pulp, gingiva, full crown load transfer and position after finite support remain unassessed."
+  ],
+  "receipts": {
+    "input_sha256_lf_text": "63a3a534b62b85e4eb3877fe3dcbe617f8eb4bc21c884121687aed7e52f216db",
+    "script_sha256_lf_text": "f09424fc4037a0871f51b8d921e38aaa0d3b192294cfc04658552cb59333c831"
+  }
+}

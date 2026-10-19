@@ -1,0 +1,16 @@
+{
+  "status": "Exploratory plan frozen after source inspection, before numerical model outputs; not independently preregistered",
+  "model": "Closed, well-mixed buffer; reversible competitive 1:1 association of guests with a single host site, without kinetics",
+  "source": {"doi": "10.3389/fchem.2021.816069", "host": "carboxylato-pillar[6]arene (WP6)", "conditions": "298 K, PBS pH 7.2; fluorescence indicator-displacement fitting; reported triplicate experiments", "caffeine_ka_per_molar": 25100.0, "caffeine_reported_plus_minus_per_molar": 2400.0, "theophylline_ka_per_molar": 9300.0, "theobromine_ka_per_molar": 9140.0, "uncertainty": "Source plus/minus definition not resolved; endpoints are arithmetic sensitivities, not confidence bounds", "paraxanthine_ka_per_molar": null},
+  "caffeine_total_micromolar": [1.0, 10.0, 100.0],
+  "host_to_caffeine_total_molar_ratios": [0.0, 0.5, 1.0, 5.0, 50.0],
+  "capture_fraction_targets": [0.5, 0.9, 0.99],
+  "competitions": [
+    {"id": "none", "guests": []},
+    {"id": "theophylline_equal_total", "guests": [{"name": "theophylline", "ka_per_molar": 9300.0, "total_to_caffeine_ratio": 1.0}]},
+    {"id": "theobromine_equal_total", "guests": [{"name": "theobromine", "ka_per_molar": 9140.0, "total_to_caffeine_ratio": 1.0}]},
+    {"id": "fictional_background", "guests": [{"name": "fictional_background", "ka_per_molar": 10000.0, "total_micromolar": 1000.0}]}
+  ],
+  "chosen_input_notice": "All total concentrations, host ratios, capture targets and competitor abundances are arbitrary buffer sensitivity cases, not measured blood values, doses, safety limits or design recommendations. Background affinity is also fictional.",
+  "excluded": ["Oral absorption", "Safety and host clearance", "Plasma proteins and physiological matrix", "Brain/tissue distribution and replenishment", "Binding kinetics or receptor exchange", "Paraxanthine capture", "Clinical or sleep prediction", "New molecule design"]
+}

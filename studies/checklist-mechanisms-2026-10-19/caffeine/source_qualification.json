@@ -1,0 +1,22 @@
+{
+  "review_date": "2026-10-19",
+  "WP6": {
+    "doi": "10.3389/fchem.2021.816069",
+    "role": "Only measured affinity inputs to the numerical model",
+    "assay": "Fluorescence indicator displacement; 1:1 binding inferred from Job plots; nonlinear fitting in PBS pH 7.2 at 298 K",
+    "source_location": "Results paragraph beginning Next, fluorescence titrations were performed",
+    "repeat_statement": "Measurement repeated three times for each experiment; uncertainty definition not established in the inspected main text",
+    "constants": {"caffeine_per_M": 25100, "theophylline_per_M": 9300, "theobromine_per_M": 9140, "indicator_ST_per_M_not_caffeine": 15000, "paraxanthine_per_M": null},
+    "arithmetic_correction": "Main text says approximately an order of magnitude, but listed central caffeine constants are only 2.70 and 2.75 times the two listed methylxanthine constants",
+    "licence": "Article XML states CC BY; derived constants and attribution only are published",
+    "transfer_limits": ["Sensor in buffer", "No serum validation used here", "No oral host bioavailability", "No human caffeine reversal or sleep endpoint"]
+  },
+  "P6AS": {
+    "doi": "10.1016/j.chempr.2022.11.019",
+    "role": "Qualitative mechanism precedent only; none of its constants enter the WP6 model",
+    "evidence_reviewed": "Primary author manuscript searchable through PMC; measured different drug/host pairs in water and mouse hyperlocomotion outcomes",
+    "comparison": "Sulfated P6AS differs from carboxylato WP6; methamphetamine differs from caffeine; affinity or mouse functional reversal cannot transfer between pairs",
+    "xml_access": {"url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10281757/fullTextXML", "attempts": 2, "http_status_each_attempt": [500, 500], "downloaded_file": null, "fetch_provenance": null},
+    "transfer_limits": ["Not an oral caffeine reversal study", "Not a human sleep study", "No evidence here that stimulant peptides are categorically easier to capture"]
+  }
+}

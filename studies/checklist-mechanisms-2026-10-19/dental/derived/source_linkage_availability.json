@@ -1,0 +1,27 @@
+{
+  "source_citation": "Hasan et al., Nature Communications 16, 9434 (2025), DOI 10.1038/s41467-025-64982-y",
+  "source_license": "CC BY 4.0",
+  "numeric_table_sha256_lf_text": "3be12698b5b88695473e10dbbdbe5603b2d459d5079af6cdea64c9f7e38d8eb3",
+  "stored_numeric_positions": 75,
+  "ambiguous_cells_retained": [
+    "Fig. 6!AC13",
+    "Fig. 6!AD13"
+  ],
+  "marginal_endpoint_positions_available": {
+    "indentation_apparent_fracture_toughness": 9,
+    "wear_volume_loss": 34,
+    "wear_height_loss": 32
+  },
+  "invented_specimen_ids": false,
+  "linked_specimens_available": 0,
+  "estimand_availability": {
+    "per_specimen_depth_target_distribution": "unavailable: no per-specimen depth/target and crosswalk",
+    "depth_vs_interface_crack_path": "unavailable: no specimen-linked crack-path record",
+    "leakage_mean_bounds_by_depth": "unavailable: no linked leakage outcomes or assigned specimen registry",
+    "fatigue_failure_bounds_by_depth": "unavailable: wear endpoint values are not failure times, censoring records or a linked registry",
+    "tooth_then_donor_balanced_indentation_analysis": "unavailable: no indentation-to-specimen/tooth/donor crosswalk",
+    "marginal_toughness_and_wear_descriptions": "available in prior source reanalysis; adverse enamel wear and trailing-cell ambiguity remain"
+  },
+  "claim": "Actual numerical source data remain unlinked; approximate article layer examples cannot be attached to these positions as measured specimen depth",
+  "manifest_sha256_lf_text": "627eadc0fbd98081ee5d8cef6ccc7dbe79e2290e6188a26d623e15a22f1b1ea9"
+}

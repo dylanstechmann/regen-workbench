@@ -1,0 +1,9 @@
+{
+  "data_kind": "actual_published_source_positions_without_specimen_crosswalk",
+  "source_citation": "Hasan et al., Nature Communications 16, 9434 (2025), DOI 10.1038/s41467-025-64982-y",
+  "source_license": "CC BY 4.0",
+  "numeric_table": "../../checklist-followup-2026-10-19/dental/derived/material_observations.tsv",
+  "numeric_table_sha256_lf_text": "3be12698b5b88695473e10dbbdbe5603b2d459d5079af6cdea64c9f7e38d8eb3",
+  "source_figure_sheet": "Fig. 6",
+  "interpretation": "Cell positions identify stored numerical observations, not physical specimens, donors, repaired regions or repeated-indentation groups. Approximate layer-depth examples elsewhere in the article do not supply per-specimen depth links."
+}

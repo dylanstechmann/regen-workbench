@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-19",
+  "status": "Exploratory composition challenge specified after reviewing prior results and source metadata, before calculating these between-compartment mixture outcomes; not independently preregistered.",
+  "question": "Can between-compartment captured-RNA composition contribute to the opposing bulk versus fibroblast age directions without changing any fixed genes?",
+  "input_directory": "studies/aging-state-2026-10-11/derived/gingival-cell-atlas-GSE164241",
+  "input_sha256_lf_text": {
+    "gingival_cellset_donor_counts.tsv": "fa20518ddad18e2ffe10647a9a24462cb0c0ec70209d32780aa1cdc3779f4ccc",
+    "gingival_cellset_pseudobulk_fixed_genes.tsv": "396c4df081c0339a301c501c0d395092cf4f1d2f9e6cd63f58d9de62b03dfb33",
+    "gingival_fixed_panel_coverage.tsv": "12b287cd7017c0922165d62eab804b66526dc3805fbbae11414a42ca8366c23f",
+    "oral_atlas_sample_crosswalk.tsv": "d693db2da901bd536825c3a5ad654f8a15aaf38d230761b3b5c47829ad0faee7",
+    "gingival_cell_atlas_analysis_summary.json": "07889cf3b5ae697ff19d8ddfe4d44f730b876bcb5a6d1c1e42a4c2fdb16ffc01",
+    "gingival_healthy_age_slopes.tsv": "44bc4b080cc5cd15e8e1ac7b5c23c6e8ad6b109f2e505fe2cee0d3369d31d875"
+  },
+  "compartments": ["fibroblasts_all", "epithelium_all", "endothelium_all", "perivascular_support", "dendritic_cells_all", "lymphoid_all", "neutrophils", "macrophages_monocytes", "mast_cells"],
+  "coverage_gate": "Use source annotated-cell-set membership to require at most one selected compartment per label. Audit every label and donor against the original selected captured-cell counts. Missing excluded-label UMIs force partial-mixture status even if captured-cell coverage is high.",
+  "reference_weight_rule": "For each of the 13 healthy inferred donors with all nine compartments present and positive total UMIs, divide each compartment UMI total by that donor's included-compartment UMI total. Common RNA weights are the unweighted average of those 13 donor-specific fractions. Do not pool donor counts, use age labels to optimize weights, include disease donors, or use selected-gene values.",
+  "weights_frozen_before_panel_outcomes": true,
+  "sparse_compartment_policy": "Primary keeps all 13 healthy donors, including 9-19-cell minor compartments; record their counts. Sensitivity restricts to donors with at least 20 captured cells in every included compartment, keeping the same frozen weights. This metadata-defined subset has eight healthy donors and a different age distribution.",
+  "score_types": ["observed_partial_RNA_mixture", "common_RNA_weight_partial_mixture", "lineage_reference_same_donors"],
+  "lineage_reference_by_panel": {
+    "matrix_degradation": "fibroblasts_all", "matrix_inhibitors": "fibroblasts_all",
+    "structural_ecm": "fibroblasts_all", "inflammation": "fibroblasts_all",
+    "epithelial_barrier_identity": "epithelium_all", "fibroblast_stromal_identity": "fibroblasts_all"
+  },
+  "previous_bulk_tables": {
+    "GSE173078": {"path": "studies/checklist-followup-2026-10-19/aging/derived/healthy_age_effects.tsv", "sha256_lf_text": "27b16b25e625a466fa075aa621827cec9c325fd7f9e9091f787128fae965891b"},
+    "GSE83382": {"path": "studies/aging-state-2026-10-11/derived/gingival-age-reference-GSE83382/gingival_age_axis_summary.tsv", "sha256_lf_text": "b594790630288abccb908d37e47c1392d0143666c46d72db27c8b5cbfe58816a"}
+  },
+  "score_rule": "For each donor and gene, mix compartment CPM using observed or common RNA weights before log1p, then average unchanged panel genes. Observed-mixture gene CPM must equal summed included counts / summed included total UMIs * 1e6 to 1e-8 absolute tolerance. Never weight log scores or substitute cell fractions for RNA fractions.",
+  "panels": "Exactly the six existing fixed panels in the pinned coverage table; no gene reselection or alias changes.",
+  "models": ["all_healthy_age", "all_healthy_age_sex_version", "female_healthy_age_version", "strict20_healthy_age", "strict20_healthy_age_sex_version"],
+  "model_rule": "OLS with intercept and centered age in decades; include male and/or Cell Ranger 3.0.1 indicator only when named; require two residual degrees of freedom and full rank. Restrict to healthy donors and preserve failures. Every score type uses identical donors within each model.",
+  "donor_omissions": ["all_healthy_age", "all_healthy_age_sex_version"],
+  "omission_weight_rule": "Omit each donor only from the age fit, with the same previously frozen common composition reference. That donor contributed to reference weights: these are influence diagnostics, not donor-held-out validation.",
+  "direction_comparisons": {
+    "previous_cell": "Use pinned GSE164241 combined-fibroblast/epithelium slopes as context, not independent replication.",
+    "previous_bulk": "Compare signs only with GSE173078 female+batch and GSE83382 bulk findings. Do not pool numerical scales or people, or assert full-tissue equivalence."
+  },
+  "limits": [
+    "Selected groups cover 85,752 of 86,138 captured cells; omitted cell-cycle/melanocyte/Schwann/Merkel labels lack retained raw pseudobulk. Their UMI contribution is unknown.",
+    "Captured single-cell RNA fractions are affected by dissociation, capture, annotation and sequencing; they are not measured intact-tissue cell/RNA fractions.",
+    "Common-composition standardization is an algebraic observational sensitivity, not a causal intervention or reconstruction of whole gingiva.",
+    "The same inferred donors and correlated panels are reused. No biological age clock, training, donor-independent validation or rejuvenation claim.",
+    "Cell mixture cannot be separated from all cohort, tissue-site, age-range, health and assay differences between studies."
+  ]
+}

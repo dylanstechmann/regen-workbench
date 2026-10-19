@@ -1,0 +1,91 @@
+panel	score_type	model	n_donors	n_female	n_male	status	slope_per_decade	rank	residual_df	max_leverage	omission_min	omission_max	omission_fits	omission_sign_changes
+matrix_degradation	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	0.15145414305948904	2	11	0.3782303370786517	0.09417823589834298	0.25831876807082943	13	0
+matrix_degradation	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.09738774930479663	4	9	0.40759578758682535	0.0123195541845465	0.21057903547092652	13	0
+matrix_degradation	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.10155458318160976	3	7	0.41590561401882165			0	
+matrix_degradation	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.18875222941724792	2	6	0.8291047719205996			0	
+matrix_degradation	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.10543750399716403	4	4	0.9427803379416286			0	
+matrix_degradation	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	0.16267031105701285	2	11	0.3782303370786517	0.12050542161571995	0.2510715668611616	13	0
+matrix_degradation	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.12689343780844364	4	9	0.40759578758682535	0.04751954937587477	0.22586979826119902	13	0
+matrix_degradation	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.1271869664964827	3	7	0.41590561401882165			0	
+matrix_degradation	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.17856623590955284	2	6	0.8291047719205996			0	
+matrix_degradation	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.12586275831327814	4	4	0.9427803379416286			0	
+matrix_degradation	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	-0.03293322631884696	2	11	0.3782303370786517	-0.09108611188309343	0.0366242996496883	13	2
+matrix_degradation	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.03889783640003924	4	9	0.40759578758682535	-0.11918593248459874	0.057357912743162626	13	2
+matrix_degradation	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	-0.04747801980483138	3	7	0.41590561401882165			0	
+matrix_degradation	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	0.0005202943117416812	2	6	0.8291047719205996			0	
+matrix_degradation	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.026728822682320408	4	4	0.9427803379416286			0	
+matrix_inhibitors	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	0.05574616774436969	2	11	0.3782303370786517	0.02865036614601621	0.0899719862666044	13	0
+matrix_inhibitors	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.054279603359775316	4	9	0.40759578758682535	0.008870470763936156	0.11733258374591725	13	0
+matrix_inhibitors	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.048086701562541634	3	7	0.41590561401882165			0	
+matrix_inhibitors	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.006017694996814165	2	6	0.8291047719205996			0	
+matrix_inhibitors	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.0078019818995469364	4	4	0.9427803379416286			0	
+matrix_inhibitors	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	0.020443990432884307	2	11	0.3782303370786517	-0.01160704839434033	0.05018517617206196	13	1
+matrix_inhibitors	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.03990412695079351	4	9	0.40759578758682535	0.007488956740656694	0.09010830207653861	13	0
+matrix_inhibitors	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.03833248159650251	3	7	0.41590561401882165			0	
+matrix_inhibitors	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	-0.06390376511686825	2	6	0.8291047719205996			0	
+matrix_inhibitors	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.03954237831558541	4	4	0.9427803379416286			0	
+matrix_inhibitors	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	-0.024280611714178616	2	11	0.3782303370786517	-0.07503780504550871	0.023202755107814686	13	2
+matrix_inhibitors	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.02319203464526036	4	9	0.40759578758682535	-0.07431107134128238	0.06792805769586448	13	2
+matrix_inhibitors	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	-0.030103446291284183	3	7	0.41590561401882165			0	
+matrix_inhibitors	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	-0.12878948543667318	2	6	0.8291047719205996			0	
+matrix_inhibitors	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.12237839778406576	4	4	0.9427803379416286			0	
+structural_ecm	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	0.21319860110986344	2	11	0.3782303370786517	0.1499820461588938	0.27212143657857873	13	0
+structural_ecm	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.18701555846420043	4	9	0.40759578758682535	0.11633235619443945	0.2817673297976823	13	0
+structural_ecm	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.1833646943117436	3	7	0.41590561401882165			0	
+structural_ecm	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.27862431924482745	2	6	0.8291047719205996			0	
+structural_ecm	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.2269335888601906	4	4	0.9427803379416286			0	
+structural_ecm	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	0.18261059293056683	2	11	0.3782303370786517	0.13568114216028232	0.22019079091313862	13	0
+structural_ecm	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.1923642420618898	4	9	0.40759578758682535	0.13531046609471492	0.2686974335520467	13	0
+structural_ecm	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.19740502477530483	3	7	0.41590561401882165			0	
+structural_ecm	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.10639804639539252	2	6	0.8291047719205996			0	
+structural_ecm	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.1007451250568233	4	4	0.9427803379416286			0	
+structural_ecm	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	0.17243198235705254	2	11	0.3782303370786517	0.12507639547518293	0.20720380660390306	13	0
+structural_ecm	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	0.1860728254030673	4	9	0.40759578758682535	0.12895279018053135	0.2593969277389532	13	0
+structural_ecm	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	0.19077354513783829	3	7	0.41590561401882165			0	
+structural_ecm	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	0.0746736352097152	2	6	0.8291047719205996			0	
+structural_ecm	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.07456369845505877	4	4	0.9427803379416286			0	
+inflammation	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	0.012570088027206987	2	11	0.3782303370786517	-0.04963866225706456	0.0783179701994508	13	3
+inflammation	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.017652821302599153	4	9	0.40759578758682535	-0.09260126721702622	0.07233167753597564	13	2
+inflammation	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	-0.012657380448290456	3	7	0.41590561401882165			0	
+inflammation	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.03927154195124765	2	6	0.8291047719205996			0	
+inflammation	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.022091990039842524	4	4	0.9427803379416286			0	
+inflammation	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	0.02845283291062789	2	11	0.3782303370786517	-0.021364225045321816	0.0816602077878841	13	2
+inflammation	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.01931624978836488	4	9	0.40759578758682535	-0.0457309922473802	0.10073176531192218	13	3
+inflammation	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.017944693153156166	3	7	0.41590561401882165			0	
+inflammation	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.04386489932157913	2	6	0.8291047719205996			0	
+inflammation	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.05573525083806541	4	4	0.9427803379416286			0	
+inflammation	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	0.0878480299057185	2	11	0.3782303370786517	-0.026299289043795367	0.15775200907913248	13	1
+inflammation	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	0.046130032309598556	4	9	0.40759578758682535	-0.03857432702535524	0.15204189794623413	13	2
+inflammation	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	0.048544927664673554	3	7	0.41590561401882165			0	
+inflammation	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	0.17554342910536608	2	6	0.8291047719205996			0	
+inflammation	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.12574687888403574	4	4	0.9427803379416286			0	
+epithelial_barrier_identity	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	-0.12209262744056062	2	11	0.3782303370786517	-0.19293039818137922	-0.07040260635716124	13	0
+epithelial_barrier_identity	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.09872295111866913	4	9	0.40759578758682535	-0.17800044375920196	-0.06533549887271523	13	0
+epithelial_barrier_identity	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	-0.06965514813098012	3	7	0.41590561401882165			0	
+epithelial_barrier_identity	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	-0.1668156027103908	2	6	0.8291047719205996			0	
+epithelial_barrier_identity	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.15992737256359868	4	4	0.9427803379416286			0	
+epithelial_barrier_identity	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	-0.05405366916825565	2	11	0.3782303370786517	-0.0762505825716789	-0.03244969839586981	13	0
+epithelial_barrier_identity	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.03444073125635272	4	9	0.40759578758682535	-0.06566132366210004	-0.016534124051006724	13	0
+epithelial_barrier_identity	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	-0.026851093206602117	3	7	0.41590561401882165			0	
+epithelial_barrier_identity	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	-0.06983957201159982	2	6	0.8291047719205996			0	
+epithelial_barrier_identity	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.05128842007476808	4	4	0.9427803379416286			0	
+epithelial_barrier_identity	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	-0.050385885288158266	2	11	0.3782303370786517	-0.07848510755778956	-0.03126808869374137	13	0
+epithelial_barrier_identity	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	-0.02467262033639181	4	9	0.40759578758682535	-0.06202828888131	0.005597511442016062	13	1
+epithelial_barrier_identity	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	-0.02169043166407822	3	7	0.41590561401882165			0	
+epithelial_barrier_identity	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	-0.08558586209448035	2	6	0.8291047719205996			0	
+epithelial_barrier_identity	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	-0.0664455670559976	4	4	0.9427803379416286			0	
+fibroblast_stromal_identity	observed_partial_RNA_mixture	all_healthy_age	13	10	3	descriptive_only	0.151269062154017	2	11	0.3782303370786517	0.07891371759088724	0.2003419653702371	13	0
+fibroblast_stromal_identity	observed_partial_RNA_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.14269593749657034	4	9	0.40759578758682535	0.06551884654394483	0.21530158212678752	13	0
+fibroblast_stromal_identity	observed_partial_RNA_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.13783925855457785	3	7	0.41590561401882165			0	
+fibroblast_stromal_identity	observed_partial_RNA_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.24568385934835463	2	6	0.8291047719205996			0	
+fibroblast_stromal_identity	observed_partial_RNA_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.2118804784354178	4	4	0.9427803379416286			0	
+fibroblast_stromal_identity	common_RNA_weight_partial_mixture	all_healthy_age	13	10	3	descriptive_only	0.12451344594684025	2	11	0.3782303370786517	0.066199966189808	0.14703979114736812	13	0
+fibroblast_stromal_identity	common_RNA_weight_partial_mixture	all_healthy_age_sex_version	13	10	3	descriptive_only	0.1516811006548898	4	9	0.40759578758682535	0.083839324924556	0.20768031486876698	13	0
+fibroblast_stromal_identity	common_RNA_weight_partial_mixture	female_healthy_age_version	10	10	0	descriptive_only	0.15573383798181908	3	7	0.41590561401882165			0	
+fibroblast_stromal_identity	common_RNA_weight_partial_mixture	strict20_healthy_age	8	5	3	descriptive_only	0.0740791849788795	2	6	0.8291047719205996			0	
+fibroblast_stromal_identity	common_RNA_weight_partial_mixture	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.08486136906659339	4	4	0.9427803379416286			0	
+fibroblast_stromal_identity	lineage_reference_same_donors	all_healthy_age	13	10	3	descriptive_only	0.11842484937316959	2	11	0.3782303370786517	0.05768619769222557	0.13686033821341753	13	0
+fibroblast_stromal_identity	lineage_reference_same_donors	all_healthy_age_sex_version	13	10	3	descriptive_only	0.1510137763205072	4	9	0.40759578758682535	0.08039667686706217	0.20250203675896677	13	0
+fibroblast_stromal_identity	lineage_reference_same_donors	female_healthy_age_version	10	10	0	descriptive_only	0.1555034044270537	3	7	0.41590561401882165			0	
+fibroblast_stromal_identity	lineage_reference_same_donors	strict20_healthy_age	8	5	3	descriptive_only	0.04092666572591891	2	6	0.8291047719205996			0	
+fibroblast_stromal_identity	lineage_reference_same_donors	strict20_healthy_age_sex_version	8	5	3	descriptive_only	0.058004989506023785	4	4	0.9427803379416286			0	

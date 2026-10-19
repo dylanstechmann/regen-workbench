@@ -1,0 +1,157 @@
+{
+  "analysis_status": "Exploratory conditional accounting, no new molecule, no fitted concentration-time or efficacy model",
+  "inputs_sha256": "16605bc9bd01a9442dac0c708387eafbf41c3a91ab06bb41adf4020bb4edd3c1",
+  "inputs_hash_convention": "UTF-8 text after universal-newline normalization to LF",
+  "human_context": {
+    "iv_parent_terminal_half_life_mean_range_h": [
+      3.23,
+      3.93
+    ],
+    "iv_parent_mean_residence_time_mean_range_h": [
+      2.4,
+      2.67
+    ],
+    "sc_parent_terminal_half_life_geometric_mean_range_h": [
+      1.76,
+      2.79
+    ],
+    "in_vitro_human_plasma_fitted_half_life_range_h": [
+      26.1,
+      30.8
+    ],
+    "range_interpretation": "Across source cohort means or assay inputs, not confidence intervals or interchangeable routes; no half-life quotient used",
+    "rounded_parent_plus_metabolite_urine_fraction_sum": 1.01,
+    "recovery_sum_interpretation": "Rounded source values retained, not normalized; adequate collection is an assumption for the clearance calculation, not established from individual records here"
+  },
+  "conditional_clearance_partition": {
+    "parent_urine_fraction_anchor_approx": 0.1,
+    "assumptions": [
+      "adequate IV unchanged-parent recovery collection",
+      "linear time-invariant parent disposition",
+      "fixed unchanged-parent renal clearance",
+      "fixed distribution volume in this counterfactual; no half-life prediction made",
+      "q applies to all other parent disappearance, which can include renal metabolism and is not identified as plasma proteolysis",
+      "SC label F used as a separate approximate reference, not a matched-cohort estimate"
+    ],
+    "scenarios": [
+      {
+        "remaining_other_parent_disappearance_fraction_q_hypothetical": 1.0,
+        "relative_parent_clearance_conditional": 1.0,
+        "systemic_parent_auc_gain_at_fixed_F_and_parent_input_conditional": 1.0,
+        "oral_F_needed_for_equal_material_to_reference_sc": 0.92,
+        "threshold_status": "algebraic break-even condition; not a measured oral F or attainable modification"
+      },
+      {
+        "remaining_other_parent_disappearance_fraction_q_hypothetical": 0.5,
+        "relative_parent_clearance_conditional": 0.55,
+        "systemic_parent_auc_gain_at_fixed_F_and_parent_input_conditional": 1.8181818181818181,
+        "oral_F_needed_for_equal_material_to_reference_sc": 0.5060000000000001,
+        "threshold_status": "algebraic break-even condition; not a measured oral F or attainable modification"
+      },
+      {
+        "remaining_other_parent_disappearance_fraction_q_hypothetical": 0.0,
+        "relative_parent_clearance_conditional": 0.1,
+        "systemic_parent_auc_gain_at_fixed_F_and_parent_input_conditional": 10.0,
+        "oral_F_needed_for_equal_material_to_reference_sc": 0.09200000000000001,
+        "threshold_status": "algebraic break-even condition; not a measured oral F or attainable modification"
+      }
+    ],
+    "sensitivity_scenarios_not_a_confidence_interval": [
+      {
+        "parent_urine_fraction_hypothetical": 0.05,
+        "conditional_gain_if_all_other_disappearance_removed": 20.0
+      },
+      {
+        "parent_urine_fraction_hypothetical": 0.1,
+        "conditional_gain_if_all_other_disappearance_removed": 10.0
+      },
+      {
+        "parent_urine_fraction_hypothetical": 0.2,
+        "conditional_gain_if_all_other_disappearance_removed": 5.0
+      }
+    ],
+    "universal_analogue_ceiling": null,
+    "uncertainty": "Rounded recovery and small normal-renal IV cohort; modification may change renal clearance, distribution, analyte identity, activity and route exposure. No universal ten-fold bound follows."
+  },
+  "unchanged_parent_oral_material_bound": {
+    "clearance_unchanged": true,
+    "oral_F_assigned": null,
+    "matched_outcome": "systemic intact-parent AUC, not useful intracellular exposure or duration",
+    "parent_mass_ratio_to_sc_formula": "0.92 / oral_F",
+    "mathematical_lower_bound_at_oral_F_equal_one": 0.92,
+    "uniform_finite_upper_bound": null,
+    "maximum_possible_parent_material_reduction_fraction_under_these_assumptions": 0.07999999999999996,
+    "finite_upper_bound_absence_reason": "Oral F can approach zero; no numeric SS-31 oral F is established by these sources.",
+    "useful_exposure_cost_rank": {
+      "eligible": false,
+      "missing": [
+        "oral_F",
+        "native_intracellular_access",
+        "relative_function_at_matched_intracellular_parent_exposure",
+        "final_released_material_cost"
+      ],
+      "invalid": [],
+      "numerical_rank": null
+    }
+  },
+  "process_accounting": {
+    "source_example_final_salt_to_protected_precursor_mass_ratio": 0.35,
+    "mass_ratio_is_molar_yield": false,
+    "overall_released_parent_yield": null,
+    "actual_final_parent_cost": null,
+    "purity_assay_example_material": "crystalline Compound II intermediate, not SS-31 parent",
+    "actual_to_area_assumed_bulk_for_equal_assayed_intermediate_content_ratio": 1.0070921985815602,
+    "area_assay_example_is_final_parent_cost_estimate": false,
+    "cost_identity": "cost per released assayed-parent mass = total process + QC/release + rejected-batch cost / released assayed-parent mass; both numerator and denominator unidentified here",
+    "missing": [
+      "matched end-to-end batch identity",
+      "precursor and salt stoichiometric content closure",
+      "final weight assay/water/residual-solvent/counterion correction",
+      "released-parent output and impurity specifications",
+      "stage-specific recovery and rejected batches",
+      "labor, materials, equipment, QC and release cost"
+    ]
+  },
+  "cell_endpoint_rows": 21,
+  "cell_endpoint_values_reproduced": true,
+  "cross_endpoint_exact_value_audit": [
+    {
+      "compound": "SS-31",
+      "left_cells": "Cell Viability!N2:N6",
+      "right_cells": "Cellular ATP!D2:D6",
+      "same_position_exact_matches": 2,
+      "compared_positions": 5,
+      "entire_vectors_exactly_equal": false,
+      "interpretation": "Source-data dependence/reuse cannot be resolved here; no cause inferred. These endpoints do not supply established independent replication."
+    },
+    {
+      "compound": "SS-20",
+      "left_cells": "Cell Viability!O2:O6",
+      "right_cells": "Cellular ATP!E2:E6",
+      "same_position_exact_matches": 2,
+      "compared_positions": 5,
+      "entire_vectors_exactly_equal": false,
+      "interpretation": "Source-data dependence/reuse cannot be resolved here; no cause inferred. These endpoints do not supply established independent replication."
+    },
+    {
+      "compound": "SPN4",
+      "left_cells": "Cell Viability!P2:P6",
+      "right_cells": "Cellular ATP!F2:F6",
+      "same_position_exact_matches": 3,
+      "compared_positions": 5,
+      "entire_vectors_exactly_equal": false,
+      "interpretation": "Source-data dependence/reuse cannot be resolved here; no cause inferred. These endpoints do not supply established independent replication."
+    },
+    {
+      "compound": "SPN10",
+      "left_cells": "Cell Viability!Q2:Q6",
+      "right_cells": "Cellular ATP!G2:G6",
+      "same_position_exact_matches": 5,
+      "compared_positions": 5,
+      "entire_vectors_exactly_equal": true,
+      "interpretation": "Source-data dependence/reuse cannot be resolved here; no cause inferred. These endpoints do not supply established independent replication."
+    }
+  ],
+  "native_target_access_calibrated": false,
+  "functional_analogue_equivalence_established": false
+}

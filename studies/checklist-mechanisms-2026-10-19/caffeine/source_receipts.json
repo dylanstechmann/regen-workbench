@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-19",
+  "sources": [
+    {
+      "id": "WP6_sensor",
+      "pmcid": "PMC8725816",
+      "filename": "WP6_primary.xml",
+      "purpose": "Measured caffeine and methylxanthine binding in a buffer sensor study",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8725816/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8725816/fullTextXML",
+      "local_path": "data/literature/checklist-binding-2026-10-19/WP6_primary.xml",
+      "bytes": 61024,
+      "sha256": "288324c202dd33146b370e97fcb2cca0c351e72039a791b692961396baf6a995",
+      "provenance_path": "data/provenance/1792436378779696400_checklist-buffer-binding-source-fetch.json"
+    }
+  ]
+}

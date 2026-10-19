@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "data_kind": "empty_template_no_observations",
+  "assay_id": null,
+  "baseline_material_state_id": null,
+  "baseline_assessment_cycles": null,
+  "fatigue_horizon_cycles": null,
+  "depth_statistic": "minimum_over_registered_region",
+  "leakage_unit": "nonnegative_normalized_assay_units",
+  "specimens": [],
+  "measurements": [],
+  "indentations": []
+}
