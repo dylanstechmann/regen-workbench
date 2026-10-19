@@ -6,7 +6,12 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
-The [2026-10-19 functional benchmarks](../checklist-function-2026-10-19/README.md)
+The [2026-10-19 linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
+add an aged dentin-interface comparison, actual five-patient pulp endpoint
+patterns and a clinical base-editing summary/window audit. The pulp analysis
+retains positive sensibility alongside adverse imaging, while the clinical
+editing case cannot supply an unmeasured corrected-cell fraction or an aging
+coverage target. The [functional benchmarks](../checklist-function-2026-10-19/README.md)
 add enamel-analogue crack/fatigue/roughness calculations, separate human PDL
 construct/native-mechanics summaries and a MOTS-c assay/PK audit. These refine
 the measurement basis; they do not establish repaired native attachment,

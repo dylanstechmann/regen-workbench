@@ -16,15 +16,93 @@
           "id": "goals",
           "label": "Read the goals",
           "path": "studies/restoration-run-plan-2026-10-11/GOALS_AND_CONTINUITY.md",
-          "sha256_lf_text": "5da1ccc075b22693dd074ef6dea97203734f6ba6fbd5cf93eda895cfed502af5",
-          "bytes_utf8_lf": 7580
+          "sha256_lf_text": "4d85ef51b7bc81295ec47c0efc7ed3fdcbb2722f1f1bf8ed3a8e1e939ddaf750",
+          "bytes_utf8_lf": 8062
         },
         {
           "id": "plan",
           "label": "Read the run plan",
           "path": "studies/restoration-run-plan-2026-10-11/PLAN.md",
-          "sha256_lf_text": "a856d3d80449e35ff3ac7c3bb29508a7451a2ae3efb69295012c3f5ce13c36ec",
-          "bytes_utf8_lf": 35520
+          "sha256_lf_text": "95834297d6b927807c98109c2379ad734ebaceac9edf705b1c612621140854f6",
+          "bytes_utf8_lf": 35918
+        }
+      ]
+    },
+    {
+      "id": "pulp-linked-patient-outcomes",
+      "title": "Living-pulp records retain sensory and imaging discordance",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "observational_reanalysis",
+      "result": "Linked all five patients in a human pulp pilot. At 24 weeks, four had positive electric sensibility; three also had unambiguously absent periapical radiolucency. An adverse radiograph coexists with positive sensibility in another patient.",
+      "boundary": "This is an uncontrolled five-patient measured pattern, not a regeneration success rate. MRI signal is not blood flow, late responses stay at their later visit, and CBCT timing/unit conflicts remain unresolved.",
+      "next_step": "Link directly qualified perfusion, sensory response, pulp-space integrity and infection status on the same tooth through longer follow-up.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the patient-linked pulp analysis",
+          "path": "studies/checklist-integration-2026-10-19/pulp/REPORT.md",
+          "sha256_lf_text": "bc3644e2451ab016660bcc5dfc6146cdbc3464f58a5fbf1d8913436734a2cb9d",
+          "bytes_utf8_lf": 8235
+        },
+        {
+          "id": "results",
+          "label": "See the recorded endpoint patterns",
+          "path": "studies/checklist-integration-2026-10-19/pulp/derived/patient_endpoint_summary.json",
+          "sha256_lf_text": "52fd714576717d1da0d6ef63289478ce8ff1e1e4113a89a85cb3ac494aea97ed",
+          "bytes_utf8_lf": 11032
+        }
+      ]
+    },
+    {
+      "id": "dentin-aged-interface-data",
+      "title": "Aged interface data still lack measured repair-depth linkage",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "Recomputed 200 deposited OCT positions after thermal cycling. Conditional block summaries reproduce all four published SDs; descriptive CHX contrasts point in opposite directions across adhesive modes.",
+      "boundary": "Source blocks lack tooth IDs. OCT enhanced-signal width is a proxy, thermal cycling is distinct from mechanical fatigue, and separate tensile records cannot be joined to nominal repair depth.",
+      "next_step": "Measure actual depth and pre/post-challenge interface behavior on the same identified specimens while retaining adverse failure modes.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the interface-data analysis",
+          "path": "studies/checklist-integration-2026-10-19/materials/REPORT.md",
+          "sha256_lf_text": "e8474354a1842e8c893c429daa30cd8376ac15bf6f812307ddc0794229dbf7c2",
+          "bytes_utf8_lf": 8946
+        },
+        {
+          "id": "results",
+          "label": "See source summaries and sensitivity",
+          "path": "studies/checklist-integration-2026-10-19/materials/results.json",
+          "sha256_lf_text": "cf50b605932a42f2b77d93df387023e604b8a764fddeccc47ff2297a59003cb8",
+          "bytes_utf8_lf": 9833
+        }
+      ]
+    },
+    {
+      "id": "genome-clinical-function-coverage",
+      "title": "Clinical function does not identify edited-cell coverage",
+      "topic": "Genome repair",
+      "updated_on": "2026-10-19",
+      "evidence_kind": "observational_reanalysis",
+      "result": "Reconstructed six reported clinical-summary groups, four descriptive contrasts and the short follow-up timeline from the original single-patient CPS1 base-editing report.",
+      "boundary": "One infant, unequal sampling windows, unknown specimen counts and continuing care prevent an isolated causal effect. Liver biopsy was deferred; corrected-cell fractions and any ordinary-aging coverage threshold remain unknown.",
+      "next_step": "Require causal-lesion evidence, relevant-cell coverage and durable organ function for each repair target; keep ordinary-aging target identification separate.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the clinical transfer analysis",
+          "path": "studies/checklist-integration-2026-10-19/genome/REPORT.md",
+          "sha256_lf_text": "785877f0e15f3be2fa27c4ab871ff4c9bc6c1cff4b4949beffb3781c65b5d63b",
+          "bytes_utf8_lf": 6537
+        },
+        {
+          "id": "results",
+          "label": "See clinical-summary calculations",
+          "path": "studies/checklist-integration-2026-10-19/genome/results.json",
+          "sha256_lf_text": "0acf14d3bc2dd680655183f6f30ec3db01ed87c744fbbeb2dbbac1327ab0e1b6",
+          "bytes_utf8_lf": 5847
         }
       ]
     },

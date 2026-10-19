@@ -1,0 +1,760 @@
+{
+  "data_kind": "observed_source_numeric_extract_not_synthetic",
+  "primary_doi": "10.1371/journal.pone.0315036",
+  "primary_attribution": "Alaa Turkistani, Helal M. Sonbul and Mai Almarzouki (2024)",
+  "source_license": "CC-BY-4.0",
+  "oct_source": {
+    "source_sheet": "OCT data",
+    "source_member": "xl/worksheets/sheet1.xml",
+    "source_member_sha256": "60120e3f4ee4e0cd7ad88c19fe171ec72fadadbed97cd6c62006dc76b1fe95f0",
+    "source_formula_addresses": [],
+    "source_numeric_observations": 200,
+    "groups": [
+      {
+        "group": "ER",
+        "source_column": "A",
+        "worksheet_blocks": [
+          {
+            "source_row_range": [
+              2,
+              11
+            ],
+            "source_cells": [
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "A6",
+              "A7",
+              "A8",
+              "A9",
+              "A10",
+              "A11"
+            ],
+            "values_percent": [
+              47.043,
+              46.77,
+              44.675,
+              44.054,
+              43.411,
+              38.306,
+              37.249,
+              36.538,
+              32.022,
+              30.208
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              13,
+              22
+            ],
+            "source_cells": [
+              "A13",
+              "A14",
+              "A15",
+              "A16",
+              "A17",
+              "A18",
+              "A19",
+              "A20",
+              "A21",
+              "A22"
+            ],
+            "values_percent": [
+              41.24,
+              41.019,
+              40.431,
+              40.049,
+              38.205,
+              36.74,
+              33.75,
+              45.946,
+              42.105,
+              39.326
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              24,
+              33
+            ],
+            "source_cells": [
+              "A24",
+              "A25",
+              "A26",
+              "A27",
+              "A28",
+              "A29",
+              "A30",
+              "A31",
+              "A32",
+              "A33"
+            ],
+            "values_percent": [
+              31.933,
+              29.938,
+              29.384,
+              29.243,
+              28.947,
+              27.187,
+              27.119,
+              24.064,
+              23.529,
+              22.802
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              35,
+              44
+            ],
+            "source_cells": [
+              "A35",
+              "A36",
+              "A37",
+              "A38",
+              "A39",
+              "A40",
+              "A41",
+              "A42",
+              "A43",
+              "A44"
+            ],
+            "values_percent": [
+              38.909,
+              38.281,
+              35.202,
+              35.202,
+              29.641,
+              29.091,
+              27.397,
+              24.324,
+              24.269,
+              23.599
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              46,
+              55
+            ],
+            "source_cells": [
+              "A46",
+              "A47",
+              "A48",
+              "A49",
+              "A50",
+              "A51",
+              "A52",
+              "A53",
+              "A54",
+              "A55"
+            ],
+            "values_percent": [
+              41.24,
+              41.019,
+              40.431,
+              40.049,
+              38.205,
+              36.74,
+              33.75,
+              28.173,
+              20.415,
+              18.153
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          }
+        ]
+      },
+      {
+        "group": "ER/CHX",
+        "source_column": "B",
+        "worksheet_blocks": [
+          {
+            "source_row_range": [
+              2,
+              11
+            ],
+            "source_cells": [
+              "B2",
+              "B3",
+              "B4",
+              "B5",
+              "B6",
+              "B7",
+              "B8",
+              "B9",
+              "B10",
+              "B11"
+            ],
+            "values_percent": [
+              52.342,
+              51.183,
+              50.992,
+              46.221,
+              43.275,
+              42.287,
+              31.126,
+              30.728,
+              30.0,
+              27.719
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              13,
+              22
+            ],
+            "source_cells": [
+              "B13",
+              "B14",
+              "B15",
+              "B16",
+              "B17",
+              "B18",
+              "B19",
+              "B20",
+              "B21",
+              "B22"
+            ],
+            "values_percent": [
+              42.899,
+              36.182,
+              31.429,
+              28.522,
+              28.443,
+              28.223,
+              28.125,
+              27.607,
+              27.554,
+              25.305
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              24,
+              33
+            ],
+            "source_cells": [
+              "B24",
+              "B25",
+              "B26",
+              "B27",
+              "B28",
+              "B29",
+              "B30",
+              "B31",
+              "B32",
+              "B33"
+            ],
+            "values_percent": [
+              37.795,
+              37.356,
+              37.066,
+              35.562,
+              32.44,
+              32.093,
+              31.761,
+              31.461,
+              31.208,
+              29.721
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              35,
+              44
+            ],
+            "source_cells": [
+              "B35",
+              "B36",
+              "B37",
+              "B38",
+              "B39",
+              "B40",
+              "B41",
+              "B42",
+              "B43",
+              "B44"
+            ],
+            "values_percent": [
+              38.79,
+              38.696,
+              36.918,
+              36.364,
+              35.549,
+              35.519,
+              35.328,
+              33.151,
+              28.479,
+              26.554
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              46,
+              55
+            ],
+            "source_cells": [
+              "B46",
+              "B47",
+              "B48",
+              "B49",
+              "B50",
+              "B51",
+              "B52",
+              "B53",
+              "B54",
+              "B55"
+            ],
+            "values_percent": [
+              37.075,
+              32.192,
+              30.028,
+              29.05,
+              27.976,
+              27.249,
+              26.064,
+              24.159,
+              22.933,
+              26.404
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          }
+        ]
+      },
+      {
+        "group": "SE",
+        "source_column": "C",
+        "worksheet_blocks": [
+          {
+            "source_row_range": [
+              2,
+              11
+            ],
+            "source_cells": [
+              "C2",
+              "C3",
+              "C4",
+              "C5",
+              "C6",
+              "C7",
+              "C8",
+              "C9",
+              "C10",
+              "C11"
+            ],
+            "values_percent": [
+              44.343,
+              39.601,
+              36.957,
+              35.737,
+              26.378,
+              21.021,
+              20.973,
+              20.921,
+              16.129,
+              15.657
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              13,
+              22
+            ],
+            "source_cells": [
+              "C13",
+              "C14",
+              "C15",
+              "C16",
+              "C17",
+              "C18",
+              "C19",
+              "C20",
+              "C21",
+              "C22"
+            ],
+            "values_percent": [
+              44.602,
+              43.194,
+              35.849,
+              25.781,
+              23.38,
+              20.066,
+              18.75,
+              18.505,
+              16.765,
+              16.263
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              24,
+              33
+            ],
+            "source_cells": [
+              "C24",
+              "C25",
+              "C26",
+              "C27",
+              "C28",
+              "C29",
+              "C30",
+              "C31",
+              "C32",
+              "C33"
+            ],
+            "values_percent": [
+              39.773,
+              39.404,
+              39.37,
+              35.952,
+              18.224,
+              17.876,
+              17.838,
+              17.136,
+              15.217,
+              14.235
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              35,
+              44
+            ],
+            "source_cells": [
+              "C35",
+              "C36",
+              "C37",
+              "C38",
+              "C39",
+              "C40",
+              "C41",
+              "C42",
+              "C43",
+              "C44"
+            ],
+            "values_percent": [
+              38.109,
+              35.036,
+              32.17,
+              31.926,
+              29.936,
+              29.471,
+              28.827,
+              28.718,
+              28.111,
+              21.368
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              46,
+              55
+            ],
+            "source_cells": [
+              "C46",
+              "C47",
+              "C48",
+              "C49",
+              "C50",
+              "C51",
+              "C52",
+              "C53",
+              "C54",
+              "C55"
+            ],
+            "values_percent": [
+              31.818,
+              30.034,
+              30.0,
+              28.086,
+              28.06,
+              24.54,
+              24.348,
+              23.077,
+              22.727,
+              22.642
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          }
+        ]
+      },
+      {
+        "group": "SE/CHX",
+        "source_column": "D",
+        "worksheet_blocks": [
+          {
+            "source_row_range": [
+              2,
+              11
+            ],
+            "source_cells": [
+              "D2",
+              "D3",
+              "D4",
+              "D5",
+              "D6",
+              "D7",
+              "D8",
+              "D9",
+              "D10",
+              "D11"
+            ],
+            "values_percent": [
+              44.582,
+              42.358,
+              41.108,
+              39.943,
+              36.517,
+              33.453,
+              31.988,
+              31.338,
+              29.752,
+              29.283
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              13,
+              22
+            ],
+            "source_cells": [
+              "D13",
+              "D14",
+              "D15",
+              "D16",
+              "D17",
+              "D18",
+              "D19",
+              "D20",
+              "D21",
+              "D22"
+            ],
+            "values_percent": [
+              18.251,
+              38.509,
+              32.338,
+              26.894,
+              25.574,
+              24.234,
+              21.856,
+              21.714,
+              21.591,
+              17.391
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              24,
+              33
+            ],
+            "source_cells": [
+              "D24",
+              "D25",
+              "D26",
+              "D27",
+              "D28",
+              "D29",
+              "D30",
+              "D31",
+              "D32",
+              "D33"
+            ],
+            "values_percent": [
+              44.037,
+              39.418,
+              36.898,
+              32.564,
+              30.37,
+              29.936,
+              28.084,
+              23.49,
+              22.483,
+              19.934
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              35,
+              44
+            ],
+            "source_cells": [
+              "D35",
+              "D36",
+              "D37",
+              "D38",
+              "D39",
+              "D40",
+              "D41",
+              "D42",
+              "D43",
+              "D44"
+            ],
+            "values_percent": [
+              19.205,
+              39.672,
+              39.628,
+              39.004,
+              36.527,
+              31.722,
+              30.526,
+              25.065,
+              19.466,
+              18.305
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          },
+          {
+            "source_row_range": [
+              46,
+              55
+            ],
+            "source_cells": [
+              "D46",
+              "D47",
+              "D48",
+              "D49",
+              "D50",
+              "D51",
+              "D52",
+              "D53",
+              "D54",
+              "D55"
+            ],
+            "values_percent": [
+              36.965,
+              33.876,
+              30.645,
+              30.025,
+              28.857,
+              28.609,
+              28.608,
+              25.974,
+              25.32,
+              21.154
+            ],
+            "tooth_id": null,
+            "donor_id": null
+          }
+        ]
+      }
+    ]
+  },
+  "assay_qualification": "Authors call this microleakage: proportion of selected cavity-floor width occupied by enhanced binary OCT signal after silver processing. It is not a measured fluid flux, universal leak-free classifier or full-depth material restoration metric.",
+  "hierarchy_qualification": "Primary reports five teeth per group and ten serial B-scans per tooth, averaged. Source contains five blank-separated ten-row blocks per group, but lacks tooth and donor labels. Block-as-tooth is a conditional segmentation, numerically supported by reproducing all four reported SDs. Repeated values remain unchanged.",
+  "geometry_and_challenge": {
+    "nominal_cavity_depth_mm": 2,
+    "nominal_cavity_width_mm": 4,
+    "actual_per_tooth_measurements": null,
+    "thermal_cycles": 10000,
+    "mechanical_load_cycles": null,
+    "baseline_before_aging": null,
+    "pretest_or_unreported_losses": null
+  },
+  "published_OCT_table2": [
+    {
+      "group": "ER",
+      "mean_percent": 34.3,
+      "sd_percent": 5.6
+    },
+    {
+      "group": "ER/CHX",
+      "mean_percent": 33.5,
+      "sd_percent": 4.7
+    },
+    {
+      "group": "SE",
+      "mean_percent": 27.3,
+      "sd_percent": 1.9
+    },
+    {
+      "group": "SE/CHX",
+      "mean_percent": 30.1,
+      "sd_percent": 4.0
+    }
+  ],
+  "source_reported_OCT_p_value": 0.068,
+  "published_unlinked_tensile_table3": [
+    {
+      "group": "ER",
+      "mean_MPa": 27.5,
+      "source_sd_MPa": 2.9,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        1,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "ER/CHX",
+      "mean_MPa": 26.7,
+      "source_sd_MPa": 4.9,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        1,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "SE",
+      "mean_MPa": 22.5,
+      "source_sd_MPa": 5.2,
+      "adhesive_cohesive_mixed_counts": [
+        6,
+        4,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "SE/CHX",
+      "mean_MPa": 13.1,
+      "source_sd_MPa": 2.3,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        0,
+        1
+      ],
+      "source_beams_n": 10
+    }
+  ],
+  "cross_endpoint_qualification": "Dentin-disc/beam tensile assay preparations are described separately; workbook contains only OCT. No common physical specimen or donor crosswalk is supplied. Do not correlate or pool source rows with tensile means/failure counts."
+}

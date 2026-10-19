@@ -1,0 +1,32 @@
+{
+  "access_date": "2026-10-19",
+  "scope": "One candidate, one successful source PDF download. Clinical text and Figure 3 only for factual extraction; no clinical protocol, supplementary editing-site workbook or design extraction. No further acquisition planned.",
+  "sources": [
+    {
+      "id": "CPS1_original_main",
+      "doi": "10.1056/NEJMoa2504747",
+      "primary_url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2504747",
+      "acquired_url": "https://www.med.upenn.edu/cstr/assets/user-content/Fall%202025/Patient-Specific%20In%20Vivo%20Gene%20Editing%20to%20Treat%20a%20Rare%20Genetic%20Disease.pdf",
+      "cache_path": "data/literature/checklist-genome-integration-2026-10-19/CPS1_main_primary.pdf",
+      "bytes": 997028,
+      "sha256": "e77af60def4e5a859d6bf9e731bcbf8f3e9fd841e132ce2538bf4875b6056bf4",
+      "receipt_path": "data/provenance/1792444787415735700_checklist-genome-integration-source-fetch.json",
+      "http_status": 200,
+      "source_rights": "Copyright Massachusetts Medical Society 2025; personal-use author-institution copy. Raw PDF and page renders remain ignored; no figure/full text redistributed. Public outputs contain selected factual numerical summaries and original analysis.",
+      "inspected": "Clinical presentation page 2237; concurrent-care transition on page 2239; Figure 3 page 2240; clinical outcomes and biopsy limitation page 2241. Figure 3 and page 2241 visually checked; no point digitization.",
+      "derived_local_cache": ["data/literature/checklist-genome-integration-2026-10-19/CPS1_clinical_page_6.png", "data/literature/checklist-genome-integration-2026-10-19/CPS1_clinical_page_7.png"]
+    }
+  ],
+  "unsuccessful_access_attempts": [
+    {"url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12713542/fullTextXML", "result": "HTTP 500; no payload saved or download receipt"},
+    {"url": "https://www.med.upenn.edu/cstr/assets/user-content/Fall%202025/Patient-Specific%20In%20Vivo%20Gene%20Editing%20to%20Treat%20a%20Rare%20Genetic%20Disease.pdf", "result": "Initial default Python CA-store certificate failure; subsequent successful fetch used normal Windows system-certificate trust, with certificate verification enabled"},
+    {"url": "https://www.nejm.org/doi/suppl/10.1056/NEJMoa2504747/suppl_file/nejmoa2504747_appendix_1.pdf", "result": "HTTP 403; appendix not inspected, no payload saved or download receipt"},
+    {"url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/12713542/bin/NIHMS2124718-supplement-Supplementary_Appendix_1.pdf", "result": "Non-PDF browser-check response rejected by PDF-content gate; no payload saved or download receipt"}
+  ],
+  "read_only_existing_context": [
+    "Sibling base-editing-evidence data/studies.json and data/outcomes.json CPS1 card: abstract/metadata only, without this numerical reconstruction",
+    "Main studies/checklist-progress-2026-10-19/integration/REPORT.md: common-unit marginal/joint-endpoint limits and abstract-level CPS1 discussion",
+    "Main studies/restoration-run-plan-2026-10-11/GOALS_AND_CONTINUITY.md: durable whole-body function, identity, dental structures and base-editing research continuity"
+  ],
+  "unavailable_or_unread": ["Supplementary Appendix 1 clinical source tables unavailable after bounded attempts", "Supplementary Appendix 2 editing-site workbook intentionally unread", "Clinical treatment protocol intentionally unread", "No patient raw clinical series acquired", "No patient liver tissue editing data available in inspected original report; biopsy explicitly deferred for risk"]
+}

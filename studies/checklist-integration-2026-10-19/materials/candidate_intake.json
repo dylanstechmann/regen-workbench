@@ -1,0 +1,37 @@
+{
+  "bounded_intake": "Two genuinely new primary candidates, not a systematic review; stopped once the useful 200-number OCT source resolved.",
+  "fully_jointly_eligible_candidates": 0,
+  "selected_partial": "turkistani2024",
+  "candidates": [
+    {
+      "id": "turkistani2024",
+      "primary": "https://doi.org/10.1371/journal.pone.0315036",
+      "source_data": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0315036.s001&type=supplementary",
+      "actual_numeric_source": "chx_source.xlsx; one OCT data worksheet; 200 numbers plus four group headers; raw hash in manifest",
+      "substrate_and_scope": "Established composite/adhesive restoration on coronal dentin of extracted human teeth; not mineral regrowth",
+      "depth": "Nominal 2 mm deep, 4 mm wide cavities; no per-specimen actual repair depth",
+      "challenge": "After 10,000 thermal cycles; not mechanical fatigue; no pre-aging measurements",
+      "interface_endpoint": "Percentage of selected cavity-floor width with enhanced binary OCT signal after silver processing; no depth-normalized leakage flux",
+      "hierarchy": "Primary reports five teeth per group and ten serial scans per tooth. Worksheet contains five separated blocks of ten values per group. Block-mean SD reproduces four published SDs; tooth and donor IDs remain unknown.",
+      "linkage": "OCT result and thermal challenge apply to the source cavity assay, but actual depth, individual IDs and tensile/failure-history crosswalk are missing.",
+      "eligibility": "PARTIAL ONLY: concrete post-challenge interface benchmark with conditional hierarchy audit",
+      "adverse_or_unknown": [
+        "Higher SE/CHX mean OCT signal than SE",
+        "Seven-value repeated run in ER source blocks 2 and 5 retained",
+        "Unlinked SE/CHX tensile summary is lower than SE, with 9 of 10 adhesive failures",
+        "No equivalence from reported p=0.068",
+        "Unreported losses not set to zero"
+      ]
+    },
+    {
+      "id": "baldion2021",
+      "primary": "https://doi.org/10.1016/j.dib.2021.106984",
+      "repository": "https://doi.org/10.17632/p3g3zdv6zb.3",
+      "source_status": "Primary XML and public repository HTML retrieved. Normal public page rendered no file links; bounded public API attempts returned HTTP 404, an empty listing or application error 400. No workbook downloaded. This does not establish dataset absence.",
+      "relevant_endpoints": "Source describes resin-dentin strength and failure modes immediately and after six/eighteen months of wet storage, with sticks split from the same teeth. Actual stick/tooth/depth crosswalk could not be inspected.",
+      "rights": "Repository CC BY 4.0; Data in Brief article metadata CC BY-NC-ND 4.0. No images or adapted figures published.",
+      "eligibility": "NOT EXECUTABLE FROM RETRIEVED RAW DATA; no further attempts or contacts this batch"
+    }
+  ],
+  "continuity": "Shao 2019, Hasan 2025, HEA 2024 and prior Theisen material comparisons were not reanalyzed. Native enamel/dentin/pulp/PDL/gum/position after finite support remain required."
+}

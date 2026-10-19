@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-19",
+  "retained_files": [
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/myricetin_record.html",
+      "source_url": "https://data.mendeley.com/datasets/p3g3zdv6zb/3",
+      "bytes": 122046,
+      "sha256": "00a787777c8b4b32b39d67fbef9844f2690505c85368485bb353af9d8150a36c",
+      "actual_receipt": "data/provenance/1792444619900755600_dental-integration-source-fetch.json",
+      "role": "candidate_repository_metadata",
+      "fetched_at_utc": "2026-10-19T21:16:59.823794+00:00",
+      "license_or_context": "Repository CC-BY-4.0; primary data article CC-BY-NC-ND-4.0; no raw workbook retrieved"
+    },
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/chx_primary.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11687777/fullTextXML",
+      "bytes": 87323,
+      "sha256": "85a50947d66d797360ce5c380dfbb1b92d4a42df535654e720efc6d572f4230b",
+      "actual_receipt": "data/provenance/1792444621036631700_dental-integration-source-fetch.json",
+      "role": "oct_primary_context",
+      "fetched_at_utc": "2026-10-19T21:17:01.024083+00:00",
+      "license_or_context": "CC-BY-4.0 numerical repository/article"
+    },
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/chx_source.xlsx",
+      "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0315036.s001&type=supplementary",
+      "bytes": 10871,
+      "sha256": "34d5e0cf098269aa1e67cfddda1c108ee4d126eb6a3a598527698929168f2c26",
+      "actual_receipt": "data/provenance/1792444643491824800_dental-integration-source-fetch.json",
+      "role": "oct_numeric_workbook",
+      "fetched_at_utc": "2026-10-19T21:17:23.482794+00:00",
+      "license_or_context": "CC-BY-4.0 numerical repository/article"
+    },
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/myricetin_files.json",
+      "source_url": "https://data.mendeley.com/public-api/datasets/p3g3zdv6zb/files?folder_id=root&version=3",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "actual_receipt": "data/provenance/1792444657384385200_dental-integration-source-fetch.json",
+      "role": "empty_API_listing_not_dataset_absence",
+      "fetched_at_utc": "2026-10-19T21:17:37.384385+00:00",
+      "license_or_context": "Repository CC-BY-4.0; primary data article CC-BY-NC-ND-4.0; no raw workbook retrieved"
+    },
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/myricetin_primary.xml",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8024558/fullTextXML",
+      "bytes": 39055,
+      "sha256": "964643fd792416e29ce555bb539d7934fe5ba83590d67a75c365ceb631a2aa42",
+      "actual_receipt": "data/provenance/1792444658363356900_dental-integration-source-fetch.json",
+      "role": "candidate_primary_context",
+      "fetched_at_utc": "2026-10-19T21:17:38.355205+00:00",
+      "license_or_context": "Repository CC-BY-4.0; primary data article CC-BY-NC-ND-4.0; no raw workbook retrieved"
+    },
+    {
+      "cache_path": "data/literature/checklist-integration-2026-10-19/materials/myricetin_allfiles.json",
+      "source_url": "https://data.mendeley.com/public-api/datasets/p3g3zdv6zb/files?version=3",
+      "bytes": 13,
+      "sha256": "067b54b10f9034fdaa6ee1ea34518b5d7369f4b5a8d813f0fcc6890fa201826e",
+      "actual_receipt": "data/provenance/1792444704781910900_dental-integration-source-fetch.json",
+      "role": "application_error_response_not_numeric_data",
+      "fetched_at_utc": "2026-10-19T21:18:24.776900+00:00",
+      "license_or_context": "Repository CC-BY-4.0; primary data article CC-BY-NC-ND-4.0; no raw workbook retrieved"
+    }
+  ],
+  "acquisition_bounds": "At most5MB per retained file,25second request timeout; metadata-only attempts2MB/20seconds or1MB/25seconds. No further acquisition after source frozen.",
+  "unretained_HTTP_failures": [
+    {
+      "url": "https://data.mendeley.com/public-api/datasets/p3g3zdv6zb/versions/3/files",
+      "response": "HTTP404; no bytes retained; no success receipt invented"
+    },
+    {
+      "url": "https://data.mendeley.com/public-api/datasets/p3g3zdv6zb/folders?folder_id=root&version=3",
+      "response": "HTTP404; no bytes retained; no success receipt invented"
+    }
+  ],
+  "publication_scope": "Public factual 200 OCT observations with original source cells, primary-table factual summaries and original calculations/prose. Attributed to Turkistani, Sonbul and Almarzouki (2024), PLOS ONE 10.1371/journal.pone.0315036 (CC BY 4.0). Raw HTML/XML/XLSX, access-error responses and actual receipts remain ignored. No images, adapted figures, clinical recipes or invented specimen identifiers.",
+  "candidate_count": 2,
+  "fully_jointly_eligible_candidate_count": 0
+}

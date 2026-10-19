@@ -1,0 +1,632 @@
+{
+  "source_doi": "10.1186/s13287-017-0506-5",
+  "source_attribution": "Nakashima et al.2017, Stem Cell Research & Therapy8:61, CC BY4.0",
+  "data_kind": "observed_public_patient_table_transcription_with_explicit_narrative_annotations",
+  "n_enrolled_reported": 5,
+  "n_screened_or_approached": null,
+  "patient_records": [
+    {
+      "patient_id": "1",
+      "affected_tooth": "Upper right 2nd premolar",
+      "age_years_table1": 44,
+      "sex_table1": "Female",
+      "enrollment_EPT_table1": {
+        "source_text": "+ (30)",
+        "core_text": "+ (30)",
+        "footnote_markers": []
+      },
+      "pre_transplant_EPT_negative_narrative": true,
+      "onset_EPT_table4": {
+        "source_text": "+ Day 6 (25, 29, 31) (control right lower 2nd premolar 31)",
+        "core_text": "+ Day 6 (25, 29, 31) (control right lower 2nd premolar 31)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": 6,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "25",
+            "value_or_lower_limit": 25,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "29",
+            "value_or_lower_limit": 29,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "31",
+            "value_or_lower_limit": 31,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "right lower 2nd premolar",
+        "control_device_reading": 31,
+        "late_positive_note": null
+      },
+      "EPT_12wk_table4": {
+        "source_text": "+ (34, 38, 36) (control left upper 2nd premolar 45)",
+        "core_text": "+ (34, 38, 36) (control left upper 2nd premolar 45)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "34",
+            "value_or_lower_limit": 34,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "38",
+            "value_or_lower_limit": 38,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "36",
+            "value_or_lower_limit": 36,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left upper 2nd premolar",
+        "control_device_reading": 45,
+        "late_positive_note": null
+      },
+      "EPT_24wk_table4": {
+        "source_text": "+ (40, 41, 44) (control left upper 2nd premolar 41)",
+        "core_text": "+ (40, 41, 44) (control left upper 2nd premolar 41)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "40",
+            "value_or_lower_limit": 40,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "41",
+            "value_or_lower_limit": 41,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "44",
+            "value_or_lower_limit": 44,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left upper 2nd premolar",
+        "control_device_reading": 41,
+        "late_positive_note": null
+      },
+      "MRI_24wk_apical_relative_signal": 0.8,
+      "XR_24wk_source": {
+        "source_text": "\u2013",
+        "core_text": "\u2013",
+        "footnote_markers": []
+      },
+      "XR_24wk_radiolucency_absent": true,
+      "CBCT_lateral_mineralization_source": {
+        "source_text": "+",
+        "core_text": "+",
+        "footnote_markers": []
+      },
+      "CBCT_lateral_mineralization_reported": true,
+      "CBCT_table4_time_weeks": null,
+      "blood_urine_ECG_local_examination_abnormality_source": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "blood_flow_direct_measurement": null,
+      "human_pulp_histological_identity": null
+    },
+    {
+      "patient_id": "2",
+      "affected_tooth": "Lower left first premolar",
+      "age_years_table1": 27,
+      "sex_table1": "Male",
+      "enrollment_EPT_table1": {
+        "source_text": "+ (29)",
+        "core_text": "+ (29)",
+        "footnote_markers": []
+      },
+      "pre_transplant_EPT_negative_narrative": true,
+      "onset_EPT_table4": {
+        "source_text": "\u2013a",
+        "core_text": "\u2013",
+        "footnote_markers": [
+          "a"
+        ],
+        "source_positive": false,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [],
+        "control_tooth_literal": null,
+        "control_device_reading": null,
+        "late_positive_note": "Positive reaction detected after36weeks; exact day not given"
+      },
+      "EPT_12wk_table4": {
+        "source_text": "\u2013a",
+        "core_text": "\u2013",
+        "footnote_markers": [
+          "a"
+        ],
+        "source_positive": false,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [],
+        "control_tooth_literal": null,
+        "control_device_reading": null,
+        "late_positive_note": "Positive reaction detected after36weeks; exact day not given"
+      },
+      "EPT_24wk_table4": {
+        "source_text": "\u2013a",
+        "core_text": "\u2013",
+        "footnote_markers": [
+          "a"
+        ],
+        "source_positive": false,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [],
+        "control_tooth_literal": null,
+        "control_device_reading": null,
+        "late_positive_note": "Positive reaction detected after36weeks; exact day not given"
+      },
+      "MRI_24wk_apical_relative_signal": 0.9,
+      "XR_24wk_source": {
+        "source_text": "\u2013/+b, c",
+        "core_text": "\u2013/+",
+        "footnote_markers": [
+          "b, c"
+        ]
+      },
+      "XR_24wk_radiolucency_absent": null,
+      "CBCT_lateral_mineralization_source": {
+        "source_text": "\u2013",
+        "core_text": "\u2013",
+        "footnote_markers": []
+      },
+      "CBCT_lateral_mineralization_reported": false,
+      "CBCT_table4_time_weeks": null,
+      "blood_urine_ECG_local_examination_abnormality_source": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "blood_flow_direct_measurement": null,
+      "human_pulp_histological_identity": null
+    },
+    {
+      "patient_id": "3",
+      "affected_tooth": "Upper right first incisor",
+      "age_years_table1": 20,
+      "sex_table1": "Male",
+      "enrollment_EPT_table1": {
+        "source_text": "+ (30)",
+        "core_text": "+ (30)",
+        "footnote_markers": []
+      },
+      "pre_transplant_EPT_negative_narrative": true,
+      "onset_EPT_table4": {
+        "source_text": "+ Day 6 (55, 58, 69) (control left upper canine 48)",
+        "core_text": "+ Day 6 (55, 58, 69) (control left upper canine 48)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": 6,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "55",
+            "value_or_lower_limit": 55,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "58",
+            "value_or_lower_limit": 58,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "69",
+            "value_or_lower_limit": 69,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left upper canine",
+        "control_device_reading": 48,
+        "late_positive_note": null
+      },
+      "EPT_12wk_table4": {
+        "source_text": "+ (43, 47, 47) (control left upper incisor 37)",
+        "core_text": "+ (43, 47, 47) (control left upper incisor 37)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "43",
+            "value_or_lower_limit": 43,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "47",
+            "value_or_lower_limit": 47,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "47",
+            "value_or_lower_limit": 47,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left upper incisor",
+        "control_device_reading": 37,
+        "late_positive_note": null
+      },
+      "EPT_24wk_table4": {
+        "source_text": "+ (43, 44, 46) (control left upper canine 25)",
+        "core_text": "+ (43, 44, 46) (control left upper canine 25)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "43",
+            "value_or_lower_limit": 43,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "44",
+            "value_or_lower_limit": 44,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "46",
+            "value_or_lower_limit": 46,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left upper canine",
+        "control_device_reading": 25,
+        "late_positive_note": null
+      },
+      "MRI_24wk_apical_relative_signal": 0.9,
+      "XR_24wk_source": {
+        "source_text": "\u2013",
+        "core_text": "\u2013",
+        "footnote_markers": []
+      },
+      "XR_24wk_radiolucency_absent": true,
+      "CBCT_lateral_mineralization_source": {
+        "source_text": "\u2013",
+        "core_text": "\u2013",
+        "footnote_markers": []
+      },
+      "CBCT_lateral_mineralization_reported": false,
+      "CBCT_table4_time_weeks": null,
+      "blood_urine_ECG_local_examination_abnormality_source": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "blood_flow_direct_measurement": null,
+      "human_pulp_histological_identity": null
+    },
+    {
+      "patient_id": "4",
+      "affected_tooth": "Lower right 2nd premolar",
+      "age_years_table1": 32,
+      "sex_table1": "Male",
+      "enrollment_EPT_table1": {
+        "source_text": "+ (19)",
+        "core_text": "+ (19)",
+        "footnote_markers": []
+      },
+      "pre_transplant_EPT_negative_narrative": true,
+      "onset_EPT_table4": {
+        "source_text": "+ Day 28 (49, 64, 80+) (control left lower 2nd premolar 24)",
+        "core_text": "+ Day 28 (49, 64, 80+) (control left lower 2nd premolar 24)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": 28,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "49",
+            "value_or_lower_limit": 49,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "64",
+            "value_or_lower_limit": 64,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "80+",
+            "value_or_lower_limit": 80,
+            "censoring": "right_censored"
+          }
+        ],
+        "control_tooth_literal": "left lower 2nd premolar",
+        "control_device_reading": 24,
+        "late_positive_note": null
+      },
+      "EPT_12wk_table4": {
+        "source_text": "+ (39, 44, 52) (control left lower 2nd premolar 23)",
+        "core_text": "+ (39, 44, 52) (control left lower 2nd premolar 23)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "39",
+            "value_or_lower_limit": 39,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "44",
+            "value_or_lower_limit": 44,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "52",
+            "value_or_lower_limit": 52,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "left lower 2nd premolar",
+        "control_device_reading": 23,
+        "late_positive_note": null
+      },
+      "EPT_24wk_table4": {
+        "source_text": "+ (50, 57, 57) (control right lower 1st premolar 24)",
+        "core_text": "+ (50, 57, 57) (control right lower 1st premolar 24)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "50",
+            "value_or_lower_limit": 50,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "57",
+            "value_or_lower_limit": 57,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "57",
+            "value_or_lower_limit": 57,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "right lower 1st premolar",
+        "control_device_reading": 24,
+        "late_positive_note": null
+      },
+      "MRI_24wk_apical_relative_signal": 0.7,
+      "XR_24wk_source": {
+        "source_text": "+",
+        "core_text": "+",
+        "footnote_markers": []
+      },
+      "XR_24wk_radiolucency_absent": false,
+      "CBCT_lateral_mineralization_source": {
+        "source_text": "+",
+        "core_text": "+",
+        "footnote_markers": []
+      },
+      "CBCT_lateral_mineralization_reported": true,
+      "CBCT_table4_time_weeks": null,
+      "blood_urine_ECG_local_examination_abnormality_source": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "blood_flow_direct_measurement": null,
+      "human_pulp_histological_identity": null
+    },
+    {
+      "patient_id": "5",
+      "affected_tooth": "Upper left first incisor",
+      "age_years_table1": 21,
+      "sex_table1": "Female",
+      "enrollment_EPT_table1": {
+        "source_text": "+ (15)",
+        "core_text": "+ (15)",
+        "footnote_markers": []
+      },
+      "pre_transplant_EPT_negative_narrative": true,
+      "onset_EPT_table4": {
+        "source_text": "+ Day 14 (45, 62, 80+) (control right upper incisor 13)",
+        "core_text": "+ Day 14 (45, 62, 80+) (control right upper incisor 13)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": 14,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "45",
+            "value_or_lower_limit": 45,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "62",
+            "value_or_lower_limit": 62,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "80+",
+            "value_or_lower_limit": 80,
+            "censoring": "right_censored"
+          }
+        ],
+        "control_tooth_literal": "right upper incisor",
+        "control_device_reading": 13,
+        "late_positive_note": null
+      },
+      "EPT_12wk_table4": {
+        "source_text": "+ (53, 53, 59) (control right upper incisor 11)",
+        "core_text": "+ (53, 53, 59) (control right upper incisor 11)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "53",
+            "value_or_lower_limit": 53,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "53",
+            "value_or_lower_limit": 53,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "59",
+            "value_or_lower_limit": 59,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "right upper incisor",
+        "control_device_reading": 11,
+        "late_positive_note": null
+      },
+      "EPT_24wk_table4": {
+        "source_text": "+ (43, 48, 51) (control right upper incisor 10)",
+        "core_text": "+ (43, 48, 51) (control right upper incisor 10)",
+        "footnote_markers": [],
+        "source_positive": true,
+        "first_positive_day_if_reported": null,
+        "readings_nested_in_patient_visit": [
+          {
+            "source_token": "43",
+            "value_or_lower_limit": 43,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "48",
+            "value_or_lower_limit": 48,
+            "censoring": "exact_device_reading"
+          },
+          {
+            "source_token": "51",
+            "value_or_lower_limit": 51,
+            "censoring": "exact_device_reading"
+          }
+        ],
+        "control_tooth_literal": "right upper incisor",
+        "control_device_reading": 10,
+        "late_positive_note": null
+      },
+      "MRI_24wk_apical_relative_signal": 0.9,
+      "XR_24wk_source": {
+        "source_text": "\u2013",
+        "core_text": "\u2013",
+        "footnote_markers": []
+      },
+      "XR_24wk_radiolucency_absent": true,
+      "CBCT_lateral_mineralization_source": {
+        "source_text": "+",
+        "core_text": "+",
+        "footnote_markers": []
+      },
+      "CBCT_lateral_mineralization_reported": true,
+      "CBCT_table4_time_weeks": null,
+      "blood_urine_ECG_local_examination_abnormality_source": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "blood_flow_direct_measurement": null,
+      "human_pulp_histological_identity": null
+    }
+  ],
+  "source_volume_pairs": [
+    {
+      "patient_id": "1",
+      "before_value": 0.0143,
+      "before_unit_literal": "cm3",
+      "after_value": 0.0125,
+      "after_unit_literal": "cm3",
+      "results_narrative_times_weeks": [
+        16,
+        28
+      ],
+      "timing_qualification": "Results narrative16/28weeks; no individual acquisition dates given",
+      "endpoint": "CBCT threshold-defined low-density pulp-space volume, not direct tissue mass, perfusion or histological dentin volume"
+    },
+    {
+      "patient_id": "4",
+      "before_value": 0.011,
+      "before_unit_literal": "cm3",
+      "after_value": 0.0081,
+      "after_unit_literal": "m3",
+      "results_narrative_times_weeks": [
+        16,
+        28
+      ],
+      "timing_qualification": "Figure3b labels16 and28/32weeks; patient4 Discussion instead mentions12/24weeks",
+      "endpoint": "CBCT threshold-defined low-density pulp-space volume, not direct tissue mass, perfusion or histological dentin volume"
+    }
+  ],
+  "source_cell_karyotype_literals_not_clinical_adverse_adjudication": [
+    {
+      "patient_id": "1",
+      "source_text": "46,XX (17/20) 45,X (2/20) 45,X,-9 (1/20)",
+      "core_text": "46,XX (17/20) 45,X (2/20) 45,X,-9 (1/20)",
+      "footnote_markers": []
+    },
+    {
+      "patient_id": "2",
+      "source_text": "46,XY (20/20)",
+      "core_text": "46,XY (20/20)",
+      "footnote_markers": []
+    },
+    {
+      "patient_id": "3",
+      "source_text": "47,XYY (20/20)",
+      "core_text": "47,XYY (20/20)",
+      "footnote_markers": []
+    },
+    {
+      "patient_id": "4",
+      "source_text": "46,XY (19/20) 45,X (1/20)",
+      "core_text": "46,XY (19/20) 45,X (1/20)",
+      "footnote_markers": []
+    },
+    {
+      "patient_id": "5",
+      "source_text": "46,XX (20/20)",
+      "core_text": "46,XX (20/20)",
+      "footnote_markers": []
+    }
+  ],
+  "MRI_ratio_definition": "Ratio of root-canal tissue signal to surrounding dentin, compared with normal pulp/dentin in the opposite site; apical Table4 values only. No healthy threshold adopted.",
+  "followup": {
+    "Table4_EPT_MRI_XR_named_week": 24,
+    "CBCT_Table4_named_week": null,
+    "patient2_late_EPT_footnote": "after36weeks; not assigned to24weeks or an exact36-week visit",
+    "patient5_CBCT_initial_volume": null,
+    "patient5_missing_baseline_reason": "Source states initial CBCT was not obtained",
+    "formal_screening_or_dropout_flow": null
+  },
+  "source_narrative_annotations": {
+    "EPT_pre_transplant": "Source states all5 had negative EPT before transplantation; Table1 enrollment precedes intervening pulpectomy and has positive EPT",
+    "patient2": "Pre-transplant lesion subsequently shrank; minor PDL-space widening and minus/plus radiolucency at24weeks retained",
+    "patient4": "PDL-space widening at12weeks and periapical radiolucency at24weeks; no significant radiolucency increase reported at32weeks; infection mechanism discussed, not causally established",
+    "systemic_clinical_events": "No cell-transplantation-attributed events or postoperative pain reported through24weeks; this does not remove radiographic findings or establish long-term safety",
+    "apical_obliteration_patient_ids": [
+      "1",
+      "3",
+      "5"
+    ],
+    "CBCT_lateral_mineralization_patient_ids": [
+      "1",
+      "4",
+      "5"
+    ],
+    "apical_obliteration_visit_label": "24/28weeks; separate X-ray endpoint, not added to24-week joint pattern"
+  },
+  "source_receipts_text_sha256": "e109f477da233b9ffb5f8e52831dee7099048608bb5c79b5883a0efbc46a4b0e",
+  "extractor_text_sha256": "c8af3060f7cf23fea3064e6f68aec8a058c967fd780d2ab25e0cbb91e6cab63a"
+}

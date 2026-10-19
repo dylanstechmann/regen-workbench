@@ -1,0 +1,10 @@
+{
+  "source_receipts_text_sha256": "e109f477da233b9ffb5f8e52831dee7099048608bb5c79b5883a0efbc46a4b0e",
+  "patient_records_text_sha256": "0cb55525844858aed503552b2aa1d1d645ef338c6738a9070ac263718c0cddd9",
+  "analysis_plan_text_sha256": "2d9eda8a26e9153e3cbaae96dfe68191ea0ce89109ea0109e4b442411b562655",
+  "analysis_script_text_sha256": "0fa43a033897fe52a5456f158da02c7da39fa047c498432b33631b0509830471",
+  "results_text_sha256": "52fd714576717d1da0d6ef63289478ce8ff1e1e4113a89a85cb3ac494aea97ed",
+  "python": "3.11.15",
+  "third_party_packages": [],
+  "new_source_fetch_by_analysis": false
+}

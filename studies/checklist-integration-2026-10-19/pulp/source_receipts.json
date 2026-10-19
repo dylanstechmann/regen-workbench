@@ -1,0 +1,15 @@
+{
+  "source_set": "Nakashima2017 human five-patient primary pilot; no second source yet required",
+  "actual_fetches": [
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5345141/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5345141/fullTextXML",
+      "content_type": "application/xml",
+      "cache_path": "data/literature/checklist-integration-2026-10-19/pulp/nakashima2017.xml",
+      "bytes": 120620,
+      "sha256": "18f47e5d82d59ab7b1ee06b24ca9c860a1a77868b6fea37a0d29e9033eca920a",
+      "actual_fetch_receipt": "data/provenance/1792444632413726200_checklist-pulp-source-fetch.json",
+      "fetched_at_utc": "2026-10-19T21:17:12.414731+00:00"
+    }
+  ]
+}

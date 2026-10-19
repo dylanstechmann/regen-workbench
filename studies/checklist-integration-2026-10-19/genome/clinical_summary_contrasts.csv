@@ -1,0 +1,5 @@
+endpoint,unit,comparison,difference_of_reported_medians,ratio_of_reported_medians,relative_difference_of_reported_medians_percent,independent_patients,interpretation
+ammonia,umol/L,between_vs_baseline,-14,0.391304347826087,-60.86956521739131,1,Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect
+ammonia,umol/L,after_second_vs_baseline,-10,0.5652173913043478,-43.47826086956522,1,Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect
+urinary_orotic_acid,mmol/mol creatinine,after_first_steady_state_vs_baseline,0.7,1.411764705882353,41.176470588235304,1,Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect
+urinary_orotic_acid,mmol/mol creatinine,after_second_steady_state_vs_baseline,0.9000000000000001,1.5294117647058825,52.941176470588246,1,Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect

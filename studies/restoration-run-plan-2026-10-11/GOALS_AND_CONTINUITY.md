@@ -4,7 +4,14 @@ Recorded from the owner's directions in this conversation; updated 2026-10-19.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
-Latest execution: the [2026-10-19 functional benchmarks](../checklist-function-2026-10-19/README.md)
+Latest execution: the [2026-10-19 linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
+add post-aging dentin-interface source data, five-patient pulp sensibility/
+imaging records and a single-patient clinical base-editing summary analysis.
+Actual repair-depth linkage, direct pulp perfusion/native identity and the
+patient's edited-cell fraction remain unresolved. These observations advance
+component measurement; they do not establish complete tooth restoration or
+whole-body rejuvenation. The
+[functional benchmarks](../checklist-function-2026-10-19/README.md)
 add source-derived enamel-analogue mechanics, human PDL construct/native-tissue
 measurement comparisons and MOTS-c analytical-specificity/PK qualification.
 Bulk material resistance, active cell contraction and immunoreactive peptide

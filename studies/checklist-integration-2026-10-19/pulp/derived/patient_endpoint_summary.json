@@ -1,0 +1,360 @@
+{
+  "evidence_kind": "Observed patient-linked pilot-study endpoint patterns, not complete pulp regeneration",
+  "patient_registry": {
+    "enrolled": 5,
+    "one_affected_tooth_per_patient": true,
+    "screened_or_approached": null,
+    "Table4_24wk_EPT_status_records": 5,
+    "Table4_24wk_apical_MRI_values": 5,
+    "Table4_24wk_XR_symbols": 5,
+    "unambiguous_binary_XR_radiolucency_states": 4,
+    "Table4_CBCT_flags_with_unspecified_visit": 5,
+    "same_unit_numeric_CBCT_volume_pairs": 1,
+    "reported_formal_dropout_flow": null,
+    "complete36wk_cohort_inferred": false
+  },
+  "EPT_source_status_counts": {
+    "onset_EPT_table4": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        4,
+        4
+      ],
+      "proportion_bounds": [
+        0.8,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "EPT_12wk_table4": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        4,
+        4
+      ],
+      "proportion_bounds": [
+        0.8,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "EPT_24wk_table4": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        4,
+        4
+      ],
+      "proportion_bounds": [
+        0.8,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    }
+  },
+  "EPT_reading_audit": {
+    "nested_device_readings": 36,
+    "independent_patients": 5,
+    "right_censored_readings": [
+      {
+        "patient_id": "4",
+        "source_endpoint": "onset_EPT_table4",
+        "source_token": "80+"
+      },
+      {
+        "patient_id": "5",
+        "source_endpoint": "onset_EPT_table4",
+        "source_token": "80+"
+      }
+    ],
+    "changed_control_tooth_patient_ids": [
+      "1",
+      "3",
+      "4"
+    ],
+    "normalized_longitudinal_sensory_recovery_percent": null,
+    "interpretation": "Source categorical positivity only; device units are not linear nerve function. No averaging80+ as80 or averaging across changing control teeth."
+  },
+  "MRI_24wk_apical_signal": {
+    "patient_values": [
+      {
+        "patient_id": "1",
+        "relative_signal": 0.8
+      },
+      {
+        "patient_id": "2",
+        "relative_signal": 0.9
+      },
+      {
+        "patient_id": "3",
+        "relative_signal": 0.9
+      },
+      {
+        "patient_id": "4",
+        "relative_signal": 0.7
+      },
+      {
+        "patient_id": "5",
+        "relative_signal": 0.9
+      }
+    ],
+    "source_ratio_definition": "Ratio of root-canal tissue signal to surrounding dentin, compared with normal pulp/dentin in the opposite site; apical Table4 values only. No healthy threshold adopted.",
+    "mean": 0.84,
+    "median": 0.9,
+    "minimum": 0.7,
+    "maximum": 0.9,
+    "source_defined_healthy_threshold": null,
+    "direct_blood_flow": null,
+    "native_pulp_identity_confirmed": null,
+    "interpretation": "Continuous relative image signal, not perfusion, normal-tissue equivalence or a histological identity test"
+  },
+  "linked_measured_patterns": {
+    "EPT_positive_at_both12_and24_weeks": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        4,
+        4
+      ],
+      "proportion_bounds": [
+        0.8,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "24wk_EPT_positive_and_MRI_value_available": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        4,
+        4
+      ],
+      "proportion_bounds": [
+        0.8,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "24wk_MRI_value_available_and_unambiguous_XR_radiolucency_absence": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "4"
+      ],
+      "unknown_patient_ids": [
+        "2"
+      ],
+      "count_bounds": [
+        3,
+        4
+      ],
+      "proportion_bounds": [
+        0.6,
+        0.8
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "24wk_EPT_positive_MRI_value_available_and_unambiguous_XR_radiolucency_absence": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "1",
+        "3",
+        "5"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "2",
+        "4"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        3,
+        3
+      ],
+      "proportion_bounds": [
+        0.6,
+        0.6
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    },
+    "24wk_EPT_positive_with_XR_radiolucency_present": {
+      "denominator_enrolled_patients": 5,
+      "observed_pattern_patient_ids": [
+        "4"
+      ],
+      "observed_not_pattern_patient_ids": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "unknown_patient_ids": [],
+      "count_bounds": [
+        1,
+        1
+      ],
+      "proportion_bounds": [
+        0.2,
+        0.2
+      ],
+      "meaning": "Exact finite-cohort identification bounds from reported categorical observations; no confidence interval, causal benefit or biological regeneration criterion"
+    }
+  },
+  "MRI_availability_in_patterns": "All5 have a numeric Table4 ratio. Availability is not an MRI-positive or physiological-success classification.",
+  "discordant_patient_records": [
+    {
+      "patient_id": "2",
+      "EPT_24wk_positive": false,
+      "apical_MRI_ratio": 0.9,
+      "XR_radiolucency": "Unresolved minus/plus, shrinking prior lesion and widened PDL; not coded absent",
+      "late_EPT": "After36weeks footnote only; exact time and complete later cohort unavailable"
+    },
+    {
+      "patient_id": "4",
+      "EPT_24wk_positive": true,
+      "apical_MRI_ratio": 0.7,
+      "XR_radiolucency": "Present at24weeks following PDL widening at12weeks; no causal attribution computed",
+      "CBCT": "Positive lateral-mineralization flag at an unassigned Table4 visit; not a24-week joint criterion"
+    }
+  ],
+  "CBCT_separate_source_flags": {
+    "reported_lateral_mineralization_patient_ids": [
+      "1",
+      "4",
+      "5"
+    ],
+    "denominator_enrolled_patients": 5,
+    "exact_visit_in_Table4": null,
+    "native_dentin_or_mechanical_strength_confirmed": null,
+    "volume_audits": [
+      {
+        "patient_id": "1",
+        "before_value": 0.0143,
+        "before_unit_literal": "cm3",
+        "after_value": 0.0125,
+        "after_unit_literal": "cm3",
+        "results_narrative_times_weeks": [
+          16,
+          28
+        ],
+        "timing_qualification": "Results narrative16/28weeks; no individual acquisition dates given",
+        "endpoint": "CBCT threshold-defined low-density pulp-space volume, not direct tissue mass, perfusion or histological dentin volume",
+        "eligible_for_24wk_joint_pattern": false,
+        "status": "same_unit_printed_pair",
+        "decrease_value": 0.0017999999999999995,
+        "decrease_fraction": 0.12587412587412583
+      },
+      {
+        "patient_id": "4",
+        "before_value": 0.011,
+        "before_unit_literal": "cm3",
+        "after_value": 0.0081,
+        "after_unit_literal": "m3",
+        "results_narrative_times_weeks": [
+          16,
+          28
+        ],
+        "timing_qualification": "Figure3b labels16 and28/32weeks; patient4 Discussion instead mentions12/24weeks",
+        "endpoint": "CBCT threshold-defined low-density pulp-space volume, not direct tissue mass, perfusion or histological dentin volume",
+        "eligible_for_24wk_joint_pattern": false,
+        "status": "source_unit_conflict",
+        "decrease_value": null,
+        "decrease_fraction": null,
+        "interpretation": "No unit repair or conditional change computed; source unit/time conflicts remain unresolved"
+      }
+    ],
+    "missing_initial_CBCT_patient5": true,
+    "cohort_mean_volume_change": null
+  },
+  "safety_and_limits": {
+    "source_reports_no_attributed_systemic_or_clinical_events_through24wk": true,
+    "source_lab_clinical_abnormality_symbols": {
+      "1": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "2": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "3": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "4": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      },
+      "5": {
+        "Blood test": "\u2013",
+        "Urine test": "\u2013",
+        "Cardiogram": "\u2013",
+        "Local clinical examination": "\u2013"
+      }
+    },
+    "new_patient4_radiographic_abnormality_preserved": true,
+    "cell_karyotype_patterns_not_all_declared_normal": true,
+    "long_term_safety_proven": false,
+    "controlled_treatment_effect": null,
+    "full_regeneration_success_count": null,
+    "directly_measured_perfusion_or_human_pulp_histology_n": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-19",
+  "status": "Post-source exploratory patient-linked reanalysis; no preregistration, blinded selection or causal treatment effect claim",
+  "source_set_frozen": ["10.1186/s13287-017-0506-5"],
+  "prior_audit": "Main studies were searched for Nakashima, Xuan, pulp regeneration, electric pulp, pulp MRI and mobilized dental terms. No prior patient-table analysis found. Persistent goals mention viable pulp, sensation and orthotopic pulp outcomes in GOALS_AND_CONTINUITY.md and periodontal-ligament-interface/README.md.",
+  "unit": "Five source patient IDs, each linked to one affected tooth; repeated visits, three dentists and MRI regions are nested observations, not extra participants",
+  "primary_records": "All five columns of Tables1/4; no exclusion based on favorable results",
+  "operations": [
+    "Preserve enrollment EPT positivity separately from narrative pre-transplant EPT negativity and post-transplant observations",
+    "Count observed EPT status at onset/12/24 weeks, retaining first positive day and the patient2 after36-week footnote separately",
+    "Retain all three EPT readings, 80+ right-censoring and literal visit-specific controls; do not normalize sensory function or infer nerve amount from device units",
+    "Summarize five numeric24-week apical MRI relative signal ratios as continuous observations; no healthy cutoff, perfusion or tissue-identity inference",
+    "Use three-state logic for24-week periapical radiolucency: minus absent, plus present, minus/plus unresolved",
+    "Compute all-five-denominator exact bounds for explicitly24-week linked observed patterns only; MRI availability is not an MRI physiological pass",
+    "Keep Table4 CBCT lateral mineralization separate because that row has no explicit time; do not join it as a24-week measurement",
+    "Audit source narrative volumes without unit or time correction; calculate patient1 same-unit change and leave patient4 unit/time-conflicted change uncomputed",
+    "Separate absence of source-attributed systemic/clinical events from patient4 radiographic deterioration and patient2 residual/ambiguous radiographic status",
+    "Report endpoint-specific record availability and unknown screening/dropout flow; do not turn a late patient2 observation into a complete36-week cohort"
+  ],
+  "not_estimated": ["MRI blood flow", "Histological innervation or native pulp identity", "EPT recovery percentage", "Same-time CBCT/EPT joint success", "Patient4 unconditional volume change", "Long-term pulp-space durability", "Randomized treatment benefit", "Biological age effect", "Full tooth/PDL/gum/pulp/pose restoration"],
+  "publication": "Primary CC BY4.0 numerical/categorical table transcription with attribution, original analysis and bounded narrative annotations; no source treatment steps, doses, recipes or source figures. Raw XML and actual provenance remain ignored. No second source or contacts."
+}

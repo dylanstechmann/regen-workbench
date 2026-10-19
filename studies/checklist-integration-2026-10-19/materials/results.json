@@ -1,0 +1,293 @@
+{
+  "scope": "Post-thermal-cycle established-restorative dentin-interface benchmark, not enamel regrowth",
+  "group_summaries": [
+    {
+      "group": "ER",
+      "n_source_scan_rows": 50,
+      "source_row_mean_percent": 34.34646,
+      "source_row_median_percent": 35.87,
+      "source_row_sample_sd_percent_not_independent_tooth_sd": 7.487504238586923,
+      "source_row_range_percent": [
+        18.153,
+        47.043
+      ],
+      "conditional_block_as_tooth_summary": {
+        "n_worksheet_blocks": 5,
+        "block_means_percent": [
+          40.0276,
+          39.881099999999996,
+          27.4146,
+          30.5915,
+          33.8175
+        ],
+        "mean_percent": 34.34646,
+        "sample_sd_of_block_means_percent": 5.597718239872385,
+        "qualification": "Conditional worksheet-block nesting sensitivity; paper reports five teeth and ten scans per tooth, but no individual identity crosswalk is present. No donor count or independent replication is inferred from row blocks."
+      },
+      "leave_one_source_block_out_means_percent": [
+        32.926175,
+        32.9628,
+        36.079425,
+        35.285199999999996,
+        34.478699999999996
+      ],
+      "leave_one_block_out_range_percent": [
+        32.926175,
+        36.079425
+      ],
+      "repeated_runs_at_least_three_values": [
+        {
+          "length": 7,
+          "left_source_cells": [
+            "A13",
+            "A14",
+            "A15",
+            "A16",
+            "A17",
+            "A18",
+            "A19"
+          ],
+          "right_source_cells": [
+            "A46",
+            "A47",
+            "A48",
+            "A49",
+            "A50",
+            "A51",
+            "A52"
+          ],
+          "interpretation": "Exact repeated values retained. Could reflect measurement coincidence, reuse or transcription; source identity records are needed, and no cause is assigned."
+        }
+      ]
+    },
+    {
+      "group": "ER/CHX",
+      "n_source_scan_rows": 50,
+      "source_row_mean_percent": 33.50206,
+      "source_row_median_percent": 31.610999999999997,
+      "source_row_sample_sd_percent_not_independent_tooth_sd": 6.95771108389381,
+      "source_row_range_percent": [
+        22.933,
+        52.342
+      ],
+      "conditional_block_as_tooth_summary": {
+        "n_worksheet_blocks": 5,
+        "block_means_percent": [
+          40.5873,
+          30.4289,
+          33.6463,
+          34.5348,
+          28.313
+        ],
+        "mean_percent": 33.50206,
+        "sample_sd_of_block_means_percent": 4.681309619433434,
+        "qualification": "Conditional worksheet-block nesting sensitivity; paper reports five teeth and ten scans per tooth, but no individual identity crosswalk is present. No donor count or independent replication is inferred from row blocks."
+      },
+      "leave_one_source_block_out_means_percent": [
+        31.73075,
+        34.27035,
+        33.466,
+        33.243875,
+        34.799325
+      ],
+      "leave_one_block_out_range_percent": [
+        31.73075,
+        34.799325
+      ],
+      "repeated_runs_at_least_three_values": []
+    },
+    {
+      "group": "SE",
+      "n_source_scan_rows": 50,
+      "source_row_mean_percent": 27.29802,
+      "source_row_median_percent": 27.219,
+      "source_row_sample_sd_percent_not_independent_tooth_sd": 8.637869846749703,
+      "source_row_range_percent": [
+        14.235,
+        44.602
+      ],
+      "conditional_block_as_tooth_summary": {
+        "n_worksheet_blocks": 5,
+        "block_means_percent": [
+          27.7717,
+          26.3155,
+          25.5025,
+          30.3672,
+          26.5332
+        ],
+        "mean_percent": 27.29802,
+        "sample_sd_of_block_means_percent": 1.8985801186676319,
+        "qualification": "Conditional worksheet-block nesting sensitivity; paper reports five teeth and ten scans per tooth, but no individual identity crosswalk is present. No donor count or independent replication is inferred from row blocks."
+      },
+      "leave_one_source_block_out_means_percent": [
+        27.1796,
+        27.54365,
+        27.7469,
+        26.530725,
+        27.489225
+      ],
+      "leave_one_block_out_range_percent": [
+        26.530725,
+        27.7469
+      ],
+      "repeated_runs_at_least_three_values": []
+    },
+    {
+      "group": "SE/CHX",
+      "n_source_scan_rows": 50,
+      "source_row_mean_percent": 30.10082,
+      "source_row_median_percent": 29.9805,
+      "source_row_sample_sd_percent_not_independent_tooth_sd": 7.453359830496388,
+      "source_row_range_percent": [
+        17.391,
+        44.582
+      ],
+      "conditional_block_as_tooth_summary": {
+        "n_worksheet_blocks": 5,
+        "block_means_percent": [
+          36.0322,
+          24.8352,
+          30.7214,
+          29.912,
+          29.0033
+        ],
+        "mean_percent": 30.10082,
+        "sample_sd_of_block_means_percent": 4.016632462897247,
+        "qualification": "Conditional worksheet-block nesting sensitivity; paper reports five teeth and ten scans per tooth, but no individual identity crosswalk is present. No donor count or independent replication is inferred from row blocks."
+      },
+      "leave_one_source_block_out_means_percent": [
+        28.617975,
+        31.417225,
+        29.945675,
+        30.148025,
+        30.3752
+      ],
+      "leave_one_block_out_range_percent": [
+        28.617975,
+        31.417225
+      ],
+      "repeated_runs_at_least_three_values": []
+    }
+  ],
+  "source_table2_reconciliation": [
+    {
+      "group": "ER",
+      "published_mean_percent": 34.3,
+      "published_sd_percent": 5.6,
+      "rounded_block_mean_matches": true,
+      "rounded_block_sd_matches": true,
+      "qualification": "Numerical agreement supports this worksheet segmentation; it does not recover physical specimen or donor IDs."
+    },
+    {
+      "group": "ER/CHX",
+      "published_mean_percent": 33.5,
+      "published_sd_percent": 4.7,
+      "rounded_block_mean_matches": true,
+      "rounded_block_sd_matches": true,
+      "qualification": "Numerical agreement supports this worksheet segmentation; it does not recover physical specimen or donor IDs."
+    },
+    {
+      "group": "SE",
+      "published_mean_percent": 27.3,
+      "published_sd_percent": 1.9,
+      "rounded_block_mean_matches": true,
+      "rounded_block_sd_matches": true,
+      "qualification": "Numerical agreement supports this worksheet segmentation; it does not recover physical specimen or donor IDs."
+    },
+    {
+      "group": "SE/CHX",
+      "published_mean_percent": 30.1,
+      "published_sd_percent": 4.0,
+      "rounded_block_mean_matches": true,
+      "rounded_block_sd_matches": true,
+      "qualification": "Numerical agreement supports this worksheet segmentation; it does not recover physical specimen or donor IDs."
+    }
+  ],
+  "etch_specific_CHX_descriptive_contrasts": [
+    {
+      "etch_mode": "ER",
+      "contrast": "ER/CHX minus ER",
+      "difference_of_source_means_percentage_points": -0.8444000000000003,
+      "independent_block_deletion_contrast_range_percentage_points": [
+        -4.348675,
+        1.8731500000000025
+      ],
+      "deletion_combinations": 25,
+      "qualification": "Delete one ten-row source block from each group, independently. This is a conditional record-sensitivity range, not a CI, matched-pair effect, actual tooth loss model or population effect."
+    },
+    {
+      "etch_mode": "SE",
+      "contrast": "SE/CHX minus SE",
+      "difference_of_source_means_percentage_points": 2.8027999999999977,
+      "independent_block_deletion_contrast_range_percentage_points": [
+        0.8710750000000012,
+        4.886499999999998
+      ],
+      "deletion_combinations": 25,
+      "qualification": "Delete one ten-row source block from each group, independently. This is a conditional record-sensitivity range, not a CI, matched-pair effect, actual tooth loss model or population effect."
+    }
+  ],
+  "SE_minus_ER_contrast_of_mean_differences_percentage_points": 3.647199999999998,
+  "new_p_value_or_confidence_interval": null,
+  "equivalence_established": false,
+  "source_reported_nominal_cavity_depth_mm": 2,
+  "actual_specimen_repair_depth_um": null,
+  "thermal_cycles_before_OCT": 10000,
+  "mechanical_fatigue_cycle_history": null,
+  "baseline_OCT_before_aging": null,
+  "depth_response_or_within_specimen_change": null,
+  "source_reported_OCT_teeth_per_group": 5,
+  "independent_donor_count": null,
+  "cross_endpoint_specimen_pairing": null,
+  "OCT_to_microtensile_correlation": null,
+  "published_unlinked_tensile_table3_not_pooled": [
+    {
+      "group": "ER",
+      "mean_MPa": 27.5,
+      "source_sd_MPa": 2.9,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        1,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "ER/CHX",
+      "mean_MPa": 26.7,
+      "source_sd_MPa": 4.9,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        1,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "SE",
+      "mean_MPa": 22.5,
+      "source_sd_MPa": 5.2,
+      "adhesive_cohesive_mixed_counts": [
+        6,
+        4,
+        0
+      ],
+      "source_beams_n": 10
+    },
+    {
+      "group": "SE/CHX",
+      "mean_MPa": 13.1,
+      "source_sd_MPa": 2.3,
+      "adhesive_cohesive_mixed_counts": [
+        9,
+        0,
+        1
+      ],
+      "source_beams_n": 10
+    }
+  ],
+  "pretest_failures_or_unreported_losses": null,
+  "full_native_restoration_and_finite_support_withdrawal_qualified": false,
+  "assay_qualification": "Authors call this microleakage: proportion of selected cavity-floor width occupied by enhanced binary OCT signal after silver processing. It is not a measured fluid flux, universal leak-free classifier or full-depth material restoration metric.",
+  "inputs_text_sha256": "7672be229d0532b67f1777499c71857f3099e28235c030e730f65fb6b0ad754f"
+}

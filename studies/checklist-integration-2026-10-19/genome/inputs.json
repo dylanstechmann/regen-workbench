@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "study": {
+    "doi": "10.1056/NEJMoa2504747",
+    "pmid": "40373211",
+    "independent_patients": 1,
+    "setting": "Single infant with neonatal-onset inherited CPS1 deficiency; uncontrolled expanded-access clinical case",
+    "source_pages": [2237, 2239, 2240, 2241],
+    "raw_clinical_time_series_available": false,
+    "numerical_per_group_measurement_counts_available": false,
+    "patient_liver_biopsy_obtained": false,
+    "patient_corrected_allele_fraction": null,
+    "patient_corrected_hepatocyte_fraction": null,
+    "ordinary_aging_coverage_fraction": null,
+    "clinical_causal_comparator_available": false
+  },
+  "timeline": {
+    "time_unit": "day of life",
+    "first_intervention_day": 208,
+    "second_intervention_interval_days_reported": 22,
+    "followup_end_day": 256,
+    "reported_followup_after_first_weeks": 7,
+    "reported_illness_window_after_second_weeks": 4,
+    "relative_medication_reduction_after_second_weeks_reported": 2,
+    "protein_free_illness_day": 225,
+    "earlier_honeymoon_start_day": 50,
+    "earlier_honeymoon_end_day": 100
+  },
+  "endpoints": [
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "source_locator": "page 2241; Figure 3E labels on page 2240",
+      "group_window_precision": "Figure baseline: age three months until first intervention; between interventions; after second intervention. Exact specimen timestamps and group counts not supplied numerically in inspected clinical text.",
+      "groups": [
+        {"id": "baseline", "label": "Age three months until first intervention", "median": 23, "q1": 14, "q3": 48, "n_measurements": null},
+        {"id": "between", "label": "Between first and second interventions", "median": 9, "q1": 9, "q3": 19, "n_measurements": null},
+        {"id": "after_second", "label": "After second intervention", "median": 13, "q1": 9, "q3": 28, "n_measurements": null}
+      ]
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "source_locator": "page 2241; Figure 3F labels on page 2240",
+      "group_window_precision": "Baseline; steady state after first intervention; steady state after second intervention. Steady-state boundaries and specimen timestamps not specified numerically. These are not established as the same windows or paired specimens as ammonia.",
+      "groups": [
+        {"id": "baseline", "label": "Baseline", "median": 1.7, "q1": 1.6, "q3": 1.8, "n_measurements": null},
+        {"id": "after_first_steady_state", "label": "Steady state after first intervention", "median": 2.4, "q1": 2.0, "q3": 3.0, "n_measurements": null},
+        {"id": "after_second_steady_state", "label": "Steady state after second intervention", "median": 2.6, "q1": 2.0, "q3": 3.6, "n_measurements": null}
+      ]
+    }
+  ],
+  "weight": {
+    "unit": "kg",
+    "start_day": 207,
+    "end_day": 256,
+    "start": 7.14,
+    "end": 8.17,
+    "start_reported_percentile": 9,
+    "end_reported_percentile": 26,
+    "source_locator": "page 2241",
+    "interpretation": "A growing infant; no untreated growth comparator or attribution of growth to editing. Percentile change is not a percent increase in weight."
+  },
+  "care_and_outcomes": {
+    "relative_medication_fraction_of_start_reported": 0.5,
+    "medication_fraction_precision": "Source describes approximately half of the starting nitrogen-scavenger requirement; no medication amounts or regimen reconstructed.",
+    "initial_medication_wean_successful": false,
+    "initial_wean_reason_reversed": "Rising glutamine led clinicians to restore the initial nitrogen-scavenger requirement.",
+    "protein_increase_numerically_reconstructed": false,
+    "protein_context": "Protein targets changed with care. Birth at 35 weeks gestation complicates comparison with chronological-age recommended allowance. Source reports increased tolerance and later full-protein feeding during illness; no raw protein-intake series extracted.",
+    "supportive_care": ["Continued nitrogen-scavenger medication", "Continued citrulline supplementation", "Changing protein plan", "Sirolimus and tacrolimus immunosuppression around the intervention period", "Intravenous fluids and one protein-free day during the first post-intervention respiratory illness"],
+    "illness_context": ["Earlier rotavirus-positive gastroenteritis", "Respiratory viral infection after the first intervention", "Two viral illnesses with vomiting and diarrhea after the second intervention"],
+    "no_serious_adverse_events_reported": true,
+    "other_events": ["Coughing episode during the second intervention resolved with nasal suctioning", "Transient ALT and AST elevations after the second intervention and again with viral illness"],
+    "neurologic_status": "Reported stable over the original short follow-up; no demonstrated reversal of prior injury or long-term developmental trajectory"
+  },
+  "sampling_constraints": {
+    "paired_ammonia_orotic_specimens_available": false,
+    "joint_molecular_functional_patient_units_available": false,
+    "long_term_safety_or_durability_established": false
+  }
+}

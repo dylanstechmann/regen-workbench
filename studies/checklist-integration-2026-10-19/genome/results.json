@@ -1,0 +1,148 @@
+{
+  "analysis_type": "Single-patient descriptive contrasts of published summaries; no raw-series reconstruction or inference",
+  "independent_patients": 1,
+  "summary_rows": [
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "group": "baseline",
+      "median": 23,
+      "q1": 14,
+      "q3": 48,
+      "IQR_width": 34,
+      "n_measurements": null,
+      "independent_patients": 1
+    },
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "group": "between",
+      "median": 9,
+      "q1": 9,
+      "q3": 19,
+      "IQR_width": 10,
+      "n_measurements": null,
+      "independent_patients": 1
+    },
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "group": "after_second",
+      "median": 13,
+      "q1": 9,
+      "q3": 28,
+      "IQR_width": 19,
+      "n_measurements": null,
+      "independent_patients": 1
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "group": "baseline",
+      "median": 1.7,
+      "q1": 1.6,
+      "q3": 1.8,
+      "IQR_width": 0.19999999999999996,
+      "n_measurements": null,
+      "independent_patients": 1
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "group": "after_first_steady_state",
+      "median": 2.4,
+      "q1": 2.0,
+      "q3": 3.0,
+      "IQR_width": 1.0,
+      "n_measurements": null,
+      "independent_patients": 1
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "group": "after_second_steady_state",
+      "median": 2.6,
+      "q1": 2.0,
+      "q3": 3.6,
+      "IQR_width": 1.6,
+      "n_measurements": null,
+      "independent_patients": 1
+    }
+  ],
+  "contrasts": [
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "comparison": "between_vs_baseline",
+      "difference_of_reported_medians": -14,
+      "ratio_of_reported_medians": 0.391304347826087,
+      "relative_difference_of_reported_medians_percent": -60.86956521739131,
+      "independent_patients": 1,
+      "interpretation": "Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect"
+    },
+    {
+      "endpoint": "ammonia",
+      "unit": "umol/L",
+      "comparison": "after_second_vs_baseline",
+      "difference_of_reported_medians": -10,
+      "ratio_of_reported_medians": 0.5652173913043478,
+      "relative_difference_of_reported_medians_percent": -43.47826086956522,
+      "independent_patients": 1,
+      "interpretation": "Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect"
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "comparison": "after_first_steady_state_vs_baseline",
+      "difference_of_reported_medians": 0.7,
+      "ratio_of_reported_medians": 1.411764705882353,
+      "relative_difference_of_reported_medians_percent": 41.176470588235304,
+      "independent_patients": 1,
+      "interpretation": "Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect"
+    },
+    {
+      "endpoint": "urinary_orotic_acid",
+      "unit": "mmol/mol creatinine",
+      "comparison": "after_second_steady_state_vs_baseline",
+      "difference_of_reported_medians": 0.9000000000000001,
+      "ratio_of_reported_medians": 1.5294117647058825,
+      "relative_difference_of_reported_medians_percent": 52.941176470588246,
+      "independent_patients": 1,
+      "interpretation": "Descriptive contrast of group summaries; not a paired-specimen ratio or causal effect"
+    }
+  ],
+  "timeline": {
+    "time_unit": "day of life",
+    "second_intervention_day_derived": 230,
+    "first_to_followup_end_elapsed_days": 48,
+    "first_to_followup_end_inclusive_day_count": 49,
+    "second_to_followup_end_elapsed_days": 26,
+    "nominal_relative_medication_reduction_day_derived_from_weeks": 244,
+    "nominal_relative_medication_reduction_to_followup_end_days": 12,
+    "medication_timing_precision": "Week-based source description converted arithmetically; not a reported exact clinical day",
+    "reported_followup_after_first_weeks": 7,
+    "reported_illness_window_after_second_weeks": 4,
+    "rounding_note": "Rounded source week descriptions and calendar conventions are retained, not substituted for timestamp differences"
+  },
+  "weight_contrast": {
+    "unit": "kg",
+    "difference": 1.0300000000000002,
+    "relative_difference_percent": 14.425770308123242,
+    "elapsed_days": 49,
+    "reported_percentile_point_difference": 17,
+    "interpretation": "Descriptive growth in an infant; not an editing-attributable effect or percentile-to-weight conversion"
+  },
+  "reported_relative_medication_fraction_of_start": 0.5,
+  "unavailable_inferences": {
+    "raw_clinical_trajectory": "No numeric specimen series or complete specimen counts acquired",
+    "protein_intake_percent_change": "No numeric intake series reconstructed; age-specific feeding target changes",
+    "paired_ammonia_orotic_association": "Specimen correspondence and identical sampling windows unavailable",
+    "clinical_causal_effect": "One uncontrolled case with concurrent care, illness, growth and unequal observation windows",
+    "patient_corrected_allele_fraction": "No patient liver biopsy; unknown",
+    "patient_corrected_hepatocyte_fraction": "No patient liver biopsy; allele-to-cell mapping also unavailable",
+    "joint_corrected_viable_functional_cell_fraction": "No common patient molecular/cellular/function sampling frame",
+    "ordinary_aging_coverage_fraction": "Inherited-lesion correction does not supply a natural-aging causal target or coverage threshold",
+    "long_term_safety_or_durability": "Original short follow-up; no inference from absence of reported serious events"
+  },
+  "inputs_sha256_canonical_utf8_lf": "408627b1e4ec888d3f8356e65f1944b7d8c95ea07b5b4cfe0dfdb666f757a226"
+}
