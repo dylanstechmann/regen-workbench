@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "study": {
+    "doi": "10.1038/s41467-025-68103-7",
+    "pmcid": "PMC12873177",
+    "title": "Multiplexed lipid nanoparticle barcoding reveals tissue-dynamic kinetic insights and enriched cellular tropism in hepatic zones",
+    "authors": "Moore et al.",
+    "year": 2026,
+    "source_figure": "Figure 2",
+    "stage": "Mouse reporter study",
+    "measurement_scope": "Source-printed fit summaries; no individual measurements transcribed"
+  },
+  "rounding_assumption": {
+    "decimal_places": 2,
+    "rule": "Nearest displayed hundredth; closed enclosing bounds",
+    "meaning": "Display-precision sensitivity only; not a confidence interval"
+  },
+  "reported_associations": [
+    {"formulation_label": "Liver SORT", "target_organ": "liver", "qpcr_time_h": 1, "reporter_time_h": 24, "panel": "2d", "reported_r_squared": 0.97},
+    {"formulation_label": "Liver SORT", "target_organ": "liver", "qpcr_time_h": 24, "reporter_time_h": 24, "panel": "2e", "reported_r_squared": 0.93},
+    {"formulation_label": "Lung SORT", "target_organ": "lung", "qpcr_time_h": 1, "reporter_time_h": 24, "panel": "2i", "reported_r_squared": 0.92},
+    {"formulation_label": "Lung SORT", "target_organ": "lung", "qpcr_time_h": 24, "reporter_time_h": 24, "panel": "2j", "reported_r_squared": 0.87},
+    {"formulation_label": "Spleen SORT", "target_organ": "spleen", "qpcr_time_h": 1, "reporter_time_h": 24, "panel": "2n", "reported_r_squared": 0.98},
+    {"formulation_label": "Spleen SORT", "target_organ": "spleen", "qpcr_time_h": 24, "reporter_time_h": 24, "panel": "2o", "reported_r_squared": 0.86}
+  ],
+  "source_units": {
+    "qpcr_biological_n_per_dose_time_formulation": 3,
+    "qpcr_technical_wells_per_measurement": 3,
+    "reporter_image_fields_n": 3,
+    "reporter_independent_animal_n_in_figure2_quantification": null,
+    "individual_observations_used_per_correlation_fit": null,
+    "fit_point_count_note": "No underlying fit-input table or independent-unit crosswalk provided in the retrieved main/figure; not inferred by counting overlapping plot marks",
+    "cross_assay_animal_id_crosswalk": null,
+    "qpcr_axis": "Source-labeled qPCR Fold Change",
+    "reporter_axis": "tdTom area percent",
+    "reporter_denominator": "Image region defined by DAPI signal, rather than counted intended cells"
+  },
+  "source_reported_discordance": {
+    "condition": "Liver SORT",
+    "early_qpcr_time_h": 1,
+    "early_qpcr_predominant_organ": "liver",
+    "late_qpcr_time_h": 24,
+    "late_qpcr_predominant_organ": "spleen",
+    "reporter_time_h": 24,
+    "reporter_predominant_organ": "liver",
+    "evidence": "Main results discussion of Figure2 and SupplementaryFigure3j; source-described organ preference, not a re-estimated quantitative specificity ratio",
+    "cross_animal_pairing": null
+  },
+  "unavailable_endpoints": [
+    "intact_full_length_cargo_fraction",
+    "individual_animal_qpcr_reporter_pairing",
+    "intended_cell_uptake_fraction",
+    "intended_cell_functional_coverage_fraction",
+    "causal_lesion_corrected_fraction",
+    "disease_functional_repair",
+    "human_oral_availability",
+    "rejuvenation"
+  ]
+}

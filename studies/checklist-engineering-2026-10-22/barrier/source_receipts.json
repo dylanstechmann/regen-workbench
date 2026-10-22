@@ -1,0 +1,93 @@
+{
+  "actual_fetches": [
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9870913/fullTextXML",
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9870913/fullTextXML",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/mouth2023.xml",
+      "bytes": 126094,
+      "sha256": "189e2f9cb5ce637a50c41a66d38cc78308a6e83e6424ea03dfe0a83d80c27537",
+      "content_type": "application/xml",
+      "receipt_path": "data/provenance/1792682636040384900_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:23:56.042394+00:00",
+      "used_in_final_analysis": false,
+      "classification": "retained_unused_source_response"
+    },
+    {
+      "source_url": "https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1008124",
+      "final_url": "https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1008124",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/jam12019.html",
+      "bytes": 260456,
+      "sha256": "e1c0cbea7cd86e5f3dacdb2211e3db30de0f43611fab92f9e66c2461bc94d0b8",
+      "content_type": "text/html",
+      "receipt_path": "data/provenance/1792682637430613200_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:23:57.435353+00:00",
+      "used_in_final_analysis": false,
+      "classification": "retained_unused_source_response"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/9870913/bin/42003_2023_4434_MOESM4_ESM.xlsx",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/9870913/bin/42003_2023_4434_MOESM4_ESM.xlsx",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/mouth2023_source_pmc.xlsx",
+      "bytes": 21535,
+      "sha256": "b480a1ec3f17320c58519cf3ed20c1c06530b2c130c7dc1338c01999783f6360",
+      "content_type": "text/html",
+      "receipt_path": "data/provenance/1792682690297273700_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:24:50.298331+00:00",
+      "used_in_final_analysis": false,
+      "expected_document_received": false,
+      "classification": "HTML_download_challenge_not_workbook"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12135942/",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12135942/",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/buccal2025.html",
+      "bytes": 280230,
+      "sha256": "6cf315ec9a8365a4af19b90a597371424af9e7cd373869a782a24ce6cc9ded56",
+      "content_type": "text/html",
+      "receipt_path": "data/provenance/1792682690704514300_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:24:50.706567+00:00",
+      "used_in_final_analysis": true,
+      "classification": "primary_HTML_selected_benign_tables_only"
+    },
+    {
+      "source_url": "https://www.nature.com/articles/s42003-023-04434-9",
+      "final_url": "https://www.nature.com/articles/s42003-023-04434-9?error=cookies_not_supported&code=4c5f0ea0-455b-42bd-a669-95f99352dc67",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/mouth2023.html",
+      "bytes": 467752,
+      "sha256": "1c9ebf3c874c59680ec7885d9bd38e50dbfab6119baba194a439dab8c468d934",
+      "content_type": "text/html",
+      "receipt_path": "data/provenance/1792682718057376500_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:25:18.057907+00:00",
+      "used_in_final_analysis": false,
+      "classification": "retained_unused_source_response"
+    },
+    {
+      "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-023-04434-9/MediaObjects/42003_2023_4434_MOESM4_ESM.xlsx",
+      "final_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-023-04434-9/MediaObjects/42003_2023_4434_MOESM4_ESM.xlsx",
+      "cache_path": "data/literature/checklist-engineering-2026-10-22/barrier/mouth2023_source_media.xlsx",
+      "bytes": 118612,
+      "sha256": "d99ff64dea1652d68087d326fc55d61de1c4f2e06d907c40af96cb3d96550db2",
+      "content_type": "application/octet-stream",
+      "receipt_path": "data/provenance/1792682761066939100_checklist-gingival-barrier-source-fetch.json",
+      "fetched_at_utc": "2026-10-22T15:26:01.067938+00:00",
+      "used_in_final_analysis": false,
+      "classification": "retained_unused_workbook_unopened"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12135942/fullTextXML",
+      "error": "HTTP Error 500: ",
+      "observed_at_utc": "2026-10-22T15:23:56.647538+00:00",
+      "retained_source_payload": false,
+      "fetch_receipt_created": false
+    },
+    {
+      "source_url": "https://static-content.springer-cdn.com/esm/art%3A10.1038%2Fs42003-023-04434-9/MediaObjects/42003_2023_4434_MOESM4_ESM.xlsx",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>",
+      "observed_at_utc": "2026-10-22T15:24:29.346165+00:00",
+      "retained_source_payload": false,
+      "fetch_receipt_created": false
+    }
+  ]
+}

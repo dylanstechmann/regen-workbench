@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "frozen_on": "2026-10-22",
+  "numerical_parameter_source": "All model lengths, foundation densities, support perturbations, resting offsets and unit loads are explicitly illustrative. No clinical data or source modulus calibrates this solver.",
+  "prior_work_audited": [
+    {
+      "path": "studies/periodontal-attachment-restoration-2026-10-11/build_displacement_model.py",
+      "boundary": "Interpolates two rat crown-displacement group means over their measured force interval; no root support field, moment coupling or rigid-body solver. Not reused as calibration."
+    },
+    {
+      "path": "studies/periodontal-attachment-restoration-2026-10-11/build_mechanics_benchmark.py",
+      "boundary": "Existing scalar parallel-load-path ambiguity is not recreated as the new result. New analysis instead supplies a distributed spatial alias with identical entire 3x3 stiffness matrices and different local reactions."
+    },
+    {
+      "path": "studies/periodontal-attachment-restoration-2026-10-11/PAIRED_TOOTH_SURFACE_REFERENCE.md",
+      "boundary": "Existing OES/EDJ crown reference cannot supply the missing matched root-PDL-socket foundation context. No crown mesh is relabeled as a living attachment geometry."
+    },
+    {
+      "path": "studies/checklist-function-2026-10-19/attachment/REPORT.md",
+      "boundary": "Six passive native-human summary rows are loading-regime references. Active construct force/post calibration is not native tissue modulus. No measured parameter is transferred."
+    }
+  ],
+  "primary_context": [
+    {
+      "doi": "10.1186/s12938-018-0607-0",
+      "url": "https://link.springer.com/article/10.1186/s12938-018-0607-0",
+      "reviewed_on": "2026-10-22",
+      "access": "Publisher primary article read through web tool; PMC page returned browser check. No raw source response is retained by this lane and no source-download receipt is claimed.",
+      "locators": "Methods, specimen preparation and tensile testing; stress-strain data analysis; Table2; prior source-qualified extract",
+      "qualification": "Native human bone-PDL-tooth tensile slices; coupled load/rate regimes and bilinear aggregate summaries. Not matched 2D whole-root response, not a fixture-independent universal linear law, not healed insertion or age comparison.",
+      "used_for_numeric_calibration": false
+    }
+  ],
+  "scope": "Mechanistic sensitivity experiment and solver verification. No parameter fitting, new biological measurements, independent validation, healing simulation or human load recommendation."
+}

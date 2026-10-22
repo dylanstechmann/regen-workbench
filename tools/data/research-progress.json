@@ -6,7 +6,7 @@
       "id": "restoration-goals",
       "title": "The full restoration goals",
       "topic": "Whole-body restoration",
-      "updated_on": "2026-10-19",
+      "updated_on": "2026-10-22",
       "evidence_kind": "research_plan",
       "result": "Restore natural tooth substance and form, gums, living attachment, sensation and stable position after temporary support; pursue durable youthful function throughout the body.",
       "boundary": "These are research objectives. Photos constrain visible form but do not uniquely recover hidden tooth thickness or internal damage.",
@@ -16,15 +16,93 @@
           "id": "goals",
           "label": "Read the goals",
           "path": "studies/restoration-run-plan-2026-10-11/GOALS_AND_CONTINUITY.md",
-          "sha256_lf_text": "4d85ef51b7bc81295ec47c0efc7ed3fdcbb2722f1f1bf8ed3a8e1e939ddaf750",
-          "bytes_utf8_lf": 8062
+          "sha256_lf_text": "8210181e03654ccbe0c1c539bac2997d504447ca150f175462ca2eb29558771a",
+          "bytes_utf8_lf": 8468
         },
         {
           "id": "plan",
           "label": "Read the run plan",
           "path": "studies/restoration-run-plan-2026-10-11/PLAN.md",
-          "sha256_lf_text": "95834297d6b927807c98109c2379ad734ebaceac9edf705b1c612621140854f6",
-          "bytes_utf8_lf": 35918
+          "sha256_lf_text": "33848b22f89f06ea8557408cee6478bbc8a34ce83eb2a5e37831012e0ac8ba9c",
+          "bytes_utf8_lf": 36355
+        }
+      ]
+    },
+    {
+      "id": "mechanics-spatial-root-support",
+      "title": "Support location and crown contact change the model response",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-22",
+      "evidence_kind": "illustrative_model",
+      "result": "Executed 30 support/contact cases with force, moment and energy checks. Equal support-length loss gives different compliance; two manufactured support distributions share the whole global stiffness matrix while local forces differ.",
+      "boundary": "Every length, stiffness and load is illustrative. The rigid crown does not model restored enamel thickness, biological healing, human mobility thresholds or stable position after support withdrawal.",
+      "next_step": "Qualify root/socket geometry and spatial deformation or structural measurements alongside global response before fitting a tissue-specific model.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the spatial mechanics study",
+          "path": "studies/checklist-engineering-2026-10-22/mechanics/REPORT.md",
+          "sha256_lf_text": "aca22e9e79de439b289db80a27834214e10309d0fe6b1dbb4f966c85c4ebf66b",
+          "bytes_utf8_lf": 11931
+        },
+        {
+          "id": "results",
+          "label": "See all model results and checks",
+          "path": "studies/checklist-engineering-2026-10-22/mechanics/derived/results.json",
+          "sha256_lf_text": "b8ff31b34ad83c1d6d3144fc1e3fe16628b86dfcf8183d29f3b0c50cfc9e9559",
+          "bytes_utf8_lf": 97614
+        }
+      ]
+    },
+    {
+      "id": "oral-model-separate-measurements",
+      "title": "Oral tissue thickness, resistance and tracer transport differ",
+      "topic": "Dental restoration",
+      "updated_on": "2026-10-22",
+      "evidence_kind": "source_data_reanalysis",
+      "result": "For two reported buccal cell-line model conditions, thickness differs 7.543-fold, electrical resistance-area product 1.016-fold and standard FD20 apparent permeability 0.577-fold.",
+      "boundary": "These are aggregate summaries with reported SEM and replicate counts, not paired donor/insert effects. Commercial total thickness includes matrix. The narrowed noninfectious comparison does not establish native gingival restoration.",
+      "next_step": "Link identity, insert and time to geometry, resistance, tracer transport and viability before judging a functional gingival seal.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the oral measurement comparison",
+          "path": "studies/checklist-engineering-2026-10-22/barrier/REPORT.md",
+          "sha256_lf_text": "e0097149bce6d63473fac740e5f85c5df3e04b64fa29338d0314f75e7a2c628b",
+          "bytes_utf8_lf": 5211
+        },
+        {
+          "id": "results",
+          "label": "See descriptive source-summary ratios",
+          "path": "studies/checklist-engineering-2026-10-22/barrier/results.json",
+          "sha256_lf_text": "3f3218bd6349350ba5e7d2eedb6054a33ca0b0f74a39b1611b4797ada314088d",
+          "bytes_utf8_lf": 1375
+        }
+      ]
+    },
+    {
+      "id": "delivery-time-activity-history",
+      "title": "Delivery signals depend on time and reporter history",
+      "topic": "Tissue delivery",
+      "updated_on": "2026-10-22",
+      "evidence_kind": "source_audit_conditional_model",
+      "result": "Compared six printed mouse-study associations: 1-hour and 24-hour qPCR each against a fixed 24-hour reporter. Display-rounded differences stay positive; late organ accumulation can disagree with reporter location.",
+      "boundary": "No new fit, raw paired animal series, intended-cell fraction or repair outcome is supplied. Reporter area retains prior activity, and three image fields do not establish three independent animals. Rounding bounds are not confidence intervals.",
+      "next_step": "Connect animal, intended-cell denominator, molecular cargo scope and activity history to correction and organ function on traceable units.",
+      "artifacts": [
+        {
+          "id": "report",
+          "label": "Read the delivery measurement audit",
+          "path": "studies/checklist-engineering-2026-10-22/delivery/REPORT.md",
+          "sha256_lf_text": "c29a674d076b2715818f63099eec23ec92a211d213f3a6637c190958640b29e0",
+          "bytes_utf8_lf": 7186
+        },
+        {
+          "id": "results",
+          "label": "See reported association comparisons",
+          "path": "studies/checklist-engineering-2026-10-22/delivery/results.json",
+          "sha256_lf_text": "57f50f4fc13985381da540871aaa092c86bcc232dd38ba05dc83ae85b8741e53",
+          "bytes_utf8_lf": 3696
         }
       ]
     },

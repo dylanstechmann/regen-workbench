@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "descriptive_source_summary_comparison",
+  "source_doi": "10.1021/acs.molpharmaceut.4c01186",
+  "model_summary_count": 4,
+  "independent_donor_count": null,
+  "comparison_ali_over_submerged": {
+    "numerator": "ALI",
+    "denominator": "Submerged",
+    "thickness_ratio_of_reported_means": 7.542857142857143,
+    "teer_ratio_of_reported_means": 1.0161290322580645,
+    "paired_insert_effect": null,
+    "confidence_interval": null,
+    "fd20_papp_ratio_of_reported_coefficients": 0.577319587628866,
+    "fd20_papp_relative_difference_percent": -42.268041237113394
+  },
+  "comparison_full_thickness_over_microtissue": {
+    "numerator": "Hu-FT",
+    "denominator": "Hu-Mic",
+    "thickness_ratio_of_reported_means": 8.941176470588236,
+    "teer_ratio_of_reported_means": 0.8560975609756097,
+    "paired_insert_effect": null,
+    "confidence_interval": null
+  },
+  "teer_blank_subtraction": "source states R_cells minus R_blank, multiplied by insert growth area",
+  "tr146_insert_area_cm2": 0.336,
+  "direct_permeability_evidence": "reported FD20 apparent permeability only; not inferred from TEER or thickness",
+  "clinical_equivalence": null,
+  "joint_thickness_teer_transport_per_insert": null,
+  "gingival_restoration_outcome": null,
+  "source_facts_sha256": "ae4ea478d87ec12495f5bd4b937dd102c8a1b11835cd752fcdbfcd5bd0d08812"
+}

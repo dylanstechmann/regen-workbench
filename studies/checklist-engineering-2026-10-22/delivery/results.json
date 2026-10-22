@@ -1,0 +1,108 @@
+{
+  "evidence_kind": "source_summary_analysis",
+  "source_doi": "10.1038/s41467-025-68103-7",
+  "source_figure": "Figure 2",
+  "annotation_count": 6,
+  "within_formulation_organ_comparisons": [
+    {
+      "formulation_label": "Liver SORT",
+      "target_organ": "liver",
+      "early_panel": "2d",
+      "late_panel": "2e",
+      "reported_r_squared_1h": 0.97,
+      "reported_r_squared_24h": 0.93,
+      "early_association_time_pair_h": {
+        "qpcr": 1,
+        "reporter": 24
+      },
+      "late_association_time_pair_h": {
+        "qpcr": 24,
+        "reporter": 24
+      },
+      "reported_difference_1h_minus_24h": 0.04,
+      "display_rounding_difference_enclosure": [
+        0.03,
+        0.05
+      ],
+      "earlier_association_higher_under_rounding_assumption": true,
+      "unit": "Difference of dimensionless reported R-squared summaries",
+      "individual_pairing": "Unavailable; not inferred from matched group labels"
+    },
+    {
+      "formulation_label": "Lung SORT",
+      "target_organ": "lung",
+      "early_panel": "2i",
+      "late_panel": "2j",
+      "reported_r_squared_1h": 0.92,
+      "reported_r_squared_24h": 0.87,
+      "early_association_time_pair_h": {
+        "qpcr": 1,
+        "reporter": 24
+      },
+      "late_association_time_pair_h": {
+        "qpcr": 24,
+        "reporter": 24
+      },
+      "reported_difference_1h_minus_24h": 0.05,
+      "display_rounding_difference_enclosure": [
+        0.04,
+        0.06
+      ],
+      "earlier_association_higher_under_rounding_assumption": true,
+      "unit": "Difference of dimensionless reported R-squared summaries",
+      "individual_pairing": "Unavailable; not inferred from matched group labels"
+    },
+    {
+      "formulation_label": "Spleen SORT",
+      "target_organ": "spleen",
+      "early_panel": "2n",
+      "late_panel": "2o",
+      "reported_r_squared_1h": 0.98,
+      "reported_r_squared_24h": 0.86,
+      "early_association_time_pair_h": {
+        "qpcr": 1,
+        "reporter": 24
+      },
+      "late_association_time_pair_h": {
+        "qpcr": 24,
+        "reporter": 24
+      },
+      "reported_difference_1h_minus_24h": 0.12,
+      "display_rounding_difference_enclosure": [
+        0.11,
+        0.13
+      ],
+      "earlier_association_higher_under_rounding_assumption": true,
+      "unit": "Difference of dimensionless reported R-squared summaries",
+      "individual_pairing": "Unavailable; not inferred from matched group labels"
+    }
+  ],
+  "comparison_count": 3,
+  "earlier_higher_count_under_rounding_assumption": 3,
+  "rounding_enclosure_meaning": "Display precision only. Neither statistical uncertainty nor a confidence interval.",
+  "new_correlation_fit": false,
+  "association_difference_significance": null,
+  "out_of_sample_prediction_error": null,
+  "independent_animal_n_from_image_fields": null,
+  "source_reported_discordance": {
+    "condition": "Liver SORT",
+    "early_qpcr_time_h": 1,
+    "early_qpcr_predominant_organ": "liver",
+    "late_qpcr_time_h": 24,
+    "late_qpcr_predominant_organ": "spleen",
+    "reporter_time_h": 24,
+    "reporter_predominant_organ": "liver",
+    "evidence": "Main results discussion of Figure2 and SupplementaryFigure3j; source-described organ preference, not a re-estimated quantitative specificity ratio",
+    "cross_animal_pairing": null
+  },
+  "unavailable_endpoints": {
+    "intact_full_length_cargo_fraction": null,
+    "individual_animal_qpcr_reporter_pairing": null,
+    "intended_cell_uptake_fraction": null,
+    "intended_cell_functional_coverage_fraction": null,
+    "causal_lesion_corrected_fraction": null,
+    "disease_functional_repair": null,
+    "human_oral_availability": null,
+    "rejuvenation": null
+  }
+}

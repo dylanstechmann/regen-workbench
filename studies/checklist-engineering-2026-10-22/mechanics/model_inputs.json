@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "Illustrative dimensionless engineering experiment; not fitted to human data",
+  "geometry": {
+    "root_length": 1.0,
+    "root_half_width": 0.15,
+    "reference_crown_contact": [0.0, 0.5],
+    "description": "Rigid rectangular root, lateral sides and apical base supported, cervical top unsupported. No anatomical mesh, PDL thickness, crown-layer thickness, or living socket is supplied."
+  },
+  "foundation": {
+    "normal_density": 1.0,
+    "tangential_density": 0.25,
+    "description": "Independent bilateral linear springs to a fixed socket, per dimensionless boundary length; tension and compression treated identically. These are not a tissue modulus or a biological support measurement."
+  },
+  "support_cases": [
+    {"id": "reference", "label": "Uniform reference", "kind": "uniform", "multiplier": 1.0},
+    {"id": "cervical_loss", "label": "Cervical 0.30 removed both sides", "kind": "cervical_loss", "multiplier": 1.0},
+    {"id": "apical_side_loss", "label": "Apical 0.30 removed both sides", "kind": "apical_side_loss", "multiplier": 1.0},
+    {"id": "unilateral_loss", "label": "Right cervical 0.60 removed", "kind": "unilateral_loss", "multiplier": 1.0},
+    {"id": "soft_uniform", "label": "Uniform density x0.25", "kind": "uniform", "multiplier": 0.25},
+    {"id": "stiff_uniform", "label": "Uniform density x1000", "kind": "uniform", "multiplier": 1000.0}
+  ],
+  "contact_cases": [
+    {"id": "short_lever", "point": [0.0, 0.25], "force": [1.0, 0.0]},
+    {"id": "reference_lever", "point": [0.0, 0.5], "force": [1.0, 0.0]},
+    {"id": "long_lever", "point": [0.0, 0.75], "force": [1.0, 0.0]},
+    {"id": "axial_center", "point": [0.0, 0.5], "force": [0.0, -1.0]},
+    {"id": "axial_offset", "point": [0.15, 0.5], "force": [0.0, -1.0]}
+  ],
+  "pose_offset": [0.02, 0.0, 0.01],
+  "pose_offset_status": "Imposed wrong resting translation and rotation, not predicted trauma or remodeling",
+  "spatial_alias_amplitude": 0.8,
+  "midpoint_panels_per_segment": [2, 4, 8, 16, 32, 64, 128],
+  "limits": [
+    "Unit forces define linear response coefficients, not finite physical deformations or recommended human loads.",
+    "Rigid crown/root omits enamel, dentin and pulp deformation, restored thickness, crack propagation, contact area and fatigue.",
+    "Small-displacement static elasticity cannot predict healing, permanent repositioning, drift after support withdrawal, perfusion or physiological acceptance thresholds.",
+    "Very stiff illustrative support is not a diagnostic signature or a biological simulation of ankylosis."
+  ]
+}

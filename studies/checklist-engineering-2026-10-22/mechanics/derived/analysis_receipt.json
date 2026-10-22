@@ -1,0 +1,17 @@
+{
+  "operation": "local illustrative rigid-tooth support calculation; no new source fetch",
+  "python_version": "3.11.15",
+  "hash_mode": "UTF-8 text with line endings normalized to LF",
+  "input_sha256": {
+    "model_inputs.json": "c559c70d505a8c0b535a448db8bcdaf1191b509b6b726349ce8cb7cd5433c04a",
+    "analyze_root_support.py": "c3c429ad47d7075e85cbf608e5daa9f847806968b7242f12eb84525480f57ecf",
+    "source_scope.json": "088cf00a9e99ee5436f50f697618522fe909608dd2a0ef420340d7163e2a31f6"
+  },
+  "outputs_sha256": {
+    "local_reaction_profile.tsv": "a585a4ca82903cfda64f45a51f418494a1a5d10ac332fea43c33862d372d9c0d",
+    "midpoint_convergence.tsv": "df42973e50597d06c79e0e71ad119f289f79d3da6c9532d23962566deda581bb",
+    "results.json": "b8ff31b34ad83c1d6d3144fc1e3fe16628b86dfcf8183d29f3b0c50cfc9e9559",
+    "root_support.svg": "f56f093239d2078e7b01e9a90121c500644d87e011a3dd2227cf1b9a0c06cf76",
+    "support_contact_comparison.tsv": "c2ad2ea79baa02e790b2cc0b1b77ffb37e17976d9098b5d587ba064164707a7e"
+  }
+}

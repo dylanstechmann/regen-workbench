@@ -1,0 +1,48 @@
+{
+  "source_set_frozen": true,
+  "frozen_on": "2026-10-22",
+  "retained_sources": [
+    {
+      "source_id": "main_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12873177/fullTextXML",
+      "cache_path": "data/literature/checklist-delivery-engineering-2026-10-22/Moore2026_primary.xml",
+      "bytes": 115188,
+      "sha256": "335684791a01a91c71a7469632bb71a2ecae5fb96715a40805d0a2212ff90c72",
+      "actual_fetch_receipt": "data/provenance/1792682680416530800_checklist-delivery-source-fetch.json",
+      "qualification": "Complete primary XML; endpoint definitions and data availability inspected"
+    },
+    {
+      "source_id": "figure2",
+      "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-025-68103-7/MediaObjects/41467_2025_68103_Fig2_HTML.png",
+      "cache_path": "data/literature/checklist-delivery-engineering-2026-10-22/Moore2026_Fig2.png",
+      "bytes": 720686,
+      "sha256": "ce8c90b5e10810f5512916adac232edb92e70505dc8d0bfc804f8b853bca6703",
+      "actual_fetch_receipt": "data/provenance/1792682751096999600_checklist-delivery-source-fetch.json",
+      "qualification": "Primary Figure2 visually inspected; six explicit printed R-squared annotations transcribed; no scatterplot observations digitized"
+    }
+  ],
+  "failed_requests": [
+    {
+      "source_id": "original_xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7735425/fullTextXML",
+      "actual_fetch_receipt": "data/provenance/1792682794536024900_checklist-delivery-source-fetch.json",
+      "outcome": "HTTP500; no response body retained or source bytes/hash asserted"
+    }
+  ],
+  "primary_web_only_candidate": {
+    "doi": "10.1038/s41565-020-0669-6",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7735425/",
+    "scope": "Original SORT main text inspected; plot data available from author on request; no author contact or new numerical extraction"
+  },
+  "rights": {
+    "main_2026": "CC BY4.0, Moore et al., 2026; https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Source figure retained locally for audit. Public package contains original analysis and a small numerical annotation transcription with panel labels, not republished microscopy or a source-figure adaptation."
+  },
+  "not_acquired": [
+    "Supplementary PDF",
+    "SRA sequencing reads PRJNA1373256",
+    "Raw qPCR/tdTom input observations or image-field-to-animal crosswalk",
+    "PNAS2021 contextual search result"
+  ],
+  "no_raw_source_table_claim": true
+}

@@ -1,0 +1,40 @@
+{
+  "source_doi": "10.1038/s41467-025-68103-7",
+  "figure2": {
+    "shared_formulation_labels": true,
+    "shared_group_dose_response_context": "Source-described; no individual dose table transcribed",
+    "shared_organ_labels_for_reported_fits": true,
+    "same_animal_cross_assay": null,
+    "same_cells_cross_assay": null,
+    "one_hour_qpcr_same_time_as_reporter": false,
+    "twenty_four_hour_qpcr_same_time_label_as_reporter": true,
+    "same_time_label_implies_same_animal": false,
+    "qpcr_unit": "RNA from bulk organ samples; source-labeled qPCR Fold Change",
+    "qpcr_normalization": "Methods describes actin normalization; Figure2 does not supply a complete numeric transform/calibration table. The barcode methods separately describe log2 fold change vs actin normalized to input pool. No silent conversion between these descriptions is made.",
+    "qpcr_n": "3 mice per group/time/formulation;3 technical wells per measurement",
+    "reporter_unit": "tdTom-positive area in DAPI-defined image region, expressed as percent",
+    "reporter_n": "Figure2 caption states3 image fields; independent animal mapping for these fields unavailable",
+    "correlation_inputs": "Underlying per-fit input table, individual fit-point count and field-to-animal crosswalk unavailable in the acquired main/figure",
+    "caption_conflict": "Retained XML caption labels panels l/m as Liver SORT; the third figure block and discussion identify Spleen SORT. Selected n/o fit mapping follows the inspected figure labels and discussion, not the conflicting l/m caption wording.",
+    "plotted_fit_universe": "Target-organ colored series across the source dose-response conditions: blue liver for panels2d/e, red lung for2i/j, green spleen for2n/o, as visually inspected. These are neither all-organ pooled fits nor specimen-level matched measurements reconstructed here. Target_organ in inputs is the source intent/series label, not verified intended-cell identity.",
+    "time_history": "Ai14 reporter activation follows Cre recombination and leaves stable tdTom expression. At24h this records prior successful activity plus reporter-production/detection history; it is not an instantaneous translation rate.",
+    "validation_limit": "Source-reported dose-linked correlation; no independent out-of-sample validation or new correlation fit here"
+  },
+  "figure3_normalization_context_only": {
+    "within_sample_ngs": "Barcode reads divided by total sample reads; caption states n=3 mice. Main methods also mentions normalization to pooled input. This is a compositional within-sample readout.",
+    "inter_organ_ngs_comparison": "Source explicitly says sequencing reads cannot directly compare organ distributions without reliable cross-sample normalization",
+    "inter_organ_qpcr": "Source uses actin-normalized qPCR to compare organs; this is neither percent injected dose nor a counted-cell coverage denominator",
+    "pooled_timepoints": "Multiple time-coded barcodes within each animal do not become independent animals",
+    "numerical_figure3_reanalysis": false
+  },
+  "required_next_evidence_record": [
+    "Animal/cohort ID, formulation label and cargo identity",
+    "Organ, intended cell identity and total eligible-cell denominator",
+    "Collection time and prior activity/reporter history",
+    "Cargo assay molecular scope, calibration, background and normalization",
+    "Cell-associated cargo, intracellular active cargo and intended activity on explicitly linked units",
+    "Causal-lesion repair, surviving integrated cells and disease-relevant function",
+    "Unintended-cell activity, adverse outcomes and durability after intervention withdrawal"
+  ],
+  "current_joint_intended_cell_repair_coverage": null
+}

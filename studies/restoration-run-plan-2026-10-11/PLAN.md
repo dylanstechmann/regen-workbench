@@ -6,7 +6,13 @@ it does not report that the proposed analyses or interventions have succeeded.
 
 ## Objective and allocation
 
-The [2026-10-19 linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
+The [2026-10-22 engineering work](../checklist-engineering-2026-10-22/README.md)
+executes a spatial support/contact model with force, moment and energy checks,
+compares separate oral epithelial measurements and qualifies delivery signals
+against a reporter's collection time and activity history. Geometry and
+stiffness are illustrative; the rigid-crown model does not test missing
+hard-tissue depth, healing or post-support positional durability. The
+[linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
 add an aged dentin-interface comparison, actual five-patient pulp endpoint
 patterns and a clinical base-editing summary/window audit. The pulp analysis
 retains positive sensibility alongside adverse imaging, while the clinical

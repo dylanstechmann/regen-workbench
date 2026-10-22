@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "evidence_unit": "published_aggregate_summary",
+  "source": {
+    "doi": "10.1021/acs.molpharmaceut.4c01186",
+    "title": "Assessment of In Vitro Models of the Human Buccal Mucosa for Vaccine and Adjuvant Development",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12135942/",
+    "retained_html_path": "data/literature/checklist-engineering-2026-10-22/barrier/buccal2025.html",
+    "retained_html_sha256": "6cf315ec9a8365a4af19b90a597371424af9e7cd373869a782a24ce6cc9ded56",
+    "scope": "Only Table 2 physical properties and Table 7 FD20 without enhancers; associated measurement-unit and sampling qualifiers. No infection, enhancement or barrier-disruption analysis."
+  },
+  "physical_properties": [
+    {
+      "model": "Submerged",
+      "source_locator": "Table 2 row Submerged",
+      "identity": "human TR146 cell-line buccal model",
+      "teer_mean": 124,
+      "teer_sem": 2,
+      "teer_unit": "ohm_cm2",
+      "thickness_mean": 35,
+      "thickness_sem": 4,
+      "thickness_unit": "um",
+      "dispersion": "SEM",
+      "replicates_per_group": 3,
+      "independent_donor_n": null,
+      "insert_ids": null,
+      "thickness_supplier": null
+    },
+    {
+      "model": "ALI",
+      "source_locator": "Table 2 row ALI",
+      "identity": "human TR146 cell-line buccal model",
+      "teer_mean": 126,
+      "teer_sem": 2,
+      "teer_unit": "ohm_cm2",
+      "thickness_mean": 264,
+      "thickness_sem": 15,
+      "thickness_unit": "um",
+      "dispersion": "SEM",
+      "replicates_per_group": 3,
+      "independent_donor_n": null,
+      "insert_ids": null,
+      "thickness_supplier": null
+    },
+    {
+      "model": "Hu-Mic",
+      "source_locator": "Table 2 row Hu-Mic; footnote b",
+      "identity": "commercial human oral microtissue model, EpiOral",
+      "teer_mean": 410,
+      "teer_sem": 50,
+      "teer_unit": "ohm_cm2",
+      "thickness_mean": 119,
+      "thickness_sem": 14,
+      "thickness_unit": "um",
+      "dispersion": "SEM",
+      "replicates_per_group": 3,
+      "independent_donor_n": null,
+      "insert_ids": null,
+      "thickness_supplier": "MatTek"
+    },
+    {
+      "model": "Hu-FT",
+      "source_locator": "Table 2 row Hu-FT; footnote b",
+      "identity": "commercial human oral full-thickness model, EpiOral",
+      "teer_mean": 351,
+      "teer_sem": 28,
+      "teer_unit": "ohm_cm2",
+      "thickness_mean": 1064,
+      "thickness_sem": 107,
+      "thickness_unit": "um",
+      "dispersion": "SEM",
+      "replicates_per_group": 3,
+      "independent_donor_n": null,
+      "insert_ids": null,
+      "thickness_supplier": "MatTek"
+    }
+  ],
+  "fd20_transport": {
+    "source_locator": "Table 7 row FD20, columns Sub and ALI; standard FD20 groups only",
+    "tracer": "FITC_dextran_20_kDa",
+    "unit": "cm_per_s",
+    "reported_coefficients": {
+      "Submerged": 9.7e-07,
+      "ALI": 5.6e-07
+    },
+    "dispersion_in_table": null,
+    "associated_measurement_caption_replicates_per_group": 3,
+    "independent_donor_n": null,
+    "insert_ids": null,
+    "crosswalk_to_physical_properties": null,
+    "coefficient_refit_possible": false,
+    "reason_refit_unavailable": "No numerical concentration-time or per-insert source table used; slope window, sampling correction and coefficient uncertainty cannot be independently refit."
+  },
+  "measurement_qualifiers": {
+    "electrical_formula": "TEER = (R_insert_with_cells - R_blank_insert) * A",
+    "tr146_insert_area_cm2": 0.336,
+    "raw_resistance_and_blank_values": null,
+    "fd20_average_molecular_mass_kDa": 20,
+    "fd20_sampling_times_h": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      24
+    ],
+    "fd20_receiver_sampling": "Serial samples with equal-volume replacement; no continuous perfusion rate reported for this measurement",
+    "fd20_coefficient_formula": "Papp = (dQ/dt)/(A*C0)",
+    "physical_properties_time_qualification": "Table 2 summaries are not a synchronized same-insert time series. Text describes TR146 morphology after 30 days; reported supplemented TEER maxima occur on days 27 and 32 for Sub and ALI.",
+    "hu_ft_thickness_qualification": "Full-thickness total includes underlying matrix; it is not epithelial thickness alone.",
+    "donor_ids_lots_and_construct_crosswalk": null,
+    "paired_viability_measurements": null,
+    "native_human_gingival_comparator": null,
+    "withdrawal_or_long_term_restoration_endpoint": null
+  }
+}

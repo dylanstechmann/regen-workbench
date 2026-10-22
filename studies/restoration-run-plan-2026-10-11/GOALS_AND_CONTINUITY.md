@@ -1,10 +1,16 @@
 # Persistent goals and continuity
 
-Recorded from the owner's directions in this conversation; updated 2026-10-19.
+Recorded from the owner's directions in this conversation; updated 2026-10-22.
 This is a scope and handoff record, not a claim that these outcomes have been
 achieved. Consult it when choosing the next work package or handing off a run.
 
-Latest execution: the [2026-10-19 linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
+Latest execution: the [2026-10-22 engineering work](../checklist-engineering-2026-10-22/README.md)
+adds an illustrative distributed root-support/crown-contact solver, a
+noninfectious oral epithelial measurement comparison and a mouse-delivery
+readout/time audit. The mechanics model is uncalibrated; buccal-model
+measurements do not establish gingival restoration, and reporter signal does
+not establish intended-cell repair coverage. The
+[linked-outcome analyses](../checklist-integration-2026-10-19/README.md)
 add post-aging dentin-interface source data, five-patient pulp sensibility/
 imaging records and a single-patient clinical base-editing summary analysis.
 Actual repair-depth linkage, direct pulp perfusion/native identity and the
