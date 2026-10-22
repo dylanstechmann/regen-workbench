@@ -1,0 +1,51 @@
+name: Publish public ResearchDesk
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/build_public_desk.py'
+      - 'tools/public_desk/**'
+      - 'tools/research_progress.py'
+      - 'tools/data/research-progress.json'
+      - 'studies/**'
+      - 'tests/test_public_desk.py'
+      - 'PUBLIC_RESEARCH_DESK.md'
+      - '.github/workflows/public-desk.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: public-research-desk
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check the public export boundary
+        run: python -B -m unittest discover -s tests -p test_public_desk.py -v
+      - name: Check the public frontend
+        run: node --check tools/public_desk/app.js
+      - name: Build the curated static edition
+        run: python -B tools/build_public_desk.py --output public-site --revision "$GITHUB_SHA"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public-site
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy public edition
+        id: deployment
+        uses: actions/deploy-pages@v4

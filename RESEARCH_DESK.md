@@ -5,6 +5,10 @@ It is a local, working research workspace, with optional API integrations and
 bounded CPU chemistry. It does not require a hosted LLM, GPU, or the full
 workbench image. The existing methods repositories remain independent.
 
+A [static public edition for GitHub Pages](PUBLIC_RESEARCH_DESK.md) can publish
+the curated progress entries and their pinned reports. Searches, computation
+and saved workspace editing continue to use this local service.
+
 ## Start and stop
 
 ```powershell

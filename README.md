@@ -3,6 +3,10 @@
 This is a personal hobby and learning project, developed with substantial
 assistance from AI coding tools.
 
+The [public ResearchDesk edition](PUBLIC_RESEARCH_DESK.md) exports curated
+research progress and linked reports as a static GitHub Pages site. The
+complete editable research workspace uses the local Python service.
+
 Local Docker lab that covers most of the ChatGPT “Scientific Research”
 plugins and DeepMind Science Skills **without** putting those vendors in
 the loop for every lookup.
