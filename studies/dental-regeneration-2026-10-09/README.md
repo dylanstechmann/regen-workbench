@@ -254,3 +254,13 @@ the new script and tests passed Ruff. The live `/api/experiments` endpoint
 returned two valid cards, and `/api/state` exposed the calculated dataset
 observation. The entire saved workspace and all five notes matched the
 pre-reload snapshot. No owner note or campaign was created by this analysis.
+
+## Companion project cross-reference
+
+The [bioprinting-workbench](https://github.com/dylanstechmann/bioprinting-workbench)
+tissue atlas cites this dental track (read-only) for trial-level honesty and adds
+printing-focused evidence on top: gingiva, periodontal-complex and tooth targets with
+tiered anchors, plus a scaffold-methods survey. Its atlas write-up lives at
+[docs/ATLAS.md](https://dylanstechmann.github.io/bioprinting-workbench/docs/ATLAS.md).
+No evidence, protocol or score moves between the repositories; this is reading
+guidance only.
