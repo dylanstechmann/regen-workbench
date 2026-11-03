@@ -417,3 +417,12 @@ Primary implementation references: [RDKit](https://www.rdkit.org/docs/GettingSta
 [ClinicalTrials.gov API](https://clinicaltrials.gov/data-api/api),
 [Brave web search](https://api-dashboard.search.brave.com/app/documentation/web-search/get-started),
 and [Exa search](https://exa.ai/docs/reference/search).
+
+## Bioprinting exchange panel (Phases F/G)
+
+A dedicated, same-origin exchange panel (see [BIOPRINT_EXCHANGE.md](BIOPRINT_EXCHANGE.md))
+imports and exports `bioprinting-workbench/research-exchange/1` bundles for the companion
+Bioprinting Workbench. Import is preview-first and never calls the job queue; applying an
+imported bundle is one atomic store replacement with rollback. Result export writes only
+explicitly selected artifacts and excludes notes/caches by default. Routes are bounded
+separately (5 MiB manifest) and the general 64 KB POST cap is unchanged.

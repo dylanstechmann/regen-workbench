@@ -1,0 +1,151 @@
+{
+  "schema": "bioprinting-workbench/research-exchange/1",
+  "bundleId": "bundle-roundtrip",
+  "createdAt": "2026-11-03T12:00:00Z",
+  "producer": {
+    "application": "bioprinting-workbench",
+    "version": "dev",
+    "executedBy": "agent"
+  },
+  "sourceRevision": {
+    "commit": null,
+    "dirty": true,
+    "implementationSha256": null
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-a",
+      "revision": 1,
+      "title": "Roundtrip question",
+      "question": "What explains the synthetic pattern?",
+      "scope": "synthetic storyboard only",
+      "claimBoundary": "No biological or clinical claim.",
+      "status": "draft",
+      "system": "synthetic construct",
+      "mechanism": "illustrative mechanism text",
+      "alternatives": [
+        {
+          "id": "geometry",
+          "prediction": "P1",
+          "falsifier": "F1"
+        },
+        {
+          "id": "transport",
+          "prediction": "P2",
+          "falsifier": "F2"
+        }
+      ],
+      "predictions": [],
+      "falsifiers": [],
+      "confounders": [],
+      "missingMeasurements": [
+        "direct measurement"
+      ],
+      "modelIds": [
+        "slab-oxygen"
+      ],
+      "supportingEvidenceIds": [],
+      "contradictingEvidenceIds": [],
+      "queryPlanIds": [],
+      "parentHypothesisIds": [],
+      "authorship": {
+        "createdBy": "agent",
+        "method": "deterministic template",
+        "reviewedBy": null
+      },
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "hyp-b",
+      "revision": 1,
+      "title": "Child question",
+      "question": "What explains the synthetic pattern?",
+      "scope": "synthetic storyboard only",
+      "claimBoundary": "No biological or clinical claim.",
+      "status": "draft",
+      "system": "synthetic construct",
+      "mechanism": "illustrative mechanism text",
+      "alternatives": [
+        {
+          "id": "geometry",
+          "prediction": "P1",
+          "falsifier": "F1"
+        },
+        {
+          "id": "transport",
+          "prediction": "P2",
+          "falsifier": "F2"
+        }
+      ],
+      "predictions": [],
+      "falsifiers": [],
+      "confounders": [],
+      "missingMeasurements": [
+        "direct measurement"
+      ],
+      "modelIds": [
+        "slab-oxygen"
+      ],
+      "supportingEvidenceIds": [],
+      "contradictingEvidenceIds": [],
+      "queryPlanIds": [],
+      "parentHypothesisIds": [
+        "hyp-a"
+      ],
+      "authorship": {
+        "createdBy": "agent",
+        "method": "deterministic template",
+        "reviewedBy": null
+      },
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "queries": [
+    {
+      "id": "hyp-a-q1",
+      "hypothesisId": "hyp-a",
+      "query": "synthetic context for alternative geometry",
+      "providerIds": [
+        "local-desk"
+      ],
+      "limit": 5,
+      "purpose": "context search",
+      "disclosure": "local until selected",
+      "executionStatus": "planned"
+    }
+  ],
+  "modelRuns": [
+    {
+      "modelId": "foreign-model",
+      "id": "run-foreign",
+      "status": "unsupported-foreign",
+      "note": "retained as foreign metadata; not executed here"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-1",
+      "statement": "Synthetic fixture statement for software testing only.",
+      "sourceClass": "synthetic-fixture",
+      "reviewState": "unreviewed",
+      "locator": "fixture",
+      "sourceId": null
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "art-1",
+      "filename": "synthetic.json",
+      "mediaType": "application/json",
+      "bytes": 25,
+      "sha256": "91f6a1f8192c4fcbe810d51149109fbc22256486f55c20376f4638dff2dc4b07",
+      "provenance": {
+        "modelRunIds": [],
+        "evidenceIds": [],
+        "producer": "fixture"
+      }
+    }
+  ],
+  "privacyClassification": "private",
+  "publicationReviewStatus": "not-approved"
+}

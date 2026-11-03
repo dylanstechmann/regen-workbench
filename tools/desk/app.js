@@ -1287,3 +1287,44 @@ async function init() {
   }),2000);
 }
 init().catch(error => notice(error.message,true));
+
+// Bioprinting exchange panel (Phases F/G): preview-first local file exchange.
+(() => {
+  const file = document.getElementById('bioprint-file');
+  const previewButton = document.getElementById('bioprint-preview');
+  const applyButton = document.getElementById('bioprint-apply');
+  const exportButton = document.getElementById('bioprint-export');
+  const status = document.getElementById('bioprint-status');
+  if (file === null || previewButton === null) return;
+  let pending = null;
+  const show = value => { status.textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2); };
+  previewButton.addEventListener('click', async () => {
+    pending = null; applyButton.disabled = true;
+    const selected = file.files && file.files[0];
+    if (!selected) { show('Select a bundle file first.'); return; }
+    try {
+      const bundle = JSON.parse(await selected.text());
+      const response = await fetch('/api/bioprint/preview', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bundle) });
+      const preview = await response.json();
+      if (!response.ok) { show(preview.error || 'Preview failed'); return; }
+      pending = bundle; applyButton.disabled = preview.blockedReasons.length > 0;
+      show(preview);
+    } catch (error) { show(String(error)); }
+  });
+  applyButton.addEventListener('click', async () => {
+    if (pending === null) return;
+    try {
+      const response = await fetch('/api/bioprint/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(pending) });
+      const result = await response.json();
+      show(response.ok ? result : (result.error || 'Apply failed'));
+      if (response.ok) { pending = null; applyButton.disabled = true; }
+    } catch (error) { show(String(error)); }
+  });
+  exportButton.addEventListener('click', async () => {
+    try {
+      const response = await fetch('/api/bioprint/state');
+      const state = await response.json();
+      show({ note: 'Current imported state summary. No data leaves this machine.', counts: { hypotheses: (state.hypotheses || []).length, queries: (state.queries || []).length, modelRuns: (state.modelRuns || []).length, evidence: (state.evidence || []).length, artifacts: (state.artifacts || []).length } });
+    } catch (error) { show(String(error)); }
+  });
+})();

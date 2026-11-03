@@ -1,0 +1,20 @@
+{
+  "canonicalizer": "sorted-json-lf/1",
+  "vector": {
+    "input": {
+      "b": 2,
+      "a": 1
+    },
+    "canonical": "{\"a\":1,\"b\":2}\n",
+    "sha256": "e8d38819d39f705646bfb643368eca78f7db476c16471dbc33b941b27326410d"
+  },
+  "fixtures": {
+    "minimal.json": "418623104704ba7f30dc3bdde35e36f83467fcbb9afe5d557006638a83b3a80c",
+    "roundtrip.json": "e92f2fe4e60ee00d38dc28f56af20b5c50b7429676226a0f3d05243c67097517",
+    "conflicts.json": "7b8a9acd18a21c24498f9fb371bfd6d6c0b29c2e09591281e7a14697d32a6c0d",
+    "invalid.json": "856e47b911c5ef1530492327275f8b5a60a9186d831da2faef06f2c5eb560d32"
+  },
+  "artifacts": {
+    "synthetic.json": "91f6a1f8192c4fcbe810d51149109fbc22256486f55c20376f4638dff2dc4b07"
+  }
+}

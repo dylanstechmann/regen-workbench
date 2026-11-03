@@ -1,0 +1,65 @@
+{
+  "schema": "bioprinting-workbench/research-exchange/99",
+  "bundleId": "bundle-invalid",
+  "createdAt": "2026-11-03T12:00:00Z",
+  "producer": {
+    "application": "bioprinting-workbench",
+    "version": "dev",
+    "executedBy": "agent"
+  },
+  "sourceRevision": {
+    "commit": null,
+    "dirty": true,
+    "implementationSha256": null
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-a",
+      "revision": 1,
+      "title": "Invalid schema question",
+      "question": "What explains the synthetic pattern?",
+      "scope": "synthetic storyboard only",
+      "claimBoundary": "No biological or clinical claim.",
+      "status": "draft",
+      "system": "synthetic construct",
+      "mechanism": "illustrative mechanism text",
+      "alternatives": [
+        {
+          "id": "geometry",
+          "prediction": "P1",
+          "falsifier": "F1"
+        },
+        {
+          "id": "transport",
+          "prediction": "P2",
+          "falsifier": "F2"
+        }
+      ],
+      "predictions": [],
+      "falsifiers": [],
+      "confounders": [],
+      "missingMeasurements": [
+        "direct measurement"
+      ],
+      "modelIds": [
+        "slab-oxygen"
+      ],
+      "supportingEvidenceIds": [],
+      "contradictingEvidenceIds": [],
+      "queryPlanIds": [],
+      "parentHypothesisIds": [],
+      "authorship": {
+        "createdBy": "agent",
+        "method": "deterministic template",
+        "reviewedBy": null
+      },
+      "reviewStatus": "unreviewed"
+    }
+  ],
+  "queries": [],
+  "modelRuns": [],
+  "evidence": [],
+  "artifacts": [],
+  "privacyClassification": "private",
+  "publicationReviewStatus": "not-approved"
+}

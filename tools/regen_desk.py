@@ -1656,6 +1656,9 @@ def enumerate_variants(parent):
     return results
 
 
+import bioprint_exchange
+
+
 class Desk:
     def __init__(self, root=None, recover_pending=False):
         self.root = Path(root) if root else regen.DATA / "research-desk"
@@ -1688,6 +1691,40 @@ class Desk:
             if run["status"] in {"queued", "running"}:
                 run.update(status="interrupted", error="Server restarted before completion; submit a new run")
                 self.save_run(path.parent, run)
+
+    def _bioprint_state(self):
+        self.store.setdefault("bioprint_state", bioprint_exchange.empty_state())
+        self.store.setdefault("bioprint_imports", [])
+        return self.store["bioprint_state"]
+
+    def preview_bioprint_import(self, data):
+        bundle = bioprint_exchange.validate_bundle(data)
+        with self.lock:
+            current = self.store.get("bioprint_state") or bioprint_exchange.empty_state()
+            return bioprint_exchange.preview_import(bundle, current)
+
+    def apply_bioprint_import(self, data):
+        bundle = bioprint_exchange.validate_bundle(data)
+        with self.lock:
+            before = json.loads(json.dumps(self.store))
+            try:
+                preview = bioprint_exchange.preview_import(bundle, self._bioprint_state())
+                self.store["bioprint_state"] = bioprint_exchange.apply_import(bundle, self._bioprint_state())
+                self.store["bioprint_imports"].append({"bundleId": bundle["bundleId"],
+                    "bundleSha256": preview["bundleSha256"], "appliedAt": regen.now(),
+                    "creates": len(preview["creates"]), "duplicates": len(preview["duplicates"])})
+                self.save_store()
+            except Exception:
+                self.store = before
+                raise
+            return {"applied": True, "bundleId": bundle["bundleId"], "creates": preview["creates"],
+                    "duplicates": preview["duplicates"],
+                    "storeSha256": bioprint_exchange.sha256_bytes(bioprint_exchange.canonical_json_bytes(self.store["bioprint_state"]))}
+
+    def export_bioprint_results(self, data):
+        with self.lock:
+            bundle_id = data.get("bundleId") if isinstance(data, dict) else None
+            return bioprint_exchange.export_selected_results(data, self.root / "bioprint-exports" / (bundle_id or "export"))
 
     def save_store(self):
         temp = self.store_path.with_suffix(".tmp")
@@ -3109,6 +3146,8 @@ def make_handler(desk):
                     if not path.is_relative_to(desk.runs.resolve()) or path.suffix not in {".json", ".png", ".csv", ".sdf", ".pdbqt", ".md"}:
                         return self.send(403, {"error": "Artifact path is not allowed"})
                     return self.send(200, path.read_bytes(), mimetypes.guess_type(path.name)[0] or "application/octet-stream")
+                if route == "/api/bioprint/state":
+                    return self.send(200, desk.store.get("bioprint_state") or bioprint_exchange.empty_state())
                 static = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css"}.get(route)
                 if static:
                     return self.send(200, (STATIC / static).read_bytes(), {"index.html": "text/html; charset=utf-8", "app.js": "text/javascript", "style.css": "text/css"}[static])
@@ -3122,7 +3161,18 @@ def make_handler(desk):
             if not self.allowed(True):
                 return self.send(403, {"error": "Local same-origin JSON requests only"})
             try:
+                route = urlsplit(self.path).path
                 size = int(self.headers.get("Content-Length", "0"))
+                if route in {"/api/bioprint/preview", "/api/bioprint/apply"}:
+                    if not 0 < size <= 5 * 1024 * 1024:
+                        return self.send(413, {"error": "Exchange manifest must be 1-5242880 bytes"})
+                    self.connection.settimeout(30)
+                    payload = json.loads(self.rfile.read(size))
+                    if not isinstance(payload, dict):
+                        raise ValueError("Expected a JSON object")
+                    exchange_action = {"/api/bioprint/preview": desk.preview_bioprint_import,
+                                       "/api/bioprint/apply": desk.apply_bioprint_import}[route]
+                    return self.send(200, exchange_action(payload))
                 if not 0 < size <= 64000:
                     return self.send(413, {"error": "Request must be 1-64000 bytes"})
                 self.connection.settimeout(10)

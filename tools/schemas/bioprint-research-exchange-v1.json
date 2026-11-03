@@ -1,0 +1,25 @@
+{
+  "$comment": "Descriptive schema for bioprinting-workbench/research-exchange/1. Human-readable bounds documentation; the authoritative validation is the code in bioprint_exchange.py / research-exchange.js. Personal hobby/learning project, AI-assisted. Hashes attest byte integrity only; review status is software metadata, never scientific validation; imported bundles always remain publication-not-approved.",
+  "schema": "bioprinting-workbench/research-exchange/1",
+  "maxManifestBytes": 5242880,
+  "maxNesting": 20,
+  "topLevel": {
+    "schema": { "const": "bioprinting-workbench/research-exchange/1" },
+    "bundleId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "producer": { "type": "object", "required": ["application", "version", "executedBy"] },
+    "sourceRevision": { "type": "object", "required": ["commit", "dirty", "implementationSha256"] },
+    "hypotheses": { "type": "array", "maxItems": 100 },
+    "queries": { "type": "array", "maxItems": 100 },
+    "modelRuns": { "type": "array", "maxItems": 100 },
+    "evidence": { "type": "array", "maxItems": 500 },
+    "artifacts": { "type": "array", "maxItems": 500 },
+    "privacyClassification": { "enum": ["private", "selected-for-exchange"] },
+    "publicationReviewStatus": { "const": "not-approved" }
+  },
+  "hypothesisCard": { "alternatives": { "minItems": 2, "maxItems": 8 }, "status": ["draft", "ready-for-review", "archived"], "reviewStatus": ["unreviewed", "owner-reviewed"], "readyForReviewRequires": ["predictions", "falsifiers"] },
+  "queryPlan": { "executionStatus": ["planned", "not-supported"], "limit": [1, 10] },
+  "modelRunStatuses": ["succeeded", "out-of-domain", "numerical-failure", "cancelled", "failed", "unsupported-foreign", "queued", "running", "partial", "interrupted", "submission-unknown"],
+  "artifact": { "filenamePattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$", "mediaTypes": ["application/json", "text/csv", "text/markdown", "image/png"], "maxBytes": 10485760, "maxTotalBytes": 26214400 },
+  "forbiddenKeys": ["__proto__", "prototype", "constructor"]
+}
