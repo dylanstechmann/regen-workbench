@@ -11,9 +11,13 @@ integrity always hashes exact producer bytes.
 from __future__ import annotations
 
 import copy
+import datetime
 import hashlib
 import json
+import os
 import re
+import shutil
+import tempfile
 from pathlib import Path
 
 SCHEMA = "bioprinting-workbench/research-exchange/1"
@@ -22,6 +26,24 @@ MAX_ARTIFACT_BYTES = 10 * 1024 * 1024
 MAX_TOTAL_ARTIFACT_BYTES = 25 * 1024 * 1024
 MAX_NESTING = 20
 FILENAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$")
+ISO_INSTANT_RE = re.compile(r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d{1,3})?Z$")
+
+
+def _iso_instant(value, path):
+    # Strict UTC instant, identical to the JavaScript validator: YYYY-MM-DDTHH:MM:SS[.sss]Z
+    # with a real calendar date. Offset forms and loose date strings are rejected on both sides.
+    if not isinstance(value, str) or not ISO_INSTANT_RE.match(value):
+        raise TypeError(f"{path} must be an ISO instant")
+    try:
+        datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise TypeError(f"{path} must be an ISO instant") from exc
+    return value
+
+
+def utc_instant():
+    """Produce a strict UTC instant (matching ISO_INSTANT_RE) for exchange-generated fields."""
+    return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 MEDIA_TYPES = {"application/json", "text/csv", "text/markdown", "image/png"}
 DANGEROUS = ("__proto__", "prototype", "constructor")
@@ -243,7 +265,7 @@ def validate_bundle(raw):
         raise ValueError("Imported/exported bundles are always not-approved for publication")
     bundle = {
         "schema": SCHEMA, "bundleId": _text(raw.get("bundleId"), 64, "bundle.bundleId"),
-        "createdAt": raw.get("createdAt") if isinstance(raw.get("createdAt"), str) else (_ for _ in ()).throw(TypeError("bundle.createdAt must be an ISO instant")),
+        "createdAt": _iso_instant(raw.get("createdAt"), "bundle.createdAt"),
         "producer": {
             "application": _text(producer.get("application"), 200, "producer.application"),
             "version": _text(producer.get("version"), 64, "producer.version"),
@@ -260,6 +282,8 @@ def validate_bundle(raw):
         if not isinstance(items, list) or len(items) > maximum:
             raise TypeError(f"bundle.{name} must be an array (max {maximum})")
         bundle[name] = [validate(item, f"bundle.{name}[{index}]") for index, item in enumerate(items)]
+        if len({record["id"] for record in bundle[name]}) != len(bundle[name]):
+            raise ValueError(f"Duplicate {name} ids in bundle")
     hypo_ids = [card["id"] for card in bundle["hypotheses"]]
     if len(set(hypo_ids)) != len(hypo_ids):
         raise ValueError("Duplicate hypothesis ids in bundle")
@@ -273,14 +297,21 @@ def validate_bundle(raw):
             if parent not in known:
                 raise ValueError(f"Hypothesis {card['id']} references unknown parent {parent}")
         parents[card["id"]] = card["parentHypothesisIds"]
-    for start in parents:
-        seen, frontier = {start}, list(parents[start])
-        while frontier:
-            node = frontier.pop()
-            if node in seen:
-                raise ValueError("Hypothesis ancestry must be acyclic")
-            seen.add(node)
-            frontier.extend(parents.get(node, []))
+    active, complete = set(), set()
+
+    def visit(node):
+        if node in active:
+            raise ValueError("Hypothesis ancestry must be acyclic")
+        if node in complete:
+            return
+        active.add(node)
+        for parent in parents.get(node, []):
+            visit(parent)
+        active.remove(node)
+        complete.add(node)
+
+    for node in parents:
+        visit(node)
     artifact_ids = [item["id"] for item in bundle["artifacts"]]
     if len(set(artifact_ids)) != len(artifact_ids):
         raise ValueError("Duplicate artifact ids in bundle")
@@ -384,15 +415,38 @@ def to_desk_question(card):
     }
 
 
+def _publish_staging(staging, root):
+    """Durably publish a staging directory: fsync every written file and the staging directory,
+    atomically rename into place, then fsync the parent directory. A hostile writer that creates
+    the target meanwhile makes publication fail loudly; staging is cleaned by the caller and the
+    foreign directory is never overwritten. This is filesystem-hygiene hardening for the normal
+    app path, not an adversarial sandbox."""
+    if root.exists() or root.is_symlink():
+        raise ValueError("Export target already exists")
+    for path in sorted(staging.iterdir()):
+        with open(path, "rb") as handle:
+            os.fsync(handle.fileno())
+    staging_fd = os.open(staging, os.O_RDONLY)
+    try:
+        os.fsync(staging_fd)
+    finally:
+        os.close(staging_fd)
+    os.replace(staging, root)
+    parent_fd = os.open(root.parent, os.O_RDONLY)
+    try:
+        os.fsync(parent_fd)
+    finally:
+        os.close(parent_fd)
+
+
 def export_selected_results(selection, root):
     """Write a result bundle plus selected artifact files under root (bounded, flat names).
     Notes/caches are excluded by default: only explicit selection is written."""
     root = Path(root)
-    root.mkdir(parents=True, exist_ok=True)
     bundle = {
         "schema": SCHEMA,
         "bundleId": _text(selection.get("bundleId"), 64, "selection.bundleId"),
-        "createdAt": selection.get("createdAt") if isinstance(selection.get("createdAt"), str) else (_ for _ in ()).throw(TypeError("selection.createdAt must be an ISO instant")),
+        "createdAt": _iso_instant(selection.get("createdAt"), "selection.createdAt"),
         "producer": {"application": "regen-research-desk", "version": "dev", "executedBy": "agent"},
         "sourceRevision": {"commit": None, "dirty": True, "implementationSha256": None},
         "hypotheses": selection.get("hypotheses", []),
@@ -404,15 +458,54 @@ def export_selected_results(selection, root):
         "publicationReviewStatus": "not-approved",
     }
     validated = validate_bundle(bundle)
+    files = preflight_export(validated, selection.get("files", []))
+    if root.exists() or root.is_symlink():
+        raise ValueError("Export target already exists")
+    root.parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=".bioprint-export-", dir=root.parent))
     written = {}
-    for filename, data in selection.get("files", []):
-        if not isinstance(filename, str) or not FILENAME_RE.match(filename) or ".." in filename:
-            raise ValueError(f"Unsafe artifact filename: {filename}")
-        if not isinstance(data, (bytes, bytearray)) or len(data) > MAX_ARTIFACT_BYTES:
-            raise ValueError(f"Artifact {filename} out of bounds")
-        target = root / filename
-        target.write_bytes(bytes(data))
-        written[filename] = sha256_bytes(bytes(data))
+    try:
+        for filename, data in files:
+            (staging / filename).write_bytes(data)
+            written[filename] = sha256_bytes(data)
+        (staging / "bioprint-results.json").write_bytes(canonical_json_bytes(validated))
+        _publish_staging(staging, root)
+    except BaseException:
+        shutil.rmtree(staging)
+        raise
     manifest_path = root / "bioprint-results.json"
-    manifest_path.write_bytes(canonical_json_bytes(validated))
     return {"manifest": str(manifest_path), "bundleSha256": sha256_bytes(canonical_json_bytes(validated)), "files": written}
+
+
+def preflight_export(bundle, files):
+    """Validate and snapshot every artifact before creating any export directory."""
+    descriptors = {}
+    for descriptor in bundle["artifacts"]:
+        name = descriptor["filename"]
+        if name == "bioprint-results.json" or name in descriptors:
+            raise ValueError("Duplicate or reserved artifact filename")
+        descriptors[name] = descriptor
+    if not isinstance(files, (list, tuple)) or len(files) > 500:
+        raise ValueError("Artifact files must be a bounded list")
+    checked, names, total = [], set(), 0
+    for item in files:
+        if not isinstance(item, (list, tuple)) or len(item) != 2:
+            raise ValueError("Artifact file must be a filename/bytes pair")
+        name, data = item
+        if (not isinstance(name, str) or not FILENAME_RE.fullmatch(name)
+                or ".." in name or name == "bioprint-results.json" or name in names):
+            raise ValueError("Unsafe, duplicate or reserved artifact filename")
+        if not isinstance(data, (bytes, bytearray)) or len(data) > MAX_ARTIFACT_BYTES:
+            raise ValueError("Artifact bytes out of bounds")
+        data = bytes(data)
+        descriptor = descriptors.get(name)
+        if descriptor is None or len(data) != descriptor["bytes"] or sha256_bytes(data) != descriptor["sha256"]:
+            raise ValueError("Artifact descriptor does not match exact file bytes")
+        total += len(data)
+        if total > MAX_TOTAL_ARTIFACT_BYTES:
+            raise ValueError("Aggregate artifact bytes out of bounds")
+        names.add(name)
+        checked.append((name, data))
+    if names != set(descriptors):
+        raise ValueError("Missing artifact bytes")
+    return checked

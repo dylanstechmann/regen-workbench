@@ -1,0 +1,1049 @@
+{
+  "collection_id": "63d03351-06be-478e-a0db-f7a653b6b19b",
+  "collection_url": "https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+  "collection_version_id": "60d22a69-22f7-41d5-b704-fd77b3d2d83d",
+  "consortia": [
+    "CZI Cell Science"
+  ],
+  "contact_email": "wey334@g.harvard.edu",
+  "contact_name": "Wenjun Yan",
+  "created_at": "2026-06-10T14:27:33+00:00",
+  "curator_name": "Jennifer Yu-Sheng Chien",
+  "datasets": [
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 691311824,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/bed454f9-4510-4c6f-a343-a5f63080ec48.h5ad"
+        }
+      ],
+      "cell_count": 52309,
+      "cell_type": [
+        {
+          "label": "Schwann cell",
+          "ontology_term_id": "CL:0002573"
+        },
+        {
+          "label": "basal cell",
+          "ontology_term_id": "CL:0000646"
+        },
+        {
+          "label": "blood vessel endothelial cell",
+          "ontology_term_id": "CL:0000071"
+        },
+        {
+          "label": "ciliary muscle cell",
+          "ontology_term_id": "CL:1000443"
+        },
+        {
+          "label": "conjunctival epithelial cell",
+          "ontology_term_id": "CL:1000432"
+        },
+        {
+          "label": "corneal endothelial cell",
+          "ontology_term_id": "CL:0000132"
+        },
+        {
+          "label": "corneal epithelial cell",
+          "ontology_term_id": "CL:0000575"
+        },
+        {
+          "label": "endothelial cell",
+          "ontology_term_id": "CL:0000115"
+        },
+        {
+          "label": "endothelial cell of lymphatic vessel",
+          "ontology_term_id": "CL:0002138"
+        },
+        {
+          "label": "fibroblast",
+          "ontology_term_id": "CL:0000057"
+        },
+        {
+          "label": "goblet cell",
+          "ontology_term_id": "CL:0000160"
+        },
+        {
+          "label": "lymphocyte",
+          "ontology_term_id": "CL:0000542"
+        },
+        {
+          "label": "macrophage",
+          "ontology_term_id": "CL:0000235"
+        },
+        {
+          "label": "mast cell",
+          "ontology_term_id": "CL:0000097"
+        },
+        {
+          "label": "melanocyte",
+          "ontology_term_id": "CL:0000148"
+        },
+        {
+          "label": "pericyte",
+          "ontology_term_id": "CL:0000669"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/bed454f9-4510-4c6f-a343-a5f63080ec48.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "d967b47c-a9e6-4337-b2f4-977f690cb67f",
+      "dataset_version_id": "bed454f9-4510-4c6f-a343-a5f63080ec48",
+      "development_stage": [
+        {
+          "label": "30-year-old stage",
+          "ontology_term_id": "HsapDv:0000124"
+        },
+        {
+          "label": "47-year-old stage",
+          "ontology_term_id": "HsapDv:0000141"
+        },
+        {
+          "label": "65-year-old stage",
+          "ontology_term_id": "HsapDv:0000159"
+        },
+        {
+          "label": "66-year-old stage",
+          "ontology_term_id": "HsapDv:0000160"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes2022_Hu0220",
+        "sanes2022_Hu0218",
+        "sanes2022_Hu0216",
+        "sanes2022_Hu0235"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/d967b47c-a9e6-4337-b2f4-977f690cb67f.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        true
+      ],
+      "mean_genes_per_cell": 2729.6805138695063,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 52309,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "female",
+          "ontology_term_id": "PATO:0000383"
+        },
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "corneo-scleral junction",
+          "ontology_term_id": "UBERON:0006761",
+          "tissue_type": "tissue"
+        },
+        {
+          "label": "eye trabecular meshwork",
+          "ontology_term_id": "UBERON:0005969",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Trabecular Meshwork and Corneal Scleral wedge",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    },
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 484945057,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/f99f5ec9-bb14-433e-b9fa-4f561b3de1aa.h5ad"
+        }
+      ],
+      "cell_count": 37485,
+      "cell_type": [
+        {
+          "label": "basal cell",
+          "ontology_term_id": "CL:0000646"
+        },
+        {
+          "label": "corneal endothelial cell",
+          "ontology_term_id": "CL:0000132"
+        },
+        {
+          "label": "corneal epithelial cell",
+          "ontology_term_id": "CL:0000575"
+        },
+        {
+          "label": "fibroblast",
+          "ontology_term_id": "CL:0000057"
+        },
+        {
+          "label": "leukocyte",
+          "ontology_term_id": "CL:0000738"
+        },
+        {
+          "label": "transit amplifying cell",
+          "ontology_term_id": "CL:0009010"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/f99f5ec9-bb14-433e-b9fa-4f561b3de1aa.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "a4157949-6f2a-40e2-b960-63f6e2bde918",
+      "dataset_version_id": "f99f5ec9-bb14-433e-b9fa-4f561b3de1aa",
+      "development_stage": [
+        {
+          "label": "30-year-old stage",
+          "ontology_term_id": "HsapDv:0000124"
+        },
+        {
+          "label": "33-year-old stage",
+          "ontology_term_id": "HsapDv:0000127"
+        },
+        {
+          "label": "47-year-old stage",
+          "ontology_term_id": "HsapDv:0000141"
+        },
+        {
+          "label": "65-year-old stage",
+          "ontology_term_id": "HsapDv:0000159"
+        },
+        {
+          "label": "66-year-old stage",
+          "ontology_term_id": "HsapDv:0000160"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes2022_Hu0220",
+        "sanes2022_Hu0216",
+        "sanes2022_Hu0218",
+        "sanes2022_Hu0235",
+        "sanes2022_Pt14"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/a4157949-6f2a-40e2-b960-63f6e2bde918.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        true
+      ],
+      "mean_genes_per_cell": 2732.4343337334935,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 37485,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "female",
+          "ontology_term_id": "PATO:0000383"
+        },
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "cornea",
+          "ontology_term_id": "UBERON:0000964",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Central Cornea",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    },
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 537652807,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/7c2a1336-e051-4858-8fd3-d71d6f53765d.h5ad"
+        }
+      ],
+      "cell_count": 42901,
+      "cell_type": [
+        {
+          "label": "Schwann cell",
+          "ontology_term_id": "CL:0002573"
+        },
+        {
+          "label": "basal cell",
+          "ontology_term_id": "CL:0000646"
+        },
+        {
+          "label": "blood vessel endothelial cell",
+          "ontology_term_id": "CL:0000071"
+        },
+        {
+          "label": "ciliary muscle cell",
+          "ontology_term_id": "CL:1000443"
+        },
+        {
+          "label": "conjunctival epithelial cell",
+          "ontology_term_id": "CL:1000432"
+        },
+        {
+          "label": "corneal endothelial cell",
+          "ontology_term_id": "CL:0000132"
+        },
+        {
+          "label": "corneal epithelial cell",
+          "ontology_term_id": "CL:0000575"
+        },
+        {
+          "label": "endothelial cell",
+          "ontology_term_id": "CL:0000115"
+        },
+        {
+          "label": "endothelial cell of lymphatic vessel",
+          "ontology_term_id": "CL:0002138"
+        },
+        {
+          "label": "fibroblast",
+          "ontology_term_id": "CL:0000057"
+        },
+        {
+          "label": "goblet cell",
+          "ontology_term_id": "CL:0000160"
+        },
+        {
+          "label": "leukocyte",
+          "ontology_term_id": "CL:0000738"
+        },
+        {
+          "label": "lymphocyte",
+          "ontology_term_id": "CL:0000542"
+        },
+        {
+          "label": "macrophage",
+          "ontology_term_id": "CL:0000235"
+        },
+        {
+          "label": "mast cell",
+          "ontology_term_id": "CL:0000097"
+        },
+        {
+          "label": "melanocyte",
+          "ontology_term_id": "CL:0000148"
+        },
+        {
+          "label": "non-pigmented ciliary epithelial cell",
+          "ontology_term_id": "CL:0002304"
+        },
+        {
+          "label": "pericyte",
+          "ontology_term_id": "CL:0000669"
+        },
+        {
+          "label": "pigmented ciliary epithelial cell",
+          "ontology_term_id": "CL:0002303"
+        },
+        {
+          "label": "pigmented epithelial cell",
+          "ontology_term_id": "CL:0000529"
+        },
+        {
+          "label": "smooth muscle cell of sphincter of pupil",
+          "ontology_term_id": "CL:0002243"
+        },
+        {
+          "label": "transit amplifying cell",
+          "ontology_term_id": "CL:0009010"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/7c2a1336-e051-4858-8fd3-d71d6f53765d.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "9ff99bf8-2524-4ab5-ab6e-4bc218e4a449",
+      "dataset_version_id": "7c2a1336-e051-4858-8fd3-d71d6f53765d",
+      "development_stage": [
+        {
+          "label": "30-year-old stage",
+          "ontology_term_id": "HsapDv:0000124"
+        },
+        {
+          "label": "33-year-old stage",
+          "ontology_term_id": "HsapDv:0000127"
+        },
+        {
+          "label": "47-year-old stage",
+          "ontology_term_id": "HsapDv:0000141"
+        },
+        {
+          "label": "65-year-old stage",
+          "ontology_term_id": "HsapDv:0000159"
+        },
+        {
+          "label": "66-year-old stage",
+          "ontology_term_id": "HsapDv:0000160"
+        },
+        {
+          "label": "78-year-old stage",
+          "ontology_term_id": "HsapDv:0000172"
+        },
+        {
+          "label": "adult stage",
+          "ontology_term_id": "HsapDv:0000258"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes2022_Hu0216",
+        "sanes_Pt2",
+        "sanes2022_Hu0235",
+        "sanes2022_Hu0220",
+        "sanes2022_Hu0218",
+        "sanes2022_Pt14",
+        "pooled [sanes2022_Hu0216,sanes2022_Hu0218]",
+        "pooled [sanes2022_Hu0220,sanes2022_Hu0235]"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/9ff99bf8-2524-4ab5-ab6e-4bc218e4a449.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        false
+      ],
+      "mean_genes_per_cell": 2599.626558821473,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 0,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "female",
+          "ontology_term_id": "PATO:0000383"
+        },
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        },
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "ciliary body",
+          "ontology_term_id": "UBERON:0001775",
+          "tissue_type": "tissue"
+        },
+        {
+          "label": "cornea",
+          "ontology_term_id": "UBERON:0000964",
+          "tissue_type": "tissue"
+        },
+        {
+          "label": "corneo-scleral junction",
+          "ontology_term_id": "UBERON:0006761",
+          "tissue_type": "tissue"
+        },
+        {
+          "label": "eye trabecular meshwork",
+          "ontology_term_id": "UBERON:0005969",
+          "tissue_type": "tissue"
+        },
+        {
+          "label": "iris",
+          "ontology_term_id": "UBERON:0001769",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Integrated data",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    },
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 704151872,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/172f5704-8ec1-4f79-bf2c-88fdd19338eb.h5ad"
+        }
+      ],
+      "cell_count": 57422,
+      "cell_type": [
+        {
+          "label": "Schwann cell",
+          "ontology_term_id": "CL:0002573"
+        },
+        {
+          "label": "blood vessel endothelial cell",
+          "ontology_term_id": "CL:0000071"
+        },
+        {
+          "label": "fibroblast",
+          "ontology_term_id": "CL:0000057"
+        },
+        {
+          "label": "lymphocyte",
+          "ontology_term_id": "CL:0000542"
+        },
+        {
+          "label": "macrophage",
+          "ontology_term_id": "CL:0000235"
+        },
+        {
+          "label": "melanocyte",
+          "ontology_term_id": "CL:0000148"
+        },
+        {
+          "label": "pigmented epithelial cell",
+          "ontology_term_id": "CL:0000529"
+        },
+        {
+          "label": "smooth muscle cell of sphincter of pupil",
+          "ontology_term_id": "CL:0002243"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/172f5704-8ec1-4f79-bf2c-88fdd19338eb.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "9a281de7-cee5-4e80-8584-1929f46f152f",
+      "dataset_version_id": "172f5704-8ec1-4f79-bf2c-88fdd19338eb",
+      "development_stage": [
+        {
+          "label": "30-year-old stage",
+          "ontology_term_id": "HsapDv:0000124"
+        },
+        {
+          "label": "47-year-old stage",
+          "ontology_term_id": "HsapDv:0000141"
+        },
+        {
+          "label": "65-year-old stage",
+          "ontology_term_id": "HsapDv:0000159"
+        },
+        {
+          "label": "66-year-old stage",
+          "ontology_term_id": "HsapDv:0000160"
+        },
+        {
+          "label": "adult stage",
+          "ontology_term_id": "HsapDv:0000258"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes2022_Hu0218",
+        "sanes2022_Hu0220",
+        "pooled [sanes2022_Hu0216,sanes2022_Hu0218]",
+        "pooled [sanes2022_Hu0220,sanes2022_Hu0235]",
+        "sanes2022_Hu0216",
+        "sanes2022_Hu0235"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/9a281de7-cee5-4e80-8584-1929f46f152f.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        true
+      ],
+      "mean_genes_per_cell": 2553.637926230365,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 57422,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "female",
+          "ontology_term_id": "PATO:0000383"
+        },
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        },
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "iris",
+          "ontology_term_id": "UBERON:0001769",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Iris",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    },
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 182455427,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/392a1d08-b5f1-4e85-bb30-9d2328fd07bc.h5ad"
+        }
+      ],
+      "cell_count": 13900,
+      "cell_type": [
+        {
+          "label": "anterior lens cell",
+          "ontology_term_id": "CL:0002223"
+        },
+        {
+          "label": "lens epithelial cell",
+          "ontology_term_id": "CL:0002224"
+        },
+        {
+          "label": "lens fiber cell",
+          "ontology_term_id": "CL:0011004"
+        },
+        {
+          "label": "secondary lens fiber",
+          "ontology_term_id": "CL:0002225"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/392a1d08-b5f1-4e85-bb30-9d2328fd07bc.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "489318a0-24c3-4f5c-b105-f084ed0ea026",
+      "dataset_version_id": "392a1d08-b5f1-4e85-bb30-9d2328fd07bc",
+      "development_stage": [
+        {
+          "label": "33-year-old stage",
+          "ontology_term_id": "HsapDv:0000127"
+        },
+        {
+          "label": "adult stage",
+          "ontology_term_id": "HsapDv:0000258"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes2022_Pt14",
+        "pooled [sanes2022_Hu0216,sanes2022_Hu0235]",
+        "pooled [sanes2022_Hu0220,sanes2022_Hu0218]"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/489318a0-24c3-4f5c-b105-f084ed0ea026.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        true
+      ],
+      "mean_genes_per_cell": 2692.0440287769784,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 13900,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        },
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "lens of camera-type eye",
+          "ontology_term_id": "UBERON:0000965",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Lens",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    },
+    {
+      "assay": [
+        {
+          "label": "10x 3' v3",
+          "ontology_term_id": "EFO:0009922"
+        }
+      ],
+      "assets": [
+        {
+          "filesize": 403716509,
+          "filetype": "H5AD",
+          "url": "https://datasets.cellxgene.cziscience.com/c7ebffae-647e-412d-b4b0-e244a3bb4a4d.h5ad"
+        }
+      ],
+      "cell_count": 34132,
+      "cell_type": [
+        {
+          "label": "Schwann cell",
+          "ontology_term_id": "CL:0002573"
+        },
+        {
+          "label": "blood vessel endothelial cell",
+          "ontology_term_id": "CL:0000071"
+        },
+        {
+          "label": "ciliary muscle cell",
+          "ontology_term_id": "CL:1000443"
+        },
+        {
+          "label": "fibroblast",
+          "ontology_term_id": "CL:0000057"
+        },
+        {
+          "label": "lymphocyte",
+          "ontology_term_id": "CL:0000542"
+        },
+        {
+          "label": "macrophage",
+          "ontology_term_id": "CL:0000235"
+        },
+        {
+          "label": "melanocyte",
+          "ontology_term_id": "CL:0000148"
+        },
+        {
+          "label": "non-pigmented ciliary epithelial cell",
+          "ontology_term_id": "CL:0002304"
+        },
+        {
+          "label": "pericyte",
+          "ontology_term_id": "CL:0000669"
+        },
+        {
+          "label": "pigmented ciliary epithelial cell",
+          "ontology_term_id": "CL:0002303"
+        }
+      ],
+      "citation": "Publication: https://doi.org/10.1073/pnas.2200914119 Dataset Version: https://datasets.cellxgene.cziscience.com/c7ebffae-647e-412d-b4b0-e244a3bb4a4d.h5ad curated and distributed by CZ CELLxGENE Discover in Collection: https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+      "dataset_id": "1196334f-a441-474a-95ee-400780941690",
+      "dataset_version_id": "c7ebffae-647e-412d-b4b0-e244a3bb4a4d",
+      "development_stage": [
+        {
+          "label": "30-year-old stage",
+          "ontology_term_id": "HsapDv:0000124"
+        },
+        {
+          "label": "47-year-old stage",
+          "ontology_term_id": "HsapDv:0000141"
+        },
+        {
+          "label": "66-year-old stage",
+          "ontology_term_id": "HsapDv:0000160"
+        },
+        {
+          "label": "78-year-old stage",
+          "ontology_term_id": "HsapDv:0000172"
+        }
+      ],
+      "disease": [
+        {
+          "label": "normal",
+          "ontology_term_id": "PATO:0000461"
+        }
+      ],
+      "donor_id": [
+        "sanes_Pt2",
+        "sanes2022_Hu0216",
+        "sanes2022_Hu0235",
+        "sanes2022_Hu0220"
+      ],
+      "embeddings": [
+        "X_umap"
+      ],
+      "explorer_url": "https://cellxgene.cziscience.com/e/1196334f-a441-474a-95ee-400780941690.cxg/",
+      "feature_biotype": [
+        "gene"
+      ],
+      "feature_count": 59413,
+      "feature_reference": [
+        "NCBITaxon:9606"
+      ],
+      "genetic_perturbation_strategy": null,
+      "is_pre_analysis": false,
+      "is_primary_data": [
+        true
+      ],
+      "mean_genes_per_cell": 2459.4130141802416,
+      "organism": [
+        {
+          "label": "Homo sapiens",
+          "ontology_term_id": "NCBITaxon:9606"
+        }
+      ],
+      "perturbation_types": null,
+      "primary_cell_count": 34132,
+      "published_at": "2023-02-10T21:46:01+00:00",
+      "raw_data_location": "raw.X",
+      "revised_at": "2026-06-11T16:52:49+00:00",
+      "schema_version": "7.1.0",
+      "self_reported_ethnicity": [
+        {
+          "label": "unknown",
+          "ontology_term_id": "unknown"
+        }
+      ],
+      "sex": [
+        {
+          "label": "female",
+          "ontology_term_id": "PATO:0000383"
+        },
+        {
+          "label": "male",
+          "ontology_term_id": "PATO:0000384"
+        }
+      ],
+      "spatial": null,
+      "suspension_type": [
+        "nucleus"
+      ],
+      "tissue": [
+        {
+          "label": "ciliary body",
+          "ontology_term_id": "UBERON:0001775",
+          "tissue_type": "tissue"
+        }
+      ],
+      "title": "Ciliary Body",
+      "tombstone": false,
+      "x_approximate_distribution": null
+    }
+  ],
+  "description": "The anterior segment of the eye consists of the cornea, iris, ciliary body, crystalline lens, and aqueous humor outflow pathways. Together, these tissues are essential for the proper functioning of the eye. Disorders of vision have been ascribed to defects in all of them; some disorders, including glaucoma and cataract, are among the most prevalent causes of blindness in the world. To characterize the cell types that compose these tissues, we generated an anterior segment cell atlas of the human eye using high-throughput single-nucleus RNA sequencing (snRNAseq). We profiled 195,248 nuclei from nondiseased anterior segment tissues of six human donors, identifying >60 cell types. Many of these cell types were discrete, whereas others, especially in the lens and cornea, formed continua corresponding to known developmental transitions that persist in adulthood. Having profiled each tissue separately, we performed an integrated analysis of the entire anterior segment, revealing that some cell types are unique to a single structure, whereas others are shared across tissues. The integrated cell atlas was then used to investigate cell type\u2013specific expression patterns of more than 900 human ocular disease genes identified through either Mendelian inheritance patterns or genome-wide association studies.",
+  "doi": "10.1073/pnas.2200914119",
+  "is_pre_analysis": false,
+  "links": [
+    {
+      "link_name": "GSE199013",
+      "link_type": "RAW_DATA",
+      "link_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE199013"
+    },
+    {
+      "link_name": "",
+      "link_type": "OTHER",
+      "link_url": "https://singlecell.broadinstitute.org/single_cell/study/SCP1841/cell-atlas-of-the-human-ocular-anterior-segment-tissue-specific-and-shared-cell-types"
+    },
+    {
+      "link_name": "",
+      "link_type": "RAW_DATA",
+      "link_url": "https://explore.data.humancellatlas.org/projects/16e99159-78bc-44aa-b479-55a5e903bf50"
+    }
+  ],
+  "name": "Cell atlas of the human ocular anterior segment: Tissue-specific and shared cell types",
+  "published_at": "2023-02-10T21:46:01+00:00",
+  "publisher_metadata": {
+    "authors": [
+      {
+        "family": "van Zyl",
+        "given": "Tav\u00e9"
+      },
+      {
+        "family": "Yan",
+        "given": "Wenjun"
+      },
+      {
+        "family": "McAdams",
+        "given": "Alexi M."
+      },
+      {
+        "family": "Monavarfeshani",
+        "given": "Aboozar"
+      },
+      {
+        "family": "Hageman",
+        "given": "Gregory S."
+      },
+      {
+        "family": "Sanes",
+        "given": "Joshua R."
+      }
+    ],
+    "is_preprint": false,
+    "journal": "Proc. Natl. Acad. Sci. U.S.A.",
+    "published_at": 1658188800.0,
+    "published_day": 19,
+    "published_month": 7,
+    "published_year": 2022
+  },
+  "revised_at": "2026-06-11T16:52:49+00:00",
+  "revising_in": null,
+  "revision_of": null,
+  "visibility": "PUBLIC"
+}

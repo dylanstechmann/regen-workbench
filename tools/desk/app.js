@@ -1297,34 +1297,92 @@ init().catch(error => notice(error.message,true));
   const status = document.getElementById('bioprint-status');
   if (file === null || previewButton === null) return;
   let pending = null;
+  let generation = 0, applying = false;
+  let review = null;
+  const selection = document.getElementById('bioprint-selection');
+  const refreshSelection = async () => {
+    const response = await fetch('/api/bioprint/state');
+    if (!response.ok) throw new Error('Could not load exchange records');
+    const state = await response.json();
+    selection.replaceChildren();
+    for (const [key, group] of Object.entries({ hypothesisIds: 'hypotheses', queryIds: 'queries', modelRunIds: 'modelRuns', evidenceIds: 'evidence', artifactIds: 'artifacts' })) {
+      for (const record of state[group] || []) {
+        const label = document.createElement('label'), input = document.createElement('input');
+        input.type = 'checkbox'; input.dataset.selection = key; input.value = record.id;
+        input.checked = group !== 'artifacts';
+        label.append(input, document.createTextNode(` ${group}: ${record.id}`));
+        selection.append(label);
+      }
+    }
+    const queries = document.getElementById('bioprint-query');
+    queries.replaceChildren();
+    for (const query of state.queries || []) {
+      const option = document.createElement('option'); option.value = query.id; option.textContent = `${query.id}: ${query.query}`; queries.append(option);
+    }
+  };
+  document.getElementById('bioprint-refresh').addEventListener('click', () => refreshSelection().catch(error => show(String(error))));
   const show = value => { status.textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2); };
   previewButton.addEventListener('click', async () => {
+    if (applying) return;
+    const operation = ++generation;
     pending = null; applyButton.disabled = true;
     const selected = file.files && file.files[0];
     if (!selected) { show('Select a bundle file first.'); return; }
     try {
+      if (selected.size > 5 * 1024 * 1024) throw new Error('Exchange manifest exceeds 5 MiB');
       const bundle = JSON.parse(await selected.text());
+      if (operation !== generation) return;
       const response = await fetch('/api/bioprint/preview', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bundle) });
       const preview = await response.json();
+      if (operation !== generation) return;
       if (!response.ok) { show(preview.error || 'Preview failed'); return; }
-      pending = bundle; applyButton.disabled = preview.blockedReasons.length > 0;
+      pending = { bundle, preview: { bundleSha256: preview.bundleSha256, expectedStoreSha256: preview.expectedStoreSha256 } }; applyButton.disabled = preview.blockedReasons.length > 0;
       show(preview);
-    } catch (error) { show(String(error)); }
+    } catch (error) { if (operation === generation) show(String(error)); }
   });
   applyButton.addEventListener('click', async () => {
-    if (pending === null) return;
+    if (pending === null || applying) return;
+    applying = true;
+    applyButton.disabled = true;
+    previewButton.disabled = true;
     try {
       const response = await fetch('/api/bioprint/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(pending) });
       const result = await response.json();
       show(response.ok ? result : (result.error || 'Apply failed'));
-      if (response.ok) { pending = null; applyButton.disabled = true; }
+      if (response.ok) { pending = null; applyButton.disabled = true; await refreshSelection(); }
     } catch (error) { show(String(error)); }
+    finally { applying = false; previewButton.disabled = false; pending = null; applyButton.disabled = true; }
   });
   exportButton.addEventListener('click', async () => {
     try {
-      const response = await fetch('/api/bioprint/state');
-      const state = await response.json();
-      show({ note: 'Current imported state summary. No data leaves this machine.', counts: { hypotheses: (state.hypotheses || []).length, queries: (state.queries || []).length, modelRuns: (state.modelRuns || []).length, evidence: (state.evidence || []).length, artifacts: (state.artifacts || []).length } });
+      const selected = {};
+      for (const input of selection.querySelectorAll('input:checked')) (selected[input.dataset.selection] ||= []).push(input.value);
+      selected.deskRunIds = document.getElementById('bioprint-run-ids').value.split(',').map(id => id.trim()).filter(Boolean);
+      const response = await fetch('/api/bioprint/export', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(selected) });
+      if (!response.ok) throw new Error((await response.json()).error || 'Export failed');
+      const url = URL.createObjectURL(await response.blob());
+      const anchor = document.createElement('a'); anchor.href = url; anchor.download = 'bioprint-results.zip'; anchor.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      show('Selected results downloaded. Extract the ZIP and select its manifest and artifact files in Workbench.');
     } catch (error) { show(String(error)); }
   });
+  document.getElementById('bioprint-review-query').addEventListener('click', async () => {
+    review = null; document.getElementById('bioprint-submit-query').disabled = true;
+    try {
+      const response = await fetch('/api/bioprint/review-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ queryId: document.getElementById('bioprint-query').value, blueprintId: selected }) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error);
+      review = { queryId: result.queryId, blueprintId: selected, reviewToken: result.reviewToken, confirmed: true };
+      show(result); document.getElementById('bioprint-submit-query').disabled = false;
+    } catch (error) { show(String(error)); }
+  });
+  document.getElementById('bioprint-submit-query').addEventListener('click', async () => {
+    if (!review) return;
+    const request = review; review = null; document.getElementById('bioprint-submit-query').disabled = true;
+    try {
+      const response = await fetch('/api/bioprint/submit-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(request) });
+      show(await response.json());
+    } catch (error) { show(`Submission outcome unknown; do not automatically retry: ${error}`); }
+  });
+  refreshSelection().catch(error => show(String(error)));
 })();

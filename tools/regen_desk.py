@@ -20,6 +20,19 @@ import uuid
 import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+
+def _download_failure(kind):
+    """Canonical, bounded user-facing download failure messages for the export/download paths
+    and the browser failure matrix. Every message states that nothing was downloaded."""
+    messages = {
+        "missing-artifact": "Download failed: a selected run snapshot or artifact is missing. Nothing was downloaded.",
+        "oversize-artifact": "Download failed: a selected run snapshot or artifact exceeds the bounded export size. Nothing was downloaded.",
+        "hash-mismatch": "Download failed: an exported artifact's bytes do not match its recorded SHA-256. Nothing was downloaded.",
+    }
+    if kind not in messages:
+        raise ValueError("Unknown download failure kind")
+    return messages[kind]
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urlencode, urlsplit
@@ -1703,12 +1716,16 @@ class Desk:
             current = self.store.get("bioprint_state") or bioprint_exchange.empty_state()
             return bioprint_exchange.preview_import(bundle, current)
 
-    def apply_bioprint_import(self, data):
+    def apply_bioprint_import(self, data, expected_preview=None):
         bundle = bioprint_exchange.validate_bundle(data)
         with self.lock:
             before = json.loads(json.dumps(self.store))
             try:
                 preview = bioprint_exchange.preview_import(bundle, self._bioprint_state())
+                if expected_preview is not None and (
+                        expected_preview.get("bundleSha256") != preview["bundleSha256"] or
+                        expected_preview.get("expectedStoreSha256") != preview["expectedStoreSha256"]):
+                    raise ValueError("Import preview is stale; preview again before apply")
                 self.store["bioprint_state"] = bioprint_exchange.apply_import(bundle, self._bioprint_state())
                 self.store["bioprint_imports"].append({"bundleId": bundle["bundleId"],
                     "bundleSha256": preview["bundleSha256"], "appliedAt": regen.now(),
@@ -1723,8 +1740,135 @@ class Desk:
 
     def export_bioprint_results(self, data):
         with self.lock:
-            bundle_id = data.get("bundleId") if isinstance(data, dict) else None
-            return bioprint_exchange.export_selected_results(data, self.root / "bioprint-exports" / (bundle_id or "export"))
+            export_id = uuid.uuid4().hex
+            report = bioprint_exchange.export_selected_results(data, self.root / "bioprint-exports" / export_id)
+            return {**report, "exportId": export_id}
+    def preview_bioprint_submission(self, data):
+        """Review a stored query against a chosen existing blueprint; never dispatch."""
+        with self.lock:
+            state = self.store.get("bioprint_state") or bioprint_exchange.empty_state()
+            query = next((item for item in state["queries"] if item["id"] == data.get("queryId")), None)
+            if query is None:
+                raise ValueError("Unknown imported query")
+            blueprint_id = data.get("blueprintId")
+            if not any(item["id"] == blueprint_id for item in self.store["blueprints"]):
+                raise ValueError("Select an existing blueprint")
+            if any(provider not in PROVIDERS for provider in query["providerIds"]) or query["limit"] > 10:
+                raise ValueError("Query providers or limit exceed the existing queue contract")
+            request = {"kind": "search", "blueprint_id": blueprint_id, "query": query["query"],
+                       "providers": query["providerIds"], "limit": query["limit"]}
+            token = bioprint_exchange.sha256_bytes(bioprint_exchange.canonical_json_bytes({
+                "request": request, "query": query, "state": state}))
+            return {"queryId": query["id"], "request": request, "reviewToken": token,
+                    "notice": "Submission sends query text to the listed providers. Import alone never submits."}
+
+    def submit_bioprint_query(self, data):
+        if data.get("confirmed") is not True:
+            raise ValueError("Explicit reviewed submission confirmation is required")
+        with self.lock:
+            review = self.preview_bioprint_submission(data)
+            token = data.get("reviewToken")
+            if token != review["reviewToken"]:
+                raise ValueError("Query review is stale; review again")
+            submissions = self.store.setdefault("bioprint_submissions", {})
+            if token in submissions:
+                return json.loads(json.dumps(submissions[token]))
+            # Persist ambiguity BEFORE dispatch. A crash or save failure after queueing
+            # must never trigger automatic duplicate submission on a repeated click.
+            receipt = {"queryId": review["queryId"], "reviewToken": token,
+                       "status": "submission-unknown", "deskRunId": None, "createdAt": regen.now()}
+            submissions[token] = receipt
+            self.save_store()
+            run = self.submit(review["request"])
+            receipt.update(status=run["status"], deskRunId=run["id"])
+            self.save_store()
+            return json.loads(json.dumps(receipt))
+
+    def export_bioprint_archive(self, data):
+        """Only stored record IDs and bounded native run JSON snapshots are selectable."""
+        with self.lock:
+            state = self.store.get("bioprint_state") or bioprint_exchange.empty_state()
+            selection = {"bundleId": f"bundle-{uuid.uuid4().hex}", "createdAt": bioprint_exchange.utc_instant(), "files": []}
+            allowed = {"hypothesisIds": "hypotheses", "queryIds": "queries", "modelRunIds": "modelRuns",
+                       "evidenceIds": "evidence", "artifactIds": "artifacts"}
+            if set(data) - set(allowed) - {"deskRunIds"}:
+                raise ValueError("Export accepts stored IDs only")
+            for key, group in allowed.items():
+                ids = data.get(key, [])
+                if not isinstance(ids, list) or len(ids) > 500 or any(not isinstance(value, str) for value in ids) or len(set(ids)) != len(ids):
+                    raise ValueError("Export selection must contain bounded unique IDs")
+                records = {record["id"]: record for record in state[group]}
+                if any(value not in records for value in ids):
+                    raise ValueError("Unknown selected record")
+                selection[group] = [records[value] for value in ids]
+            if selection["artifacts"]:
+                raise ValueError("Imported artifact bytes are not stored by Desk; reselect original files in Workbench")
+            hypotheses = {record["id"]: record for record in state["hypotheses"]}
+            queries = {record["id"]: record for record in state["queries"]}
+            evidence = {record["id"]: record for record in state["evidence"]}
+            selected_hypotheses = {record["id"] for record in selection["hypotheses"]}
+            selected_queries = {record["id"] for record in selection["queries"]}
+            selected_evidence = {record["id"] for record in selection["evidence"]}
+            for run in selection["modelRuns"]:
+                if run.get("queryPlanId"):
+                    selected_queries.add(run["queryPlanId"])
+            changed = True
+            while changed:
+                before = (len(selected_hypotheses), len(selected_queries), len(selected_evidence))
+                for query_id in list(selected_queries):
+                    if query_id not in queries:
+                        raise ValueError("Missing query dependency")
+                    selected_hypotheses.add(queries[query_id]["hypothesisId"])
+                for hypothesis_id in list(selected_hypotheses):
+                    if hypothesis_id not in hypotheses:
+                        raise ValueError("Missing hypothesis dependency")
+                    card = hypotheses[hypothesis_id]
+                    selected_hypotheses.update(card["parentHypothesisIds"])
+                    selected_queries.update(card["queryPlanIds"])
+                    selected_evidence.update(card["supportingEvidenceIds"] + card["contradictingEvidenceIds"])
+                changed = before != (len(selected_hypotheses), len(selected_queries), len(selected_evidence))
+            if any(evidence_id not in evidence for evidence_id in selected_evidence):
+                raise ValueError("Missing evidence dependency")
+            selection["hypotheses"] = [record for record in state["hypotheses"] if record["id"] in selected_hypotheses]
+            selection["queries"] = [record for record in state["queries"] if record["id"] in selected_queries]
+            selection["evidence"] = [record for record in state["evidence"] if record["id"] in selected_evidence]
+            run_ids = data.get("deskRunIds", [])
+            if not isinstance(run_ids, list) or len(run_ids) > 100 or any(not isinstance(value, str) for value in run_ids) or len(set(run_ids)) != len(run_ids):
+                raise ValueError("Select at most 100 unique Desk run IDs")
+            for run_id in run_ids:
+                if not isinstance(run_id, str) or not re.fullmatch(r"[a-f0-9]{32}", run_id):
+                    raise ValueError("Invalid Desk run ID")
+                path = self.runs / run_id / "run.json"
+                if not path.exists() or path.is_symlink() or not path.resolve().is_relative_to(self.runs.resolve()):
+                    raise ValueError(_download_failure("missing-artifact"))
+                if path.stat().st_size > bioprint_exchange.MAX_ARTIFACT_BYTES:
+                    raise ValueError(_download_failure("oversize-artifact"))
+                run = json.loads(path.read_bytes())
+                native_status = run["status"]
+                status = "succeeded" if native_status == "complete" else native_status
+                if status not in bioprint_exchange.RUN_STATUSES:
+                    raise ValueError("Unsupported Desk run status")
+                snapshot = bioprint_exchange.canonical_json_bytes(redact(run))
+                filename = f"run-{run_id}.json"
+                selection["files"].append((filename, snapshot))
+                selection["modelRuns"].append({"id": f"desk-{run_id}", "modelId": "desk-search",
+                    "status": status, "note": f"Desk native status {native_status}; full redacted JSON snapshot supplied as an artifact.",
+                    "queryPlanId": None, "deskRunId": run_id})
+                selection["artifacts"].append({"id": f"artifact-{run_id}", "filename": filename,
+                    "mediaType": "application/json", "bytes": len(snapshot),
+                    "sha256": bioprint_exchange.sha256_bytes(snapshot),
+                    "provenance": {"producer": "ResearchDesk saved run snapshot (agent-run)",
+                                   "modelRunIds": [f"desk-{run_id}"], "evidenceIds": []}})
+            report = self.export_bioprint_results(selection)
+            root = Path(report["manifest"]).parent
+            buffer = io.BytesIO()
+            with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+                for name in ["bioprint-results.json", *report["files"]]:
+                    data = (root / name).read_bytes()
+                    if name in report["files"] and bioprint_exchange.sha256_bytes(data) != report["files"][name]:
+                        raise ValueError(_download_failure("hash-mismatch"))
+                    archive.writestr(name, data)
+            return buffer.getvalue()
 
     def save_store(self):
         temp = self.store_path.with_suffix(".tmp")
@@ -3163,16 +3307,25 @@ def make_handler(desk):
             try:
                 route = urlsplit(self.path).path
                 size = int(self.headers.get("Content-Length", "0"))
-                if route in {"/api/bioprint/preview", "/api/bioprint/apply"}:
+                if route in {"/api/bioprint/preview", "/api/bioprint/apply", "/api/bioprint/export",
+                             "/api/bioprint/review-query", "/api/bioprint/submit-query"}:
                     if not 0 < size <= 5 * 1024 * 1024:
                         return self.send(413, {"error": "Exchange manifest must be 1-5242880 bytes"})
                     self.connection.settimeout(30)
                     payload = json.loads(self.rfile.read(size))
                     if not isinstance(payload, dict):
                         raise ValueError("Expected a JSON object")
-                    exchange_action = {"/api/bioprint/preview": desk.preview_bioprint_import,
-                                       "/api/bioprint/apply": desk.apply_bioprint_import}[route]
-                    return self.send(200, exchange_action(payload))
+                    if route == "/api/bioprint/export":
+                        return self.send(200, desk.export_bioprint_archive(payload), "application/zip")
+                    if route == "/api/bioprint/review-query":
+                        return self.send(200, desk.preview_bioprint_submission(payload))
+                    if route == "/api/bioprint/submit-query":
+                        return self.send(200, desk.submit_bioprint_query(payload))
+                    if route == "/api/bioprint/apply":
+                        if set(payload) != {"bundle", "preview"} or not isinstance(payload["preview"], dict):
+                            raise ValueError("Apply requires a bundle and preview token")
+                        return self.send(200, desk.apply_bioprint_import(payload["bundle"], payload["preview"]))
+                    return self.send(200, desk.preview_bioprint_import(payload))
                 if not 0 < size <= 64000:
                     return self.send(413, {"error": "Request must be 1-64000 bytes"})
                 self.connection.settimeout(10)

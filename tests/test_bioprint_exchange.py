@@ -3,9 +3,12 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import io
 import sys
 import tempfile
+import time
 import unittest
+import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -22,6 +25,27 @@ def load(name):
 
 
 class BundleValidationTests(unittest.TestCase):
+    def test_shared_ancestor_diamond_is_not_a_cycle(self):
+        bundle = load("minimal.json")
+        template = bundle["hypotheses"][0]
+        bundle["hypotheses"] = [dict(copy.deepcopy(template), id=name)
+                                for name in ("root", "left", "right", "leaf")]
+        bundle["hypotheses"][1]["parentHypothesisIds"] = ["root"]
+        bundle["hypotheses"][2]["parentHypothesisIds"] = ["root"]
+        bundle["hypotheses"][3]["parentHypothesisIds"] = ["left", "right"]
+        self.assertEqual(len(bx.validate_bundle(bundle)["hypotheses"]), 4)
+        bundle["hypotheses"][0]["parentHypothesisIds"] = ["leaf"]
+        with self.assertRaisesRegex(ValueError, "acyclic"):
+            bx.validate_bundle(bundle)
+
+    def test_duplicate_ids_in_all_record_groups_are_rejected(self):
+        for group in ("queries", "modelRuns", "evidence"):
+            with self.subTest(group=group):
+                bundle = load("roundtrip.json")
+                bundle[group].append(copy.deepcopy(bundle[group][0]))
+                with self.assertRaisesRegex(ValueError, "Duplicate"):
+                    bx.validate_bundle(bundle)
+
     def test_minimal_and_roundtrip_validate_invalid_schema_fails_closed(self):
         minimal = bx.validate_bundle(load("minimal.json"))
         self.assertEqual(minimal["schema"], bx.SCHEMA)
@@ -117,6 +141,7 @@ class BundleValidationTests(unittest.TestCase):
             report = bx.export_selected_results({
                 "bundleId": "bundle-results", "createdAt": "2026-11-03T12:00:00Z",
                 "modelRuns": [{"modelId": "desk-run", "id": "r1", "status": "succeeded", "note": "mock result", "queryPlanId": "q1", "deskRunId": "d1"}],
+                "artifacts": load("roundtrip.json")["artifacts"],
                 "files": [("synthetic.json", (FIXTURES / "synthetic.json").read_bytes())],
             }, Path(tmp) / "out")
             manifest = json.loads(Path(report["manifest"]).read_text())
@@ -124,6 +149,70 @@ class BundleValidationTests(unittest.TestCase):
             self.assertIn("synthetic.json", report["files"])
             with self.assertRaises(ValueError):
                 bx.export_selected_results({"bundleId": "bad", "createdAt": "2026-11-03T12:00:00Z", "files": [("../escape.json", b"x")]}, Path(tmp) / "out2")
+
+    def test_export_preflight_and_failures_never_publish_partial_files(self):
+        selection = {"bundleId": "bundle-results", "createdAt": "2026-11-03T12:00:00Z",
+                     "artifacts": load("roundtrip.json")["artifacts"],
+                     "files": [("synthetic.json", (FIXTURES / "synthetic.json").read_bytes())]}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "out"
+            for files in ([], [("synthetic.json", b"wrong")], selection["files"] * 2,
+                          [("bioprint-results.json", b"x")]):
+                with self.subTest(files=files):
+                    with self.assertRaises(ValueError):
+                        bx.export_selected_results({**selection, "files": files}, root)
+                    self.assertFalse(root.exists())
+                    self.assertEqual(list(Path(tmp).iterdir()), [])
+            with patch.object(Path, "write_bytes", side_effect=OSError("disk full")):
+                with self.assertRaises(OSError):
+                    bx.export_selected_results(selection, root)
+            self.assertEqual(list(Path(tmp).iterdir()), [])
+            bx.export_selected_results(selection, root)
+            before = (root / "bioprint-results.json").read_bytes()
+            with self.assertRaises(ValueError):
+                bx.export_selected_results(selection, root)
+            self.assertEqual((root / "bioprint-results.json").read_bytes(), before)
+
+    def test_export_rejects_symlink_target(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "link"
+            root.symlink_to(Path(tmp) / "missing", target_is_directory=True)
+            with self.assertRaises(ValueError):
+                bx.export_selected_results({"bundleId": "bundle-results", "createdAt": "2026-11-03T12:00:00Z"}, root)
+
+    def test_export_finalization_fsync_failure_publishes_nothing(self):
+        selection = {"bundleId": "bundle-results", "createdAt": "2026-11-03T12:00:00Z",
+                     "artifacts": load("roundtrip.json")["artifacts"],
+                     "files": [("synthetic.json", (FIXTURES / "synthetic.json").read_bytes())]}
+        with tempfile.TemporaryDirectory() as tmp:
+            parent = Path(tmp) / "exports"
+            root = parent / "run-1"
+            with patch("bioprint_exchange.os.fsync", side_effect=OSError("injected fsync failure")):
+                with self.assertRaises(OSError):
+                    bx.export_selected_results(selection, root)
+            self.assertFalse(root.exists())
+            self.assertEqual(list(parent.glob(".bioprint-export-*")), [])
+
+    def test_export_finalization_never_overwrites_a_foreign_directory(self):
+        # A hostile local writer that creates the target between the existence check and the
+        # atomic rename makes publication fail loudly; its content survives untouched. This
+        # documents filesystem-hygiene hardening, not an adversarial sandbox.
+        selection = {"bundleId": "bundle-results", "createdAt": "2026-11-03T12:00:00Z",
+                     "artifacts": load("roundtrip.json")["artifacts"],
+                     "files": [("synthetic.json", (FIXTURES / "synthetic.json").read_bytes())]}
+        with tempfile.TemporaryDirectory() as tmp:
+            parent = Path(tmp) / "exports"
+            root = parent / "run-1"
+            real_replace = bx.os.replace
+            def hostile(src, dst):
+                Path(dst).mkdir()
+                (Path(dst) / "hostile.txt").write_text("foreign", encoding="utf-8")
+                return real_replace(src, dst)
+            with patch("bioprint_exchange.os.replace", side_effect=hostile):
+                with self.assertRaises(OSError):
+                    bx.export_selected_results(selection, root)
+            self.assertEqual((root / "hostile.txt").read_text(encoding="utf-8"), "foreign")
+            self.assertEqual(list(parent.glob(".bioprint-export-*")), [])
 
 
 class DeskExchangeTests(unittest.TestCase):
@@ -165,6 +254,96 @@ class DeskExchangeTests(unittest.TestCase):
         self.assertEqual(second["creates"], [])
         self.assertEqual(second["duplicates"], ["hypotheses:hyp-a"])
         self.assertEqual(len(self.desk.store["bioprint_state"]["hypotheses"]), 1)
+
+    def test_apply_token_is_checked_under_store_lock(self):
+        bundle = load("minimal.json")
+        token = self.desk.preview_bioprint_import(bundle)
+        forged = {**token, "bundleSha256": "0" * 64}
+        with self.assertRaisesRegex(ValueError, "stale"):
+            self.desk.apply_bioprint_import(bundle, forged)
+        self.desk.apply_bioprint_import(bundle, token)
+        with self.assertRaisesRegex(ValueError, "stale"):
+            self.desk.apply_bioprint_import(bundle, token)
+
+    def test_download_failure_messages_are_bounded_and_named(self):
+        for kind in ("missing-artifact", "oversize-artifact", "hash-mismatch"):
+            message = desk_module._download_failure(kind)
+            self.assertIn("Download failed", message)
+            self.assertIn("Nothing was downloaded", message)
+            self.assertLess(len(message), 200)
+        with self.assertRaises(ValueError):
+            desk_module._download_failure("ghost-kind")
+
+    def test_export_paths_are_generated_not_taken_from_bundle_id(self):
+        result = self.desk.export_bioprint_results({"bundleId": "../outside", "createdAt": "2026-11-03T12:00:00Z"})
+        manifest = Path(result["manifest"])
+        self.assertEqual(manifest.parent.parent, self.desk.root / "bioprint-exports")
+        self.assertEqual(manifest.parent.name, result["exportId"])
+
+    def test_explicit_query_submission_is_idempotent_and_export_preserves_status(self):
+        bundle = load("roundtrip.json")
+        bundle["queries"][0]["providerIds"] = ["pubmed"]
+        self.desk.apply_bioprint_import(bundle)
+        blueprint = self.desk.store["blueprints"][0]["id"]
+        request = {"queryId": bundle["queries"][0]["id"], "blueprintId": blueprint}
+        review = self.desk.preview_bioprint_submission(request)
+        request.update(reviewToken=review["reviewToken"], confirmed=True)
+        run_id = "a" * 32
+        with patch.object(self.desk, "submit", return_value={"id": run_id, "status": "queued"}) as submit:
+            first = self.desk.submit_bioprint_query(request)
+            self.assertEqual(self.desk.submit_bioprint_query(request), first)
+            self.assertEqual(submit.call_count, 1)
+        path = self.desk.runs / run_id
+        path.mkdir()
+        (path / "run.json").write_text(json.dumps({"id": run_id, "status": "partial", "summary": "mock provider result"}))
+        archive = self.desk.export_bioprint_archive({"deskRunIds": [run_id]})
+        with zipfile.ZipFile(io.BytesIO(archive)) as exported:
+            manifest = bx.validate_bundle(json.loads(exported.read("bioprint-results.json")))
+            self.assertEqual(manifest["modelRuns"][0]["status"], "partial")
+            descriptor = manifest["artifacts"][0]
+            self.assertEqual(hashlib.sha256(exported.read(descriptor["filename"])).hexdigest(), descriptor["sha256"])
+        with self.assertRaises(ValueError):
+            self.desk.export_bioprint_archive({"deskRunIds": ["../escape"]})
+
+    def test_ambiguous_submission_is_never_automatically_retried(self):
+        bundle = load("roundtrip.json")
+        bundle["queries"][0]["providerIds"] = ["pubmed"]
+        self.desk.apply_bioprint_import(bundle)
+        request = {"queryId": bundle["queries"][0]["id"], "blueprintId": self.desk.store["blueprints"][0]["id"]}
+        review = self.desk.preview_bioprint_submission(request)
+        request.update(reviewToken=review["reviewToken"], confirmed=True)
+        with patch.object(self.desk, "submit", side_effect=OSError("dispatch interrupted")) as submit:
+            with self.assertRaises(OSError):
+                self.desk.submit_bioprint_query(request)
+            result = self.desk.submit_bioprint_query(request)
+            self.assertEqual(result["status"], "submission-unknown")
+            self.assertEqual(submit.call_count, 1)
+
+    def test_mock_provider_runs_through_actual_queue_and_returns_verified_archive(self):
+        bundle = load("roundtrip.json")
+        bundle["queries"][0]["providerIds"] = ["pubmed"]
+        self.desk.apply_bioprint_import(bundle)
+        request = {"queryId": bundle["queries"][0]["id"], "blueprintId": self.desk.store["blueprints"][0]["id"]}
+        review = self.desk.preview_bioprint_submission(request)
+        request.update(reviewToken=review["reviewToken"], confirmed=True)
+        with patch.object(desk_module, "search_provider", return_value=({"fixture": True}, [{
+                "title": "Mock bibliography lead", "url": "https://example.invalid/mock", "provider": "pubmed"}])) as provider:
+            receipt = self.desk.submit_bioprint_query(request)
+            path = self.desk.runs / receipt["deskRunId"] / "run.json"
+            deadline = time.monotonic() + 10
+            run = {}
+            while time.monotonic() < deadline:
+                run = json.loads(path.read_text())
+                if run["status"] not in {"queued", "running"}:
+                    break
+                time.sleep(0.01)
+            self.assertEqual(run["status"], "complete", run)
+            self.assertEqual(provider.call_count, 1)
+        with zipfile.ZipFile(io.BytesIO(self.desk.export_bioprint_archive({"deskRunIds": [run["id"]]}))) as archive:
+            returned = bx.validate_bundle(json.loads(archive.read("bioprint-results.json")))
+            self.assertEqual(returned["modelRuns"][0]["status"], "succeeded")
+            artifact = returned["artifacts"][0]
+            self.assertEqual(hashlib.sha256(archive.read(artifact["filename"])).hexdigest(), artifact["sha256"])
 
 
 if __name__ == "__main__":

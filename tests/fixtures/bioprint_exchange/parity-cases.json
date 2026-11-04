@@ -1,0 +1,18 @@
+[
+  {"id":"roundtrip","operation":"identity","expected":"accept"},
+  {"id":"shared-ancestor-diamond","operation":"diamond","expected":"accept"},
+  {"id":"cycle","operation":"cycle","expected":"reject"},
+  {"id":"duplicate-hypothesis","operation":"duplicate","group":"hypotheses","expected":"reject"},
+  {"id":"duplicate-query","operation":"duplicate","group":"queries","expected":"reject"},
+  {"id":"duplicate-run","operation":"duplicate","group":"modelRuns","expected":"reject"},
+  {"id":"duplicate-evidence","operation":"duplicate","group":"evidence","expected":"reject"},
+  {"id":"duplicate-artifact","operation":"duplicate","group":"artifacts","expected":"reject"},
+  {"id":"timestamp-valid-millis","operation":"timestamp","value":"2026-11-03T12:00:00.123Z","expected":"accept"},
+  {"id":"timestamp-offset-rejected","operation":"timestamp","value":"2026-11-03T12:00:00+02:00","expected":"reject"},
+  {"id":"timestamp-space-rejected","operation":"timestamp","value":"2026-11-03 12:00:00","expected":"reject"},
+  {"id":"timestamp-impossible-date","operation":"timestamp","value":"2026-13-03T12:00:00Z","expected":"reject"},
+  {"id":"nested-alternative-extra-key","operation":"nested-alt-extra","expected":"reject"},
+  {"id":"nested-alternative-bad-type","operation":"nested-alt-type","expected":"reject"},
+  {"id":"query-dangling-hypothesis","operation":"query-dangling-ref","expected":"reject"},
+  {"id":"artifact-sha-format","operation":"artifact-sha-format","expected":"reject"}
+]
