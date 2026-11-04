@@ -10,7 +10,7 @@
   },
   "fixtures": {
     "minimal.json": "418623104704ba7f30dc3bdde35e36f83467fcbb9afe5d557006638a83b3a80c",
-    "roundtrip.json": "e92f2fe4e60ee00d38dc28f56af20b5c50b7429676226a0f3d05243c67097517",
+    "roundtrip.json": "2d5f1307a3ed90a2df033608628fa7493fd89155ae1571c411acd6628bf4bc19",
     "conflicts.json": "7b8a9acd18a21c24498f9fb371bfd6d6c0b29c2e09591281e7a14697d32a6c0d",
     "invalid.json": "856e47b911c5ef1530492327275f8b5a60a9186d831da2faef06f2c5eb560d32"
   },

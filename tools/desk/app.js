@@ -1319,6 +1319,14 @@ init().catch(error => notice(error.message,true));
     for (const query of state.queries || []) {
       const option = document.createElement('option'); option.value = query.id; option.textContent = `${query.id}: ${query.query}`; queries.append(option);
     }
+    const blueprints = document.getElementById('bioprint-blueprint');
+    if (blueprints) {
+      blueprints.replaceChildren();
+      const deskState = await (await fetch('/api/state')).json();
+      for (const item of deskState.blueprints || []) {
+        const option = document.createElement('option'); option.value = item.id; option.textContent = `${item.id}: ${item.title}`; blueprints.append(option);
+      }
+    }
   };
   document.getElementById('bioprint-refresh').addEventListener('click', () => refreshSelection().catch(error => show(String(error))));
   const show = value => { status.textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2); };
@@ -1369,10 +1377,10 @@ init().catch(error => notice(error.message,true));
   document.getElementById('bioprint-review-query').addEventListener('click', async () => {
     review = null; document.getElementById('bioprint-submit-query').disabled = true;
     try {
-      const response = await fetch('/api/bioprint/review-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ queryId: document.getElementById('bioprint-query').value, blueprintId: selected }) });
+      const response = await fetch('/api/bioprint/review-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ queryId: document.getElementById('bioprint-query').value, blueprintId: document.getElementById('bioprint-blueprint').value }) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);
-      review = { queryId: result.queryId, blueprintId: selected, reviewToken: result.reviewToken, confirmed: true };
+      review = { queryId: result.queryId, blueprintId: document.getElementById('bioprint-blueprint').value, reviewToken: result.reviewToken, confirmed: true };
       show(result); document.getElementById('bioprint-submit-query').disabled = false;
     } catch (error) { show(String(error)); }
   });

@@ -106,7 +106,7 @@
       "hypothesisId": "hyp-a",
       "query": "synthetic context for alternative geometry",
       "providerIds": [
-        "local-desk"
+        "pubmed"
       ],
       "limit": 5,
       "purpose": "context search",
