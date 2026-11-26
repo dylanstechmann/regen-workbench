@@ -16,6 +16,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 import regen
 
 ACCESSION = "GSE113957"
+METADATA_FILENAME = f"{ACCESSION}_sample_metadata.json"
+INTAKE_RECEIPT = HERE / "aging_reference_intake_receipt.json"
 PREFIX = "GSE113nnn"
 COMPRESSED_LIMIT = 64 * 1024 * 1024
 EXPANDED_LIMIT = 512 * 1024 * 1024
@@ -33,6 +35,15 @@ FILES = {
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def load_verified_metadata(cache: Path, receipt: dict) -> dict:
+    """Read the exact parsed metadata bytes pinned by the intake receipt."""
+    metadata = (cache / METADATA_FILENAME).read_bytes()
+    expected = receipt["files"]["series_metadata"]["metadata_json_sha256"]
+    if sha256_bytes(metadata) != expected:
+        raise ValueError(f"{ACCESSION} sample metadata hash does not match the GEO intake receipt")
+    return json.loads(metadata.decode("utf-8"))
 
 
 def norm(value: str) -> str:
@@ -91,50 +102,73 @@ def inspect_matrix(path: Path) -> dict:
 def main() -> None:
     cache = regen.DATA / "literature" / "aging-reference-GSE113957"
     cache.mkdir(parents=True, exist_ok=True)
+    try:
+        prior_receipt = json.loads(INTAKE_RECEIPT.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        pinned_files = None
+    else:
+        if prior_receipt["accession"] != ACCESSION:
+            raise ValueError(f"Wrong accession in intake receipt for {ACCESSION}")
+        pinned_files = prior_receipt["files"]
+        if not isinstance(pinned_files, dict):
+            raise ValueError(f"Missing source pins in intake receipt for {ACCESSION}")
+
     fetched = {}
-    parsed = None
     for key, (url, filename) in FILES.items():
         path = cache / filename
-        if not path.is_file():
+        cached = path.is_file()
+        if cached:
+            size = path.stat().st_size
+            if size > COMPRESSED_LIMIT:
+                raise ValueError(f"Cached GEO source exceeds compressed bound: {filename}")
+            digest = regen.sha256_file(path)
+        else:
             content = regen.http_bytes(url, timeout=120)
-            if len(content) > COMPRESSED_LIMIT:
+            size = len(content)
+            if size > COMPRESSED_LIMIT:
                 raise ValueError(f"Compressed source exceeds bound: {filename}")
-            path.write_bytes(content)
-            fetch_receipt = regen.record("aging-gse113957-source-fetch", {
-                "accession": ACCESSION, "source_url": url, "compressed_sha256": sha256_bytes(content),
-                "compressed_bytes": len(content), "compressed_limit_bytes": COMPRESSED_LIMIT,
-                "expanded_limit_bytes": EXPANDED_LIMIT,
-            }, [path])
-        else:
-            fetch_receipt = None
-        if path.stat().st_size > COMPRESSED_LIMIT:
-            raise ValueError(f"Cached GEO source exceeds compressed bound: {filename}")
-        if key == "series_metadata":
-            parsed = parse_soft(path)
-            metadata_path = cache / f"{ACCESSION}_sample_metadata.json"
-            metadata_path.write_text(json.dumps({
-                "accession": ACCESSION, "sample_count": len(parsed["samples"]),
-                "samples": parsed["samples"],
-                "series_fields": {name: parsed["series_fields"].get(name, []) for name in (
-                    "Series_title", "Series_status", "Series_pubmed_id", "Series_sample_id")},
-                "expanded_bytes": parsed["expanded_bytes"],
-            }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-            regen.record("aging-gse113957-parsed-metadata", {
-                "accession": ACCESSION, "source_sha256": regen.sha256_file(path)
-            }, [metadata_path])
-            fetched[key] = {"filename": filename, "sha256": regen.sha256_file(path),
-                            "compressed_bytes": path.stat().st_size, "sample_count": len(parsed["samples"]),
-                            "metadata_json_sha256": regen.sha256_file(metadata_path),
-                            "expanded_bytes": parsed["expanded_bytes"],
-                            "local_provenance_receipt": fetch_receipt.name if fetch_receipt else "reused_verified_cache"}
-        else:
-            matrix = inspect_matrix(path)
-            fetched[key] = {"filename": filename, "sha256": regen.sha256_file(path),
-                            "compressed_bytes": path.stat().st_size, **matrix,
-                            "local_provenance_receipt": fetch_receipt.name if fetch_receipt else "reused_verified_cache"}
+            digest = sha256_bytes(content)
 
-    metadata_path = cache / f"{ACCESSION}_sample_metadata.json"
-    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        if pinned_files is not None:
+            pinned = pinned_files[key]
+            if filename != pinned["filename"] or digest != pinned["sha256"]:
+                raise ValueError(f"{ACCESSION} source hash does not match the GEO intake receipt: {filename}")
+
+        if cached:
+            provenance = "reused_verified_cache" if pinned_files is not None else "reused_unpinned_cache"
+        else:
+            path.write_bytes(content)
+            provenance = regen.record("aging-gse113957-source-fetch", {
+                "accession": ACCESSION, "source_url": url, "compressed_sha256": digest,
+                "compressed_bytes": size, "compressed_limit_bytes": COMPRESSED_LIMIT,
+                "expanded_limit_bytes": EXPANDED_LIMIT,
+            }, [path]).name
+        fetched[key] = {"filename": filename, "sha256": digest, "compressed_bytes": size,
+                        "local_provenance_receipt": provenance}
+
+    series_record = fetched["series_metadata"]
+    parsed = parse_soft(cache / series_record["filename"])
+    matrix_record = fetched["fpkm_matrix"]
+    matrix_record.update(inspect_matrix(cache / matrix_record["filename"]))
+    metadata = {
+        "accession": ACCESSION, "sample_count": len(parsed["samples"]),
+        "samples": parsed["samples"],
+        "series_fields": {name: parsed["series_fields"].get(name, []) for name in (
+            "Series_title", "Series_status", "Series_pubmed_id", "Series_sample_id")},
+        "expanded_bytes": parsed["expanded_bytes"],
+    }
+    metadata_path = cache / METADATA_FILENAME
+    metadata_bytes = (json.dumps(metadata, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+    metadata_digest = sha256_bytes(metadata_bytes)
+    if pinned_files is not None and metadata_digest != pinned_files["series_metadata"]["metadata_json_sha256"]:
+        raise ValueError(f"{ACCESSION} parsed metadata hash does not match the GEO intake receipt")
+    metadata_path.write_bytes(metadata_bytes)
+    regen.record("aging-gse113957-parsed-metadata", {
+        "accession": ACCESSION, "source_sha256": series_record["sha256"]
+    }, [metadata_path])
+    series_record.update(sample_count=metadata["sample_count"], metadata_json_sha256=metadata_digest,
+                         expanded_bytes=parsed["expanded_bytes"])
+
     gsm_lookup, title_lookup = {}, {}
     for sample in metadata["samples"]:
         gsm_lookup[sample["accession"]] = sample
@@ -170,7 +204,7 @@ def main() -> None:
                           "age_associations_are_not_causal_or_healthspan_effects": True}}
     if not check["all_samples_mapped_one_to_one"]:
         raise ValueError("FPKM matrix columns do not map one-to-one onto GEO sample records")
-    output = HERE / "aging_reference_intake_receipt.json"
+    output = INTAKE_RECEIPT
     output.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     regen.record("aging-gse113957-intake-summary", {"accession": ACCESSION}, [output])
     print(json.dumps({"accession": ACCESSION, "samples": len(metadata_ids),

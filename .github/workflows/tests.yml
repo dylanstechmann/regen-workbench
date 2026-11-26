@@ -44,3 +44,5 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r studies/dental-regeneration-2026-10-09/requirements-rna.txt
       - run: python -B -m unittest discover -s tests -p test_dental_normalization.py -v
+      - name: Exercise sample metadata checks with NumPy and SciPy
+        run: python -B -m unittest discover -s tests -p test_aging_reference_metadata.py -v

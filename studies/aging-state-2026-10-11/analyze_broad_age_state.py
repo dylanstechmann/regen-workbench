@@ -24,6 +24,9 @@ from scipy.stats import rankdata, spearmanr
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import regen
+from fetch_aging_reference import METADATA_FILENAME, load_verified_metadata
+from fetch_reprogramming_inputs import METADATA_FILENAME as TARGET_METADATA_FILENAME
+from fetch_reprogramming_inputs import load_verified_metadata as load_verified_target_metadata
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "derived" / "broad-age-state-challenge"
@@ -95,7 +98,7 @@ def parse_age(value: str) -> float:
 
 def load_age_reference() -> tuple[list[dict], np.ndarray, list[str], dict]:
     receipt = json.loads(AGE_RECEIPT.read_text(encoding="utf-8"))
-    metadata = json.loads((AGE_CACHE / f"{AGE_ACCESSION}_sample_metadata.json").read_text(encoding="utf-8"))
+    metadata = load_verified_metadata(AGE_CACHE, receipt)
     matrix_record = receipt["files"]["fpkm_matrix"]
     matrix_path = AGE_CACHE / matrix_record["filename"]
     if sha256(matrix_path) != matrix_record["sha256"]:
@@ -147,6 +150,7 @@ def load_age_reference() -> tuple[list[dict], np.ndarray, list[str], dict]:
     if not np.isfinite(X).all():
         raise ValueError("Non-finite log2 FPKM value in age reference")
     metadata_out = {"source_sha256": matrix_record["sha256"], "input_filename": matrix_record["filename"],
+                    "metadata_sha256": receipt["files"]["series_metadata"]["metadata_json_sha256"],
                     "adult_n": len(age_samples), "unique_cell_ids": len({s["cell_id"] for s in age_samples}),
                     "age_min": min(s["age_years"] for s in age_samples),
                     "age_max": max(s["age_years"] for s in age_samples),
@@ -262,12 +266,12 @@ def sample_state(sample: dict) -> dict:
 
 
 def load_target_expression(receipt: dict) -> tuple[list[dict], dict[str, dict[str, float]], dict]:
-    metadata = json.loads((TARGET_CACHE / f"{TARGET_ACCESSION}_series_metadata.json").read_text(encoding="utf-8"))
+    metadata = load_verified_target_metadata(TARGET_CACHE, receipt)
     state_by_gsm = {s["accession"]: sample_state(s) for s in metadata["sample_metadata"]}
     expr: dict[str, dict[str, float]] = defaultdict(dict)
     row_counts = Counter()
     crosswalk = receipt["sample_mapping_check"]["expression_header_to_GSM"]
-    target_hashes = {}
+    target_hashes = {TARGET_METADATA_FILENAME: receipt["files"]["series_metadata"]["metadata_json_sha256"]}
     for file_record in receipt["files"].values():
         filename = file_record["filename"]
         if not filename.endswith(".txt.gz"):
@@ -467,8 +471,13 @@ def main() -> None:
             "small_target_n_warning": "Day-13 successful post-withdrawal endpoint has only two donor-coded lines; cell lines and repeated experiments do not replace donor replication."
         },
         "generated_utc": regen.now(),
-        "inputs_sha256": {**{AGE_RECEIPT.name: sha256(AGE_RECEIPT), TARGET_RECEIPT.name: sha256(TARGET_RECEIPT)},
-                           **{age_meta["input_filename"]: age_meta["source_sha256"]}, **target_meta["source_hashes"]},
+        "inputs_sha256": {
+            AGE_RECEIPT.name: sha256(AGE_RECEIPT),
+            TARGET_RECEIPT.name: sha256(TARGET_RECEIPT),
+            age_meta["input_filename"]: age_meta["source_sha256"],
+            METADATA_FILENAME: age_meta["metadata_sha256"],
+            **target_meta["source_hashes"],
+        },
     }
     (OUT / "broad_age_state_summary.json").write_text(json.dumps(score_summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
