@@ -26,6 +26,8 @@ unique title normalization (case-folding and collapsing spaces/underscores)
 maps all 95 expression columns to all 95 GEO sample records. The complete
 header-to-GSM mapping and source SHA-256 hashes are in
 [`geo_intake_receipt.json`](geo_intake_receipt.json).
+The endpoint analysis verifies the cached sample metadata against that receipt
+before assigning sample groups and records the verified hash in its summary.
 
 The sample labels O1, O2 and O3 map to three donor lines; O1 and O2 are both
 53-year donor lines, and O3 is 38. Experiment 1 and experiment 2 are kept as
@@ -155,8 +157,11 @@ python /lab/workbench/studies/aging-state-2026-10-11/fetch_aging_reference.py
 python /lab/workbench/studies/aging-state-2026-10-11/analyze_fibroblast_age_reference.py
 ```
 
-The input receipt records the GEO file hashes, parsing limits and sample-title
-crosswalks for both datasets. The derived outputs are in
+The intake receipts record the GEO file hashes, parsing limits and sample-title
+crosswalks. The GSE113957 intake checks cached or downloaded compressed files
+against the existing receipt before regenerating metadata. The analysis verifies
+the metadata against its intake receipt and records that hash in new summaries.
+The derived outputs are in
 [`derived/reprogramming-paired-analysis/`](derived/reprogramming-paired-analysis/):
 full 95-sample manifest, per-pair gene values, per-experiment panel effects,
 donor-line aggregates, gene-level summaries, the separate 143-sample age
