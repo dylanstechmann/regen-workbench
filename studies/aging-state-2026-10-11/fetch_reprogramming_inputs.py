@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import regen
 
 ACCESSION = "GSE165177"
+METADATA_FILENAME = f"{ACCESSION}_series_metadata.json"
 PREFIX = "GSE165nnn"
 COMPRESSED_LIMIT = 64 * 1024 * 1024
 EXPANDED_LIMIT = 512 * 1024 * 1024
@@ -36,6 +37,15 @@ FILES = {
 
 def sha256_bytes(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
+
+
+def load_verified_metadata(cache: Path, receipt: dict) -> dict:
+    """Parse the cached sample metadata only after checking its receipt hash."""
+    metadata = (cache / METADATA_FILENAME).read_bytes()
+    expected = receipt["files"]["series_metadata"]["metadata_json_sha256"]
+    if sha256_bytes(metadata) != expected:
+        raise ValueError(f"{ACCESSION} sample metadata hash does not match the GEO intake receipt")
+    return json.loads(metadata.decode("utf-8"))
 
 
 def normalize_sample_label(label: str) -> str:
@@ -120,7 +130,7 @@ def main() -> None:
                        "series_fields": {name: parsed["series_fields"].get(name, []) for name in (
                            "Series_title", "Series_status", "Series_pubmed_id", "Series_sample_id")},
                        "sample_metadata": parsed["samples"], "expanded_bytes": parsed["expanded_bytes"]}
-            parsed_path = cache / f"{ACCESSION}_series_metadata.json"
+            parsed_path = cache / METADATA_FILENAME
             parsed_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             regen.record("aging-gse165177-parsed-metadata", {"accession": ACCESSION, "source_sha256": regen.sha256_file(path)}, [parsed_path])
             fetched[key] = {"filename": filename, "sha256": regen.sha256_file(path),
@@ -133,7 +143,7 @@ def main() -> None:
             fetched[key] = {"filename": filename, "sha256": regen.sha256_file(path),
                             "compressed_bytes": path.stat().st_size, **table,
                             "local_provenance_receipt": receipt.name if receipt else "reused_verified_cache"}
-    metadata = json.loads((cache / f"{ACCESSION}_series_metadata.json").read_text(encoding="utf-8"))
+    metadata = json.loads((cache / METADATA_FILENAME).read_text(encoding="utf-8"))
     metadata_ids = {sample["accession"] for sample in metadata["sample_metadata"]}
     title_to_sample = {}
     for sample in metadata["sample_metadata"]:

@@ -264,6 +264,53 @@ provider, data leaving the machine, and known cost/unknown pricing before
 submission; record provider, model/version, input hash, job ID, and result
 hashes without recording secrets.
 
+### Hosted Boltz-2 MVP (offline/mocked validation only)
+
+The separate `regen boltz2` adapter accepts exactly one protein (`A`, 1–4096
+standard amino-acid letters plus `X`) and optionally one ligand (`B1`, either
+SMILES or an uppercase CCD code). It emits one diffusion sample as inline
+mmCIF. Ligand `predict_affinity: true` enables the bounded affinity settings;
+affinity values and all score/model arrays are retained without selecting a
+positional "best" sample. These are model outputs, never measured IC50, Ki,
+or Kd, and do not establish binding, target engagement, efficacy, or safety.
+
+```bash
+regen boltz2 predict REQUEST.json \
+  --out data/structures/boltz2/NEW_DIR
+```
+
+The canonical request is at most 8 MiB. Responses are read once up to 100 MiB,
+each inline structure is limited to 32 MiB, and the 1–3600 second timeout
+defaults to 600 seconds. MSAs and multi-molecule, multi-sample, template,
+constraint, modification, embedding, PAE/PDE-write, and alternate-format
+capabilities are rejected. The adapter does not infer whether the hosted
+service performs any MSA generation when `msa` is omitted.
+
+Each new run directory contains the canonical `request.json` and either a
+status-only `status.json` or the exact bounded raw `response.json`,
+`structure-01.mmcif`, and sanitized `manifest.json`. Success artifacts are
+staged and published only after complete response validation. The manifest
+hashes request, raw response, and structure bytes, retains all validated
+parallel scores and affinity arrays, fixes `model_version` to `null`, and makes
+no measured-affinity claim. Redirects are refused. HTTP 408/429/5xx and
+connection/timeout failures mark submission `unknown`; no POST is retried
+automatically. Provenance hashes only local artifacts and contains no bearer
+key. This adapter is not integrated with MCP, ResearchDesk, Bioprint exchange,
+or a generic provider framework.
+
+See the [hosted inference schema](https://docs.api.nvidia.com/nim/reference/mit-boltz2-infer),
+[model page and terms links](https://docs.api.nvidia.com/nim/reference/mit-boltz2),
+and [detailed NIM inference documentation](https://docs.nvidia.com/nim/bionemo/boltz2/1.10.0/inference.html).
+Those documents define the field shape used by the synthetic fixtures; they do
+not establish hosted/NIM parity. **No NVIDIA network request or hosted Boltz-2
+inference was made in this phase.** All Boltz-2 transport and result tests were
+offline/mocked (apart from loopback-only redirect tests). Hosted model version,
+service limits, MSA behavior, runtime, charge, and inference output were not
+observed. Before any future live request, rotate the exposed key privately,
+review the NVIDIA API Trial Service Terms, NVIDIA Community Model License,
+upstream MIT license, input/output retention, cost/quota, and input sensitivity,
+and inject the rotated `NVIDIA_API_KEY` through the process environment.
+
 ### Remote CLI
 
 From the repository root, these commands use only the configured provider

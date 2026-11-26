@@ -107,8 +107,8 @@
       "description": "Schema, cross-reference, file-path, size, and SHA-256 validator for experiment manifests.",
       "repository": "regen-workbench",
       "path": "tools/validate_experiment_manifest.py",
-      "sha256": "9f09cc9452c1e0ad943589b5c48c6d38bd1759a8d521e9915b6c9fe507d88fa5",
-      "size_bytes": 14703
+      "sha256": "e299ffd1a76c4985e72801374a85ca69cd7bd7d55e863bfdae4736a3f5bf986c",
+      "size_bytes": 22687
     },
     {
       "id": "benchmark-summary",

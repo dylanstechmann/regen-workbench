@@ -37,3 +37,7 @@ python /lab/workbench/studies/aging-state-2026-10-11/analyze_broad_age_state.py
 ```
 
 The `derived/broad-age-state-challenge/` folder contains the fold-level validation summary, frozen age-direction genes, matched-pair and donor-line scores, losslessly compressed individual gene changes for each alternative axis (`alternative_axis_gene_deltas.tsv.gz`), the summary JSON, and figures. Input checksums and a `regen.record` provenance receipt are generated with the outputs. Large GEO matrices remain in the local ignored data cache.
+
+The reference and target loaders verify the cached GSE113957 and GSE165177
+sample metadata against their intake receipts before using the sample labels.
+New summaries include both verified hashes.

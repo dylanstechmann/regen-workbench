@@ -22,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import regen
+from fetch_reprogramming_inputs import METADATA_FILENAME, load_verified_metadata
 
 ACCESSION = "GSE165177"
 CACHE = regen.DATA / "literature" / "aging-reprogramming-GSE165177"
@@ -89,7 +90,7 @@ def sample_state(sample: dict, filename: str) -> dict:
 
 
 def load_input_manifest(receipt: dict) -> tuple[list[dict], dict[str, dict]]:
-    metadata = json.loads((CACHE / f"{ACCESSION}_series_metadata.json").read_text(encoding="utf-8"))
+    metadata = load_verified_metadata(CACHE, receipt)
     gsm_to_state = {}
     for sample in metadata["sample_metadata"]:
         filename = ""
@@ -324,6 +325,7 @@ def main() -> None:
     figure_created = plot_panel(donor_rows, output / "paired_collagen_effects.png")
 
     input_hashes = {record["filename"]: record["sha256"] for record in receipt["files"].values()}
+    input_hashes[METADATA_FILENAME] = receipt["files"]["series_metadata"]["metadata_json_sha256"]
     summary = {
         "schema_version": 1,
         "accession": ACCESSION,

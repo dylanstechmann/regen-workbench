@@ -11,14 +11,41 @@ import tempfile
 import threading
 import unittest
 import zipfile
-from http.server import ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from html.parser import HTMLParser
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import regen
 import regen_desk as desk
+import regen_cellxgene as cx
+import validate_experiment_manifest as manifest_validator
+
+cx_test_collection_id = "63d03351-06be-478e-a0db-f7a653b6b19b"
+
+
+def cellxgene_fixture():
+    return {
+        "collection_id": cx_test_collection_id,
+        "collection_version_id": "10000000-0000-4000-8000-000000000001",
+        "visibility": "PUBLIC",
+        "name": "Synthetic desk collection",
+        "description": "Metadata only",
+        "doi": None,
+        "datasets": [{
+            "dataset_id": "20000000-0000-4000-8000-000000000001",
+            "dataset_version_id": "30000000-0000-4000-8000-000000000001",
+            "title": "Synthetic desk dataset",
+            "cell_count": 101,
+            "schema_version": "5.1.0",
+            "assets": [{
+                "filetype": "H5AD", "filesize": 4097,
+                "url": "https://datasets.cellxgene.cziscience.com/synthetic/desk.h5ad",
+            }],
+        }],
+    }
 
 
 class DeskTests(unittest.TestCase):
@@ -50,6 +77,120 @@ class DeskTests(unittest.TestCase):
         for file, metadata in report["outputs"].items():
             self.assertEqual(hashlib.sha256((path / file).read_bytes()).hexdigest(), metadata["sha256"])
         self.assertFalse((path / "openalex.json").exists())
+
+    def test_cellxgene_is_ninth_keyless_provider_but_selection_cap_remains_eight(self):
+        providers = self.desk.state()["providers"]
+        self.assertEqual(len(providers), 9)
+        record = next(item for item in providers if item["id"] == "cellxgene")
+        self.assertEqual(record["name"], "CZ CELLxGENE Discover")
+        self.assertIsNone(record["key_configured"])
+        self.assertFalse(record["key_required"])
+        with self.assertRaisesRegex(ValueError, "1-8"):
+            self.desk.submit({"blueprint_id": "glycation", "kind": "search", "query": "kidney",
+                              "providers": list(desk.PROVIDERS)})
+        with patch.object(self.desk.executor, "submit"):
+            run = self.desk.submit({"blueprint_id": "glycation", "kind": "search", "query": "kidney",
+                                    "providers": ["cellxgene", "cellxgene"]})
+        self.assertEqual(run["parameters"]["providers"], ["cellxgene"])
+
+    def test_cellxgene_provider_uses_adapter_fetch_hit_and_metadata_evidence(self):
+        raw = cellxgene_fixture()
+        calls = []
+        def fetch(url, *args, **kwargs):
+            calls.append(url)
+            self.assertNotIn(cx.ASSET_HOST, url)
+            return raw
+        with patch.object(desk, "cellxgene_get", side_effect=fetch):
+            returned, rows = desk.search_provider("cellxgene", cx_test_collection_id, 2)
+        self.assertIs(returned, raw)
+        self.assertEqual(calls, [cx.collection_api_url(cx_test_collection_id)])
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
+        self.assertEqual(row["provider"], "cellxgene")
+        self.assertEqual(row["evidence_type"], "public dataset metadata; measurements not reviewed")
+        self.assertEqual(row["collection_version_id"], "10000000-0000-4000-8000-000000000001")
+        self.assertEqual(row["dataset_version_id"], "30000000-0000-4000-8000-000000000001")
+        self.assertEqual(row["h5ad_asset_count"], 1)
+        self.assertEqual(row["declared_bytes"], 4097)
+        self.assertEqual(row["manifest"]["state"], "manifest_only")
+        self.assertFalse(row["manifest"]["asset_fetch_attempted"])
+
+    def test_cellxgene_desk_refuses_redirect_without_reading_asset_or_arbitrary_host(self):
+        received = {"origin": 0, "destination": 0}
+
+        class DestinationHandler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                received["destination"] += 1
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b"must-not-be-read")
+
+            def log_message(self, *_args):
+                pass
+
+        destination = ThreadingHTTPServer(("127.0.0.1", 0), DestinationHandler)
+
+        class OriginHandler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                received["origin"] += 1
+                self.send_response(302)
+                self.send_header(
+                    "Location",
+                    f"http://127.0.0.1:{destination.server_port}/redirected-asset.h5ad",
+                )
+                self.end_headers()
+
+            def log_message(self, *_args):
+                pass
+
+        origin = ThreadingHTTPServer(("127.0.0.1", 0), OriginHandler)
+        threads = [threading.Thread(target=server.serve_forever, daemon=True)
+                   for server in (origin, destination)]
+        for thread in threads:
+            thread.start()
+        try:
+            with patch.object(cx, "API_ROOT", f"http://127.0.0.1:{origin.server_port}"), \
+                    patch.object(desk, "fetch_json", side_effect=AssertionError("generic fetch forbidden")), \
+                    patch.object(desk, "urlopen", side_effect=AssertionError("generic opener forbidden")):
+                with self.assertRaises(desk.ProviderError) as caught:
+                    desk.search_provider("cellxgene", cx_test_collection_id, 1)
+            self.assertEqual(received, {"origin": 1, "destination": 0})
+            self.assertEqual(str(caught.exception), "CELLxGENE metadata GET returned HTTP 302")
+            self.assertNotIn("redirected-asset", str(caught.exception))
+            self.assertNotIn(str(destination.server_port), str(caught.exception))
+        finally:
+            for server in (origin, destination):
+                server.shutdown()
+                server.server_close()
+            for thread in threads:
+                thread.join(timeout=2)
+
+    def test_cellxgene_partial_failure_preserves_snapshot_and_no_asset_fetch(self):
+        raw = cellxgene_fixture()
+        calls = []
+        def fetch(url, *args, **kwargs):
+            calls.append(url)
+            if url == cx.collection_api_url(cx_test_collection_id):
+                return raw
+            raise desk.ProviderError("HTTP 429")
+        with patch.object(desk, "cellxgene_get", side_effect=fetch), \
+                patch.object(desk, "fetch_json", side_effect=fetch):
+            run = self.finish({"kind": "search", "query": cx_test_collection_id,
+                               "providers": ["cellxgene", "pubmed"], "limit": 2})
+        self.assertEqual(run["status"], "partial")
+        provider_rows = {item["provider"]: item for item in run["result"]["providers"]}
+        self.assertEqual(provider_rows["cellxgene"]["status"], "ok")
+        self.assertEqual(provider_rows["pubmed"]["status"], "error")
+        self.assertEqual(calls, [cx.collection_api_url(cx_test_collection_id),
+                                 unittest.mock.ANY])
+        self.assertTrue(all(cx.ASSET_HOST not in url for url in calls))
+        path = self.desk.runs / run["id"]
+        snapshot = path / "cellxgene.json"
+        self.assertEqual(json.loads(snapshot.read_text()), raw)
+        expected_hash = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        self.assertEqual(provider_rows["cellxgene"]["sha256"], expected_hash)
+        self.assertFalse(any(item.suffix == ".h5ad" for item in path.rglob("*")))
+        self.assertFalse((path / "pubmed.json").exists())
 
     def test_all_provider_failures_are_not_success(self):
         with patch.object(desk, "search_provider", side_effect=desk.ProviderError("HTTP 403")):
@@ -198,6 +339,146 @@ class DeskTests(unittest.TestCase):
         index=json.loads(archive.read("archive-index.json"))
         row=next(item for item in index["files"] if item["path"]==report_name)
         self.assertEqual(row["sha256"],hashlib.sha256(archive.read(report_name)).hexdigest())
+
+
+    def test_linked_research_uses_snapshot_bytes_without_post_validation_reads(self):
+        manifest_path = self.root / "snapshot-manifest.json"
+        output_path = self.root / "snapshot-output.json"
+        manifest_bytes = b'{"exact":"manifest"}\r\n'
+        output_bytes = b'{"exact":"output"}\x00\n'
+        manifest_path.write_bytes(manifest_bytes)
+        output_path.write_bytes(output_bytes)
+        document = {
+            "repository_id": "regen-workbench",
+            "title": "Exact-byte fixture",
+            "artifacts": [{"id": "output", "kind": "analysis_output", "repository": "regen-workbench",
+                           "path": "snapshot-output.json"}],
+        }
+
+        def snapshot_then_mutate(*_args, **_kwargs):
+            snapshot = manifest_validator.ValidatedExperimentSnapshot(
+                document, manifest_path.read_bytes(), {"output": output_path.read_bytes()})
+            manifest_path.write_bytes(b"changed manifest")
+            output_path.write_bytes(b"changed output")
+            return snapshot
+
+        def forbidden_read(*_args, **_kwargs):
+            raise AssertionError("linked export must not reread through _artifact_bytes")
+
+        validator = SimpleNamespace(
+            validate_experiment_manifest_snapshot=snapshot_then_mutate,
+            _artifact_bytes=forbidden_read,
+        )
+        card = {"experiment_id": "snapshot-fixture", "validation_status": "valid",
+                "manifest_path": manifest_path.name}
+        campaigns = [{"experiment_ids": ["snapshot-fixture"], "model_bundle_ids": []}]
+        with patch.object(self.desk, "experiments", return_value={"experiments": [card]}), \
+                patch.object(desk, "HOME", self.root), \
+                patch.object(desk, "experiment_manifest_tools", return_value=validator):
+            linked, files = self.desk._verified_linked_research(campaigns)
+
+        prefix = "linked-research/experiments/snapshot-fixture"
+        self.assertEqual(files[f"{prefix}/experiment.json"], manifest_bytes)
+        self.assertEqual(files[f"{prefix}/outputs/output.json"], output_bytes)
+        record = linked["experiments"][0]
+        self.assertEqual(record["manifest_sha256"], hashlib.sha256(manifest_bytes).hexdigest())
+        for row in record["files"]:
+            self.assertEqual(row["sha256"], hashlib.sha256(files[row["archive_path"]]).hexdigest())
+
+
+    def test_selected_manifest_replaced_with_symlink_is_rejected_without_resolution(self):
+        selected = self.root / "selected-experiment.json"
+        selected.write_bytes(b"discovery-era bytes")
+        card = {"experiment_id": "replacement-fixture", "validation_status": "valid",
+                "manifest_path": selected.name}
+        campaigns = [{"experiment_ids": ["replacement-fixture"], "model_bundle_ids": []}]
+        validator = desk.experiment_manifest_tools()
+        # Discovery has completed when the selected path is replaced by a link.
+        selected.unlink()
+        target = self.root / "replacement-target.json"
+        target.write_bytes(b"{}")
+        try:
+            os.symlink(target, selected)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symbolic links unavailable: {exc}")
+        with patch.object(self.desk, "experiments", return_value={"experiments": [card]}), \
+                patch.object(desk, "HOME", self.root), \
+                patch.object(desk, "experiment_manifest_tools", return_value=validator):
+            with self.assertRaisesRegex(validator.ManifestValidationError, "symbolic link"):
+                self.desk._verified_linked_research(campaigns)
+
+    def test_full_archive_uses_snapshot_bytes_and_never_calls_artifact_reader(self):
+        experiment_id = "bonn-kidney-tubuloid-cyst-induction-imaging"
+        self.desk.campaign({
+            "blueprint_id": "tissues", "title": "Snapshot export", "target": "kidney tubuloids",
+            "hypothesis": "Exact validated bytes are retained in the exported dossier.",
+            "experiment_ids": [experiment_id],
+        })
+        cards = self.desk.experiments()
+        validator = desk.experiment_manifest_tools()
+        card = next(item for item in cards["experiments"] if item["experiment_id"] == experiment_id)
+        expected = validator.validate_experiment_manifest_snapshot(
+            desk.HOME / card["manifest_path"], repo_root=desk.HOME)
+        with patch.object(self.desk, "experiments", return_value=cards), \
+                patch.object(desk, "experiment_manifest_tools", return_value=validator), \
+                patch.object(validator, "_artifact_bytes",
+                             side_effect=AssertionError("export performed a second artifact read")):
+            blob = self.desk.export_archive("tissues")
+        archive = zipfile.ZipFile(io.BytesIO(blob))
+        prefix = f"linked-research/experiments/{experiment_id}"
+        self.assertEqual(archive.read(f"{prefix}/experiment.json"), expected.manifest_bytes)
+        by_id = {item["id"]: item for item in expected.document["artifacts"]}
+        for artifact_id, exact in expected.analysis_outputs.items():
+            artifact = by_id[artifact_id]
+            suffix = Path(artifact.get("member_path", artifact["path"])).suffix.lower()
+            archive_path = f"{prefix}/outputs/{artifact_id}{suffix}"
+            self.assertEqual(archive.read(archive_path), exact)
+        index = json.loads(archive.read("archive-index.json"))
+        for row in index["files"]:
+            self.assertEqual(row["sha256"], hashlib.sha256(archive.read(row["path"])).hexdigest())
+
+    def test_export_archive_catches_freshness_change_before_writing(self):
+        self.desk.campaign({
+            "blueprint_id": "tissues", "title": "Freshness race", "target": "kidney tubuloids",
+            "hypothesis": "A changed fresh snapshot must stop archive assembly.",
+            "experiment_ids": ["bonn-kidney-tubuloid-cyst-induction-imaging"],
+        })
+        real = self.desk._verified_linked_research
+        calls = 0
+
+        def changing_snapshot(campaigns):
+            nonlocal calls
+            linked, files = real(campaigns)
+            calls += 1
+            if calls == 2:
+                linked["experiments"][0]["manifest_sha256"] = "0" * 64
+            return linked, files
+
+        with patch.object(self.desk, "_verified_linked_research", changing_snapshot), \
+                patch.object(desk.ac.ArchiveCollector, "write_zip") as write_zip:
+            with self.assertRaisesRegex(ValueError, "changed while the dossier was being prepared"):
+                self.desk.export_archive("tissues")
+        self.assertEqual(calls, 2)
+        write_zip.assert_not_called()
+
+    def test_invalid_selected_artifact_produces_no_partial_archive(self):
+        self.desk.campaign({
+            "blueprint_id": "tissues", "title": "Invalid selected output", "target": "kidney tubuloids",
+            "hypothesis": "An invalid selected artifact must fail before archive assembly.",
+            "experiment_ids": ["bonn-kidney-tubuloid-cyst-induction-imaging"],
+        })
+        cards = self.desk.experiments()
+
+        def invalid_snapshot(*_args, **_kwargs):
+            raise manifest_validator.ManifestValidationError("invalid selected output")
+
+        validator = SimpleNamespace(validate_experiment_manifest_snapshot=invalid_snapshot)
+        with patch.object(self.desk, "experiments", return_value=cards), \
+                patch.object(desk, "experiment_manifest_tools", return_value=validator), \
+                patch.object(desk.ac.ArchiveCollector, "write_zip") as write_zip:
+            with self.assertRaisesRegex(manifest_validator.ManifestValidationError, "invalid selected output"):
+                self.desk.export_archive("tissues")
+        write_zip.assert_not_called()
 
     def test_campaign_starters_cover_repair_tissue_and_delivery(self):
         state = self.desk.state()

@@ -42,6 +42,7 @@ import archive_collector as ac
 import frozen_evaluation as fe
 import regen
 import research_progress
+from regen_cellxgene import CellxGeneError, public_get as cellxgene_public_get, search_collections
 from regen_compute import compound_screen, manifest, write_json
 
 HOME = Path(__file__).resolve().parents[1]
@@ -88,6 +89,7 @@ PROVIDERS = {
     "core": ("CORE", "CORE_API_KEY", True),
     "brave": ("Brave web / forums", "BRAVE_SEARCH_API_KEY", True),
     "exa": ("Exa web / forums", "EXA_API_KEY", True),
+    "cellxgene": ("CZ CELLxGENE Discover", None, False),
 }
 KINDS = {"search", "compound", "neighbors", "variants", "compare", "conformers", "docking"}
 BLUEPRINT_FIELDS = ("title", "area", "query", "question", "who", "what", "where", "when", "why", "how", "falsifier", "desired_changes")
@@ -1513,6 +1515,14 @@ class ProviderError(Exception):
     pass
 
 
+def cellxgene_get(url):
+    """Use only the standalone adapter's bounded, redirect-refusing public GET."""
+    try:
+        return cellxgene_public_get(url)
+    except CellxGeneError as exc:
+        raise ProviderError(str(exc)) from None
+
+
 def fetch_json(url, headers=None, body=None):
     """Only internal adapters supply URLs. Never return credential-bearing errors."""
     headers = {"User-Agent": regen.UA, "Accept": "application/json", **(headers or {})}
@@ -1607,6 +1617,13 @@ def search_provider(provider, query, limit):
         raw = fetch_json("https://api.search.brave.com/res/v1/web/search?" + urlencode({"q": query, "count": limit}), {"X-Subscription-Token": key})
         return raw, [hit(provider, r.get("title"), r.get("url"), r.get("age", ""), snippet=r.get("description", ""),
                          evidence_type="web lead; claim and source type unreviewed") for r in raw.get("web", {}).get("results", [])]
+    if provider == "cellxgene":
+        raw, records = search_collections(query, limit, cellxgene_get)
+        rows = [hit(provider, record["title"], record["url"], record.get("date", ""),
+                    evidence_type="public dataset metadata; measurements not reviewed",
+                    **{key: value for key, value in record.items() if key not in {"title", "url", "date"}})
+                for record in records]
+        return raw, rows
     raw = fetch_json("https://api.exa.ai/search", {"x-api-key": key}, {"query": query, "numResults": limit, "type": "auto"})
     return raw, [hit(provider, r.get("title"), r.get("url"), r.get("publishedDate", ""), evidence_type="web lead; claim and source type unreviewed") for r in raw.get("results", [])]
 
@@ -2902,16 +2919,21 @@ class Desk:
             card = cards.get(experiment_id)
             if card is None:
                 raise ValueError(f"Selected experiment is no longer valid: {experiment_id}")
-            manifest_path = (HOME / card["manifest_path"]).resolve(strict=True)
-            document = validator.validate_experiment_manifest(manifest_path, repo_root=HOME)
+            manifest_path = Path(os.path.abspath(HOME / card["manifest_path"]))
+            try:
+                manifest_path.relative_to(HOME)
+            except ValueError as exc:
+                raise ValueError(f"Selected experiment manifest escapes the workbench: {experiment_id}") from exc
+            snapshot = validator.validate_experiment_manifest_snapshot(manifest_path, repo_root=HOME)
+            document = snapshot.document
             archived = []
             manifest_archive = f"linked-research/experiments/{experiment_id}/experiment.json"
-            manifest_bytes = manifest_path.read_bytes()
+            manifest_bytes = snapshot.manifest_bytes
             add_file(manifest_archive, manifest_bytes, archived)
             for artifact in document["artifacts"]:
                 if artifact["kind"] != "analysis_output" or artifact.get("repository") != document["repository_id"]:
                     continue
-                raw = validator._artifact_bytes(HOME, document["repository_id"], artifact)
+                raw = snapshot.analysis_outputs.get(artifact["id"])
                 if raw is None:
                     raise ValueError(f"Selected experiment output is unavailable: {artifact['id']}")
                 suffix = Path(artifact.get("member_path", artifact["path"])).suffix.lower()

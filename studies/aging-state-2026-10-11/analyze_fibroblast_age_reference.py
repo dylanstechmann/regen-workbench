@@ -21,6 +21,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import regen
+from fetch_aging_reference import METADATA_FILENAME, load_verified_metadata
 
 ACCESSION = "GSE113957"
 CACHE = regen.DATA / "literature" / "aging-reference-GSE113957"
@@ -133,7 +134,7 @@ def plot_age_reference(samples: list[dict], expression: dict, path: Path) -> boo
 
 def main() -> None:
     receipt = json.loads(INTAKE_RECEIPT.read_text(encoding="utf-8"))
-    metadata = json.loads((CACHE / f"{ACCESSION}_sample_metadata.json").read_text(encoding="utf-8"))
+    metadata = load_verified_metadata(CACHE, receipt)
     matrix_record = receipt["files"]["fpkm_matrix"]
     matrix_path = CACHE / matrix_record["filename"]
     if sha256_file(matrix_path) != matrix_record["sha256"]:
@@ -275,7 +276,10 @@ def main() -> None:
             "This analysis does not train or apply the published age clock and does not convert molecular expression into years of rejuvenation.",
             "The age-reference and reprogramming cohorts use different datasets and expression units; only direction is compared."
         ],
-        "inputs_sha256": {record["filename"]: record["sha256"] for record in receipt["files"].values()},
+        "inputs_sha256": {
+            **{record["filename"]: record["sha256"] for record in receipt["files"].values()},
+            METADATA_FILENAME: receipt["files"]["series_metadata"]["metadata_json_sha256"],
+        },
         "generated_utc": regen.now(),
     }
     output = HERE / "derived" / "reprogramming-paired-analysis" / "aging_reference_summary.json"

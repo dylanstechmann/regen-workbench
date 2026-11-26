@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """Validate an experiment manifest, its artifact links, and local file hashes."""
-from __future__ import annotations
-
 import argparse
 import hashlib
+import importlib
+import io
 import json
+import lzma
+import os
 import sys
 import zipfile
+import zlib
+from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
+
+import archive_collector as ac
 
 try:
     import jsonschema
@@ -17,41 +23,202 @@ except ImportError:  # pragma: no cover - guarded by the runtime check below
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCHEMA = Path(__file__).resolve().parent / "schemas" / "experiment-manifest.schema.json"
+# Validation work is independent of the retained analysis_output budget. It accounts for unique
+# cached source bytes and unique decompressed members, with matching source/decompressed sublimits.
+MAX_VALIDATION_WORK_BYTES = ac.MAX_TOTAL_BYTES  # SECRETS-GUARD-IGNORE: byte-budget alias, not a credential
+
+_ZSTD_ERROR_TYPES = []
+for _module_name in ("compression.zstd", "zstandard"):
+    try:
+        _module = importlib.import_module(_module_name)
+    except ImportError:
+        continue
+    for _name in ("ZstdError", "ZstandardError"):
+        _error_type = getattr(_module, _name, None)
+        if isinstance(_error_type, type) and issubclass(_error_type, Exception):
+            _ZSTD_ERROR_TYPES.append(_error_type)
+_ZIP_READ_ERRORS = (
+    KeyError, OSError, EOFError, RuntimeError, NotImplementedError, zipfile.BadZipFile,
+    zlib.error, lzma.LZMAError, *_ZSTD_ERROR_TYPES,
+)
 
 
 class ManifestValidationError(ValueError):
     """Raised when a manifest or a linked local artifact is invalid."""
 
 
+@dataclass(frozen=True)
+class ValidatedExperimentSnapshot:
+    """The exact validated manifest and selected output bytes from one validation pass."""
+
+    document: dict[str, Any]
+    manifest_bytes: bytes
+    analysis_outputs: dict[str, bytes]
+
+
 def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _artifact_bytes(repo_root: Path, local_repository_id: str, artifact: dict[str, Any]) -> bytes | None:
-    if artifact.get("repository") != local_repository_id:
-        return None
-    rel = PurePosixPath(artifact["path"])
-    if rel.is_absolute() or ".." in rel.parts:
-        raise ManifestValidationError(f"artifact path must stay inside the repository: {artifact['path']}")
-    path = (repo_root / Path(*rel.parts)).resolve()
-    try:
-        path.relative_to(repo_root.resolve())
-    except ValueError as exc:
-        raise ManifestValidationError(f"artifact path resolves outside the repository: {artifact['path']}") from exc
-    if not path.is_file():
-        raise ManifestValidationError(f"linked local artifact does not exist: {artifact['path']}")
-    if "member_path" not in artifact:
-        return path.read_bytes()
-    member = PurePosixPath(artifact["member_path"])
-    if member.is_absolute() or ".." in member.parts:
+def _new_validation_cache() -> dict[str, Any]:
+    return {
+        "sources": {},
+        "zip_directories": {},
+        "zip_members": {},
+        "source_bytes": 0,
+        "decompressed_bytes": 0,
+        "work_bytes": 0,
+    }
+
+
+def _source_key(root: Path, relative: str) -> Path:
+    return root.resolve() / Path(*PurePosixPath(relative).parts)
+
+
+def _charge_validation_work(cache: dict[str, Any], *, source: int = 0, decompressed: int = 0) -> None:
+    """Bound cached sources, unique decompression, and their aggregate validation work."""
+    source_total = cache["source_bytes"] + source
+    decompressed_total = cache["decompressed_bytes"] + decompressed
+    work_total = cache["work_bytes"] + source + decompressed
+    if source_total > MAX_VALIDATION_WORK_BYTES:
+        raise ManifestValidationError(
+            f"validation source cache exceeds the {MAX_VALIDATION_WORK_BYTES} byte budget"
+        )
+    if decompressed_total > MAX_VALIDATION_WORK_BYTES:
+        raise ManifestValidationError(
+            f"validation decompressed bytes exceed the {MAX_VALIDATION_WORK_BYTES} byte budget"
+        )
+    if work_total > MAX_VALIDATION_WORK_BYTES:
+        raise ManifestValidationError(
+            f"experiment validation work exceeds the {MAX_VALIDATION_WORK_BYTES} byte budget"
+        )
+    cache["source_bytes"] = source_total
+    cache["decompressed_bytes"] = decompressed_total
+    cache["work_bytes"] = work_total
+
+
+def _read_source(root: Path, relative: str, cache: dict[str, Any], label: str) -> bytes:
+    """Return one cached, bounded, no-follow read of a canonical source."""
+    key = _source_key(root, relative)
+    sources = cache["sources"]
+    if key not in sources:
+        try:
+            raw = ac.read_regular_file(root, relative, limit=ac.MAX_MEMBER_BYTES)
+        except ac.CollectionError as exc:
+            raise ManifestValidationError(f"{label}: {exc}") from exc
+        _charge_validation_work(cache, source=len(raw))
+        sources[key] = raw
+    return sources[key]
+
+
+def _read_path(path: Path, cache: dict[str, Any], label: str) -> bytes:
+    """Read an arbitrary manifest/schema path without following any path component."""
+    absolute = Path(os.path.abspath(path))
+    root = Path(absolute.anchor)
+    relative = absolute.relative_to(root).as_posix()
+    return _read_source(root, relative, cache, label)
+
+
+def _zip_member_bytes(
+    container_bytes: bytes,
+    artifact: dict[str, Any],
+    cache: dict[str, Any] | None = None,
+    source_key: Path | None = None,
+) -> bytes:
+    """Extract a declared member using per-source directory and member caches."""
+    declared_member = artifact["member_path"]
+    member = PurePosixPath(declared_member)
+    member_name = member.as_posix()
+    if (member.is_absolute() or ".." in member.parts
+            or ac.member_name_problem(declared_member) is not None):
         raise ManifestValidationError(f"archive member path is invalid: {artifact['member_path']}")
+    if cache is None:
+        cache = _new_validation_cache()
+    if source_key is None:
+        source_key = Path(os.path.abspath(artifact["path"]))
+    member_key = (source_key, member_name)
+    if member_key in cache["zip_members"]:
+        return cache["zip_members"][member_key]
     try:
-        with zipfile.ZipFile(path) as archive:
-            return archive.read(member.as_posix())
-    except (KeyError, zipfile.BadZipFile) as exc:
+        directory = cache["zip_directories"].get(source_key)
+        if directory is None:
+            with zipfile.ZipFile(io.BytesIO(container_bytes)) as archive:
+                infos = archive.infolist()
+                if len(infos) > ac.MAX_MEMBERS:
+                    raise ManifestValidationError(
+                        f"archive declares more than {ac.MAX_MEMBERS} members: {artifact['path']}"
+                    )
+                directory = {}
+                for info in infos:
+                    name = info.filename[:-1] if info.is_dir() and info.filename.endswith("/") else info.filename
+                    problem = ac.member_name_problem(name)
+                    if problem is not None:
+                        raise ManifestValidationError(
+                            f"unsafe archive member ({problem}) in {artifact['path']}: {info.filename!r}"
+                        )
+                    if info.is_dir():
+                        continue
+                    if info.filename in directory:
+                        raise ManifestValidationError(
+                            f"duplicate archive member in {artifact['path']}: {info.filename}"
+                        )
+                    directory[info.filename] = info
+            cache["zip_directories"][source_key] = directory
+        info = directory.get(member_name)
+        if info is None:
+            raise KeyError(member_name)
+        if info.file_size > ac.MAX_MEMBER_BYTES:
+            raise ManifestValidationError(
+                f"archive member exceeds the {ac.MAX_MEMBER_BYTES} byte limit: "
+                f"{artifact['path']}!/{artifact['member_path']}"
+            )
+        with zipfile.ZipFile(io.BytesIO(container_bytes)) as archive:
+            with archive.open(info, "r") as source:
+                data = source.read(ac.MAX_MEMBER_BYTES + 1)
+        if len(data) > ac.MAX_MEMBER_BYTES:
+            raise ManifestValidationError(
+                f"archive member grew beyond the {ac.MAX_MEMBER_BYTES} byte limit: "
+                f"{artifact['path']}!/{artifact['member_path']}"
+            )
+        _charge_validation_work(cache, decompressed=len(data))
+        cache["zip_members"][member_key] = data
+        return data
+    except ManifestValidationError:
+        raise
+    except _ZIP_READ_ERRORS as exc:
         raise ManifestValidationError(
             f"archive member is missing or unreadable: {artifact['path']}!/{artifact['member_path']}"
         ) from exc
+
+
+def _artifact_bytes_cached(
+    repo_root: Path,
+    local_repository_id: str,
+    artifact: dict[str, Any],
+    cache: dict[str, Any],
+) -> bytes | None:
+    if artifact.get("repository") != local_repository_id:
+        return None
+    declared_path = artifact["path"]
+    rel = PurePosixPath(declared_path)
+    if rel.is_absolute() or ".." in rel.parts:
+        raise ManifestValidationError(f"artifact path must stay inside the repository: {artifact['path']}")
+    relative = rel.as_posix()
+    if ac.member_name_problem(declared_path) is not None:
+        raise ManifestValidationError(f"artifact path is not a safe canonical relative path: {artifact['path']}")
+    container_bytes = _read_source(
+        repo_root.resolve(), relative, cache, f"linked local artifact {artifact['id']} ({artifact['path']})"
+    )
+    if "member_path" not in artifact:
+        return container_bytes
+    return _zip_member_bytes(
+        container_bytes, artifact, cache, _source_key(repo_root.resolve(), relative)
+    )
+
+
+def _artifact_bytes(repo_root: Path, local_repository_id: str, artifact: dict[str, Any]) -> bytes | None:
+    """Compatibility wrapper for preview callers; validation uses a shared read cache."""
+    return _artifact_bytes_cached(repo_root, local_repository_id, artifact, _new_validation_cache())
 
 
 def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
@@ -87,17 +254,20 @@ def _referenced_artifact_ids(document: dict[str, Any]) -> list[tuple[str, str]]:
     return refs
 
 
-def validate_experiment_manifest(
+def validate_experiment_manifest_snapshot(
     manifest_path: Path,
     repo_root: Path = ROOT,
     schema_path: Path = DEFAULT_SCHEMA,
-) -> dict[str, Any]:
+) -> ValidatedExperimentSnapshot:
     if jsonschema is None:  # pragma: no cover - guarded by the test skip
         raise SystemExit("jsonschema is required to validate experiment manifests")
+    cache = _new_validation_cache()
     try:
-        document = json.loads(manifest_path.read_text(encoding="utf-8"))
-        schema = json.loads(schema_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        manifest_bytes = _read_path(manifest_path, cache, "experiment manifest")
+        schema_bytes = _read_path(schema_path, cache, "experiment manifest schema")
+        document = json.loads(manifest_bytes.decode("utf-8"))
+        schema = json.loads(schema_bytes.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ManifestValidationError(str(exc)) from exc
     jsonschema.Draft202012Validator.check_schema(schema)
     errors = sorted(
@@ -227,8 +397,10 @@ def validate_experiment_manifest(
                             f"validation_endpoints[{index}] links {evidence_kind}, not an assay-data artifact"
                         )
 
+    analysis_outputs: dict[str, bytes] = {}
+    retained_output_bytes = 0
     for artifact in artifacts:
-        data = _artifact_bytes(repo_root, document["repository_id"], artifact)
+        data = _artifact_bytes_cached(repo_root, document["repository_id"], artifact, cache)
         if data is None:
             continue
         actual_hash = _sha256(data)
@@ -240,6 +412,13 @@ def validate_experiment_manifest(
             raise ManifestValidationError(
                 f"byte-count mismatch for {artifact['id']}: expected {artifact['size_bytes']}, got {len(data)}"
             )
+        if artifact["kind"] == "analysis_output":
+            retained_output_bytes += len(data)
+            if retained_output_bytes > ac.MAX_TOTAL_BYTES:
+                raise ManifestValidationError(
+                    f"selected local analysis_output artifacts exceed the {ac.MAX_TOTAL_BYTES} byte total budget"
+                )
+            analysis_outputs[artifact["id"]] = data
 
     modeling = document["modeling"]
     donor_validation = modeling["donor_validation"]
@@ -262,7 +441,16 @@ def validate_experiment_manifest(
         if not record_id or by_id[record_id]["kind"] != "calibration_record":
             raise ManifestValidationError("measured calibration must link a calibration_record artifact")
 
-    return document
+    return ValidatedExperimentSnapshot(document, manifest_bytes, analysis_outputs)
+
+
+def validate_experiment_manifest(
+    manifest_path: Path,
+    repo_root: Path = ROOT,
+    schema_path: Path = DEFAULT_SCHEMA,
+) -> dict[str, Any]:
+    """Compatibility wrapper returning only the validated manifest document."""
+    return validate_experiment_manifest_snapshot(manifest_path, repo_root, schema_path).document
 
 
 def main(argv: list[str] | None = None) -> int:

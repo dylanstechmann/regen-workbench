@@ -78,6 +78,52 @@ observations stay under `data/research-desk/`; fetch receipts remain under
 engineered tissues and nanomedicine, followed by organs, senescence and
 structural restoration.
 
+### CZI BioHub / CELLxGENE public metadata
+
+`regen biohub` provides a narrow, keyless CELLxGENE Discover adapter and a static
+BioHub resource catalog. It does not add a Census/H5AD client, MCP tool, bulk
+download, model execution, or generic remote runner. Census, Virtual Cells
+Platform, MLflow, model, and benchmark entries are link-only; model-specific
+licenses and terms still require review.
+
+```bash
+python -B tools/regen.py biohub resources --out data/provenance/biohub/resources-new
+python -B tools/regen.py biohub collection 63d03351-06be-478e-a0db-f7a653b6b19b --out data/provenance/biohub/collection-new
+```
+
+Both commands require a new nonsymlink directory below the ignored
+`data/provenance/biohub/` root. `resources` performs no fetch and writes no
+receipt. `collection` performs only the fixed public detail GET, then writes
+`source.json`, a deterministic `manifest_only` manifest, and a real-fetch
+receipt. UUID search uses that detail endpoint; text search uses only the
+PUBLIC list endpoint and client-side matching. List stubs may omit dataset
+titles and cell counts, but never identities, versions, or H5AD assets. Bounds
+include 1,000 collections per list response, 500 datasets per collection, eight
+H5AD assets per dataset, and 1–10 hits per provider query. ResearchDesk keeps
+its separate 1–8 provider selection cap.
+
+The manifest retains declared remote sizes, not observed local sizes. It always
+marks `downloaded: false`, `asset_fetch_attempted: false`,
+`measurements_imported: false`, and `scientific_review: not_established`.
+Source/attribution review remains required despite the portal policy link.
+Unit, provider, CLI, and exchange transport tests are mocked except for the
+single successful public validation below; no asset URL is called and no H5AD
+bytes or measurements are imported or scientifically reviewed.
+
+**Observed public metadata validation (2026-11-16):** the final confined GET of
+`https://api.cellxgene.cziscience.com/curation/v1/collections/63d03351-06be-478e-a0db-f7a653b6b19b`
+returned HTTP 200 at `2026-11-16T02:57:23.016303+00:00`. Strict parsing retained
+collection version `60d22a69-22f7-41d5-b704-fd77b3d2d83d`, six datasets, six
+H5AD asset descriptions, and 3,004,233,496 declared remote bytes. The ignored
+outputs are `data/provenance/biohub/public-collection-smoke-2026-11-16/source.json`
+(30,486 bytes; SHA-256
+`9254d95524241d4110c8b9627f5dd1564e4c035c87810e88d578757994ef8688`) and
+`manifest.json` (20,542 bytes; SHA-256
+`6503b1fd857c0ff3d99b24f1e9e9391f17706af4819bf7878a13bb4367847475`).
+Receipt: `data/provenance/1794797843049417721_cellxgene.json`. These hashes cover
+metadata JSON only, not H5AD content. The directory contains exactly those two
+JSON files and no H5AD file. NVIDIA hosted inference was not run in this phase.
+
 The **Study design** view stores content-hashed, append-only question,
 dataset-card and analysis-plan drafts. Dataset metadata includes source-file
 inventory, unit hierarchy, exact quantities, missingness and exclusions; plans
@@ -160,6 +206,25 @@ and protein/peptide docking engines. The control-aware docking benchmark
 reports active/inactive-control ROC AUC, enrichment, and optional
 symmetry-aware pose RMSD; it does not claim biological activity. OpenFold3
 predicts complex structures; it does not replace docking.
+
+The separate `regen boltz2 predict REQUEST.json --out
+data/structures/boltz2/NEW_DIR` CLI supports a strictly bounded hosted Boltz-2
+MVP: one protein, zero or one ligand, one inline mmCIF diffusion sample, and
+optional ligand-affinity prediction. It refuses redirects, never automatically
+retries a POST, preserves the complete bounded raw successful response, hashes
+local artifacts, and retains parallel score/model arrays without positional
+best-sample selection. Affinity output is predicted, not measured IC50/Ki/Kd.
+Run directories stay under ignored `data/structures/boltz2/`; failures retain
+only canonical request/status artifacts and a sanitized local receipt. There is
+no MCP, ResearchDesk, Bioprint exchange, or generic provider integration.
+
+**Validation status:** all Boltz-2 requests, responses, and hosted transport
+paths in the tests were offline/mocked, with loopback-only redirect tests. No
+NVIDIA network call or hosted inference was run, and no key was used. Hosted
+model version (`null` in manifests), service limits, MSA behavior, runtime,
+charges, and inference results were not observed. Any future live use requires
+private key rotation and prior terms/data-flow review; see [DOCKING.md](DOCKING.md)
+and [MANUAL_ACCOUNTS.md](MANUAL_ACCOUNTS.md).
 
 The mutation-repair pilot includes a deterministic regeneration script for
 selected body-map, skin, and NanoSeq supplementary-table summaries. It verifies

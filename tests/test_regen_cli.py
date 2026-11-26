@@ -127,6 +127,44 @@ class RegenCliTests(unittest.TestCase):
             regen.main(["fold-nvidia", "predict", "public.json", "--out", "run"])
             nvidia.assert_called_once_with(["predict", "public.json", "--out", "run"])
 
+    def test_biohub_dispatches_exact_argv_and_preserves_failure(self) -> None:
+        with patch("regen_cellxgene.main", return_value=0) as biohub:
+            regen.main(["biohub", "resources", "--out", "data/provenance/biohub/resources-test"])
+            biohub.assert_called_once_with(["resources", "--out", "data/provenance/biohub/resources-test"])
+        with patch("regen_cellxgene.main", return_value=0) as biohub:
+            regen.main(["biohub", "collection", "63d03351-06be-478e-a0db-f7a653b6b19b", "--out", "run"])
+            biohub.assert_called_once_with(["collection", "63d03351-06be-478e-a0db-f7a653b6b19b", "--out", "run"])
+        with patch("regen_cellxgene.main", return_value=2), self.assertRaises(SystemExit) as error:
+            regen.main(["biohub", "resources", "--out", "bad"])
+        self.assertEqual(error.exception.code, 2)
+
+    def test_boltz2_dispatches_exact_argv_and_preserves_failure(self) -> None:
+        argv = ["predict", "REQUEST.json", "--out", "data/structures/boltz2/run"]
+        with patch("regen_boltz2.main", return_value=0) as boltz2:
+            regen.main(["boltz2", *argv])
+            boltz2.assert_called_once_with(argv)
+        with patch("regen_boltz2.main", return_value=2), self.assertRaises(SystemExit) as error:
+            regen.main(["boltz2", *argv])
+        self.assertEqual(error.exception.code, 2)
+
+    def test_biohub_output_confinement_and_no_provenance_without_fetch(self) -> None:
+        import regen_cellxgene as cellxgene
+        outside = Path(self.tempdir.name) / "outside"
+        with patch("regen_cellxgene._public_get") as fetch, patch.object(regen, "record") as record, \
+                contextlib.redirect_stderr(io.StringIO()):
+            status = cellxgene.main(["collection", "63d03351-06be-478e-a0db-f7a653b6b19b", "--out", str(outside)])
+        self.assertEqual(status, 1)
+        fetch.assert_not_called()
+        record.assert_not_called()
+        resources = regen.PROV / "biohub" / "cli-resources"
+        with patch("regen_cellxgene._public_get") as fetch, patch.object(regen, "record") as record, \
+                contextlib.redirect_stdout(io.StringIO()):
+            status = cellxgene.main(["resources", "--out", str(resources)])
+        self.assertEqual(status, 0)
+        self.assertTrue((resources / "resources.json").is_file())
+        fetch.assert_not_called()
+        record.assert_not_called()
+
     def test_structure_comparison_failure_is_not_silent(self) -> None:
         with patch("structure_compare.main", return_value=2) as compare, \
              self.assertRaises(SystemExit) as error:

@@ -305,6 +305,46 @@ class DeskExchangeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.desk.export_bioprint_archive({"deskRunIds": ["../escape"]})
 
+    def test_cellxgene_reviewed_queue_export_is_manifest_only(self):
+        bundle = load("roundtrip.json")
+        bundle["queries"][0]["providerIds"] = ["cellxgene"]
+        self.desk.apply_bioprint_import(bundle)
+        request = {"queryId": bundle["queries"][0]["id"], "blueprintId": self.desk.store["blueprints"][0]["id"]}
+        review = self.desk.preview_bioprint_submission(request)
+        request.update(reviewToken=review["reviewToken"], confirmed=True)
+        raw = {"collection_id": "63d03351-06be-478e-a0db-f7a653b6b19b", "synthetic": True}
+        manifest = {"schema_version": 1, "provider": "cellxgene", "state": "manifest_only",
+                    "downloaded": False, "asset_fetch_attempted": False, "measurements_imported": False}
+        row = desk_module.hit("cellxgene", "Synthetic public metadata",
+                              "https://cellxgene.cziscience.com/collections/63d03351-06be-478e-a0db-f7a653b6b19b",
+                              evidence_type="public dataset metadata; measurements not reviewed", manifest=manifest)
+        with patch.object(desk_module, "search_provider", return_value=(raw, [row])) as provider:
+            receipt = self.desk.submit_bioprint_query(request)
+            path = self.desk.runs / receipt["deskRunId"] / "run.json"
+            deadline = time.monotonic() + 10
+            while time.monotonic() < deadline:
+                run = json.loads(path.read_text())
+                if run["status"] not in {"queued", "running"}:
+                    break
+                time.sleep(0.01)
+            self.assertEqual(run["status"], "complete", run)
+            provider.assert_called_once()
+        archive_bytes = self.desk.export_bioprint_archive({"deskRunIds": [run["id"]]})
+        with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+            names = archive.namelist()
+            self.assertFalse(any(name.lower().endswith(".h5ad") for name in names))
+            native = json.loads(archive.read(f"run-{run['id']}.json"))
+            provider_result = native["result"]["providers"][0]
+            snapshot = (self.desk.runs / run["id"] / "cellxgene.json").read_bytes()
+            self.assertEqual(json.loads(snapshot), raw)
+            self.assertEqual(provider_result["sha256"], hashlib.sha256(snapshot).hexdigest())
+            self.assertEqual(native["result"]["hits"][0]["manifest"]["state"], "manifest_only")
+            self.assertFalse(native["result"]["hits"][0]["manifest"]["asset_fetch_attempted"])
+            returned = bx.validate_bundle(json.loads(archive.read("bioprint-results.json")))
+            artifact = returned["artifacts"][0]
+            self.assertEqual(hashlib.sha256(archive.read(artifact["filename"])).hexdigest(), artifact["sha256"])
+            self.assertEqual(returned["schema"], bx.SCHEMA)
+
     def test_ambiguous_submission_is_never_automatically_retried(self):
         bundle = load("roundtrip.json")
         bundle["queries"][0]["providerIds"] = ["pubmed"]

@@ -17,6 +17,9 @@ Examples:
   regen fold-route P04637
   regen fold-japanfold submit --fasta examples/ubiquitin-1ubq.fasta --out data/structures/openfold3/ubiquitin-run
   regen fold-nvidia predict examples/openfold3-nvidia-1ubq.json --out data/structures/openfold3/nvidia-run
+  regen boltz2 predict REQUEST.json --out data/structures/boltz2/NEW_DIR
+  regen biohub resources --out data/provenance/biohub/resources
+  regen biohub collection COLLECTION_UUID --out data/provenance/biohub/collection
   regen compare-structures data/structures/reference.cif data/structures/prediction.cif
   regen rdkit "CCO" --descriptors
   regen dock-vina receptor.pdbqt ligand.pdbqt --center_x 10 --center_y 12 --center_z 8 --size_x 20 --size_y 20 --size_z 20 -o data/structures/run.pdbqt
@@ -1238,6 +1241,22 @@ def cmd_fold_nvidia(argv: list[str]) -> None:
     nvidia_main(argv)
 
 
+def cmd_boltz2(argv: list[str]) -> None:
+    from regen_boltz2 import main as boltz2_main
+
+    status = boltz2_main(argv)
+    if status:
+        raise SystemExit(status)
+
+
+def cmd_biohub(argv: list[str]) -> None:
+    from regen_cellxgene import main as biohub_main
+
+    status = biohub_main(argv)
+    if status:
+        raise SystemExit(status)
+
+
 def cmd_compare_structures(argv: list[str]) -> None:
     from structure_compare import main as compare_main
 
@@ -1267,6 +1286,8 @@ COMMANDS = {
     "fold-route": cmd_fold_route,
     "fold-japanfold": cmd_fold_japanfold,
     "fold-nvidia": cmd_fold_nvidia,
+    "biohub": cmd_biohub,
+    "boltz2": cmd_boltz2,
     "compare-structures": cmd_compare_structures,
     "dock-vina": cmd_dock_vina,
     "install-gnina": cmd_install_gnina,

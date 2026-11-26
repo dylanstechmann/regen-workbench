@@ -32,7 +32,7 @@ fit on 16 GB VRAM. Do these once, then point agents at the resulting keys via
 | Service | Why it is not in the image | Expected spend if you insist |
 |---|---|---|
 | AlphaFold 3 official weights | Separate model-parameter terms and substantial compute | Not configured in this checkout; use the OpenFold3 preview profile for local exploratory complex predictions |
-| NVIDIA NIM Boltz-2 | Needs NGC account + large pull + often more VRAM than you have | NGC key in `.env`; prefer `pip install boltz` locally |
+| NVIDIA NIM Boltz-2 local container | Local NGC pulls are separate from hosted API Catalog inference and need a large image plus suitable VRAM | Local NGC credentials do not authorize or configure the hosted Boltz-2 CLI |
 | PyMOL Incentive | Open-source PyMOL is already in the image | Skip unless you need incentive-only features |
 | ChimeraX daily build | Better GUI, not required for headless figures | Free for non-commercial; install on the **host desktop**, not Docker |
 | GOLD / Schrödinger Glide / MOE / Discovery Studio-FlexX | External commercial docking suites | Not bundled; use only with the appropriate current license |
@@ -43,7 +43,35 @@ fit on 16 GB VRAM. Do these once, then point agents at the resulting keys via
 | Inductive / commercial ADMET | Sales-gated | Use RDKit + public Chemprop weights first |
 | Full AF2 genetic DBs (~2 TB+) | Disk + days of download | Use ColabFold MSA server instead |
 | RFdiffusion all-atom campaigns | VRAM + weights + license maze | Tamarind or a rented A100 |
-| scRNA reference atlases (full CELLxGENE mirrors) | Hundreds of GB | Download **one** tissue/study into `data/` |
+| CELLxGENE / BioHub bulk datasets | Full mirrors are not configured and H5AD is outside this integration | Inspect one public collection with `regen biohub collection COLLECTION_UUID --out data/provenance/biohub/NEW_DIR`; metadata/manifest only, no H5AD download |
+
+### CELLxGENE / BioHub scope
+
+The public collection command is unauthenticated and metadata-only. Review each
+dataset's source, policy, attribution and license obligations before any future
+use; the Discover portal policy link alone does not complete that review. New
+output directories stay under ignored `data/provenance/biohub/`, and the receipt
+hashes metadata JSON rather than claiming an H5AD checksum. Census, Virtual
+Cells Platform, MLflow, model and benchmark entries from `regen biohub resources`
+are links only. They do not execute models or benchmarks, connect to MLflow, or
+assert universal open model licensing.
+
+### NVIDIA hosted Boltz-2 scope
+
+`regen boltz2 predict REQUEST.json --out data/structures/boltz2/NEW_DIR` is a
+hosted API Catalog adapter, not a local NGC container pull. It reads only the
+already-injected `NVIDIA_API_KEY` process variable and never falls back to
+opening `.env` itself. The existing one-off `remote-fold` profile can inject
+that variable without putting the key in command arguments.
+
+This phase used no NVIDIA key and made no NVIDIA network request or hosted
+inference; its responses and transports were synthetic/mocked. Hosted model
+version, service limits, MSA behavior, runtime, charges, and inference results
+remain unobserved. The previously exposed chat key is compromised and was not
+used. Before any future live submission, rotate it privately and review the
+hosted trial terms, NVIDIA Community Model License, upstream MIT license,
+input/output retention, quota/cost, and input sensitivity. Do not paste the
+rotated key into chat or write it into a request, fixture, receipt, or manifest.
 
 ## Google Cloud, on purpose
 

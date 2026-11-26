@@ -113,12 +113,22 @@ Each compatible view can be downloaded as JSON with its report IDs, versions,
 input hash, comparison metric, per-condition values, missingness and deltas.
 
 - **Evidence:** PubMed, Europe PMC, OpenAlex, ClinicalTrials.gov, Semantic
-  Scholar, CORE, Brave and Exa. Select sources and request 1-10 results each.
-  Bibliographic metadata is unreviewed until assessed. Registered/completed
-  trials are not assumed to have positive results. Web hits remain leads.
-  The display deduplicates DOI/PMID/exact-title matches where possible;
-  original provider records remain in the run. This is not an exhaustive
-  systematic search or a count of independent replications.
+  Scholar, CORE, Brave, Exa and CZ CELLxGENE Discover. Select 1-8 providers and
+  request 1-10 results each; the ninth registry entry does not raise the
+  selection cap. Bibliographic metadata is unreviewed until assessed.
+  Registered/completed trials are not assumed to have positive results. Web hits
+  remain leads. CELLxGENE accepts a canonical collection UUID for one exact
+  public detail lookup, or text for client-side matching over one PUBLIC list
+  response. Its evidence label is exactly **public dataset metadata;
+  measurements not reviewed**. Version-pinned manifests describe remote H5AD
+  identities and declared sizes only: no asset request, measurements import or
+  scientific review occurs, and dataset/source and attribution review remain
+  required. List-stub title/cell-count omissions stay visible while identities,
+  versions and assets remain mandatory. Existing queued execution, raw metadata
+  snapshots, reviewed Bioprint submission tokens and partial-provider failure
+  handling are reused. The display deduplicates DOI/PMID/exact-title matches
+  where possible; original provider records remain in the run. This is not an
+  exhaustive systematic search or a count of independent replications.
 - **Claims and observations:** Record papers, preprints, anecdotes, vendor
   claims and personal observations, with population, direction, confounders
   and source URL. All start unreviewed. The interface does not infer efficacy
@@ -303,8 +313,24 @@ run folder with too many files, or a total over budget, refuses the export with
 a message instead. The 98 MB budget leaves headroom under the verifier's
 100 MB limit, and the written ZIP is checked against that limit too. The
 filesystem check cannot detect a same-size rewrite on a filesystem with coarse
-modification times. Reading the run list itself (`export`) and the
-experiment-manifest validator's own reads are outside this collector. Manually entered notes
+modification times. Run records and submissions use that same bounded read. The
+experiment validator likewise reads its manifest, schema and every local artifact
+through `read_regular_file` with the 20 MB per-source limit and no symbolic-link or
+reparse-point traversal. A validation caches repeated references to one canonical
+source and retains only local `analysis_output` bytes, up to the 98 MB total output
+budget. ZIP containers are opened from their single retained in-memory read; unsafe
+or duplicate member names are rejected, declared member sizes are inspected first,
+and extracted members are read with the same 20 MB bound. Parsed directories and
+extracted members are cached by canonical source/member. A separate 98 MB aggregate
+validation-work ceiling, with source-cache and decompressed-byte sublimits, covers
+unique validation reads independently of the retained-output budget. Malformed
+compressed streams are reported as manifest validation errors. The selected manifest
+path is confined lexically and passed unresolved so replacement symlink components
+are rejected. The final validation returns a frozen snapshot of the exact manifest
+and selected output bytes, and linked-research export inserts those bytes without a
+second source read. Preflight, fresh revalidation and dossier change detection remain
+in place. This is not an atomic filesystem snapshot or absolute race-immunity claim.
+Manually entered notes
 are excluded by default; an explicit option includes them. It does not publish
 to Reddit or GitHub. Review private details and evidence claims; an exported
 research dossier is not automatically anonymous.

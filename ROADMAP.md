@@ -132,9 +132,25 @@ Desk export and the verifier's handling of a forged index.
   in the dossier's `run_records_excluded` and the archive index (`complete: false`),
   and the submission's parsed content and its checked hash come from the same bytes
   (they were two separate reads before). Five tests cover it.
-- Remaining: the experiment-manifest validator's own reads are outside the
-  collector. A same-size rewrite on a filesystem with coarse modification times
-  would not be detected.
+- Done 2026-11-15: experiment manifests, schemas and local artifacts now use the
+  collector's bounded, no-follow regular-file read. One validation caches each
+  canonical source, retains only local `analysis_output` bytes within the 98 MB
+  output budget, and returns a frozen `ValidatedExperimentSnapshot` containing the
+  exact manifest and selected output bytes. ZIP containers are read once and opened
+  from memory; member names, duplicates and uncompressed sizes are checked before
+  the bounded member read. Canonical source/member keys cache parsed directories and
+  extracted members. A separate 98 MB validation-work ceiling, with source-cache and
+  decompressed-byte sublimits, bounds unique validation reads without changing the
+  retained-output budget. Malformed compressed streams become validation errors.
+  ResearchDesk confines the selected manifest path lexically and passes it unresolved
+  so original symlink components remain visible to the validator. It archives the
+  snapshot bytes instead of reopening selected files, while retaining preflight,
+  fresh revalidation and change detection. Invalid selected inputs fail before
+  archive assembly.
+- Remaining: the snapshot is not an atomic filesystem transaction. A same-size
+  rewrite on a filesystem with coarse modification times can still evade the
+  collector's during-read check, and no claim of absolute filesystem race immunity
+  is made.
 - Remaining: refused-versus-excluded policy is a design choice. A run folder
   with too many files or a total over budget refuses the export, while a single
   unsuitable file is excluded and flagged. Revisit if either proves wrong in use.
