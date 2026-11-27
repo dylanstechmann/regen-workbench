@@ -28,7 +28,8 @@ Mirrors the Workbench contract (`bioprinting-workbench/docs/RESEARCH_EXCHANGE.md
   writes to Desk, never touches the ectogenesis campaign contracts.
 - `export_selected_results(selection, root)`: writes only explicitly selected result
   artifacts plus a canonical manifest under a generated flat directory; notes/caches are
-  excluded by default.
+  excluded by default. The exporter checks the total byte budget and all output names before
+  writing. Names are compared without case and `bioprint-results.json` is reserved for the manifest.
 
 ## Routes (same-origin only, added beside the existing allowlist)
 
