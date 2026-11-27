@@ -11,6 +11,7 @@ from urllib.parse import urlsplit, unquote
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import build_public_desk as public
+from compare_progress import compare
 
 REVISION = "a" * 40
 
@@ -75,6 +76,23 @@ class PublicDeskTests(unittest.TestCase):
         self.document["updates"][0]["artifacts"][0]["path"] = "data/research-desk/store.json"
         self.save()
         with self.assertRaises(ValueError):
+            public.build(self.output, repo_root=self.repo, revision=REVISION)
+        self.assertFalse(self.output.exists())
+
+    def test_metadata_change_and_unmodified_pin_with_different_bytes(self):
+        previous = self.root / "previous.json"
+        previous.write_bytes(self.index.read_bytes())
+        self.document["updates"][0]["boundary"] = "Revised scope for the synthetic fixture."
+        self.save()
+        valid = compare(previous, self.index, verify_after_root=self.repo)
+        self.assertEqual(valid["after_artifact_check"], {"checked": 1, "unavailable": []})
+        self.assertIn("boundary", valid["changed_entries"][0]["changed_fields"])
+        self.report.write_bytes(self.report.read_bytes().replace(b"Example", b"example", 1))
+        stale = compare(previous, self.index, verify_after_root=self.repo)
+        self.assertEqual(stale["changed_entries"], valid["changed_entries"])
+        self.assertEqual(stale["after_artifact_check"]["unavailable"],
+                         [{"entry_id": "example-entry", "artifact_id": "report"}])
+        with self.assertRaisesRegex(ValueError, "differs"):
             public.build(self.output, repo_root=self.repo, revision=REVISION)
         self.assertFalse(self.output.exists())
 

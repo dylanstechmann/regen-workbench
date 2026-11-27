@@ -105,3 +105,5 @@ Reordering entries or files has no effect. A changed SHA-256 identifies a new
 text pin even when the summary still reads the same. The comparison reads only
 the two supplied catalogs. The public site builder separately verifies the
 linked files when creating a snapshot.
+
+Add `--verify-after-root .` to check every declared artifact in the newer catalog against the current checkout using the public builder’s canonical UTF-8/LF rules. The JSON includes the number checked and identifies stale or unavailable files by entry and artifact ID. A stale or unavailable file gives exit status 1 alongside the metadata comparison.
