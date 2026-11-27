@@ -125,6 +125,27 @@ class BundleValidationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 bx.export_selected_results({"bundleId": "bad", "createdAt": "2026-11-03T12:00:00Z", "files": [("../escape.json", b"x")]}, Path(tmp) / "out2")
 
+    def test_export_preflights_names_and_total_before_writing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            manifest = root / "bioprint-results.json"
+            manifest.write_bytes(b"previous export")
+            base = {"bundleId": "test-bundle", "createdAt": "2026-11-03T12:00:00Z"}
+            cases = [
+                ([("copy.csv", b"a"), ("bioprint-results.json", b"b")], "collides"),
+                ([("copy.csv", b"a"), ("BIOPRINT-RESULTS.JSON", b"b")], "collides"),
+                ([("copy.csv", b"a"), ("COPY.csv", b"b")], "collides"),
+                ([("copy.csv", b"a"), ("copy.csv", b"a")], "collides"),
+            ]
+            large = bytes(bx.MAX_ARTIFACT_BYTES)
+            cases.append(([("one.csv", large), ("two.csv", large), ("three.csv", large)], "total byte"))
+            for files, message in cases:
+                with self.subTest(names=[name for name, _ in files]):
+                    with self.assertRaisesRegex(ValueError, message):
+                        bx.export_selected_results({**base, "files": files}, root)
+                    self.assertEqual(list(root.iterdir()), [manifest])
+                    self.assertEqual(manifest.read_bytes(), b"previous export")
+
 
 class DeskExchangeTests(unittest.TestCase):
     def setUp(self):

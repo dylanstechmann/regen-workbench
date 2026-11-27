@@ -388,7 +388,6 @@ def export_selected_results(selection, root):
     """Write a result bundle plus selected artifact files under root (bounded, flat names).
     Notes/caches are excluded by default: only explicit selection is written."""
     root = Path(root)
-    root.mkdir(parents=True, exist_ok=True)
     bundle = {
         "schema": SCHEMA,
         "bundleId": _text(selection.get("bundleId"), 64, "selection.bundleId"),
@@ -404,15 +403,28 @@ def export_selected_results(selection, root):
         "publicationReviewStatus": "not-approved",
     }
     validated = validate_bundle(bundle)
-    written = {}
+    manifest_name = "bioprint-results.json"
+    occupied = {manifest_name}
+    selected = {}
+    total = 0
     for filename, data in selection.get("files", []):
-        if not isinstance(filename, str) or not FILENAME_RE.match(filename) or ".." in filename:
+        if not isinstance(filename, str) or not FILENAME_RE.fullmatch(filename) or ".." in filename:
             raise ValueError(f"Unsafe artifact filename: {filename}")
         if not isinstance(data, (bytes, bytearray)) or len(data) > MAX_ARTIFACT_BYTES:
             raise ValueError(f"Artifact {filename} out of bounds")
-        target = root / filename
-        target.write_bytes(bytes(data))
-        written[filename] = sha256_bytes(bytes(data))
-    manifest_path = root / "bioprint-results.json"
-    manifest_path.write_bytes(canonical_json_bytes(validated))
-    return {"manifest": str(manifest_path), "bundleSha256": sha256_bytes(canonical_json_bytes(validated)), "files": written}
+        key = filename.lower()
+        if key in occupied:
+            raise ValueError(f"Export filename collides with the manifest or another selected file: {filename}")
+        occupied.add(key)
+        total += len(data)
+        if total > MAX_TOTAL_ARTIFACT_BYTES:
+            raise ValueError("Selected artifacts exceed the total byte limit")
+        selected[filename] = bytes(data)
+    manifest = canonical_json_bytes(validated)
+    root.mkdir(parents=True, exist_ok=True)
+    for filename, data in selected.items():
+        (root / filename).write_bytes(data)
+    manifest_path = root / manifest_name
+    manifest_path.write_bytes(manifest)
+    return {"manifest": str(manifest_path), "bundleSha256": sha256_bytes(manifest),
+            "files": {filename: sha256_bytes(data) for filename, data in selected.items()}}
